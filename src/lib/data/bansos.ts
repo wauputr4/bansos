@@ -39,5 +39,28 @@ export const bansosList: BansosItem[] = [
 		tags: ['Domain', 'Gratisan', 'No Credit Card'],
 		featured: true,
 		status: 'active'
+	},
+	{
+		id: 'tokenrouter-model-gateway',
+		title: 'TokenRouter: Gateway API untuk 300+ Model AI',
+		provider: 'TokenRouter',
+		description: 'TokenRouter adalah hub model AI terpusat yang mengubah provider-model besar jadi endpoint OpenAI, Claude, dan Gemini yang konsisten buat workflow developer.',
+		benefits: [
+			'Satu titik akses API untuk banyak model AI: OpenAI, Claude, Gemini, Llama, Mistral, dan lainnya',
+			'Bandingkan pricing antar model (browse & compare) langsung di halaman Models',
+			'Punya tooling untuk manage API key, quota, wallet, dan usage log',
+			'Cocok untuk tim yang mau routing model secara terpusat (terutama di workflow coding/automation)'
+		],
+		validity: 'Cek ketentuan resmi di situs (biasanya aktif terus, berubah sesuai promo/upgrade)',
+		requirements: [
+			'Buka https://www.tokenrouter.com',
+			'Pastikan kebutuhan akses API kamu sesuai dengan fitur model yang dipakai',
+			'Cek halaman billing/usage untuk memastikan budget dan limit kamu'
+		],
+		tips: 'Ini list resource produktivitas, bukan promo yang dikunci: cek apakah ada free credit/trial yang masih berlaku.',
+		ctaLink: 'https://www.tokenrouter.com',
+		tags: ['AI', 'Model API', 'Routing'],
+		featured: false,
+		status: 'active'
 	}
 ];
