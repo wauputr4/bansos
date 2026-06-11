@@ -46,6 +46,7 @@
 		--font-size-h1: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
 		--font-size-h2: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
 		--font-size-h3: clamp(1.2rem, 1rem + 0.8vw, 1.5rem);
+		--page-pad-x: clamp(0.85rem, 4vw, 3rem);
 		
 		/* Scrollbar customization */
 		scrollbar-color: var(--text-muted) var(--bg-primary);
@@ -107,7 +108,7 @@
 		width: 100%;
 		max-width: 80rem;
 		margin-inline: auto;
-		padding-inline: clamp(1rem, 5vw, 3rem);
+		padding-inline: var(--page-pad-x);
 	}
 	
 	/* Glassmorphism Card styling */
@@ -175,6 +176,28 @@
 	.btn-secondary:hover {
 		background-color: rgba(255, 255, 255, 0.05);
 		border-color: var(--text-secondary);
+	}
+}
+
+@media (max-width: 47.99rem) {
+	@layer base {
+		body {
+			background-attachment: scroll;
+		}
+	}
+
+	@layer components {
+		.glass-card {
+			border-radius: 0.9rem;
+			padding: 1rem;
+		}
+
+		.btn-primary,
+		.btn-secondary {
+			min-height: 2.75rem;
+			padding: 0.7rem 1rem;
+			border-radius: 0.7rem;
+		}
 	}
 }
 

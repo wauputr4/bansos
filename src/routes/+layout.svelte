@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SiteShell from '$lib/components/SiteShell.svelte';
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -9,4 +10,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<SiteShell>
+	{@render children()}
+</SiteShell>

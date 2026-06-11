@@ -8,6 +8,9 @@ Website statis untuk kumpulan promo dan program bantuan (`bansos`) yang dirancan
 
 - Landing page dengan konten SEO-friendly.
 - Data bansos terstruktur di `src/lib/data/bansos.ts`.
+- Komponen UI modular untuk shell, kartu bansos, dan highlight terbaru.
+- Filter tag di halaman list.
+- Script CLI untuk menambahkan daftar bansos baru.
 - Open Graph, Twitter Card, JSON-LD, dan meta tags.
 - Open source dan siap kontribusi.
 
@@ -38,11 +41,33 @@ npm run build
 npm run preview
 ```
 
+## Menambahkan bansos baru
+
+Pakai script supaya format data tetap rapi:
+
+```bash
+npm run add:bansos -- \
+  --id contoh-bansos \
+  --title "Contoh Bansos Developer" \
+  --provider "Provider" \
+  --description "Deskripsi singkat bansos." \
+  --benefits "Benefit satu|Benefit dua" \
+  --validity "Berlaku sampai 30 Juni 2026" \
+  --requirements "Buat akun|Klaim program" \
+  --cta-link "https://example.com" \
+  --tags "Cloud,Gratisan" \
+  --contributor-name "Nama Kamu" \
+  --contributor-url "https://example.com"
+```
+
+Argumen list seperti `--benefits` dan `--requirements` dipisahkan dengan `|`.
+Argumen `--tags` dipisahkan dengan koma.
+
 ## Kontribusi
 
 - Fork repo ini.
 - Jalankan branch fitur: `git checkout -b feat/nama-fitur`.
-- Update konten di `src/lib/data/bansos.ts`.
+- Tambahkan data dengan `npm run add:bansos -- ...`.
 - Tambahkan/rapikan halaman sesuai guide komunitas, lalu kirim PR.
 
 Lihat detail lengkap kontribusi di `[CONTRIBUTING](.github/CONTRIBUTING.md)`.
@@ -57,4 +82,4 @@ MIT. Lihat [LICENSE](LICENSE).
 
 ## Repo
 
-- GitHub: [github.com/wauputra/bansos](https://github.com/wauputra/bansos)
+- GitHub: [github.com/wauputr4/bansos](https://github.com/wauputr4/bansos)

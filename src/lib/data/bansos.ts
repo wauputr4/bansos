@@ -79,3 +79,17 @@ export const bansosList: BansosItem[] = [
 		status: 'active'
 	}
 ];
+
+export const latestBansos = (limit = 3) => bansosList.slice(-limit).reverse();
+
+export const allBansosTags = Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort(
+	(a, b) => a.localeCompare(b)
+);
+
+export function getBansosById(id: string) {
+	return bansosList.find((item) => item.id === id);
+}
+
+export function getBansosByTag(tag: string) {
+	return bansosList.filter((item) => item.tags.includes(tag));
+}

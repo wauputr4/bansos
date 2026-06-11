@@ -1,7 +1,11 @@
 <script lang="ts">
-	import { bansosList } from '$lib/data/bansos';
+	import BansosCard from '$lib/components/BansosCard.svelte';
+	import { allBansosTags, bansosList, getBansosByTag } from '$lib/data/bansos';
 
-	let floatingEmojis = $state<{ id: number; x: number; y: number; text: string }[]>([]);
+	let selectedTag = $state('Semua');
+	const filteredBansos = $derived(
+		selectedTag === 'Semua' ? bansosList : getBansosByTag(selectedTag)
+	);
 
 	function spawnEmoji(e: MouseEvent, text: string) {
 		const emoji = {
@@ -27,7 +31,6 @@
 
 	<!-- Header -->
 	<header class="feed-header container">
-		<a href="/" class="btn-back-home">← Home</a>
 		<h1 class="section-title">
 			<span>📦 Semua Info Bansos Aktif</span>
 			<svg class="anxious-icon inline-anxious" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,56 +47,26 @@
 		<p class="subtitle-text text-pretty">Klik kartu bansos untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀</p>
 	</header>
 
+	<section class="tag-section container" aria-label="Filter tag bansos">
+		<button class:active={selectedTag === 'Semua'} onclick={() => (selectedTag = 'Semua')}>
+			Semua
+		</button>
+		{#each allBansosTags as tag}
+			<button class:active={selectedTag === tag} onclick={() => (selectedTag = tag)}>
+				{tag}
+			</button>
+		{/each}
+	</section>
+
 	<!-- Grid List -->
 	<section class="feed-section container">
 		<div class="bansos-grid">
-			{#each bansosList as item (item.id)}
-				<article class="glass-card bansos-card">
-					<div class="card-header">
-						<div class="tags-container">
-							{#each item.tags as tag}
-								<span class="tag-badge">{tag}</span>
-							{/each}
-						</div>
-						<span class="status-badge status-{item.status}">
-							{item.status === 'active' ? '● Aktif' : item.status}
-						</span>
-					</div>
-
-					<h2 class="card-title">{item.title}</h2>
-					<p class="provider-label">Provider: <strong>{item.provider}</strong></p>
-					{#if item.contributor}
-						<p class="contributor-label">
-							Kontributor:
-							<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-								{item.contributor.name}
-							</a>
-						</p>
-					{/if}
-					
-					<p class="card-desc text-pretty">{item.description}</p>
-					
-					<div class="card-actions">
-						<a href="/list/{item.id}" class="btn-primary" onclick={(e) => spawnEmoji(e, '🚀')}>
-							Lihat Cara Klaim Lengkap 🔎
-						</a>
-					</div>
-				</article>
+			{#each filteredBansos as item (item.id)}
+				<BansosCard {item} />
 			{/each}
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<footer class="footer container">
-		<p>© 2026 <a href="/">bansos.dev</a>. Dipersembahkan oleh developer jelata.</p>
-	</footer>
-
-	<!-- Floating Emojis -->
-	{#each floatingEmojis as emoji (emoji.id)}
-		<span class="floating-emoji" style="left: {emoji.x}px; top: {emoji.y}px;">
-			{emoji.text}
-		</span>
-	{/each}
 </main>
 
 <style>
@@ -111,26 +84,6 @@
 		left: 50%;
 		transform: translateX(-50%);
 		background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
-	}
-
-	.btn-back-home {
-		display: inline-flex;
-		align-items: center;
-		color: var(--text-secondary);
-		border: 1px solid var(--border-color);
-		padding: 0.4rem 0.8rem;
-		border-radius: 0.5rem;
-		background: var(--glass-bg);
-		font-size: 0.85rem;
-		font-weight: 600;
-		width: fit-content;
-		margin-bottom: 1rem;
-		transition: background-color 0.2s, color 0.2s;
-	}
-
-	.btn-back-home:hover {
-		color: var(--text-primary);
-		background-color: rgba(255, 255, 255, 0.05);
 	}
 
 	.feed-header {
@@ -152,6 +105,37 @@
 		font-size: 1rem;
 	}
 
+	.tag-section {
+		display: flex;
+		gap: 0.5rem;
+		overflow-x: auto;
+		padding-block: 0.25rem;
+		scrollbar-width: none;
+	}
+
+	.tag-section::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tag-section button {
+		flex: 0 0 auto;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--text-secondary);
+		font: inherit;
+		font-size: 0.85rem;
+		font-weight: 750;
+		padding: 0.5rem 0.8rem;
+		cursor: pointer;
+	}
+
+	.tag-section button.active {
+		border-color: rgba(16, 185, 129, 0.55);
+		background: rgba(16, 185, 129, 0.14);
+		color: var(--text-primary);
+	}
+
 	.feed-section {
 		min-height: 40vh;
 	}
@@ -160,80 +144,6 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2rem;
-	}
-
-	.bansos-card {
-		display: flex;
-		flex-direction: column;
-		gap: 1.25rem;
-	}
-
-	.card-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-	}
-
-	.tags-container {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.tag-badge {
-		font-size: 0.75rem;
-		font-weight: 600;
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid var(--border-color);
-		padding: 0.2rem 0.6rem;
-		border-radius: 0.5rem;
-		color: var(--text-secondary);
-	}
-
-	.status-badge {
-		font-size: 0.75rem;
-		font-weight: 750;
-		padding: 0.2rem 0.6rem;
-		border-radius: 0.5rem;
-		background: rgba(16, 185, 129, 0.1);
-		color: var(--color-success);
-	}
-
-	.card-title {
-		font-size: var(--font-size-h3);
-		font-weight: 700;
-		line-height: 1.3;
-	}
-
-	.provider-label {
-		font-size: 0.9rem;
-		color: var(--text-secondary);
-		margin-top: -0.75rem;
-	}
-
-	.contributor-label {
-		font-size: 0.85rem;
-		color: var(--text-muted);
-		margin-top: -1rem;
-	}
-
-	.contributor-label a {
-		color: var(--color-accent);
-		font-weight: 650;
-	}
-
-	.card-desc {
-		color: var(--text-secondary);
-	}
-
-	.card-actions {
-		margin-top: auto;
-	}
-
-	.card-actions .btn-primary {
-		width: 100%;
 	}
 
 	.inline-anxious {
@@ -252,30 +162,9 @@
 		transform-origin: center;
 	}
 
-	/* Floating emojis */
-	.floating-emoji {
-		position: fixed;
-		pointer-events: none;
-		z-index: 9999;
-		font-size: 2.5rem;
-		animation: float-up-fade 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
-		transform: translate(-50%, -50%);
-	}
-
 	@keyframes pulse {
 		0% { transform: scale(1); }
 		100% { transform: scale(1.1); }
-	}
-
-	@keyframes float-up-fade {
-		0% {
-			transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
-			opacity: 1;
-		}
-		100% {
-			transform: translate(-50%, -50%) scale(1.4) translateY(-100px) rotate(15deg);
-			opacity: 0;
-		}
 	}
 
 	@keyframes shake {
@@ -302,10 +191,6 @@
 	@media (min-width: 48rem) {
 		.bansos-grid {
 			grid-template-columns: repeat(2, 1fr);
-		}
-		
-		.bansos-card {
-			max-width: none;
 		}
 	}
 </style>

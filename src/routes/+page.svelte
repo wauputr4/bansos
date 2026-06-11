@@ -1,26 +1,12 @@
 <script lang="ts">
-	import { bansosList } from '$lib/data/bansos';
-
-	let floatingEmojis = $state<{ id: number; x: number; y: number; text: string }[]>([]);
-
-	function spawnEmoji(e: MouseEvent, text: string) {
-		const emoji = {
-			id: Math.random(),
-			x: e.clientX,
-			y: e.clientY,
-			text
-		};
-		floatingEmojis = [...floatingEmojis, emoji];
-		setTimeout(() => {
-			floatingEmojis = floatingEmojis.filter((i) => i.id !== emoji.id);
-		}, 1000);
-	}
+	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
+	import { latestBansos } from '$lib/data/bansos';
 
 	// SEO metadata
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
 	const metaDescription = 'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
-	const highlightedBansos = bansosList.slice(-3).reverse();
+	const highlightedBansos = latestBansos(3);
 </script>
 
 <svelte:head>
@@ -55,7 +41,7 @@
 			</a>
 		</div>
 		
-		<h1 class="main-title text-gradient text-balance" onclick={(e) => spawnEmoji(e, '😭')} style="cursor: pointer; user-select: none;">
+		<h1 class="main-title text-gradient text-balance">
 			bansos.dev
 		</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
@@ -81,24 +67,11 @@
 		</p>
 
 		<!-- Highlight Bansos Terbaru -->
-		<div class="highlight-container">
-			{#each highlightedBansos as item, index (item.id)}
-				<a href="/list/{item.id}" class="highlight-card glass-card" onclick={(e) => spawnEmoji(e, '💸')}>
-					<div class="highlight-header">
-						<span class="highlight-tag">
-							{index === 0 ? '🔥 BANSOS TERBARU' : '✨ BANSOS PILIHAN'}
-						</span>
-					</div>
-					<h3 class="highlight-title">{item.title}</h3>
-					<p class="highlight-provider">{item.provider} · {item.validity}</p>
-					<span class="highlight-cta">Lihat Cara Klaim Selengkapnya →</span>
-				</a>
-			{/each}
-		</div>
+		<BansosHighlights items={highlightedBansos} />
 
 		<!-- Large Glowing CTA -->
 		<div class="cta-container">
-			<a href="/list" class="btn-primary main-cta" onclick={(e) => spawnEmoji(e, '💸')}>
+			<a href="/list" class="btn-primary main-cta">
 				Lihat Semua List Bansos 🔎
 			</a>
 		</div>
@@ -106,7 +79,7 @@
 
 	<!-- Quotes Section -->
 	<section class="quotes-section container">
-		<div class="glass-card quote-card" onclick={(e) => spawnEmoji(e, '💸')}>
+		<div class="glass-card quote-card">
 			<span class="quote-mark">“</span>
 			<blockquote class="main-quote text-gradient">
 				Developer butuh dollar!
@@ -134,18 +107,6 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- Footer -->
-	<footer class="footer container">
-		<p>© 2026 <a href="/">bansos.dev</a>. Dipersembahkan dengan ❤️ oleh developer jelata untuk developer jelata.</p>
-	</footer>
-
-	<!-- Floating Emojis -->
-	{#each floatingEmojis as emoji (emoji.id)}
-		<span class="floating-emoji" style="left: {emoji.x}px; top: {emoji.y}px;">
-			{emoji.text}
-		</span>
-	{/each}
 </main>
 
 <style>
@@ -242,62 +203,6 @@
 		margin-top: 0.5rem;
 	}
 
-	/* Highlight Card Home */
-	.highlight-container {
-		width: 100%;
-		max-width: 58rem;
-		margin-block: 1.5rem;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-	}
-
-	.highlight-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		text-align: left;
-		padding: 1.5rem;
-		border: 1px dashed var(--color-accent);
-		transition: border-style 0.2s, transform 0.2s;
-	}
-
-	.highlight-card:hover {
-		border-style: solid;
-		transform: scale(1.02);
-	}
-
-	.highlight-tag {
-		font-size: 0.75rem;
-		font-weight: 800;
-		background: rgba(16, 185, 129, 0.15);
-		color: var(--color-accent);
-		padding: 0.25rem 0.5rem;
-		border-radius: 0.35rem;
-		letter-spacing: 0.05em;
-		width: fit-content;
-	}
-
-	.highlight-title {
-		font-size: 1.15rem;
-		font-weight: 700;
-		color: var(--text-primary);
-		line-height: 1.4;
-	}
-
-	.highlight-provider {
-		font-size: 0.85rem;
-		font-weight: 600;
-		color: var(--text-muted);
-		line-height: 1.5;
-	}
-
-	.highlight-cta {
-		font-size: 0.9rem;
-		font-weight: 600;
-		color: var(--color-accent);
-	}
-
 	.cta-container {
 		margin-top: 0.5rem;
 	}
@@ -349,26 +254,6 @@
 		20% { opacity: 1; }
 		80% { opacity: 0.8; }
 		100% { transform: translateY(12px); opacity: 0; }
-	}
-
-	.floating-emoji {
-		position: fixed;
-		pointer-events: none;
-		z-index: 9999;
-		font-size: 2.5rem;
-		animation: float-up-fade 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
-		transform: translate(-50%, -50%);
-	}
-
-	@keyframes float-up-fade {
-		0% {
-			transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
-			opacity: 1;
-		}
-		100% {
-			transform: translate(-50%, -50%) scale(1.4) translateY(-100px) rotate(15deg);
-			opacity: 0;
-		}
 	}
 
 	.quotes-section {
@@ -453,14 +338,6 @@
 		margin-right: 0.5rem;
 	}
 
-	.footer {
-		text-align: center;
-		color: var(--text-muted);
-		font-size: 0.85rem;
-		border-top: 1px solid var(--border-color);
-		padding-top: 2rem;
-	}
-
 	@keyframes shake {
 		0% { transform: translate(1px, 1px) rotate(0deg); }
 		10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -475,15 +352,4 @@
 		100% { transform: translate(1px, -2px) rotate(-1deg); }
 	}
 
-	@media (min-width: 48rem) {
-		.highlight-container {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-	@media (min-width: 64rem) {
-		.highlight-container:has(.highlight-card:nth-child(3)) {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-	}
 </style>

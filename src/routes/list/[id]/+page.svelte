@@ -1,4 +1,6 @@
 <script lang="ts">
+	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
+
 	let { data } = $props();
 	const item = $derived(data.item);
 
@@ -25,19 +27,6 @@
 		} catch (err) {
 			console.error('Failed to copy: ', err);
 		}
-	}
-
-	function spawnDespair(e: MouseEvent) {
-		const emoji = {
-			id: Math.random(),
-			x: e.clientX,
-			y: e.clientY,
-			text: '😭'
-		};
-		floatingEmojis = [...floatingEmojis, emoji];
-		setTimeout(() => {
-			floatingEmojis = floatingEmojis.filter((i) => i.id !== emoji.id);
-		}, 1000);
 	}
 
 	// Dynamic SEO Meta definitions
@@ -189,7 +178,7 @@
 
 	<!-- Anxious Sweating Coffee & Sad Student SVGs side-by-side for fun -->
 	<section class="fun-illustrations container">
-		<div class="glass-card illustration-card" onclick={(e) => spawnDespair(e)}>
+		<div class="glass-card illustration-card">
 			<svg class="anxious-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M15 30 C15 25 19 21 24 21 H76 C81 21 85 25 85 30 V70 C85 75 81 79 76 79 H24 C19 79 15 75 15 70 Z" fill="var(--bg-secondary)" stroke="var(--color-warning)" stroke-width="4"/>
 				<path d="M55 40 H78 C82 40 85 43 85 47 V57 C85 61 82 64 78 64 H55 Z" fill="#1b1d30" stroke="var(--color-warning)" stroke-width="4"/>
@@ -203,7 +192,7 @@
 			<p>Dompet lagi kosong melompong...</p>
 		</div>
 
-		<div class="glass-card illustration-card" onclick={(e) => spawnDespair(e)}>
+		<div class="glass-card illustration-card">
 			<svg class="anxious-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<rect x="15" y="15" width="70" height="50" rx="8" fill="var(--bg-secondary)" stroke="var(--color-accent)" stroke-width="4"/>
 				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15"/>
@@ -218,17 +207,8 @@
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<footer class="footer container">
-		<p>© 2026 <a href="/">bansos.dev</a>. Dipersembahkan dengan ❤️ untuk developer jelata.</p>
-	</footer>
-
 	<!-- Floating Particles -->
-	{#each floatingEmojis as emoji (emoji.id)}
-		<span class="floating-emoji" style="left: {emoji.x}px; top: {emoji.y}px;">
-			{emoji.text}
-		</span>
-	{/each}
+	<FloatingEmoji emojis={floatingEmojis} />
 </main>
 
 <style>
@@ -495,7 +475,6 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 0.75rem;
-		cursor: pointer;
 	}
 
 	.illustration-card p {
@@ -513,30 +492,9 @@
 		transform-origin: center;
 	}
 
-	/* Floating Emoji Styles */
-	.floating-emoji {
-		position: fixed;
-		pointer-events: none;
-		z-index: 9999;
-		font-size: 2.5rem;
-		animation: float-up-fade 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
-		transform: translate(-50%, -50%);
-	}
-
 	@keyframes pulse {
 		0% { transform: scale(1); }
 		100% { transform: scale(1.15); }
-	}
-
-	@keyframes float-up-fade {
-		0% {
-			transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
-			opacity: 1;
-		}
-		100% {
-			transform: translate(-50%, -50%) scale(1.4) translateY(-100px) rotate(15deg);
-			opacity: 0;
-		}
 	}
 
 	@keyframes shake {
