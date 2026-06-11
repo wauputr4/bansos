@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+.vite/
+/.svelte-kit/
+/.wrangler/
+/build/
+.env
+.env.local
