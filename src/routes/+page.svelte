@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { bansosList } from '$lib/data/bansos';
+
 	let floatingEmojis = $state<{ id: number; x: number; y: number; text: string }[]>([]);
 
 	function spawnEmoji(e: MouseEvent, text: string) {
@@ -18,6 +20,7 @@
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
 	const metaDescription = 'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
+	const highlightedBansos = bansosList.slice(-3).reverse();
 </script>
 
 <svelte:head>
@@ -79,13 +82,18 @@
 
 		<!-- Highlight Bansos Terbaru -->
 		<div class="highlight-container">
-			<a href="/list/tokenrouter-model-gateway" class="highlight-card glass-card" onclick={(e) => spawnEmoji(e, '💸')}>
-				<div class="highlight-header">
-					<span class="highlight-tag">🔥 BANSOS TERBARU</span>
-				</div>
-				<h3 class="highlight-title">Free Credits TokenRouter buat Jajan Model AI!</h3>
-				<span class="highlight-cta">Lihat Cara Klaim Selengkapnya →</span>
-			</a>
+			{#each highlightedBansos as item, index (item.id)}
+				<a href="/list/{item.id}" class="highlight-card glass-card" onclick={(e) => spawnEmoji(e, '💸')}>
+					<div class="highlight-header">
+						<span class="highlight-tag">
+							{index === 0 ? '🔥 BANSOS TERBARU' : '✨ BANSOS PILIHAN'}
+						</span>
+					</div>
+					<h3 class="highlight-title">{item.title}</h3>
+					<p class="highlight-provider">{item.provider} · {item.validity}</p>
+					<span class="highlight-cta">Lihat Cara Klaim Selengkapnya →</span>
+				</a>
+			{/each}
 		</div>
 
 		<!-- Large Glowing CTA -->
@@ -237,8 +245,11 @@
 	/* Highlight Card Home */
 	.highlight-container {
 		width: 100%;
-		max-width: 36rem;
+		max-width: 58rem;
 		margin-block: 1.5rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
 	}
 
 	.highlight-card {
@@ -272,6 +283,13 @@
 		font-weight: 700;
 		color: var(--text-primary);
 		line-height: 1.4;
+	}
+
+	.highlight-provider {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--text-muted);
+		line-height: 1.5;
 	}
 
 	.highlight-cta {
@@ -455,5 +473,17 @@
 		80% { transform: translate(-1px, -1px) rotate(1deg); }
 		90% { transform: translate(2px, 2px) rotate(0deg); }
 		100% { transform: translate(1px, -2px) rotate(-1deg); }
+	}
+
+	@media (min-width: 48rem) {
+		.highlight-container {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.highlight-container:has(.highlight-card:nth-child(3)) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
 	}
 </style>
