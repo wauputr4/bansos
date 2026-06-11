@@ -42,24 +42,26 @@ export const bansosList: BansosItem[] = [
 	},
 	{
 		id: 'tokenrouter-model-gateway',
-		title: 'TokenRouter: Gateway API untuk 300+ Model AI',
+		title: 'Free Credits TokenRouter buat Jajan Model AI',
 		provider: 'TokenRouter',
-		description: 'TokenRouter adalah hub model AI terpusat yang mengubah provider-model besar jadi endpoint OpenAI, Claude, dan Gemini yang konsisten buat workflow developer.',
+		description: 'TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.',
 		benefits: [
-			'Satu titik akses API untuk banyak model AI: OpenAI, Claude, Gemini, Llama, Mistral, dan lainnya',
-			'Bandingkan pricing antar model (browse & compare) langsung di halaman Models',
-			'Punya tooling untuk manage API key, quota, wallet, dan usage log',
-			'Cocok untuk tim yang mau routing model secara terpusat (terutama di workflow coding/automation)'
+			'Top up 6, dapat 4 credit gratis (bonus 40% off)',
+			'Mulai top-up dari $1, jadi gak harus all-in kayak founder baru dapet funding',
+			'Maksimal top-up $60.000 dan bonus sampai $40.000 per orang untuk voucher',
+			'Bisa apply $200 developer credits kalau ikut campaign Get 40% Off',
+			'Developer credits berlaku 30 hari setelah disetujui'
 		],
-		validity: 'Cek ketentuan resmi di situs (biasanya aktif terus, berubah sesuai promo/upgrade)',
+		validity: 'Top-up sebelum 30 Juni 2026',
 		requirements: [
-			'Buka https://www.tokenrouter.com',
-			'Pastikan kebutuhan akses API kamu sesuai dengan fitur model yang dipakai',
-			'Cek halaman billing/usage untuk memastikan budget dan limit kamu'
+			'Buka campaign rules TokenRouter dan login ke akun kamu',
+			'Top-up sebelum 30 Juni 2026 untuk klaim bonus 40%',
+			'Untuk $200 developer credits, ikut dulu campaign Get 40% Off lalu submit form klaim',
+			'Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan'
 		],
-		tips: 'Ini list resource produktivitas, bukan promo yang dikunci: cek apakah ada free credit/trial yang masih berlaku.',
-		ctaLink: 'https://www.tokenrouter.com',
-		tags: ['AI', 'Model API', 'Routing'],
+		tips: 'Kalau modal masih tipis, mulai dari $1 dulu. Jangan lupa baca campaign rules biar gak salah ekspektasi soal voucher dan masa berlaku.',
+		ctaLink: 'https://www.tokenrouter.com/campaign-rules',
+		tags: ['AI Credits', 'Model API', 'Top-up Bonus'],
 		featured: false,
 		status: 'active'
 	}
