@@ -149,6 +149,35 @@ export const bansosList: BansosItem[] = [
 		featured: false,
 		status: 'active'
 	}
+	,
+	{
+		id: 'kimchi-dev-serverless-ai',
+		title: 'Kimchi.dev $50/Bulan Serverless AI Credit',
+		provider: 'Kimchi.dev',
+		description: 'Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.',
+		benefits: [
+			'$50 Serverless AI credit per bulan',
+			'Tanpa syarat kartu kredit'
+		],
+		validity: 'Selamanya',
+		requirements: [
+			'Daftar akun di Kimchi.dev',
+			'Verifikasi alamat email'
+		],
+		contributor: {
+			name: 'DevERS',
+			url: 'https://renzlab.my.id'
+		},
+		ctaLink: 'https://kimchi.dev',
+		tags: [
+			'AI Credits',
+			'Serverless',
+			'No Credit Card',
+			'Gratisan'
+		],
+		featured: false,
+		status: 'active'
+	}
 ];
 
 export const latestBansos = (limit = 3) => bansosList.slice(-limit).reverse();
