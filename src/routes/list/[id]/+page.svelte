@@ -16,7 +16,7 @@
 				id: Math.random(),
 				x: e.clientX,
 				y: e.clientY,
-				text: '💸'
+				text: '<i class="fa-solid fa-money-bill-wave" style="color: #10b981;"></i>'
 			};
 			floatingEmojis = [...floatingEmojis, emoji];
 			setTimeout(() => {
@@ -31,37 +31,39 @@
 
 	// Dynamic SEO Meta definitions
 	const seoTitle = $derived(`Cara Dapat ${item.title} - bansos.dev`);
-	const seoDesc = $derived(`Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`);
+	const seoDesc = $derived(
+		`Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
+	);
 	const pageUrl = $derived(`https://bansos.dev/list/${item.id}`);
 
 	// JSON-LD Specific Product / Guide Schema
 	const schemaData = $derived({
 		'@context': 'https://schema.org',
 		'@type': 'HowTo',
-		'name': `Cara Klaim ${item.title}`,
-		'description': item.description,
-		'totalTime': 'PT5M',
-		'supply': [
+		name: `Cara Klaim ${item.title}`,
+		description: item.description,
+		totalTime: 'PT5M',
+		supply: [
 			{
 				'@type': 'HowToSupply',
-				'name': 'Koneksi Internet'
+				name: 'Koneksi Internet'
 			},
 			{
 				'@type': 'HowToSupply',
-				'name': 'Akun Dev Aktif'
+				name: 'Akun Dev Aktif'
 			}
 		],
-		'tool': [
+		tool: [
 			{
 				'@type': 'HowToTool',
-				'name': 'Web Browser'
+				name: 'Web Browser'
 			}
 		],
-		'step': item.requirements.map((req, index) => ({
+		step: item.requirements.map((req, index) => ({
 			'@type': 'HowToStep',
-			'position': index + 1,
-			'name': `Langkah ${index + 1}`,
-			'text': req
+			position: index + 1,
+			name: `Langkah ${index + 1}`,
+			text: req
 		}))
 	});
 </script>
@@ -70,13 +72,16 @@
 	<title>{seoTitle}</title>
 	<meta name="title" content={seoTitle} />
 	<meta name="description" content={seoDesc} />
-	<meta name="keywords" content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card" />
-	
+	<meta
+		name="keywords"
+		content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card"
+	/>
+
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content={pageUrl} />
 	<meta property="og:title" content={seoTitle} />
 	<meta property="og:description" content={seoDesc} />
-	
+
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={pageUrl} />
 	<meta property="twitter:title" content={seoTitle} />
@@ -89,7 +94,7 @@
 
 <main class="page-wrapper">
 	<div class="glow-orb detail-glow"></div>
-	
+
 	<!-- Top Navigation -->
 	<nav class="top-nav container">
 		<a href="/list" class="btn-back">
@@ -101,14 +106,22 @@
 	<article class="detail-container container">
 		<div class="glass-card detail-card">
 			<header class="detail-header">
-				<div class="badge-row">
-					{#each item.tags as tag}
-						<span class="tag-badge">{tag}</span>
-					{/each}
-					<span class="status-badge status-{item.status}">● {item.status.toUpperCase()}</span>
+				<div class="header-top-row">
+					<div class="tags-scroll-container">
+						{#each item.tags as tag}
+							<span class="tag-badge">{tag}</span>
+						{/each}
+					</div>
+					<div class="status-container">
+						<span class="status-badge status-{item.status}"
+							><i class="fa-solid fa-circle"></i> {item.status.toUpperCase()}</span
+						>
+					</div>
 				</div>
 				<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
-				<p class="detail-subtitle">Disponsori oleh <strong>{item.provider}</strong> — Diterbitkan pada Juni 2026</p>
+				<p class="detail-subtitle">
+					Disponsori oleh <strong>{item.provider}</strong> — Diterbitkan pada Juni 2026
+				</p>
 				{#if item.contributor}
 					<p class="detail-contributor">
 						Dikontribusikan oleh
@@ -120,12 +133,12 @@
 			</header>
 
 			<section class="section-block">
-				<h2>🤔 Apa ini?</h2>
+				<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
 				<p class="description-text text-pretty">{item.description}</p>
 			</section>
 
 			<section class="section-block">
-				<h2>🎁 Benefit yang Didapatkan:</h2>
+				<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
 				<ul class="benefit-list">
 					{#each item.benefits as benefit}
 						<li><span class="check-icon">✓</span> {benefit}</li>
@@ -135,19 +148,27 @@
 
 			{#if item.promoCode}
 				<section class="section-block promo-section">
-					<h2>🔑 Kode Promo Spesial:</h2>
-					<p class="promo-subtitle">Salin kode ini dan masukkan saat checkout di {item.provider}:</p>
+					<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
+					<p class="promo-subtitle">
+						Salin kode ini dan masukkan saat checkout di {item.provider}:
+					</p>
 					<div class="promo-clipboard-box">
 						<code>{item.promoCode}</code>
 						<button class="btn-primary" onclick={(e) => copyCode(item.promoCode || '', e)}>
-							{copied ? 'Copied! ✅' : 'Salin Kode 📋'}
+							{#if copied}
+								Copied! <i class="fa-solid fa-check"></i>
+							{:else}
+								Salin Kode <i class="fa-solid fa-clipboard"></i>
+							{/if}
 						</button>
 					</div>
 				</section>
 			{/if}
 
 			<section class="section-block guide-section">
-				<h2>🛠️ Step-by-Step Cara Dapetinnya (No Cap):</h2>
+				<h2>
+					<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
+				</h2>
 				<ol class="step-list">
 					{#each item.requirements as req, idx}
 						<li class="step-item">
@@ -160,7 +181,7 @@
 
 			{#if item.tips}
 				<div class="tips-box">
-					<span class="tips-icon">💡</span>
+					<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
 					<div class="tips-content">
 						<h3>Tips Pro Jelata:</h3>
 						<p>{item.tips}</p>
@@ -169,8 +190,13 @@
 			{/if}
 
 			<div class="action-footer">
-				<a href={item.ctaLink} target="_blank" rel="noopener noreferrer" class="btn-primary cta-btn">
-					Eksekusi ke Website Official 🚀
+				<a
+					href={item.ctaLink}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="btn-primary cta-btn"
+				>
+					Eksekusi ke Website Official <i class="fa-solid fa-rocket"></i>
 				</a>
 			</div>
 		</div>
@@ -179,29 +205,94 @@
 	<!-- Anxious Sweating Coffee & Sad Student SVGs side-by-side for fun -->
 	<section class="fun-illustrations container">
 		<div class="glass-card illustration-card">
-			<svg class="anxious-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M15 30 C15 25 19 21 24 21 H76 C81 21 85 25 85 30 V70 C85 75 81 79 76 79 H24 C19 79 15 75 15 70 Z" fill="var(--bg-secondary)" stroke="var(--color-warning)" stroke-width="4"/>
-				<path d="M55 40 H78 C82 40 85 43 85 47 V57 C85 61 82 64 78 64 H55 Z" fill="#1b1d30" stroke="var(--color-warning)" stroke-width="4"/>
-				<circle cx="70" cy="52" r="4" fill="var(--color-warning)"/>
-				<path d="M28 42 Q33 38 38 42 M46 42 Q51 38 56 42" stroke="var(--text-primary)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-				<circle cx="33" cy="47" r="2.5" fill="var(--text-primary)"/>
-				<circle cx="51" cy="47" r="2.5" fill="var(--text-primary)"/>
-				<path class="sweat-drop" d="M33 53 C33 56 31.5 58 30 58 C28.5 58 28.5 56 30 53 C31 51 32.5 49 33 47 C33 49 33 51 33 53 Z" fill="#38bdf8"/>
-				<path d="M38 59 Q42 55 46 59" stroke="var(--text-primary)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+			<svg
+				class="anxious-icon"
+				viewBox="0 0 100 100"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M15 30 C15 25 19 21 24 21 H76 C81 21 85 25 85 30 V70 C85 75 81 79 76 79 H24 C19 79 15 75 15 70 Z"
+					fill="var(--bg-secondary)"
+					stroke="var(--color-warning)"
+					stroke-width="4"
+				/>
+				<path
+					d="M55 40 H78 C82 40 85 43 85 47 V57 C85 61 82 64 78 64 H55 Z"
+					fill="#1b1d30"
+					stroke="var(--color-warning)"
+					stroke-width="4"
+				/>
+				<circle cx="70" cy="52" r="4" fill="var(--color-warning)" />
+				<path
+					d="M28 42 Q33 38 38 42 M46 42 Q51 38 56 42"
+					stroke="var(--text-primary)"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					fill="none"
+				/>
+				<circle cx="33" cy="47" r="2.5" fill="var(--text-primary)" />
+				<circle cx="51" cy="47" r="2.5" fill="var(--text-primary)" />
+				<path
+					class="sweat-drop"
+					d="M33 53 C33 56 31.5 58 30 58 C28.5 58 28.5 56 30 53 C31 51 32.5 49 33 47 C33 49 33 51 33 53 Z"
+					fill="#38bdf8"
+				/>
+				<path
+					d="M38 59 Q42 55 46 59"
+					stroke="var(--text-primary)"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					fill="none"
+				/>
 			</svg>
 			<p>Dompet lagi kosong melompong...</p>
 		</div>
 
 		<div class="glass-card illustration-card">
-			<svg class="anxious-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect x="15" y="15" width="70" height="50" rx="8" fill="var(--bg-secondary)" stroke="var(--color-accent)" stroke-width="4"/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15"/>
-				<path d="M40 65 L35 80 L65 80 L60 65 Z" fill="var(--bg-secondary)" stroke="var(--color-accent)" stroke-width="4"/>
-				<path d="M35 36 L43 39 M65 36 L57 39" stroke="var(--text-primary)" stroke-width="3" stroke-linecap="round"/>
-				<circle cx="38" cy="44" r="3" fill="var(--text-primary)"/>
-				<circle cx="62" cy="44" r="3" fill="var(--text-primary)"/>
-				<path class="sweat-drop" d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z" fill="#38bdf8"/>
-				<path d="M44 51 Q48 48 52 51 T60 51" stroke="var(--text-primary)" stroke-width="3" stroke-linecap="round" fill="none"/>
+			<svg
+				class="anxious-icon"
+				viewBox="0 0 100 100"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<rect
+					x="15"
+					y="15"
+					width="70"
+					height="50"
+					rx="8"
+					fill="var(--bg-secondary)"
+					stroke="var(--color-accent)"
+					stroke-width="4"
+				/>
+				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15" />
+				<path
+					d="M40 65 L35 80 L65 80 L60 65 Z"
+					fill="var(--bg-secondary)"
+					stroke="var(--color-accent)"
+					stroke-width="4"
+				/>
+				<path
+					d="M35 36 L43 39 M65 36 L57 39"
+					stroke="var(--text-primary)"
+					stroke-width="3"
+					stroke-linecap="round"
+				/>
+				<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
+				<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
+				<path
+					class="sweat-drop"
+					d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
+					fill="#38bdf8"
+				/>
+				<path
+					d="M44 51 Q48 48 52 51 T60 51"
+					stroke="var(--text-primary)"
+					stroke-width="3"
+					stroke-linecap="round"
+					fill="none"
+				/>
 			</svg>
 			<p>Server production mati, fr fr...</p>
 		</div>
@@ -242,7 +333,9 @@
 		padding: 0.5rem 1rem;
 		border-radius: 0.5rem;
 		background: var(--glass-bg);
-		transition: background-color 0.2s, color 0.2s;
+		transition:
+			background-color 0.2s,
+			color 0.2s;
 	}
 
 	.btn-back:hover {
@@ -269,10 +362,27 @@
 		padding-bottom: 1.5rem;
 	}
 
-	.badge-row {
+	.header-top-row {
 		display: flex;
-		gap: 0.5rem;
 		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.tags-scroll-container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.tags-scroll-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.status-container {
+		flex-shrink: 0;
 	}
 
 	.tag-badge {
@@ -327,6 +437,9 @@
 		font-weight: 700;
 		color: var(--text-primary);
 		letter-spacing: -0.01em;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.description-text {
@@ -493,29 +606,65 @@
 	}
 
 	@keyframes pulse {
-		0% { transform: scale(1); }
-		100% { transform: scale(1.15); }
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(1.15);
+		}
 	}
 
 	@keyframes shake {
-		0% { transform: translate(1px, 1px) rotate(0deg); }
-		10% { transform: translate(-1px, -2px) rotate(-1deg); }
-		20% { transform: translate(-3px, 0px) rotate(1deg); }
-		30% { transform: translate(0px, 2px) rotate(0deg); }
-		40% { transform: translate(1px, -1px) rotate(1deg); }
-		50% { transform: translate(-1px, 2px) rotate(-1deg); }
-		60% { transform: translate(-3px, 1px) rotate(0deg); }
-		70% { transform: translate(2px, 1px) rotate(-1deg); }
-		80% { transform: translate(-1px, -1px) rotate(1deg); }
-		90% { transform: translate(2px, 2px) rotate(0deg); }
-		100% { transform: translate(1px, -2px) rotate(-1deg); }
+		0% {
+			transform: translate(1px, 1px) rotate(0deg);
+		}
+		10% {
+			transform: translate(-1px, -2px) rotate(-1deg);
+		}
+		20% {
+			transform: translate(-3px, 0px) rotate(1deg);
+		}
+		30% {
+			transform: translate(0px, 2px) rotate(0deg);
+		}
+		40% {
+			transform: translate(1px, -1px) rotate(1deg);
+		}
+		50% {
+			transform: translate(-1px, 2px) rotate(-1deg);
+		}
+		60% {
+			transform: translate(-3px, 1px) rotate(0deg);
+		}
+		70% {
+			transform: translate(2px, 1px) rotate(-1deg);
+		}
+		80% {
+			transform: translate(-1px, -1px) rotate(1deg);
+		}
+		90% {
+			transform: translate(2px, 2px) rotate(0deg);
+		}
+		100% {
+			transform: translate(1px, -2px) rotate(-1deg);
+		}
 	}
 
 	@keyframes drip {
-		0% { transform: translateY(-4px); opacity: 0; }
-		20% { opacity: 1; }
-		80% { opacity: 0.8; }
-		100% { transform: translateY(12px); opacity: 0; }
+		0% {
+			transform: translateY(-4px);
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 0.8;
+		}
+		100% {
+			transform: translateY(12px);
+			opacity: 0;
+		}
 	}
 
 	@media (min-width: 48rem) {

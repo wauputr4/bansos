@@ -4,7 +4,7 @@
 
 {#each emojis as emoji (emoji.id)}
 	<span class="floating-emoji" style="left: {emoji.x}px; top: {emoji.y}px;">
-		{emoji.text}
+		{@html emoji.text}
 	</span>
 {/each}
 
