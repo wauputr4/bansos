@@ -40,6 +40,7 @@
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
+	let sortOrder: 'newest' | 'oldest' = $state('newest');
 	let filterExpanded = $state(false);
 	let floatingEmojis: { id: number; x: number; y: number; icon: string; color?: string }[] = $state(
 		[]
@@ -51,17 +52,17 @@
 		)
 	);
 
-	const statusOrder: Record<string, number> = { active: 1, upcoming: 2, expired: 3 };
-
 	const filteredBansos = $derived(
 		bansosState.data
-			.filter((item) => {
+			.map((item, index) => ({ item, index }))
+			.filter(({ item }) => {
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
 				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
 				return tagMatch && statusMatch;
 			})
-			.sort((a, b) => statusOrder[a.status] - statusOrder[b.status])
+			.sort((a, b) => (sortOrder === 'newest' ? b.index - a.index : a.index - b.index))
+			.map(({ item }) => item)
 	);
 
 	const totalSeconds = $derived(Math.ceil(remainingTime / 1000));
@@ -188,6 +189,26 @@
 
 				<div class="filter-dropdown">
 					<div class="filter-group">
+						<h3 class="filter-group-title">Urutan</h3>
+						<div class="tag-grid">
+							<button
+								class="tag-btn"
+								class:active={sortOrder === 'newest'}
+								onclick={() => (sortOrder = 'newest')}
+							>
+								Terbaru
+							</button>
+							<button
+								class="tag-btn"
+								class:active={sortOrder === 'oldest'}
+								onclick={() => (sortOrder = 'oldest')}
+							>
+								Terlama
+							</button>
+						</div>
+					</div>
+
+					<div class="filter-group">
 						<h3 class="filter-group-title">Status</h3>
 						<div class="tag-grid">
 							<button
@@ -263,6 +284,7 @@
 					onclick={() => {
 						selectedTags = [];
 						selectedStatuses = [];
+						sortOrder = 'newest';
 					}}
 				>
 					Reset Filter

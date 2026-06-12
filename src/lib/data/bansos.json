@@ -11,13 +11,13 @@
 			"Berlaku dari tanggal 8–30 Juni 2026"
 		],
 		"promoCode": "DEVWEEK26",
-		"validity": "8–30 Juni 2026",
+		"validity": "Sudah tidak aktif (promo code tidak bisa digunakan lagi)",
 		"requirements": [
 			"Punya akun Name.com aktif",
 			"Pilih domain .dev atau .app yang tersedia",
 			"Gunakan promo code pas checkout"
 		],
-		"tips": "Cuma bisa 1 akun per orang! Jangan coba-coba tuyul akun ya dek ya, biar berkah dan websitenya awet.",
+		"tips": "Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.",
 		"contributor": {
 			"name": "Wauputra",
 			"url": "https://wau.my.id"
@@ -25,7 +25,7 @@
 		"ctaLink": "https://www.name.com",
 		"tags": ["Domain", "Gratisan", "No Credit Card"],
 		"featured": true,
-		"status": "active"
+		"status": "expired"
 	},
 	{
 		"id": "tokenrouter-model-gateway",
