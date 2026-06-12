@@ -7,18 +7,6 @@
 		selectedTag === 'Semua' ? bansosList : getBansosByTag(selectedTag)
 	);
 
-	function spawnEmoji(e: MouseEvent, text: string) {
-		const emoji = {
-			id: Math.random(),
-			x: e.clientX,
-			y: e.clientY,
-			text
-		};
-		floatingEmojis = [...floatingEmojis, emoji];
-		setTimeout(() => {
-			floatingEmojis = floatingEmojis.filter((i) => i.id !== emoji.id);
-		}, 1000);
-	}
 </script>
 
 <svelte:head>
@@ -51,7 +39,7 @@
 		<button class:active={selectedTag === 'Semua'} onclick={() => (selectedTag = 'Semua')}>
 			Semua
 		</button>
-		{#each allBansosTags as tag}
+		{#each allBansosTags as tag (tag)}
 			<button class:active={selectedTag === tag} onclick={() => (selectedTag = tag)}>
 				{tag}
 			</button>

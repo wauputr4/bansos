@@ -178,6 +178,44 @@ export const bansosList: BansosItem[] = [
 		featured: false,
 		status: 'active'
 	}
+	,
+	{
+		id: 'kie-ai-api-discount-credit',
+		title: 'Kie.ai Free Credit & API Lebih Murah buat AI Builder',
+		provider: 'Kie.ai',
+		description: 'Kie.ai sering ngasih gratisan credit buat developer yang mau ngoprek AI image, video, dan text API. Selain itu pricing API-nya bisa jauh lebih murah dari official, cocok buat eksperimen tanpa bikin dompet langsung tumbang.',
+		benefits: [
+			'Umumnya ada free credit berkala/bulanan untuk akun aktif',
+			'Promo dan harga API bisa 30–50% lebih murah dari official pada beberapa model',
+			'Beberapa pricing comparison di dashboard menampilkan diskon sampai sekitar 70%',
+			'Menyediakan AI Image API, AI Video API, dan AI Text API dalam satu marketplace',
+			'Cocok buat prototype produk AI sebelum scale ke production'
+		],
+		validity: 'Selama promo/free credit Kie.ai masih tersedia; cek dashboard setelah daftar',
+		requirements: [
+			'Daftar akun Kie.ai lewat link referral',
+			'Login ke dashboard dan cek saldo/credit akun',
+			'Masuk ke API Market atau Pricing untuk cek model dan harga terbaru',
+			'Buat API key kalau mau integrasi ke aplikasi',
+			'Manfaatkan free credit dan bandingkan pricing sebelum top-up'
+		],
+		tips: 'Cek dashboard secara berkala karena free credit dan promo bisa berubah. Jangan expose API key di frontend; pakai env/server-side proxy biar aman.',
+		contributor: {
+			name: 'Pena Digital',
+			url: 'https://penadigital.tech/'
+		},
+		ctaLink: 'https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be',
+		tags: [
+			'AI Credits',
+			'API',
+			'AI Image',
+			'AI Video',
+			'Diskon',
+			'Gratisan'
+		],
+		featured: false,
+		status: 'active'
+	}
 ];
 
 export const latestBansos = (limit = 3) => bansosList.slice(-limit).reverse();
