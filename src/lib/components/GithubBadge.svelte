@@ -40,17 +40,19 @@
 			)
 		])
 			.then(([repoData, releaseData]) => {
-				if (repoData) {
-					stars = repoData.stargazers_count;
-					forks = repoData.forks_count;
+				if (repoData || releaseData) {
+					if (repoData) {
+						stars = repoData.stargazers_count;
+						forks = repoData.forks_count;
+					}
+					if (releaseData && releaseData.tag_name) {
+						version = releaseData.tag_name;
+					}
+					localStorage.setItem(
+						CACHE_KEY,
+						JSON.stringify({ stars, forks, version, timestamp: Date.now() })
+					);
 				}
-				if (releaseData && releaseData.tag_name) {
-					version = releaseData.tag_name;
-				}
-				localStorage.setItem(
-					CACHE_KEY,
-					JSON.stringify({ stars, forks, version, timestamp: Date.now() })
-				);
 			})
 			.catch(() => {});
 	});

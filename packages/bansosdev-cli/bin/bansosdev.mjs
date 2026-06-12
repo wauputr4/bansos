@@ -109,12 +109,17 @@ function payloadFromArgs(args) {
 		throw new Error('--status must be active, expired, or upcoming');
 	}
 	if (payload.benefits.length === 0) throw new Error('--benefits must contain at least one item');
-	if (payload.requirements.length === 0) throw new Error('--requirements must contain at least one item');
+	if (payload.requirements.length === 0)
+		throw new Error('--requirements must contain at least one item');
 	if (payload.tags.length === 0) throw new Error('--tags must contain at least one item');
-	if ((payload.contributorName && !payload.contributorUrl) || (!payload.contributorName && payload.contributorUrl)) {
+	if (
+		(payload.contributorName && !payload.contributorUrl) ||
+		(!payload.contributorName && payload.contributorUrl)
+	) {
 		throw new Error('Use --contributor-name and --contributor-url together');
 	}
-	if (payload.contributorUrl) payload.contributorUrl = validateUrl(payload.contributorUrl, 'contributor-url');
+	if (payload.contributorUrl)
+		payload.contributorUrl = validateUrl(payload.contributorUrl, 'contributor-url');
 
 	return Object.fromEntries(Object.entries(payload).filter(([, value]) => value !== undefined));
 }

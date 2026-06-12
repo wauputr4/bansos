@@ -1,6 +1,9 @@
 <svelte:head>
 	<title>Tentang bansos.dev</title>
-	<meta name="description" content="Tentang bansos.dev, katalog bantuan sosial untuk developer jelata." />
+	<meta
+		name="description"
+		content="Tentang bansos.dev, katalog bantuan sosial untuk developer jelata."
+	/>
 </svelte:head>
 
 <main class="page-wrapper">

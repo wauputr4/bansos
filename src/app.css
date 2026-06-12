@@ -2,7 +2,9 @@
 @layer reset, base, components, utilities;
 
 @layer reset {
-	*, *::before, *::after {
+	*,
+	*::before,
+	*::after {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
@@ -19,35 +21,35 @@
 	:root {
 		/* Typography System */
 		--font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
-		
+
 		/* Palette (Theme Adaptable) */
 		color-scheme: dark light;
-		
+
 		/* Dark theme values by default */
 		--bg-primary: #090a0f;
 		--bg-secondary: #121420;
 		--text-primary: #f8fafc;
 		--text-secondary: #94a3b8;
 		--text-muted: #64748b;
-		
+
 		--color-accent: #10b981; /* Emerald Green */
 		--color-accent-glow: rgba(16, 185, 129, 0.15);
 		--color-success: #10b981; /* Emerald */
 		--color-success-glow: rgba(16, 185, 129, 0.15);
 		--color-warning: #f59e0b; /* Amber */
 		--color-warning-glow: rgba(245, 158, 11, 0.15);
-		
+
 		--border-color: rgba(255, 255, 255, 0.08);
 		--glass-bg: rgba(18, 20, 32, 0.7);
 		--glass-border: rgba(255, 255, 255, 0.08);
 		--glass-shadow: rgba(0, 0, 0, 0.3);
-		
+
 		--font-size-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
 		--font-size-h1: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
 		--font-size-h2: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
 		--font-size-h3: clamp(1.2rem, 1rem + 0.8vw, 1.5rem);
 		--page-pad-x: clamp(0.85rem, 4vw, 3rem);
-		
+
 		/* Scrollbar customization */
 		scrollbar-color: var(--text-muted) var(--bg-primary);
 		scrollbar-width: thin;
@@ -60,7 +62,7 @@
 			--text-primary: #0f172a;
 			--text-secondary: #475569;
 			--text-muted: #94a3b8;
-			
+
 			--color-accent: #059669;
 			--color-accent-glow: rgba(5, 150, 105, 0.1);
 			--border-color: rgba(0, 0, 0, 0.08);
@@ -78,7 +80,7 @@
 		line-height: 1.6;
 		overflow-x: hidden;
 		min-height: 100vh;
-		background-image: 
+		background-image:
 			radial-gradient(circle at 10% 20%, var(--color-accent-glow) 0%, transparent 40%),
 			radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
 		background-attachment: fixed;
@@ -91,13 +93,13 @@
 		outline: 2px solid var(--color-accent);
 		outline-offset: 4px;
 	}
-	
+
 	a {
 		color: var(--color-accent);
 		text-decoration: none;
 		transition: color 0.2s ease;
 	}
-	
+
 	a:hover {
 		color: var(--text-primary);
 	}
@@ -110,7 +112,7 @@
 		margin-inline: auto;
 		padding-inline: var(--page-pad-x);
 	}
-	
+
 	/* Glassmorphism Card styling */
 	.glass-card {
 		background: var(--glass-bg);
@@ -120,17 +122,18 @@
 		border-radius: 1.25rem;
 		padding: 2rem;
 		box-shadow: 0 10px 30px -10px var(--glass-shadow);
-		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-		            border-color 0.3s ease, 
-		            box-shadow 0.3s ease;
+		transition:
+			transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 0.3s ease,
+			box-shadow 0.3s ease;
 	}
-	
+
 	.glass-card:hover {
 		transform: translateY(-4px);
 		border-color: var(--color-accent);
 		box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12);
 	}
-	
+
 	/* Premium Buttons */
 	.btn-primary {
 		display: inline-flex;
@@ -143,18 +146,19 @@
 		border-radius: 0.75rem;
 		border: none;
 		cursor: pointer;
-		transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-		            box-shadow 0.2s ease, 
-		            filter 0.2s ease;
+		transition:
+			transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+			box-shadow 0.2s ease,
+			filter 0.2s ease;
 		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 	}
-	
+
 	.btn-primary:hover {
 		filter: brightness(1.1);
 		transform: scale(1.02);
 		box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 	}
-	
+
 	.btn-primary:active {
 		transform: scale(0.98);
 	}
@@ -170,7 +174,9 @@
 		border-radius: 0.75rem;
 		border: 1px solid var(--border-color);
 		cursor: pointer;
-		transition: background-color 0.2s ease, border-color 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
 	}
 
 	.btn-secondary:hover {
@@ -212,7 +218,7 @@
 	.text-balance {
 		text-wrap: balance;
 	}
-	
+
 	.text-pretty {
 		text-wrap: pretty;
 	}

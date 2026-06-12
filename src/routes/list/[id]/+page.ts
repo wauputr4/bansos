@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit';
 import { bansosList } from '$lib/data/bansos';
 import type { EntryGenerator } from './$types';
 
@@ -9,10 +8,8 @@ export const entries: EntryGenerator = () => {
 
 export function load({ params }) {
 	const item = bansosList.find((b) => b.id === params.id);
-	if (!item) {
-		throw error(404, {
-			message: 'Waduh, Bansos ini gak ketemu atau udah digondol koruptor, fr fr 😭'
-		});
-	}
-	return { item };
+	return {
+		item: item || null,
+		id: params.id
+	};
 }

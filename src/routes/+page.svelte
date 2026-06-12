@@ -4,7 +4,8 @@
 
 	// SEO metadata
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
-	const metaDescription = 'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
+	const metaDescription =
+		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
 	const highlightedBansos = latestBansos(3);
 </script>
@@ -13,8 +14,11 @@
 	<title>{metaTitle}</title>
 	<meta name="title" content={metaTitle} />
 	<meta name="description" content={metaDescription} />
-	<meta name="keywords" content="bansos dev, bantuan sosial developer, domain gratis, name.com gratis, devweek26, developer jelata, promo developer, cloud gratis, coding gratisan" />
-	
+	<meta
+		name="keywords"
+		content="bansos dev, bantuan sosial developer, domain gratis, name.com gratis, devweek26, developer jelata, promo developer, cloud gratis, coding gratisan"
+	/>
+
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={siteUrl} />
 	<meta property="og:title" content={metaTitle} />
@@ -28,41 +32,80 @@
 
 <main class="page-wrapper">
 	<div class="glow-orb main-glow"></div>
-	
+
 	<!-- Header Section -->
 	<header class="hero-section container">
 		<div class="badge-container">
 			<span class="version-badge">v2026.06.11-beta</span>
-			<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer" class="github-badge">
+			<a
+				href="https://github.com/wauputr4/bansos"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="github-badge"
+			>
 				<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+					<path
+						d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+					/>
 				</svg>
 				<span>Open Source</span>
 			</a>
 		</div>
-		
-		<h1 class="main-title text-gradient text-balance">
-			bansos.dev
-		</h1>
+
+		<h1 class="main-title text-gradient text-balance">bansos.dev</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
-		
+
 		<!-- Anxious Sweating Computer SVG -->
 		<div class="anxious-container">
-			<svg class="anxious-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect x="15" y="15" width="70" height="50" rx="8" fill="var(--bg-secondary)" stroke="var(--color-accent)" stroke-width="4"/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15"/>
-				<path d="M40 65 L35 80 L65 80 L60 65 Z" fill="var(--bg-secondary)" stroke="var(--color-accent)" stroke-width="4"/>
-				<path d="M35 36 L43 39 M65 36 L57 39" stroke="var(--text-primary)" stroke-width="3" stroke-linecap="round"/>
-				<circle cx="38" cy="44" r="3" fill="var(--text-primary)"/>
-				<circle cx="62" cy="44" r="3" fill="var(--text-primary)"/>
-				<path class="sweat-drop" d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z" fill="#38bdf8"/>
-				<path d="M44 51 Q48 48 52 51 T60 51" stroke="var(--text-primary)" stroke-width="3" stroke-linecap="round" fill="none"/>
+			<svg
+				class="anxious-icon"
+				viewBox="0 0 100 100"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<rect
+					x="15"
+					y="15"
+					width="70"
+					height="50"
+					rx="8"
+					fill="var(--bg-secondary)"
+					stroke="var(--color-accent)"
+					stroke-width="4"
+				/>
+				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15" />
+				<path
+					d="M40 65 L35 80 L65 80 L60 65 Z"
+					fill="var(--bg-secondary)"
+					stroke="var(--color-accent)"
+					stroke-width="4"
+				/>
+				<path
+					d="M35 36 L43 39 M65 36 L57 39"
+					stroke="var(--text-primary)"
+					stroke-width="3"
+					stroke-linecap="round"
+				/>
+				<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
+				<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
+				<path
+					class="sweat-drop"
+					d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
+					fill="#38bdf8"
+				/>
+				<path
+					d="M44 51 Q48 48 52 51 T60 51"
+					stroke="var(--text-primary)"
+					stroke-width="3"
+					stroke-linecap="round"
+					fill="none"
+				/>
 			</svg>
 		</div>
 
 		<p class="intro-text text-pretty">
-			Tempat ngumpulnya info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit. 
-			Dibuat khusus untuk kita-kita yang butuh portofolio menyala tapi dompet lagi sekarat. 
+			Tempat ngumpulnya info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling
+			legit. Dibuat khusus untuk kita-kita yang butuh portofolio menyala tapi dompet lagi sekarat.
 			<strong>100% Gratisan, No Clickbait, No Ribet.</strong>
 		</p>
 
@@ -71,9 +114,7 @@
 
 		<!-- Large Glowing CTA -->
 		<div class="cta-container">
-			<a href="/list" class="btn-primary main-cta">
-				Lihat Semua List Bansos 🔎
-			</a>
+			<a href="/list" class="btn-primary main-cta"> Lihat Semua List Bansos 🔎 </a>
 		</div>
 	</header>
 
@@ -81,11 +122,12 @@
 	<section class="quotes-section container">
 		<div class="glass-card quote-card">
 			<span class="quote-mark">“</span>
-			<blockquote class="main-quote text-gradient">
-				Developer butuh dollar!
-			</blockquote>
+			<blockquote class="main-quote text-gradient">Developer butuh dollar!</blockquote>
 			<cite class="quote-author">— Suara Hati Dev Jelata</cite>
-			<p class="quote-sub">Kerja rodi fix bug seharian, dibayarnya pake ucapan terima kasih dan 'exposure'. Kami butuh dollar riil buat bayar internet sama kopi, bos! 💸</p>
+			<p class="quote-sub">
+				Kerja rodi fix bug seharian, dibayarnya pake ucapan terima kasih dan 'exposure'. Kami butuh
+				dollar riil buat bayar internet sama kopi, bos! 💸
+			</p>
 		</div>
 	</section>
 
@@ -94,13 +136,21 @@
 		<div class="glass-card github-card">
 			<h2>🤝 Proyek Ini Open Source!</h2>
 			<p class="text-pretty">
-				Punya info bansos developer lainnya? Domain gratis, hosting free-tier, API credits gratisan, atau program bagi-bagi cloud? 
-				Jangan dipendam sendiri, abangku! Kirim Pull Request dan bantu sesama developer jelata bertahan hidup.
+				Punya info bansos developer lainnya? Domain gratis, hosting free-tier, API credits gratisan,
+				atau program bagi-bagi cloud? Jangan dipendam sendiri, abangku! Kirim Pull Request dan bantu
+				sesama developer jelata bertahan hidup.
 			</p>
 			<div class="github-actions">
-				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="btn-secondary"
+				>
 					<svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+						<path
+							d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+						/>
 					</svg>
 					Kontribusi di GitHub
 				</a>
@@ -219,11 +269,22 @@
 	}
 
 	@keyframes wobble-text {
-		0%, 100% { transform: scale(1) rotate(0); }
-		15% { transform: scale(1.08) rotate(-2deg); }
-		30% { transform: scale(1.08) rotate(2deg); }
-		45% { transform: scale(1.04) rotate(-1deg); }
-		60% { transform: scale(1.04) rotate(1deg); }
+		0%,
+		100% {
+			transform: scale(1) rotate(0);
+		}
+		15% {
+			transform: scale(1.08) rotate(-2deg);
+		}
+		30% {
+			transform: scale(1.08) rotate(2deg);
+		}
+		45% {
+			transform: scale(1.04) rotate(-1deg);
+		}
+		60% {
+			transform: scale(1.04) rotate(1deg);
+		}
 	}
 
 	.anxious-container {
@@ -250,10 +311,20 @@
 	}
 
 	@keyframes drip {
-		0% { transform: translateY(-4px); opacity: 0; }
-		20% { opacity: 1; }
-		80% { opacity: 0.8; }
-		100% { transform: translateY(12px); opacity: 0; }
+		0% {
+			transform: translateY(-4px);
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 0.8;
+		}
+		100% {
+			transform: translateY(12px);
+			opacity: 0;
+		}
 	}
 
 	.quotes-section {
@@ -314,7 +385,11 @@
 		align-items: center;
 		gap: 1.5rem;
 		border-color: rgba(16, 185, 129, 0.2);
-		background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, var(--glass-bg) 100%);
+		background: radial-gradient(
+			circle at 50% 50%,
+			rgba(16, 185, 129, 0.04) 0%,
+			var(--glass-bg) 100%
+		);
 	}
 
 	.github-card h2 {
@@ -339,17 +414,38 @@
 	}
 
 	@keyframes shake {
-		0% { transform: translate(1px, 1px) rotate(0deg); }
-		10% { transform: translate(-1px, -2px) rotate(-1deg); }
-		20% { transform: translate(-3px, 0px) rotate(1deg); }
-		30% { transform: translate(0px, 2px) rotate(0deg); }
-		40% { transform: translate(1px, -1px) rotate(1deg); }
-		50% { transform: translate(-1px, 2px) rotate(-1deg); }
-		60% { transform: translate(-3px, 1px) rotate(0deg); }
-		70% { transform: translate(2px, 1px) rotate(-1deg); }
-		80% { transform: translate(-1px, -1px) rotate(1deg); }
-		90% { transform: translate(2px, 2px) rotate(0deg); }
-		100% { transform: translate(1px, -2px) rotate(-1deg); }
+		0% {
+			transform: translate(1px, 1px) rotate(0deg);
+		}
+		10% {
+			transform: translate(-1px, -2px) rotate(-1deg);
+		}
+		20% {
+			transform: translate(-3px, 0px) rotate(1deg);
+		}
+		30% {
+			transform: translate(0px, 2px) rotate(0deg);
+		}
+		40% {
+			transform: translate(1px, -1px) rotate(1deg);
+		}
+		50% {
+			transform: translate(-1px, 2px) rotate(-1deg);
+		}
+		60% {
+			transform: translate(-3px, 1px) rotate(0deg);
+		}
+		70% {
+			transform: translate(2px, 1px) rotate(-1deg);
+		}
+		80% {
+			transform: translate(-1px, -1px) rotate(1deg);
+		}
+		90% {
+			transform: translate(2px, 2px) rotate(0deg);
+		}
+		100% {
+			transform: translate(1px, -2px) rotate(-1deg);
+		}
 	}
-
 </style>

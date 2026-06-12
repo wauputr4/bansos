@@ -1,16 +1,60 @@
 <script lang="ts">
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { allBansosTags, bansosList } from '$lib/data/bansos';
+	import {
+		bansosState,
+		initBansosStore,
+		fetchLatestBansos,
+		COOLDOWN_MS
+	} from '$lib/stores/bansos.svelte';
+	import { onMount, onDestroy } from 'svelte';
+
+	let remainingTime = $state(0);
+	let timerInterval: ReturnType<typeof setInterval>;
+
+	function startCountdown() {
+		clearInterval(timerInterval);
+		const updateTimer = () => {
+			const now = Date.now();
+			const passed = now - bansosState.lastFetched;
+			if (passed < COOLDOWN_MS) {
+				remainingTime = COOLDOWN_MS - passed;
+			} else {
+				remainingTime = 0;
+				clearInterval(timerInterval);
+			}
+		};
+		updateTimer();
+		timerInterval = setInterval(updateTimer, 1000);
+	}
+
+	onMount(() => {
+		initBansosStore();
+		if (bansosState.lastFetched > 0) {
+			startCountdown();
+		}
+	});
+
+	onDestroy(() => {
+		clearInterval(timerInterval);
+	});
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let filterExpanded = $state(false);
-	let floatingEmojis: { id: number; x: number; y: number; text: string }[] = $state([]);
+	let floatingEmojis: { id: number; x: number; y: number; icon: string; color?: string }[] = $state(
+		[]
+	);
+
+	const dynamicTags = $derived(
+		Array.from(new Set(bansosState.data.flatMap((item) => item.tags))).sort((a, b) =>
+			a.localeCompare(b)
+		)
+	);
 
 	const statusOrder: Record<string, number> = { active: 1, upcoming: 2, expired: 3 };
 
 	const filteredBansos = $derived(
-		bansosList
+		bansosState.data
 			.filter((item) => {
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
@@ -19,6 +63,19 @@
 			})
 			.sort((a, b) => statusOrder[a.status] - statusOrder[b.status])
 	);
+
+	const totalSeconds = $derived(Math.ceil(remainingTime / 1000));
+	const timerM = $derived(Math.floor(totalSeconds / 60));
+	const timerS = $derived(totalSeconds % 60);
+	const formattedTime = $derived(
+		remainingTime <= 0 ? '' : timerM > 0 ? `(${timerM}m ${timerS}s)` : `(${timerS}s)`
+	);
+
+	async function handleRefresh() {
+		if (remainingTime > 0) return;
+		await fetchLatestBansos();
+		startCountdown();
+	}
 </script>
 
 <svelte:head>
@@ -34,57 +91,76 @@
 
 	<!-- Header -->
 	<header class="feed-header container">
-		<h1 class="section-title">
-			<span><i class="fa-solid fa-box-open"></i> Semua Info Bansos</span>
-			<svg
-				class="anxious-icon inline-anxious"
-				viewBox="0 0 100 100"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
+		<div
+			style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;"
+		>
+			<h1 class="section-title">
+				<span><i class="fa-solid fa-box-open"></i> Semua Info Bansos</span>
+				<svg
+					class="anxious-icon inline-anxious"
+					viewBox="0 0 100 100"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M25 25 H75 L70 75 C69 80 64 84 59 84 H41 C36 84 31 80 30 75 Z"
+						fill="var(--bg-secondary)"
+						stroke="var(--color-success)"
+						stroke-width="4"
+					/>
+					<path
+						d="M75 35 H85 C90 35 93 39 93 44 V56 C93 61 90 65 85 65 H73"
+						stroke="var(--color-success)"
+						stroke-width="4"
+						stroke-linecap="round"
+						fill="none"
+					/>
+					<path
+						d="M40 10 Q43 14 40 18 M50 8 Q53 13 50 18 M60 10 Q63 14 60 18"
+						stroke="var(--text-muted)"
+						stroke-width="3"
+						stroke-linecap="round"
+						fill="none"
+					/>
+					<path
+						d="M34 43 Q39 40 44 43 M52 43 Q57 40 62 43"
+						stroke="var(--text-primary)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						fill="none"
+					/>
+					<circle cx="39" cy="49" r="3" fill="var(--text-primary)" />
+					<circle cx="57" cy="49" r="3" fill="var(--text-primary)" />
+					<path
+						d="M44 58 Q48 55 52 58 T56 58"
+						stroke="var(--text-primary)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						fill="none"
+					/>
+					<path
+						class="sweat-drop"
+						d="M68 44 C68 47 66.5 49 65 49 C63.5 49 63.5 47 65 44 C66 42 67.5 40 68 38 Z"
+						fill="#38bdf8"
+					/>
+				</svg>
+			</h1>
+			<button
+				class="btn-secondary"
+				style="gap: 0.5rem; font-size: 0.9rem; padding: 0.5rem 1rem; min-width: 10.5rem;"
+				onclick={handleRefresh}
+				disabled={bansosState.isFetching || remainingTime > 0}
 			>
-				<path
-					d="M25 25 H75 L70 75 C69 80 64 84 59 84 H41 C36 84 31 80 30 75 Z"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-success)"
-					stroke-width="4"
-				/>
-				<path
-					d="M75 35 H85 C90 35 93 39 93 44 V56 C93 61 90 65 85 65 H73"
-					stroke="var(--color-success)"
-					stroke-width="4"
-					stroke-linecap="round"
-					fill="none"
-				/>
-				<path
-					d="M40 10 Q43 14 40 18 M50 8 Q53 13 50 18 M60 10 Q63 14 60 18"
-					stroke="var(--text-muted)"
-					stroke-width="3"
-					stroke-linecap="round"
-					fill="none"
-				/>
-				<path
-					d="M34 43 Q39 40 44 43 M52 43 Q57 40 62 43"
-					stroke="var(--text-primary)"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					fill="none"
-				/>
-				<circle cx="39" cy="49" r="3" fill="var(--text-primary)" />
-				<circle cx="57" cy="49" r="3" fill="var(--text-primary)" />
-				<path
-					d="M44 58 Q48 55 52 58 T56 58"
-					stroke="var(--text-primary)"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					fill="none"
-				/>
-				<path
-					class="sweat-drop"
-					d="M68 44 C68 47 66.5 49 65 49 C63.5 49 63.5 47 65 44 C66 42 67.5 40 68 38 Z"
-					fill="#38bdf8"
-				/>
-			</svg>
-		</h1>
+				<i class="fa-solid fa-rotate-right" class:fa-spin={bansosState.isFetching}></i>
+				{#if bansosState.isFetching}
+					Memperbarui...
+				{:else if remainingTime > 0}
+					Tunggu {formattedTime}
+				{:else}
+					Refresh Data
+				{/if}
+			</button>
+		</div>
 		<p class="subtitle-text text-pretty">
 			Klik kartu bansos untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
 		</p>
@@ -153,7 +229,7 @@
 							>
 								Semua Kategori
 							</button>
-							{#each allBansosTags as tag (tag)}
+							{#each dynamicTags as tag (tag)}
 								<button
 									class="tag-btn"
 									class:active={selectedTags.includes(tag)}

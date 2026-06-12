@@ -1,10 +1,11 @@
 <script lang="ts">
-	let { emojis }: { emojis: { id: number; x: number; y: number; text: string }[] } = $props();
+	let { emojis }: { emojis: { id: number; x: number; y: number; icon: string; color?: string }[] } =
+		$props();
 </script>
 
 {#each emojis as emoji (emoji.id)}
 	<span class="floating-emoji" style="left: {emoji.x}px; top: {emoji.y}px;">
-		{@html emoji.text}
+		<i class={emoji.icon} style="color: {emoji.color || 'inherit'};"></i>
 	</span>
 {/each}
 

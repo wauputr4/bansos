@@ -1,7 +1,7 @@
 name: Tambah Bansos
 description: Submit promo, credit, diskon, atau program gratisan untuk developer.
-title: "Tambah bansos: "
-labels: ["submission", "bansos"]
+title: 'Tambah bansos: '
+labels: ['submission', 'bansos']
 body:
   - type: textarea
     id: payload

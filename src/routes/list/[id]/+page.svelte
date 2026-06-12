@@ -1,11 +1,23 @@
 <script lang="ts">
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
+	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
-	const item = $derived(data.item);
+
+	const item = $derived(bansosState.data.find((i) => i.id === data.id) || data.item);
+
+	onMount(() => {
+		initBansosStore();
+		if (!item) {
+			fetchLatestBansos();
+		}
+	});
 
 	let copied = $state(false);
-	let floatingEmojis = $state<{ id: number; x: number; y: number; text: string }[]>([]);
+	let floatingEmojis = $state<{ id: number; x: number; y: number; icon: string; color?: string }[]>(
+		[]
+	);
 
 	async function copyCode(text: string, e: MouseEvent) {
 		try {
@@ -16,7 +28,8 @@
 				id: Math.random(),
 				x: e.clientX,
 				y: e.clientY,
-				text: '<i class="fa-solid fa-money-bill-wave" style="color: #10b981;"></i>'
+				icon: 'fa-solid fa-money-bill-wave',
+				color: '#10b981'
 			};
 			floatingEmojis = [...floatingEmojis, emoji];
 			setTimeout(() => {
@@ -30,295 +43,355 @@
 	}
 
 	// Dynamic SEO Meta definitions
-	const seoTitle = $derived(`Cara Dapat ${item.title} - bansos.dev`);
-	const seoDesc = $derived(
-		`Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
+	const seoTitle = $derived(
+		item ? `Cara Dapat ${item.title} - bansos.dev` : 'Bansos Tidak Ditemukan'
 	);
-	const pageUrl = $derived(`https://bansos.dev/list/${item.id}`);
+	const seoDesc = $derived(
+		item
+			? `Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
+			: ''
+	);
+	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}` : '');
 
 	// JSON-LD Specific Product / Guide Schema
-	const schemaData = $derived({
-		'@context': 'https://schema.org',
-		'@type': 'HowTo',
-		name: `Cara Klaim ${item.title}`,
-		description: item.description,
-		totalTime: 'PT5M',
-		supply: [
-			{
-				'@type': 'HowToSupply',
-				name: 'Koneksi Internet'
-			},
-			{
-				'@type': 'HowToSupply',
-				name: 'Akun Dev Aktif'
-			}
-		],
-		tool: [
-			{
-				'@type': 'HowToTool',
-				name: 'Web Browser'
-			}
-		],
-		step: item.requirements.map((req, index) => ({
-			'@type': 'HowToStep',
-			position: index + 1,
-			name: `Langkah ${index + 1}`,
-			text: req
-		}))
-	});
+	const schemaData = $derived(
+		item
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'HowTo',
+					name: `Cara Klaim ${item.title}`,
+					description: item.description,
+					totalTime: 'PT5M',
+					supply: [
+						{
+							'@type': 'HowToSupply',
+							name: 'Koneksi Internet'
+						},
+						{
+							'@type': 'HowToSupply',
+							name: 'Akun Dev Aktif'
+						}
+					],
+					tool: [
+						{
+							'@type': 'HowToTool',
+							name: 'Web Browser'
+						}
+					],
+					step: item.requirements.map((req: string, index: number) => ({
+						'@type': 'HowToStep',
+						position: index + 1,
+						name: `Langkah ${index + 1}`,
+						text: req
+					}))
+				}
+			: null
+	);
 </script>
 
 <svelte:head>
 	<title>{seoTitle}</title>
-	<meta name="title" content={seoTitle} />
-	<meta name="description" content={seoDesc} />
-	<meta
-		name="keywords"
-		content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card"
-	/>
+	{#if item}
+		<meta name="title" content={seoTitle} />
+		<meta name="description" content={seoDesc} />
+		<meta
+			name="keywords"
+			content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card"
+		/>
 
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content={pageUrl} />
-	<meta property="og:title" content={seoTitle} />
-	<meta property="og:description" content={seoDesc} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:title" content={seoTitle} />
+		<meta property="og:description" content={seoDesc} />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={pageUrl} />
-	<meta property="twitter:title" content={seoTitle} />
-	<meta property="twitter:description" content={seoDesc} />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={pageUrl} />
+		<meta property="twitter:title" content={seoTitle} />
+		<meta property="twitter:description" content={seoDesc} />
 
-	<script type="application/ld+json">
-		{JSON.stringify(schemaData)}
-	</script>
+		<script type="application/ld+json">
+			{JSON.stringify(schemaData)}
+		</script>
+	{/if}
 </svelte:head>
 
-<main class="page-wrapper">
-	<div class="glow-orb detail-glow"></div>
-
-	<!-- Top Navigation -->
-	<nav class="top-nav container">
-		<a href="/list" class="btn-back">
-			<span class="arrow">←</span> Kembali ke List Bansos
-		</a>
-	</nav>
-
-	<!-- Main Detail Card -->
-	<article class="detail-container container">
-		<div class="glass-card detail-card">
-			<header class="detail-header">
-				<div class="header-top-row">
-					<div class="tags-scroll-container">
-						{#each item.tags as tag}
-							<span class="tag-badge">{tag}</span>
-						{/each}
-					</div>
-					<div class="status-container">
-						<span class="status-badge status-{item.status}"
-							><i class="fa-solid fa-circle"></i> {item.status.toUpperCase()}</span
-						>
-					</div>
+{#if !item}
+	{#if bansosState.isFetching}
+		<main
+			class="page-wrapper container"
+			style="align-items: center; justify-content: center; min-height: 60vh;"
+		>
+			<div
+				class="empty-state glass-card"
+				style="margin-top: 4rem; max-width: 30rem; text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;"
+			>
+				<div class="empty-icon" style="font-size: 4rem;">
+					<i class="fa-solid fa-circle-notch fa-spin" style="color: var(--color-accent);"></i>
 				</div>
-				<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
-				<p class="detail-subtitle">
-					Disponsori oleh <strong>{item.provider}</strong> — Diterbitkan pada Juni 2026
+				<h2>Mencari Data...</h2>
+				<p style="color: var(--text-secondary);">
+					Tunggu bentar ya, lagi nyari info terbaru dari repository...
 				</p>
-				{#if item.contributor}
-					<p class="detail-contributor">
-						Dikontribusikan oleh
-						<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-							{item.contributor.name}
-						</a>
-					</p>
-				{/if}
-			</header>
-
-			{#if item.status === 'expired'}
-				<div
-					class="tips-box"
-					style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
-				>
-					<span class="tips-icon" style="color: #ef4444;"
-						><i class="fa-solid fa-triangle-exclamation"></i></span
-					>
-					<div class="tips-content">
-						<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
-						<p>
-							Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa baca
-							panduannya buat referensi ya!
-						</p>
-					</div>
+			</div>
+		</main>
+	{:else}
+		<main
+			class="page-wrapper container"
+			style="align-items: center; justify-content: center; min-height: 60vh;"
+		>
+			<div
+				class="empty-state glass-card"
+				style="margin-top: 4rem; max-width: 30rem; text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;"
+			>
+				<div class="empty-icon" style="font-size: 4rem;">
+					<i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning);"></i>
 				</div>
-			{/if}
-
-			{#if item.tips}
-				<div class="tips-box">
-					<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
-					<div class="tips-content">
-						<h3>Tips Pro Jelata:</h3>
-						<p>{item.tips}</p>
-					</div>
-				</div>
-			{/if}
-
-			<section class="section-block">
-				<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
-				<p class="description-text text-pretty">{item.description}</p>
-			</section>
-
-			<section class="section-block">
-				<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
-				<ul class="benefit-list">
-					{#each item.benefits as benefit}
-						<li><span class="check-icon">✓</span> {benefit}</li>
-					{/each}
-				</ul>
-			</section>
-
-			{#if item.promoCode}
-				<section class="section-block promo-section">
-					<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
-					<p class="promo-subtitle">
-						Salin kode ini dan masukkan saat checkout di {item.provider}:
-					</p>
-					<div class="promo-clipboard-box">
-						<code>{item.promoCode}</code>
-						<button class="btn-primary copy-btn" onclick={(e) => copyCode(item.promoCode || '', e)}>
-							{#if copied}
-								<i class="fa-solid fa-check"></i> Copied!
-							{:else}
-								<i class="fa-solid fa-copy"></i> Salin
-							{/if}
-						</button>
-					</div>
-				</section>
-			{/if}
-
-			<section class="section-block guide-section">
-				<h2>
-					<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
-				</h2>
-				<ol class="step-list">
-					{#each item.requirements as req, idx}
-						<li class="step-item">
-							<span class="step-num">{idx + 1}</span>
-							<p class="step-content text-pretty">{req}</p>
-						</li>
-					{/each}
-				</ol>
-			</section>
-
-			<div class="action-footer">
+				<h2>Waduh, Bansos ini gak ketemu!</h2>
+				<p style="color: var(--text-secondary);">
+					Sepertinya bansos ini udah digondol koruptor atau belum masuk ke sistem, fr fr 😭
+				</p>
 				<a
-					href={item.ctaLink}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="btn-primary cta-btn"
+					href="/list"
+					class="btn-primary"
+					style="margin-top: 1rem; gap: 0.5rem; text-decoration: none;"
 				>
-					<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+					<i class="fa-solid fa-arrow-left"></i> Kembali ke List
 				</a>
 			</div>
-		</div>
-	</article>
+		</main>
+	{/if}
+{:else}
+	<main class="page-wrapper">
+		<div class="glow-orb detail-glow"></div>
 
-	<!-- Anxious Sweating Coffee & Sad Student SVGs side-by-side for fun -->
-	<section class="fun-illustrations container">
-		<div class="glass-card illustration-card">
-			<svg
-				class="anxious-icon"
-				viewBox="0 0 100 100"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M15 30 C15 25 19 21 24 21 H76 C81 21 85 25 85 30 V70 C85 75 81 79 76 79 H24 C19 79 15 75 15 70 Z"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-warning)"
-					stroke-width="4"
-				/>
-				<path
-					d="M55 40 H78 C82 40 85 43 85 47 V57 C85 61 82 64 78 64 H55 Z"
-					fill="#1b1d30"
-					stroke="var(--color-warning)"
-					stroke-width="4"
-				/>
-				<circle cx="70" cy="52" r="4" fill="var(--color-warning)" />
-				<path
-					d="M28 42 Q33 38 38 42 M46 42 Q51 38 56 42"
-					stroke="var(--text-primary)"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					fill="none"
-				/>
-				<circle cx="33" cy="47" r="2.5" fill="var(--text-primary)" />
-				<circle cx="51" cy="47" r="2.5" fill="var(--text-primary)" />
-				<path
-					class="sweat-drop"
-					d="M33 53 C33 56 31.5 58 30 58 C28.5 58 28.5 56 30 53 C31 51 32.5 49 33 47 C33 49 33 51 33 53 Z"
-					fill="#38bdf8"
-				/>
-				<path
-					d="M38 59 Q42 55 46 59"
-					stroke="var(--text-primary)"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					fill="none"
-				/>
-			</svg>
-			<p>Dompet lagi kosong melompong...</p>
-		</div>
+		<!-- Top Navigation -->
+		<nav class="top-nav container">
+			<a href="/list" class="btn-back">
+				<span class="arrow">←</span> Kembali ke List Bansos
+			</a>
+		</nav>
 
-		<div class="glass-card illustration-card">
-			<svg
-				class="anxious-icon"
-				viewBox="0 0 100 100"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<rect
-					x="15"
-					y="15"
-					width="70"
-					height="50"
-					rx="8"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15" />
-				<path
-					d="M40 65 L35 80 L65 80 L60 65 Z"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<path
-					d="M35 36 L43 39 M65 36 L57 39"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-				<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
-				<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
-				<path
-					class="sweat-drop"
-					d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
-					fill="#38bdf8"
-				/>
-				<path
-					d="M44 51 Q48 48 52 51 T60 51"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-					fill="none"
-				/>
-			</svg>
-			<p>Server production mati, fr fr...</p>
-		</div>
-	</section>
+		<!-- Main Detail Card -->
+		<article class="detail-container container">
+			<div class="glass-card detail-card">
+				<header class="detail-header">
+					<div class="header-top-row">
+						<div class="tags-scroll-container">
+							{#each item.tags as tag}
+								<span class="tag-badge">{tag}</span>
+							{/each}
+						</div>
+						<div class="status-container">
+							<span class="status-badge status-{item.status}"
+								><i class="fa-solid fa-circle"></i> {item.status.toUpperCase()}</span
+							>
+						</div>
+					</div>
+					<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
+					<p class="detail-subtitle">
+						Disponsori oleh <strong>{item.provider}</strong> — Diterbitkan pada Juni 2026
+					</p>
+					{#if item.contributor}
+						<p class="detail-contributor">
+							Dikontribusikan oleh
+							<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
+								{item.contributor.name}
+							</a>
+						</p>
+					{/if}
+				</header>
 
-	<!-- Floating Particles -->
-	<FloatingEmoji emojis={floatingEmojis} />
-</main>
+				{#if item.status === 'expired'}
+					<div
+						class="tips-box"
+						style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
+					>
+						<span class="tips-icon" style="color: #ef4444;"
+							><i class="fa-solid fa-triangle-exclamation"></i></span
+						>
+						<div class="tips-content">
+							<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
+							<p>
+								Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa baca
+								panduannya buat referensi ya!
+							</p>
+						</div>
+					</div>
+				{/if}
+
+				{#if item.tips}
+					<div class="tips-box">
+						<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
+						<div class="tips-content">
+							<h3>Tips Pro Jelata:</h3>
+							<p>{item.tips}</p>
+						</div>
+					</div>
+				{/if}
+
+				<section class="section-block">
+					<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
+					<p class="description-text text-pretty">{item.description}</p>
+				</section>
+
+				<section class="section-block">
+					<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
+					<ul class="benefit-list">
+						{#each item.benefits as benefit}
+							<li><span class="check-icon">✓</span> {benefit}</li>
+						{/each}
+					</ul>
+				</section>
+
+				{#if item.promoCode}
+					<section class="section-block promo-section">
+						<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
+						<p class="promo-subtitle">
+							Salin kode ini dan masukkan saat checkout di {item.provider}:
+						</p>
+						<div class="promo-clipboard-box">
+							<code>{item.promoCode}</code>
+							<button
+								class="btn-primary copy-btn"
+								onclick={(e) => copyCode(item.promoCode || '', e)}
+							>
+								{#if copied}
+									<i class="fa-solid fa-check"></i> Copied!
+								{:else}
+									<i class="fa-solid fa-copy"></i> Salin
+								{/if}
+							</button>
+						</div>
+					</section>
+				{/if}
+
+				<section class="section-block guide-section">
+					<h2>
+						<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
+					</h2>
+					<ol class="step-list">
+						{#each item.requirements as req, idx}
+							<li class="step-item">
+								<span class="step-num">{idx + 1}</span>
+								<p class="step-content text-pretty">{req}</p>
+							</li>
+						{/each}
+					</ol>
+				</section>
+
+				<div class="action-footer">
+					<a
+						href={item.ctaLink}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-primary cta-btn"
+					>
+						<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+					</a>
+				</div>
+			</div>
+		</article>
+
+		<!-- Anxious Sweating Coffee & Sad Student SVGs side-by-side for fun -->
+		<section class="fun-illustrations container">
+			<div class="glass-card illustration-card">
+				<svg
+					class="anxious-icon"
+					viewBox="0 0 100 100"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M15 30 C15 25 19 21 24 21 H76 C81 21 85 25 85 30 V70 C85 75 81 79 76 79 H24 C19 79 15 75 15 70 Z"
+						fill="var(--bg-secondary)"
+						stroke="var(--color-warning)"
+						stroke-width="4"
+					/>
+					<path
+						d="M55 40 H78 C82 40 85 43 85 47 V57 C85 61 82 64 78 64 H55 Z"
+						fill="#1b1d30"
+						stroke="var(--color-warning)"
+						stroke-width="4"
+					/>
+					<circle cx="70" cy="52" r="4" fill="var(--color-warning)" />
+					<path
+						d="M28 42 Q33 38 38 42 M46 42 Q51 38 56 42"
+						stroke="var(--text-primary)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						fill="none"
+					/>
+					<circle cx="33" cy="47" r="2.5" fill="var(--text-primary)" />
+					<circle cx="51" cy="47" r="2.5" fill="var(--text-primary)" />
+					<path
+						class="sweat-drop"
+						d="M33 53 C33 56 31.5 58 30 58 C28.5 58 28.5 56 30 53 C31 51 32.5 49 33 47 C33 49 33 51 33 53 Z"
+						fill="#38bdf8"
+					/>
+					<path
+						d="M38 59 Q42 55 46 59"
+						stroke="var(--text-primary)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						fill="none"
+					/>
+				</svg>
+				<p>Dompet lagi kosong melompong...</p>
+			</div>
+
+			<div class="glass-card illustration-card">
+				<svg
+					class="anxious-icon"
+					viewBox="0 0 100 100"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<rect
+						x="15"
+						y="15"
+						width="70"
+						height="50"
+						rx="8"
+						fill="var(--bg-secondary)"
+						stroke="var(--color-accent)"
+						stroke-width="4"
+					/>
+					<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15" />
+					<path
+						d="M40 65 L35 80 L65 80 L60 65 Z"
+						fill="var(--bg-secondary)"
+						stroke="var(--color-accent)"
+						stroke-width="4"
+					/>
+					<path
+						d="M35 36 L43 39 M65 36 L57 39"
+						stroke="var(--text-primary)"
+						stroke-width="3"
+						stroke-linecap="round"
+					/>
+					<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
+					<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
+					<path
+						class="sweat-drop"
+						d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
+						fill="#38bdf8"
+					/>
+					<path
+						d="M44 51 Q48 48 52 51 T60 51"
+						stroke="var(--text-primary)"
+						stroke-width="3"
+						stroke-linecap="round"
+						fill="none"
+					/>
+				</svg>
+				<p>Server production mati, fr fr...</p>
+			</div>
+		</section>
+
+		<!-- Floating Particles -->
+		<FloatingEmoji emojis={floatingEmojis} />
+	</main>
+{/if}
 
 <style>
 	.page-wrapper {
