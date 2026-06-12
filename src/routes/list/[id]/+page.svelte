@@ -132,6 +132,24 @@
 				{/if}
 			</header>
 
+			{#if item.status === 'expired'}
+				<div
+					class="tips-box"
+					style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
+				>
+					<span class="tips-icon" style="color: #ef4444;"
+						><i class="fa-solid fa-triangle-exclamation"></i></span
+					>
+					<div class="tips-content">
+						<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
+						<p>
+							Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa baca
+							panduannya buat referensi ya!
+						</p>
+					</div>
+				</div>
+			{/if}
+
 			{#if item.tips}
 				<div class="tips-box">
 					<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
@@ -352,6 +370,7 @@
 		flex-direction: column;
 		gap: 2rem;
 		padding: clamp(1.5rem, 4vw, 3rem);
+		min-width: 0;
 	}
 
 	.detail-header {
@@ -367,6 +386,7 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
+		min-width: 0;
 	}
 
 	.tags-scroll-container {
@@ -375,6 +395,7 @@
 		gap: 0.5rem;
 		overflow-x: auto;
 		scrollbar-width: none;
+		min-width: 0;
 	}
 
 	.tags-scroll-container::-webkit-scrollbar {
@@ -402,8 +423,21 @@
 		font-weight: 700;
 		padding: 0.2rem 0.6rem;
 		border-radius: 0.5rem;
+	}
+
+	.status-active {
 		background: rgba(16, 185, 129, 0.1);
 		color: var(--color-success);
+	}
+
+	.status-upcoming {
+		background: rgba(245, 158, 11, 0.1);
+		color: var(--color-warning);
+	}
+
+	.status-expired {
+		background: rgba(239, 68, 68, 0.1);
+		color: #ef4444;
 	}
 
 	.detail-title {

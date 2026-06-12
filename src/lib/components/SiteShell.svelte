@@ -60,7 +60,8 @@
 
 	.site-header {
 		position: sticky;
-		top: 0;
+		top: -1px;
+		padding-top: 1px;
 		z-index: 50;
 		border-bottom: 1px solid var(--border-color);
 		background: rgba(9, 10, 15, 0.82);

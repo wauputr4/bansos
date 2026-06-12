@@ -4,16 +4,19 @@
 	let { item, compact = false }: { item: BansosItem; compact?: boolean } = $props();
 </script>
 
-<article class:compact class="glass-card bansos-card">
+<article class:compact class:is-expired={item.status === 'expired'} class="glass-card bansos-card">
 	<div class="card-header">
-		<div class="tags-container">
+		<div class="tags-scroll-container">
 			{#each item.tags as tag}
 				<span class="tag-badge">{tag}</span>
 			{/each}
 		</div>
-		<span class="status-badge status-{item.status}">
-			{item.status === 'active' ? '● Aktif' : item.status}
-		</span>
+		<div class="status-container">
+			<span class="status-badge status-{item.status}">
+				<i class="fa-solid fa-circle"></i>
+				{item.status.toUpperCase()}
+			</span>
+		</div>
 	</div>
 
 	<h2 class="card-title">{item.title}</h2>
@@ -30,9 +33,7 @@
 	<p class="card-desc text-pretty">{item.description}</p>
 
 	<div class="card-actions">
-		<a href="/list/{item.id}" class="btn-primary">
-			Lihat Cara Klaim Lengkap
-		</a>
+		<a href="/list/{item.id}" class="btn-primary"> Lihat Cara Klaim Lengkap </a>
 	</div>
 </article>
 
@@ -41,24 +42,46 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		min-width: 0;
 	}
 
 	.bansos-card.compact {
 		padding: 1.25rem;
 	}
 
+	.bansos-card.is-expired {
+		opacity: 0.65;
+		background: rgba(0, 0, 0, 0.2);
+		transition: opacity 0.3s ease;
+	}
+
+	.bansos-card.is-expired:hover {
+		opacity: 0.85;
+	}
+
 	.card-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		flex-wrap: wrap;
 		gap: 0.75rem;
+		min-width: 0;
 	}
 
-	.tags-container {
+	.tags-scroll-container {
 		display: flex;
-		flex-wrap: wrap;
+		align-items: center;
 		gap: 0.5rem;
+		overflow-x: auto;
+		scrollbar-width: none;
+		min-width: 0;
+	}
+
+	.tags-scroll-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.status-container {
+		flex-shrink: 0;
 	}
 
 	.tag-badge {
@@ -69,6 +92,8 @@
 		padding: 0.2rem 0.6rem;
 		border-radius: 0.5rem;
 		color: var(--text-secondary);
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.status-badge {
@@ -76,8 +101,21 @@
 		font-weight: 750;
 		padding: 0.2rem 0.6rem;
 		border-radius: 0.5rem;
+	}
+
+	.status-active {
 		background: rgba(16, 185, 129, 0.1);
 		color: var(--color-success);
+	}
+
+	.status-upcoming {
+		background: rgba(245, 158, 11, 0.1);
+		color: var(--color-warning);
+	}
+
+	.status-expired {
+		background: rgba(239, 68, 68, 0.1);
+		color: #ef4444;
 	}
 
 	.card-title {

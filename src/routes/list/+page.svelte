@@ -1,13 +1,24 @@
 <script lang="ts">
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { allBansosTags, bansosList, getBansosByTag } from '$lib/data/bansos';
+	import { allBansosTags, bansosList } from '$lib/data/bansos';
 
-	let selectedTag = $state('Semua');
+	let selectedTags: string[] = $state([]);
+	let selectedStatuses: string[] = $state([]);
+	let filterExpanded = $state(false);
 	let floatingEmojis: { id: number; x: number; y: number; text: string }[] = $state([]);
-	const filteredBansos = $derived(
-		selectedTag === 'Semua' ? bansosList : getBansosByTag(selectedTag)
-	);
 
+	const statusOrder: Record<string, number> = { active: 1, upcoming: 2, expired: 3 };
+
+	const filteredBansos = $derived(
+		bansosList
+			.filter((item) => {
+				const tagMatch =
+					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
+				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
+				return tagMatch && statusMatch;
+			})
+			.sort((a, b) => statusOrder[a.status] - statusOrder[b.status])
+	);
 </script>
 
 <svelte:head>
@@ -24,7 +35,7 @@
 	<!-- Header -->
 	<header class="feed-header container">
 		<h1 class="section-title">
-			<span>📦 Semua Info Bansos Aktif</span>
+			<span><i class="fa-solid fa-box-open"></i> Semua Info Bansos</span>
 			<svg
 				class="anxious-icon inline-anxious"
 				viewBox="0 0 100 100"
@@ -79,24 +90,115 @@
 		</p>
 	</header>
 
-	<section class="tag-section container" aria-label="Filter tag bansos">
-		<button class:active={selectedTag === 'Semua'} onclick={() => (selectedTag = 'Semua')}>
-			Semua
-		</button>
-		{#each allBansosTags as tag (tag)}
-			<button class:active={selectedTag === tag} onclick={() => (selectedTag = tag)}>
-				{tag}
+	<section class="filter-section container" aria-label="Filter tag bansos">
+		<div class="filter-card">
+			<button
+				class="filter-header"
+				onclick={() => (filterExpanded = !filterExpanded)}
+				aria-expanded={filterExpanded}
+			>
+				<div class="filter-title">
+					<i class="fa-solid fa-filter"></i> Filter Kategori
+					{#if selectedTags.length > 0 || selectedStatuses.length > 0}
+						<span class="active-count">{selectedTags.length + selectedStatuses.length}</span>
+					{/if}
+				</div>
+				<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
 			</button>
-		{/each}
+			{#if filterExpanded}
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div class="dropdown-backdrop" onclick={() => (filterExpanded = false)}></div>
+
+				<div class="filter-dropdown">
+					<div class="filter-group">
+						<h3 class="filter-group-title">Status</h3>
+						<div class="tag-grid">
+							<button
+								class="tag-btn"
+								class:active={selectedStatuses.length === 0}
+								onclick={() => (selectedStatuses = [])}
+							>
+								Semua Status
+							</button>
+							{#each ['active', 'upcoming', 'expired'] as status}
+								<button
+									class="tag-btn"
+									class:active={selectedStatuses.includes(status)}
+									onclick={() => {
+										if (selectedStatuses.includes(status)) {
+											selectedStatuses = selectedStatuses.filter((s) => s !== status);
+										} else {
+											selectedStatuses = [...selectedStatuses, status];
+										}
+									}}
+								>
+									{status === 'active'
+										? 'Aktif'
+										: status === 'upcoming'
+											? 'Akan datang'
+											: 'Expired'}
+								</button>
+							{/each}
+						</div>
+					</div>
+
+					<div class="filter-group">
+						<h3 class="filter-group-title">Kategori</h3>
+						<div class="tag-grid">
+							<button
+								class="tag-btn"
+								class:active={selectedTags.length === 0}
+								onclick={() => (selectedTags = [])}
+							>
+								Semua Kategori
+							</button>
+							{#each allBansosTags as tag (tag)}
+								<button
+									class="tag-btn"
+									class:active={selectedTags.includes(tag)}
+									onclick={() => {
+										if (selectedTags.includes(tag)) {
+											selectedTags = selectedTags.filter((t) => t !== tag);
+										} else {
+											selectedTags = [...selectedTags, tag];
+										}
+									}}
+								>
+									{tag}
+								</button>
+							{/each}
+						</div>
+					</div>
+				</div>
+			{/if}
+		</div>
 	</section>
 
 	<!-- Grid List -->
 	<section class="feed-section container">
-		<div class="bansos-grid">
-			{#each filteredBansos as item (item.id)}
-				<BansosCard {item} />
-			{/each}
-		</div>
+		{#if filteredBansos.length === 0}
+			<div class="empty-state glass-card">
+				<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
+				<h2>Wah, Bansos Kosong!</h2>
+				<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+				<button
+					class="btn-primary"
+					onclick={() => {
+						selectedTags = [];
+						selectedStatuses = [];
+					}}
+				>
+					Reset Filter
+				</button>
+			</div>
+		{:else}
+			<div class="bansos-grid">
+				{#each filteredBansos as item (item.id)}
+					<BansosCard {item} />
+				{/each}
+			</div>
+		{/if}
 	</section>
 </main>
 
@@ -136,20 +238,105 @@
 		font-size: 1rem;
 	}
 
-	.tag-section {
+	.filter-section {
+		margin-bottom: -1.5rem;
+	}
+
+	.filter-card {
+		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
+		border: 1px solid var(--glass-border);
+		padding: 1rem 1.5rem;
+		border-radius: 1rem;
+		position: relative;
+		z-index: 45;
+	}
+
+	.filter-header {
 		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		background: transparent;
+		border: none;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 1.1rem;
+		font-weight: 750;
+		cursor: pointer;
+		padding: 0;
+	}
+
+	.filter-title {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+
+	.active-count {
+		background: var(--color-accent);
+		color: #ffffff;
+		font-size: 0.75rem;
+		font-weight: 800;
+		padding: 0.1rem 0.6rem;
+		border-radius: 1rem;
+		margin-left: 0.25rem;
+	}
+
+	.dropdown-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 40;
+		cursor: default;
+	}
+
+	.filter-dropdown {
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		left: 0;
+		right: 0;
+		padding: 1.25rem 1.5rem;
+		z-index: 50;
+		border-radius: 1rem;
+		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
+		border: 1px solid var(--glass-border);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+		max-height: 60vh;
+		overflow-y: auto;
+	}
+
+	.filter-dropdown::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.filter-dropdown::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.filter-dropdown::-webkit-scrollbar-thumb {
+		background-color: var(--border-color);
+		border-radius: 10px;
+	}
+
+	.filter-group + .filter-group {
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--border-color);
+	}
+
+	.filter-group-title {
+		font-size: 0.9rem;
+		font-weight: 750;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.tag-grid {
+		display: flex;
+		flex-wrap: wrap;
 		gap: 0.5rem;
-		overflow-x: auto;
-		padding-block: 0.25rem;
-		scrollbar-width: none;
 	}
 
-	.tag-section::-webkit-scrollbar {
-		display: none;
-	}
-
-	.tag-section button {
-		flex: 0 0 auto;
+	.tag-btn {
 		border: 1px solid var(--border-color);
 		border-radius: 999px;
 		background: rgba(255, 255, 255, 0.04);
@@ -159,16 +346,50 @@
 		font-weight: 750;
 		padding: 0.5rem 0.8rem;
 		cursor: pointer;
+		transition: all 0.2s;
 	}
 
-	.tag-section button.active {
+	.tag-btn:hover {
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--text-primary);
+	}
+
+	.tag-btn.active {
 		border-color: rgba(16, 185, 129, 0.55);
 		background: rgba(16, 185, 129, 0.14);
-		color: var(--text-primary);
+		color: var(--color-success);
 	}
 
 	.feed-section {
 		min-height: 40vh;
+	}
+
+	.empty-state {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 1rem;
+		padding: 4rem 2rem;
+	}
+
+	.empty-icon {
+		font-size: 3.5rem;
+		color: var(--text-muted);
+		margin-bottom: 0.5rem;
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.empty-state h2 {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--text-primary);
+	}
+
+	.empty-state p {
+		color: var(--text-secondary);
+		margin-bottom: 0.5rem;
 	}
 
 	.bansos-grid {
@@ -191,6 +412,16 @@
 	.sweat-drop {
 		animation: drip 1.8s infinite ease-in;
 		transform-origin: center;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
 	}
 
 	@keyframes pulse {
