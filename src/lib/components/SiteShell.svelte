@@ -44,6 +44,7 @@
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
 				<a href={resolve('/contribute')}>Kontribusi</a>
+				<a href={resolve('/terms')}>Terms</a>
 				<span class="dot">·</span>
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
