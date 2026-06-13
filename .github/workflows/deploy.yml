@@ -12,7 +12,7 @@ on:
       - '**.md'
 
 concurrency:
-  group: "pages-deploy"
+  group: 'pages-deploy'
   cancel-in-progress: true
 
 jobs:
