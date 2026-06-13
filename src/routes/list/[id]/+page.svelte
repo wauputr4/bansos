@@ -656,6 +656,11 @@
 	}
 
 	@media (min-width: 48rem) {
+		.page-wrapper {
+			padding-block: 1.5rem 2.5rem;
+			gap: 1.5rem;
+		}
+
 		.recommendation-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
