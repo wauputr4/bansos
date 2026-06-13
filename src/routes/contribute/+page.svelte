@@ -5,7 +5,7 @@
 	const singleLineExample =
 		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const agentSkillInstallCommand =
-		'npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent codex';
+		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
 	const agentPromptExample =
 		'Use $bansos-add-entry to research this source and prepare a valid bansos.dev submission: https://example.com';
 	const multilineExample = [
@@ -98,9 +98,10 @@
 				<p class="eyebrow">AI Agent</p>
 				<h2>Pakai skill khusus biar agent gak halu pas nambah bansos.</h2>
 				<p>
-					Kalau kamu pakai Codex atau agent lain yang support skills, install skill resmi
-					<code>wauputr4/skill-bansos</code>. Skill ini ngajarin agent cara riset sumber, bikin
-					payload valid, dan mengikuti aturan kontribusi bansos.dev.
+					Kalau kamu pakai AI agent yang support Agent Skills, install skill resmi
+					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin
+					agent cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi
+					bansos.dev.
 				</p>
 			</div>
 			<div class="command-panel">
