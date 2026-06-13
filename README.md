@@ -97,6 +97,24 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
 
 Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
+### 3) AI Agent (disarankan untuk kontribusi otomatis)
+
+Bansos punya skill untuk agent di [https://www.skills.sh/wauputr4/skill-bansos](https://www.skills.sh/wauputr4/skill-bansos).
+
+Instal skill langsung:
+
+```bash
+npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*' --global --yes
+```
+
+Setelah terpasang, kontribusi bisa dijalankan dengan prompt AI Agent yang sudah disiapkan:
+
+```text
+$bansos-add-entry
+```
+
+Atau untuk penggunaan umum, cukup cek command template di skill: `bansos-add-entry` untuk menambah entry baru secara terstruktur.
+
 ## Kontribusi
 
 - Kirim data lewat CLI (cara utama), buka issue dari URL yang muncul, lalu tunggu PR otomatis dari bot.
