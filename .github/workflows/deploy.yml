@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'src/lib/data/bansos.json'
 
 jobs:
   deploy:
