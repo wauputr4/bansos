@@ -21,6 +21,7 @@
 			"Gunakan promo code pas checkout"
 		],
 		"tips": "Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.",
+		"publishedAt": "2026-06-11",
 		"contributor": {
 			"name": "Wauputra",
 			"url": "https://wau.my.id"
@@ -55,6 +56,7 @@
 			"Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan"
 		],
 		"tips": "Kalau modal masih tipis, mulai dari $1 dulu. Kejar sebelum 17 Juni 2026 biar gak mepet dan jangan lupa baca campaign rules.",
+		"publishedAt": "2026-06-11",
 		"contributor": {
 			"name": "!mika",
 			"url": "https://www.mikacend.xyz/"
@@ -87,6 +89,7 @@
 			"Cek lagi ketentuan resmi karena ini data agregator, bukan verifier"
 		],
 		"tips": "Gas buat prototype dulu, tapi jangan taruh API key di frontend. Developer jelata juga wajib punya secret management.",
+		"publishedAt": "2026-06-12",
 		"contributor": {
 			"name": "TokenGratis.id",
 			"url": "https://www.tokengratis.id/provider/deepseek"
@@ -120,6 +123,7 @@
 			"Isi data sesuai kebutuhan API docs",
 			"Tambahkan billing jika butuh lanjut setelah kuota habis"
 		],
+		"publishedAt": "2026-06-12",
 		"contributor": {
 			"name": "wauputra",
 			"url": "https://wau.my.id/"
@@ -140,6 +144,7 @@
 			"description": "Selamanya"
 		},
 		"requirements": ["Daftar akun di Kimchi.dev", "Verifikasi alamat email"],
+		"publishedAt": "2026-06-12",
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
@@ -173,6 +178,7 @@
 			"Manfaatkan free credit dan bandingkan pricing sebelum top-up"
 		],
 		"tips": "Cek dashboard secara berkala karena free credit dan promo bisa berubah. Jangan expose API key di frontend; pakai env/server-side proxy biar aman.",
+		"publishedAt": "2026-06-13",
 		"contributor": {
 			"name": "Pena Digital",
 			"url": "https://penadigital.tech/"
@@ -201,6 +207,7 @@
 			"Bawa tautan referal guru saat daftar jika diminta sistem",
 			"Bisa dapat bonus pulsa 50.000 setelah menyelesaikan semua misi (informasi dari peserta)"
 		],
+		"publishedAt": "2026-06-13",
 		"contributor": {
 			"name": "Wildan",
 			"url": "https://kelas.bisnix.com/"
@@ -226,6 +233,7 @@
 			"description": "Berlaku untuk semua pengguna yang mendaftar"
 		},
 		"requirements": ["Daftar akun di Dahono Labs Gateway", "Masuk ke Dashboard dan buat API Key"],
+		"publishedAt": "2026-06-13",
 		"contributor": {
 			"name": "Dahono Labs",
 			"url": "https://labs.dahono.com/"

@@ -11,6 +11,7 @@ npx bansosdev --help
 ## Mode contributor
 
 Default mode adalah `issue`.
+Issue yang valid akan diproses GitHub Actions menjadi Pull Request otomatis.
 
 ```bash
 npx bansosdev add \
@@ -22,6 +23,7 @@ npx bansosdev add \
   --validity-type fixed \
   --validity-date 2026-06-30 \
   --validity-desc "Berlaku khusus akun baru" \
+  --published-at 2026-06-13 \
   --requirements "Daftar akun|Klaim program" \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
@@ -43,7 +45,8 @@ Contoh input `forever` (tanpa date):
 npx bansosdev add ... --validity-type forever --validity-desc "Berlaku selamanya"
 ```
 
-Mode ini akan mencetak URL issue GitHub dengan payload JSON.
+Mode ini akan mencetak URL issue GitHub dengan payload JSON. Setelah issue dibuat,
+workflow repo akan mencoba membuat Pull Request otomatis dari payload tersebut.
 
 ## Maintainer mode
 

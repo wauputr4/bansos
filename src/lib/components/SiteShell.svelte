@@ -9,7 +9,11 @@
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	];
+	] as const;
+
+	function isActivePath(pathname: string, href: string) {
+		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+	}
 </script>
 
 <svelte:head>
@@ -24,12 +28,7 @@
 				{#each navItems as item (item.href)}
 					<a
 						href={resolve(item.href)}
-						class={item.href !== '/' &&
-						($page.url.pathname === item.href || $page.url.pathname.startsWith(item.href + '/'))
-							? 'active'
-							: $page.url.pathname === item.href
-								? 'active'
-								: ''}>{item.label}</a
+						class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}>{item.label}</a
 					>
 				{/each}
 			</div>
@@ -57,10 +56,7 @@
 		{#each navItems as item (item.href)}
 			<a
 				href={resolve(item.href)}
-				class={$page.url.pathname === item.href ||
-				(item.href !== '/' && $page.url.pathname.startsWith(item.href))
-					? 'active'
-					: ''}
+				class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}
 			>
 				<span aria-hidden="true"><i class={item.icon}></i></span>
 				{item.label}

@@ -1,0 +1,85 @@
+name: Issue to Bansos PR
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    if: |
+      contains(github.event.issue.labels.*.name, 'submission') ||
+      startsWith(github.event.issue.title, 'Tambah bansos:')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Extract issue payload
+        id: payload
+        run: node scripts/issue-to-pr.mjs
+        env:
+          BANSOS_PAYLOAD_PATH: .tmp-bansos-issue.json
+
+      - name: Add bansos item
+        run: npm run add:bansos -- --json .tmp-bansos-issue.json
+
+      - name: Build site
+        run: npm run build
+
+      - name: Create pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ITEM_ID: ${{ steps.payload.outputs.id }}
+          ITEM_TITLE: ${{ steps.payload.outputs.title }}
+        run: |
+          set -euo pipefail
+
+          branch="bansos/issue-${ISSUE_NUMBER}-${ITEM_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add src/lib/data/bansos.json
+          git commit -m "feat: add ${ITEM_TITLE}"
+          git push --force origin "$branch"
+
+          existing_pr="$(gh pr list --head "$branch" --json url --jq '.[0].url')"
+          if [ -n "$existing_pr" ]; then
+            echo "url=$existing_pr" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          pr_url="$(
+            gh pr create \
+              --title "Tambah bansos: ${ITEM_TITLE}" \
+              --body "Auto-generated from #${ISSUE_NUMBER}.
+
+## Summary
+- Add ${ITEM_TITLE} to the bansos list.
+- Source payload comes from the contributor issue.
+
+Closes #${ISSUE_NUMBER}" \
+              --base main \
+              --head "$branch"
+          )"
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment on issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Terima kasih sudah submit bansos ini! PR otomatis sudah dibuat di ${PR_URL}."

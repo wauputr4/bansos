@@ -15,6 +15,7 @@
 		'  --validity-desc "Sudah tidak aktif (promo code tidak bisa digunakan lagi)" \\',
 		'  --requirements "Punya akun Name.com aktif|Pilih domain .dev atau .app yang tersedia|Gunakan promo code pas checkout" \\',
 		'  --promo-code "DEVWEEK26" \\',
+		'  --published-at "2026-06-11" \\',
 		'  --cta-link "https://www.name.com" \\',
 		'  --contributor-name "Wauputra" \\',
 		'  --contributor-url "https://wau.my.id" \\',
@@ -50,8 +51,9 @@
 		<p class="eyebrow">Kontribusi</p>
 		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
 		<p>
-			Info baru bisa ditambahkan lewat Pull Request. Isi minimalnya: nama program, provider,
-			benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
+			Info baru bisa ditambahkan lewat CLI. Kamu submit issue dari hasil command, lalu bot akan
+			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program,
+			provider, benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
 		</p>
 
 		<div class="command-box">

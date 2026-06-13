@@ -30,7 +30,7 @@ Usage:
 
 Modes:
   --mode direct   Trigger trusted GitHub Action commit (needs token)
-  --mode issue    Print a prefilled GitHub issue URL for public submission
+  --mode issue    Print a prefilled GitHub issue URL; valid issues become PRs automatically
   --mode json     Print validated JSON payload only
 
 Required:
@@ -47,6 +47,7 @@ Required:
 Optional:
   --validity-date YYYY-MM-DD (required if type is fixed)
   --validity-desc "Description"
+  --published-at YYYY-MM-DD
   --promo-code CODE
   --tips "Tips singkat"
   --contributor-name "Nama"
@@ -109,6 +110,10 @@ function payloadFromArgs(args) {
 	if (args['validity-desc']) {
 		validity.description = args['validity-desc'];
 	}
+	const publishedAt = args['published-at'] || new Date().toISOString().slice(0, 10);
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(publishedAt)) {
+		throw new Error('--published-at must be YYYY-MM-DD');
+	}
 
 	const payload = {
 		id: required(args, 'id'),
@@ -120,6 +125,7 @@ function payloadFromArgs(args) {
 		validity: validity,
 		requirements: list(required(args, 'requirements')),
 		tips: args.tips,
+		publishedAt,
 		contributor:
 			args['contributor-name'] && args['contributor-url']
 				? {

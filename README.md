@@ -27,7 +27,8 @@ Ada dua cara:
 
 ### 1) Via CLI (disarankan untuk kontribusi umum)
 
-Jalankan ini, nanti CLI akan mengembalikan URL issue GitHub yang siap dikirim:
+Jalankan ini, nanti CLI akan mengembalikan URL issue GitHub yang siap dikirim.
+Kalau payload valid, GitHub Actions akan membuat Pull Request otomatis dari issue tersebut:
 
 ```bash
 npx bansosdev add \
@@ -39,6 +40,7 @@ npx bansosdev add \
   --validity-type fixed \
   --validity-date 2026-06-30 \
   --validity-desc "Berlaku khusus pelajar" \
+  --published-at 2026-06-13 \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
@@ -54,6 +56,7 @@ Agar format UI seragam, input masa berlaku (validity) kini menggunakan format te
 - `--validity-type` **(Wajib)**: Pilih salah satu dari `fixed` (ada batas waktu), `uncertain` (tidak menentu), atau `forever` (selamanya).
 - `--validity-date` **(Wajib jika type=fixed)**: Tanggal kadaluarsa promo dalam format `YYYY-MM-DD` (contoh: `2026-06-30`). Sistem akan otomatis menandai bansos sebagai `expired` jika melewati tanggal ini.
 - `--validity-desc` _(Opsional)_: Tambahan catatan khusus terkait masa berlaku (contoh: "Selama kuota masih ada"). Teks ini akan muncul sebagai _tooltip_ saat label masa berlaku di-hover.
+- `--published-at` _(Opsional)_: Tanggal publikasi entry dalam format `YYYY-MM-DD`. Jika kosong, CLI/script akan mengisi tanggal hari ini.
 
 ### Cek payload
 
@@ -96,7 +99,7 @@ Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
 ## Kontribusi
 
-- Kirim data lewat CLI (cara utama) lalu follow up PR dengan issue dari URL yang muncul.
+- Kirim data lewat CLI (cara utama), buka issue dari URL yang muncul, lalu tunggu PR otomatis dari bot.
 - Jika lebih nyaman, tambahkan melalui branch + PR manual.
 - Lihat panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos?tab=contributing-ov-file).
 

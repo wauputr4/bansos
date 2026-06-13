@@ -15,6 +15,7 @@ export interface BansosItem {
 	};
 	requirements: string[];
 	tips?: string;
+	publishedAt?: string;
 	contributor?: {
 		name: string;
 		url: string;
@@ -66,12 +67,51 @@ export const bansosList: BansosItem[] = (bansosData as BansosItem[]).map((item) 
 	addTrackedCtaLink(item)
 );
 
-export const latestBansos = (limit = 3) => bansosList.slice(-limit).reverse();
-export const featuredBansos = (limit = 3) =>
-	bansosList
+function itemDateValue(item: BansosItem, fallbackIndex: number) {
+	if (!item.publishedAt) return fallbackIndex;
+	const timestamp = Date.parse(`${item.publishedAt}T00:00:00.000Z`);
+	return Number.isNaN(timestamp) ? fallbackIndex : timestamp;
+}
+
+export function sortBansosByNewest(items: BansosItem[] = bansosList) {
+	return items
+		.map((item, index) => ({ item, index }))
+		.sort((a, b) => {
+			const dateDiff = itemDateValue(b.item, b.index) - itemDateValue(a.item, a.index);
+			if (dateDiff !== 0) return dateDiff;
+			return b.index - a.index;
+		})
+		.map(({ item }) => item);
+}
+
+export const latestBansos = (limit = 3, items: BansosItem[] = bansosList) =>
+	sortBansosByNewest(items).slice(0, limit);
+
+export const featuredBansos = (limit = 3, items: BansosItem[] = bansosList) =>
+	sortBansosByNewest(items)
 		.filter((i) => i.featured && i.status !== 'expired')
-		.slice(-limit)
-		.reverse();
+		.slice(0, limit);
+
+export function recommendedBansosFor(
+	currentItem: BansosItem,
+	items: BansosItem[] = bansosList,
+	limit = 3
+) {
+	const currentTags = new Set(currentItem.tags);
+
+	return sortBansosByNewest(items)
+		.filter((entry) => entry.id !== currentItem.id)
+		.filter((entry) => entry.status === 'active')
+		.map((entry) => ({
+			entry,
+			score:
+				entry.tags.filter((tag) => currentTags.has(tag)).length * 10 +
+				(entry.featured ? 2 : 0)
+		}))
+		.sort((a, b) => b.score - a.score)
+		.slice(0, limit)
+		.map(({ entry }) => entry);
+}
 
 export const allBansosTags = Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort(
 	(a, b) => a.localeCompare(b)

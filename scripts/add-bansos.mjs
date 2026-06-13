@@ -87,6 +87,14 @@ const contributorName =
 	mergedArgs['contributor-name'] || mergedArgs.contributorName || mergedArgs.contributor?.name;
 const contributorUrl =
 	mergedArgs['contributor-url'] || mergedArgs.contributorUrl || mergedArgs.contributor?.url;
+const publishedAt =
+	mergedArgs['published-at'] ||
+	mergedArgs.publishedAt ||
+	new Date().toISOString().slice(0, 10);
+
+if (!/^\d{4}-\d{2}-\d{2}$/.test(publishedAt)) {
+	throw new Error('publishedAt must be YYYY-MM-DD');
+}
 
 const item = {
 	id: required(mergedArgs, 'id'),
@@ -102,6 +110,7 @@ const item = {
 		? mergedArgs.requirements
 		: list(required(mergedArgs, 'requirements')),
 	tips: mergedArgs.tips,
+	publishedAt,
 	contributor:
 		contributorName && contributorUrl
 			? {

@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
+	import { recommendedBansosFor } from '$lib/data/bansos';
 	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
@@ -96,11 +97,7 @@
 
 	const recommendedBansos = $derived.by(() => {
 		if (!item) return [];
-		return bansosState.data
-			.filter((entry) => entry.id !== item.id)
-			.filter((entry) => entry.status === 'active')
-			.slice(-3)
-			.reverse();
+		return recommendedBansosFor(item, bansosState.data, 3);
 	});
 </script>
 

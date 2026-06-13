@@ -5,7 +5,7 @@
 ## Cara kerja singkat
 
 - Mode default: `issue`.
-  CLI menghasilkan URL GitHub Issue dengan payload JSON dalam format yang siap digunakan maintainer.
+  CLI menghasilkan URL GitHub Issue dengan payload JSON. Issue yang valid akan dibuatkan Pull Request otomatis oleh GitHub Actions.
 - `--mode direct`: maintainer trigger `workflow_dispatch` ke repo.
 - `--mode json`: cetak payload JSON saja (untuk validasi).
 
@@ -20,6 +20,7 @@ npx bansosdev add \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type "uncertain" \
   --validity-desc "Berlaku sampai slot habis" \
+  --published-at "2026-06-13" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
