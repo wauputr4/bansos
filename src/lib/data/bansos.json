@@ -225,22 +225,13 @@
 			"type": "forever",
 			"description": "Berlaku untuk semua pengguna yang mendaftar"
 		},
-		"requirements": [
-			"Daftar akun di Dahono Labs Gateway",
-			"Masuk ke Dashboard dan buat API Key"
-		],
+		"requirements": ["Daftar akun di Dahono Labs Gateway", "Masuk ke Dashboard dan buat API Key"],
 		"contributor": {
 			"name": "Dahono Labs",
 			"url": "https://labs.dahono.com/"
 		},
 		"ctaLink": "https://gateway.dahono.com/",
-		"tags": [
-			"API",
-			"AI",
-			"OpenAI Compatible",
-			"Gratisan",
-			"No Credit Card"
-		],
+		"tags": ["API", "AI", "OpenAI Compatible", "Gratisan", "No Credit Card"],
 		"featured": true,
 		"status": "active"
 	}

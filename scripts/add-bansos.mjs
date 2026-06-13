@@ -84,13 +84,9 @@ if (validityDesc) {
 }
 
 const contributorName =
-	mergedArgs['contributor-name'] ||
-	mergedArgs.contributorName ||
-	(mergedArgs.contributor && mergedArgs.contributor.name);
+	mergedArgs['contributor-name'] || mergedArgs.contributorName || mergedArgs.contributor?.name;
 const contributorUrl =
-	mergedArgs['contributor-url'] ||
-	mergedArgs.contributorUrl ||
-	(mergedArgs.contributor && mergedArgs.contributor.url);
+	mergedArgs['contributor-url'] || mergedArgs.contributorUrl || mergedArgs.contributor?.url;
 
 const item = {
 	id: required(mergedArgs, 'id'),
