@@ -304,5 +304,207 @@
 		"tags": ["API", "AI", "OpenAI Compatible", "Gratisan", "No Credit Card"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "aws-activate-credits",
+		"title": "Kredit AWS Activate hingga $200.000",
+		"provider": "Amazon Web Services",
+		"description": "AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.",
+		"benefits": [
+			"Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)",
+			"Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui"
+		},
+		"requirements": [
+			"Buat AWS Builder ID dan lengkapi profil",
+			"Tautkan akun AWS",
+			"Berikan detail startup untuk konfirmasi kelayakan"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://aws.amazon.com/startups/credits/",
+		"tags": ["Cloud", "Gratisan", "Startup"],
+		"featured": true,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "google-startups-cloud",
+		"title": "Program Google for Startups Cloud",
+		"provider": "Google Cloud",
+		"description": "Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.",
+		"benefits": [
+			"Kredit hingga $2.000 USD selama setahun untuk startup tahap awal",
+			"Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan",
+			"Akses ke layanan Firebase dan alat AI/ML"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan"
+		},
+		"requirements": [
+			"Daftar langsung melalui program untuk tier dasar",
+			"Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://startup.google.com/cloud/",
+		"tags": ["Cloud", "AI Credits", "Gratisan", "Startup"],
+		"featured": true,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "xai-grok-api-credits",
+		"title": "Kredit Gratis Uji Coba xAI Grok API",
+		"provider": "xAI",
+		"description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
+		"benefits": [
+			"Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
+			"Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing"
+		],
+		"validity": {
+			"type": "fixed",
+			"description": "Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran"
+		},
+		"requirements": [
+			"Buat akun di xAI Console dan hasilkan API key",
+			"Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://console.x.ai",
+		"tags": ["AI Credits", "API", "Model API"],
+		"featured": false,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "amd-ai-dev-program",
+		"title": "Program Developer AMD AI",
+		"provider": "AMD",
+		"description": "AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.",
+		"benefits": [
+			"Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI",
+			"Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan",
+			"Akses langsung ke pakar teknis AMD melalui server Discord privat"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform"
+		},
+		"requirements": [
+			"Buat akun AMD gratis",
+			"Isi dan kirimkan formulir pendaftaran Program AI Developer",
+			"Verifikasi alamat email yang didaftarkan"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
+		"tags": ["AI Credits", "Course", "AI Education"],
+		"featured": false,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "microsoft-founders-hub",
+		"title": "Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)",
+		"provider": "Microsoft",
+		"description": "Program Microsoft untuk startup yang memberikan kredit Azure hingga $150.000, ditambah akses infrastruktur pengembangan seperti GitHub Enterprise dan alat produktivitas.",
+		"benefits": [
+			"Kredit Azure didistribusikan bertahap mulai $1.000 hingga batas maksimal $150.000 berdasarkan penggunaan",
+			"Akses gratis hingga 20 lisensi GitHub Enterprise selama satu tahun",
+			"Akses ke Microsoft 365 Business Premium dan LinkedIn Premium",
+			"Kredit Azure OpenAI Service disertakan di dalam bundle program"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Kredit berlaku hingga 48 bulan dan dicairkan bertahap sesuai capaian startup"
+		},
+		"requirements": [
+			"Memiliki produk berbasis perangkat lunak",
+			"Mendaftar menggunakan email domain perusahaan dan memiliki website aktif",
+			"Berstatus perusahaan privat dan for-profit yang belum mencapai pendanaan Seri C",
+			"Tidak wajib memiliki dukungan Venture Capital (VC) untuk tahap awal aplikasi"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://startups.microsoft.com/",
+		"tags": ["Cloud", "Startup", "Gratisan"],
+		"featured": true,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "digitalocean-hatch",
+		"title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
+		"provider": "DigitalOcean",
+		"description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
+		"benefits": [
+			"Kredit komputasi cloud hingga batas $100.000",
+			"Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan",
+			"Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons"
+		],
+		"validity": {
+			"type": "fixed",
+			"description": "Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program"
+		},
+		"requirements": [
+			"Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)",
+			"Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)",
+			"Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop",
+			"Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://www.digitalocean.com/hatch/",
+		"tags": ["Cloud", "VPS", "Startup", "AI Credits"],
+		"featured": false,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
+	},
+	{
+		"id": "mongodb-startups",
+		"title": "Kredit MongoDB Atlas untuk Startup",
+		"provider": "MongoDB",
+		"description": "Kredit penggunaan layanan database terkelola MongoDB Atlas khusus startup, memfasilitasi kebutuhan pencarian berbasis vektor (vector search) hingga pemrosesan aliran data tingkat lanjut.",
+		"benefits": [
+			"Kredit awal senilai $5.000 untuk MongoDB Atlas, dengan tambahan jumlah yang dapat diakses oleh startup berbasis AI",
+			"Akses pustaka pelatihan eksklusif dengan lebih dari 150 modul praktikum langsung (hands-on labs)",
+			"Satu kredit layanan profesional yang dapat dipakai guna sesi konsultasi percepatan teknis aplikasi"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Kode promo harus diaktifkan dalam 12 bulan, dan kredit valid selama 12 bulan setelah aktivasi dilakukan"
+		},
+		"requirements": [
+			"Mengembangkan produk atau layanan perangkat lunak independen, dan bukan pihak agensi pengembangan (development shop)",
+			"Memiliki situs web perusahaan yang fungsional serta profil LinkedIn aktif",
+			"Belum pernah berpartisipasi atau mengklaim manfaat pada program MongoDB for Startups di periode sebelumnya"
+		],
+		"publishedAt": "2026-06-13",
+		"ctaLink": "https://www.mongodb.com/solutions/startups",
+		"tags": ["Database", "Cloud", "Startup"],
+		"featured": false,
+		"status": "active",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		}
 	}
 ]
