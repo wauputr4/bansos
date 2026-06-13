@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GithubBadge from './GithubBadge.svelte';
+	import { page } from '$app/stores';
 	let { children } = $props();
 
 	const navItems = [
@@ -20,7 +21,15 @@
 			<a href="/" class="brand-mark">bansos.dev</a>
 			<div class="desktop-nav">
 				{#each navItems as item}
-					<a href={item.href}>{item.label}</a>
+					<a
+						href={item.href}
+						class={item.href !== '/' &&
+						($page.url.pathname === item.href || $page.url.pathname.startsWith(item.href + '/'))
+							? 'active'
+							: $page.url.pathname === item.href
+								? 'active'
+								: ''}>{item.label}</a
+					>
 				{/each}
 			</div>
 			<GithubBadge />
@@ -34,7 +43,9 @@
 			<p>© 2026 <a href="/">bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
 			<div class="footer-links">
 				<a href="/about">Tentang</a>
+				<span class="dot">·</span>
 				<a href="/contribute">Kontribusi</a>
+				<span class="dot">·</span>
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
 				>
@@ -44,7 +55,13 @@
 
 	<nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
 		{#each navItems as item}
-			<a href={item.href}>
+			<a
+				href={item.href}
+				class={$page.url.pathname === item.href ||
+				(item.href !== '/' && $page.url.pathname.startsWith(item.href))
+					? 'active'
+					: ''}
+			>
 				<span aria-hidden="true"><i class={item.icon}></i></span>
 				{item.label}
 			</a>
@@ -103,23 +120,37 @@
 		background: rgba(255, 255, 255, 0.05);
 	}
 
+	.desktop-nav a.active {
+		color: var(--color-accent);
+		background: rgba(16, 185, 129, 0.1);
+	}
+
 	.site-footer {
 		border-top: 1px solid var(--border-color);
 		padding-block: 1.5rem;
 		color: var(--text-muted);
 		font-size: 0.9rem;
+		text-align: center;
 	}
 
 	.footer-inner {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.footer-links {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.75rem;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.footer-links .dot {
+		color: var(--text-muted);
+		opacity: 0.5;
 	}
 
 	.mobile-bottom-nav {
@@ -144,23 +175,31 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.1rem;
+		gap: 0.2rem;
 		min-height: 3rem;
 		border-radius: 0.75rem;
 		color: var(--text-secondary);
-		font-size: 0.72rem;
+		font-size: 0.65rem;
 		font-weight: 750;
+		text-align: center;
 	}
 
 	.mobile-bottom-nav span {
-		color: var(--color-accent);
+		color: var(--text-secondary);
 		font-size: 1.15rem;
 		line-height: 1;
+		transition: color 0.2s;
 	}
 
-	.mobile-bottom-nav a:hover {
+	.mobile-bottom-nav a:hover,
+	.mobile-bottom-nav a.active {
 		background: rgba(16, 185, 129, 0.1);
-		color: var(--text-primary);
+		color: var(--color-accent);
+	}
+
+	.mobile-bottom-nav a:hover span,
+	.mobile-bottom-nav a.active span {
+		color: var(--color-accent);
 	}
 
 	@media (min-width: 48rem) {
@@ -183,6 +222,7 @@
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
+			text-align: left;
 		}
 	}
 </style>

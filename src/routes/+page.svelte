@@ -1,13 +1,14 @@
 <script lang="ts">
 	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
-	import { latestBansos } from '$lib/data/bansos';
+	import { latestBansos, featuredBansos } from '$lib/data/bansos';
 
 	// SEO metadata
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
-	const highlightedBansos = latestBansos(3);
+	const latestBansosList = latestBansos(5);
+	const featuredBansosList = featuredBansos(5);
 </script>
 
 <svelte:head>
@@ -109,12 +110,25 @@
 			<strong>100% Gratisan, No Clickbait, No Ribet.</strong>
 		</p>
 
-		<!-- Highlight Bansos Terbaru -->
-		<BansosHighlights items={highlightedBansos} />
+		<!-- Bansos Sections -->
+		<div class="bansos-sections">
+			{#if featuredBansosList.length > 0}
+				<BansosHighlights
+					items={featuredBansosList}
+					title="Rekomendasi Utama"
+					icon="fa-solid fa-fire"
+				/>
+			{/if}
+			{#if latestBansosList.length > 0}
+				<BansosHighlights items={latestBansosList} title="Bansos Terbaru" icon="fa-solid fa-bolt" />
+			{/if}
+		</div>
 
 		<!-- Large Glowing CTA -->
 		<div class="cta-container">
-			<a href="/list" class="btn-primary main-cta"> Lihat Semua List Bansos 🔎 </a>
+			<a href="/list" class="btn-primary main-cta">
+				<i class="fa-solid fa-magnifying-glass"></i> Lihat Semua Bansos
+			</a>
 		</div>
 	</header>
 
@@ -134,7 +148,7 @@
 	<!-- Contribution & GitHub Section -->
 	<section class="github-section container">
 		<div class="glass-card github-card">
-			<h2>🤝 Proyek Ini Open Source!</h2>
+			<h2><i class="fa-solid fa-handshake"></i> Proyek Ini Open Source!</h2>
 			<p class="text-pretty">
 				Punya info bansos developer lainnya? Domain gratis, hosting free-tier, API credits gratisan,
 				atau program bagi-bagi cloud? Jangan dipendam sendiri, abangku! Kirim Pull Request dan bantu
@@ -191,6 +205,14 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
+	}
+
+	.bansos-sections {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 1rem;
 	}
 
 	.badge-container {
@@ -262,6 +284,9 @@
 		padding: 1rem 2.5rem;
 		border-radius: 1rem;
 		box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.main-title:hover {
@@ -395,6 +420,14 @@
 	.github-card h2 {
 		font-size: var(--font-size-h3);
 		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	.github-card h2 i {
+		color: var(--color-accent);
 	}
 
 	.github-card p {

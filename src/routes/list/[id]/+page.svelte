@@ -314,7 +314,9 @@
 					{/each}
 				</div>
 			{:else}
-				<p class="empty-recommendation text-pretty">Belum ada rekomendasi lain saat ini, balik ke list ya.</p>
+				<p class="empty-recommendation text-pretty">
+					Belum ada rekomendasi lain saat ini, balik ke list ya.
+				</p>
 			{/if}
 		</section>
 

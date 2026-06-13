@@ -2,6 +2,14 @@
 	import type { BansosItem } from '$lib/data/bansos';
 
 	let { item, compact = false }: { item: BansosItem; compact?: boolean } = $props();
+
+	let showTooltip = $state(false);
+
+	function toggleTooltip(e: Event) {
+		e.preventDefault();
+		e.stopPropagation();
+		showTooltip = !showTooltip;
+	}
 </script>
 
 <article class:compact class:is-expired={item.status === 'expired'} class="glass-card bansos-card">
@@ -11,16 +19,7 @@
 				<span class="tag-badge">{tag}</span>
 			{/each}
 		</div>
-		<div class="status-container" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-			<span class="validity-badge">
-				{#if item.validity.type === 'forever'}
-					<i class="fa-solid fa-infinity"></i> Selamanya
-				{:else if item.validity.type === 'fixed'}
-					<i class="fa-regular fa-calendar"></i> Sampai {item.validity.date}
-				{:else}
-					<i class="fa-solid fa-question"></i> Tidak Tentu
-				{/if}
-			</span>
+		<div class="status-container">
 			<span class="status-badge status-{item.status}">
 				<i class="fa-solid fa-circle"></i>
 				{item.status.toUpperCase()}
@@ -29,7 +28,34 @@
 	</div>
 
 	<h2 class="card-title">{item.title}</h2>
-	<p class="provider-label">Provider: <strong>{item.provider}</strong></p>
+	<div class="provider-row">
+		<p class="provider-label">Provider: <strong>{item.provider}</strong></p>
+		{#if item.status !== 'expired'}
+			<span
+				class="validity-text {item.validity.description ? 'has-tooltip' : ''}"
+				role={item.validity.description ? 'button' : undefined}
+				tabindex={item.validity.description ? 0 : undefined}
+				onclick={item.validity.description ? (e) => toggleTooltip(e) : undefined}
+				onkeydown={item.validity.description
+					? (e) => (e.key === 'Enter' || e.key === ' ') && toggleTooltip(e)
+					: undefined}
+				onmouseleave={() => (showTooltip = false)}
+			>
+				{#if item.validity.type === 'forever'}
+					<i class="fa-solid fa-infinity"></i> Selamanya
+				{:else if item.validity.type === 'fixed'}
+					<i class="fa-regular fa-calendar"></i> {item.validity.date}
+				{:else}
+					<i class="fa-solid fa-question"></i> Tidak Tentu
+				{/if}
+				{#if item.validity.description}
+					<span class="tooltip-text" class:show-mobile={showTooltip}
+						>{item.validity.description}</span
+					>
+				{/if}
+			</span>
+		{/if}
+	</div>
 	{#if item.contributor}
 		<p class="contributor-label">
 			Kontributor:
@@ -105,19 +131,16 @@
 		flex-shrink: 0;
 	}
 
-	.status-badge,
-	.validity-badge {
+	.status-badge {
 		font-size: 0.75rem;
 		font-weight: 750;
-		padding: 0.2rem 0.6rem;
+		padding: 0.3rem 0.6rem;
 		border-radius: 0.5rem;
 		white-space: nowrap;
-	}
-
-	.validity-badge {
-		background: rgba(255, 255, 255, 0.05);
-		color: var(--text-muted);
-		border: 1px solid var(--border-color);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		line-height: 1;
 	}
 
 	.status-active {
@@ -147,6 +170,77 @@
 		color: var(--text-secondary);
 	}
 
+	.provider-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: -0.5rem;
+	}
+
+	.provider-label {
+		margin: 0;
+	}
+
+	.validity-text {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-weight: 600;
+	}
+
+	.has-tooltip {
+		position: relative;
+		cursor: help;
+	}
+
+	@media (pointer: coarse) {
+		.has-tooltip {
+			cursor: pointer;
+		}
+	}
+
+	.has-tooltip .tooltip-text {
+		visibility: hidden;
+		opacity: 0;
+		position: absolute;
+		bottom: 140%;
+		right: 0;
+		transform: translateY(5px);
+		background: rgba(15, 23, 42, 0.98);
+		color: #fff;
+		padding: 0.6rem 0.85rem;
+		border-radius: 0.5rem;
+		font-size: 0.75rem;
+		width: max-content;
+		max-width: 220px;
+		white-space: normal;
+		z-index: 50;
+		transition: all 0.2s ease;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		pointer-events: none;
+		line-height: 1.4;
+		text-align: right;
+		font-weight: 500;
+	}
+
+	@media (hover: hover) {
+		.has-tooltip:hover .tooltip-text,
+		.has-tooltip:active .tooltip-text {
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.tooltip-text.show-mobile {
+		visibility: visible !important;
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+	}
+
 	.contributor-label {
 		margin-top: -0.5rem;
 		color: var(--text-muted);
@@ -168,5 +262,9 @@
 
 	.card-actions .btn-primary {
 		width: 100%;
+	}
+
+	@media (max-width: 48rem) {
+		/* Remove the flex wrap static changes */
 	}
 </style>

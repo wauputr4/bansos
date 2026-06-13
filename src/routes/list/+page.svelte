@@ -40,6 +40,7 @@
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
+	let selectedValidities: string[] = $state([]);
 	let sortOrder: 'newest' | 'oldest' = $state('newest');
 	let filterExpanded = $state(false);
 	let floatingEmojis: { id: number; x: number; y: number; icon: string; color?: string }[] = $state(
@@ -59,7 +60,9 @@
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
 				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
-				return tagMatch && statusMatch;
+				const validityMatch =
+					selectedValidities.length === 0 || selectedValidities.includes(item.validity.type);
+				return tagMatch && statusMatch && validityMatch;
 			})
 			.sort((a, b) => (sortOrder === 'newest' ? b.index - a.index : a.index - b.index))
 			.map(({ item }) => item)
@@ -69,7 +72,7 @@
 	const timerM = $derived(Math.floor(totalSeconds / 60));
 	const timerS = $derived(totalSeconds % 60);
 	const formattedTime = $derived(
-		remainingTime <= 0 ? '' : timerM > 0 ? `(${timerM}m ${timerS}s)` : `(${timerS}s)`
+		remainingTime <= 0 ? '' : timerM > 0 ? `${timerM}m ${timerS}s` : `${timerS}s`
 	);
 
 	async function handleRefresh() {
@@ -147,18 +150,18 @@
 				</svg>
 			</h1>
 			<button
-				class="btn-secondary"
-				style="gap: 0.5rem; font-size: 0.9rem; padding: 0.5rem 1rem; min-width: 10.5rem;"
+				class="btn-secondary refresh-btn"
 				onclick={handleRefresh}
 				disabled={bansosState.isFetching || remainingTime > 0}
 			>
-				<i class="fa-solid fa-rotate-right" class:fa-spin={bansosState.isFetching}></i>
 				{#if bansosState.isFetching}
-					Memperbarui...
+					<i class="fa-solid fa-rotate-right fa-spin"></i>
+					<span class="refresh-text">Memperbarui...</span>
 				{:else if remainingTime > 0}
-					Tunggu {formattedTime}
+					<span class="countdown-text">{formattedTime}</span>
 				{:else}
-					Refresh Data
+					<i class="fa-solid fa-rotate-right"></i>
+					<span class="refresh-text">Refresh Data</span>
 				{/if}
 			</button>
 		</div>
@@ -176,8 +179,10 @@
 			>
 				<div class="filter-title">
 					<i class="fa-solid fa-filter"></i> Filter Kategori
-					{#if selectedTags.length > 0 || selectedStatuses.length > 0}
-						<span class="active-count">{selectedTags.length + selectedStatuses.length}</span>
+					{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
+						<span class="active-count"
+							>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
+						>
 					{/if}
 				</div>
 				<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
@@ -241,6 +246,38 @@
 					</div>
 
 					<div class="filter-group">
+						<h3 class="filter-group-title">Masa Berlaku</h3>
+						<div class="tag-grid">
+							<button
+								class="tag-btn"
+								class:active={selectedValidities.length === 0}
+								onclick={() => (selectedValidities = [])}
+							>
+								Semua Masa Berlaku
+							</button>
+							{#each ['forever', 'fixed', 'uncertain'] as validity}
+								<button
+									class="tag-btn"
+									class:active={selectedValidities.includes(validity)}
+									onclick={() => {
+										if (selectedValidities.includes(validity)) {
+											selectedValidities = selectedValidities.filter((v) => v !== validity);
+										} else {
+											selectedValidities = [...selectedValidities, validity];
+										}
+									}}
+								>
+									{validity === 'forever'
+										? 'Selamanya'
+										: validity === 'fixed'
+											? 'Batas Waktu'
+											: 'Tidak Tentu'}
+								</button>
+							{/each}
+						</div>
+					</div>
+
+					<div class="filter-group">
 						<h3 class="filter-group-title">Kategori</h3>
 						<div class="tag-grid">
 							<button
@@ -284,6 +321,7 @@
 					onclick={() => {
 						selectedTags = [];
 						selectedStatuses = [];
+						selectedValidities = [];
 						sortOrder = 'newest';
 					}}
 				>
@@ -321,6 +359,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+	}
+
+	.refresh-btn {
+		gap: 0.5rem;
+		font-size: 0.9rem;
+		padding: 0.5rem 1rem;
+		min-width: 10.5rem;
 	}
 
 	.section-title {
@@ -581,6 +626,27 @@
 		100% {
 			transform: translateY(12px);
 			opacity: 0;
+		}
+	}
+
+	@media (max-width: 48rem) {
+		.refresh-text {
+			display: none;
+		}
+
+		.refresh-btn {
+			padding: 0.5rem;
+			width: 2.5rem;
+			height: 2.5rem;
+			min-width: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.refresh-btn:disabled {
+			width: auto;
+			padding: 0.5rem 0.75rem;
 		}
 	}
 
