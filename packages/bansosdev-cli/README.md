@@ -2,6 +2,12 @@
 
 CLI untuk menambahkan entri bansos ke repo [bansos.dev](https://bansos.dev).
 
+Lihat bantuan CLI:
+
+```bash
+npx bansosdev --help
+```
+
 ## Mode contributor
 
 Default mode adalah `issue`.

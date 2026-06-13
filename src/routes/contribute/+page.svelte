@@ -2,22 +2,25 @@
 	import { getContributorStats, type ContributorSummary } from '$lib/data/bansos';
 
 	const contributors: ContributorSummary[] = getContributorStats();
-	const singleLineExample = 'npx bansosdev --help';
+	const singleLineExample =
+		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const multilineExample = [
 		'npx bansosdev add \\',
-		'  --id contoh-bansos \\',
-		'  --title "Contoh Bansos Developer" \\',
-		'  --provider "Provider" \\',
-		'  --description "Deskripsi singkat bansos." \\',
-		'  --benefits "Benefit satu|Benefit dua" \\',
+		'  --id namecom-domain-app \\',
+		'  --title "Promo Domain .DEV & .APP Gratis dari Name.com" \\',
+		'  --provider "Name.com" \\',
+		'  --description "Domain .dev dan .app gratis buat developer yang mau rilis aplikasi tanpa keluar budget domain." \\',
+		'  --benefits "Domain .dev dan .app gratis|Tidak perlu kartu kredit|Limit 1 domain per akun|Promo code DEVWEEK26 sudah tidak aktif" \\',
 		'  --validity-type "uncertain" \\',
-		'  --validity-desc "Berlaku sampai slot habis" \\',
-		'  --requirements "Buat akun|Klaim program" \\',
-		'  --cta-link "https://example.com" \\',
-		'  --contributor-name "Nama Kamu" \\',
-		'  --contributor-url "https://example.com" \\',
-		'  --tags "Cloud,Gratisan" \\',
-		'  --status active'
+		'  --validity-desc "Sudah tidak aktif (promo code tidak bisa digunakan lagi)" \\',
+		'  --requirements "Punya akun Name.com aktif|Pilih domain .dev atau .app yang tersedia|Gunakan promo code pas checkout" \\',
+		'  --promo-code "DEVWEEK26" \\',
+		'  --cta-link "https://www.name.com" \\',
+		'  --contributor-name "Wauputra" \\',
+		'  --contributor-url "https://wau.my.id" \\',
+		'  --tags "Domain,Gratisan,No Credit Card" \\',
+		'  --featured true \\',
+		'  --status expired'
 	].join('\n');
 	let copiedNotice = $state('');
 
