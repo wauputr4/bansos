@@ -157,7 +157,7 @@
 			</p>
 			<div class="github-actions">
 				<a href={resolve('/contribute')} class="btn-secondary">
-					<i class="fa-solid fa-code-pull-request btn-icon"></i>
+					<i class="fa-solid fa-code-pull-request btn-icon" aria-hidden="true"></i>
 					Kontribusi
 				</a>
 			</div>
