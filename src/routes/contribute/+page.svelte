@@ -56,8 +56,8 @@
 		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
 		<p>
 			Info baru bisa ditambahkan lewat CLI. Kamu submit issue dari hasil command, lalu bot akan
-			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program,
-			provider, benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
+			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program, provider,
+			benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
 		</p>
 
 		<div class="command-box">
@@ -99,9 +99,8 @@
 				<h2>Pakai skill khusus biar agent gak halu pas nambah bansos.</h2>
 				<p>
 					Kalau kamu pakai AI agent yang support Agent Skills, install skill resmi
-					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin
-					agent cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi
-					bansos.dev.
+					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin agent
+					cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi bansos.dev.
 				</p>
 			</div>
 			<div class="command-panel">
