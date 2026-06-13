@@ -2,6 +2,40 @@
 	import { getContributorStats, type ContributorSummary } from '$lib/data/bansos';
 
 	const contributors: ContributorSummary[] = getContributorStats();
+	const singleLineExample =
+		'npx bansosdev add --id name-com-developer-jelata --title "Promo Domain .app/.dev/.online/.site/.link" --provider "name.com" --description "Nikmati promo pendaftaran domain dengan 12.5% diskon khusus paket domain, tanpa perlu kartu kredit untuk akun tertentu." --benefits "Tidak perlu kartu kredit|Tidak ada biaya setup|Layanan domain untuk developer" --validity "Berlaku 8-30 Juni 2026" --requirements "Daftar akun name.com|Gunakan promo code DEVWEEK26|Maksimal 1 domain per akun" --promo-code "DEVWEEK26" --cta-link "https://www.name.com" --tags "Domain,Promo,Gratis,Cloud" --contributor-name "Wauputra" --contributor-url "https://wau.my.id" --featured false --status expired';
+	const multilineExample =
+		`npx bansosdev add \
+  --id name-com-developer-jelata \
+  --title "Promo Domain .app/.dev/.online/.site/.link" \
+  --provider "name.com" \
+  --description "Nikmati promo pendaftaran domain dengan 12.5% diskon khusus paket domain, tanpa perlu kartu kredit untuk akun tertentu." \
+  --benefits "Tidak perlu kartu kredit|Tidak ada biaya setup|Layanan domain untuk developer" \
+  --validity "Berlaku 8-30 Juni 2026" \
+  --requirements "Daftar akun name.com|Gunakan promo code DEVWEEK26|Maksimal 1 domain per akun" \
+  --promo-code "DEVWEEK26" \
+  --cta-link "https://www.name.com" \
+  --tags "Domain,Promo,Gratis,Cloud" \
+  --contributor-name "Wauputra" \
+  --contributor-url "https://wau.my.id" \
+  --featured false \
+  --status expired`;
+	let copiedNotice = '';
+
+	const copyToClipboard = async (text: string, label: string) => {
+		try {
+			await navigator.clipboard.writeText(text);
+			copiedNotice = `${label} sudah disalin 👍`;
+			setTimeout(() => {
+				copiedNotice = '';
+			}, 1800);
+		} catch {
+			copiedNotice = 'Gagal copy, coba blok URL manual dulu ya.';
+			setTimeout(() => {
+				copiedNotice = '';
+			}, 2200);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -20,21 +54,35 @@
 
 		<div class="command-box">
 			<p>Contoh submit via CLI (format lengkap yang diterima):</p>
-			<pre class="command-block"><code>npx bansosdev add \
-  --id name-com-developer-jelata \
-  --title "Promo Domain .app/.dev/.online/.site/.link" \
-  --provider "name.com" \
-  --description "Nikmati promo pendaftaran domain dengan 12.5% diskon khusus paket domain, tanpa perlu kartu kredit untuk akun tertentu." \
-  --benefits "Tidak perlu kartu kredit|Tidak ada biaya setup|Layanan domain untuk developer" \
-  --validity "Berlaku 8-30 Juni 2026" \
-  --requirements "Daftar akun name.com|Gunakan promo code DEVWEEK26|Maksimal 1 domain per akun" \
-  --promo-code "DEVWEEK26" \
-  --cta-link "https://www.name.com" \
-  --tags "Domain,Promo,Gratis,Cloud" \
-  --contributor-name "Wauputra" \
-  --contributor-url "https://wau.my.id" \
-  --featured false \
-  --status expired</code></pre>
+			<div class="command-panel">
+				<div class="command-head">
+					<span>Contoh memanjang (1 baris):</span>
+					<button
+						type="button"
+						class="copy-button"
+						on:click={() => copyToClipboard(singleLineExample, 'Command one-line')}
+					>
+						Copy
+					</button>
+				</div>
+				<pre class="command-inline"><code>{singleLineExample}</code></pre>
+			</div>
+			<div class="command-panel">
+				<div class="command-head">
+					<span>Versi rapi (dengan jeda baris biar enak dibaca):</span>
+					<button
+						type="button"
+						class="copy-button"
+						on:click={() => copyToClipboard(multilineExample, 'Command multiline')}
+					>
+						Copy
+					</button>
+				</div>
+				<pre class="command-block"><code>{multilineExample}</code></pre>
+			</div>
+			{#if copiedNotice}
+				<p class="copy-notice">{copiedNotice}</p>
+			{/if}
 		</div>
 
 		<div class="actions">
@@ -119,13 +167,72 @@
 		overflow-x: auto;
 	}
 
+	.command-panel {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.command-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.8rem;
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+	}
+
+	.copy-button {
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid var(--border-color);
+		color: var(--text-primary);
+		border-radius: 0.6rem;
+		font-size: 0.76rem;
+		padding: 0.38rem 0.75rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.copy-button:hover {
+		background: rgba(255, 255, 255, 0.14);
+		border-color: rgba(255, 255, 255, 0.35);
+	}
+
+	.command-block,
+	.command-inline {
+		background: rgba(0, 0, 0, 0.2);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		padding: 0.9rem 1rem;
+		overflow-x: auto;
+		margin: 0;
+	}
+
+	.command-inline code,
 	.command-block code {
 		display: block;
 		color: var(--text-primary);
 		font-size: 0.82rem;
 		line-height: 1.6;
+	}
+
+	.command-inline code {
+		white-space: nowrap;
+	}
+
+	.command-block {
 		white-space: pre-wrap;
 		word-break: break-word;
+	}
+
+	.copy-notice {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: 0.84rem;
 	}
 
 	.actions {
