@@ -506,5 +506,34 @@
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
 		}
+	},
+	{
+		"id": "namecheap-hosting-trial",
+		"title": "Trial Gratis 30 Hari Hosting Namecheap",
+		"provider": "Namecheap",
+		"description": "Namecheap memberikan akses trial gratis selama 30 hari untuk layanan Shared Web Hosting, Email Hosting, dan WordPress Hosting.",
+		"benefits": [
+			"Akses gratis selama 30 hari",
+			"Tersedia untuk opsi Shared Web Hosting, Email Hosting, dan WordPress Hosting",
+			"Kapasitas pengujian server secara langsung sebelum pembelian paket penuh"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Masa trial berlaku selama 30 hari terhitung sejak aktivasi"
+		},
+		"requirements": [
+			"Buat akun di platform Namecheap",
+			"Pilih paket hosting yang diinginkan pada halaman layanan",
+			"Ikuti instruksi pada layar untuk menyelesaikan aktivasi"
+		],
+		"publishedAt": "2026-06-13",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://www.namecheap.com/hosting/",
+		"tags": ["Hosting", "Gratis Trial", "Server"],
+		"featured": false,
+		"status": "active"
 	}
 ]
