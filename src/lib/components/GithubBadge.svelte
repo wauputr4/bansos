@@ -15,19 +15,15 @@
 	}
 
 	onMount(() => {
-		const CACHE_KEY = `bansos_gh_${repo}`;
-		const TTL = 2 * 60 * 60 * 1000; // 2 hours
+		const CACHE_KEY = `bansos_gh_v2_${repo}`;
 
 		const cached = localStorage.getItem(CACHE_KEY);
 		if (cached) {
 			try {
 				const parsed = JSON.parse(cached);
-				if (Date.now() - parsed.timestamp < TTL) {
-					stars = parsed.stars;
-					forks = parsed.forks;
-					version = parsed.version;
-					return;
-				}
+				stars = parsed.stars ?? stars;
+				forks = parsed.forks ?? forks;
+				version = parsed.version ?? version;
 			} catch {
 				// Ignore parse error
 			}
@@ -50,7 +46,7 @@
 					}
 					localStorage.setItem(
 						CACHE_KEY,
-						JSON.stringify({ stars, forks, version, timestamp: Date.now() })
+						JSON.stringify({ stars, forks, version })
 					);
 				}
 			})
