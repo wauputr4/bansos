@@ -209,5 +209,39 @@
 		"tags": ["AI Education", "Course", "Gratisan", "Sertifikat", "Referral"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "dahono-labs-ai-api",
+		"title": "Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs",
+		"provider": "Dahono Labs",
+		"description": "Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.",
+		"benefits": [
+			"100% OpenAI Compatible API",
+			"Mendukung banyak model flagship (Qwen, DeepSeek, dll)",
+			"Tidak perlu kartu kredit",
+			"Kuota gratis per hari (Tier Free s/d 2 juta TPD)"
+		],
+		"validity": {
+			"type": "forever",
+			"description": "Berlaku untuk semua pengguna yang mendaftar"
+		},
+		"requirements": [
+			"Daftar akun di Dahono Labs Gateway",
+			"Masuk ke Dashboard dan buat API Key"
+		],
+		"contributor": {
+			"name": "Dahono Labs",
+			"url": "https://labs.dahono.com/"
+		},
+		"ctaLink": "https://gateway.dahono.com/",
+		"tags": [
+			"API",
+			"AI",
+			"OpenAI Compatible",
+			"Gratisan",
+			"No Credit Card"
+		],
+		"featured": true,
+		"status": "active"
 	}
 ]

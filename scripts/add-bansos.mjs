@@ -83,6 +83,15 @@ if (validityDesc) {
 	validity.description = validityDesc;
 }
 
+const contributorName =
+	mergedArgs['contributor-name'] ||
+	mergedArgs.contributorName ||
+	(mergedArgs.contributor && mergedArgs.contributor.name);
+const contributorUrl =
+	mergedArgs['contributor-url'] ||
+	mergedArgs.contributorUrl ||
+	(mergedArgs.contributor && mergedArgs.contributor.url);
+
 const item = {
 	id: required(mergedArgs, 'id'),
 	title: required(mergedArgs, 'title'),
@@ -98,11 +107,10 @@ const item = {
 		: list(required(mergedArgs, 'requirements')),
 	tips: mergedArgs.tips,
 	contributor:
-		(mergedArgs['contributor-name'] || mergedArgs.contributorName) &&
-		(mergedArgs['contributor-url'] || mergedArgs.contributorUrl)
+		contributorName && contributorUrl
 			? {
-					name: mergedArgs['contributor-name'] || mergedArgs.contributorName,
-					url: mergedArgs['contributor-url'] || mergedArgs.contributorUrl
+					name: contributorName,
+					url: contributorUrl
 				}
 			: undefined,
 	ctaLink: mergedArgs['cta-link'] || required(mergedArgs, 'ctaLink'),
@@ -115,12 +123,7 @@ if (item.benefits.length === 0) throw new Error('--benefits must contain at leas
 if (item.requirements.length === 0)
 	throw new Error('--requirements must contain at least one item');
 if (item.tags.length === 0) throw new Error('--tags must contain at least one item');
-if (
-	((mergedArgs['contributor-name'] || mergedArgs.contributorName) &&
-		!(mergedArgs['contributor-url'] || mergedArgs.contributorUrl)) ||
-	(!(mergedArgs['contributor-name'] || mergedArgs.contributorName) &&
-		(mergedArgs['contributor-url'] || mergedArgs.contributorUrl))
-) {
+if ((contributorName && !contributorUrl) || (!contributorName && contributorUrl)) {
 	throw new Error('Use --contributor-name and --contributor-url together');
 }
 
