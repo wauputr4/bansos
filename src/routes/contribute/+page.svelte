@@ -19,13 +19,22 @@
 		</p>
 
 		<div class="command-box">
-			<p>Contoh submit via CLI:</p>
-			<code
-				>npx bansosdev add --id contoh-bansos --title "Contoh Bansos" --provider "Provider"
-				--description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity "Berlaku
-				sampai ..." --requirements "Daftar akun|Klaim program" --cta-link "https://example.com"
-				--tags "Cloud,Gratisan"</code
-			>
+			<p>Contoh submit via CLI (format lengkap yang diterima):</p>
+			<pre class="command-block"><code>npx bansosdev add \
+  --id name-com-developer-jelata \
+  --title "Promo Domain .app/.dev/.online/.site/.link" \
+  --provider "name.com" \
+  --description "Nikmati promo pendaftaran domain dengan 12.5% diskon khusus paket domain, tanpa perlu kartu kredit untuk akun tertentu." \
+  --benefits "Tidak perlu kartu kredit|Tidak ada biaya setup|Layanan domain untuk developer" \
+  --validity "Berlaku 8-30 Juni 2026" \
+  --requirements "Daftar akun name.com|Gunakan promo code DEVWEEK26|Maksimal 1 domain per akun" \
+  --promo-code "DEVWEEK26" \
+  --cta-link "https://www.name.com" \
+  --tags "Domain,Promo,Gratis,Cloud" \
+  --contributor-name "Wauputra" \
+  --contributor-url "https://wau.my.id" \
+  --featured false \
+  --status expired</code></pre>
 		</div>
 
 		<div class="actions">
@@ -37,7 +46,6 @@
 			>
 				Buka GitHub
 			</a>
-			<a href="/list" class="btn-secondary">Lihat Contoh Data</a>
 		</div>
 
 		<section class="contributors-section">
@@ -102,13 +110,22 @@
 		padding: 1rem;
 	}
 
-	code {
-		display: block;
+	.command-block {
+		margin: 0;
+		background: rgba(0, 0, 0, 0.2);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		padding: 0.9rem 1rem;
 		overflow-x: auto;
+	}
+
+	.command-block code {
+		display: block;
 		color: var(--text-primary);
 		font-size: 0.82rem;
 		line-height: 1.6;
-		white-space: nowrap;
+		white-space: pre-wrap;
+		word-break: break-word;
 	}
 
 	.actions {
