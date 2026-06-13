@@ -1,7 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
 	import { bansosList, latestBansos, featuredBansos } from '$lib/data/bansos';
+
+	type GithubContributor = {
+		login: string;
+		avatar_url: string;
+		html_url: string;
+		contributions: number;
+	};
+
+	const repo = 'wauputr4/bansos';
+	const repoUrl = `https://github.com/${repo}`;
 
 	// SEO metadata
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
@@ -14,6 +25,58 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
+	let githubStars: number | string = $state('-');
+	let githubPrs: number | string = $state('-');
+	let githubContributors: GithubContributor[] = $state([]);
+
+	function formatNumber(num: number | string) {
+		if (typeof num !== 'number') return num;
+		if (num >= 1000) return `${(num / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+		return num;
+	}
+
+	onMount(() => {
+		const CACHE_KEY = `bansos_home_repo_v1_${repo}`;
+		const cached = localStorage.getItem(CACHE_KEY);
+
+		if (cached) {
+			try {
+				const parsed = JSON.parse(cached);
+				githubStars = parsed.stars ?? githubStars;
+				githubPrs = parsed.prs ?? githubPrs;
+				githubContributors = parsed.contributors ?? githubContributors;
+			} catch {
+				// Ignore stale cache.
+			}
+		}
+
+		Promise.all([
+			fetch(`https://api.github.com/repos/${repo}`).then((res) => (res.ok ? res.json() : null)),
+			fetch(`https://api.github.com/repos/${repo}/contributors?per_page=10`).then((res) =>
+				res.ok ? res.json() : null
+			),
+			fetch(`https://api.github.com/search/issues?q=repo:${repo}+type:pr`).then((res) =>
+				res.ok ? res.json() : null
+			)
+		])
+			.then(([repoData, contributorsData, prData]) => {
+				if (repoData) githubStars = repoData.stargazers_count;
+				if (Array.isArray(contributorsData)) {
+					githubContributors = contributorsData.slice(0, 8);
+				}
+				if (prData) githubPrs = prData.total_count;
+
+				localStorage.setItem(
+					CACHE_KEY,
+					JSON.stringify({
+						stars: githubStars,
+						prs: githubPrs,
+						contributors: githubContributors
+					})
+				);
+			})
+			.catch(() => {});
+	});
 </script>
 
 <svelte:head>
@@ -178,6 +241,39 @@
 				atau program bagi-bagi cloud? Jangan dipendam sendiri, abangku! Kirim Pull Request dan bantu
 				sesama developer jelata bertahan hidup.
 			</p>
+			<div class="repo-live-panel" aria-label="Statistik repository GitHub bansos.dev">
+				<div class="contributors-stack" aria-label="Kontributor repository">
+					{#if githubContributors.length > 0}
+						{#each githubContributors as contributor (contributor.login)}
+							<a
+								href={contributor.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="contributor-avatar"
+								aria-label={`${contributor.login}, ${contributor.contributions} kontribusi`}
+							>
+								<img src={contributor.avatar_url} alt={contributor.login} loading="lazy" />
+							</a>
+						{/each}
+					{:else}
+						<span class="avatar-skeleton"></span>
+						<span class="avatar-skeleton"></span>
+						<span class="avatar-skeleton"></span>
+					{/if}
+				</div>
+				<div class="repo-live-stats">
+					<a href={repoUrl} target="_blank" rel="noopener noreferrer" class="repo-stat">
+						<i class="fa-solid fa-star" aria-hidden="true"></i>
+						<span>{formatNumber(githubStars)}</span>
+						Stars
+					</a>
+					<a href={`${repoUrl}/pulls`} target="_blank" rel="noopener noreferrer" class="repo-stat">
+						<i class="fa-solid fa-code-pull-request" aria-hidden="true"></i>
+						<span>{formatNumber(githubPrs)}</span>
+						PR
+					</a>
+				</div>
+			</div>
 			<div class="github-actions">
 				<a href={resolve('/contribute')} class="btn-secondary">
 					<i class="fa-solid fa-code-pull-request btn-icon" aria-hidden="true"></i>
@@ -491,6 +587,94 @@
 	.github-actions {
 		display: flex;
 		gap: 1rem;
+	}
+
+	.repo-live-panel {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.85rem;
+	}
+
+	.contributors-stack {
+		display: flex;
+		justify-content: center;
+		padding-left: 0.75rem;
+	}
+
+	.contributor-avatar,
+	.avatar-skeleton {
+		width: 2.35rem;
+		height: 2.35rem;
+		margin-left: -0.75rem;
+		border: 2px solid rgba(9, 10, 15, 0.95);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+	}
+
+	.contributor-avatar {
+		overflow: hidden;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.contributor-avatar:hover {
+		transform: translateY(-2px);
+		border-color: rgba(16, 185, 129, 0.8);
+	}
+
+	.contributor-avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.avatar-skeleton {
+		display: block;
+		animation: pulse-avatar 1.5s ease-in-out infinite;
+	}
+
+	.repo-live-stats {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.65rem;
+	}
+
+	.repo-stat {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--text-secondary);
+		padding: 0.4rem 0.75rem;
+		font-size: 0.85rem;
+		font-weight: 750;
+	}
+
+	.repo-stat:hover {
+		color: var(--text-primary);
+		background: rgba(255, 255, 255, 0.08);
+	}
+
+	.repo-stat i,
+	.repo-stat span {
+		color: var(--color-accent);
+	}
+
+	@keyframes pulse-avatar {
+		0%,
+		100% {
+			opacity: 0.45;
+		}
+		50% {
+			opacity: 0.9;
+		}
 	}
 
 	.btn-icon {
