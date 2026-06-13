@@ -4,12 +4,13 @@
 	import { page } from '$app/stores';
 	let { children } = $props();
 
-	const navItems = [
+	type ValidRoute = '/' | '/list' | '/contribute' | '/about';
+	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	] as const;
+	];
 
 	function isActivePath(pathname: string, href: string) {
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
@@ -27,7 +28,7 @@
 			<div class="desktop-nav">
 				{#each navItems as item (item.href)}
 					<a
-						href={resolve(item.href as any)}
+						href={resolve(item.href)}
 						class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}>{item.label}</a
 					>
 				{/each}
@@ -55,7 +56,7 @@
 	<nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
 		{#each navItems as item (item.href)}
 			<a
-				href={resolve(item.href as any)}
+				href={resolve(item.href)}
 				class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}
 			>
 				<span aria-hidden="true"><i class={item.icon}></i></span>

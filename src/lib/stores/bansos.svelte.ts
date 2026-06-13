@@ -45,7 +45,7 @@ export function initBansosStore() {
 	isInitialized = true;
 
 	// Fetch true server time to prevent local client clock bypass
-	fetch(window.location.href, { method: 'HEAD' })
+	fetch('/robots.txt', { method: 'HEAD' })
 		.then((res) => {
 			const dateHeader = res.headers.get('Date');
 			if (dateHeader) {
