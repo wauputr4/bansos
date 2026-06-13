@@ -109,7 +109,7 @@
 <style>
 	.scroll-section {
 		width: 100%;
-		max-width: 58rem;
+		max-width: 100%;
 		margin-block: 1rem;
 		display: flex;
 		flex-direction: column;
@@ -350,14 +350,18 @@
 	}
 
 	@media (min-width: 48rem) {
+		.scroll-section {
+			max-width: min(100%, 74rem);
+		}
+
 		.highlight-card {
-			flex: 0 0 calc(50% - 0.5rem);
+			flex: 0 0 min(26rem, calc(50% - 0.5rem));
 		}
 	}
 
 	@media (min-width: 64rem) {
 		.highlight-card {
-			flex: 0 0 calc(33.333% - 0.66rem);
+			flex-basis: 28rem;
 		}
 	}
 </style>
