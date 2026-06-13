@@ -11,9 +11,7 @@ permissions:
 
 jobs:
   create-pr:
-    if: |
-      contains(github.event.issue.labels.*.name, 'submission') ||
-      startsWith(github.event.issue.title, 'Tambah bansos:')
+    if: ${{ contains(github.event.issue.labels.*.name, 'submission') || startsWith(github.event.issue.title, 'Tambah bansos:') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,11 +64,11 @@ jobs:
               --title "Tambah bansos: ${ITEM_TITLE}" \
               --body "Auto-generated from #${ISSUE_NUMBER}.
 
-## Summary
-- Add ${ITEM_TITLE} to the bansos list.
-- Source payload comes from the contributor issue.
+            ## Summary
+            - Add ${ITEM_TITLE} to the bansos list.
+            - Source payload comes from the contributor issue.
 
-Closes #${ISSUE_NUMBER}" \
+            Closes #${ISSUE_NUMBER}" \
               --base main \
               --head "$branch"
           )"

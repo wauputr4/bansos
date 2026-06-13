@@ -4,12 +4,13 @@
 	import { page } from '$app/stores';
 	let { children } = $props();
 
-	const navItems = [
+	type ValidRoute = '/' | '/list' | '/contribute' | '/about';
+	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	] as const;
+	];
 
 	function isActivePath(pathname: string, href: string) {
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));

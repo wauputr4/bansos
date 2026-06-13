@@ -3,7 +3,7 @@
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import { recommendedBansosFor } from '$lib/data/bansos';
-	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
+	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
@@ -12,9 +12,6 @@
 
 	onMount(() => {
 		initBansosStore();
-		if (!item) {
-			fetchLatestBansos();
-		}
 	});
 
 	let copied = $state(false);
@@ -126,50 +123,30 @@
 </svelte:head>
 
 {#if !item}
-	{#if bansosState.isFetching}
-		<main
-			class="page-wrapper container"
-			style="align-items: center; justify-content: center; min-height: 60vh;"
+	<main
+		class="page-wrapper container"
+		style="align-items: center; justify-content: center; min-height: 60vh;"
+	>
+		<div
+			class="empty-state glass-card"
+			style="margin-top: 4rem; max-width: 30rem; text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;"
 		>
-			<div
-				class="empty-state glass-card"
-				style="margin-top: 4rem; max-width: 30rem; text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;"
-			>
-				<div class="empty-icon" style="font-size: 4rem;">
-					<i class="fa-solid fa-circle-notch fa-spin" style="color: var(--color-accent);"></i>
-				</div>
-				<h2>Mencari Data...</h2>
-				<p style="color: var(--text-secondary);">
-					Tunggu bentar ya, lagi nyari info terbaru dari repository...
-				</p>
+			<div class="empty-icon" style="font-size: 4rem;">
+				<i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning);"></i>
 			</div>
-		</main>
-	{:else}
-		<main
-			class="page-wrapper container"
-			style="align-items: center; justify-content: center; min-height: 60vh;"
-		>
-			<div
-				class="empty-state glass-card"
-				style="margin-top: 4rem; max-width: 30rem; text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;"
+			<h2>Waduh, Bansos ini gak ketemu!</h2>
+			<p style="color: var(--text-secondary);">
+				Sepertinya bansos ini udah digondol koruptor atau belum masuk ke sistem, fr fr 😭
+			</p>
+			<a
+				href={resolve('/list')}
+				class="btn-primary"
+				style="margin-top: 1rem; gap: 0.5rem; text-decoration: none;"
 			>
-				<div class="empty-icon" style="font-size: 4rem;">
-					<i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning);"></i>
-				</div>
-				<h2>Waduh, Bansos ini gak ketemu!</h2>
-				<p style="color: var(--text-secondary);">
-					Sepertinya bansos ini udah digondol koruptor atau belum masuk ke sistem, fr fr 😭
-				</p>
-				<a
-					href={resolve('/list')}
-					class="btn-primary"
-					style="margin-top: 1rem; gap: 0.5rem; text-decoration: none;"
-				>
-					<i class="fa-solid fa-arrow-left"></i> Kembali ke List
-				</a>
-			</div>
-		</main>
-	{/if}
+				<i class="fa-solid fa-arrow-left"></i> Kembali ke List
+			</a>
+		</div>
+	</main>
 {:else}
 	<main class="page-wrapper">
 		<div class="glow-orb detail-glow"></div>

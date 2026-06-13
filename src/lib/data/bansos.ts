@@ -104,9 +104,7 @@ export function recommendedBansosFor(
 		.filter((entry) => entry.status === 'active')
 		.map((entry) => ({
 			entry,
-			score:
-				entry.tags.filter((tag) => currentTags.has(tag)).length * 10 +
-				(entry.featured ? 2 : 0)
+			score: entry.tags.filter((tag) => currentTags.has(tag)).length * 10 + (entry.featured ? 2 : 0)
 		}))
 		.sort((a, b) => b.score - a.score)
 		.slice(0, limit)

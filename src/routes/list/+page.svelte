@@ -1,41 +1,10 @@
 <script lang="ts">
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import {
-		bansosState,
-		initBansosStore,
-		fetchLatestBansos,
-		COOLDOWN_MS
-	} from '$lib/stores/bansos.svelte';
-	import { onMount, onDestroy } from 'svelte';
-
-	let remainingTime = $state(0);
-	let timerInterval: ReturnType<typeof setInterval>;
-
-	function startCountdown() {
-		clearInterval(timerInterval);
-		const updateTimer = () => {
-			const now = Date.now();
-			const passed = now - bansosState.lastFetched;
-			if (passed < COOLDOWN_MS) {
-				remainingTime = COOLDOWN_MS - passed;
-			} else {
-				remainingTime = 0;
-				clearInterval(timerInterval);
-			}
-		};
-		updateTimer();
-		timerInterval = setInterval(updateTimer, 1000);
-	}
+	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
+	import { onMount } from 'svelte';
 
 	onMount(() => {
 		initBansosStore();
-		if (bansosState.lastFetched > 0) {
-			startCountdown();
-		}
-	});
-
-	onDestroy(() => {
-		clearInterval(timerInterval);
 	});
 
 	let selectedTags: string[] = $state([]);
@@ -64,19 +33,6 @@
 			.sort((a, b) => (sortOrder === 'newest' ? b.index - a.index : a.index - b.index))
 			.map(({ item }) => item)
 	);
-
-	const totalSeconds = $derived(Math.ceil(remainingTime / 1000));
-	const timerM = $derived(Math.floor(totalSeconds / 60));
-	const timerS = $derived(totalSeconds % 60);
-	const formattedTime = $derived(
-		remainingTime <= 0 ? '' : timerM > 0 ? `${timerM}m ${timerS}s` : `${timerS}s`
-	);
-
-	async function handleRefresh() {
-		if (remainingTime > 0) return;
-		await fetchLatestBansos();
-		startCountdown();
-	}
 </script>
 
 <svelte:head>
@@ -146,21 +102,6 @@
 					/>
 				</svg>
 			</h1>
-			<button
-				class="btn-secondary refresh-btn"
-				onclick={handleRefresh}
-				disabled={bansosState.isFetching || remainingTime > 0}
-			>
-				{#if bansosState.isFetching}
-					<i class="fa-solid fa-rotate-right fa-spin"></i>
-					<span class="refresh-text">Memperbarui...</span>
-				{:else if remainingTime > 0}
-					<span class="countdown-text">{formattedTime}</span>
-				{:else}
-					<i class="fa-solid fa-rotate-right"></i>
-					<span class="refresh-text">Refresh Data</span>
-				{/if}
-			</button>
 		</div>
 		<p class="subtitle-text text-pretty">
 			Klik kartu bansos untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
@@ -356,13 +297,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-	}
-
-	.refresh-btn {
-		gap: 0.5rem;
-		font-size: 0.9rem;
-		padding: 0.5rem 1rem;
-		min-width: 10.5rem;
 	}
 
 	.section-title {
@@ -627,24 +561,6 @@
 	}
 
 	@media (max-width: 48rem) {
-		.refresh-text {
-			display: none;
-		}
-
-		.refresh-btn {
-			padding: 0.5rem;
-			width: 2.5rem;
-			height: 2.5rem;
-			min-width: auto;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.refresh-btn:disabled {
-			width: auto;
-			padding: 0.5rem 0.75rem;
-		}
 	}
 
 	@media (min-width: 48rem) {

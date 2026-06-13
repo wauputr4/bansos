@@ -101,9 +101,7 @@ const contributorName =
 const contributorUrl =
 	mergedArgs['contributor-url'] || mergedArgs.contributorUrl || mergedArgs.contributor?.url;
 const publishedAt =
-	mergedArgs['published-at'] ||
-	mergedArgs.publishedAt ||
-	new Date().toISOString().slice(0, 10);
+	mergedArgs['published-at'] || mergedArgs.publishedAt || new Date().toISOString().slice(0, 10);
 
 if (!isValidCalendarDate(publishedAt)) {
 	throw new Error('publishedAt must be a valid YYYY-MM-DD date');
