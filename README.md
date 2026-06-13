@@ -11,19 +11,23 @@ Website statis berisi daftar program bantuan dan promo untuk developer, dirancan
 - Data terstruktur di [`src/lib/data/bansos.json`](src/lib/data/bansos.json).
 - UI modular, filter tag, dan highlight terbaru.
 - Workflow otomatis untuk menambah data lewat CLI.
+- Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
 
 ## Menjalankan proyek
 
 ```bash
 npm install
+npm run dev
 npm run build
 ```
 
 ## Cara menambah bansos
 
-Contributor cukup pakai CLI, nanti akan muncul URL issue GitHub siap-submisi:
+Ada dua cara:
 
-Jalankan command berikut, nanti CLI akan membalikin URL issue GitHub siap-submisi:
+### 1) Via CLI (disarankan untuk kontribusi umum)
+
+Jalankan ini, nanti CLI akan mengembalikan URL issue GitHub yang siap dikirim:
 
 ```bash
 npx bansosdev add \
@@ -35,9 +39,10 @@ npx bansosdev add \
   --validity "Berlaku sampai 30 Juni 2026" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
-  --tags "Cloud,Gratisan" \
   --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com"
+  --contributor-url "https://example.com" \
+  --tags "Cloud,Gratisan" \
+  --status active
 ```
 
 ### Cek payload
@@ -58,22 +63,35 @@ npm run add:bansos -- \
   --validity "Berlaku sampai 30 Juni 2026" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --contributor-name "Nama Kamu" \
+  --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan"
 ```
 
 Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
 Argumen `--tags` dipisahkan dengan koma.
 
+### 2) Maintainer mode (langsung push via trusted workflow)
+
+Jika punya token maintainer, gunakan mode direct:
+
+```bash
+BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
+```
+
+> Perlu `BANSOSDEV_GITHUB_TOKEN` dengan scope yang cukup (`contents: write`, `workflows: write`).
+
 Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
 ## Kontribusi
 
-- Fork repo ini.
-- Buat branch: `git checkout -b feat/nama-fitur`.
-- Tambahkan data lewat method di atas.
-- Buat PR.
+- Kirim data lewat CLI (cara utama) lalu follow up PR dengan issue dari URL yang muncul.
+- Jika lebih nyaman, tambahkan melalui branch + PR manual.
+- Lihat panduan kontribusi lengkap di [CONTRIBUTING](.github/CONTRIBUTING.md).
 
-Lihat panduan kontribusi di [CONTRIBUTING](.github/CONTRIBUTING.md).
+## Kode etik komunitas
+
+- Ikuti [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Lisensi
 

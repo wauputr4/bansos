@@ -5,7 +5,7 @@
 ## Cara kerja singkat
 
 - Mode default: `issue`.
-  CLI menghasilkan URL GitHub Issue dengan payload JSON.
+  CLI menghasilkan URL GitHub Issue dengan payload JSON dalam format yang siap digunakan maintainer.
 - `--mode direct`: maintainer trigger `workflow_dispatch` ke repo.
 - `--mode json`: cetak payload JSON saja (untuk validasi).
 
@@ -21,9 +21,10 @@ npx bansosdev add \
   --validity "Berlaku sampai 30 Juni 2026" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
-  --tags "Cloud,Gratisan" \
   --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com"
+  --contributor-url "https://example.com" \
+  --tags "Cloud,Gratisan" \
+  --status active
 ```
 
 ## Maintainer (otomatis ke repo)
@@ -39,6 +40,8 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \
   --validity "Berlaku sampai 30 Juni 2026" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --contributor-name "Nama Kamu" \
+  --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan"
 ```
 
@@ -47,6 +50,13 @@ Token GitHub untuk `--mode direct`:
 - Repo scope: `wauputr4/bansos`
 - Permission minimum: `Contents: write`, `Workflows: write`.
 - Simpan di environment lokal / CI secret sebagai `BANSOSDEV_GITHUB_TOKEN`.
+
+Contoh lengkap dengan validasi:
+
+```bash
+npx bansosdev add ... --mode json
+npx bansosdev add ... --mode direct
+```
 
 ## Trusted publishing npm
 
