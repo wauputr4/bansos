@@ -3,7 +3,7 @@
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import { recommendedBansosFor } from '$lib/data/bansos';
-	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
+	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
@@ -12,9 +12,6 @@
 
 	onMount(() => {
 		initBansosStore();
-		if (!item) {
-			fetchLatestBansos();
-		}
 	});
 
 	let copied = $state(false);
