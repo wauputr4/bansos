@@ -1,9 +1,6 @@
 <script lang="ts">
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import {
-		bansosState,
-		initBansosStore
-	} from '$lib/stores/bansos.svelte';
+	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -75,7 +72,6 @@
 			currentPage = totalPages;
 		}
 	});
-
 </script>
 
 <svelte:head>
@@ -395,13 +391,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-	}
-
-	.refresh-btn {
-		gap: 0.5rem;
-		font-size: 0.9rem;
-		padding: 0.5rem 1rem;
-		min-width: 10.5rem;
 	}
 
 	.section-title {
@@ -768,24 +757,6 @@
 	}
 
 	@media (max-width: 48rem) {
-		.refresh-text {
-			display: none;
-		}
-
-		.refresh-btn {
-			padding: 0.5rem;
-			width: 2.5rem;
-			height: 2.5rem;
-			min-width: auto;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.refresh-btn:disabled {
-			width: auto;
-			padding: 0.5rem 0.75rem;
-		}
 	}
 
 	@media (min-width: 48rem) {

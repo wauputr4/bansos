@@ -48,7 +48,7 @@
 			<div class="desktop-nav">
 				{#each navItems as item (item.href)}
 					<a
-						href={resolve(item.href)}
+						href={resolve(item.href as any)}
 						class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}>{item.label}</a
 					>
 				{/each}
@@ -86,7 +86,7 @@
 	<nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
 		{#each navItems as item (item.href)}
 			<a
-				href={resolve(item.href)}
+				href={resolve(item.href as any)}
 				class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}
 			>
 				<span aria-hidden="true"><i class={item.icon}></i></span>
