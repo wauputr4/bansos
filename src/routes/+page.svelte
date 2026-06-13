@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
-	import { latestBansos, featuredBansos } from '$lib/data/bansos';
+	import { bansosList, latestBansos, featuredBansos } from '$lib/data/bansos';
 
 	// SEO metadata
 	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
@@ -10,6 +10,10 @@
 	const siteUrl = 'https://bansos.dev';
 	const latestBansosList = latestBansos(10);
 	const featuredBansosList = featuredBansos(10);
+	const totalBansos = bansosList.length;
+	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
+	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
+	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
 </script>
 
 <svelte:head>
@@ -110,6 +114,25 @@
 			legit. Dibuat khusus untuk kita-kita yang butuh portofolio menyala tapi dompet lagi sekarat.
 			<strong>100% Gratisan, No Clickbait, No Ribet.</strong>
 		</p>
+
+		<div class="stats-strip" aria-label="Statistik bansos.dev">
+			<div class="stat-item">
+				<span class="stat-value">{totalBansos}</span>
+				<span class="stat-label">Total bansos</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-value">{activeBansos}</span>
+				<span class="stat-label">Masih aktif</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-value">{upcomingBansos}</span>
+				<span class="stat-label">Akan datang</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-value">{expiredBansos}</span>
+				<span class="stat-label">Arsip expired</span>
+			</div>
+		</div>
 
 		<!-- Bansos Sections -->
 		<div class="bansos-sections">
@@ -267,6 +290,38 @@
 		margin-top: 0.5rem;
 	}
 
+	.stats-strip {
+		width: min(100%, 42rem);
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.75rem;
+		margin-top: 0.25rem;
+	}
+
+	.stat-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.15rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: rgba(255, 255, 255, 0.04);
+		padding: 0.8rem 0.75rem;
+	}
+
+	.stat-value {
+		color: var(--color-accent);
+		font-size: clamp(1.45rem, 4vw, 2rem);
+		font-weight: 850;
+		line-height: 1;
+	}
+
+	.stat-label {
+		color: var(--text-secondary);
+		font-size: 0.78rem;
+		font-weight: 750;
+	}
+
 	.cta-container {
 		margin-top: 0.5rem;
 	}
@@ -341,6 +396,12 @@
 		100% {
 			transform: translateY(12px);
 			opacity: 0;
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.stats-strip {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
