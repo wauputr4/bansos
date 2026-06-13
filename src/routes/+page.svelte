@@ -8,8 +8,8 @@
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
-	const latestBansosList = latestBansos(5);
-	const featuredBansosList = featuredBansos(5);
+	const latestBansosList = latestBansos(10);
+	const featuredBansosList = featuredBansos(10);
 </script>
 
 <svelte:head>
