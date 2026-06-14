@@ -123,6 +123,9 @@
 
 		<h1 class="main-title text-gradient text-balance">bansos Developer</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
+		<p class="community-tagline text-pretty">
+			Gotong Royong dalam bantuin developer jelata lainnya untuk glow up pada projectnya
+		</p>
 
 		<!-- Anxious Sweating Computer SVG -->
 		<div class="anxious-container">
@@ -378,6 +381,15 @@
 		letter-spacing: -0.01em;
 		margin: 0;
 		opacity: 0.95;
+	}
+
+	.community-tagline {
+		max-width: 36rem;
+		color: var(--text-secondary);
+		font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+		font-weight: 650;
+		line-height: 1.6;
+		margin: -0.5rem 0 0;
 	}
 
 	.intro-text {
