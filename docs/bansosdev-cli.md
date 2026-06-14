@@ -51,7 +51,7 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \
 Token GitHub untuk `--mode direct`:
 
 - Repo scope: `wauputr4/bansos`
-- Permission minimum: `Contents: write`, `Pull requests: write`, `Workflows: write`.
+- Permission minimum: `contents: write`, `pull-requests: write`, `workflows: write`.
 - Simpan di environment lokal / CI secret sebagai `BANSOSDEV_GITHUB_TOKEN`.
 
 Contoh lengkap dengan validasi:
