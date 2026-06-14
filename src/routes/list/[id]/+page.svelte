@@ -7,22 +7,18 @@
 		getItemSource,
 		getProviderBySlug,
 		recommendedBansosFor,
-		slugifyProvider
+		slugifyProvider,
+		bansosList
 	} from '$lib/data/bansos';
-	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
-	const item = $derived(bansosState.data.find((i) => i.id === data.id) || data.item);
+	const item = $derived(bansosList.find((i) => i.id === data.id) || data.item);
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
-
-	onMount(() => {
-		initBansosStore();
-	});
 
 	let copied = $state(false);
 	let floatingEmojis = $state<{ id: number; x: number; y: number; icon: string; color?: string }[]>(
@@ -104,7 +100,7 @@
 
 	const recommendedBansos = $derived.by(() => {
 		if (!item) return [];
-		return recommendedBansosFor(item, bansosState.data, 3);
+		return recommendedBansosFor(item, bansosList, 3);
 	});
 </script>
 
@@ -202,7 +198,12 @@
 								<strong>{item.provider}</strong>
 							{/if}
 							<span aria-hidden="true">·</span>
-							<span>Diterbitkan pada Juni 2026</span>
+							<span
+								>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
+									'id-ID',
+									{ day: 'numeric', month: 'long', year: 'numeric' }
+								)}</span
+							>
 						</p>
 					</div>
 					{#if item.contributor}
@@ -218,7 +219,6 @@
 							<div class="meta-card">
 								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
 								{#if sourceIsUrl}
-									<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
 								{:else}
 									<strong>{source}</strong>
@@ -228,11 +228,10 @@
 						{#if commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"
-									><i class="fa-solid fa-code-commit"></i> Commit kontributor</span
+									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
 								>
 								<div class="commit-list">
 									{#each commitContributors as contributor (contributor.login)}
-										<!-- eslint-disable svelte/no-navigation-without-resolve -->
 										<a
 											href={contributor.commitUrl}
 											target="_blank"
@@ -243,7 +242,6 @@
 											<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
 											<span>@{contributor.login}</span>
 										</a>
-										<!-- eslint-enable svelte/no-navigation-without-resolve -->
 									{/each}
 								</div>
 							</div>
@@ -625,6 +623,12 @@
 		width: 1.5rem;
 		height: 1.5rem;
 		border-radius: 999px;
+		display: block;
+	}
+
+	.commit-person span {
+		display: inline-block;
+		transform: translateY(-1.5px);
 	}
 
 	.section-block {

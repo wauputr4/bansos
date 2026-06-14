@@ -1,11 +1,9 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { bansosState, initBansosStore } from '$lib/stores/bansos.svelte';
-	import { onMount } from 'svelte';
-
-	onMount(() => {
-		initBansosStore();
-	});
+	import SearchBox from '$lib/components/SearchBox.svelte';
+	import Pagination from '$lib/components/Pagination.svelte';
+	import { bansosList } from '$lib/data/bansos';
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
@@ -17,38 +15,58 @@
 	const pageSize = 6;
 
 	const dynamicTags = $derived(
-		Array.from(new Set(bansosState.data.flatMap((item) => item.tags))).sort((a, b) =>
-			a.localeCompare(b)
-		)
+		Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort((a, b) => a.localeCompare(b))
 	);
 
 	const filteredBansos = $derived(
-		bansosState.data
-			.map((item, index) => ({ item, index }))
-			.filter(({ item }) => {
+		bansosList
+			.map((item, index) => {
 				const query = searchQuery.trim().toLowerCase();
-				const searchable = [
-					item.title,
-					item.provider,
-					item.description,
-					item.promoCode || '',
-					item.validity.description || '',
-					item.contributor?.name || '',
-					item.tags.join(' '),
-					item.benefits.join(' '),
-					item.requirements.join(' ')
-				]
-					.join(' ')
-					.toLowerCase();
-				const searchMatch = !query || searchable.includes(query);
+				let score = 0;
+				if (query) {
+					if (item.title.toLowerCase() === query) score += 20;
+					else if (item.title.toLowerCase().includes(query)) score += 10;
+					if (item.provider.toLowerCase() === query) score += 15;
+					else if (item.provider.toLowerCase().includes(query)) score += 8;
+					if (item.tags.some((t) => t.toLowerCase() === query)) score += 12;
+					else if (item.tags.some((t) => t.toLowerCase().includes(query))) score += 5;
+					if (item.description.toLowerCase().includes(query)) score += 2;
+
+					const searchable = [
+						item.title,
+						item.provider,
+						item.description,
+						item.promoCode || '',
+						item.validity.description || '',
+						item.contributor?.name || '',
+						item.tags.join(' '),
+						item.benefits.join(' '),
+						item.requirements.join(' ')
+					]
+						.join(' ')
+						.toLowerCase();
+
+					if (searchable.includes(query)) score += 1;
+				} else {
+					score = 1;
+				}
+				return { item, index, score };
+			})
+			.filter(({ item, score }) => {
+				if (searchQuery.trim() && score === 0) return false;
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
 				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
 				const validityMatch =
 					selectedValidities.length === 0 || selectedValidities.includes(item.validity.type);
-				return searchMatch && tagMatch && statusMatch && validityMatch;
+				return tagMatch && statusMatch && validityMatch;
 			})
-			.sort((a, b) => (sortOrder === 'newest' ? b.index - a.index : a.index - b.index))
+			.sort((a, b) => {
+				if (searchQuery.trim() && a.score !== b.score) {
+					return b.score - a.score;
+				}
+				return sortOrder === 'newest' ? b.index - a.index : a.index - b.index;
+			})
 			.map(({ item }) => item)
 	);
 	const totalPages = $derived(Math.max(1, Math.ceil(filteredBansos.length / pageSize)));
@@ -59,9 +77,12 @@
 	const pageEnd = $derived(Math.min(currentPage * pageSize, filteredBansos.length));
 
 	$effect(() => {
-		if (selectedTags || selectedStatuses || selectedValidities || sortOrder || searchQuery) {
-			currentPage = 1;
-		}
+		selectedTags;
+		selectedStatuses;
+		selectedValidities;
+		sortOrder;
+		searchQuery;
+		currentPage = 1;
 	});
 
 	$effect(() => {
@@ -83,219 +104,216 @@
 	<div class="glow-orb list-glow"></div>
 
 	<!-- Header -->
-	<header class="feed-header container">
+	<header class="feed-header container content-shell">
 		<div
-			style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;"
+			style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;"
 		>
-			<h1 class="section-title">
-				<span><i class="fa-solid fa-box-open"></i> Semua Info Bansos</span>
-				<svg
-					class="anxious-icon inline-anxious"
-					viewBox="0 0 100 100"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M25 25 H75 L70 75 C69 80 64 84 59 84 H41 C36 84 31 80 30 75 Z"
-						fill="var(--bg-secondary)"
-						stroke="var(--color-success)"
-						stroke-width="4"
-					/>
-					<path
-						d="M75 35 H85 C90 35 93 39 93 44 V56 C93 61 90 65 85 65 H73"
-						stroke="var(--color-success)"
-						stroke-width="4"
-						stroke-linecap="round"
+			<div style="flex: 1; min-width: 250px;">
+				<p class="eyebrow">Katalog</p>
+				<h1 class="text-gradient" style="display: flex; align-items: center;">
+					<span>Semua Info Bansos</span>
+					<svg
+						class="anxious-icon inline-anxious"
+						viewBox="0 0 100 100"
 						fill="none"
-					/>
-					<path
-						d="M40 10 Q43 14 40 18 M50 8 Q53 13 50 18 M60 10 Q63 14 60 18"
-						stroke="var(--text-muted)"
-						stroke-width="3"
-						stroke-linecap="round"
-						fill="none"
-					/>
-					<path
-						d="M34 43 Q39 40 44 43 M52 43 Q57 40 62 43"
-						stroke="var(--text-primary)"
-						stroke-width="2.5"
-						stroke-linecap="round"
-						fill="none"
-					/>
-					<circle cx="39" cy="49" r="3" fill="var(--text-primary)" />
-					<circle cx="57" cy="49" r="3" fill="var(--text-primary)" />
-					<path
-						d="M44 58 Q48 55 52 58 T56 58"
-						stroke="var(--text-primary)"
-						stroke-width="2.5"
-						stroke-linecap="round"
-						fill="none"
-					/>
-					<path
-						class="sweat-drop"
-						d="M68 44 C68 47 66.5 49 65 49 C63.5 49 63.5 47 65 44 C66 42 67.5 40 68 38 Z"
-						fill="#38bdf8"
-					/>
-				</svg>
-			</h1>
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M25 25 H75 L70 75 C69 80 64 84 59 84 H41 C36 84 31 80 30 75 Z"
+							fill="var(--bg-secondary)"
+							stroke="var(--color-success)"
+							stroke-width="4"
+						/>
+						<path
+							d="M75 35 H85 C90 35 93 39 93 44 V56 C93 61 90 65 85 65 H73"
+							stroke="var(--color-success)"
+							stroke-width="4"
+							stroke-linecap="round"
+							fill="none"
+						/>
+						<path
+							d="M40 10 Q43 14 40 18 M50 8 Q53 13 50 18 M60 10 Q63 14 60 18"
+							stroke="var(--text-muted)"
+							stroke-width="3"
+							stroke-linecap="round"
+							fill="none"
+						/>
+						<path
+							d="M34 43 Q39 40 44 43 M52 43 Q57 40 62 43"
+							stroke="var(--text-primary)"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							fill="none"
+						/>
+						<circle cx="39" cy="49" r="3" fill="var(--text-primary)" />
+						<circle cx="57" cy="49" r="3" fill="var(--text-primary)" />
+						<path
+							d="M44 58 Q48 55 52 58 T56 58"
+							stroke="var(--text-primary)"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							fill="none"
+						/>
+						<path
+							class="sweat-drop"
+							d="M68 44 C68 47 66.5 49 65 49 C63.5 49 63.5 47 65 44 C66 42 67.5 40 68 38 Z"
+							fill="#38bdf8"
+						/>
+					</svg>
+				</h1>
+			</div>
+			<p class="subtitle-text text-pretty">
+				Eksplorasi {bansosList.length} program bantuan sosial untuk developer jelata. Klik kartu bansos
+				untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
+			</p>
 		</div>
-		<p class="subtitle-text text-pretty">
-			Klik kartu bansos untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
-		</p>
 	</header>
 
-	<section class="search-section container" aria-label="Pencarian bansos">
-		<label class="search-box">
-			<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-			<input
-				type="search"
-				bind:value={searchQuery}
-				placeholder="Cari nama, provider, benefit, tag, kontributor..."
-			/>
-			{#if searchQuery}
-				<button type="button" aria-label="Bersihkan pencarian" onclick={() => (searchQuery = '')}>
-					<i class="fa-solid fa-xmark"></i>
+	<section class="controls-section container" aria-label="Pencarian dan filter bansos">
+		<div class="controls-wrapper">
+			<div class="search-box-wrapper">
+				<SearchBox
+					bind:searchQuery
+					placeholder="Cari nama, provider, benefit, tag, kontributor..."
+				/>
+			</div>
+
+			<div class="filter-card">
+				<button
+					class="filter-header"
+					onclick={() => (filterExpanded = !filterExpanded)}
+					aria-expanded={filterExpanded}
+				>
+					<div class="filter-title">
+						<i class="fa-solid fa-filter"></i> Filter
+						{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
+							<span class="active-count"
+								>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
+							>
+						{/if}
+					</div>
+					<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
 				</button>
-			{/if}
-		</label>
-	</section>
+				{#if filterExpanded}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (filterExpanded = false)}></div>
 
-	<section class="filter-section container" aria-label="Filter tag bansos">
-		<div class="filter-card">
-			<button
-				class="filter-header"
-				onclick={() => (filterExpanded = !filterExpanded)}
-				aria-expanded={filterExpanded}
-			>
-				<div class="filter-title">
-					<i class="fa-solid fa-filter"></i> Filter Kategori
-					{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
-						<span class="active-count"
-							>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
-						>
-					{/if}
-				</div>
-				<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
-			</button>
-			{#if filterExpanded}
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div class="dropdown-backdrop" onclick={() => (filterExpanded = false)}></div>
-
-				<div class="filter-dropdown">
-					<div class="filter-group">
-						<h3 class="filter-group-title">Urutan</h3>
-						<div class="tag-grid">
-							<button
-								class="tag-btn"
-								class:active={sortOrder === 'newest'}
-								onclick={() => (sortOrder = 'newest')}
-							>
-								Terbaru
-							</button>
-							<button
-								class="tag-btn"
-								class:active={sortOrder === 'oldest'}
-								onclick={() => (sortOrder = 'oldest')}
-							>
-								Terlama
-							</button>
-						</div>
-					</div>
-
-					<div class="filter-group">
-						<h3 class="filter-group-title">Status</h3>
-						<div class="tag-grid">
-							<button
-								class="tag-btn"
-								class:active={selectedStatuses.length === 0}
-								onclick={() => (selectedStatuses = [])}
-							>
-								Semua Status
-							</button>
-							{#each ['active', 'upcoming', 'expired'] as status (status)}
+					<div class="filter-dropdown">
+						<div class="filter-group">
+							<h3 class="filter-group-title">Urutan</h3>
+							<div class="tag-grid">
 								<button
 									class="tag-btn"
-									class:active={selectedStatuses.includes(status)}
-									onclick={() => {
-										if (selectedStatuses.includes(status)) {
-											selectedStatuses = selectedStatuses.filter((s) => s !== status);
-										} else {
-											selectedStatuses = [...selectedStatuses, status];
-										}
-									}}
+									class:active={sortOrder === 'newest'}
+									onclick={() => (sortOrder = 'newest')}
 								>
-									{status === 'active'
-										? 'Aktif'
-										: status === 'upcoming'
-											? 'Akan datang'
-											: 'Expired'}
+									Terbaru
 								</button>
-							{/each}
-						</div>
-					</div>
-
-					<div class="filter-group">
-						<h3 class="filter-group-title">Masa Berlaku</h3>
-						<div class="tag-grid">
-							<button
-								class="tag-btn"
-								class:active={selectedValidities.length === 0}
-								onclick={() => (selectedValidities = [])}
-							>
-								Semua Masa Berlaku
-							</button>
-							{#each ['forever', 'fixed', 'uncertain'] as validity (validity)}
 								<button
 									class="tag-btn"
-									class:active={selectedValidities.includes(validity)}
-									onclick={() => {
-										if (selectedValidities.includes(validity)) {
-											selectedValidities = selectedValidities.filter((v) => v !== validity);
-										} else {
-											selectedValidities = [...selectedValidities, validity];
-										}
-									}}
+									class:active={sortOrder === 'oldest'}
+									onclick={() => (sortOrder = 'oldest')}
 								>
-									{validity === 'forever'
-										? 'Selamanya'
-										: validity === 'fixed'
-											? 'Batas Waktu'
-											: 'Tidak Tentu'}
+									Terlama
 								</button>
-							{/each}
+							</div>
 						</div>
-					</div>
 
-					<div class="filter-group">
-						<h3 class="filter-group-title">Kategori</h3>
-						<div class="tag-grid">
-							<button
-								class="tag-btn"
-								class:active={selectedTags.length === 0}
-								onclick={() => (selectedTags = [])}
-							>
-								Semua Kategori
-							</button>
-							{#each dynamicTags as tag (tag)}
+						<div class="filter-group">
+							<h3 class="filter-group-title">Status</h3>
+							<div class="tag-grid">
 								<button
 									class="tag-btn"
-									class:active={selectedTags.includes(tag)}
-									onclick={() => {
-										if (selectedTags.includes(tag)) {
-											selectedTags = selectedTags.filter((t) => t !== tag);
-										} else {
-											selectedTags = [...selectedTags, tag];
-										}
-									}}
+									class:active={selectedStatuses.length === 0}
+									onclick={() => (selectedStatuses = [])}
 								>
-									{tag}
+									Semua Status
 								</button>
-							{/each}
+								{#each ['active', 'upcoming', 'expired'] as status (status)}
+									<button
+										class="tag-btn"
+										class:active={selectedStatuses.includes(status)}
+										onclick={() => {
+											if (selectedStatuses.includes(status)) {
+												selectedStatuses = selectedStatuses.filter((s) => s !== status);
+											} else {
+												selectedStatuses = [...selectedStatuses, status];
+											}
+										}}
+									>
+										{status === 'active'
+											? 'Aktif'
+											: status === 'upcoming'
+												? 'Akan datang'
+												: 'Expired'}
+									</button>
+								{/each}
+							</div>
+						</div>
+
+						<div class="filter-group">
+							<h3 class="filter-group-title">Masa Berlaku</h3>
+							<div class="tag-grid">
+								<button
+									class="tag-btn"
+									class:active={selectedValidities.length === 0}
+									onclick={() => (selectedValidities = [])}
+								>
+									Semua Masa Berlaku
+								</button>
+								{#each ['forever', 'fixed', 'uncertain'] as validity (validity)}
+									<button
+										class="tag-btn"
+										class:active={selectedValidities.includes(validity)}
+										onclick={() => {
+											if (selectedValidities.includes(validity)) {
+												selectedValidities = selectedValidities.filter((v) => v !== validity);
+											} else {
+												selectedValidities = [...selectedValidities, validity];
+											}
+										}}
+									>
+										{validity === 'forever'
+											? 'Selamanya'
+											: validity === 'fixed'
+												? 'Batas Waktu'
+												: 'Tidak Tentu'}
+									</button>
+								{/each}
+							</div>
+						</div>
+
+						<div class="filter-group">
+							<h3 class="filter-group-title">Kategori</h3>
+							<div class="tag-grid">
+								<button
+									class="tag-btn"
+									class:active={selectedTags.length === 0}
+									onclick={() => (selectedTags = [])}
+								>
+									Semua Kategori
+								</button>
+								{#each dynamicTags as tag (tag)}
+									<button
+										class="tag-btn"
+										class:active={selectedTags.includes(tag)}
+										onclick={() => {
+											if (selectedTags.includes(tag)) {
+												selectedTags = selectedTags.filter((t) => t !== tag);
+											} else {
+												selectedTags = [...selectedTags, tag];
+											}
+										}}
+									>
+										{tag}
+									</button>
+								{/each}
+							</div>
 						</div>
 					</div>
-				</div>
-			{/if}
+				{/if}
+			</div>
 		</div>
 	</section>
 
@@ -330,39 +348,7 @@
 					<BansosCard {item} />
 				{/each}
 			</div>
-			{#if totalPages > 1}
-				<nav class="pagination" aria-label="Pagination daftar bansos">
-					<button
-						type="button"
-						class="page-btn"
-						aria-label="Halaman sebelumnya"
-						disabled={currentPage === 1}
-						onclick={() => (currentPage = Math.max(1, currentPage - 1))}
-					>
-						<i class="fa-solid fa-chevron-left"></i>
-					</button>
-					{#each Array(totalPages) as _, index (index)}
-						<button
-							type="button"
-							class="page-btn"
-							class:active={currentPage === index + 1}
-							aria-current={currentPage === index + 1 ? 'page' : undefined}
-							onclick={() => (currentPage = index + 1)}
-						>
-							{index + 1}
-						</button>
-					{/each}
-					<button
-						type="button"
-						class="page-btn"
-						aria-label="Halaman berikutnya"
-						disabled={currentPage === totalPages}
-						onclick={() => (currentPage = Math.min(totalPages, currentPage + 1))}
-					>
-						<i class="fa-solid fa-chevron-right"></i>
-					</button>
-				</nav>
-			{/if}
+			<Pagination bind:currentPage {totalPages} />
 		{/if}
 	</section>
 </main>
@@ -390,12 +376,19 @@
 		gap: 0.5rem;
 	}
 
-	.section-title {
-		font-size: var(--font-size-h2);
+	.eyebrow {
+		color: var(--color-accent);
+		font-size: 0.8rem;
+		font-weight: 850;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+
+	h1 {
+		font-size: var(--font-size-h1);
+		line-height: 1.1;
 		font-weight: 800;
 		letter-spacing: -0.02em;
-		display: flex;
-		align-items: center;
 	}
 
 	.subtitle-text {
@@ -403,56 +396,39 @@
 		font-size: 1rem;
 	}
 
-	.filter-section {
-		margin-bottom: -1.5rem;
+	.controls-section {
+		margin-bottom: -1rem;
 	}
 
-	.search-section {
-		margin-bottom: -2.5rem;
-	}
-
-	.search-box {
+	.controls-wrapper {
 		display: flex;
-		align-items: center;
+		flex-direction: row;
 		gap: 0.75rem;
-		border: 1px solid var(--glass-border);
-		border-radius: 1rem;
-		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
-		padding: 0.85rem 1rem;
-		color: var(--text-secondary);
+		align-items: stretch;
 	}
 
-	.search-box:focus-within {
-		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border-color));
-		box-shadow: 0 0 0 3px var(--color-accent-glow);
-	}
-
-	.search-box input {
-		width: 100%;
-		border: 0;
-		outline: 0;
-		background: transparent;
-		color: var(--text-primary);
-		font: inherit;
-		font-weight: 650;
+	.search-box-wrapper {
+		flex: 1;
 		min-width: 0;
 	}
 
-	.search-box button {
-		border: 0;
-		background: transparent;
-		color: var(--text-secondary);
-		cursor: pointer;
-		font: inherit;
+	@media (min-width: 48rem) {
+		.filter-card {
+			width: 20rem;
+		}
+		.filter-header {
+			margin: 0;
+		}
 	}
 
 	.filter-card {
 		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
 		border: 1px solid var(--glass-border);
-		padding: 1rem 1.5rem;
 		border-radius: 1rem;
 		position: relative;
 		z-index: 45;
+		display: flex;
+		align-items: center;
 	}
 
 	.filter-header {
@@ -460,14 +436,15 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		height: 100%;
 		background: transparent;
 		border: none;
 		color: var(--text-primary);
 		font-family: inherit;
-		font-size: 1.1rem;
-		font-weight: 750;
+		font-size: 1.05rem;
+		font-weight: 650;
 		cursor: pointer;
-		padding: 0;
+		padding: 1rem 1.5rem;
 	}
 
 	.filter-title {
@@ -496,16 +473,26 @@
 	.filter-dropdown {
 		position: absolute;
 		top: calc(100% + 0.5rem);
-		left: 0;
 		right: 0;
+		width: max-content;
+		max-width: calc(100vw - 2rem);
 		padding: 1.25rem 1.5rem;
 		z-index: 50;
 		border-radius: 1rem;
 		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
 		border: 1px solid var(--glass-border);
 		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-		max-height: 60vh;
+		max-height: 50vh;
 		overflow-y: auto;
+	}
+
+	@media (min-width: 48rem) {
+		.filter-dropdown {
+			left: 0;
+			width: auto;
+			max-width: none;
+			max-height: 60vh;
+		}
 	}
 
 	.filter-dropdown::-webkit-scrollbar {
@@ -578,42 +565,6 @@
 		color: var(--text-secondary);
 		font-size: 0.85rem;
 		font-weight: 750;
-	}
-
-	.pagination {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.5rem;
-		padding-top: 0.75rem;
-	}
-
-	.page-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 2.4rem;
-		height: 2.4rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.65rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-		color: var(--text-secondary);
-		font: inherit;
-		font-size: 0.9rem;
-		font-weight: 800;
-		cursor: pointer;
-	}
-
-	.page-btn:hover:not(:disabled),
-	.page-btn.active {
-		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border-color));
-		background: var(--color-accent-glow);
-		color: var(--color-accent);
-	}
-
-	.page-btn:disabled {
-		cursor: not-allowed;
-		opacity: 0.45;
 	}
 
 	.empty-state {
@@ -743,17 +694,17 @@
 			padding-block: 0.75rem 2.5rem;
 			gap: 1.5rem;
 		}
-
-		.filter-section {
-			margin-bottom: -0.75rem;
-		}
-
-		.search-section {
-			margin-bottom: -1rem;
-		}
 	}
 
 	@media (max-width: 48rem) {
+		h1 {
+			font-size: 2.5rem;
+			height: auto;
+			min-width: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 
 	@media (min-width: 48rem) {
