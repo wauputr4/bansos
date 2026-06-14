@@ -535,5 +535,33 @@
 		"tags": ["Hosting", "Gratis Trial", "Server"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "tokenrouter-minimax-m3-free",
+		"title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
+		"provider": "TokenRouter",
+		"description": "TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.",
+		"benefits": [
+			"Akses model MiniMax-M3 gratis untuk waktu terbatas",
+			"Biaya input dan output $0.0000 per token"
+		],
+		"validity": {
+			"type": "fixed",
+			"date": "2026-06-17",
+			"description": "Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026"
+		},
+		"requirements": [
+			"Lakukan pendaftaran atau login pada platform TokenRouter",
+			"Integrasikan dan panggil model MiniMax-M3 pada permintaan API"
+		],
+		"publishedAt": "2026-06-14",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://www.tokenrouter.com/",
+		"tags": ["AI Credits", "Model API", "Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
