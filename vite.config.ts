@@ -2,6 +2,9 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+const buildDate = new Date();
+const formattedDate = `v${buildDate.getFullYear()}.${String(buildDate.getMonth() + 1).padStart(2, '0')}.${String(buildDate.getDate()).padStart(2, '0')}`;
+
 export default defineConfig({
 	plugins: [
 		sveltekit({
@@ -12,5 +15,8 @@ export default defineConfig({
 			},
 			adapter: adapter()
 		})
-	]
+	],
+	define: {
+		__BUILD_DATE__: JSON.stringify(formattedDate)
+	}
 });
