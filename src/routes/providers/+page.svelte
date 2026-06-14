@@ -5,6 +5,14 @@
 	const providers = getProviderStats();
 	const totalProviders = providers.length;
 	const totalActive = providers.reduce((sum, provider) => sum + provider.activeCount, 0);
+	let currentPage = $state(1);
+	const pageSize = 6;
+	const totalPages = Math.max(1, Math.ceil(providers.length / pageSize));
+	const paginatedProviders = $derived(
+		providers.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+	);
+	const pageStart = $derived(providers.length === 0 ? 0 : (currentPage - 1) * pageSize + 1);
+	const pageEnd = $derived(Math.min(currentPage * pageSize, providers.length));
 </script>
 
 <svelte:head>
@@ -35,29 +43,70 @@
 		</div>
 	</section>
 
-	<section class="container provider-grid" aria-label="Daftar provider">
-		{#each providers as provider (provider.slug)}
-			<a href={resolve(`/providers/${provider.slug}`)} class="provider-card glass-card">
-				<div class="provider-top">
-					<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
-					<span class="active-pill"><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span>
-				</div>
-				<div>
-					<h2>{provider.name}</h2>
-					<p>
-						{provider.totalCount} bansos terdaftar
-						{#if provider.expiredCount > 0}
-							<span> · {provider.expiredCount} expired</span>
-						{/if}
-					</p>
-				</div>
-				<div class="tag-list">
-					{#each provider.tags.slice(0, 4) as tag (tag)}
-						<span>{tag}</span>
-					{/each}
-				</div>
-			</a>
-		{/each}
+	<section class="container provider-list" aria-label="Daftar provider">
+		<div class="result-summary">
+			<span>Menampilkan {pageStart}-{pageEnd} dari {providers.length} provider</span>
+			<span>Halaman {currentPage} dari {totalPages}</span>
+		</div>
+		<div class="provider-grid">
+			{#each paginatedProviders as provider (provider.slug)}
+				<a href={resolve(`/providers/${provider.slug}`)} class="provider-card glass-card">
+					<div class="provider-top">
+						<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
+						<span class="active-pill"
+							><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span
+						>
+					</div>
+					<div>
+						<h2>{provider.name}</h2>
+						<p>
+							{provider.totalCount} bansos terdaftar
+							{#if provider.expiredCount > 0}
+								<span> · {provider.expiredCount} expired</span>
+							{/if}
+						</p>
+					</div>
+					<div class="tag-list">
+						{#each provider.tags.slice(0, 4) as tag (tag)}
+							<span>{tag}</span>
+						{/each}
+					</div>
+				</a>
+			{/each}
+		</div>
+		{#if totalPages > 1}
+			<nav class="pagination" aria-label="Pagination daftar provider">
+				<button
+					type="button"
+					class="page-btn"
+					aria-label="Halaman sebelumnya"
+					disabled={currentPage === 1}
+					onclick={() => (currentPage = Math.max(1, currentPage - 1))}
+				>
+					<i class="fa-solid fa-chevron-left"></i>
+				</button>
+				{#each Array(totalPages) as _, index (index)}
+					<button
+						type="button"
+						class="page-btn"
+						class:active={currentPage === index + 1}
+						aria-current={currentPage === index + 1 ? 'page' : undefined}
+						onclick={() => (currentPage = index + 1)}
+					>
+						{index + 1}
+					</button>
+				{/each}
+				<button
+					type="button"
+					class="page-btn"
+					aria-label="Halaman berikutnya"
+					disabled={currentPage === totalPages}
+					onclick={() => (currentPage = Math.min(totalPages, currentPage + 1))}
+				>
+					<i class="fa-solid fa-chevron-right"></i>
+				</button>
+			</nav>
+		{/if}
 	</section>
 </main>
 
@@ -119,6 +168,21 @@
 		color: var(--text-secondary);
 		font-size: 0.85rem;
 		font-weight: 700;
+	}
+
+	.provider-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.result-summary {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.75rem;
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		font-weight: 750;
 	}
 
 	.provider-grid {
@@ -199,6 +263,42 @@
 		font-size: 0.75rem;
 		font-weight: 700;
 		padding: 0.2rem 0.55rem;
+	}
+
+	.pagination {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
+		padding-top: 0.75rem;
+	}
+
+	.page-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 2.4rem;
+		height: 2.4rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.65rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		color: var(--text-secondary);
+		font: inherit;
+		font-size: 0.9rem;
+		font-weight: 800;
+		cursor: pointer;
+	}
+
+	.page-btn:hover:not(:disabled),
+	.page-btn.active {
+		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border-color));
+		background: var(--color-accent-glow);
+		color: var(--color-accent);
+	}
+
+	.page-btn:disabled {
+		cursor: not-allowed;
+		opacity: 0.45;
 	}
 
 	@media (max-width: 48rem) {
