@@ -74,27 +74,6 @@
 		--glass-shadow: rgba(0, 0, 0, 0.3);
 	}
 
-	@media (prefers-color-scheme: light) {
-		:root {
-			color-scheme: light;
-			--bg-primary: #f8fafc;
-			--bg-secondary: #ffffff;
-			--text-primary: #0f172a;
-			--text-secondary: #475569;
-			--text-muted: #64748b;
-			--color-accent: #059669;
-			--color-accent-glow: rgba(5, 150, 105, 0.1);
-			--color-success: #059669;
-			--color-success-glow: rgba(5, 150, 105, 0.12);
-			--color-warning: #d97706;
-			--color-warning-glow: rgba(217, 119, 6, 0.14);
-			--border-color: rgba(15, 23, 42, 0.1);
-			--glass-bg: rgba(255, 255, 255, 0.78);
-			--glass-border: rgba(15, 23, 42, 0.08);
-			--glass-shadow: rgba(15, 23, 42, 0.08);
-		}
-	}
-
 	:root[data-theme='light'] {
 		color-scheme: light;
 		--bg-primary: #f8fafc;
@@ -112,6 +91,27 @@
 		--glass-bg: rgba(255, 255, 255, 0.78);
 		--glass-border: rgba(15, 23, 42, 0.08);
 		--glass-shadow: rgba(15, 23, 42, 0.08);
+	}
+
+	@media (prefers-color-scheme: light) {
+		:root:not([data-theme]) {
+			color-scheme: light;
+			--bg-primary: #f8fafc;
+			--bg-secondary: #ffffff;
+			--text-primary: #0f172a;
+			--text-secondary: #475569;
+			--text-muted: #64748b;
+			--color-accent: #059669;
+			--color-accent-glow: rgba(5, 150, 105, 0.1);
+			--color-success: #059669;
+			--color-success-glow: rgba(5, 150, 105, 0.12);
+			--color-warning: #d97706;
+			--color-warning-glow: rgba(217, 119, 6, 0.14);
+			--border-color: rgba(15, 23, 42, 0.1);
+			--glass-bg: rgba(255, 255, 255, 0.78);
+			--glass-border: rgba(15, 23, 42, 0.08);
+			--glass-shadow: rgba(15, 23, 42, 0.08);
+		}
 	}
 
 	body {
