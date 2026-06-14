@@ -626,6 +626,13 @@
 		}
 	}
 
+	@media (max-width: 64rem) {
+		.page-wrapper {
+			padding-block: 1.5rem 2.5rem;
+			gap: 2rem;
+		}
+	}
+
 	@media (max-width: 48rem) {
 		.refresh-text {
 			display: none;

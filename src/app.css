@@ -253,6 +253,13 @@
 		background-clip: text;
 	}
 
+	:root[data-theme='light'] .text-gradient {
+		background: linear-gradient(135deg, #059669 0%, #047857 52%, #0f3f35 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
 	.text-balance {
 		text-wrap: balance;
 	}
