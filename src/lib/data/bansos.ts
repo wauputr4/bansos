@@ -1,4 +1,5 @@
 import bansosData from './bansos.json';
+import commitContributorsData from './commit-contributors.json';
 
 export interface BansosItem {
 	id: string;
@@ -20,6 +21,7 @@ export interface BansosItem {
 		name: string;
 		url: string;
 	};
+	source?: string;
 	ctaLink: string;
 	tags: string[];
 	featured: boolean;
@@ -43,6 +45,13 @@ export interface ProviderSummary {
 	upcomingCount: number;
 	tags: string[];
 	items: BansosItem[];
+}
+
+export interface CommitContributor {
+	login: string;
+	name: string;
+	avatarUrl: string;
+	commitUrl: string;
 }
 
 const DEFAULT_UTM = {
@@ -136,9 +145,7 @@ export function recommendedBansosFor(
 		.filter((entry) => entry.status === 'active')
 		.map((entry) => ({
 			entry,
-			score:
-				entry.tags.filter((tag) => currentTags.has(tag)).length * 10 +
-				(entry.featured ? 2 : 0)
+			score: entry.tags.filter((tag) => currentTags.has(tag)).length * 10 + (entry.featured ? 2 : 0)
 		}))
 		.sort((a, b) => b.score - a.score)
 		.slice(0, limit)
@@ -156,6 +163,38 @@ export function getBansosById(id: string) {
 export function getBansosByTag(tag: string) {
 	return bansosList.filter((item) => item.tags.includes(tag));
 }
+
+export function getItemSource(item: BansosItem) {
+	return item.source || item.ctaLink;
+}
+
+export function getCommitContributorsForItem(id: string): CommitContributor[] {
+	return (commitContributorsData as Record<string, CommitContributor[]>)[id] || [];
+}
+
+export function getCommitContributorStats() {
+	const map = new Map<string, CommitContributor & { count: number }>();
+
+	for (const contributors of Object.values(
+		commitContributorsData as Record<string, CommitContributor[]>
+	)) {
+		for (const contributor of contributors) {
+			const current = map.get(contributor.login);
+			if (current) {
+				current.count += 1;
+			} else {
+				map.set(contributor.login, { ...contributor, count: 1 });
+			}
+		}
+	}
+
+	return Array.from(map.values()).sort((a, b) => {
+		if (b.count !== a.count) return b.count - a.count;
+		return a.login.localeCompare(b.login);
+	});
+}
+
+export const commitContributorCount = getCommitContributorStats().length;
 
 export function slugifyProvider(provider: string) {
 	return provider

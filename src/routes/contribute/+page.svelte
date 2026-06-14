@@ -1,8 +1,13 @@
 <script lang="ts">
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
-	import { getContributorStats, type ContributorSummary } from '$lib/data/bansos';
+	import {
+		getCommitContributorStats,
+		getContributorStats,
+		type ContributorSummary
+	} from '$lib/data/bansos';
 
 	const contributors: ContributorSummary[] = getContributorStats();
+	const commitContributors = getCommitContributorStats();
 	const singleLineExample =
 		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const agentSkillInstallCommand =
@@ -57,8 +62,8 @@
 		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
 		<p>
 			Info baru bisa ditambahkan lewat CLI. Kamu submit issue dari hasil command, lalu bot akan
-			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program,
-			provider, benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
+			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program, provider,
+			benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
 		</p>
 
 		<div class="repo-status-card">
@@ -105,9 +110,8 @@
 				<h2>Pakai skill khusus biar agent gak halu pas nambah bansos.</h2>
 				<p>
 					Kalau kamu pakai AI agent yang support Agent Skills, install skill resmi
-					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin
-					agent cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi
-					bansos.dev.
+					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin agent
+					cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi bansos.dev.
 				</p>
 			</div>
 			<div class="command-panel">
@@ -161,6 +165,11 @@
 			<h2 class="section-title">
 				<i class="fa-solid fa-users"></i> Kontributor Terdaftar
 			</h2>
+			<p class="section-note">
+				Kontributor terdaftar adalah nama yang ditulis di payload bansos. Commit kontributor adalah
+				akun GitHub yang benar-benar menambah atau mengubah data lewat commit, jadi satu bansos bisa
+				punya beberapa commit kontributor kalau pernah diupdate.
+			</p>
 			{#if contributors.length > 0}
 				<ul class="contributors-list">
 					{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
@@ -178,6 +187,27 @@
 			{:else}
 				<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
 			{/if}
+		</section>
+
+		<section class="contributors-section">
+			<h2 class="section-title">
+				<i class="fa-solid fa-code-commit"></i> Commit Kontributor
+			</h2>
+			<ul class="commit-contributors-list">
+				{#each commitContributors as contributor (contributor.login)}
+					<li class="commit-contributor-card">
+						<a
+							href={`https://github.com/${contributor.login}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+							<span>@{contributor.login}</span>
+						</a>
+						<span class="contributor-count">{contributor.count} data tersentuh</span>
+					</li>
+				{/each}
+			</ul>
 		</section>
 	</section>
 </main>
@@ -384,6 +414,45 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
+	}
+
+	.section-note {
+		color: var(--text-secondary);
+		margin: -0.25rem 0 0;
+	}
+
+	.commit-contributors-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.commit-contributor-card {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.7rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		padding: 0.75rem 1rem;
+	}
+
+	.commit-contributor-card a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.65rem;
+		color: var(--color-accent);
+		font-weight: 800;
+	}
+
+	.commit-contributor-card img {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 999px;
 	}
 
 	.contributor-card {

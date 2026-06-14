@@ -1,0 +1,65 @@
+import { execFileSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+
+const dataPath = 'src/lib/data/bansos.json';
+const outputPath = 'src/lib/data/commit-contributors.json';
+
+function git(args) {
+	return execFileSync('git', args, { encoding: 'utf8' }).trim();
+}
+
+function parseDataAt(rev) {
+	try {
+		const raw = git(['show', `${rev}:${dataPath}`]);
+		return JSON.parse(raw);
+	} catch {
+		return [];
+	}
+}
+
+function contributorFrom(commit) {
+	const [hash, name, email] = git(['show', '-s', '--format=%H%x00%an%x00%ae', commit]).split('\0');
+	const noreply = email.match(/(?:\d+\+)?([^@]+)@users\.noreply\.github\.com$/);
+	const login =
+		noreply?.[1] ||
+		name
+			.toLowerCase()
+			.replace(/[^a-z0-9-]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	return {
+		login,
+		name,
+		avatarUrl: `https://github.com/${login}.png?size=96`,
+		commitUrl: `https://github.com/wauputr4/bansos/commit/${hash}`
+	};
+}
+
+function byId(items) {
+	return new Map(items.map((item) => [item.id, JSON.stringify(item)]));
+}
+
+const commits = git(['log', '--reverse', '--format=%H', '--', dataPath])
+	.split('\n')
+	.filter(Boolean);
+const contributorsByItem = new Map();
+
+for (const commit of commits) {
+	const before = byId(parseDataAt(`${commit}^`));
+	const after = byId(parseDataAt(commit));
+	const contributor = contributorFrom(commit);
+
+	for (const [id, item] of after.entries()) {
+		if (before.get(id) === item) continue;
+		const current = contributorsByItem.get(id) || [];
+		if (!current.some((entry) => entry.login === contributor.login)) {
+			current.push(contributor);
+		}
+		contributorsByItem.set(id, current);
+	}
+}
+
+const output = Object.fromEntries(
+	[...contributorsByItem.entries()].sort(([a], [b]) => a.localeCompare(b))
+);
+writeFileSync(outputPath, `${JSON.stringify(output, null, '\t')}\n`);
+console.log(`Generated ${outputPath}`);

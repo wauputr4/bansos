@@ -44,6 +44,7 @@
 	let sortOrder: 'newest' | 'oldest' = $state('newest');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
+	let searchQuery = $state('');
 	const pageSize = 6;
 
 	const dynamicTags = $derived(
@@ -56,12 +57,27 @@
 		bansosState.data
 			.map((item, index) => ({ item, index }))
 			.filter(({ item }) => {
+				const query = searchQuery.trim().toLowerCase();
+				const searchable = [
+					item.title,
+					item.provider,
+					item.description,
+					item.promoCode || '',
+					item.validity.description || '',
+					item.contributor?.name || '',
+					item.tags.join(' '),
+					item.benefits.join(' '),
+					item.requirements.join(' ')
+				]
+					.join(' ')
+					.toLowerCase();
+				const searchMatch = !query || searchable.includes(query);
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
 				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
 				const validityMatch =
 					selectedValidities.length === 0 || selectedValidities.includes(item.validity.type);
-				return tagMatch && statusMatch && validityMatch;
+				return searchMatch && tagMatch && statusMatch && validityMatch;
 			})
 			.sort((a, b) => (sortOrder === 'newest' ? b.index - a.index : a.index - b.index))
 			.map(({ item }) => item)
@@ -78,6 +94,7 @@
 		selectedStatuses;
 		selectedValidities;
 		sortOrder;
+		searchQuery;
 		currentPage = 1;
 	});
 
@@ -188,6 +205,22 @@
 			Klik kartu bansos untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
 		</p>
 	</header>
+
+	<section class="search-section container" aria-label="Pencarian bansos">
+		<label class="search-box">
+			<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+			<input
+				type="search"
+				bind:value={searchQuery}
+				placeholder="Cari nama, provider, benefit, tag, kontributor..."
+			/>
+			{#if searchQuery}
+				<button type="button" aria-label="Bersihkan pencarian" onclick={() => (searchQuery = '')}>
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			{/if}
+		</label>
+	</section>
 
 	<section class="filter-section container" aria-label="Filter tag bansos">
 		<div class="filter-card">
@@ -342,6 +375,7 @@
 						selectedStatuses = [];
 						selectedValidities = [];
 						sortOrder = 'newest';
+						searchQuery = '';
 						currentPage = 1;
 					}}
 				>
@@ -440,6 +474,45 @@
 
 	.filter-section {
 		margin-bottom: -1.5rem;
+	}
+
+	.search-section {
+		margin-bottom: -2.5rem;
+	}
+
+	.search-box {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		border: 1px solid var(--glass-border);
+		border-radius: 1rem;
+		background: linear-gradient(var(--glass-bg), var(--glass-bg)) var(--bg-primary);
+		padding: 0.85rem 1rem;
+		color: var(--text-secondary);
+	}
+
+	.search-box:focus-within {
+		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border-color));
+		box-shadow: 0 0 0 3px var(--color-accent-glow);
+	}
+
+	.search-box input {
+		width: 100%;
+		border: 0;
+		outline: 0;
+		background: transparent;
+		color: var(--text-primary);
+		font: inherit;
+		font-weight: 650;
+		min-width: 0;
+	}
+
+	.search-box button {
+		border: 0;
+		background: transparent;
+		color: var(--text-secondary);
+		cursor: pointer;
+		font: inherit;
 	}
 
 	.filter-card {
@@ -742,6 +815,10 @@
 
 		.filter-section {
 			margin-bottom: -0.75rem;
+		}
+
+		.search-section {
+			margin-bottom: -1rem;
 		}
 	}
 

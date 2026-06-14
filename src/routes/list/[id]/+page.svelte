@@ -2,7 +2,13 @@
 	import { resolve } from '$app/paths';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { getProviderBySlug, recommendedBansosFor, slugifyProvider } from '$lib/data/bansos';
+	import {
+		getCommitContributorsForItem,
+		getItemSource,
+		getProviderBySlug,
+		recommendedBansosFor,
+		slugifyProvider
+	} from '$lib/data/bansos';
 	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
@@ -10,6 +16,9 @@
 
 	const item = $derived(bansosState.data.find((i) => i.id === data.id) || data.item);
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
+	const source = $derived(item ? getItemSource(item) : '');
+	const sourceIsUrl = $derived(/^https?:\/\//.test(source));
+	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 
 	onMount(() => {
 		initBansosStore();
@@ -222,6 +231,37 @@
 							</a>
 						</p>
 					{/if}
+					<div class="detail-meta-grid">
+						<div class="meta-card">
+							<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
+							{#if sourceIsUrl}
+								<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
+							{:else}
+								<strong>{source}</strong>
+							{/if}
+						</div>
+						{#if commitContributors.length > 0}
+							<div class="meta-card">
+								<span class="meta-label"
+									><i class="fa-solid fa-code-commit"></i> Commit kontributor</span
+								>
+								<div class="commit-list">
+									{#each commitContributors as contributor (contributor.login)}
+										<a
+											href={contributor.commitUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="commit-person"
+											title={`Commit oleh ${contributor.login}`}
+										>
+											<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+											<span>@{contributor.login}</span>
+										</a>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					</div>
 				</header>
 
 				{#if item.status === 'expired'}
@@ -540,6 +580,64 @@
 	.detail-contributor a {
 		color: var(--color-accent);
 		font-weight: 700;
+	}
+
+	.detail-meta-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+		margin-top: 0.5rem;
+	}
+
+	.meta-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+		min-width: 0;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		padding: 0.8rem;
+	}
+
+	.meta-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--text-muted);
+		font-size: 0.75rem;
+		font-weight: 850;
+		text-transform: uppercase;
+	}
+
+	.meta-card a,
+	.meta-card strong {
+		color: var(--text-primary);
+		font-size: 0.86rem;
+		font-weight: 750;
+		overflow-wrap: anywhere;
+	}
+
+	.commit-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+	}
+
+	.commit-person {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: var(--bg-secondary);
+		padding: 0.25rem 0.55rem 0.25rem 0.25rem;
+	}
+
+	.commit-person img {
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 999px;
 	}
 
 	.section-block {
