@@ -15,7 +15,7 @@
 	const repoUrl = `https://github.com/${repo}`;
 
 	// SEO metadata
-	const metaTitle = 'Bansos Dev - Bantuan Sosial untuk Developer Jelata';
+	const metaTitle = 'Bansos Developer - Bantuan Sosial untuk Developer Jelata';
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
@@ -121,7 +121,7 @@
 			</a>
 		</div>
 
-		<h1 class="main-title text-gradient text-balance">bansos.dev</h1>
+		<h1 class="main-title text-gradient text-balance">bansos Developer</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
 
 		<!-- Anxious Sweating Computer SVG -->
@@ -142,7 +142,7 @@
 					stroke="var(--color-accent)"
 					stroke-width="4"
 				/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="#0d0e15" />
+				<rect x="20" y="20" width="60" height="40" rx="4" fill="var(--bg-primary)" />
 				<path
 					d="M40 65 L35 80 L65 80 L60 65 Z"
 					fill="var(--bg-secondary)"
@@ -401,7 +401,7 @@
 		gap: 0.15rem;
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
-		background: rgba(255, 255, 255, 0.04);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 		padding: 0.8rem 0.75rem;
 	}
 
@@ -607,9 +607,9 @@
 		width: 2.35rem;
 		height: 2.35rem;
 		margin-left: -0.75rem;
-		border: 2px solid rgba(9, 10, 15, 0.95);
+		border: 2px solid var(--bg-primary);
 		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.08);
+		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 	}
 
@@ -650,7 +650,7 @@
 		gap: 0.35rem;
 		border: 1px solid var(--border-color);
 		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.04);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 		color: var(--text-secondary);
 		padding: 0.4rem 0.75rem;
 		font-size: 0.85rem;
@@ -659,7 +659,7 @@
 
 	.repo-stat:hover {
 		color: var(--text-primary);
-		background: rgba(255, 255, 255, 0.08);
+		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 	}
 
 	.repo-stat i,

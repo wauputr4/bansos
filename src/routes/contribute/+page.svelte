@@ -1,4 +1,5 @@
 <script lang="ts">
+	import GithubBadge from '$lib/components/GithubBadge.svelte';
 	import { getContributorStats, type ContributorSummary } from '$lib/data/bansos';
 
 	const contributors: ContributorSummary[] = getContributorStats();
@@ -59,6 +60,11 @@
 			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program,
 			provider, benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
 		</p>
+
+		<div class="repo-status-card">
+			<p class="eyebrow">Open Source Repo</p>
+			<GithubBadge />
+		</div>
 
 		<div class="command-box">
 			<p>Contoh submit via CLI (format lengkap yang diterima):</p>
@@ -210,7 +216,18 @@
 		gap: 0.75rem;
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
-		background: rgba(255, 255, 255, 0.04);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		padding: 1rem;
+	}
+
+	.repo-status-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.65rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 		padding: 1rem;
 	}
 
@@ -222,7 +239,7 @@
 		border-radius: 0.75rem;
 		background:
 			linear-gradient(135deg, rgba(53, 194, 124, 0.12), rgba(255, 255, 255, 0.03)),
-			rgba(255, 255, 255, 0.04);
+			color-mix(in srgb, var(--text-primary) 4%, transparent);
 		padding: 1rem;
 	}
 
