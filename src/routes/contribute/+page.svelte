@@ -6,10 +6,10 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-const contributors: ContributorSummary[] = getContributorStats();
-const commitContributors = getCommitContributorStats();
-const singleLineExample =
-	'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
+	const contributors: ContributorSummary[] = getContributorStats();
+	const commitContributors = getCommitContributorStats();
+	const singleLineExample =
+		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const agentSkillInstallCommand =
 		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
 	const agentPromptExample =

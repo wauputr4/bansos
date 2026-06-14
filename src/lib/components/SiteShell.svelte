@@ -27,8 +27,11 @@
 
 	onMount(() => {
 		const storedTheme = localStorage.getItem(THEME_KEY);
-		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-		const initialTheme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
+		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches
+			? 'light'
+			: 'dark';
+		const initialTheme =
+			storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
 		theme = initialTheme;
 	});
 

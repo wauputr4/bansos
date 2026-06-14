@@ -5,7 +5,10 @@ const dataPath = 'src/lib/data/bansos.json';
 const outputPath = 'src/lib/data/commit-contributors.json';
 
 function git(args) {
-	return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+	return execFileSync('git', args, {
+		encoding: 'utf8',
+		stdio: ['ignore', 'pipe', 'ignore']
+	}).trim();
 }
 
 function parseDataAt(rev) {
