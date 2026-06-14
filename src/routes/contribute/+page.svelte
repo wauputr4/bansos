@@ -6,10 +6,10 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-	const contributors: ContributorSummary[] = getContributorStats();
-	const commitContributors = getCommitContributorStats();
-	const singleLineExample =
-		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --source "https://example.com/source" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
+const contributors: ContributorSummary[] = getContributorStats();
+const commitContributors = getCommitContributorStats();
+const singleLineExample =
+	'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const agentSkillInstallCommand =
 		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
 	const agentPromptExample =
@@ -24,11 +24,10 @@
 		'  --validity-type "uncertain" \\',
 		'  --validity-desc "Sudah tidak aktif (promo code tidak bisa digunakan lagi)" \\',
 		'  --requirements "Punya akun Name.com aktif|Pilih domain .dev atau .app yang tersedia|Gunakan promo code pas checkout" \\',
-		'  --promo-code "DEVWEEK26" \\',
-		'  --published-at "2026-06-11" \\',
-		'  --cta-link "https://www.name.com" \\',
-		'  --source "https://www.name.com/blog/devweek" \\',
-		'  --contributor-name "Wauputra" \\',
+	'  --promo-code "DEVWEEK26" \\',
+	'  --published-at "2026-06-11" \\',
+	'  --cta-link "https://www.name.com" \\',
+	'  --contributor-name "Wauputra" \\',
 		'  --contributor-url "https://wau.my.id" \\',
 		'  --tags "Domain,Gratisan,No Credit Card" \\',
 		'  --featured true \\',

@@ -16,8 +16,8 @@
 
 	const item = $derived(bansosState.data.find((i) => i.id === data.id) || data.item);
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
-	const source = $derived(item ? getItemSource(item) : '');
-	const sourceIsUrl = $derived(/^https?:\/\//.test(source));
+	const source = $derived(item ? getItemSource(item) : undefined);
+	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 
 	onMount(() => {
@@ -237,14 +237,16 @@
 						</p>
 					{/if}
 					<div class="detail-meta-grid">
-						<div class="meta-card">
-							<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
-							{#if sourceIsUrl}
-								<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
-							{:else}
-								<strong>{source}</strong>
-							{/if}
-						</div>
+						{#if source}
+							<div class="meta-card">
+								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
+								{#if sourceIsUrl}
+									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
+								{:else}
+									<strong>{source}</strong>
+								{/if}
+							</div>
+						{/if}
 						{#if commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"

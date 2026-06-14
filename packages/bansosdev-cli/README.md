@@ -26,7 +26,6 @@ npx bansosdev add \
   --published-at 2026-06-13 \
   --requirements "Daftar akun|Klaim program" \
   --cta-link "https://example.com" \
-  --source "https://example.com/source" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan"

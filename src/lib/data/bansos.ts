@@ -165,7 +165,7 @@ export function getBansosByTag(tag: string) {
 }
 
 export function getItemSource(item: BansosItem) {
-	return item.source || item.ctaLink;
+	return item.source;
 }
 
 export function getCommitContributorsForItem(id: string): CommitContributor[] {
