@@ -60,9 +60,24 @@ const DEFAULT_UTM = {
 	campaign: 'bansos'
 };
 
-function appendDefaultUtmParams(url: string) {
+export function sanitizeUrl(url: string, fallback = '#') {
 	try {
 		const parsed = new URL(url);
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+			return fallback;
+		}
+		return parsed.toString();
+	} catch {
+		return fallback;
+	}
+}
+
+function appendDefaultUtmParams(url: string) {
+	const safeUrl = sanitizeUrl(url);
+	if (safeUrl === '#') return safeUrl;
+
+	try {
+		const parsed = new URL(safeUrl);
 		if (!parsed.searchParams.has('utm_source')) {
 			parsed.searchParams.set('utm_source', DEFAULT_UTM.source);
 		}
@@ -74,15 +89,24 @@ function appendDefaultUtmParams(url: string) {
 		}
 		return parsed.toString();
 	} catch {
-		return url;
+		return safeUrl;
 	}
 }
 
-export function addTrackedCtaLink(item: BansosItem): BansosItem {
-	return {
+export function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
+	const sanitizedItem = {
 		...item,
 		ctaLink: appendDefaultUtmParams(item.ctaLink)
 	};
+
+	if (sanitizedItem.contributor?.url) {
+		sanitizedItem.contributor = {
+			...sanitizedItem.contributor,
+			url: sanitizeUrl(sanitizedItem.contributor.url)
+		};
+	}
+
+	return sanitizedItem;
 }
 
 export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new Date()) {
@@ -105,7 +129,7 @@ export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new
 }
 
 export const bansosList: BansosItem[] = normalizeBansosStatuses(
-	(bansosData as BansosItem[]).map((item) => addTrackedCtaLink(item))
+	(bansosData as BansosItem[]).map((item) => sanitizeAndTrackBansosItem(item))
 );
 
 function itemDateValue(item: BansosItem, fallbackIndex: number) {
@@ -212,15 +236,17 @@ function providerKey(provider: string) {
 function providerWebsiteFrom(item: BansosItem) {
 	try {
 		const parsed = new URL(item.ctaLink);
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '#';
 		return parsed.origin;
 	} catch {
-		return item.ctaLink;
+		return '#';
 	}
 }
 
 function faviconUrlFor(url: string) {
 	try {
 		const parsed = new URL(url);
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
 		return `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128`;
 	} catch {
 		return '';
@@ -294,9 +320,10 @@ function contributorKey(name: string, url: string) {
 function normalizeContributorUrl(url: string) {
 	try {
 		const parsed = new URL(url.trim());
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '#';
 		return `${parsed.origin}${parsed.pathname.replace(/\/+$/, '')}${parsed.search}${parsed.hash}`;
 	} catch {
-		return url.trim().replace(/\/+$/, '');
+		return '#';
 	}
 }
 

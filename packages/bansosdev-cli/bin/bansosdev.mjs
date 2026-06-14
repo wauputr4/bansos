@@ -81,9 +81,16 @@ function csv(value) {
 
 function validateUrl(value, key) {
 	try {
-		return new URL(value).toString();
-	} catch {
-		throw new Error(`--${key} must be a valid URL`);
+		const parsed = new URL(value);
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+			throw new Error('protocol');
+		}
+		return parsed.toString();
+	} catch (error) {
+		if (error.message === 'protocol') {
+			throw new Error(`--${key} must use http: or https: protocol`, { cause: error });
+		}
+		throw new Error(`--${key} must be a valid URL`, { cause: error });
 	}
 }
 
