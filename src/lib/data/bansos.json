@@ -563,5 +563,39 @@
 		"tags": ["AI Credits", "Model API", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "zcode-glm-52-free",
+		"title": "GLM-5.2 Gratis 5 Hari di ZCode",
+		"provider": "ZCode",
+		"description": "ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.",
+		"benefits": [
+			"Gratis 5 hari untuk pengguna baru",
+			"Akses GLM flagship model",
+			"Bisa mencoba GLM-5.2 jika tersedia di akun ZCode",
+			"Cocok untuk coding agent dan long-horizon task",
+			"Kuota 150% di aplikasi untuk pengguna GLM Coding Plan"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Promo tersedia sejak rilis ZCode 3.0.0 dan dapat berubah sewaktu-waktu"
+		},
+		"requirements": [
+			"Download ZCode",
+			"Buat atau login akun Z.ai",
+			"Aktifkan GLM Start Plan",
+			"Pilih model GLM-5.2 jika tersedia",
+			"Gunakan lewat aplikasi ZCode"
+		],
+		"publishedAt": "2026-06-14",
+		"contributor": {
+			"name": "Aofsnorth",
+			"url": "https://github.com/Aofsnorth"
+		},
+		"ctaLink": "https://zcode.z.ai/en",
+		"tags": ["AI", "Coding", "Gratisan", "GLM", "Z.ai"],
+		"featured": false,
+		"status": "active",
+		"src": "https://zcode.z.ai/en/changelog"
 	}
 ]
