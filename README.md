@@ -38,6 +38,14 @@ Situs ini dibangun sebagai static SvelteKit site yang SEO-friendly, data-driven,
 - GitHub Actions untuk CI dan workflow kontribusi data
 - `bansosdev` CLI untuk submit listing baru
 
+## Deploy dan domain
+
+Deploy produksi berjalan lewat GitHub Pages dari workflow `.github/workflows/deploy-pages.yml`.
+Repository ini tidak membutuhkan token Cloudflare untuk deploy.
+
+Jika memakai Cloudflare sebagai DNS untuk custom domain, arahkan DNS ke GitHub Pages dan gunakan mode DNS only sampai verifikasi domain dan sertifikat HTTPS GitHub Pages aktif.
+Jangan menyimpan `CLOUDFLARE_API_TOKEN` atau `CLOUDFLARE_ACCOUNT_ID` di GitHub Actions secrets untuk deploy situs ini.
+
 ## Menjalankan proyek
 
 ```bash
