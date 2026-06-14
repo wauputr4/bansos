@@ -736,8 +736,12 @@
 
 	@media (max-width: 64rem) {
 		.page-wrapper {
-			padding-block: 1.5rem 2.5rem;
-			gap: 2rem;
+			padding-block: 0.75rem 2.5rem;
+			gap: 1.5rem;
+		}
+
+		.filter-section {
+			margin-bottom: -0.75rem;
 		}
 	}
 
