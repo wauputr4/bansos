@@ -13,7 +13,7 @@
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
-		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-building' },
+		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-server' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
 	];
 
@@ -33,6 +33,7 @@
 		const initialTheme =
 			storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
 		theme = initialTheme;
+		setTimeout(() => document.body.classList.add('theme-transition'), 50);
 	});
 
 	function toggleTheme() {
@@ -57,15 +58,26 @@
 					>
 				{/each}
 			</div>
-			<button
-				type="button"
-				class="theme-toggle"
-				onclick={toggleTheme}
-				aria-label={theme === 'light' ? 'Aktifkan mode gelap' : 'Aktifkan mode terang'}
-			>
-				<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
-				></i>
-			</button>
+			<div class="nav-actions">
+				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="icon-btn"
+					aria-label="GitHub Repository"
+				>
+					<i class="fa-brands fa-github"></i>
+				</a>
+				<button
+					type="button"
+					class="icon-btn"
+					onclick={toggleTheme}
+					aria-label={theme === 'light' ? 'Aktifkan mode gelap' : 'Aktifkan mode terang'}
+				>
+					<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
+					></i>
+				</button>
+			</div>
 		</nav>
 	</header>
 
@@ -76,8 +88,11 @@
 			<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
+				<span class="dot">·</span>
 				<a href={resolve('/providers')}>Provider</a>
+				<span class="dot">·</span>
 				<a href={resolve('/contribute')}>Kontribusi</a>
+				<span class="dot">·</span>
 				<a href={resolve('/terms')}>Terms</a>
 				<span class="dot">·</span>
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
@@ -156,14 +171,20 @@
 		background: rgba(16, 185, 129, 0.1);
 	}
 
-	.theme-toggle {
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.icon-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
+		border-radius: 0.5rem;
 		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 		color: var(--text-secondary);
 		cursor: pointer;
@@ -173,7 +194,7 @@
 			border-color 0.2s;
 	}
 
-	.theme-toggle:hover {
+	.icon-btn:hover {
 		color: var(--text-primary);
 		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 		border-color: var(--text-secondary);
