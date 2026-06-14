@@ -3,6 +3,7 @@ import { SvelteDate } from 'svelte/reactivity';
 import {
 	bansosList as initialBansosList,
 	addTrackedCtaLink,
+	normalizeBansosStatuses,
 	type BansosItem
 } from '$lib/data/bansos';
 
@@ -25,25 +26,17 @@ function checkExpired(data: LegacyBansosItem[], referenceDate: SvelteDate): Bans
 	if (isNaN(referenceDate.getTime())) {
 		referenceDate = new SvelteDate();
 	}
-	const todayStr = referenceDate.toISOString().split('T')[0];
-	return data.map((item) => {
-		let validityObj = item.validity;
-		if (typeof validityObj === 'string') {
-			validityObj = { type: 'uncertain' };
-		}
-
-		if (
-			item.status !== 'expired' &&
-			validityObj &&
-			validityObj.type === 'fixed' &&
-			validityObj.date
-		) {
-			if (validityObj.date < todayStr) {
-				return { ...item, validity: validityObj, status: 'expired' };
+	return normalizeBansosStatuses(
+		data.map((item) => {
+			let validityObj = item.validity;
+			if (typeof validityObj === 'string') {
+				validityObj = { type: 'uncertain' };
 			}
-		}
-		return { ...item, validity: validityObj };
-	});
+
+			return { ...item, validity: validityObj };
+		}),
+		referenceDate
+	);
 }
 
 // Perform an initial local check so SSG/SSR starts somewhat correct

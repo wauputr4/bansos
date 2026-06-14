@@ -4,85 +4,69 @@
 
 	let { data } = $props();
 	const provider = $derived(data.provider);
-	const seoTitle = $derived(
-		provider ? `${provider.name} bansos developer - bansos.dev` : 'Provider tidak ditemukan'
-	);
+	const seoTitle = $derived(`${provider.name} bansos developer - bansos.dev`);
 	const seoDescription = $derived(
-		provider
-			? `Daftar bansos developer dari ${provider.name}: ${provider.totalCount} program, ${provider.activeCount} masih aktif, lengkap dengan cara klaim dan link resmi.`
-			: ''
+		`Daftar bansos developer dari ${provider.name}: ${provider.totalCount} program, ${provider.activeCount} masih aktif, lengkap dengan cara klaim dan link resmi.`
 	);
 </script>
 
 <svelte:head>
 	<title>{seoTitle}</title>
-	{#if provider}
-		<meta name="description" content={seoDescription} />
-		<meta property="og:title" content={seoTitle} />
-		<meta property="og:description" content={seoDescription} />
-		<meta property="og:image" content={provider.faviconUrl} />
-		<meta property="twitter:card" content="summary" />
-		<meta property="twitter:title" content={seoTitle} />
-		<meta property="twitter:description" content={seoDescription} />
-		<meta property="twitter:image" content={provider.faviconUrl} />
-	{/if}
+	<meta name="description" content={seoDescription} />
+	<meta property="og:title" content={seoTitle} />
+	<meta property="og:description" content={seoDescription} />
+	<meta property="og:image" content={provider.faviconUrl} />
+	<meta property="twitter:card" content="summary" />
+	<meta property="twitter:title" content={seoTitle} />
+	<meta property="twitter:description" content={seoDescription} />
+	<meta property="twitter:image" content={provider.faviconUrl} />
 </svelte:head>
 
-{#if !provider}
-	<main class="page-wrapper container">
-		<section class="glass-card empty-state">
-			<h1>Provider tidak ditemukan</h1>
-			<p>Provider ini belum punya bansos yang tercatat.</p>
-			<a href={resolve('/providers')} class="btn-primary">Lihat semua provider</a>
-		</section>
-	</main>
-{:else}
-	<main class="page-wrapper">
-		<nav class="container top-nav">
-			<a href={resolve('/providers')} class="btn-back">
-				<i class="fa-solid fa-arrow-left"></i> Semua Provider
+<main class="page-wrapper">
+	<nav class="container top-nav">
+		<a href={resolve('/providers')} class="btn-back">
+			<i class="fa-solid fa-arrow-left"></i> Semua Provider
+		</a>
+	</nav>
+
+	<header class="container provider-header">
+		<div class="provider-identity">
+			<img src={provider.faviconUrl} alt="" class="provider-logo" />
+			<div>
+				<p class="eyebrow">Provider</p>
+				<h1 class="text-gradient text-balance">{provider.name}</h1>
+			</div>
+		</div>
+		<p class="subtitle-text text-pretty">
+			{provider.name} punya {provider.totalCount} bansos developer di katalog ini.
+			{provider.activeCount} masih aktif dan bisa dicek cara klaimnya dari halaman detail.
+		</p>
+		<div class="meta-row">
+			<a href={provider.websiteUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
+				<i class="fa-solid fa-arrow-up-right-from-square"></i> Website provider
 			</a>
-		</nav>
+			<span><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span>
+			<span><i class="fa-solid fa-box-archive"></i> {provider.expiredCount} expired</span>
+		</div>
+		<div class="tag-list">
+			{#each provider.tags as tag (tag)}
+				<span>{tag}</span>
+			{/each}
+		</div>
+	</header>
 
-		<header class="container provider-header">
-			<div class="provider-identity">
-				<img src={provider.faviconUrl} alt="" class="provider-logo" />
-				<div>
-					<p class="eyebrow">Provider</p>
-					<h1 class="text-gradient text-balance">{provider.name}</h1>
-				</div>
-			</div>
-			<p class="subtitle-text text-pretty">
-				{provider.name} punya {provider.totalCount} bansos developer di katalog ini.
-				{provider.activeCount} masih aktif dan bisa dicek cara klaimnya dari halaman detail.
-			</p>
-			<div class="meta-row">
-				<a href={provider.websiteUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
-					<i class="fa-solid fa-arrow-up-right-from-square"></i> Website provider
-				</a>
-				<span><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span>
-				<span><i class="fa-solid fa-box-archive"></i> {provider.expiredCount} expired</span>
-			</div>
-			<div class="tag-list">
-				{#each provider.tags as tag (tag)}
-					<span>{tag}</span>
-				{/each}
-			</div>
-		</header>
-
-		<section class="container related-section">
-			<div class="section-header">
-				<h2>Bansos dari {provider.name}</h2>
-				<span>{provider.items.length} item</span>
-			</div>
-			<div class="bansos-grid">
-				{#each provider.items as item (item.id)}
-					<BansosCard {item} />
-				{/each}
-			</div>
-		</section>
-	</main>
-{/if}
+	<section class="container related-section">
+		<div class="section-header">
+			<h2>Bansos dari {provider.name}</h2>
+			<span>{provider.items.length} item</span>
+		</div>
+		<div class="bansos-grid">
+			{#each provider.items as item (item.id)}
+				<BansosCard {item} />
+			{/each}
+		</div>
+	</section>
+</main>
 
 <style>
 	.page-wrapper {
@@ -92,16 +76,6 @@
 		gap: 2rem;
 	}
 
-	.empty-state {
-		margin-block: 3rem;
-		padding: 2rem;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 1rem;
-	}
-
-	.empty-state p,
 	.subtitle-text {
 		color: var(--text-secondary);
 	}

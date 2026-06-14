@@ -76,8 +76,27 @@ export function addTrackedCtaLink(item: BansosItem): BansosItem {
 	};
 }
 
-export const bansosList: BansosItem[] = (bansosData as BansosItem[]).map((item) =>
-	addTrackedCtaLink(item)
+export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new Date()) {
+	const todayStr = Number.isNaN(referenceDate.getTime())
+		? new Date().toISOString().split('T')[0]
+		: referenceDate.toISOString().split('T')[0];
+
+	return items.map((item) => {
+		if (
+			item.status !== 'expired' &&
+			item.validity.type === 'fixed' &&
+			item.validity.date &&
+			item.validity.date < todayStr
+		) {
+			return { ...item, status: 'expired' as const };
+		}
+
+		return item;
+	});
+}
+
+export const bansosList: BansosItem[] = normalizeBansosStatuses(
+	(bansosData as BansosItem[]).map((item) => addTrackedCtaLink(item))
 );
 
 function itemDateValue(item: BansosItem, fallbackIndex: number) {
@@ -169,10 +188,16 @@ function faviconUrlFor(url: string) {
 	}
 }
 
+let cachedProviderStats: ProviderSummary[] | null = null;
+
 export function getProviderStats(items: BansosItem[] = bansosList) {
+	if (items === bansosList && cachedProviderStats) {
+		return cachedProviderStats;
+	}
+
 	const map = new Map<string, ProviderSummary>();
 
-	for (const item of items) {
+	for (const item of normalizeBansosStatuses(items)) {
 		const key = providerKey(item.provider);
 		const current = map.get(key);
 		const websiteUrl = providerWebsiteFrom(item);
@@ -183,9 +208,7 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 			current.activeCount += item.status === 'active' ? 1 : 0;
 			current.expiredCount += item.status === 'expired' ? 1 : 0;
 			current.upcomingCount += item.status === 'upcoming' ? 1 : 0;
-			current.tags = Array.from(new Set([...current.tags, ...item.tags])).sort((a, b) =>
-				a.localeCompare(b)
-			);
+			current.tags.push(...item.tags);
 		} else {
 			map.set(key, {
 				name: item.provider,
@@ -196,15 +219,16 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 				activeCount: item.status === 'active' ? 1 : 0,
 				expiredCount: item.status === 'expired' ? 1 : 0,
 				upcomingCount: item.status === 'upcoming' ? 1 : 0,
-				tags: [...item.tags].sort((a, b) => a.localeCompare(b)),
+				tags: [...item.tags],
 				items: [item]
 			});
 		}
 	}
 
-	return Array.from(map.values())
+	const result = Array.from(map.values())
 		.map((provider) => ({
 			...provider,
+			tags: Array.from(new Set(provider.tags)).sort((a, b) => a.localeCompare(b)),
 			items: sortBansosByNewest(provider.items)
 		}))
 		.sort((a, b) => {
@@ -212,6 +236,12 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 			if (b.totalCount !== a.totalCount) return b.totalCount - a.totalCount;
 			return a.name.localeCompare(b.name);
 		});
+
+	if (items === bansosList) {
+		cachedProviderStats = result;
+	}
+
+	return result;
 }
 
 export function getProviderBySlug(slug: string) {
