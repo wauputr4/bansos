@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   add:
@@ -34,16 +35,35 @@ jobs:
 
       - run: npm run build
 
-      - name: Commit changes
+      - name: Create pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BANSOS_PAYLOAD: ${{ inputs.payload }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
-          git commit -m "feat: add bansos from CLI"
-          git push
 
-      - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy build --project-name bansos --branch main
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          item_id="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); console.log(payload.id)')"
+          item_title="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); console.log(payload.title)')"
+          branch="bansos/direct-${{ github.run_id }}-${item_id}"
+
+          git switch -c "$branch"
+          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
+          git commit -m "feat: add ${item_title}"
+          git push --force origin "$branch"
+
+          pr_url="$(
+            gh pr create \
+              --title "Tambah bansos: ${item_title}" \
+              --body "Auto-generated from maintainer direct mode.
+
+          ## Summary
+          - Add ${item_title} to the bansos list.
+          - Source payload comes from trusted maintainer direct mode.
+
+          This PR keeps main branch changes behind review and GitHub Pages deployment." \
+              --base main \
+              --head "$branch"
+          )"
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"

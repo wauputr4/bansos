@@ -55,9 +55,10 @@ workflow repo akan mencoba membuat Pull Request otomatis dari payload tersebut.
 BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
 ```
 
-Mode direct memerlukan token dengan permission minimal:
+Mode direct membuat Pull Request otomatis dan memerlukan token dengan permission minimal:
 
 - `contents: write`
+- `pull-requests: write`
 - `workflows: write`
 
 ## Optional
