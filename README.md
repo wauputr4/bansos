@@ -88,6 +88,7 @@ npx bansosdev add \
   --published-at 2026-06-13 \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --source "https://example.com/source" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan" \
@@ -100,6 +101,7 @@ npx bansosdev add \
 - `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD`.
 - `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
 - `--published-at` opsional untuk tanggal publikasi entry dalam format `YYYY-MM-DD`.
+- `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
 
 ### Cek payload JSON
 
@@ -120,6 +122,7 @@ npm run add:bansos -- \
   --validity-date 2026-06-30 \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --source "https://example.com/source" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan"

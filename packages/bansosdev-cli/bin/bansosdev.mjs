@@ -50,6 +50,7 @@ Optional:
   --published-at YYYY-MM-DD
   --promo-code CODE
   --tips "Tips singkat"
+  --source "https://example.com/source atau teks sumber"
   --contributor-name "Nama"
   --contributor-url "https://example.com"
   --status active|expired|upcoming
@@ -138,6 +139,7 @@ function payloadFromArgs(args) {
 		validity: validity,
 		requirements: list(required(args, 'requirements')),
 		tips: args.tips,
+		source: args.source,
 		publishedAt,
 		contributor:
 			args['contributor-name'] && args['contributor-url']

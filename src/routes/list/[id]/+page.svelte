@@ -218,7 +218,12 @@
 						{/if}
 						<p class="detail-subtitle">
 							Disponsori oleh
-							<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a>
+							{#if provider}
+								<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a
+								>
+							{:else}
+								<strong>{item.provider}</strong>
+							{/if}
 							<span aria-hidden="true">·</span>
 							<span>Diterbitkan pada Juni 2026</span>
 						</p>

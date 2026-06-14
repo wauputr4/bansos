@@ -23,6 +23,7 @@ npx bansosdev add \
   --published-at "2026-06-13" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --source "https://example.com/source" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan" \
@@ -43,6 +44,7 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \
   --validity-date "2026-06-30" \
   --requirements "Buat akun|Klaim program" \
   --cta-link "https://example.com" \
+  --source "https://example.com/source" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
   --tags "Cloud,Gratisan"

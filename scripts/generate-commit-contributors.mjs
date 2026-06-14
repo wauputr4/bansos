@@ -1,11 +1,11 @@
 import { execFileSync } from 'node:child_process';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 const dataPath = 'src/lib/data/bansos.json';
 const outputPath = 'src/lib/data/commit-contributors.json';
 
 function git(args) {
-	return execFileSync('git', args, { encoding: 'utf8' }).trim();
+	return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
 }
 
 function parseDataAt(rev) {
@@ -34,6 +34,34 @@ function contributorFrom(commit) {
 	};
 }
 
+function currentContributor() {
+	let name = process.env.GITHUB_ACTOR || 'local';
+	let email = `${name}@users.noreply.github.com`;
+
+	try {
+		name = git(['config', 'user.name']) || name;
+		email = git(['config', 'user.email']) || email;
+	} catch {
+		// Git config is optional for local generation.
+	}
+
+	const login =
+		process.env.GITHUB_ACTOR ||
+		email.match(/(?:\d+\+)?([^@]+)@users\.noreply\.github\.com$/)?.[1] ||
+		name
+			.toLowerCase()
+			.replace(/[^a-z0-9-]+/g, '-')
+			.replace(/^-+|-+$/g, '') ||
+		'local';
+
+	return {
+		login,
+		name,
+		avatarUrl: `https://github.com/${login}.png?size=96`,
+		commitUrl: `https://github.com/wauputr4/bansos/commits?author=${login}`
+	};
+}
+
 function byId(items) {
 	return new Map(items.map((item) => [item.id, JSON.stringify(item)]));
 }
@@ -56,6 +84,19 @@ for (const commit of commits) {
 		}
 		contributorsByItem.set(id, current);
 	}
+}
+
+const headData = byId(parseDataAt('HEAD'));
+const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
+const workingTreeContributor = currentContributor();
+
+for (const [id, item] of workingTreeData.entries()) {
+	if (headData.get(id) === item) continue;
+	const current = contributorsByItem.get(id) || [];
+	if (!current.some((entry) => entry.login === workingTreeContributor.login)) {
+		current.push(workingTreeContributor);
+	}
+	contributorsByItem.set(id, current);
 }
 
 const output = Object.fromEntries(

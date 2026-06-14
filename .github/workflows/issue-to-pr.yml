@@ -32,6 +32,9 @@ jobs:
       - name: Add bansos item
         run: npm run add:bansos -- --json .tmp-bansos-issue.json
 
+      - name: Generate commit contributors
+        run: npm run generate:commit-contributors
+
       - name: Build site
         run: npm run build
 
@@ -49,7 +52,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add src/lib/data/bansos.json
+          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
           git commit -m "feat: add ${ITEM_TITLE}"
           git push --force origin "$branch"
 
