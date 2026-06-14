@@ -19,30 +19,25 @@
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
 	}
 
-	function applyTheme(nextTheme: ThemeMode) {
-		document.documentElement.dataset.theme = nextTheme;
-		document
-			.querySelector('meta[name="theme-color"]')
-			?.setAttribute('content', nextTheme === 'light' ? '#f8fafc' : '#090a0f');
-	}
+	$effect(() => {
+		document.documentElement.dataset.theme = theme;
+	});
 
 	onMount(() => {
 		const storedTheme = localStorage.getItem(THEME_KEY);
 		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 		const initialTheme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
 		theme = initialTheme;
-		applyTheme(initialTheme);
 	});
 
 	function toggleTheme() {
 		theme = theme === 'light' ? 'dark' : 'light';
-		applyTheme(theme);
 		localStorage.setItem(THEME_KEY, theme);
 	}
 </script>
 
 <svelte:head>
-	<meta name="theme-color" content="#090a0f" />
+	<meta name="theme-color" content={theme === 'light' ? '#f8fafc' : '#090a0f'} />
 </svelte:head>
 
 <div class="site-shell">
@@ -61,7 +56,7 @@
 				type="button"
 				class="theme-toggle"
 				onclick={toggleTheme}
-				aria-label={theme === 'light' ? 'Aktifkan dark mode' : 'Aktifkan white mode'}
+				aria-label={theme === 'light' ? 'Aktifkan mode gelap' : 'Aktifkan mode terang'}
 			>
 				<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
 				></i>
