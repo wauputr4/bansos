@@ -59,8 +59,9 @@
 	const pageEnd = $derived(Math.min(currentPage * pageSize, filteredBansos.length));
 
 	$effect(() => {
-		const _track = [selectedTags, selectedStatuses, selectedValidities, sortOrder, searchQuery];
-		currentPage = 1;
+		if (selectedTags || selectedStatuses || selectedValidities || sortOrder || searchQuery) {
+			currentPage = 1;
+		}
 	});
 
 	$effect(() => {

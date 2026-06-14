@@ -5,6 +5,7 @@ import {
 	normalizeBansosStatuses,
 	type BansosItem
 } from '$lib/data/bansos';
+import { base } from '$app/paths';
 
 export const bansosState = $state({
 	data: initialBansosList as BansosItem[]
@@ -41,7 +42,7 @@ export function initBansosStore() {
 	isInitialized = true;
 
 	// Fetch true server time to prevent local client clock bypass
-	fetch('/robots.txt', { method: 'HEAD' })
+	fetch(`${base}/robots.txt`, { method: 'HEAD' })
 		.then((res) => {
 			const dateHeader = res.headers.get('Date');
 			if (dateHeader) {
