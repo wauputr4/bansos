@@ -1,18 +1,37 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { getProviderStats } from '$lib/data/bansos';
+	import SearchBox from '$lib/components/SearchBox.svelte';
+	import Pagination from '$lib/components/Pagination.svelte';
 
 	const providers = getProviderStats();
-	const totalProviders = providers.length;
-	const totalActive = providers.reduce((sum, provider) => sum + provider.activeCount, 0);
+	let searchQuery = $state('');
+
+	const filteredProviders = $derived(
+		providers.filter(
+			(p) =>
+				p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				p.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()))
+		)
+	);
+
+	const totalProviders = $derived(filteredProviders.length);
+	const totalActive = $derived(
+		filteredProviders.reduce((sum, provider) => sum + provider.activeCount, 0)
+	);
 	let currentPage = $state(1);
 	const pageSize = 6;
-	const totalPages = Math.max(1, Math.ceil(providers.length / pageSize));
+	const totalPages = $derived(Math.max(1, Math.ceil(filteredProviders.length / pageSize)));
 	const paginatedProviders = $derived(
-		providers.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+		filteredProviders.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 	);
-	const pageStart = $derived(providers.length === 0 ? 0 : (currentPage - 1) * pageSize + 1);
-	const pageEnd = $derived(Math.min(currentPage * pageSize, providers.length));
+	const pageStart = $derived(filteredProviders.length === 0 ? 0 : (currentPage - 1) * pageSize + 1);
+	const pageEnd = $derived(Math.min(currentPage * pageSize, filteredProviders.length));
+
+	$effect(() => {
+		if (searchQuery) currentPage = 1;
+	});
 </script>
 
 <svelte:head>
@@ -44,8 +63,11 @@
 	</section>
 
 	<section class="container provider-list" aria-label="Daftar provider">
+		<div class="controls-section">
+			<SearchBox bind:searchQuery placeholder="Cari nama provider atau tag..." />
+		</div>
 		<div class="result-summary">
-			<span>Menampilkan {pageStart}-{pageEnd} dari {providers.length} provider</span>
+			<span>Menampilkan {pageStart}-{pageEnd} dari {filteredProviders.length} provider</span>
 			<span>Halaman {currentPage} dari {totalPages}</span>
 		</div>
 		<div class="provider-grid">
@@ -74,39 +96,7 @@
 				</a>
 			{/each}
 		</div>
-		{#if totalPages > 1}
-			<nav class="pagination" aria-label="Pagination daftar provider">
-				<button
-					type="button"
-					class="page-btn"
-					aria-label="Halaman sebelumnya"
-					disabled={currentPage === 1}
-					onclick={() => (currentPage = Math.max(1, currentPage - 1))}
-				>
-					<i class="fa-solid fa-chevron-left"></i>
-				</button>
-				{#each Array(totalPages) as _, index (index)}
-					<button
-						type="button"
-						class="page-btn"
-						class:active={currentPage === index + 1}
-						aria-current={currentPage === index + 1 ? 'page' : undefined}
-						onclick={() => (currentPage = index + 1)}
-					>
-						{index + 1}
-					</button>
-				{/each}
-				<button
-					type="button"
-					class="page-btn"
-					aria-label="Halaman berikutnya"
-					disabled={currentPage === totalPages}
-					onclick={() => (currentPage = Math.min(totalPages, currentPage + 1))}
-				>
-					<i class="fa-solid fa-chevron-right"></i>
-				</button>
-			</nav>
-		{/if}
+		<Pagination bind:currentPage {totalPages} />
 	</section>
 </main>
 
@@ -168,6 +158,10 @@
 		color: var(--text-secondary);
 		font-size: 0.85rem;
 		font-weight: 700;
+	}
+
+	.controls-section {
+		margin-bottom: 0.5rem;
 	}
 
 	.provider-list {
@@ -263,42 +257,6 @@
 		font-size: 0.75rem;
 		font-weight: 700;
 		padding: 0.2rem 0.55rem;
-	}
-
-	.pagination {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.5rem;
-		padding-top: 0.75rem;
-	}
-
-	.page-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 2.4rem;
-		height: 2.4rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.65rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-		color: var(--text-secondary);
-		font: inherit;
-		font-size: 0.9rem;
-		font-weight: 800;
-		cursor: pointer;
-	}
-
-	.page-btn:hover:not(:disabled),
-	.page-btn.active {
-		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border-color));
-		background: var(--color-accent-glow);
-		color: var(--color-accent);
-	}
-
-	.page-btn:disabled {
-		cursor: not-allowed;
-		opacity: 0.45;
 	}
 
 	@media (max-width: 48rem) {

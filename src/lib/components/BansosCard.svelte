@@ -234,8 +234,8 @@
 		bottom: 140%;
 		right: 0;
 		transform: translateY(5px);
-		background: rgba(15, 23, 42, 0.98);
-		color: #fff;
+		background: var(--bg-secondary);
+		color: var(--text-primary);
 		padding: 0.6rem 0.85rem;
 		border-radius: 0.5rem;
 		font-size: 0.75rem;
@@ -244,8 +244,8 @@
 		white-space: normal;
 		z-index: 50;
 		transition: all 0.2s ease;
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		border: 1px solid var(--border-color);
+		box-shadow: 0 4px 12px var(--glass-shadow);
 		pointer-events: none;
 		line-height: 1.4;
 		text-align: right;

@@ -111,7 +111,7 @@
 	<!-- Header Section -->
 	<header class="hero-section container">
 		<div class="badge-container">
-			<span class="version-badge">v2026.06.11-beta</span>
+			<span class="version-badge">{__BUILD_DATE__}</span>
 			<a
 				href="https://github.com/wauputr4/bansos"
 				target="_blank"
@@ -127,7 +127,7 @@
 			</a>
 		</div>
 
-		<h1 class="main-title text-gradient text-balance">bansos Developer</h1>
+		<h1 class="main-title text-gradient text-balance">Bansos Developer</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
 		<p class="community-tagline text-pretty">
 			Gotong Royong dalam bantuin developer jelata lainnya untuk glow up pada projectnya

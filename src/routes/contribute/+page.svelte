@@ -7,7 +7,11 @@
 	} from '$lib/data/bansos';
 
 	const contributors: ContributorSummary[] = getContributorStats();
-	const commitContributors = getCommitContributorStats();
+	const commitContributors = getCommitContributorStats().sort((a, b) => {
+		if (a.login === 'wauputr4') return -1;
+		if (b.login === 'wauputr4') return 1;
+		return 0;
+	});
 	const singleLineExample =
 		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
 	const agentSkillInstallCommand =
@@ -34,14 +38,17 @@
 		'  --status expired'
 	].join('\n');
 	let copiedNotice = $state('');
+	let copiedId = $state('');
 
-	const copyToClipboard = async (text: string, label: string) => {
+	const copyToClipboard = async (text: string, id: string) => {
 		try {
 			await navigator.clipboard.writeText(text);
-			copiedNotice = `${label} sudah disalin.`;
+			copiedId = id;
+			copiedNotice = 'Tersalin ke clipboard!';
 			setTimeout(() => {
+				if (copiedId === id) copiedId = '';
 				copiedNotice = '';
-			}, 1800);
+			}, 2000);
 		} catch {
 			copiedNotice = 'Gagal copy, coba blok URL manual dulu ya.';
 			setTimeout(() => {
@@ -78,30 +85,59 @@
 					<span>Contoh memanjang (1 baris):</span>
 					<button
 						type="button"
-						class="copy-button"
-						onclick={() => copyToClipboard(singleLineExample, 'Command one-line')}
+						class="copy-button mobile-only"
+						class:copied={copiedId === 'one-line'}
+						onclick={() => copyToClipboard(singleLineExample, 'one-line')}
 					>
-						Copy
+						{#if copiedId === 'one-line'}
+							<i class="fa-solid fa-check"></i>
+						{:else}
+							Copy
+						{/if}
 					</button>
 				</div>
-				<pre class="command-inline"><code>{singleLineExample}</code></pre>
+				<div class="code-wrapper">
+					<pre class="command-inline"><code>{singleLineExample}</code></pre>
+					<button
+						type="button"
+						class="hover-copy-btn"
+						class:copied={copiedId === 'one-line'}
+						aria-label="Salin kode"
+						onclick={() => copyToClipboard(singleLineExample, 'one-line')}
+					>
+						<i class="fa-solid fa-{copiedId === 'one-line' ? 'check' : 'clipboard'}"></i>
+					</button>
+				</div>
 			</div>
 			<div class="command-panel">
 				<div class="command-head">
 					<span>Versi rapi (dengan jeda baris biar enak dibaca):</span>
 					<button
 						type="button"
-						class="copy-button"
-						onclick={() => copyToClipboard(multilineExample, 'Command multiline')}
+						class="copy-button mobile-only"
+						class:copied={copiedId === 'multi-line'}
+						onclick={() => copyToClipboard(multilineExample, 'multi-line')}
 					>
-						Copy
+						{#if copiedId === 'multi-line'}
+							<i class="fa-solid fa-check"></i>
+						{:else}
+							Copy
+						{/if}
 					</button>
 				</div>
-				<pre class="command-block"><code>{multilineExample}</code></pre>
+				<div class="code-wrapper">
+					<pre class="command-block"><code>{multilineExample}</code></pre>
+					<button
+						type="button"
+						class="hover-copy-btn"
+						class:copied={copiedId === 'multi-line'}
+						aria-label="Salin kode"
+						onclick={() => copyToClipboard(multilineExample, 'multi-line')}
+					>
+						<i class="fa-solid fa-{copiedId === 'multi-line' ? 'check' : 'clipboard'}"></i>
+					</button>
+				</div>
 			</div>
-			{#if copiedNotice}
-				<p class="copy-notice">{copiedNotice}</p>
-			{/if}
 		</div>
 
 		<section class="agent-skill-box">
@@ -119,26 +155,58 @@
 					<span>Install skill untuk agent:</span>
 					<button
 						type="button"
-						class="copy-button"
-						onclick={() => copyToClipboard(agentSkillInstallCommand, 'Command install skill')}
+						class="copy-button mobile-only"
+						class:copied={copiedId === 'agent-install'}
+						onclick={() => copyToClipboard(agentSkillInstallCommand, 'agent-install')}
 					>
-						Copy
+						{#if copiedId === 'agent-install'}
+							<i class="fa-solid fa-check"></i>
+						{:else}
+							Copy
+						{/if}
 					</button>
 				</div>
-				<pre class="command-inline"><code>{agentSkillInstallCommand}</code></pre>
+				<div class="code-wrapper">
+					<pre class="command-inline"><code>{agentSkillInstallCommand}</code></pre>
+					<button
+						type="button"
+						class="hover-copy-btn"
+						class:copied={copiedId === 'agent-install'}
+						aria-label="Salin kode"
+						onclick={() => copyToClipboard(agentSkillInstallCommand, 'agent-install')}
+					>
+						<i class="fa-solid fa-{copiedId === 'agent-install' ? 'check' : 'clipboard'}"></i>
+					</button>
+				</div>
 			</div>
 			<div class="command-panel">
 				<div class="command-head">
 					<span>Contoh prompt setelah skill terpasang:</span>
 					<button
 						type="button"
-						class="copy-button"
-						onclick={() => copyToClipboard(agentPromptExample, 'Prompt agent')}
+						class="copy-button mobile-only"
+						class:copied={copiedId === 'agent-prompt'}
+						onclick={() => copyToClipboard(agentPromptExample, 'agent-prompt')}
 					>
-						Copy
+						{#if copiedId === 'agent-prompt'}
+							<i class="fa-solid fa-check"></i>
+						{:else}
+							Copy
+						{/if}
 					</button>
 				</div>
-				<pre class="command-block"><code>{agentPromptExample}</code></pre>
+				<div class="code-wrapper">
+					<pre class="command-block"><code>{agentPromptExample}</code></pre>
+					<button
+						type="button"
+						class="hover-copy-btn"
+						class:copied={copiedId === 'agent-prompt'}
+						aria-label="Salin kode"
+						onclick={() => copyToClipboard(agentPromptExample, 'agent-prompt')}
+					>
+						<i class="fa-solid fa-{copiedId === 'agent-prompt' ? 'check' : 'clipboard'}"></i>
+					</button>
+				</div>
 			</div>
 			<a
 				href="https://www.skills.sh/wauputr4/skill-bansos"
@@ -161,14 +229,54 @@
 			</a>
 		</div>
 
+		{#if copiedNotice}
+			<div class="toast-notice">
+				<i class="fa-solid fa-circle-check"></i>
+				{copiedNotice}
+			</div>
+		{/if}
+
+		<section class="contributors-section">
+			<h2 class="section-title">
+				<i class="fa-solid fa-code-commit"></i> Kontributor Proyek
+			</h2>
+			<p class="section-note">
+				Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode atau data
+				lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau pernah diupdate.
+			</p>
+			<ul class="commit-contributors-list">
+				{#each commitContributors as contributor (contributor.login)}
+					<li
+						class="commit-contributor-card"
+						class:author-highlight={contributor.login === 'wauputr4'}
+					>
+						<a
+							href={`https://github.com/${contributor.login}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+							<span class="login-name">@{contributor.login}</span>
+							{#if contributor.login === 'wauputr4'}
+								<span class="author-badge" title="Author">
+									<i class="fa-solid fa-crown"></i>
+									<span class="author-text">Author</span>
+								</span>
+							{/if}
+						</a>
+						<span class="contributor-count">{contributor.count} data tersentuh</span>
+					</li>
+				{/each}
+			</ul>
+		</section>
+
 		<section class="contributors-section">
 			<h2 class="section-title">
 				<i class="fa-solid fa-users"></i> Kontributor Terdaftar
 			</h2>
 			<p class="section-note">
-				Kontributor terdaftar adalah nama yang ditulis di payload bansos. Commit kontributor adalah
-				akun GitHub yang benar-benar menambah atau mengubah data lewat commit, jadi satu bansos bisa
-				punya beberapa commit kontributor kalau pernah diupdate.
+				Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update data
+				bansos via CLI/sistem.
 			</p>
 			{#if contributors.length > 0}
 				<ul class="contributors-list">
@@ -187,27 +295,6 @@
 			{:else}
 				<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
 			{/if}
-		</section>
-
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-code-commit"></i> Commit Kontributor
-			</h2>
-			<ul class="commit-contributors-list">
-				{#each commitContributors as contributor (contributor.login)}
-					<li class="commit-contributor-card">
-						<a
-							href={`https://github.com/${contributor.login}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-							<span>@{contributor.login}</span>
-						</a>
-						<span class="contributor-count">{contributor.count} data tersentuh</span>
-					</li>
-				{/each}
-			</ul>
 		</section>
 	</section>
 </main>
@@ -309,7 +396,7 @@
 
 	.command-block {
 		margin: 0;
-		background: rgba(0, 0, 0, 0.2);
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
 		padding: 0.9rem 1rem;
@@ -341,19 +428,66 @@
 		padding: 0.38rem 0.75rem;
 		font-weight: 700;
 		cursor: pointer;
-		transition:
-			background-color 0.2s ease,
-			border-color 0.2s ease;
+		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.copy-button:hover {
-		background: rgba(255, 255, 255, 0.14);
-		border-color: rgba(255, 255, 255, 0.35);
+		background: var(--bg-secondary);
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		transform: scale(1.05);
+		box-shadow: 0 4px 12px var(--color-accent-glow);
+	}
+
+	.mobile-only {
+		display: none;
+	}
+
+	.code-wrapper {
+		position: relative;
+	}
+
+	.hover-copy-btn {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		background: color-mix(in srgb, var(--text-primary) 5%, var(--bg-primary));
+		border: 1px solid var(--border-color);
+		color: var(--text-secondary);
+		border-radius: 0.4rem;
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		opacity: 0;
+		transition: all 0.2s ease;
+	}
+
+	.code-wrapper:hover .hover-copy-btn,
+	.hover-copy-btn:focus,
+	.hover-copy-btn.copied {
+		opacity: 1;
+	}
+
+	.hover-copy-btn:hover {
+		background: var(--bg-secondary);
+		color: var(--color-accent);
+		border-color: var(--color-accent);
+		transform: scale(1.1);
+		box-shadow: 0 4px 12px var(--color-accent-glow);
+	}
+
+	.hover-copy-btn.copied,
+	.copy-button.copied {
+		color: #10b981;
+		border-color: #10b981;
 	}
 
 	.command-block,
 	.command-inline {
-		background: rgba(0, 0, 0, 0.2);
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
 		padding: 0.9rem 1rem;
@@ -378,10 +512,65 @@
 		word-break: break-word;
 	}
 
-	.copy-notice {
-		margin: 0;
-		color: var(--text-secondary);
-		font-size: 0.84rem;
+	.toast-notice {
+		position: fixed;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--glass-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		color: var(--text-primary);
+		border: 1px solid var(--glass-border);
+		padding: 0.75rem 1.5rem;
+		border-radius: 2rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+		z-index: 1000;
+		animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	@media (max-width: 48rem) {
+		.toast-notice {
+			width: max-content;
+			max-width: 90vw;
+			bottom: 5.5rem;
+			white-space: nowrap;
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.toast-notice {
+			left: auto;
+			right: 2rem;
+			transform: none;
+			animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+	}
+
+	@keyframes slideInRight {
+		from {
+			transform: translateX(30px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes slideUp {
+		from {
+			transform: translate(-50%, 20px);
+			opacity: 0;
+		}
+		to {
+			transform: translate(-50%, 0);
+			opacity: 1;
+		}
 	}
 
 	.actions {
@@ -414,6 +603,20 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
+		max-height: 350px;
+		overflow-y: auto;
+		padding-right: 0.5rem;
+	}
+
+	.contributors-list::-webkit-scrollbar {
+		width: 6px;
+	}
+	.contributors-list::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contributors-list::-webkit-scrollbar-thumb {
+		background: color-mix(in srgb, var(--text-muted) 30%, transparent);
+		border-radius: 4px;
 	}
 
 	.section-note {
@@ -428,6 +631,20 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
+		max-height: 350px;
+		overflow-y: auto;
+		padding-right: 0.5rem;
+	}
+
+	.commit-contributors-list::-webkit-scrollbar {
+		width: 6px;
+	}
+	.commit-contributors-list::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.commit-contributors-list::-webkit-scrollbar-thumb {
+		background: color-mix(in srgb, var(--text-muted) 30%, transparent);
+		border-radius: 4px;
 	}
 
 	.commit-contributor-card {
@@ -449,10 +666,31 @@
 		font-weight: 800;
 	}
 
+	.login-name {
+		display: inline-block;
+		transform: translateY(-1.5px);
+	}
+
 	.commit-contributor-card img {
 		width: 2rem;
 		height: 2rem;
 		border-radius: 999px;
+		display: block;
+	}
+
+	.author-highlight {
+		border-color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+	}
+
+	.author-badge {
+		font-size: 0.8rem;
+		color: var(--color-accent);
+		margin-left: 0.25rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		transform: translateY(-1.5px);
 	}
 
 	.contributor-card {
@@ -492,5 +730,28 @@
 	.empty-contributor {
 		color: var(--text-secondary);
 		margin: 0;
+	}
+
+	@media (max-width: 48rem) {
+		.mobile-only {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 4rem;
+		}
+		.hover-copy-btn {
+			display: none;
+		}
+		.author-text {
+			display: none;
+		}
+		.commit-contributor-card {
+			gap: 0.5rem;
+			padding: 0.75rem;
+		}
+		.contributor-count {
+			font-size: 0.8rem;
+			text-align: right;
+		}
 	}
 </style>

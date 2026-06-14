@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import BansosCard from '$lib/components/BansosCard.svelte';
+	import SearchBox from '$lib/components/SearchBox.svelte';
+	import Pagination from '$lib/components/Pagination.svelte';
+	import type { BansosItem } from '$lib/data/bansos';
 
 	let { data } = $props();
 	const provider = $derived(data.provider);
@@ -8,6 +11,28 @@
 	const seoDescription = $derived(
 		`Daftar bansos developer dari ${provider.name}: ${provider.totalCount} program, ${provider.activeCount} masih aktif, lengkap dengan cara klaim dan link resmi.`
 	);
+
+	let searchQuery = $state('');
+
+	const filteredItems = $derived(
+		provider.items.filter(
+			(item: BansosItem) =>
+				item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				item.tags.some((t: string) => t.toLowerCase().includes(searchQuery.toLowerCase()))
+		)
+	);
+
+	let currentPage = $state(1);
+	const pageSize = 6;
+	const totalPages = $derived(Math.max(1, Math.ceil(filteredItems.length / pageSize)));
+
+	const paginatedItems = $derived(
+		filteredItems.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+	);
+
+	$effect(() => {
+		if (searchQuery) currentPage = 1;
+	});
 </script>
 
 <svelte:head>
@@ -58,13 +83,21 @@
 	<section class="container related-section">
 		<div class="section-header">
 			<h2>Bansos dari {provider.name}</h2>
-			<span>{provider.items.length} item</span>
+			<span>{filteredItems.length} item</span>
 		</div>
-		<div class="bansos-grid">
-			{#each provider.items as item (item.id)}
-				<BansosCard {item} />
-			{/each}
+		<div class="controls-section">
+			<SearchBox bind:searchQuery placeholder="Cari nama program atau tag..." />
 		</div>
+		{#if filteredItems.length === 0}
+			<p class="empty-state">Tidak ada program yang sesuai pencarian.</p>
+		{:else}
+			<div class="bansos-grid">
+				{#each paginatedItems as item (item.id)}
+					<BansosCard {item} />
+				{/each}
+			</div>
+			<Pagination bind:currentPage {totalPages} />
+		{/if}
 	</section>
 </main>
 
@@ -201,6 +234,17 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
 		gap: 1rem;
+	}
+
+	.controls-section {
+		margin-bottom: 0.5rem;
+	}
+
+	.empty-state {
+		color: var(--text-secondary);
+		padding: 2rem 0;
+		text-align: center;
+		font-style: italic;
 	}
 
 	@media (max-width: 48rem) {
