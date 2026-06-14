@@ -8,13 +8,14 @@
 	const THEME_KEY = 'bansos-theme';
 	let theme: ThemeMode = $state('dark');
 
-	const navItems = [
+	type ValidRoute = '/' | '/list' | '/contribute' | '/about' | '/providers';
+	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
 		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-building' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	] as const;
+	];
 
 	function isActivePath(pathname: string, href: string) {
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
@@ -26,8 +27,11 @@
 
 	onMount(() => {
 		const storedTheme = localStorage.getItem(THEME_KEY);
-		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-		const initialTheme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
+		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches
+			? 'light'
+			: 'dark';
+		const initialTheme =
+			storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
 		theme = initialTheme;
 	});
 

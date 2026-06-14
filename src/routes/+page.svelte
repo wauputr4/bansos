@@ -273,6 +273,7 @@
 						<span>{formatNumber(githubStars)}</span>
 						Stars
 					</a>
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					<a href={`${repoUrl}/pulls`} target="_blank" rel="noopener noreferrer" class="repo-stat">
 						<i class="fa-solid fa-code-pull-request" aria-hidden="true"></i>
 						<span>{formatNumber(githubPrs)}</span>

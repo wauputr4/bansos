@@ -19,10 +19,10 @@
 		<p class="eyebrow">Tentang</p>
 		<h1 class="text-gradient">Open-source katalog promo developer Indonesia.</h1>
 		<p>
-			`bansos.dev` adalah katalog bantuan sosial untuk developer jelata: tempat ngumpulin
-			program gratisan, voucher, credit, diskon, dan benefit startup yang relevan buat developer
-			Indonesia. Fokusnya simpel: bantu developer hemat budget saat belajar, eksperimen, bikin
-			portofolio, atau ship side project.
+			`bansos.dev` adalah katalog bantuan sosial untuk developer jelata: tempat ngumpulin program
+			gratisan, voucher, credit, diskon, dan benefit startup yang relevan buat developer Indonesia.
+			Fokusnya simpel: bantu developer hemat budget saat belajar, eksperimen, bikin portofolio, atau
+			ship side project.
 		</p>
 		<p>
 			Daftar di dalamnya mencakup domain gratis, hosting free-tier, cloud credits, API credits,
@@ -34,17 +34,16 @@
 			<section class="info-card">
 				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah ditemukan</h2>
 				<p>
-					Setiap listing disimpan sebagai data terstruktur, punya tag, status aktif/expired,
-					masa berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman
-					list maupun mesin pencari.
+					Setiap listing disimpan sebagai data terstruktur, punya tag, status aktif/expired, masa
+					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list
+					maupun mesin pencari.
 				</p>
 			</section>
 			<section class="info-card">
 				<h2><i class="fa-solid fa-code-branch"></i> Open source</h2>
 				<p>
-					Repo `wauputr4/bansos` dibangun sebagai SvelteKit static site yang bisa diaudit,
-					difork, dan dikontribusikan lewat GitHub. Data utama tersimpan di
-					`src/lib/data/bansos.json`.
+					Repo `wauputr4/bansos` dibangun sebagai SvelteKit static site yang bisa diaudit, difork,
+					dan dikontribusikan lewat GitHub. Data utama tersimpan di `src/lib/data/bansos.json`.
 				</p>
 			</section>
 			<section class="info-card">
@@ -57,9 +56,9 @@
 			<section class="info-card">
 				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi komunitas</h2>
 				<p>
-					Setiap entry sebaiknya memakai link resmi, deskripsi jujur, dan catatan masa berlaku
-					yang jelas. Tujuannya bukan clickbait, tapi katalog praktis buat developer yang lagi
-					hemat budget.
+					Setiap entry sebaiknya memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
+					jelas. Tujuannya bukan clickbait, tapi katalog praktis buat developer yang lagi hemat
+					budget.
 				</p>
 			</section>
 		</div>
