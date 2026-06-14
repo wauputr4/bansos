@@ -11,6 +11,9 @@ on:
       - '.github/**'
       - '**.md'
 
+permissions:
+  contents: read
+
 concurrency:
   group: 'pages-deploy'
   cancel-in-progress: true
@@ -33,7 +36,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy build --project-name bansos --branch main
+        run: npm exec wrangler pages deploy build --project-name bansos --branch main
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
