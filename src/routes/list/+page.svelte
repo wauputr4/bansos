@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
@@ -18,10 +17,10 @@
 		Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort((a, b) => a.localeCompare(b))
 	);
 
-	const filteredBansos = $derived(
-		bansosList
+	const filteredBansos = $derived.by(() => {
+		const query = searchQuery.trim().toLowerCase();
+		return bansosList
 			.map((item, index) => {
-				const query = searchQuery.trim().toLowerCase();
 				let score = 0;
 				if (query) {
 					if (item.title.toLowerCase() === query) score += 20;
@@ -67,8 +66,8 @@
 				}
 				return sortOrder === 'newest' ? b.index - a.index : a.index - b.index;
 			})
-			.map(({ item }) => item)
-	);
+			.map(({ item }) => item);
+	});
 	const totalPages = $derived(Math.max(1, Math.ceil(filteredBansos.length / pageSize)));
 	const paginatedBansos = $derived(
 		filteredBansos.slice((currentPage - 1) * pageSize, currentPage * pageSize)
@@ -77,12 +76,15 @@
 	const pageEnd = $derived(Math.min(currentPage * pageSize, filteredBansos.length));
 
 	$effect(() => {
-		selectedTags;
-		selectedStatuses;
-		selectedValidities;
-		sortOrder;
-		searchQuery;
-		currentPage = 1;
+		if (
+			selectedTags ||
+			selectedStatuses ||
+			selectedValidities ||
+			sortOrder ||
+			searchQuery !== undefined
+		) {
+			currentPage = 1;
+		}
 	});
 
 	$effect(() => {

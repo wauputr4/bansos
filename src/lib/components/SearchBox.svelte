@@ -4,7 +4,7 @@
 
 <label class="search-box">
 	<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-	<input type="search" bind:value={searchQuery} {placeholder} />
+	<input type="search" bind:value={searchQuery} {placeholder} aria-label={placeholder} />
 	{#if searchQuery}
 		<button type="button" aria-label="Bersihkan pencarian" onclick={() => (searchQuery = '')}>
 			<i class="fa-solid fa-xmark"></i>

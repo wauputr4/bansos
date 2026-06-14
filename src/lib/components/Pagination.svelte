@@ -1,21 +1,31 @@
 <script lang="ts">
-	let { currentPage = $bindable(1), totalPages }: { currentPage: number; totalPages: number } =
-		$props();
+	let {
+		currentPage = $bindable(1),
+		totalPages,
+		scrollTargetSelector = '.controls-section'
+	}: { currentPage: number; totalPages: number; scrollTargetSelector?: string } = $props();
 
 	function handlePageChange(page: number) {
-		currentPage = page;
-		setTimeout(() => {
-			const target = document.querySelector('.controls-section');
-			if (target) {
-				const y = target.getBoundingClientRect().top + window.scrollY - 80;
+		if (page !== currentPage) {
+			currentPage = page;
+			const scrollTarget = document.querySelector(scrollTargetSelector);
+			if (scrollTarget) {
+				const y = (scrollTarget as HTMLElement).getBoundingClientRect().top + window.scrollY - 80;
 				window.scrollTo({ top: y, behavior: 'smooth' });
 			}
-		}, 10);
+		}
 	}
 
 	let showJumpModal = $state(false);
 	let jumpInput = $state('');
 	let jumpError = $state('');
+
+	// Accessibility: Escape key handling
+	function handleWindowKeydown(e: KeyboardEvent) {
+		if (showJumpModal && e.key === 'Escape') {
+			showJumpModal = false;
+		}
+	}
 
 	function openJumpModal() {
 		jumpInput = currentPage.toString();
@@ -58,6 +68,8 @@
 		return [1, '...', current - 1, current, current + 1, '...', total];
 	});
 </script>
+
+<svelte:window onkeydown={handleWindowKeydown} />
 
 {#if totalPages > 1}
 	<nav class="pagination" aria-label="Pagination">
@@ -125,7 +137,6 @@
 {/if}
 
 {#if showJumpModal}
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="modal-backdrop"
@@ -133,8 +144,13 @@
 			if (e.target === e.currentTarget) showJumpModal = false;
 		}}
 	>
-		<div class="modal-content glass-card">
-			<h3>Lompat Halaman</h3>
+		<div
+			class="modal-content glass-card"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="jump-modal-title"
+		>
+			<h3 id="jump-modal-title">Lompat Halaman</h3>
 			<p>Pilih halaman antara 1 hingga {totalPages}</p>
 			<input
 				type="number"

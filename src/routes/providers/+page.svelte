@@ -7,14 +7,16 @@
 	const providers = getProviderStats();
 	let searchQuery = $state('');
 
-	const filteredProviders = $derived(
-		providers.filter(
+	const filteredProviders = $derived.by(() => {
+		const query = searchQuery.trim().toLowerCase();
+		if (!query) return providers;
+		return providers.filter(
 			(p) =>
-				p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				p.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()))
-		)
-	);
+				p.name.toLowerCase().includes(query) ||
+				p.slug.toLowerCase().includes(query) ||
+				p.tags.some((t) => t.toLowerCase().includes(query))
+		);
+	});
 
 	const totalProviders = $derived(filteredProviders.length);
 	const totalActive = $derived(

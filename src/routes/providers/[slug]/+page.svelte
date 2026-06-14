@@ -14,13 +14,15 @@
 
 	let searchQuery = $state('');
 
-	const filteredItems = $derived(
-		provider.items.filter(
+	const filteredItems = $derived.by(() => {
+		const query = searchQuery.trim().toLowerCase();
+		if (!query) return provider.items;
+		return provider.items.filter(
 			(item: BansosItem) =>
-				item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				item.tags.some((t: string) => t.toLowerCase().includes(searchQuery.toLowerCase()))
-		)
-	);
+				item.title.toLowerCase().includes(query) ||
+				item.tags.some((t: string) => t.toLowerCase().includes(query))
+		);
+	});
 
 	let currentPage = $state(1);
 	const pageSize = 6;

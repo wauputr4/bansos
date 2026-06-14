@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { resolve } from '$app/paths';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
@@ -10,7 +11,6 @@
 		slugifyProvider,
 		bansosList
 	} from '$lib/data/bansos';
-	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
