@@ -60,16 +60,21 @@ const DEFAULT_UTM = {
 	campaign: 'bansos'
 };
 
-export function sanitizeUrl(url: string, fallback = '#') {
+function parseAndValidateUrl(url: string): URL | null {
 	try {
-		const parsed = new URL(url);
+		const parsed = new URL(url.trim());
 		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-			return fallback;
+			return null;
 		}
-		return parsed.toString();
+		return parsed;
 	} catch {
-		return fallback;
+		return null;
 	}
+}
+
+export function sanitizeUrl(url: string, fallback = '#') {
+	const parsed = parseAndValidateUrl(url);
+	return parsed ? parsed.toString() : fallback;
 }
 
 function appendDefaultUtmParams(url: string) {
@@ -234,23 +239,13 @@ function providerKey(provider: string) {
 }
 
 function providerWebsiteFrom(item: BansosItem) {
-	try {
-		const parsed = new URL(item.ctaLink);
-		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '#';
-		return parsed.origin;
-	} catch {
-		return '#';
-	}
+	const parsed = parseAndValidateUrl(item.ctaLink);
+	return parsed ? parsed.origin : '#';
 }
 
 function faviconUrlFor(url: string) {
-	try {
-		const parsed = new URL(url);
-		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
-		return `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128`;
-	} catch {
-		return '';
-	}
+	const parsed = parseAndValidateUrl(url);
+	return parsed ? `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128` : '';
 }
 
 let cachedProviderStats: ProviderSummary[] | null = null;
@@ -318,13 +313,9 @@ function contributorKey(name: string, url: string) {
 }
 
 function normalizeContributorUrl(url: string) {
-	try {
-		const parsed = new URL(url.trim());
-		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '#';
-		return `${parsed.origin}${parsed.pathname.replace(/\/+$/, '')}${parsed.search}${parsed.hash}`;
-	} catch {
-		return '#';
-	}
+	const parsed = parseAndValidateUrl(url);
+	if (!parsed) return '#';
+	return `${parsed.origin}${parsed.pathname.replace(/\/+$/, '')}${parsed.search}${parsed.hash}`;
 }
 
 export function getContributorStats() {

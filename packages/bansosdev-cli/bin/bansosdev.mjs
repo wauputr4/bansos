@@ -80,18 +80,18 @@ function csv(value) {
 }
 
 function validateUrl(value, key) {
+	let parsed;
 	try {
-		const parsed = new URL(value);
-		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-			throw new Error('protocol');
-		}
-		return parsed.toString();
+		parsed = new URL(value);
 	} catch (error) {
-		if (error.message === 'protocol') {
-			throw new Error(`--${key} must use http: or https: protocol`, { cause: error });
-		}
 		throw new Error(`--${key} must be a valid URL`, { cause: error });
 	}
+
+	if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+		throw new Error(`--${key} must use http: or https: protocol`);
+	}
+
+	return parsed.toString();
 }
 
 function isValidCalendarDate(value) {
