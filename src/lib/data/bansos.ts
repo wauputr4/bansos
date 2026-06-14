@@ -32,6 +32,19 @@ export interface ContributorSummary {
 	count: number;
 }
 
+export interface ProviderSummary {
+	name: string;
+	slug: string;
+	websiteUrl: string;
+	faviconUrl: string;
+	totalCount: number;
+	activeCount: number;
+	expiredCount: number;
+	upcomingCount: number;
+	tags: string[];
+	items: BansosItem[];
+}
+
 const DEFAULT_UTM = {
 	source: 'bansos.dev',
 	medium: 'referral',
@@ -123,6 +136,86 @@ export function getBansosById(id: string) {
 
 export function getBansosByTag(tag: string) {
 	return bansosList.filter((item) => item.tags.includes(tag));
+}
+
+export function slugifyProvider(provider: string) {
+	return provider
+		.trim()
+		.toLowerCase()
+		.replace(/&/g, ' and ')
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-+|-+$/g, '');
+}
+
+function providerKey(provider: string) {
+	return slugifyProvider(provider);
+}
+
+function providerWebsiteFrom(item: BansosItem) {
+	try {
+		const parsed = new URL(item.ctaLink);
+		return parsed.origin;
+	} catch {
+		return item.ctaLink;
+	}
+}
+
+function faviconUrlFor(url: string) {
+	try {
+		const parsed = new URL(url);
+		return `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128`;
+	} catch {
+		return '';
+	}
+}
+
+export function getProviderStats(items: BansosItem[] = bansosList) {
+	const map = new Map<string, ProviderSummary>();
+
+	for (const item of items) {
+		const key = providerKey(item.provider);
+		const current = map.get(key);
+		const websiteUrl = providerWebsiteFrom(item);
+
+		if (current) {
+			current.items.push(item);
+			current.totalCount += 1;
+			current.activeCount += item.status === 'active' ? 1 : 0;
+			current.expiredCount += item.status === 'expired' ? 1 : 0;
+			current.upcomingCount += item.status === 'upcoming' ? 1 : 0;
+			current.tags = Array.from(new Set([...current.tags, ...item.tags])).sort((a, b) =>
+				a.localeCompare(b)
+			);
+		} else {
+			map.set(key, {
+				name: item.provider,
+				slug: key,
+				websiteUrl,
+				faviconUrl: item.providerLogoUrl || faviconUrlFor(websiteUrl),
+				totalCount: 1,
+				activeCount: item.status === 'active' ? 1 : 0,
+				expiredCount: item.status === 'expired' ? 1 : 0,
+				upcomingCount: item.status === 'upcoming' ? 1 : 0,
+				tags: [...item.tags].sort((a, b) => a.localeCompare(b)),
+				items: [item]
+			});
+		}
+	}
+
+	return Array.from(map.values())
+		.map((provider) => ({
+			...provider,
+			items: sortBansosByNewest(provider.items)
+		}))
+		.sort((a, b) => {
+			if (b.activeCount !== a.activeCount) return b.activeCount - a.activeCount;
+			if (b.totalCount !== a.totalCount) return b.totalCount - a.totalCount;
+			return a.name.localeCompare(b.name);
+		});
+}
+
+export function getProviderBySlug(slug: string) {
+	return getProviderStats().find((provider) => provider.slug === slug);
 }
 
 function contributorKey(name: string, url: string) {

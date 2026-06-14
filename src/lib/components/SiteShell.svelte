@@ -12,6 +12,7 @@
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
+		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-building' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
 	] as const;
 
@@ -71,6 +72,7 @@
 			<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
+				<a href={resolve('/providers')}>Provider</a>
 				<a href={resolve('/contribute')}>Kontribusi</a>
 				<a href={resolve('/terms')}>Terms</a>
 				<span class="dot">·</span>
@@ -208,7 +210,7 @@
 		bottom: 0.75rem;
 		z-index: 60;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		gap: 0.25rem;
 		padding: 0.35rem;
 		border: 1px solid var(--border-color);

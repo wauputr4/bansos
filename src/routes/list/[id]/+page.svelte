@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { recommendedBansosFor } from '$lib/data/bansos';
+	import { recommendedBansosFor, slugifyProvider } from '$lib/data/bansos';
 	import { bansosState, initBansosStore, fetchLatestBansos } from '$lib/stores/bansos.svelte';
 	import { onMount } from 'svelte';
 
@@ -199,7 +199,9 @@
 					</div>
 					<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
 					<p class="detail-subtitle">
-						Disponsori oleh <strong>{item.provider}</strong> — Diterbitkan pada Juni 2026
+						Disponsori oleh
+						<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a>
+						— Diterbitkan pada Juni 2026
 					</p>
 					{#if item.contributor}
 						<p class="detail-contributor">
@@ -455,6 +457,11 @@
 	.detail-subtitle {
 		font-size: 0.95rem;
 		color: var(--text-secondary);
+	}
+
+	.detail-subtitle a {
+		color: var(--color-accent);
+		font-weight: 800;
 	}
 
 	.detail-contributor {

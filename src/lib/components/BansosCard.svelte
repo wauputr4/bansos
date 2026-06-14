@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { BansosItem } from '$lib/data/bansos';
+	import { slugifyProvider, type BansosItem } from '$lib/data/bansos';
 
 	let { item, compact = false }: { item: BansosItem; compact?: boolean } = $props();
 
@@ -30,7 +30,10 @@
 
 	<h2 class="card-title">{item.title}</h2>
 	<div class="provider-row">
-		<p class="provider-label">Provider: <strong>{item.provider}</strong></p>
+		<p class="provider-label">
+			Provider:
+			<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a>
+		</p>
 		{#if item.status !== 'expired'}
 			{#if item.validity.description}
 				<button
@@ -187,6 +190,11 @@
 
 	.provider-label {
 		margin: 0;
+	}
+
+	.provider-label a {
+		color: var(--color-accent);
+		font-weight: 800;
 	}
 
 	.validity-text {

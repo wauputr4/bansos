@@ -1,6 +1,6 @@
 export const prerender = true;
 
-import { bansosList } from '$lib/data/bansos';
+import { bansosList, getProviderStats } from '$lib/data/bansos';
 
 export async function GET() {
 	const today = new Date().toISOString().split('T')[0];
@@ -30,6 +30,12 @@ export async function GET() {
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bansos.dev/providers/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>`;
 
 	bansosList.forEach((item) => {
@@ -39,6 +45,16 @@ export async function GET() {
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>`;
+	});
+
+	getProviderStats().forEach((provider) => {
+		sitemap += `
+  <url>
+    <loc>https://bansos.dev/providers/${provider.slug}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>`;
 	});
 
