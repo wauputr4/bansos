@@ -157,6 +157,22 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/a53c64cdefcae865d843ec6b05fff598b03ccfee"
 		}
 	],
+	"notion-ai-unlimited-1-bulan": [
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/b82404464f3ef8662aa1736ab35d173f3b45eefd"
+		}
+	],
+	"qoder-qwen-max-free": [
+		{
+			"login": "Renzie2161",
+			"name": "Renzie2161",
+			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/b2c52d151481cf939939b2cd211a6c6f69f3507d"
+		}
+	],
 	"tokenrouter-minimax-m3-free": [
 		{
 			"login": "Renzie2161",
@@ -190,9 +206,9 @@
 	"zcode-glm-52-free": [
 		{
 			"login": "wauputr4",
-			"name": "wauputr4",
+			"name": "Wauputra",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=wauputr4"
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/692fa746e0322d388932fdcfd8a28992267ff15a"
 		}
 	]
 }
