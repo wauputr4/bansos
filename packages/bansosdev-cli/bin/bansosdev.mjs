@@ -50,6 +50,7 @@ Optional:
   --published-at YYYY-MM-DD
   --promo-code CODE
   --tips "Tips singkat"
+  --source "https://example.com/source atau teks sumber"
   --contributor-name "Nama"
   --contributor-url "https://example.com"
   --status active|expired|upcoming
@@ -79,11 +80,18 @@ function csv(value) {
 }
 
 function validateUrl(value, key) {
+	let parsed;
 	try {
-		return new URL(value).toString();
-	} catch {
-		throw new Error(`--${key} must be a valid URL`);
+		parsed = new URL(value);
+	} catch (error) {
+		throw new Error(`--${key} must be a valid URL`, { cause: error });
 	}
+
+	if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+		throw new Error(`--${key} must use http: or https: protocol`);
+	}
+
+	return parsed.toString();
 }
 
 function isValidCalendarDate(value) {
@@ -138,6 +146,7 @@ function payloadFromArgs(args) {
 		validity: validity,
 		requirements: list(required(args, 'requirements')),
 		tips: args.tips,
+		source: args.source,
 		publishedAt,
 		contributor:
 			args['contributor-name'] && args['contributor-url']

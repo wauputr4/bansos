@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { BansosItem } from '$lib/data/bansos';
+	import { getProviderBySlug, slugifyProvider, type BansosItem } from '$lib/data/bansos';
 
 	let { item, compact = false }: { item: BansosItem; compact?: boolean } = $props();
 
 	let showTooltip = $state(false);
+	const providerSlug = $derived(slugifyProvider(item.provider));
+	const provider = $derived(getProviderBySlug(providerSlug));
 
 	function toggleTooltip(e: Event) {
 		e.preventDefault();
@@ -30,7 +32,14 @@
 
 	<h2 class="card-title">{item.title}</h2>
 	<div class="provider-row">
-		<p class="provider-label">Provider: <strong>{item.provider}</strong></p>
+		<p class="provider-label">
+			Provider:
+			{#if provider}
+				<a href={resolve(`/providers/${providerSlug}`)}>{item.provider}</a>
+			{:else}
+				<strong>{item.provider}</strong>
+			{/if}
+		</p>
 		{#if item.status !== 'expired'}
 			{#if item.validity.description}
 				<button
@@ -189,6 +198,11 @@
 		margin: 0;
 	}
 
+	.provider-label a {
+		color: var(--color-accent);
+		font-weight: 800;
+	}
+
 	.validity-text {
 		border: 0;
 		background: transparent;
@@ -220,8 +234,8 @@
 		bottom: 140%;
 		right: 0;
 		transform: translateY(5px);
-		background: rgba(15, 23, 42, 0.98);
-		color: #fff;
+		background: var(--bg-secondary);
+		color: var(--text-primary);
 		padding: 0.6rem 0.85rem;
 		border-radius: 0.5rem;
 		font-size: 0.75rem;
@@ -230,8 +244,8 @@
 		white-space: normal;
 		z-index: 50;
 		transition: all 0.2s ease;
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		border: 1px solid var(--border-color);
+		box-shadow: 0 4px 12px var(--glass-shadow);
 		pointer-events: none;
 		line-height: 1.4;
 		text-align: right;

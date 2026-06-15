@@ -1,29 +1,55 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import GithubBadge from './GithubBadge.svelte';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	let { children } = $props();
+	type ThemeMode = 'dark' | 'light';
 
-	const navItems = [
+	const THEME_KEY = 'bansos-theme';
+	let theme: ThemeMode = $state('dark');
+
+	type ValidRoute = '/' | '/list' | '/contribute' | '/about' | '/providers';
+	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
 		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
 		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
+		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-server' },
 		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	] as const;
+	];
 
 	function isActivePath(pathname: string, href: string) {
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
 	}
+
+	$effect(() => {
+		document.documentElement.dataset.theme = theme;
+	});
+
+	onMount(() => {
+		const storedTheme = localStorage.getItem(THEME_KEY);
+		const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches
+			? 'light'
+			: 'dark';
+		const initialTheme =
+			storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
+		theme = initialTheme;
+		setTimeout(() => document.body.classList.add('theme-transition'), 50);
+	});
+
+	function toggleTheme() {
+		theme = theme === 'light' ? 'dark' : 'light';
+		localStorage.setItem(THEME_KEY, theme);
+	}
 </script>
 
 <svelte:head>
-	<meta name="theme-color" content="#090a0f" />
+	<meta name="theme-color" content={theme === 'light' ? '#f8fafc' : '#090a0f'} />
 </svelte:head>
 
 <div class="site-shell">
 	<header class="site-header">
 		<nav class="container nav-shell" aria-label="Navigasi utama">
-			<a href={resolve('/')} class="brand-mark">bansos.dev</a>
+			<a href={resolve('/')} class="brand-mark">Bansos Developer</a>
 			<div class="desktop-nav">
 				{#each navItems as item (item.href)}
 					<a
@@ -32,7 +58,26 @@
 					>
 				{/each}
 			</div>
-			<GithubBadge />
+			<div class="nav-actions">
+				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="icon-btn"
+					aria-label="GitHub Repository"
+				>
+					<i class="fa-brands fa-github"></i>
+				</a>
+				<button
+					type="button"
+					class="icon-btn"
+					onclick={toggleTheme}
+					aria-label={theme === 'light' ? 'Aktifkan mode gelap' : 'Aktifkan mode terang'}
+				>
+					<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
+					></i>
+				</button>
+			</div>
 		</nav>
 	</header>
 
@@ -43,7 +88,12 @@
 			<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
+				<span class="dot">·</span>
+				<a href={resolve('/providers')}>Provider</a>
+				<span class="dot">·</span>
 				<a href={resolve('/contribute')}>Kontribusi</a>
+				<span class="dot">·</span>
+				<a href={resolve('/terms')}>Terms</a>
 				<span class="dot">·</span>
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
@@ -77,7 +127,7 @@
 		padding-top: 1px;
 		z-index: 50;
 		border-bottom: 1px solid var(--border-color);
-		background: rgba(9, 10, 15, 0.82);
+		background: color-mix(in srgb, var(--bg-primary) 86%, transparent);
 		backdrop-filter: blur(18px);
 	}
 
@@ -113,12 +163,41 @@
 
 	.desktop-nav a:hover {
 		color: var(--text-primary);
-		background: rgba(255, 255, 255, 0.05);
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 	}
 
 	.desktop-nav a.active {
 		color: var(--color-accent);
 		background: rgba(16, 185, 129, 0.1);
+	}
+
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.icon-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		color: var(--text-secondary);
+		cursor: pointer;
+		transition:
+			background-color 0.2s,
+			color 0.2s,
+			border-color 0.2s;
+	}
+
+	.icon-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
+		border-color: var(--text-secondary);
 	}
 
 	.site-footer {
@@ -156,12 +235,12 @@
 		bottom: 0.75rem;
 		z-index: 60;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		gap: 0.25rem;
 		padding: 0.35rem;
 		border: 1px solid var(--border-color);
 		border-radius: 1rem;
-		background: rgba(9, 10, 15, 0.9);
+		background: color-mix(in srgb, var(--bg-primary) 92%, transparent);
 		backdrop-filter: blur(18px);
 		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 	}

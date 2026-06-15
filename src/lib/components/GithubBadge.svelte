@@ -44,10 +44,7 @@
 					if (releaseData && releaseData.tag_name) {
 						version = releaseData.tag_name;
 					}
-					localStorage.setItem(
-						CACHE_KEY,
-						JSON.stringify({ stars, forks, version })
-					);
+					localStorage.setItem(CACHE_KEY, JSON.stringify({ stars, forks, version }));
 				}
 			})
 			.catch(() => {});

@@ -1,6 +1,6 @@
 {
 	"name": "bansosdev",
-	"version": "0.1.2",
+	"version": "0.1.4",
 	"description": "CLI untuk submit dan menambahkan daftar bansos.dev.",
 	"type": "module",
 	"bin": {

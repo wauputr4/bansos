@@ -38,6 +38,7 @@ Data validity menggunakan format terstruktur untuk mempermudah filter dan tampil
 - `--validity-type`: **(Wajib)** Enum: `fixed` | `uncertain` | `forever`.
 - `--validity-date`: **(Wajib jika type=fixed)** Format ISO `YYYY-MM-DD`. Sistem akan otomatis men-set status menjadi expired jika waktu lokal server melebihi tanggal ini.
 - `--validity-desc`: _(Opsional)_ Deskripsi/catatan tambahan yang akan di-render sebagai tooltip pada UI.
+- `--source`: _(Opsional)_ Sumber verifikasi; bisa berupa URL atau teks biasa.
 
 Contoh input `forever` (tanpa date):
 
@@ -54,9 +55,10 @@ workflow repo akan mencoba membuat Pull Request otomatis dari payload tersebut.
 BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
 ```
 
-Mode direct memerlukan token dengan permission minimal:
+Mode direct membuat Pull Request otomatis dan memerlukan token dengan permission minimal:
 
 - `contents: write`
+- `pull-requests: write`
 - `workflows: write`
 
 ## Optional

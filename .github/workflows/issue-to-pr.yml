@@ -11,9 +11,7 @@ permissions:
 
 jobs:
   create-pr:
-    if: |
-      contains(github.event.issue.labels.*.name, 'submission') ||
-      startsWith(github.event.issue.title, 'Tambah bansos:')
+    if: ${{ contains(github.event.issue.labels.*.name, 'submission') || startsWith(github.event.issue.title, 'Tambah bansos:') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +32,9 @@ jobs:
       - name: Add bansos item
         run: npm run add:bansos -- --json .tmp-bansos-issue.json
 
+      - name: Generate commit contributors
+        run: npm run generate:commit-contributors
+
       - name: Build site
         run: npm run build
 
@@ -51,7 +52,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add src/lib/data/bansos.json
+          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
           git commit -m "feat: add ${ITEM_TITLE}"
           git push --force origin "$branch"
 
@@ -61,16 +62,20 @@ jobs:
             exit 0
           fi
 
+          PR_BODY="Auto-generated from #${ISSUE_NUMBER}.
+
+          ## Summary
+          - Add ${ITEM_TITLE} to the bansos list.
+          - Source payload comes from the contributor issue.
+
+          Closes #${ISSUE_NUMBER}"
+
+          PR_BODY=$(echo "$PR_BODY" | sed 's/^[ \t]*//')
+
           pr_url="$(
             gh pr create \
               --title "Tambah bansos: ${ITEM_TITLE}" \
-              --body "Auto-generated from #${ISSUE_NUMBER}.
-
-## Summary
-- Add ${ITEM_TITLE} to the bansos list.
-- Source payload comes from the contributor issue.
-
-Closes #${ISSUE_NUMBER}" \
+              --body "$PR_BODY" \
               --base main \
               --head "$branch"
           )"
