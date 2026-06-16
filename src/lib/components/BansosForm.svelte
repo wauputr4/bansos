@@ -1,4 +1,15 @@
 <script lang="ts">
+	import { bansosList } from '$lib/data/bansos';
+
+	const existingProviders = [...new Set(bansosList.map((i) => i.provider))].sort((a, b) =>
+		a.localeCompare(b)
+	);
+	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
+		a.localeCompare(b)
+	);
+
+	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
+
 	let formId = $state('');
 	let formTitle = $state('');
 	let formProvider = $state('');
@@ -6,7 +17,8 @@
 	let formBenefits = $state<string[]>(['']);
 	let formRequirements = $state<string[]>(['']);
 	let formCtaLink = $state('');
-	let formTags = $state('');
+	let formTags = $state<string[]>([]);
+	let tagInput = $state('');
 	let formValidityType = $state<'fixed' | 'uncertain' | 'forever'>('uncertain');
 	let formValidityDate = $state('');
 	let formValidityDesc = $state('');
@@ -18,6 +30,20 @@
 	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
 	let formFeatured = $state(false);
 	let formErrors = $state<string[]>([]);
+
+	const filteredProviders = $derived(
+		formProvider.trim()
+			? existingProviders.filter((p) => p.toLowerCase().includes(formProvider.toLowerCase()))
+			: existingProviders
+	);
+
+	const filteredTags = $derived(
+		tagInput.trim()
+			? existingTags.filter(
+					(t) => t.toLowerCase().includes(tagInput.toLowerCase()) && !formTags.includes(t)
+				)
+			: existingTags.filter((t) => !formTags.includes(t))
+	);
 
 	function slugify(text: string): string {
 		return text
@@ -33,6 +59,28 @@
 			formId = slugify(formTitle);
 		}
 	});
+
+	function fillExample(item: (typeof bansosList)[number]) {
+		formId = item.id;
+		formTitle = item.title;
+		formProvider = item.provider;
+		formDescription = item.description;
+		formBenefits = [...item.benefits];
+		formRequirements = [...item.requirements];
+		formCtaLink = item.ctaLink;
+		formTags = [...item.tags];
+		formValidityType = item.validity.type;
+		formValidityDate = item.validity.date || '';
+		formValidityDesc = item.validity.description || '';
+		formPublishedAt = item.publishedAt || new Date().toISOString().slice(0, 10);
+		formPromoCode = item.promoCode || '';
+		formSource = item.source || '';
+		formStatus = item.status;
+		formFeatured = item.featured || false;
+		formContributorName = item.contributor?.name || '';
+		formContributorUrl = item.contributor?.url || '';
+		formErrors = [];
+	}
 
 	function addBenefit() {
 		formBenefits = [...formBenefits, ''];
@@ -56,6 +104,29 @@
 
 	function updateRequirement(index: number, value: string) {
 		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
+	}
+
+	function addTag(tag: string) {
+		const trimmed = tag.trim();
+		if (trimmed && !formTags.includes(trimmed)) {
+			formTags = [...formTags, trimmed];
+		}
+		tagInput = '';
+	}
+
+	function removeTag(index: number) {
+		formTags = formTags.filter((_, i) => i !== index);
+	}
+
+	function handleTagInputKeydown(e: KeyboardEvent) {
+		if (e.key === 'Enter' || e.key === ',') {
+			e.preventDefault();
+			if (tagInput.trim()) {
+				addTag(tagInput);
+			}
+		} else if (e.key === 'Backspace' && !tagInput && formTags.length > 0) {
+			formTags = formTags.slice(0, -1);
+		}
 	}
 
 	function generateIssueUrl(): string | null {
@@ -86,7 +157,7 @@
 				errors.push('CTA Link harus URL yang valid');
 			}
 		}
-		if (!formTags.trim()) errors.push('Tags wajib diisi (pisahkan dengan koma)');
+		if (formTags.length === 0) errors.push('Minimal 1 tag wajib dipilih');
 
 		if (formValidityType === 'fixed') {
 			if (!formValidityDate) errors.push('Validity Date wajib diisi untuk tipe Fixed');
@@ -127,10 +198,7 @@
 			requirements: validRequirements.map((r) => r.trim()),
 			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
 			ctaLink: formCtaLink.trim(),
-			tags: formTags
-				.split(',')
-				.map((s) => s.trim())
-				.filter(Boolean),
+			tags: formTags,
 			featured: formFeatured,
 			status: formStatus
 		};
@@ -175,7 +243,8 @@
 		formBenefits = [''];
 		formRequirements = [''];
 		formCtaLink = '';
-		formTags = '';
+		formTags = [];
+		tagInput = '';
 		formValidityType = 'uncertain';
 		formValidityDate = '';
 		formValidityDesc = '';
@@ -191,6 +260,18 @@
 </script>
 
 <form class="bansos-form" onsubmit={handleSubmit} novalidate>
+	<div class="examples-section">
+		<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Contoh pengisian:</span>
+		<div class="examples-buttons">
+			{#each examples as example (example.id)}
+				<button type="button" class="example-btn" onclick={() => fillExample(example)}>
+					<i class="fa-solid fa-arrow-right"></i>
+					{example.title.length > 40 ? example.title.slice(0, 40) + '...' : example.title}
+				</button>
+			{/each}
+		</div>
+	</div>
+
 	<div class="form-grid">
 		<div class="form-group full-width">
 			<label for="bansos-form-title">Title <span class="required">*</span></label>
@@ -210,9 +291,18 @@
 				id="bansos-form-provider"
 				type="text"
 				bind:value={formProvider}
-				placeholder="GitHub"
+				placeholder="Pilih atau ketik provider baru"
+				list="provider-datalist"
 				required
 			/>
+			<datalist id="provider-datalist">
+				{#each filteredProviders as provider (provider)}
+					<option value={provider}></option>
+				{/each}
+			</datalist>
+			{#if formProvider && !existingProviders.includes(formProvider)}
+				<span class="hint hint-new">Provider baru, akan ditambahkan</span>
+			{/if}
 		</div>
 
 		<div class="form-group">
@@ -300,16 +390,41 @@
 			</button>
 		</div>
 
-		<div class="form-group">
-			<label for="bansos-form-tags">Tags <span class="required">*</span></label>
-			<input
-				id="bansos-form-tags"
-				type="text"
-				bind:value={formTags}
-				placeholder="Cloud,AI,Gratisan"
-				required
-			/>
-			<span class="hint">Pisahkan dengan koma</span>
+		<!-- svelte-ignore a11y_label_has_associated_control -->
+		<div class="form-group full-width">
+			<label id="bansos-form-tags-label">Tags <span class="required">*</span></label>
+			<div class="tags-input-wrapper" aria-labelledby="bansos-form-tags-label">
+				{#each formTags as tag, i (tag)}
+					<span class="tag-chip">
+						{tag}
+						<button
+							type="button"
+							class="tag-chip-remove"
+							onclick={() => removeTag(i)}
+							aria-label="Remove tag {tag}"
+						>
+							<i class="fa-solid fa-times"></i>
+						</button>
+					</span>
+				{/each}
+				<input
+					type="text"
+					bind:value={tagInput}
+					onkeydown={handleTagInputKeydown}
+					placeholder={formTags.length === 0 ? 'Ketik atau pilih tag...' : ''}
+					class="tag-text-input"
+				/>
+			</div>
+			{#if filteredTags.length > 0}
+				<div class="tags-suggestions">
+					{#each filteredTags.slice(0, 12) as tag (tag)}
+						<button type="button" class="tag-suggestion-btn" onclick={() => addTag(tag)}>
+							{tag}
+						</button>
+					{/each}
+				</div>
+			{/if}
+			<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
 		</div>
 
 		<div class="form-group">
@@ -426,6 +541,61 @@
 		gap: 1rem;
 	}
 
+	.examples-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--border-color));
+		border-radius: 0.6rem;
+		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+	}
+
+	.examples-label {
+		color: var(--text-secondary);
+		font-size: 0.8rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.examples-label i {
+		color: var(--color-accent);
+	}
+
+	.examples-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+
+	.example-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: 0.4rem;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.78rem;
+		font-weight: 650;
+		padding: 0.35rem 0.7rem;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.example-btn:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+	}
+
+	.example-btn i {
+		font-size: 0.65rem;
+	}
+
 	.form-grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -463,6 +633,11 @@
 		font-size: 0.8rem;
 	}
 
+	.hint-new {
+		color: var(--color-accent);
+		font-weight: 600;
+	}
+
 	.form-group input,
 	.form-group textarea,
 	.form-group select {
@@ -494,6 +669,98 @@
 	.form-group textarea {
 		resize: vertical;
 		min-height: 4rem;
+	}
+
+	.tags-input-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.45rem 0.6rem;
+		min-height: 2.8rem;
+		align-items: center;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.tags-input-wrapper:focus-within {
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.tag-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+		border-radius: 999px;
+		padding: 0.2rem 0.55rem;
+		color: var(--color-accent);
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+
+	.tag-chip-remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: none;
+		color: var(--color-accent);
+		cursor: pointer;
+		padding: 0;
+		font-size: 0.65rem;
+		opacity: 0.7;
+		transition: opacity 0.15s;
+	}
+
+	.tag-chip-remove:hover {
+		opacity: 1;
+	}
+
+	.tag-text-input {
+		flex: 1;
+		min-width: 8rem;
+		background: transparent;
+		border: none;
+		padding: 0.2rem 0;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.9rem;
+		outline: none;
+	}
+
+	.tag-text-input::placeholder {
+		color: var(--text-muted);
+	}
+
+	.tags-suggestions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+	}
+
+	.tag-suggestion-btn {
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.75rem;
+		font-weight: 650;
+		padding: 0.2rem 0.6rem;
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+
+	.tag-suggestion-btn:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
 	}
 
 	.checkbox-group {
