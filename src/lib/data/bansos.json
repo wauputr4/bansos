@@ -728,10 +728,10 @@
 			"type": "uncertain"
 		},
 		"requirements": [
-			"Buka aplikasi Bima 3",
-			"Cek paket yang ada logo Gemini dan pilih Extra Gemini 180 Hari",
-			"Klo udah bayar nanti dapet link aktivasi via SMS",
-			"Ikutin aja prosesnya"
+			"Buka aplikasi Bima+ (Bima 3)",
+			"Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari",
+			"Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS",
+			"Ikuti petunjuk aktivasi pada link tersebut"
 		],
 		"publishedAt": "2026-06-17",
 		"source": "https://tri.co.id/google-gemini",
