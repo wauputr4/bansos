@@ -27,7 +27,11 @@
 			"url": "https://wau.my.id"
 		},
 		"ctaLink": "https://www.name.com",
-		"tags": ["Domain", "Gratisan", "No Credit Card"],
+		"tags": [
+			"Domain",
+			"Gratisan",
+			"No Credit Card"
+		],
 		"featured": true,
 		"status": "expired"
 	},
@@ -57,7 +61,12 @@
 			"url": "https://wau.my.id"
 		},
 		"ctaLink": "https://www.namecheap.com/hosting/vps/",
-		"tags": ["VPS", "Hosting", "Server", "Gratis Trial"],
+		"tags": [
+			"VPS",
+			"Hosting",
+			"Server",
+			"Gratis Trial"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -89,7 +98,12 @@
 			"url": "https://lynk.id/azizbudisatrio?utm_source=threads&utm_medium=social&utm_content=link_in_bio"
 		},
 		"ctaLink": "https://idwebhost.com/",
-		"tags": ["Domain", "Promo", "Kupon", "Gratisan"],
+		"tags": [
+			"Domain",
+			"Promo",
+			"Kupon",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -124,7 +138,11 @@
 			"url": "https://www.mikacend.xyz/"
 		},
 		"ctaLink": "https://www.tokenrouter.com/campaign-rules",
-		"tags": ["AI Credits", "Model API", "Top-up Bonus"],
+		"tags": [
+			"AI Credits",
+			"Model API",
+			"Top-up Bonus"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -157,7 +175,12 @@
 			"url": "https://www.tokengratis.id/provider/deepseek"
 		},
 		"ctaLink": "https://platform.deepseek.com/api_keys",
-		"tags": ["AI Credits", "Model API", "No Credit Card", "Free Tier"],
+		"tags": [
+			"AI Credits",
+			"Model API",
+			"No Credit Card",
+			"Free Tier"
+		],
 		"featured": true,
 		"status": "active"
 	},
@@ -191,7 +214,12 @@
 			"url": "https://wau.my.id/"
 		},
 		"ctaLink": "https://docs.inceptionlabs.ai/get-started/get-started",
-		"tags": ["AI Credits", "OpenAI Compatible", "API", "Free Tier"],
+		"tags": [
+			"AI Credits",
+			"OpenAI Compatible",
+			"API",
+			"Free Tier"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -200,19 +228,30 @@
 		"title": "Kimchi.dev $50/Bulan Serverless AI Credit",
 		"provider": "Kimchi.dev",
 		"description": "Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.",
-		"benefits": ["$50 Serverless AI credit per bulan", "Tanpa syarat kartu kredit"],
+		"benefits": [
+			"$50 Serverless AI credit per bulan",
+			"Tanpa syarat kartu kredit"
+		],
 		"validity": {
 			"type": "forever",
 			"description": "Selamanya"
 		},
-		"requirements": ["Daftar akun di Kimchi.dev", "Verifikasi alamat email"],
+		"requirements": [
+			"Daftar akun di Kimchi.dev",
+			"Verifikasi alamat email"
+		],
 		"publishedAt": "2026-06-12",
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://kimchi.dev",
-		"tags": ["AI Credits", "Serverless", "No Credit Card", "Gratisan"],
+		"tags": [
+			"AI Credits",
+			"Serverless",
+			"No Credit Card",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -246,7 +285,14 @@
 			"url": "https://penadigital.tech/"
 		},
 		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
-		"tags": ["AI Credits", "API", "AI Image", "AI Video", "Diskon", "Gratisan"],
+		"tags": [
+			"AI Credits",
+			"API",
+			"AI Image",
+			"AI Video",
+			"Diskon",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -275,7 +321,13 @@
 			"url": "https://kelas.bisnix.com/"
 		},
 		"ctaLink": "https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
-		"tags": ["AI Education", "Course", "Gratisan", "Sertifikat", "Referral"],
+		"tags": [
+			"AI Education",
+			"Course",
+			"Gratisan",
+			"Sertifikat",
+			"Referral"
+		],
 		"featured": true,
 		"status": "active"
 	},
@@ -294,14 +346,23 @@
 			"type": "forever",
 			"description": "Berlaku untuk semua pengguna yang mendaftar"
 		},
-		"requirements": ["Daftar akun di Dahono Labs Gateway", "Masuk ke Dashboard dan buat API Key"],
+		"requirements": [
+			"Daftar akun di Dahono Labs Gateway",
+			"Masuk ke Dashboard dan buat API Key"
+		],
 		"publishedAt": "2026-06-13",
 		"contributor": {
 			"name": "Dahono Labs",
 			"url": "https://labs.dahono.com/"
 		},
 		"ctaLink": "https://labs.dahono.com",
-		"tags": ["API", "AI", "OpenAI Compatible", "Gratisan", "No Credit Card"],
+		"tags": [
+			"API",
+			"AI",
+			"OpenAI Compatible",
+			"Gratisan",
+			"No Credit Card"
+		],
 		"featured": true,
 		"status": "active"
 	},
@@ -325,7 +386,11 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://aws.amazon.com/startups/credits/",
-		"tags": ["Cloud", "Gratisan", "Startup"],
+		"tags": [
+			"Cloud",
+			"Gratisan",
+			"Startup"
+		],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -353,7 +418,12 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://startup.google.com/cloud/",
-		"tags": ["Cloud", "AI Credits", "Gratisan", "Startup"],
+		"tags": [
+			"Cloud",
+			"AI Credits",
+			"Gratisan",
+			"Startup"
+		],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -380,7 +450,11 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://console.x.ai",
-		"tags": ["AI Credits", "API", "Model API"],
+		"tags": [
+			"AI Credits",
+			"API",
+			"Model API"
+		],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -409,7 +483,11 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
-		"tags": ["AI Credits", "Course", "AI Education"],
+		"tags": [
+			"AI Credits",
+			"Course",
+			"AI Education"
+		],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -440,7 +518,11 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://startups.microsoft.com/",
-		"tags": ["Cloud", "Startup", "Gratisan"],
+		"tags": [
+			"Cloud",
+			"Startup",
+			"Gratisan"
+		],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -470,7 +552,12 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.digitalocean.com/hatch/",
-		"tags": ["Cloud", "VPS", "Startup", "AI Credits"],
+		"tags": [
+			"Cloud",
+			"VPS",
+			"Startup",
+			"AI Credits"
+		],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -499,7 +586,11 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.mongodb.com/solutions/startups",
-		"tags": ["Database", "Cloud", "Startup"],
+		"tags": [
+			"Database",
+			"Cloud",
+			"Startup"
+		],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -532,7 +623,11 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://www.namecheap.com/hosting/",
-		"tags": ["Hosting", "Gratis Trial", "Server"],
+		"tags": [
+			"Hosting",
+			"Gratis Trial",
+			"Server"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -560,7 +655,11 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://www.tokenrouter.com/",
-		"tags": ["AI Credits", "Model API", "Gratisan"],
+		"tags": [
+			"AI Credits",
+			"Model API",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -593,7 +692,13 @@
 			"url": "https://github.com/Aofsnorth"
 		},
 		"ctaLink": "https://zcode.z.ai/en",
-		"tags": ["AI", "Coding", "Gratisan", "GLM", "Z.ai"],
+		"tags": [
+			"AI",
+			"Coding",
+			"Gratisan",
+			"GLM",
+			"Z.ai"
+		],
 		"featured": false,
 		"status": "active",
 		"source": "https://zcode.z.ai/en/changelog"
@@ -625,7 +730,11 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://qoder.com/",
-		"tags": ["AI Credits", "Model API", "Gratisan"],
+		"tags": [
+			"AI Credits",
+			"Model API",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -656,7 +765,12 @@
 			"url": "https://www.threads.com/@rizkysiregar23"
 		},
 		"ctaLink": "https://www.notion.so/",
-		"tags": ["AI", "Productivity", "Gratisan", "Notion"],
+		"tags": [
+			"AI",
+			"Productivity",
+			"Gratisan",
+			"Notion"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -688,7 +802,13 @@
 			"url": "https://github.com/Aofsnorth"
 		},
 		"ctaLink": "https://aerolink.lat/",
-		"tags": ["AI", "API", "Cloud", "Gratisan", "Developer"],
+		"tags": [
+			"AI",
+			"API",
+			"Cloud",
+			"Gratisan",
+			"Developer"
+		],
 		"featured": false,
 		"status": "active"
 	},
@@ -697,12 +817,19 @@
 		"title": "Google AI Pro Gratis 4 Bulan",
 		"provider": "Google",
 		"description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
-		"benefits": ["Antigravity", "Gemini Pro", "Penyimpanan 5TB Google Drive/Gmail"],
+		"benefits": [
+			"Antigravity",
+			"Gemini Pro",
+			"Penyimpanan 5TB Google Drive/Gmail"
+		],
 		"validity": {
 			"type": "uncertain",
 			"description": "Berlaku selama promosi berlangsung"
 		},
-		"requirements": ["Buat akun", "Klaim program melalui link"],
+		"requirements": [
+			"Buat akun",
+			"Klaim program melalui link"
+		],
 		"publishedAt": "2026-06-16",
 		"contributor": {
 			"name": "Akbar",
@@ -710,7 +837,41 @@
 		},
 		"source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
 		"ctaLink": "http://g.co/g1referral/JG620Z3F",
-		"tags": ["AI", "Cloud", "Gratisan", "Google"],
+		"tags": [
+			"AI",
+			"Cloud",
+			"Gratisan",
+			"Google"
+		],
+		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "test-cli-npm-main-2",
+		"title": "Bantuan Cloud QA (main)",
+		"provider": "ProviderQA",
+		"description": "Simulasi tambah via npx direct dari main.",
+		"benefits": [
+			"Bonus 100",
+			"Cloud credit awal"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Akun aktif",
+			"Selesaikan form"
+		],
+		"publishedAt": "2026-06-16",
+		"contributor": {
+			"name": "Codex Bot",
+			"url": "https://github.com/wauputr4"
+		},
+		"ctaLink": "https://example.com/qa2",
+		"tags": [
+			"Cloud",
+			"Gratisan"
+		],
 		"featured": false,
 		"status": "active"
 	}
