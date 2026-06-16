@@ -55,17 +55,27 @@
 			.replace(/^-+|-+$/g, '');
 	}
 
+	function generateUniqueId(baseSlug: string): string {
+		let slug = baseSlug;
+		let counter = 1;
+		while (existingIds.has(slug)) {
+			slug = `${baseSlug}-${counter}`;
+			counter++;
+		}
+		return slug;
+	}
+
 	$effect(() => {
 		if (formTitle && !formId) {
 			const slug = slugify(formTitle);
-			if (!existingIds.has(slug)) {
-				formId = slug;
+			if (slug) {
+				formId = generateUniqueId(slug);
 			}
 		}
 	});
 
 	function fillExample(item: (typeof bansosList)[number]) {
-		formId = item.id;
+		formId = '';
 		formTitle = item.title;
 		formProvider = item.provider;
 		formDescription = item.description;
