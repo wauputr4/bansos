@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs';
+import { isAbsolute, join } from 'node:path';
+
 const DEFAULT_OWNER = 'wauputr4';
 const DEFAULT_REPO = 'bansos';
 const WORKFLOW_ID = 'add-bansos.yml';
@@ -20,6 +23,58 @@ function parseArgs(argv) {
 		index += 1;
 	}
 	return args;
+}
+
+function parseJsonPayload(jsonInput) {
+	if (!jsonInput) {
+		return {};
+	}
+
+	const trimmed = String(jsonInput).trim();
+	const content = trimmed.startsWith('{')
+		? trimmed
+		: readFileSync(isAbsolute(trimmed) ? trimmed : join(process.cwd(), trimmed), 'utf8');
+
+	try {
+		return JSON.parse(content);
+	} catch (error) {
+		throw new Error('--json must be valid JSON string or path to a JSON file', { cause: error });
+	}
+}
+
+function mergePayloadInput(args) {
+	const jsonPayload = parseJsonPayload(args.json);
+	const mergedArgs = { ...jsonPayload, ...args };
+
+	if (jsonPayload.validity) {
+		if (!mergedArgs['validity-type'] && jsonPayload.validity.type) {
+			mergedArgs['validity-type'] = jsonPayload.validity.type;
+		}
+		if (!mergedArgs['validity-date'] && jsonPayload.validity.date) {
+			mergedArgs['validity-date'] = jsonPayload.validity.date;
+		}
+		if (!mergedArgs['validity-desc'] && jsonPayload.validity.description) {
+			mergedArgs['validity-desc'] = jsonPayload.validity.description;
+		}
+	}
+
+	if (jsonPayload.contributor) {
+		if (!mergedArgs['contributor-name'] && jsonPayload.contributor.name) {
+			mergedArgs['contributor-name'] = jsonPayload.contributor.name;
+		}
+		if (!mergedArgs['contributor-url'] && jsonPayload.contributor.url) {
+			mergedArgs['contributor-url'] = jsonPayload.contributor.url;
+		}
+	}
+
+	if (!mergedArgs['cta-link'] && jsonPayload.ctaLink) {
+		mergedArgs['cta-link'] = jsonPayload.ctaLink;
+	}
+	if (!mergedArgs['published-at'] && jsonPayload.publishedAt) {
+		mergedArgs['published-at'] = jsonPayload.publishedAt;
+	}
+
+	return mergedArgs;
 }
 
 function help() {
@@ -45,6 +100,7 @@ Required:
   --tags "Cloud,Gratisan"
 
 Optional:
+  --json <path-or-json-string>  Read payload from JSON string or JSON file.
   --validity-date YYYY-MM-DD (required if type is fixed)
   --validity-desc "Description"
   --published-at YYYY-MM-DD
@@ -61,11 +117,17 @@ Optional:
 }
 
 function required(args, key) {
-	if (!args[key]) throw new Error(`Missing required argument --${key}`);
+	if (!args[key]) {
+		throw new Error(`Missing required argument --${key}`);
+	}
 	return args[key];
 }
 
 function list(value) {
+	if (Array.isArray(value)) {
+		return value.map((item) => String(item || '').trim()).filter(Boolean);
+	}
+
 	return String(value || '')
 		.split('|')
 		.map((item) => item.trim())
@@ -73,6 +135,10 @@ function list(value) {
 }
 
 function csv(value) {
+	if (Array.isArray(value)) {
+		return value.map((item) => String(item || '').trim()).filter(Boolean);
+	}
+
 	return String(value || '')
 		.split(',')
 		.map((item) => item.trim())
@@ -136,6 +202,12 @@ function payloadFromArgs(args) {
 		throw new Error('--published-at must be a valid YYYY-MM-DD date');
 	}
 
+	const contributorName =
+		args['contributor-name'] || args.contributorName || (args.contributor && args.contributor.name);
+	const contributorUrl =
+		args['contributor-url'] || args.contributorUrl || (args.contributor && args.contributor.url);
+	const source = args.source && String(args.source).trim() ? String(args.source).trim() : undefined;
+
 	const payload = {
 		id: required(args, 'id'),
 		title: required(args, 'title'),
@@ -146,13 +218,13 @@ function payloadFromArgs(args) {
 		validity: validity,
 		requirements: list(required(args, 'requirements')),
 		tips: args.tips,
-		source: args.source,
+		source,
 		publishedAt,
 		contributor:
-			args['contributor-name'] && args['contributor-url']
+			contributorName && contributorUrl
 				? {
-						name: args['contributor-name'],
-						url: args['contributor-url']
+						name: contributorName,
+						url: contributorUrl
 					}
 				: undefined,
 		ctaLink: validateUrl(required(args, 'cta-link'), 'cta-link'),
@@ -255,18 +327,19 @@ async function main() {
 	}
 	if (args.command !== 'add') throw new Error(`Unknown command: ${args.command}`);
 
-	const payload = payloadFromArgs(args);
+	const mergedArgs = mergePayloadInput(args);
+	const payload = payloadFromArgs(mergedArgs);
 	const mode = args.mode || 'issue';
 	if (mode === 'json') {
 		console.log(JSON.stringify(payload, null, 2));
 		return;
 	}
 	if (mode === 'issue') {
-		console.log(issueUrl(args, payload));
+		console.log(issueUrl(mergedArgs, payload));
 		return;
 	}
 	if (mode === 'direct') {
-		await dispatchWorkflow(args, payload);
+		await dispatchWorkflow(mergedArgs, payload);
 		return;
 	}
 	throw new Error('--mode must be issue, direct, or json');
