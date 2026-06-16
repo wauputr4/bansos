@@ -163,8 +163,8 @@
 				{:else if activeTab === 'npx'}
 					<div class="tab-content">
 						<p class="tab-description">
-							Jalankan command ini di terminal. URL issue GitHub akan muncul, lalu buka di browser
-							untuk submit. Bot otomatis bikin PR.
+							Pakai command line? Jalankan satu baris perintah ini di terminal kamu. Nanti URL issue
+							GitHub otomatis muncul, tinggal buka dan submit. Bot langsung bikin PR-nya.
 						</p>
 						<div class="examples-section">
 							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
@@ -208,8 +208,9 @@
 				{:else if activeTab === 'git'}
 					<div class="tab-content">
 						<p class="tab-description">
-							Clone repo, jalankan script lokal, lalu buat PR manual. Cocok kalau kamu mau review
-							data sebelum submit.
+							Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu kamu
+							bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu hasilnya
+							sebelum submit.
 						</p>
 						<div class="examples-section">
 							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
@@ -252,8 +253,8 @@
 				{:else if activeTab === 'ai'}
 					<div class="tab-content">
 						<p class="tab-description">
-							Pakai AI agent yang support Agent Skills? Install skill resmi bansos.dev biar agent
-							bisa riset sumber dan bikin payload yang valid.
+							Pakai AI agent kayak Claude, ChatGPT, atau yang lain? Install skill resmi bansos.dev
+							biar agent-nya ngerti cara riset sumber dan bikin data yang valid sesuai format kita.
 						</p>
 						<div class="command-block-wrapper">
 							<div class="command-head">

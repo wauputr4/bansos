@@ -170,8 +170,8 @@
 						<div class="tab-description">
 							<h2>Via npx CLI</h2>
 							<p>
-								Jalankan command ini di terminal. URL issue GitHub akan muncul, buka di browser
-								untuk submit. Bot otomatis bikin PR dari issue yang valid.
+								Pakai command line? Jalankan satu baris perintah ini di terminal kamu. Nanti URL
+								issue GitHub otomatis muncul, tinggal buka dan submit. Bot langsung bikin PR-nya.
 							</p>
 						</div>
 						<div class="examples-section">
@@ -219,8 +219,9 @@
 						<div class="tab-description">
 							<h2>Clone repo &amp; npm run add:bansos</h2>
 							<p>
-								Clone repo, jalankan script lokal, lalu buat PR manual. Cocok kalau kamu mau review
-								data sebelum submit dan punya akses ke repo.
+								Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu
+								kamu bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu
+								hasilnya sebelum submit.
 							</p>
 						</div>
 						<div class="examples-section">
@@ -267,8 +268,9 @@
 						<div class="tab-description">
 							<h2>AI Agent Skill</h2>
 							<p>
-								Pakai AI agent yang support Agent Skills? Install skill resmi bansos.dev biar agent
-								bisa riset sumber, bikin payload valid, dan mengikuti aturan kontribusi.
+								Pakai AI agent kayak Claude, ChatGPT, atau yang lain? Install skill resmi bansos.dev
+								biar agent-nya ngerti cara riset sumber dan bikin data yang valid sesuai format
+								kita.
 							</p>
 						</div>
 						<div class="command-block-wrapper">
