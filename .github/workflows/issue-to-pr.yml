@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -35,6 +38,9 @@ jobs:
       - name: Generate commit contributors
         run: npm run generate:commit-contributors
 
+      - name: Fix formatting
+        run: npm run format
+
       - name: Build site
         run: npm run build
 
@@ -51,8 +57,15 @@ jobs:
           branch="bansos/issue-${ISSUE_NUMBER}-${ITEM_ID}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$branch"
-          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
+          git switch -c "$branch" || git switch "$branch"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes detected. Nothing to commit."
+            echo "url=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           git commit -m "feat: add ${ITEM_TITLE}"
           git push --force origin "$branch"
 
@@ -81,10 +94,22 @@ jobs:
           )"
           echo "url=$pr_url" >> "$GITHUB_OUTPUT"
 
+      - name: Auto-approve PR
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.BANSOS_PAT }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: gh pr review "$PR_URL" --approve
+
       - name: Comment on issue
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           PR_URL: ${{ steps.pr.outputs.url }}
         run: |
+          if [ -z "${PR_URL:-}" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "Terima kasih sudah submit bansos ini! Saat ini tidak ada perubahan data baru untuk dibuat PR."
+            exit 0
+          fi
+
           gh issue comment "$ISSUE_NUMBER" --body "Terima kasih sudah submit bansos ini! PR otomatis sudah dibuat di ${PR_URL}."
