@@ -7,6 +7,7 @@
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
 	);
+	const existingIds = new Set(bansosList.map((i) => i.id));
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
@@ -54,14 +55,27 @@
 			.replace(/^-+|-+$/g, '');
 	}
 
+	function generateUniqueId(baseSlug: string): string {
+		let slug = baseSlug;
+		let counter = 1;
+		while (existingIds.has(slug)) {
+			slug = `${baseSlug}-${counter}`;
+			counter++;
+		}
+		return slug;
+	}
+
 	$effect(() => {
 		if (formTitle && !formId) {
-			formId = slugify(formTitle);
+			const slug = slugify(formTitle);
+			if (slug) {
+				formId = generateUniqueId(slug);
+			}
 		}
 	});
 
 	function fillExample(item: (typeof bansosList)[number]) {
-		formId = item.id;
+		formId = '';
 		formTitle = item.title;
 		formProvider = item.provider;
 		formDescription = item.description;
@@ -136,6 +150,8 @@
 		if (!formId.trim()) errors.push('ID wajib diisi');
 		else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formId.trim()))
 			errors.push('ID harus kebab-case lowercase (contoh: nama-bansos)');
+		else if (existingIds.has(formId.trim()))
+			errors.push('ID sudah ada di katalog. Gunakan ID yang berbeda.');
 
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
 		if (!formProvider.trim()) errors.push('Provider wajib diisi');
