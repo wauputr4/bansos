@@ -1,0 +1,652 @@
+<script lang="ts">
+	let formId = $state('');
+	let formTitle = $state('');
+	let formProvider = $state('');
+	let formDescription = $state('');
+	let formBenefits = $state<string[]>(['']);
+	let formRequirements = $state<string[]>(['']);
+	let formCtaLink = $state('');
+	let formTags = $state('');
+	let formValidityType = $state<'fixed' | 'uncertain' | 'forever'>('uncertain');
+	let formValidityDate = $state('');
+	let formValidityDesc = $state('');
+	let formPublishedAt = $state(new Date().toISOString().slice(0, 10));
+	let formPromoCode = $state('');
+	let formSource = $state('');
+	let formContributorName = $state('');
+	let formContributorUrl = $state('');
+	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
+	let formFeatured = $state(false);
+	let formErrors = $state<string[]>([]);
+
+	function slugify(text: string): string {
+		return text
+			.toLowerCase()
+			.trim()
+			.replace(/[^\w\s-]/g, '')
+			.replace(/[\s_-]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	}
+
+	$effect(() => {
+		if (formTitle && !formId) {
+			formId = slugify(formTitle);
+		}
+	});
+
+	function addBenefit() {
+		formBenefits = [...formBenefits, ''];
+	}
+
+	function removeBenefit(index: number) {
+		formBenefits = formBenefits.filter((_, i) => i !== index);
+	}
+
+	function updateBenefit(index: number, value: string) {
+		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
+	}
+
+	function addRequirement() {
+		formRequirements = [...formRequirements, ''];
+	}
+
+	function removeRequirement(index: number) {
+		formRequirements = formRequirements.filter((_, i) => i !== index);
+	}
+
+	function updateRequirement(index: number, value: string) {
+		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
+	}
+
+	function generateIssueUrl(): string | null {
+		formErrors = [];
+		const errors: string[] = [];
+
+		if (!formId.trim()) errors.push('ID wajib diisi');
+		else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formId.trim()))
+			errors.push('ID harus kebab-case lowercase (contoh: nama-bansos)');
+
+		if (!formTitle.trim()) errors.push('Title wajib diisi');
+		if (!formProvider.trim()) errors.push('Provider wajib diisi');
+		if (!formDescription.trim()) errors.push('Description wajib diisi');
+
+		const validBenefits = formBenefits.filter((b) => b.trim());
+		if (validBenefits.length === 0) errors.push('Minimal 1 benefit wajib diisi');
+
+		const validRequirements = formRequirements.filter((r) => r.trim());
+		if (validRequirements.length === 0) errors.push('Minimal 1 requirement wajib diisi');
+
+		if (!formCtaLink.trim()) errors.push('CTA Link wajib diisi');
+		else {
+			try {
+				const url = new URL(formCtaLink.trim());
+				if (url.protocol !== 'http:' && url.protocol !== 'https:')
+					errors.push('CTA Link harus menggunakan http:// atau https://');
+			} catch {
+				errors.push('CTA Link harus URL yang valid');
+			}
+		}
+		if (!formTags.trim()) errors.push('Tags wajib diisi (pisahkan dengan koma)');
+
+		if (formValidityType === 'fixed') {
+			if (!formValidityDate) errors.push('Validity Date wajib diisi untuk tipe Fixed');
+			else if (!/^\d{4}-\d{2}-\d{2}$/.test(formValidityDate))
+				errors.push('Validity Date harus format YYYY-MM-DD');
+		}
+
+		if (formContributorName && !formContributorUrl)
+			errors.push('Contributor URL wajib diisi jika Contributor Name diisi');
+		if (!formContributorName && formContributorUrl)
+			errors.push('Contributor Name wajib diisi jika Contributor URL diisi');
+		if (formContributorUrl) {
+			try {
+				const url = new URL(formContributorUrl.trim());
+				if (url.protocol !== 'http:' && url.protocol !== 'https:')
+					errors.push('Contributor URL harus menggunakan http:// atau https://');
+			} catch {
+				errors.push('Contributor URL harus URL yang valid');
+			}
+		}
+
+		if (errors.length > 0) {
+			formErrors = errors;
+			return null;
+		}
+
+		const payload: Record<string, unknown> = {
+			id: formId.trim(),
+			title: formTitle.trim(),
+			provider: formProvider.trim(),
+			description: formDescription.trim(),
+			benefits: validBenefits.map((b) => b.trim()),
+			validity: {
+				type: formValidityType,
+				...(formValidityType === 'fixed' && formValidityDate ? { date: formValidityDate } : {}),
+				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
+			},
+			requirements: validRequirements.map((r) => r.trim()),
+			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
+			ctaLink: formCtaLink.trim(),
+			tags: formTags
+				.split(',')
+				.map((s) => s.trim())
+				.filter(Boolean),
+			featured: formFeatured,
+			status: formStatus
+		};
+
+		if (formPromoCode.trim()) payload.promoCode = formPromoCode.trim();
+		if (formSource.trim()) payload.source = formSource.trim();
+		if (formContributorName.trim() && formContributorUrl.trim()) {
+			payload.contributor = {
+				name: formContributorName.trim(),
+				url: formContributorUrl.trim()
+			};
+		}
+
+		const body = [
+			'## Bansos submission',
+			'',
+			'```json',
+			JSON.stringify(payload, null, 2),
+			'```'
+		].join('\n');
+		const params = new URLSearchParams({
+			title: `Tambah bansos: ${formTitle.trim()}`,
+			body,
+			labels: 'submission,bansos'
+		});
+		return `https://github.com/wauputr4/bansos/issues/new?${params.toString()}`;
+	}
+
+	function handleSubmit(e: SubmitEvent) {
+		e.preventDefault();
+		const url = generateIssueUrl();
+		if (url) {
+			window.open(url, '_blank');
+		}
+	}
+
+	export function reset() {
+		formId = '';
+		formTitle = '';
+		formProvider = '';
+		formDescription = '';
+		formBenefits = [''];
+		formRequirements = [''];
+		formCtaLink = '';
+		formTags = '';
+		formValidityType = 'uncertain';
+		formValidityDate = '';
+		formValidityDesc = '';
+		formPublishedAt = new Date().toISOString().slice(0, 10);
+		formPromoCode = '';
+		formSource = '';
+		formContributorName = '';
+		formContributorUrl = '';
+		formStatus = 'active';
+		formFeatured = false;
+		formErrors = [];
+	}
+</script>
+
+<form class="bansos-form" onsubmit={handleSubmit} novalidate>
+	<div class="form-grid">
+		<div class="form-group full-width">
+			<label for="bansos-form-title">Title <span class="required">*</span></label>
+			<input
+				id="bansos-form-title"
+				type="text"
+				bind:value={formTitle}
+				placeholder="GitHub Copilot Gratis 3 Bulan"
+				required
+			/>
+			<span class="hint">ID akan otomatis terbuat dari title</span>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-provider">Provider <span class="required">*</span></label>
+			<input
+				id="bansos-form-provider"
+				type="text"
+				bind:value={formProvider}
+				placeholder="GitHub"
+				required
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-cta-link">CTA Link <span class="required">*</span></label>
+			<input
+				id="bansos-form-cta-link"
+				type="url"
+				bind:value={formCtaLink}
+				placeholder="https://example.com"
+				required
+			/>
+		</div>
+
+		<div class="form-group full-width">
+			<label for="bansos-form-description">Description <span class="required">*</span></label>
+			<textarea
+				id="bansos-form-description"
+				bind:value={formDescription}
+				placeholder="Deskripsi singkat tentang bansos ini..."
+				rows="2"
+				required
+			></textarea>
+		</div>
+
+		<!-- svelte-ignore a11y_label_has_associated_control -->
+		<div class="form-group full-width">
+			<label id="bansos-form-benefits-label">Benefits <span class="required">*</span></label>
+			<div class="repeater-list" aria-labelledby="bansos-form-benefits-label">
+				{#each formBenefits as benefit, i (i)}
+					<div class="repeater-item">
+						<input
+							type="text"
+							value={benefit}
+							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
+							placeholder="Benefit {i + 1}"
+							aria-label="Benefit {i + 1}"
+						/>
+						{#if formBenefits.length > 1}
+							<button
+								type="button"
+								class="repeater-remove"
+								onclick={() => removeBenefit(i)}
+								aria-label="Remove benefit {i + 1}"
+							>
+								<i class="fa-solid fa-times"></i>
+							</button>
+						{/if}
+					</div>
+				{/each}
+			</div>
+			<button type="button" class="repeater-add" onclick={addBenefit}>
+				<i class="fa-solid fa-plus"></i> Tambah Benefit
+			</button>
+		</div>
+
+		<!-- svelte-ignore a11y_label_has_associated_control -->
+		<div class="form-group full-width">
+			<label id="bansos-form-requirements-label">Requirements <span class="required">*</span></label
+			>
+			<div class="repeater-list" aria-labelledby="bansos-form-requirements-label">
+				{#each formRequirements as requirement, i (i)}
+					<div class="repeater-item">
+						<input
+							type="text"
+							value={requirement}
+							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
+							placeholder="Requirement {i + 1}"
+							aria-label="Requirement {i + 1}"
+						/>
+						{#if formRequirements.length > 1}
+							<button
+								type="button"
+								class="repeater-remove"
+								onclick={() => removeRequirement(i)}
+								aria-label="Remove requirement {i + 1}"
+							>
+								<i class="fa-solid fa-times"></i>
+							</button>
+						{/if}
+					</div>
+				{/each}
+			</div>
+			<button type="button" class="repeater-add" onclick={addRequirement}>
+				<i class="fa-solid fa-plus"></i> Tambah Requirement
+			</button>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-tags">Tags <span class="required">*</span></label>
+			<input
+				id="bansos-form-tags"
+				type="text"
+				bind:value={formTags}
+				placeholder="Cloud,AI,Gratisan"
+				required
+			/>
+			<span class="hint">Pisahkan dengan koma</span>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-validity-type">Masa Berlaku <span class="required">*</span></label>
+			<select id="bansos-form-validity-type" bind:value={formValidityType}>
+				<option value="uncertain">Tidak Tentu</option>
+				<option value="fixed">Batas Waktu</option>
+				<option value="forever">Selamanya</option>
+			</select>
+		</div>
+
+		{#if formValidityType === 'fixed'}
+			<div class="form-group">
+				<label for="bansos-form-validity-date"
+					>Tanggal Berakhir <span class="required">*</span></label
+				>
+				<input id="bansos-form-validity-date" type="date" bind:value={formValidityDate} required />
+			</div>
+		{/if}
+
+		<div class="form-group full-width">
+			<label for="bansos-form-validity-desc">Catatan Masa Berlaku</label>
+			<input
+				id="bansos-form-validity-desc"
+				type="text"
+				bind:value={formValidityDesc}
+				placeholder="Berlaku sampai slot habis, dll (opsional)"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-published-at">Tanggal Publish</label>
+			<input id="bansos-form-published-at" type="date" bind:value={formPublishedAt} />
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-status">Status</label>
+			<select id="bansos-form-status" bind:value={formStatus}>
+				<option value="active">Aktif</option>
+				<option value="upcoming">Akan Datang</option>
+				<option value="expired">Expired</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-promo-code">Promo Code</label>
+			<input
+				id="bansos-form-promo-code"
+				type="text"
+				bind:value={formPromoCode}
+				placeholder="PROMOCODE2026"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-source">Sumber</label>
+			<input
+				id="bansos-form-source"
+				type="text"
+				bind:value={formSource}
+				placeholder="https://sumber-berita.com atau teks"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-contributor-name">Nama Kontributor</label>
+			<input
+				id="bansos-form-contributor-name"
+				type="text"
+				bind:value={formContributorName}
+				placeholder="Nama Kamu"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-contributor-url">URL Kontributor</label>
+			<input
+				id="bansos-form-contributor-url"
+				type="url"
+				bind:value={formContributorUrl}
+				placeholder="https://github.com/username"
+			/>
+		</div>
+
+		<div class="form-group checkbox-group full-width">
+			<label class="checkbox-label">
+				<input type="checkbox" bind:checked={formFeatured} />
+				<span>Featured (tandai sebagai rekomendasi)</span>
+			</label>
+		</div>
+	</div>
+
+	<button type="submit" class="btn-submit">
+		<i class="fa-brands fa-github"></i>
+		Submit ke GitHub
+	</button>
+
+	{#if formErrors.length > 0}
+		<div class="form-errors">
+			<p><i class="fa-solid fa-circle-exclamation"></i> Ada yang perlu diperbaiki:</p>
+			<ul>
+				{#each formErrors as error, i (i)}
+					<li>{error}</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
+</form>
+
+<style>
+	.bansos-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.form-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	@media (min-width: 40rem) {
+		.form-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.form-group.full-width {
+		grid-column: 1 / -1;
+	}
+
+	.form-group label {
+		color: var(--text-primary);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.required {
+		color: #ef4444;
+	}
+
+	.hint {
+		color: var(--text-muted);
+		font-size: 0.8rem;
+	}
+
+	.form-group input,
+	.form-group textarea,
+	.form-group select {
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.65rem 0.85rem;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.form-group input:focus,
+	.form-group textarea:focus,
+	.form-group select:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.form-group input::placeholder,
+	.form-group textarea::placeholder {
+		color: var(--text-muted);
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		min-height: 4rem;
+	}
+
+	.checkbox-group {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.checkbox-label {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+	}
+
+	.checkbox-label input[type='checkbox'] {
+		width: 1.1rem;
+		height: 1.1rem;
+		accent-color: var(--color-accent);
+		cursor: pointer;
+	}
+
+	.checkbox-label span {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	.btn-submit {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		background: var(--color-accent);
+		color: #ffffff;
+		border: none;
+		border-radius: 0.6rem;
+		padding: 0.85rem 1.5rem;
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 750;
+		cursor: pointer;
+		transition: all 0.2s;
+		align-self: flex-start;
+	}
+
+	.btn-submit:hover {
+		background: color-mix(in srgb, var(--color-accent) 85%, #000);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px var(--color-accent-glow);
+	}
+
+	.btn-submit:active {
+		transform: translateY(0);
+	}
+
+	.form-errors {
+		background: rgba(239, 68, 68, 0.1);
+		border: 1px solid rgba(239, 68, 68, 0.4);
+		border-radius: 0.5rem;
+		padding: 0.75rem 1rem;
+		color: #fca5a5;
+	}
+
+	.form-errors p {
+		margin: 0 0 0.5rem;
+		font-weight: 700;
+		color: #fca5a5;
+	}
+
+	.form-errors ul {
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+
+	.form-errors li {
+		font-size: 0.9rem;
+	}
+
+	.repeater-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.repeater-item {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.repeater-item input {
+		flex: 1;
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.65rem 0.85rem;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.repeater-item input:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.repeater-item input::placeholder {
+		color: var(--text-muted);
+	}
+
+	.repeater-remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.2rem;
+		height: 2.2rem;
+		background: rgba(239, 68, 68, 0.1);
+		border: 1px solid rgba(239, 68, 68, 0.3);
+		border-radius: 0.5rem;
+		color: #ef4444;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.repeater-remove:hover {
+		background: rgba(239, 68, 68, 0.2);
+		border-color: #ef4444;
+	}
+
+	.repeater-add {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: transparent;
+		border: 1px dashed var(--border-color);
+		border-radius: 0.5rem;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.repeater-add:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+	}
+</style>

@@ -1,10 +1,13 @@
 <script lang="ts">
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
+	import BansosForm from '$lib/components/BansosForm.svelte';
 	import {
 		getCommitContributorStats,
 		getContributorStats,
 		type ContributorSummary
 	} from '$lib/data/bansos';
+
+	type TabId = 'form' | 'npx' | 'git' | 'ai';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
@@ -12,33 +15,30 @@
 		if (b.login === 'wauputr4') return 1;
 		return 0;
 	});
-	const singleLineExample =
-		'npx bansosdev add --id contoh-bansos --title "Contoh" --provider "Provider" --description "Deskripsi singkat" --benefits "Benefit 1|Benefit 2" --validity-type "uncertain" --validity-desc "Berlaku sampai slot habis" --requirements "Buat akun|Klaim program" --cta-link "https://example.com" --contributor-name "Nama Kamu" --contributor-url "https://example.com" --tags "Cloud,Gratisan" --status active';
-	const agentSkillInstallCommand =
+
+	const tabs: { id: TabId; label: string; icon: string }[] = [
+		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
+		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
+		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
+		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' }
+	];
+
+	let activeTab = $state<TabId>('form');
+
+	const npxCommand =
+		'npx bansosdev add \\\n  --id contoh-bansos \\\n  --title "Contoh Bansos Developer" \\\n  --provider "Provider" \\\n  --description "Deskripsi singkat bansos." \\\n  --benefits "Benefit satu|Benefit dua" \\\n  --validity-type fixed \\\n  --validity-date 2026-06-30 \\\n  --requirements "Buat akun|Klaim program" \\\n  --cta-link "https://example.com" \\\n  --contributor-name "Nama Kamu" \\\n  --contributor-url "https://example.com" \\\n  --tags "Cloud,Gratisan" \\\n  --status active';
+
+	const gitCloneCommand =
+		'git clone https://github.com/wauputr4/bansos.git\ncd bansos\nnpm install\n\nnpm run add:bansos -- \\\n  --id contoh-bansos \\\n  --title "Contoh Bansos Developer" \\\n  --provider "Provider" \\\n  --description "Deskripsi singkat bansos." \\\n  --benefits "Benefit satu|Benefit dua" \\\n  --validity-type fixed \\\n  --validity-date 2026-06-30 \\\n  --requirements "Buat akun|Klaim program" \\\n  --cta-link "https://example.com" \\\n  --contributor-name "Nama Kamu" \\\n  --contributor-url "https://example.com" \\\n  --tags "Cloud,Gratisan"\n\n# Lalu buat PR manual';
+
+	const aiSkillInstall =
 		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
-	const agentPromptExample =
+
+	const aiPromptExample =
 		'Use $bansos-add-entry to research this source and prepare a valid bansos.dev submission: https://example.com';
-	const multilineExample = [
-		'npx bansosdev add \\',
-		'  --id namecom-domain-app \\',
-		'  --title "Promo Domain .DEV & .APP Gratis dari Name.com" \\',
-		'  --provider "Name.com" \\',
-		'  --description "Domain .dev dan .app gratis buat developer yang mau rilis aplikasi tanpa keluar budget domain." \\',
-		'  --benefits "Domain .dev dan .app gratis|Tidak perlu kartu kredit|Limit 1 domain per akun|Promo code DEVWEEK26 sudah tidak aktif" \\',
-		'  --validity-type "uncertain" \\',
-		'  --validity-desc "Sudah tidak aktif (promo code tidak bisa digunakan lagi)" \\',
-		'  --requirements "Punya akun Name.com aktif|Pilih domain .dev atau .app yang tersedia|Gunakan promo code pas checkout" \\',
-		'  --promo-code "DEVWEEK26" \\',
-		'  --published-at "2026-06-11" \\',
-		'  --cta-link "https://www.name.com" \\',
-		'  --contributor-name "Wauputra" \\',
-		'  --contributor-url "https://wau.my.id" \\',
-		'  --tags "Domain,Gratisan,No Credit Card" \\',
-		'  --featured true \\',
-		'  --status expired'
-	].join('\n');
-	let copiedNotice = $state('');
+
 	let copiedId = $state('');
+	let copiedNotice = $state('');
 
 	const copyToClipboard = async (text: string, id: string) => {
 		try {
@@ -56,174 +56,6 @@
 			}, 2200);
 		}
 	};
-
-	let formId = $state('');
-	let formTitle = $state('');
-	let formProvider = $state('');
-	let formDescription = $state('');
-	let formBenefits = $state<string[]>(['']);
-	let formRequirements = $state<string[]>(['']);
-	let formCtaLink = $state('');
-	let formTags = $state('');
-	let formValidityType = $state<'fixed' | 'uncertain' | 'forever'>('uncertain');
-	let formValidityDate = $state('');
-	let formValidityDesc = $state('');
-	let formPublishedAt = $state(new Date().toISOString().slice(0, 10));
-	let formPromoCode = $state('');
-	let formSource = $state('');
-	let formContributorName = $state('');
-	let formContributorUrl = $state('');
-	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
-	let formFeatured = $state(false);
-	let formErrors = $state<string[]>([]);
-
-	function slugify(text: string): string {
-		return text
-			.toLowerCase()
-			.trim()
-			.replace(/[^\w\s-]/g, '')
-			.replace(/[\s_-]+/g, '-')
-			.replace(/^-+|-+$/g, '');
-	}
-
-	$effect(() => {
-		if (formTitle && !formId) {
-			formId = slugify(formTitle);
-		}
-	});
-
-	function addBenefit() {
-		formBenefits = [...formBenefits, ''];
-	}
-
-	function removeBenefit(index: number) {
-		formBenefits = formBenefits.filter((_, i) => i !== index);
-	}
-
-	function updateBenefit(index: number, value: string) {
-		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
-	}
-
-	function addRequirement() {
-		formRequirements = [...formRequirements, ''];
-	}
-
-	function removeRequirement(index: number) {
-		formRequirements = formRequirements.filter((_, i) => i !== index);
-	}
-
-	function updateRequirement(index: number, value: string) {
-		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
-	}
-
-	function generateIssueUrl(): string | null {
-		formErrors = [];
-		const errors: string[] = [];
-
-		if (!formId.trim()) errors.push('ID wajib diisi');
-		else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formId.trim()))
-			errors.push('ID harus kebab-case lowercase (contoh: nama-bansos)');
-
-		if (!formTitle.trim()) errors.push('Title wajib diisi');
-		if (!formProvider.trim()) errors.push('Provider wajib diisi');
-		if (!formDescription.trim()) errors.push('Description wajib diisi');
-
-		const validBenefits = formBenefits.filter((b) => b.trim());
-		if (validBenefits.length === 0) errors.push('Minimal 1 benefit wajib diisi');
-
-		const validRequirements = formRequirements.filter((r) => r.trim());
-		if (validRequirements.length === 0) errors.push('Minimal 1 requirement wajib diisi');
-
-		if (!formCtaLink.trim()) errors.push('CTA Link wajib diisi');
-		else {
-			try {
-				const url = new URL(formCtaLink.trim());
-				if (url.protocol !== 'http:' && url.protocol !== 'https:')
-					errors.push('CTA Link harus menggunakan http:// atau https://');
-			} catch {
-				errors.push('CTA Link harus URL yang valid');
-			}
-		}
-		if (!formTags.trim()) errors.push('Tags wajib diisi (pisahkan dengan koma)');
-
-		if (formValidityType === 'fixed') {
-			if (!formValidityDate) errors.push('Validity Date wajib diisi untuk tipe Fixed');
-			else if (!/^\d{4}-\d{2}-\d{2}$/.test(formValidityDate))
-				errors.push('Validity Date harus format YYYY-MM-DD');
-		}
-
-		if (formContributorName && !formContributorUrl)
-			errors.push('Contributor URL wajib diisi jika Contributor Name diisi');
-		if (!formContributorName && formContributorUrl)
-			errors.push('Contributor Name wajib diisi jika Contributor URL diisi');
-		if (formContributorUrl) {
-			try {
-				const url = new URL(formContributorUrl.trim());
-				if (url.protocol !== 'http:' && url.protocol !== 'https:')
-					errors.push('Contributor URL harus menggunakan http:// atau https://');
-			} catch {
-				errors.push('Contributor URL harus URL yang valid');
-			}
-		}
-
-		if (errors.length > 0) {
-			formErrors = errors;
-			return null;
-		}
-
-		const payload: Record<string, unknown> = {
-			id: formId.trim(),
-			title: formTitle.trim(),
-			provider: formProvider.trim(),
-			description: formDescription.trim(),
-			benefits: validBenefits.map((b) => b.trim()),
-			validity: {
-				type: formValidityType,
-				...(formValidityType === 'fixed' && formValidityDate ? { date: formValidityDate } : {}),
-				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
-			},
-			requirements: validRequirements.map((r) => r.trim()),
-			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
-			ctaLink: formCtaLink.trim(),
-			tags: formTags
-				.split(',')
-				.map((s) => s.trim())
-				.filter(Boolean),
-			featured: formFeatured,
-			status: formStatus
-		};
-
-		if (formPromoCode.trim()) payload.promoCode = formPromoCode.trim();
-		if (formSource.trim()) payload.source = formSource.trim();
-		if (formContributorName.trim() && formContributorUrl.trim()) {
-			payload.contributor = {
-				name: formContributorName.trim(),
-				url: formContributorUrl.trim()
-			};
-		}
-
-		const body = [
-			'## Bansos submission',
-			'',
-			'```json',
-			JSON.stringify(payload, null, 2),
-			'```'
-		].join('\n');
-		const params = new URLSearchParams({
-			title: `Tambah bansos: ${formTitle.trim()}`,
-			body,
-			labels: 'submission,bansos'
-		});
-		return `https://github.com/wauputr4/bansos/issues/new?${params.toString()}`;
-	}
-
-	function handleSubmit(e: SubmitEvent) {
-		e.preventDefault();
-		const url = generateIssueUrl();
-		if (url) {
-			window.open(url, '_blank');
-		}
-	}
 </script>
 
 <svelte:head>
@@ -236,9 +68,8 @@
 		<p class="eyebrow">Kontribusi</p>
 		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
 		<p>
-			Info baru bisa ditambahkan lewat CLI. Kamu submit issue dari hasil command, lalu bot akan
-			bikin Pull Request otomatis kalau payload JSON valid. Isi minimalnya: nama program, provider,
-			benefit, syarat klaim, masa berlaku, link official, tag, dan nama kontributor.
+			Pilih cara kontribusi yang paling nyaman buat kamu. Semua cara di bawah akan menghasilkan
+			payload JSON yang sama, lalu bot otomatis bikin Pull Request dari issue yang kamu submit.
 		</p>
 
 		<div class="repo-status-card">
@@ -246,391 +77,150 @@
 			<GithubBadge />
 		</div>
 
-		<div class="command-box">
-			<p>Contoh submit via CLI (format lengkap yang diterima):</p>
-			<div class="command-panel">
-				<div class="command-head">
-					<span>Contoh memanjang (1 baris):</span>
+		<div class="tabs-container">
+			<div class="tabs-header">
+				{#each tabs as tab (tab.id)}
 					<button
-						type="button"
-						class="copy-button mobile-only"
-						class:copied={copiedId === 'one-line'}
-						onclick={() => copyToClipboard(singleLineExample, 'one-line')}
+						class="tab-btn"
+						class:active={activeTab === tab.id}
+						onclick={() => (activeTab = tab.id)}
 					>
-						{#if copiedId === 'one-line'}
-							<i class="fa-solid fa-check"></i>
-						{:else}
-							Copy
-						{/if}
+						<i class={tab.icon}></i>
+						<span>{tab.label}</span>
 					</button>
-				</div>
-				<div class="code-wrapper">
-					<pre class="command-inline"><code>{singleLineExample}</code></pre>
-					<button
-						type="button"
-						class="hover-copy-btn"
-						class:copied={copiedId === 'one-line'}
-						aria-label="Salin kode"
-						onclick={() => copyToClipboard(singleLineExample, 'one-line')}
-					>
-						<i class="fa-solid fa-{copiedId === 'one-line' ? 'check' : 'clipboard'}"></i>
-					</button>
-				</div>
-			</div>
-			<div class="command-panel">
-				<div class="command-head">
-					<span>Versi rapi (dengan jeda baris biar enak dibaca):</span>
-					<button
-						type="button"
-						class="copy-button mobile-only"
-						class:copied={copiedId === 'multi-line'}
-						onclick={() => copyToClipboard(multilineExample, 'multi-line')}
-					>
-						{#if copiedId === 'multi-line'}
-							<i class="fa-solid fa-check"></i>
-						{:else}
-							Copy
-						{/if}
-					</button>
-				</div>
-				<div class="code-wrapper">
-					<pre class="command-block"><code>{multilineExample}</code></pre>
-					<button
-						type="button"
-						class="hover-copy-btn"
-						class:copied={copiedId === 'multi-line'}
-						aria-label="Salin kode"
-						onclick={() => copyToClipboard(multilineExample, 'multi-line')}
-					>
-						<i class="fa-solid fa-{copiedId === 'multi-line' ? 'check' : 'clipboard'}"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-
-		<section class="submit-form-box">
-			<div class="form-header">
-				<p class="eyebrow">Form Submit</p>
-				<h2>Isi form ini, langsung submit ke GitHub.</h2>
-				<p>Gak perlu CLI. Isi form di bawah, klik Submit, dan issue GitHub otomatis terbuka.</p>
+				{/each}
 			</div>
 
-			<form class="bansos-form" onsubmit={handleSubmit} novalidate>
-				<div class="form-grid">
-					<div class="form-group full-width">
-						<label for="form-title">Title <span class="required">*</span></label>
-						<input
-							id="form-title"
-							type="text"
-							bind:value={formTitle}
-							placeholder="GitHub Copilot Gratis 3 Bulan"
-							required
-						/>
-						<span class="hint">ID akan otomatis terbuat dari title</span>
-					</div>
-
-					<div class="form-group">
-						<label for="form-provider">Provider <span class="required">*</span></label>
-						<input
-							id="form-provider"
-							type="text"
-							bind:value={formProvider}
-							placeholder="GitHub"
-							required
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="form-cta-link">CTA Link <span class="required">*</span></label>
-						<input
-							id="form-cta-link"
-							type="url"
-							bind:value={formCtaLink}
-							placeholder="https://example.com"
-							required
-						/>
-					</div>
-
-					<div class="form-group full-width">
-						<label for="form-description">Description <span class="required">*</span></label>
-						<textarea
-							id="form-description"
-							bind:value={formDescription}
-							placeholder="Deskripsi singkat tentang bansos ini..."
-							rows="2"
-							required
-						></textarea>
-					</div>
-
-					<!-- svelte-ignore a11y_label_has_associated_control -->
-					<div class="form-group full-width">
-						<label id="benefits-label">Benefits <span class="required">*</span></label>
-						<div class="repeater-list" aria-labelledby="benefits-label">
-							{#each formBenefits as benefit, i (i)}
-								<div class="repeater-item">
-									<input
-										type="text"
-										value={benefit}
-										oninput={(e) => updateBenefit(i, e.currentTarget.value)}
-										placeholder="Benefit {i + 1}"
-										aria-label="Benefit {i + 1}"
-									/>
-									{#if formBenefits.length > 1}
-										<button
-											type="button"
-											class="repeater-remove"
-											onclick={() => removeBenefit(i)}
-											aria-label="Remove benefit {i + 1}"
-										>
-											<i class="fa-solid fa-times"></i>
-										</button>
-									{/if}
-								</div>
-							{/each}
+			<div class="tab-content">
+				{#if activeTab === 'form'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Isi form, langsung submit ke GitHub</h2>
+							<p>
+								Gak perlu CLI. Isi form di bawah, klik Submit, dan issue GitHub otomatis terbuka.
+								Bot akan bikin PR dari issue tersebut.
+							</p>
 						</div>
-						<button type="button" class="repeater-add" onclick={addBenefit}>
-							<i class="fa-solid fa-plus"></i> Tambah Benefit
-						</button>
-					</div>
-
-					<!-- svelte-ignore a11y_label_has_associated_control -->
-					<div class="form-group full-width">
-						<label id="requirements-label">Requirements <span class="required">*</span></label>
-						<div class="repeater-list" aria-labelledby="requirements-label">
-							{#each formRequirements as requirement, i (i)}
-								<div class="repeater-item">
-									<input
-										type="text"
-										value={requirement}
-										oninput={(e) => updateRequirement(i, e.currentTarget.value)}
-										placeholder="Requirement {i + 1}"
-										aria-label="Requirement {i + 1}"
-									/>
-									{#if formRequirements.length > 1}
-										<button
-											type="button"
-											class="repeater-remove"
-											onclick={() => removeRequirement(i)}
-											aria-label="Remove requirement {i + 1}"
-										>
-											<i class="fa-solid fa-times"></i>
-										</button>
-									{/if}
-								</div>
-							{/each}
+						<div class="form-wrapper">
+							<BansosForm />
 						</div>
-						<button type="button" class="repeater-add" onclick={addRequirement}>
-							<i class="fa-solid fa-plus"></i> Tambah Requirement
-						</button>
 					</div>
-
-					<div class="form-group">
-						<label for="form-tags">Tags <span class="required">*</span></label>
-						<input
-							id="form-tags"
-							type="text"
-							bind:value={formTags}
-							placeholder="Cloud,AI,Gratisan"
-							required
-						/>
-						<span class="hint">Pisahkan dengan koma</span>
-					</div>
-
-					<div class="form-group">
-						<label for="form-validity-type">Masa Berlaku <span class="required">*</span></label>
-						<select id="form-validity-type" bind:value={formValidityType}>
-							<option value="uncertain">Tidak Tentu</option>
-							<option value="fixed">Batas Waktu</option>
-							<option value="forever">Selamanya</option>
-						</select>
-					</div>
-
-					{#if formValidityType === 'fixed'}
-						<div class="form-group">
-							<label for="form-validity-date"
-								>Tanggal Berakhir <span class="required">*</span></label
-							>
-							<input id="form-validity-date" type="date" bind:value={formValidityDate} required />
+				{:else if activeTab === 'npx'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Via npx CLI</h2>
+							<p>
+								Jalankan command ini di terminal. URL issue GitHub akan muncul, buka di browser
+								untuk submit. Bot otomatis bikin PR dari issue yang valid.
+							</p>
 						</div>
-					{/if}
-
-					<div class="form-group full-width">
-						<label for="form-validity-desc">Catatan Masa Berlaku</label>
-						<input
-							id="form-validity-desc"
-							type="text"
-							bind:value={formValidityDesc}
-							placeholder="Berlaku sampai slot habis, dll (opsional)"
-						/>
+						<div class="command-block-wrapper">
+							<div class="command-head">
+								<span>npx bansosdev add</span>
+								<button
+									type="button"
+									class="copy-btn"
+									class:copied={copiedId === 'npx'}
+									onclick={() => copyToClipboard(npxCommand, 'npx')}
+								>
+									<i class="fa-solid fa-{copiedId === 'npx' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'npx' ? 'Tersalin' : 'Copy'}
+								</button>
+							</div>
+							<pre class="command-block"><code>{npxCommand}</code></pre>
+						</div>
+						<div class="tab-note">
+							<p>
+								<i class="fa-solid fa-circle-info"></i>
+								Argumen <code>--benefits</code> dan <code>--requirements</code> dipisahkan dengan
+								<code>|</code>. Argumen <code>--tags</code> dipisahkan dengan koma. Pakai
+								<code>--mode json</code> untuk cek payload tanpa buka issue.
+							</p>
+						</div>
 					</div>
-
-					<div class="form-group">
-						<label for="form-published-at">Tanggal Publish</label>
-						<input id="form-published-at" type="date" bind:value={formPublishedAt} />
+				{:else if activeTab === 'git'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Clone repo &amp; npm run add:bansos</h2>
+							<p>
+								Clone repo, jalankan script lokal, lalu buat PR manual. Cocok kalau kamu mau review
+								data sebelum submit dan punya akses ke repo.
+							</p>
+						</div>
+						<div class="command-block-wrapper">
+							<div class="command-head">
+								<span>git clone + npm run add:bansos</span>
+								<button
+									type="button"
+									class="copy-btn"
+									class:copied={copiedId === 'git'}
+									onclick={() => copyToClipboard(gitCloneCommand, 'git')}
+								>
+									<i class="fa-solid fa-{copiedId === 'git' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'git' ? 'Tersalin' : 'Copy'}
+								</button>
+							</div>
+							<pre class="command-block"><code>{gitCloneCommand}</code></pre>
+						</div>
+						<div class="tab-note">
+							<p>
+								<i class="fa-solid fa-circle-info"></i>
+								Setelah data masuk <code>bansos.json</code>, push branch kamu dan buka PR ke
+								<code>main</code>. CI akan validasi data otomatis.
+							</p>
+						</div>
 					</div>
-
-					<div class="form-group">
-						<label for="form-status">Status</label>
-						<select id="form-status" bind:value={formStatus}>
-							<option value="active">Aktif</option>
-							<option value="upcoming">Akan Datang</option>
-							<option value="expired">Expired</option>
-						</select>
-					</div>
-
-					<div class="form-group">
-						<label for="form-promo-code">Promo Code</label>
-						<input
-							id="form-promo-code"
-							type="text"
-							bind:value={formPromoCode}
-							placeholder="PROMOCODE2026"
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="form-source">Sumber</label>
-						<input
-							id="form-source"
-							type="text"
-							bind:value={formSource}
-							placeholder="https://sumber-berita.com atau teks"
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="form-contributor-name">Nama Kontributor</label>
-						<input
-							id="form-contributor-name"
-							type="text"
-							bind:value={formContributorName}
-							placeholder="Nama Kamu"
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="form-contributor-url">URL Kontributor</label>
-						<input
-							id="form-contributor-url"
-							type="url"
-							bind:value={formContributorUrl}
-							placeholder="https://github.com/username"
-						/>
-					</div>
-
-					<div class="form-group checkbox-group full-width">
-						<label class="checkbox-label">
-							<input type="checkbox" bind:checked={formFeatured} />
-							<span>Featured (tandai sebagai rekomendasi)</span>
-						</label>
-					</div>
-				</div>
-
-				<button type="submit" class="btn-submit">
-					<i class="fa-brands fa-github"></i>
-					Submit ke GitHub
-				</button>
-
-				{#if formErrors.length > 0}
-					<div class="form-errors">
-						<p><i class="fa-solid fa-circle-exclamation"></i> Ada yang perlu diperbaiki:</p>
-						<ul>
-							{#each formErrors as error, i (i)}
-								<li>{error}</li>
-							{/each}
-						</ul>
+				{:else if activeTab === 'ai'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>AI Agent Skill</h2>
+							<p>
+								Pakai AI agent yang support Agent Skills? Install skill resmi bansos.dev biar agent
+								bisa riset sumber, bikin payload valid, dan mengikuti aturan kontribusi.
+							</p>
+						</div>
+						<div class="command-block-wrapper">
+							<div class="command-head">
+								<span>Install skill untuk agent</span>
+								<button
+									type="button"
+									class="copy-btn"
+									class:copied={copiedId === 'ai-install'}
+									onclick={() => copyToClipboard(aiSkillInstall, 'ai-install')}
+								>
+									<i class="fa-solid fa-{copiedId === 'ai-install' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'ai-install' ? 'Tersalin' : 'Copy'}
+								</button>
+							</div>
+							<pre class="command-block"><code>{aiSkillInstall}</code></pre>
+						</div>
+						<div class="command-block-wrapper">
+							<div class="command-head">
+								<span>Contoh prompt</span>
+								<button
+									type="button"
+									class="copy-btn"
+									class:copied={copiedId === 'ai-prompt'}
+									onclick={() => copyToClipboard(aiPromptExample, 'ai-prompt')}
+								>
+									<i class="fa-solid fa-{copiedId === 'ai-prompt' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'ai-prompt' ? 'Tersalin' : 'Copy'}
+								</button>
+							</div>
+							<pre class="command-block"><code>{aiPromptExample}</code></pre>
+						</div>
+						<a
+							href="https://www.skills.sh/wauputr4/skill-bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="skill-link"
+						>
+							Lihat skill di skills.sh
+							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+						</a>
 					</div>
 				{/if}
-			</form>
-		</section>
-
-		<section class="agent-skill-box">
-			<div class="agent-copy">
-				<p class="eyebrow">AI Agent</p>
-				<h2>Pakai skill khusus biar agent gak halu pas nambah bansos.</h2>
-				<p>
-					Kalau kamu pakai AI agent yang support Agent Skills, install skill resmi
-					<code>wauputr4/skill-bansos</code> lewat <code>npx skills</code>. Skill ini ngajarin agent
-					cara riset sumber, bikin payload valid, dan mengikuti aturan kontribusi bansos.dev.
-				</p>
 			</div>
-			<div class="command-panel">
-				<div class="command-head">
-					<span>Install skill untuk agent:</span>
-					<button
-						type="button"
-						class="copy-button mobile-only"
-						class:copied={copiedId === 'agent-install'}
-						onclick={() => copyToClipboard(agentSkillInstallCommand, 'agent-install')}
-					>
-						{#if copiedId === 'agent-install'}
-							<i class="fa-solid fa-check"></i>
-						{:else}
-							Copy
-						{/if}
-					</button>
-				</div>
-				<div class="code-wrapper">
-					<pre class="command-inline"><code>{agentSkillInstallCommand}</code></pre>
-					<button
-						type="button"
-						class="hover-copy-btn"
-						class:copied={copiedId === 'agent-install'}
-						aria-label="Salin kode"
-						onclick={() => copyToClipboard(agentSkillInstallCommand, 'agent-install')}
-					>
-						<i class="fa-solid fa-{copiedId === 'agent-install' ? 'check' : 'clipboard'}"></i>
-					</button>
-				</div>
-			</div>
-			<div class="command-panel">
-				<div class="command-head">
-					<span>Contoh prompt setelah skill terpasang:</span>
-					<button
-						type="button"
-						class="copy-button mobile-only"
-						class:copied={copiedId === 'agent-prompt'}
-						onclick={() => copyToClipboard(agentPromptExample, 'agent-prompt')}
-					>
-						{#if copiedId === 'agent-prompt'}
-							<i class="fa-solid fa-check"></i>
-						{:else}
-							Copy
-						{/if}
-					</button>
-				</div>
-				<div class="code-wrapper">
-					<pre class="command-block"><code>{agentPromptExample}</code></pre>
-					<button
-						type="button"
-						class="hover-copy-btn"
-						class:copied={copiedId === 'agent-prompt'}
-						aria-label="Salin kode"
-						onclick={() => copyToClipboard(agentPromptExample, 'agent-prompt')}
-					>
-						<i class="fa-solid fa-{copiedId === 'agent-prompt' ? 'check' : 'clipboard'}"></i>
-					</button>
-				</div>
-			</div>
-			<a
-				href="https://www.skills.sh/wauputr4/skill-bansos"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="skill-link"
-			>
-				Lihat skill di skills.sh
-			</a>
-		</section>
-
-		<div class="actions">
-			<a
-				href="https://github.com/wauputr4/bansos"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="btn-primary"
-			>
-				Buka GitHub
-			</a>
 		</div>
 
 		{#if copiedNotice}
@@ -642,7 +232,8 @@
 
 		<section class="contributors-section">
 			<h2 class="section-title">
-				<i class="fa-solid fa-code-commit"></i> Kontributor Proyek
+				<i class="fa-solid fa-code-commit"></i>
+				Kontributor Proyek
 			</h2>
 			<p class="section-note">
 				Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode atau data
@@ -676,7 +267,8 @@
 
 		<section class="contributors-section">
 			<h2 class="section-title">
-				<i class="fa-solid fa-users"></i> Kontributor Terdaftar
+				<i class="fa-solid fa-users"></i>
+				Kontributor Terdaftar
 			</h2>
 			<p class="section-note">
 				Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update data
@@ -731,16 +323,6 @@
 		color: var(--text-secondary);
 	}
 
-	.command-box {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-		padding: 1rem;
-	}
-
 	.repo-status-card {
 		display: flex;
 		flex-direction: column;
@@ -752,168 +334,177 @@
 		padding: 1rem;
 	}
 
-	.agent-skill-box {
+	.tabs-container {
 		display: flex;
 		flex-direction: column;
-		gap: 0.85rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 42%, var(--border-color));
-		border-radius: 0.75rem;
-		background:
-			linear-gradient(135deg, rgba(53, 194, 124, 0.12), rgba(255, 255, 255, 0.03)),
-			color-mix(in srgb, var(--text-primary) 4%, transparent);
-		padding: 1rem;
-	}
-
-	.agent-copy {
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-	}
-
-	.agent-copy h2 {
-		margin: 0;
-		color: var(--text-primary);
-		font-size: clamp(1.25rem, 3vw, 1.75rem);
-		line-height: 1.15;
-	}
-
-	.agent-copy p {
-		margin: 0;
-	}
-
-	.agent-copy code {
-		color: var(--text-primary);
-		font-weight: 800;
-	}
-
-	.skill-link {
-		width: fit-content;
-		color: var(--color-accent);
-		font-size: 0.9rem;
-		font-weight: 800;
-		text-decoration: none;
-	}
-
-	.skill-link:hover {
-		text-decoration: underline;
-	}
-
-	.command-block {
-		margin: 0;
-		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
-		padding: 0.9rem 1rem;
+		overflow: hidden;
+	}
+
+	.tabs-header {
+		display: flex;
+		border-bottom: 1px solid var(--border-color);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 		overflow-x: auto;
 	}
 
-	.command-panel {
-		margin: 0;
+	.tab-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.85rem 1.25rem;
+		background: transparent;
+		border: none;
+		border-bottom: 2px solid transparent;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.9rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.2s;
+		white-space: nowrap;
+	}
+
+	.tab-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+	}
+
+	.tab-btn.active {
+		color: var(--color-accent);
+		border-bottom-color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+	}
+
+	.tab-content {
+		padding: 1.5rem;
+	}
+
+	.tab-panel {
 		display: flex;
 		flex-direction: column;
-		gap: 0.6rem;
+		gap: 1.25rem;
+	}
+
+	.tab-description {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.tab-description h2 {
+		margin: 0;
+		color: var(--text-primary);
+		font-size: 1.25rem;
+		font-weight: 800;
+	}
+
+	.tab-description p {
+		margin: 0;
+	}
+
+	.form-wrapper {
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		padding: 1.25rem;
+		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+	}
+
+	.command-block-wrapper {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		overflow: hidden;
 	}
 
 	.command-head {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: 0.8rem;
+		padding: 0.6rem 1rem;
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		border-bottom: 1px solid var(--border-color);
 		color: var(--text-secondary);
-		font-size: 0.85rem;
-	}
-
-	.copy-button {
-		background: rgba(255, 255, 255, 0.08);
-		border: 1px solid var(--border-color);
-		color: var(--text-primary);
-		border-radius: 0.6rem;
-		font-size: 0.76rem;
-		padding: 0.38rem 0.75rem;
+		font-size: 0.8rem;
 		font-weight: 700;
-		cursor: pointer;
-		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	.copy-button:hover {
-		background: var(--bg-secondary);
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-		transform: scale(1.05);
-		box-shadow: 0 4px 12px var(--color-accent-glow);
-	}
-
-	.mobile-only {
-		display: none;
-	}
-
-	.code-wrapper {
-		position: relative;
-	}
-
-	.hover-copy-btn {
-		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
-		background: color-mix(in srgb, var(--text-primary) 5%, var(--bg-primary));
-		border: 1px solid var(--border-color);
-		color: var(--text-secondary);
-		border-radius: 0.4rem;
-		width: 2rem;
-		height: 2rem;
+	.copy-btn {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		gap: 0.3rem;
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: 0.4rem;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.75rem;
+		font-weight: 700;
+		padding: 0.3rem 0.6rem;
 		cursor: pointer;
-		opacity: 0;
-		transition: all 0.2s ease;
+		transition: all 0.2s;
 	}
 
-	.code-wrapper:hover .hover-copy-btn,
-	.hover-copy-btn:focus,
-	.hover-copy-btn.copied {
-		opacity: 1;
-	}
-
-	.hover-copy-btn:hover {
-		background: var(--bg-secondary);
-		color: var(--color-accent);
+	.copy-btn:hover {
+		background: rgba(255, 255, 255, 0.08);
 		border-color: var(--color-accent);
-		transform: scale(1.1);
-		box-shadow: 0 4px 12px var(--color-accent-glow);
+		color: var(--color-accent);
 	}
 
-	.hover-copy-btn.copied,
-	.copy-button.copied {
+	.copy-btn.copied {
 		color: #10b981;
 		border-color: #10b981;
 	}
 
-	.command-block,
-	.command-inline {
-		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
+	.command-block {
+		margin: 0;
 		padding: 0.9rem 1rem;
 		overflow-x: auto;
-		margin: 0;
 	}
 
-	.command-inline code,
 	.command-block code {
 		display: block;
 		color: var(--text-primary);
 		font-size: 0.82rem;
 		line-height: 1.6;
-	}
-
-	.command-inline code {
-		white-space: nowrap;
-	}
-
-	.command-block {
 		white-space: pre-wrap;
 		word-break: break-word;
+	}
+
+	.tab-note {
+		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 20%, var(--border-color));
+		border-radius: 0.5rem;
+		padding: 0.75rem 1rem;
+	}
+
+	.tab-note p {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+	}
+
+	.tab-note code {
+		color: var(--color-accent);
+		font-weight: 700;
+	}
+
+	.skill-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-accent);
+		font-size: 0.9rem;
+		font-weight: 750;
+		text-decoration: none;
+		align-self: flex-start;
+	}
+
+	.skill-link:hover {
+		text-decoration: underline;
 	}
 
 	.toast-notice {
@@ -975,13 +566,6 @@
 			transform: translate(-50%, 0);
 			opacity: 1;
 		}
-	}
-
-	.actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-		margin-top: 0.5rem;
 	}
 
 	.contributors-section {
@@ -1137,14 +721,11 @@
 	}
 
 	@media (max-width: 48rem) {
-		.mobile-only {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-width: 4rem;
-		}
-		.hover-copy-btn {
+		.tab-btn span {
 			display: none;
+		}
+		.tab-btn {
+			padding: 0.85rem;
 		}
 		.author-text {
 			display: none;
@@ -1157,264 +738,5 @@
 			font-size: 0.8rem;
 			text-align: right;
 		}
-	}
-
-	.submit-form-box {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 42%, var(--border-color));
-		border-radius: 0.75rem;
-		background:
-			linear-gradient(135deg, rgba(53, 194, 124, 0.08), rgba(255, 255, 255, 0.02)),
-			color-mix(in srgb, var(--text-primary) 4%, transparent);
-		padding: 1.25rem;
-	}
-
-	.form-header {
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-	}
-
-	.form-header h2 {
-		margin: 0;
-		color: var(--text-primary);
-		font-size: clamp(1.25rem, 3vw, 1.75rem);
-		line-height: 1.15;
-	}
-
-	.form-header p {
-		margin: 0;
-	}
-
-	.bansos-form {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.form-errors {
-		background: rgba(239, 68, 68, 0.1);
-		border: 1px solid rgba(239, 68, 68, 0.4);
-		border-radius: 0.5rem;
-		padding: 0.75rem 1rem;
-		color: #fca5a5;
-	}
-
-	.form-errors p {
-		margin: 0 0 0.5rem;
-		font-weight: 700;
-		color: #fca5a5;
-	}
-
-	.form-errors ul {
-		margin: 0;
-		padding-left: 1.25rem;
-	}
-
-	.form-errors li {
-		font-size: 0.9rem;
-	}
-
-	.form-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-	}
-
-	@media (min-width: 40rem) {
-		.form-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	.form-group {
-		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
-	}
-
-	.form-group.full-width {
-		grid-column: 1 / -1;
-	}
-
-	.form-group label {
-		color: var(--text-primary);
-		font-size: 0.9rem;
-		font-weight: 700;
-	}
-
-	.required {
-		color: #ef4444;
-	}
-
-	.hint {
-		color: var(--text-muted);
-		font-size: 0.8rem;
-	}
-
-	.form-group input,
-	.form-group textarea,
-	.form-group select {
-		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
-		border: 1px solid var(--border-color);
-		border-radius: 0.5rem;
-		padding: 0.65rem 0.85rem;
-		color: var(--text-primary);
-		font-family: inherit;
-		font-size: 0.95rem;
-		transition:
-			border-color 0.2s,
-			box-shadow 0.2s;
-	}
-
-	.form-group input:focus,
-	.form-group textarea:focus,
-	.form-group select:focus {
-		outline: none;
-		border-color: var(--color-accent);
-		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
-	}
-
-	.form-group input::placeholder,
-	.form-group textarea::placeholder {
-		color: var(--text-muted);
-	}
-
-	.form-group textarea {
-		resize: vertical;
-		min-height: 4rem;
-	}
-
-	.checkbox-group {
-		flex-direction: row;
-		align-items: center;
-	}
-
-	.checkbox-label {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-	}
-
-	.checkbox-label input[type='checkbox'] {
-		width: 1.1rem;
-		height: 1.1rem;
-		accent-color: var(--color-accent);
-		cursor: pointer;
-	}
-
-	.checkbox-label span {
-		color: var(--text-secondary);
-		font-size: 0.9rem;
-		font-weight: 600;
-	}
-
-	.btn-submit {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		background: var(--color-accent);
-		color: #ffffff;
-		border: none;
-		border-radius: 0.6rem;
-		padding: 0.85rem 1.5rem;
-		font-family: inherit;
-		font-size: 1rem;
-		font-weight: 750;
-		cursor: pointer;
-		transition: all 0.2s;
-		align-self: flex-start;
-	}
-
-	.btn-submit:hover {
-		background: color-mix(in srgb, var(--color-accent) 85%, #000);
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px var(--color-accent-glow);
-	}
-
-	.btn-submit:active {
-		transform: translateY(0);
-	}
-
-	.repeater-list {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.repeater-item {
-		display: flex;
-		gap: 0.5rem;
-		align-items: center;
-	}
-
-	.repeater-item input {
-		flex: 1;
-		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
-		border: 1px solid var(--border-color);
-		border-radius: 0.5rem;
-		padding: 0.65rem 0.85rem;
-		color: var(--text-primary);
-		font-family: inherit;
-		font-size: 0.95rem;
-		transition:
-			border-color 0.2s,
-			box-shadow 0.2s;
-	}
-
-	.repeater-item input:focus {
-		outline: none;
-		border-color: var(--color-accent);
-		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
-	}
-
-	.repeater-item input::placeholder {
-		color: var(--text-muted);
-	}
-
-	.repeater-remove {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.2rem;
-		height: 2.2rem;
-		background: rgba(239, 68, 68, 0.1);
-		border: 1px solid rgba(239, 68, 68, 0.3);
-		border-radius: 0.5rem;
-		color: #ef4444;
-		cursor: pointer;
-		transition: all 0.2s;
-	}
-
-	.repeater-remove:hover {
-		background: rgba(239, 68, 68, 0.2);
-		border-color: #ef4444;
-	}
-
-	.repeater-add {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-top: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: transparent;
-		border: 1px dashed var(--border-color);
-		border-radius: 0.5rem;
-		color: var(--text-secondary);
-		font-family: inherit;
-		font-size: 0.85rem;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.2s;
-	}
-
-	.repeater-add:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
 	}
 </style>
