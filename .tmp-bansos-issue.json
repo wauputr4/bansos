@@ -1,0 +1,22 @@
+{
+	"id": "tes-form-bansos",
+	"title": "tes-form-bansos",
+	"provider": "Github",
+	"description": "Ini deskripsi",
+	"benefits": ["benefit1", "benefit2"],
+	"validity": {
+		"type": "uncertain"
+	},
+	"requirements": ["Punya akun"],
+	"publishedAt": "2026-06-16",
+	"ctaLink": "https://github.com",
+	"tags": ["Cloud", "gratis"],
+	"featured": true,
+	"status": "active",
+	"promoCode": "PROMOTEST",
+	"source": "https://google.com",
+	"contributor": {
+		"name": "wau",
+		"url": "https://github.com/wauputr4"
+	}
+}
