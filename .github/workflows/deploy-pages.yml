@@ -28,7 +28,12 @@ jobs:
       - run: npm ci
 
       - name: Create .env file
-        run: echo "VITE_GA_ID=$VITE_GA_ID" > .env
+        run: |
+          if [ -z "${VITE_GA_ID:-}" ]; then
+            echo "VITE_GA_ID is required but not set" >&2
+            exit 1
+          fi
+          printf 'VITE_GA_ID=%s\n' "$VITE_GA_ID" > .env
         env:
           VITE_GA_ID: ${{ vars.VITE_GA_ID }}
 
