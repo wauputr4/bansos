@@ -2,6 +2,7 @@
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
 	import BansosForm from '$lib/components/BansosForm.svelte';
 	import {
+		bansosList,
 		getCommitContributorStats,
 		getContributorStats,
 		type ContributorSummary
@@ -25,17 +26,76 @@
 
 	let activeTab = $state<TabId>('form');
 
-	const npxCommand =
-		'npx bansosdev add \\\n  --id contoh-bansos \\\n  --title "Contoh Bansos Developer" \\\n  --provider "Provider" \\\n  --description "Deskripsi singkat bansos." \\\n  --benefits "Benefit satu|Benefit dua" \\\n  --validity-type fixed \\\n  --validity-date 2026-06-30 \\\n  --requirements "Buat akun|Klaim program" \\\n  --cta-link "https://example.com" \\\n  --contributor-name "Nama Kamu" \\\n  --contributor-url "https://example.com" \\\n  --tags "Cloud,Gratisan" \\\n  --status active';
+	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
-	const gitCloneCommand =
-		'git clone https://github.com/wauputr4/bansos.git\ncd bansos\nnpm install\n\nnpm run add:bansos -- \\\n  --id contoh-bansos \\\n  --title "Contoh Bansos Developer" \\\n  --provider "Provider" \\\n  --description "Deskripsi singkat bansos." \\\n  --benefits "Benefit satu|Benefit dua" \\\n  --validity-type fixed \\\n  --validity-date 2026-06-30 \\\n  --requirements "Buat akun|Klaim program" \\\n  --cta-link "https://example.com" \\\n  --contributor-name "Nama Kamu" \\\n  --contributor-url "https://example.com" \\\n  --tags "Cloud,Gratisan"\n\n# Lalu buat PR manual';
+	function generateNpxCommand(item: (typeof bansosList)[number]): string {
+		const parts = [
+			'npx bansosdev add \\',
+			`  --id ${item.id} \\`,
+			`  --title "${item.title}" \\`,
+			`  --provider "${item.provider}" \\`,
+			`  --description "${item.description}" \\`,
+			`  --benefits "${item.benefits.join('|')}" \\`,
+			`  --validity-type ${item.validity.type} \\`
+		];
+
+		if (item.validity.date) {
+			parts.push(`  --validity-date ${item.validity.date} \\`);
+		}
+		if (item.validity.description) {
+			parts.push(`  --validity-desc "${item.validity.description}" \\`);
+		}
+
+		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
+		parts.push(`  --cta-link "${item.ctaLink}" \\`);
+		parts.push(`  --tags "${item.tags.join(',')}" \\`);
+		parts.push(`  --status ${item.status}`);
+
+		return parts.join('\n');
+	}
+
+	function generateGitCommand(item: (typeof bansosList)[number]): string {
+		const parts = [
+			'git clone https://github.com/wauputr4/bansos.git',
+			'cd bansos',
+			'npm install',
+			'',
+			'npm run add:bansos -- \\',
+			`  --id ${item.id} \\`,
+			`  --title "${item.title}" \\`,
+			`  --provider "${item.provider}" \\`,
+			`  --description "${item.description}" \\`,
+			`  --benefits "${item.benefits.join('|')}" \\`,
+			`  --validity-type ${item.validity.type} \\`
+		];
+
+		if (item.validity.date) {
+			parts.push(`  --validity-date ${item.validity.date} \\`);
+		}
+		if (item.validity.description) {
+			parts.push(`  --validity-desc "${item.validity.description}" \\`);
+		}
+
+		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
+		parts.push(`  --cta-link "${item.ctaLink}" \\`);
+		parts.push(`  --tags "${item.tags.join(',')}" \\`);
+		parts.push(`  --status ${item.status}`);
+		parts.push('');
+		parts.push('# Lalu buat PR manual');
+
+		return parts.join('\n');
+	}
+
+	function generateAiPrompt(item: (typeof bansosList)[number]): string {
+		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nProvider: ${item.provider}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
+	}
+
+	const npxExamples = examples.map(generateNpxCommand);
+	const gitExamples = examples.map(generateGitCommand);
+	const aiExamples = examples.map(generateAiPrompt);
 
 	const aiSkillInstall =
 		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
-
-	const aiPromptExample =
-		'Use $bansos-add-entry to research this source and prepare a valid bansos.dev submission: https://example.com';
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -114,20 +174,36 @@
 								untuk submit. Bot otomatis bikin PR dari issue yang valid.
 							</p>
 						</div>
+						<div class="examples-section">
+							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
+							>
+							<div class="examples-buttons">
+								{#each examples as example, i (example.id)}
+									<button
+										type="button"
+										class="example-btn"
+										onclick={() => copyToClipboard(npxExamples[i], `npx-${i}`)}
+									>
+										<i class="fa-solid fa-arrow-right"></i>
+										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+									</button>
+								{/each}
+							</div>
+						</div>
 						<div class="command-block-wrapper">
 							<div class="command-head">
 								<span>npx bansosdev add</span>
 								<button
 									type="button"
 									class="copy-btn"
-									class:copied={copiedId === 'npx'}
-									onclick={() => copyToClipboard(npxCommand, 'npx')}
+									class:copied={copiedId === 'npx-0'}
+									onclick={() => copyToClipboard(npxExamples[0], 'npx-0')}
 								>
-									<i class="fa-solid fa-{copiedId === 'npx' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'npx' ? 'Tersalin' : 'Copy'}
+									<i class="fa-solid fa-{copiedId === 'npx-0' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'npx-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{npxCommand}</code></pre>
+							<pre class="command-block"><code>{npxExamples[0]}</code></pre>
 						</div>
 						<div class="tab-note">
 							<p>
@@ -147,20 +223,36 @@
 								data sebelum submit dan punya akses ke repo.
 							</p>
 						</div>
+						<div class="examples-section">
+							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
+							>
+							<div class="examples-buttons">
+								{#each examples as example, i (example.id)}
+									<button
+										type="button"
+										class="example-btn"
+										onclick={() => copyToClipboard(gitExamples[i], `git-${i}`)}
+									>
+										<i class="fa-solid fa-arrow-right"></i>
+										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+									</button>
+								{/each}
+							</div>
+						</div>
 						<div class="command-block-wrapper">
 							<div class="command-head">
 								<span>git clone + npm run add:bansos</span>
 								<button
 									type="button"
 									class="copy-btn"
-									class:copied={copiedId === 'git'}
-									onclick={() => copyToClipboard(gitCloneCommand, 'git')}
+									class:copied={copiedId === 'git-0'}
+									onclick={() => copyToClipboard(gitExamples[0], 'git-0')}
 								>
-									<i class="fa-solid fa-{copiedId === 'git' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'git' ? 'Tersalin' : 'Copy'}
+									<i class="fa-solid fa-{copiedId === 'git-0' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'git-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{gitCloneCommand}</code></pre>
+							<pre class="command-block"><code>{gitExamples[0]}</code></pre>
 						</div>
 						<div class="tab-note">
 							<p>
@@ -194,20 +286,37 @@
 							</div>
 							<pre class="command-block"><code>{aiSkillInstall}</code></pre>
 						</div>
+						<div class="examples-section">
+							<span class="examples-label"
+								><i class="fa-solid fa-lightbulb"></i> Contoh prompt:</span
+							>
+							<div class="examples-buttons">
+								{#each examples as example, i (example.id)}
+									<button
+										type="button"
+										class="example-btn"
+										onclick={() => copyToClipboard(aiExamples[i], `ai-${i}`)}
+									>
+										<i class="fa-solid fa-arrow-right"></i>
+										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+									</button>
+								{/each}
+							</div>
+						</div>
 						<div class="command-block-wrapper">
 							<div class="command-head">
 								<span>Contoh prompt</span>
 								<button
 									type="button"
 									class="copy-btn"
-									class:copied={copiedId === 'ai-prompt'}
-									onclick={() => copyToClipboard(aiPromptExample, 'ai-prompt')}
+									class:copied={copiedId === 'ai-0'}
+									onclick={() => copyToClipboard(aiExamples[0], 'ai-0')}
 								>
-									<i class="fa-solid fa-{copiedId === 'ai-prompt' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'ai-prompt' ? 'Tersalin' : 'Copy'}
+									<i class="fa-solid fa-{copiedId === 'ai-0' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'ai-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{aiPromptExample}</code></pre>
+							<pre class="command-block"><code>{aiExamples[0]}</code></pre>
 						</div>
 						<a
 							href="https://www.skills.sh/wauputr4/skill-bansos"
@@ -409,6 +518,61 @@
 		border-radius: 0.75rem;
 		padding: 1.25rem;
 		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+	}
+
+	.examples-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0.75rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--border-color));
+		border-radius: 0.6rem;
+		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+	}
+
+	.examples-label {
+		color: var(--text-secondary);
+		font-size: 0.8rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.examples-label i {
+		color: var(--color-accent);
+	}
+
+	.examples-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+
+	.example-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: 0.4rem;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.75rem;
+		font-weight: 650;
+		padding: 0.3rem 0.6rem;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.example-btn:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+	}
+
+	.example-btn i {
+		font-size: 0.6rem;
 	}
 
 	.command-block-wrapper {
