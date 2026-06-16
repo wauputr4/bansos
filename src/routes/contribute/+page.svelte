@@ -191,9 +191,10 @@
 										type="button"
 										class="example-btn"
 										onclick={() => copyToClipboard(npxExamples[i], `npx-${i}`)}
+										title={example.title}
 									>
 										<i class="fa-solid fa-arrow-right"></i>
-										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+										{example.provider}
 									</button>
 								{/each}
 							</div>
@@ -241,9 +242,10 @@
 										type="button"
 										class="example-btn"
 										onclick={() => copyToClipboard(gitExamples[i], `git-${i}`)}
+										title={example.title}
 									>
 										<i class="fa-solid fa-arrow-right"></i>
-										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+										{example.provider}
 									</button>
 								{/each}
 							</div>
@@ -306,9 +308,10 @@
 										type="button"
 										class="example-btn"
 										onclick={() => copyToClipboard(aiExamples[i], `ai-${i}`)}
+										title={example.title}
 									>
 										<i class="fa-solid fa-arrow-right"></i>
-										{example.title.length > 35 ? example.title.slice(0, 35) + '...' : example.title}
+										{example.provider}
 									</button>
 								{/each}
 							</div>
