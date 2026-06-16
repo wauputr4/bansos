@@ -73,7 +73,9 @@ function normalizeContributor(contributor) {
 	if (!contributor || typeof contributor !== 'object') {
 		return null;
 	}
-	const login = String(contributor.login || '').trim();
+	const login = String(contributor.login || '')
+		.trim()
+		.toLowerCase();
 	if (!login) {
 		return null;
 	}

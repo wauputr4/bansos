@@ -7,6 +7,9 @@
 	type TabId = 'form' | 'npx' | 'git' | 'ai';
 
 	let activeTab = $state<TabId>('form');
+	let modalContainer: HTMLDivElement | null = null;
+	let closeButton: HTMLButtonElement | null = null;
+	let previouslyFocused: HTMLElement | null = null;
 
 	const tabs: { id: TabId; label: string; icon: string }[] = [
 		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
@@ -16,6 +19,7 @@
 	];
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
+	const hasExamples = examples.length > 0;
 
 	function generateNpxCommand(item: (typeof bansosList)[number]): string {
 		const parts = [
@@ -96,19 +100,24 @@
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
+	let noticeTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const copyToClipboard = async (text: string, id: string) => {
+		if (noticeTimer) {
+			clearTimeout(noticeTimer);
+			noticeTimer = null;
+		}
 		try {
 			await navigator.clipboard.writeText(text);
 			copiedId = id;
 			copiedNotice = 'Tersalin!';
-			setTimeout(() => {
+			noticeTimer = setTimeout(() => {
 				if (copiedId === id) copiedId = '';
 				copiedNotice = '';
 			}, 2000);
 		} catch {
 			copiedNotice = 'Gagal copy';
-			setTimeout(() => {
+			noticeTimer = setTimeout(() => {
 				copiedNotice = '';
 			}, 2200);
 		}
@@ -118,6 +127,38 @@
 		open = false;
 		activeTab = 'form';
 	}
+
+	function trapFocus(e: KeyboardEvent) {
+		if (!open || e.key !== 'Tab' || !modalContainer) return;
+		const focusables = Array.from(
+			modalContainer.querySelectorAll<HTMLElement>(
+				'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+			)
+		).filter((el) => !el.hasAttribute('disabled'));
+		if (focusables.length === 0) return;
+		const first = focusables[0];
+		const last = focusables[focusables.length - 1];
+		const current = document.activeElement as HTMLElement | null;
+		if (e.shiftKey && current === first) {
+			e.preventDefault();
+			last.focus();
+		} else if (!e.shiftKey && current === last) {
+			e.preventDefault();
+			first.focus();
+		}
+	}
+
+	$effect(() => {
+		if (!open) return;
+		previouslyFocused = document.activeElement as HTMLElement | null;
+		const originalOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		queueMicrotask(() => closeButton?.focus());
+		return () => {
+			document.body.style.overflow = originalOverflow;
+			previouslyFocused?.focus();
+		};
+	});
 
 	function handleBackdropClick(e: MouseEvent) {
 		if (e.target === e.currentTarget) {
@@ -132,16 +173,22 @@
 	}
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} onkeydowncapture={trapFocus} />
 
 {#if open}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="modal-backdrop" onclick={handleBackdropClick}>
-		<div class="modal-container" role="dialog" aria-modal="true" aria-label="Tambah Bansos">
+		<div
+			class="modal-container"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Tambah Bansos"
+			bind:this={modalContainer}
+		>
 			<div class="modal-header">
 				<h2>Tambah Bansos Baru</h2>
-				<button class="modal-close" onclick={closeModal} aria-label="Tutup">
+				<button class="modal-close" onclick={closeModal} aria-label="Tutup" bind:this={closeButton}>
 					<i class="fa-solid fa-times"></i>
 				</button>
 			</div>
@@ -198,13 +245,16 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'npx-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(npxExamples[0], 'npx-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'npx-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'npx-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{npxExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? npxExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<div class="tab-note">
 							<p>
@@ -245,13 +295,16 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'git-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(gitExamples[0], 'git-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'git-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'git-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{gitExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? gitExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<div class="tab-note">
 							<p>
@@ -306,13 +359,16 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'ai-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(aiExamples[0], 'ai-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'ai-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'ai-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{aiExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? aiExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<a
 							href="https://www.skills.sh/wauputr4/skill-bansos"
