@@ -713,5 +713,25 @@
 		"tags": ["AI", "Cloud", "Gratisan", "Google"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "test-cli-issue-qa-2",
+		"title": "Bantuan Cloud QA Issue 2",
+		"provider": "ProviderQA",
+		"description": "Simulasi via issue mode.",
+		"benefits": ["Bonus 50", "Cloud credit mini"],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": ["Akun aktif", "Lengkapi form"],
+		"publishedAt": "2026-06-16",
+		"contributor": {
+			"name": "Codex Bot",
+			"url": "https://github.com/wauputr4"
+		},
+		"ctaLink": "https://example.com/qa-issue-2",
+		"tags": ["Cloud", "Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
