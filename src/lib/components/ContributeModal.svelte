@@ -44,6 +44,7 @@
 	}
 
 	function generateGitCommand(item: (typeof bansosList)[number]): string {
+		const branchName = `add/${item.id}`;
 		const parts = [
 			'git clone https://github.com/wauputr4/bansos.git',
 			'cd bansos',
@@ -70,7 +71,14 @@
 		parts.push(`  --tags "${item.tags.join(',')}" \\`);
 		parts.push(`  --status ${item.status}`);
 		parts.push('');
-		parts.push('# Lalu buat PR manual');
+		parts.push(`git checkout -b ${branchName}`);
+		parts.push('git add .');
+		parts.push(`git commit -m "feat: add ${item.title}"`);
+		parts.push(`git push origin ${branchName}`);
+		parts.push('');
+		parts.push(
+			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.provider} to bansos list" --base main`
+		);
 
 		return parts.join('\n');
 	}
