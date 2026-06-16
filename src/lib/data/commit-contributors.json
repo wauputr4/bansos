@@ -1,22 +1,16 @@
 {
 	"aerolink-free-credits": [
 		{
-			"login": "Aofsnorth",
-			"name": "Aofsnorth",
-			"avatarUrl": "https://github.com/Aofsnorth.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=Aofsnorth"
-		},
-		{
-			"login": "wauputr4",
-			"name": "Wauputra",
-			"avatarUrl": "https://github.com/wauputr4.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commit/8105e48b0a6e5449d1fff3829b5968b02d84cdca4"
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/d279ea9e10c36b878f99c47ce28b4d6a0b8c9d01"
 		}
 	],
 	"aiclass-asean-courses": [
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/d5f8f7a6164d424d409980a9bf0121576077acb6"
 		}
@@ -37,6 +31,14 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
+	"bima-gemini-plus-3bulan-20260616212536": [
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=wauputr4"
+		}
+	],
 	"dahono-labs-ai-api": [
 		{
 			"login": "wauputr4",
@@ -54,7 +56,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
@@ -67,6 +69,20 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
+	"google-ai-pro-4-bulan": [
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/1abf005d93fb0d9d50189b09f70e16b841865958"
+		},
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/0f58ce2b1fa0a25d8d14434565519f69d4bd5628"
+		}
+	],
 	"google-startups-cloud": [
 		{
 			"login": "Renzie2161",
@@ -75,18 +91,10 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
-	"google-ai-pro-4-bulan": [
-		{
-			"login": "muhakbarcom",
-			"name": "muhakbarcom",
-			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
-		}
-	],
 	"idwebhost-domain-gratis-1tahun": [
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e88f4b9151a8ad412aebefcb64a783f6437cb349"
 		}
@@ -100,7 +108,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
@@ -114,7 +122,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
@@ -128,7 +136,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
@@ -160,7 +168,7 @@
 	"namecheap-vps-hosting": [
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e88f4b9151a8ad412aebefcb64a783f6437cb349"
 		}
@@ -174,7 +182,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/a53c64cdefcae865d843ec6b05fff598b03ccfee"
 		}
@@ -184,7 +192,7 @@
 			"login": "wauputr4",
 			"name": "Wauputra",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commit/b82404464f3ef8662aa1736ab35d173f3b45eefd"
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/8fe126b0a6e5449d1fff3829b5968b02d84cdca4"
 		}
 	],
 	"qoder-qwen-max-free": [
@@ -212,7 +220,7 @@
 		},
 		{
 			"login": "wauputr4",
-			"name": "Wauputra",
+			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
