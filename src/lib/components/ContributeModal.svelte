@@ -1,32 +1,25 @@
 <script lang="ts">
-	import GithubBadge from '$lib/components/GithubBadge.svelte';
 	import BansosForm from '$lib/components/BansosForm.svelte';
-	import {
-		bansosList,
-		getCommitContributorStats,
-		getContributorStats,
-		type ContributorSummary
-	} from '$lib/data/bansos';
+	import { bansosList } from '$lib/data/bansos';
+
+	let { open = $bindable(false) } = $props();
 
 	type TabId = 'form' | 'npx' | 'git' | 'ai';
 
-	const contributors: ContributorSummary[] = getContributorStats();
-	const commitContributors = getCommitContributorStats().sort((a, b) => {
-		if (a.login === 'wauputr4') return -1;
-		if (b.login === 'wauputr4') return 1;
-		return 0;
-	});
+	let activeTab = $state<TabId>('form');
+	let modalContainer: HTMLDivElement | null = null;
+	let closeButton: HTMLButtonElement | null = null;
+	let previouslyFocused: HTMLElement | null = null;
 
 	const tabs: { id: TabId; label: string; icon: string }[] = [
 		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
-		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
+		{ id: 'npx', label: 'npx', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
 		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' }
 	];
 
-	let activeTab = $state<TabId>('form');
-
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
+	const hasExamples = examples.length > 0;
 
 	function generateNpxCommand(item: (typeof bansosList)[number]): string {
 		const parts = [
@@ -107,49 +100,103 @@
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
+	let noticeTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const copyToClipboard = async (text: string, id: string) => {
+		if (noticeTimer) {
+			clearTimeout(noticeTimer);
+			noticeTimer = null;
+		}
 		try {
 			await navigator.clipboard.writeText(text);
 			copiedId = id;
-			copiedNotice = 'Tersalin ke clipboard!';
-			setTimeout(() => {
+			copiedNotice = 'Tersalin!';
+			noticeTimer = setTimeout(() => {
 				if (copiedId === id) copiedId = '';
 				copiedNotice = '';
 			}, 2000);
 		} catch {
-			copiedNotice = 'Gagal copy, coba blok URL manual dulu ya.';
-			setTimeout(() => {
+			copiedNotice = 'Gagal copy';
+			noticeTimer = setTimeout(() => {
 				copiedNotice = '';
 			}, 2200);
 		}
 	};
+
+	function closeModal() {
+		open = false;
+		activeTab = 'form';
+	}
+
+	function trapFocus(e: KeyboardEvent) {
+		if (!open || e.key !== 'Tab' || !modalContainer) return;
+		const focusables = Array.from(
+			modalContainer.querySelectorAll<HTMLElement>(
+				'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+			)
+		).filter((el) => !el.hasAttribute('disabled'));
+		if (focusables.length === 0) return;
+		const first = focusables[0];
+		const last = focusables[focusables.length - 1];
+		const current = document.activeElement as HTMLElement | null;
+		if (e.shiftKey && current === first) {
+			e.preventDefault();
+			last.focus();
+		} else if (!e.shiftKey && current === last) {
+			e.preventDefault();
+			first.focus();
+		}
+	}
+
+	$effect(() => {
+		if (!open) return;
+		previouslyFocused = document.activeElement as HTMLElement | null;
+		const originalOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		queueMicrotask(() => closeButton?.focus());
+		return () => {
+			document.body.style.overflow = originalOverflow;
+			previouslyFocused?.focus();
+		};
+	});
+
+	function handleBackdropClick(e: MouseEvent) {
+		if (e.target === e.currentTarget) {
+			closeModal();
+		}
+	}
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'Escape') {
+			closeModal();
+		}
+	}
 </script>
 
-<svelte:head>
-	<title>Kontribusi bansos.dev</title>
-	<meta name="description" content="Cara menambahkan daftar bansos developer ke bansos.dev." />
-</svelte:head>
+<svelte:window onkeydown={handleKeydown} onkeydowncapture={trapFocus} />
 
-<main class="page-wrapper">
-	<section class="container content-shell">
-		<p class="eyebrow">Kontribusi</p>
-		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
-		<p>
-			Pilih cara kontribusi yang paling nyaman buat kamu. Semua cara di bawah akan menghasilkan
-			payload JSON yang sama, lalu bot otomatis bikin Pull Request dari issue yang kamu submit.
-		</p>
+{#if open}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div class="modal-backdrop" onclick={handleBackdropClick}>
+		<div
+			class="modal-container"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Tambah Bansos"
+			bind:this={modalContainer}
+		>
+			<div class="modal-header">
+				<h2>Tambah Bansos Baru</h2>
+				<button class="modal-close" onclick={closeModal} aria-label="Tutup" bind:this={closeButton}>
+					<i class="fa-solid fa-times"></i>
+				</button>
+			</div>
 
-		<div class="repo-status-card">
-			<p class="eyebrow">Open Source Repo</p>
-			<GithubBadge />
-		</div>
-
-		<div class="tabs-container">
-			<div class="tabs-header">
+			<div class="modal-tabs">
 				{#each tabs as tab (tab.id)}
 					<button
-						class="tab-btn"
+						class="modal-tab"
 						class:active={activeTab === tab.id}
 						onclick={() => (activeTab = tab.id)}
 					>
@@ -159,29 +206,21 @@
 				{/each}
 			</div>
 
-			<div class="tab-content">
+			<div class="modal-body">
 				{#if activeTab === 'form'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>Isi form, langsung submit ke GitHub</h2>
-							<p>
-								Gak perlu CLI. Isi form di bawah, klik Submit, dan issue GitHub otomatis terbuka.
-								Bot akan bikin PR dari issue tersebut.
-							</p>
-						</div>
-						<div class="form-wrapper">
-							<BansosForm />
-						</div>
+					<div class="tab-content">
+						<p class="tab-description">
+							Isi form di bawah, lalu klik Submit. Issue GitHub otomatis terbuka dan bot akan
+							membuat PR.
+						</p>
+						<BansosForm />
 					</div>
 				{:else if activeTab === 'npx'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>Via npx CLI</h2>
-							<p>
-								Pakai command line? Jalankan satu baris perintah ini di terminal kamu. Nanti URL
-								issue GitHub otomatis muncul, tinggal buka dan submit. Bot langsung bikin PR-nya.
-							</p>
-						</div>
+					<div class="tab-content">
+						<p class="tab-description">
+							Pakai command line? Jalankan satu baris perintah ini di terminal kamu. Nanti URL issue
+							GitHub otomatis muncul, tinggal buka dan submit. Bot langsung bikin PR-nya.
+						</p>
 						<div class="examples-section">
 							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
 							>
@@ -206,33 +245,32 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'npx-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(npxExamples[0], 'npx-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'npx-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'npx-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{npxExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? npxExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<div class="tab-note">
 							<p>
-								<i class="fa-solid fa-circle-info"></i>
-								Argumen <code>--benefits</code> dan <code>--requirements</code> dipisahkan dengan
-								<code>|</code>. Argumen <code>--tags</code> dipisahkan dengan koma. Pakai
-								<code>--mode json</code> untuk cek payload tanpa buka issue.
+								<i class="fa-solid fa-circle-info"></i> Argumen <code>--benefits</code> dan
+								<code>--requirements</code>
+								dipisahkan dengan <code>|</code>. Argumen <code>--tags</code> dipisahkan dengan koma.
 							</p>
 						</div>
 					</div>
 				{:else if activeTab === 'git'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>Clone repo &amp; npm run add:bansos</h2>
-							<p>
-								Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu
-								kamu bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu
-								hasilnya sebelum submit.
-							</p>
-						</div>
+					<div class="tab-content">
+						<p class="tab-description">
+							Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu kamu
+							bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu hasilnya
+							sebelum submit.
+						</p>
 						<div class="examples-section">
 							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
 							>
@@ -257,35 +295,33 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'git-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(gitExamples[0], 'git-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'git-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'git-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{gitExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? gitExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<div class="tab-note">
 							<p>
-								<i class="fa-solid fa-circle-info"></i>
-								Setelah data masuk <code>bansos.json</code>, push branch kamu dan buka PR ke
-								<code>main</code>. CI akan validasi data otomatis.
+								<i class="fa-solid fa-circle-info"></i> Setelah data masuk <code>bansos.json</code>,
+								push branch kamu dan buka PR ke <code>main</code>.
 							</p>
 						</div>
 					</div>
 				{:else if activeTab === 'ai'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>AI Agent Skill</h2>
-							<p>
-								Pakai AI agent kayak Claude, ChatGPT, atau yang lain? Install skill resmi bansos.dev
-								biar agent-nya ngerti cara riset sumber dan bikin data yang valid sesuai format
-								kita.
-							</p>
-						</div>
+					<div class="tab-content">
+						<p class="tab-description">
+							Pakai AI agent kayak Claude, ChatGPT, atau yang lain? Install skill resmi bansos.dev
+							biar agent-nya ngerti cara riset sumber dan bikin data yang valid sesuai format kita.
+						</p>
 						<div class="command-block-wrapper">
 							<div class="command-head">
-								<span>Install skill untuk agent</span>
+								<span>Install skill</span>
 								<button
 									type="button"
 									class="copy-btn"
@@ -323,13 +359,16 @@
 									type="button"
 									class="copy-btn"
 									class:copied={copiedId === 'ai-0'}
+									disabled={!hasExamples}
 									onclick={() => copyToClipboard(aiExamples[0], 'ai-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'ai-0' ? 'check' : 'clipboard'}"></i>
 									{copiedId === 'ai-0' ? 'Tersalin' : 'Copy'}
 								</button>
 							</div>
-							<pre class="command-block"><code>{aiExamples[0]}</code></pre>
+							<pre class="command-block"><code
+									>{hasExamples ? aiExamples[0] : 'Belum ada contoh aktif.'}</code
+								></pre>
 						</div>
 						<a
 							href="https://www.skills.sh/wauputr4/skill-bansos"
@@ -337,200 +376,156 @@
 							rel="noopener noreferrer"
 							class="skill-link"
 						>
-							Lihat skill di skills.sh
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							Lihat skill di skills.sh <i class="fa-solid fa-arrow-up-right-from-square"></i>
 						</a>
 					</div>
 				{/if}
 			</div>
-		</div>
 
-		{#if copiedNotice}
-			<div class="toast-notice">
-				<i class="fa-solid fa-circle-check"></i>
-				{copiedNotice}
-			</div>
-		{/if}
-
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-code-commit"></i>
-				Kontributor Proyek
-			</h2>
-			<p class="section-note">
-				Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode atau data
-				lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau pernah diupdate.
-			</p>
-			<ul class="commit-contributors-list">
-				{#each commitContributors as contributor (contributor.login)}
-					<li
-						class="commit-contributor-card"
-						class:author-highlight={contributor.login === 'wauputr4'}
-					>
-						<a
-							href={`https://github.com/${contributor.login}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-							<span class="login-name">@{contributor.login}</span>
-							{#if contributor.login === 'wauputr4'}
-								<span class="author-badge" title="Author">
-									<i class="fa-solid fa-crown"></i>
-									<span class="author-text">Author</span>
-								</span>
-							{/if}
-						</a>
-						<span class="contributor-count">{contributor.count} data tersentuh</span>
-					</li>
-				{/each}
-			</ul>
-		</section>
-
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-users"></i>
-				Kontributor Terdaftar
-			</h2>
-			<p class="section-note">
-				Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update data
-				bansos via CLI/sistem.
-			</p>
-			{#if contributors.length > 0}
-				<ul class="contributors-list">
-					{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
-						<li class="contributor-card">
-							<div class="contributor-name">
-								<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-								<a href={contributor.url} target="_blank" rel="noopener noreferrer">
-									{contributor.name}
-								</a>
-							</div>
-							<span class="contributor-count">{contributor.count} kontribusi</span>
-						</li>
-					{/each}
-				</ul>
-			{:else}
-				<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
+			{#if copiedNotice}
+				<div class="toast-notice">
+					<i class="fa-solid fa-circle-check"></i>
+					{copiedNotice}
+				</div>
 			{/if}
-		</section>
-	</section>
-</main>
+		</div>
+	</div>
+{/if}
 
 <style>
-	.page-wrapper {
-		padding-block: 2rem 3rem;
-	}
-
-	.content-shell {
-		max-width: 52rem;
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		z-index: 1000;
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.eyebrow {
-		color: var(--color-accent);
-		font-size: 0.8rem;
-		font-weight: 850;
-		text-transform: uppercase;
-	}
-
-	h1 {
-		font-size: var(--font-size-h1);
-		line-height: 1.1;
-	}
-
-	p {
-		color: var(--text-secondary);
-	}
-
-	.repo-status-card {
-		display: flex;
-		flex-direction: column;
 		align-items: flex-start;
-		gap: 0.65rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-		padding: 1rem;
+		justify-content: center;
+		padding: 2rem 1rem;
+		overflow-y: auto;
+		animation: fadeIn 0.2s ease;
 	}
 
-	.tabs-container {
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.modal-container {
+		background: var(--bg-primary);
+		border: 1px solid var(--glass-border);
+		border-radius: 1rem;
+		width: 100%;
+		max-width: 48rem;
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
-		overflow: hidden;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
 
-	.tabs-header {
+	@keyframes slideUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.modal-header {
 		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.25rem 1.5rem;
 		border-bottom: 1px solid var(--border-color);
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+	}
+
+	.modal-header h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+	}
+
+	.modal-close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		color: var(--text-secondary);
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.modal-close:hover {
+		background: rgba(239, 68, 68, 0.1);
+		border-color: rgba(239, 68, 68, 0.3);
+		color: #ef4444;
+	}
+
+	.modal-tabs {
+		display: flex;
+		gap: 0;
+		padding: 0 1.5rem;
+		border-bottom: 1px solid var(--border-color);
 		overflow-x: auto;
 	}
 
-	.tab-btn {
+	.modal-tab {
 		display: flex;
 		align-items: center;
 		gap: 0.4rem;
-		padding: 0.85rem 1.25rem;
+		padding: 0.75rem 1rem;
 		background: transparent;
 		border: none;
 		border-bottom: 2px solid transparent;
 		color: var(--text-secondary);
 		font-family: inherit;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		font-weight: 700;
 		cursor: pointer;
 		transition: all 0.2s;
 		white-space: nowrap;
 	}
 
-	.tab-btn:hover {
+	.modal-tab:hover {
 		color: var(--text-primary);
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 	}
 
-	.tab-btn.active {
+	.modal-tab.active {
 		color: var(--color-accent);
 		border-bottom-color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+	}
+
+	.modal-body {
+		padding: 1.5rem;
+		max-height: 70vh;
+		overflow-y: auto;
 	}
 
 	.tab-content {
-		padding: 1.5rem;
-	}
-
-	.tab-panel {
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
+		gap: 1rem;
 	}
 
 	.tab-description {
-		display: flex;
-		flex-direction: column;
-		gap: 0.4rem;
-	}
-
-	.tab-description h2 {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
 		margin: 0;
-		color: var(--text-primary);
-		font-size: 1.25rem;
-		font-weight: 800;
-	}
-
-	.tab-description p {
-		margin: 0;
-	}
-
-	.form-wrapper {
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
-		padding: 1.25rem;
-		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
 	}
 
 	.examples-section {
@@ -591,6 +586,7 @@
 	.command-block-wrapper {
 		display: flex;
 		flex-direction: column;
+		gap: 0.5rem;
 		border: 1px solid var(--border-color);
 		border-radius: 0.75rem;
 		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
@@ -677,7 +673,6 @@
 		font-size: 0.9rem;
 		font-weight: 750;
 		text-decoration: none;
-		align-self: flex-start;
 	}
 
 	.skill-link:hover {
@@ -685,235 +680,58 @@
 	}
 
 	.toast-notice {
-		position: fixed;
-		bottom: 2rem;
-		left: 50%;
-		transform: translateX(-50%);
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
 		background: var(--glass-bg);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 		color: var(--text-primary);
 		border: 1px solid var(--glass-border);
-		padding: 0.75rem 1.5rem;
+		padding: 0.5rem 1rem;
 		border-radius: 2rem;
 		font-weight: 700;
+		font-size: 0.85rem;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 0.4rem;
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-		z-index: 1000;
-		animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	@media (max-width: 48rem) {
-		.toast-notice {
-			width: max-content;
-			max-width: 90vw;
-			bottom: 5.5rem;
-			white-space: nowrap;
+		.modal-backdrop {
+			padding: 0;
+			align-items: flex-end;
 		}
-	}
 
-	@media (min-width: 48rem) {
-		.toast-notice {
-			left: auto;
-			right: 2rem;
-			transform: none;
-			animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		.modal-container {
+			max-width: 100%;
+			border-radius: 1rem 1rem 0 0;
+			max-height: 90vh;
 		}
-	}
 
-	@keyframes slideInRight {
-		from {
-			transform: translateX(30px);
-			opacity: 0;
+		.modal-body {
+			max-height: 60vh;
 		}
-		to {
-			transform: translateX(0);
-			opacity: 1;
-		}
-	}
 
-	@keyframes slideUp {
-		from {
-			transform: translate(-50%, 20px);
-			opacity: 0;
-		}
-		to {
-			transform: translate(-50%, 0);
-			opacity: 1;
-		}
-	}
-
-	.contributors-section {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-top: 0.75rem;
-	}
-
-	.section-title {
-		color: var(--text-primary);
-		font-size: 1.25rem;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.contributors-list {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.75rem;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		max-height: 350px;
-		overflow-y: auto;
-		padding-right: 0.5rem;
-	}
-
-	.contributors-list::-webkit-scrollbar {
-		width: 6px;
-	}
-	.contributors-list::-webkit-scrollbar-track {
-		background: transparent;
-	}
-	.contributors-list::-webkit-scrollbar-thumb {
-		background: color-mix(in srgb, var(--text-muted) 30%, transparent);
-		border-radius: 4px;
-	}
-
-	.section-note {
-		color: var(--text-secondary);
-		margin: -0.25rem 0 0;
-	}
-
-	.commit-contributors-list {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.75rem;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		max-height: 350px;
-		overflow-y: auto;
-		padding-right: 0.5rem;
-	}
-
-	.commit-contributors-list::-webkit-scrollbar {
-		width: 6px;
-	}
-	.commit-contributors-list::-webkit-scrollbar-track {
-		background: transparent;
-	}
-	.commit-contributors-list::-webkit-scrollbar-thumb {
-		background: color-mix(in srgb, var(--text-muted) 30%, transparent);
-		border-radius: 4px;
-	}
-
-	.commit-contributor-card {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.7rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-		padding: 0.75rem 1rem;
-	}
-
-	.commit-contributor-card a {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.65rem;
-		color: var(--color-accent);
-		font-weight: 800;
-	}
-
-	.login-name {
-		display: inline-block;
-		transform: translateY(-1.5px);
-	}
-
-	.commit-contributor-card img {
-		width: 2rem;
-		height: 2rem;
-		border-radius: 999px;
-		display: block;
-	}
-
-	.author-highlight {
-		border-color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
-	}
-
-	.author-badge {
-		font-size: 0.8rem;
-		color: var(--color-accent);
-		margin-left: 0.25rem;
-		display: inline-flex;
-		align-items: center;
-		gap: 0.25rem;
-		transform: translateY(-1.5px);
-	}
-
-	.contributor-card {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 1rem;
-		padding: 0.9rem 1rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.7rem;
-		background: rgba(255, 255, 255, 0.03);
-		color: var(--text-secondary);
-	}
-
-	.contributor-name {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.contributor-name a {
-		color: var(--color-accent);
-		font-weight: 700;
-		text-decoration: none;
-	}
-
-	.contributor-name a:hover {
-		text-decoration: underline;
-	}
-
-	.contributor-count {
-		color: var(--text-muted);
-		font-size: 0.9rem;
-		font-weight: 700;
-	}
-
-	.empty-contributor {
-		color: var(--text-secondary);
-		margin: 0;
-	}
-
-	@media (max-width: 48rem) {
-		.tab-btn span {
+		.modal-tab span {
 			display: none;
 		}
-		.tab-btn {
-			padding: 0.85rem;
-		}
-		.author-text {
-			display: none;
-		}
-		.commit-contributor-card {
-			gap: 0.5rem;
+
+		.modal-tab {
 			padding: 0.75rem;
-		}
-		.contributor-count {
-			font-size: 0.8rem;
-			text-align: right;
 		}
 	}
 </style>

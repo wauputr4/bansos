@@ -33,7 +33,35 @@ jobs:
           BANSOS_PAYLOAD_PATH: .tmp-bansos-issue.json
 
       - name: Add bansos item
+        id: add-item
+        continue-on-error: true
         run: npm run add:bansos -- --json .tmp-bansos-issue.json
+
+      - name: Check duplicate
+        id: check-duplicate
+        if: steps.add-item.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ITEM_ID: ${{ steps.payload.outputs.id }}
+          ITEM_TITLE: ${{ steps.payload.outputs.title }}
+        run: |
+          if grep -q "\"id\": \"${ITEM_ID}\"" src/lib/data/bansos.json; then
+            EXISTING_URL="https://bansos.dev/list/${ITEM_ID}"
+            gh issue comment "$ISSUE_NUMBER" --body "Halo! Bansos **${ITEM_TITLE}** sepertinya sudah ada di katalog bansos.dev.
+
+            Lihat entry yang sudah ada: ${EXISTING_URL}
+
+            Kalau memang mau update entry yang sudah ada, silakan buka PR manual atau hubungi maintainer. Terima kasih!"
+            gh issue close "$ISSUE_NUMBER" --reason "not planned"
+            echo "duplicate=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "duplicate=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stop if duplicate
+        if: steps.check-duplicate.outputs.duplicate == 'true'
+        run: echo "Duplicate detected, workflow stopped." && exit 1
 
       - name: Generate commit contributors
         run: npm run generate:commit-contributors

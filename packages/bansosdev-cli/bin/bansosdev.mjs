@@ -31,15 +31,34 @@ function parseJsonPayload(jsonInput) {
 	}
 
 	const trimmed = String(jsonInput).trim();
-	const content = trimmed.startsWith('{')
-		? trimmed
-		: readFileSync(isAbsolute(trimmed) ? trimmed : join(process.cwd(), trimmed), 'utf8');
+	let content;
+
+	if (trimmed.startsWith('{')) {
+		content = trimmed;
+	} else {
+		const jsonPath = isAbsolute(trimmed) ? trimmed : join(process.cwd(), trimmed);
+		try {
+			content = readFileSync(jsonPath, 'utf8');
+		} catch (error) {
+			throw new Error(`Cannot read JSON file: ${jsonPath}`, { cause: error });
+		}
+	}
 
 	try {
 		return JSON.parse(content);
 	} catch (error) {
 		throw new Error('--json must be valid JSON string or path to a JSON file', { cause: error });
 	}
+}
+
+function parseBooleanValue(value) {
+	if (typeof value === 'boolean') return value;
+	if (typeof value === 'number') return value === 1;
+	if (typeof value === 'string') {
+		const normalized = value.trim().toLowerCase();
+		return normalized === 'true' || normalized === '1' || normalized === 'yes';
+	}
+	return false;
 }
 
 function mergePayloadInput(args) {
@@ -207,6 +226,8 @@ function payloadFromArgs(args) {
 	const contributorUrl =
 		args['contributor-url'] || args.contributorUrl || (args.contributor && args.contributor.url);
 	const source = args.source && String(args.source).trim() ? String(args.source).trim() : undefined;
+	const promoCode = args['promo-code'] || args.promoCode;
+	const featured = parseBooleanValue(args['featured'] || args.featured);
 
 	const payload = {
 		id: required(args, 'id'),
@@ -214,7 +235,7 @@ function payloadFromArgs(args) {
 		provider: required(args, 'provider'),
 		description: required(args, 'description'),
 		benefits: list(required(args, 'benefits')),
-		promoCode: args['promo-code'],
+		promoCode,
 		validity: validity,
 		requirements: list(required(args, 'requirements')),
 		tips: args.tips,
@@ -229,7 +250,7 @@ function payloadFromArgs(args) {
 				: undefined,
 		ctaLink: validateUrl(required(args, 'cta-link'), 'cta-link'),
 		tags: csv(required(args, 'tags')),
-		featured: args.featured === 'true',
+		featured,
 		status: args.status || 'active'
 	};
 

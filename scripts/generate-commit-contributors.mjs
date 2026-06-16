@@ -69,12 +69,47 @@ function byId(items) {
 	return new Map(items.map((item) => [item.id, JSON.stringify(item)]));
 }
 
+function normalizeContributor(contributor) {
+	if (!contributor || typeof contributor !== 'object') {
+		return null;
+	}
+	const login = String(contributor.login || '')
+		.trim()
+		.toLowerCase();
+	if (!login) {
+		return null;
+	}
+	return {
+		login,
+		name: String(contributor.name || ''),
+		avatarUrl: String(contributor.avatarUrl || ''),
+		commitUrl: String(contributor.commitUrl || '')
+	};
+}
+
 function readCommitContributors() {
 	try {
 		const raw = readFileSync(outputPath, 'utf8');
 		const parsed = JSON.parse(raw);
 		if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-			return parsed;
+			const sanitized = {};
+			for (const [id, contributors] of Object.entries(parsed)) {
+				if (!Array.isArray(contributors)) continue;
+				const normalized = [];
+				const seen = new Set();
+				for (const contributor of contributors) {
+					const normalizedContributor = normalizeContributor(contributor);
+					if (!normalizedContributor) continue;
+					const key = normalizedContributor.login.toLowerCase();
+					if (seen.has(key)) continue;
+					seen.add(key);
+					normalized.push(normalizedContributor);
+				}
+				if (normalized.length > 0) {
+					sanitized[id] = normalized;
+				}
+			}
+			return sanitized;
 		}
 		return {};
 	} catch {
@@ -83,12 +118,17 @@ function readCommitContributors() {
 }
 
 function mergeContributors(existing, next) {
-	const seen = new Set(existing.map((entry) => entry.login));
+	const seen = new Set(
+		existing.map((entry) => String(entry?.login || '').toLowerCase()).filter(Boolean)
+	);
 	const merged = [...existing];
 	for (const contributor of next) {
-		if (!seen.has(contributor.login)) {
-			merged.push(contributor);
-			seen.add(contributor.login);
+		const normalizedContributor = normalizeContributor(contributor);
+		if (!normalizedContributor) continue;
+		const key = normalizedContributor.login.toLowerCase();
+		if (!seen.has(key)) {
+			merged.push(normalizedContributor);
+			seen.add(key);
 		}
 	}
 	return merged;
@@ -137,7 +177,7 @@ for (const [id, contributors] of contributorsByItem.entries()) {
 
 const output = Object.fromEntries(
 	[...finalContributors.entries()]
-		.filter(([, contributors]) => contributors.length > 0)
+		.filter(([id, contributors]) => contributors.length > 0 && workingTreeData.has(id))
 		.sort(([a], [b]) => a.localeCompare(b))
 );
 writeFileSync(outputPath, `${JSON.stringify(output, null, '\t')}\n`);
