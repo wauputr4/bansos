@@ -69,6 +69,31 @@ function byId(items) {
 	return new Map(items.map((item) => [item.id, JSON.stringify(item)]));
 }
 
+function readCommitContributors() {
+	try {
+		const raw = readFileSync(outputPath, 'utf8');
+		const parsed = JSON.parse(raw);
+		if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+			return parsed;
+		}
+		return {};
+	} catch {
+		return {};
+	}
+}
+
+function mergeContributors(existing, next) {
+	const seen = new Set(existing.map((entry) => entry.login));
+	const merged = [...existing];
+	for (const contributor of next) {
+		if (!seen.has(contributor.login)) {
+			merged.push(contributor);
+			seen.add(contributor.login);
+		}
+	}
+	return merged;
+}
+
 const commits = git(['log', '--reverse', '--format=%H', '--', dataPath])
 	.split('\n')
 	.filter(Boolean);
@@ -102,8 +127,18 @@ for (const [id, item] of workingTreeData.entries()) {
 	contributorsByItem.set(id, current);
 }
 
+const existingContributors = readCommitContributors();
+const finalContributors = new Map(Object.entries(existingContributors));
+
+for (const [id, contributors] of contributorsByItem.entries()) {
+	const existing = finalContributors.get(id) || [];
+	finalContributors.set(id, mergeContributors(existing, contributors));
+}
+
 const output = Object.fromEntries(
-	[...contributorsByItem.entries()].sort(([a], [b]) => a.localeCompare(b))
+	[...finalContributors.entries()]
+		.filter(([, contributors]) => contributors.length > 0)
+		.sort(([a], [b]) => a.localeCompare(b))
 );
 writeFileSync(outputPath, `${JSON.stringify(output, null, '\t')}\n`);
 console.log(`Generated ${outputPath}`);
