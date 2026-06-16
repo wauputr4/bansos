@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 
 	const GA_ID = import.meta.env.VITE_GA_ID;
 
 	let initialized = false;
 
 	function initGA() {
-		if (!GA_ID || !browser || initialized) return;
+		if (!GA_ID || !browser || dev || initialized) return;
 
 		// Load Google Analytics script
 		const script = document.createElement('script');
@@ -21,16 +21,13 @@
 			window.dataLayer.push(args);
 		};
 		window.gtag('js', new Date());
-		window.gtag('config', GA_ID, {
-			page_path: $page.url.pathname
-		});
 
 		initialized = true;
 	}
 
 	// Track page views on route change
 	$effect(() => {
-		if (browser && initialized && $page.url.pathname) {
+		if (browser && !dev && initialized && $page.url.pathname) {
 			window.gtag?.('config', GA_ID, {
 				page_path: $page.url.pathname
 			});
