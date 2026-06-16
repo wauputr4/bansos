@@ -61,8 +61,8 @@
 	let formTitle = $state('');
 	let formProvider = $state('');
 	let formDescription = $state('');
-	let formBenefits = $state('');
-	let formRequirements = $state('');
+	let formBenefits = $state<string[]>(['']);
+	let formRequirements = $state<string[]>(['']);
 	let formCtaLink = $state('');
 	let formTags = $state('');
 	let formValidityType = $state<'fixed' | 'uncertain' | 'forever'>('uncertain');
@@ -77,6 +77,45 @@
 	let formFeatured = $state(false);
 	let formErrors = $state<string[]>([]);
 
+	function slugify(text: string): string {
+		return text
+			.toLowerCase()
+			.trim()
+			.replace(/[^\w\s-]/g, '')
+			.replace(/[\s_-]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	}
+
+	$effect(() => {
+		if (formTitle && !formId) {
+			formId = slugify(formTitle);
+		}
+	});
+
+	function addBenefit() {
+		formBenefits = [...formBenefits, ''];
+	}
+
+	function removeBenefit(index: number) {
+		formBenefits = formBenefits.filter((_, i) => i !== index);
+	}
+
+	function updateBenefit(index: number, value: string) {
+		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
+	}
+
+	function addRequirement() {
+		formRequirements = [...formRequirements, ''];
+	}
+
+	function removeRequirement(index: number) {
+		formRequirements = formRequirements.filter((_, i) => i !== index);
+	}
+
+	function updateRequirement(index: number, value: string) {
+		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
+	}
+
 	function generateIssueUrl(): string | null {
 		formErrors = [];
 		const errors: string[] = [];
@@ -88,8 +127,13 @@
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
 		if (!formProvider.trim()) errors.push('Provider wajib diisi');
 		if (!formDescription.trim()) errors.push('Description wajib diisi');
-		if (!formBenefits.trim()) errors.push('Benefits wajib diisi (pisahkan dengan |)');
-		if (!formRequirements.trim()) errors.push('Requirements wajib diisi (pisahkan dengan |)');
+
+		const validBenefits = formBenefits.filter((b) => b.trim());
+		if (validBenefits.length === 0) errors.push('Minimal 1 benefit wajib diisi');
+
+		const validRequirements = formRequirements.filter((r) => r.trim());
+		if (validRequirements.length === 0) errors.push('Minimal 1 requirement wajib diisi');
+
 		if (!formCtaLink.trim()) errors.push('CTA Link wajib diisi');
 		else {
 			try {
@@ -132,19 +176,13 @@
 			title: formTitle.trim(),
 			provider: formProvider.trim(),
 			description: formDescription.trim(),
-			benefits: formBenefits
-				.split('|')
-				.map((s) => s.trim())
-				.filter(Boolean),
+			benefits: validBenefits.map((b) => b.trim()),
 			validity: {
 				type: formValidityType,
 				...(formValidityType === 'fixed' && formValidityDate ? { date: formValidityDate } : {}),
 				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
 			},
-			requirements: formRequirements
-				.split('|')
-				.map((s) => s.trim())
-				.filter(Boolean),
+			requirements: validRequirements.map((r) => r.trim()),
 			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
 			ctaLink: formCtaLink.trim(),
 			tags: formTags
@@ -278,32 +316,8 @@
 			</div>
 
 			<form class="bansos-form" onsubmit={handleSubmit} novalidate>
-				{#if formErrors.length > 0}
-					<div class="form-errors">
-						<p><i class="fa-solid fa-circle-exclamation"></i> Ada yang perlu diperbaiki:</p>
-						<ul>
-							{#each formErrors as error, i (i)}
-								<li>{error}</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
-
 				<div class="form-grid">
-					<div class="form-group">
-						<label for="form-id">ID <span class="required">*</span></label>
-						<input
-							id="form-id"
-							type="text"
-							bind:value={formId}
-							placeholder="nama-bansos"
-							pattern="[a-z0-9-]+"
-							required
-						/>
-						<span class="hint">Kebab-case lowercase, contoh: github-copilot-free</span>
-					</div>
-
-					<div class="form-group">
+					<div class="form-group full-width">
 						<label for="form-title">Title <span class="required">*</span></label>
 						<input
 							id="form-title"
@@ -312,6 +326,7 @@
 							placeholder="GitHub Copilot Gratis 3 Bulan"
 							required
 						/>
+						<span class="hint">ID akan otomatis terbuat dari title</span>
 					</div>
 
 					<div class="form-group">
@@ -321,6 +336,17 @@
 							type="text"
 							bind:value={formProvider}
 							placeholder="GitHub"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="form-cta-link">CTA Link <span class="required">*</span></label>
+						<input
+							id="form-cta-link"
+							type="url"
+							bind:value={formCtaLink}
+							placeholder="https://example.com"
 							required
 						/>
 					</div>
@@ -336,39 +362,66 @@
 						></textarea>
 					</div>
 
+					<!-- svelte-ignore a11y_label_has_associated_control -->
 					<div class="form-group full-width">
-						<label for="form-benefits">Benefits <span class="required">*</span></label>
-						<input
-							id="form-benefits"
-							type="text"
-							bind:value={formBenefits}
-							placeholder="Benefit 1|Benefit 2|Benefit 3"
-							required
-						/>
-						<span class="hint">Pisahkan dengan tanda |</span>
+						<label id="benefits-label">Benefits <span class="required">*</span></label>
+						<div class="repeater-list" aria-labelledby="benefits-label">
+							{#each formBenefits as benefit, i (i)}
+								<div class="repeater-item">
+									<input
+										type="text"
+										value={benefit}
+										oninput={(e) => updateBenefit(i, e.currentTarget.value)}
+										placeholder="Benefit {i + 1}"
+										aria-label="Benefit {i + 1}"
+									/>
+									{#if formBenefits.length > 1}
+										<button
+											type="button"
+											class="repeater-remove"
+											onclick={() => removeBenefit(i)}
+											aria-label="Remove benefit {i + 1}"
+										>
+											<i class="fa-solid fa-times"></i>
+										</button>
+									{/if}
+								</div>
+							{/each}
+						</div>
+						<button type="button" class="repeater-add" onclick={addBenefit}>
+							<i class="fa-solid fa-plus"></i> Tambah Benefit
+						</button>
 					</div>
 
+					<!-- svelte-ignore a11y_label_has_associated_control -->
 					<div class="form-group full-width">
-						<label for="form-requirements">Requirements <span class="required">*</span></label>
-						<input
-							id="form-requirements"
-							type="text"
-							bind:value={formRequirements}
-							placeholder="Punya akun|Install aplikasi|Klaim promo"
-							required
-						/>
-						<span class="hint">Pisahkan dengan tanda |</span>
-					</div>
-
-					<div class="form-group">
-						<label for="form-cta-link">CTA Link <span class="required">*</span></label>
-						<input
-							id="form-cta-link"
-							type="url"
-							bind:value={formCtaLink}
-							placeholder="https://example.com"
-							required
-						/>
+						<label id="requirements-label">Requirements <span class="required">*</span></label>
+						<div class="repeater-list" aria-labelledby="requirements-label">
+							{#each formRequirements as requirement, i (i)}
+								<div class="repeater-item">
+									<input
+										type="text"
+										value={requirement}
+										oninput={(e) => updateRequirement(i, e.currentTarget.value)}
+										placeholder="Requirement {i + 1}"
+										aria-label="Requirement {i + 1}"
+									/>
+									{#if formRequirements.length > 1}
+										<button
+											type="button"
+											class="repeater-remove"
+											onclick={() => removeRequirement(i)}
+											aria-label="Remove requirement {i + 1}"
+										>
+											<i class="fa-solid fa-times"></i>
+										</button>
+									{/if}
+								</div>
+							{/each}
+						</div>
+						<button type="button" class="repeater-add" onclick={addRequirement}>
+							<i class="fa-solid fa-plus"></i> Tambah Requirement
+						</button>
 					</div>
 
 					<div class="form-group">
@@ -477,6 +530,17 @@
 					<i class="fa-brands fa-github"></i>
 					Submit ke GitHub
 				</button>
+
+				{#if formErrors.length > 0}
+					<div class="form-errors">
+						<p><i class="fa-solid fa-circle-exclamation"></i> Ada yang perlu diperbaiki:</p>
+						<ul>
+							{#each formErrors as error, i (i)}
+								<li>{error}</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
 			</form>
 		</section>
 
@@ -1274,5 +1338,83 @@
 
 	.btn-submit:active {
 		transform: translateY(0);
+	}
+
+	.repeater-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.repeater-item {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.repeater-item input {
+		flex: 1;
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.65rem 0.85rem;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.repeater-item input:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.repeater-item input::placeholder {
+		color: var(--text-muted);
+	}
+
+	.repeater-remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.2rem;
+		height: 2.2rem;
+		background: rgba(239, 68, 68, 0.1);
+		border: 1px solid rgba(239, 68, 68, 0.3);
+		border-radius: 0.5rem;
+		color: #ef4444;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.repeater-remove:hover {
+		background: rgba(239, 68, 68, 0.2);
+		border-color: #ef4444;
+	}
+
+	.repeater-add {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: transparent;
+		border: 1px dashed var(--border-color);
+		border-radius: 0.5rem;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.repeater-add:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
 	}
 </style>
