@@ -2,6 +2,12 @@
 // for information about these interfaces
 declare global {
 	const __BUILD_DATE__: string;
+
+	interface Window {
+		dataLayer: unknown[];
+		gtag?: (...args: unknown[]) => void;
+	}
+
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
