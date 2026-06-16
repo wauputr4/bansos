@@ -28,6 +28,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          VITE_GA_ID: ${{ vars.VITE_GA_ID }}
 
       - uses: actions/configure-pages@v5
 
