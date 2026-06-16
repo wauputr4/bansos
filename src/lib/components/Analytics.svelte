@@ -4,23 +4,28 @@
 
 	const GA_ID = import.meta.env.VITE_GA_ID;
 
-	let initialized = false;
+	let initialized = $state(false);
 
 	function initGA() {
 		if (!GA_ID || !browser || dev || initialized) return;
 
-		// Load Google Analytics script
-		const script = document.createElement('script');
-		script.async = true;
-		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-		document.head.appendChild(script);
-
-		// Initialize gtag
+		// Initialize gtag function first
 		window.dataLayer = window.dataLayer || [];
 		window.gtag = function gtag(...args: unknown[]) {
 			window.dataLayer.push(args);
 		};
 		window.gtag('js', new Date());
+		// Don't send initial page view - let $effect handle it
+		window.gtag('config', GA_ID, { send_page_view: false });
+
+		// Load Google Analytics script
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+		script.onerror = () => {
+			console.warn('Google Analytics script failed to load');
+		};
+		document.head.appendChild(script);
 
 		initialized = true;
 	}
