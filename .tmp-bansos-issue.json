@@ -1,0 +1,16 @@
+{
+	"id": "test-auto-open",
+	"title": "Test Auto Open",
+	"provider": "Test",
+	"description": "Test",
+	"benefits": ["Benefit"],
+	"validity": {
+		"type": "uncertain"
+	},
+	"requirements": ["Step"],
+	"publishedAt": "2026-06-16",
+	"ctaLink": "https://example.com/",
+	"tags": ["Cloud"],
+	"featured": false,
+	"status": "active"
+}
