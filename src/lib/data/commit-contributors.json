@@ -1,7 +1,7 @@
 {
 	"aerolink-free-credits": [
 		{
-			"login": "Aofsnorth",
+			"login": "aofsnorth",
 			"name": "Aofsnorth",
 			"avatarUrl": "https://github.com/Aofsnorth.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=Aofsnorth"
@@ -11,6 +11,12 @@
 			"name": "Wauputra",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8105e48b0a6e5449d1fff3829b5968b02d84cdca4"
+		},
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/d279ea9e10c36b878f99c47ce28b4d6a0b8c9d01"
 		}
 	],
 	"aiclass-asean-courses": [
@@ -23,7 +29,7 @@
 	],
 	"amd-ai-dev-program": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
@@ -31,10 +37,18 @@
 	],
 	"aws-activate-credits": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
+		}
+	],
+	"bansos-gemini-plus-3bulan-sim": [
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=wauputr4"
 		}
 	],
 	"dahono-labs-ai-api": [
@@ -47,7 +61,7 @@
 	],
 	"deepseek-free-token": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -61,15 +75,7 @@
 	],
 	"digitalocean-hatch": [
 		{
-			"login": "Renzie2161",
-			"name": "Renzie2161",
-			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
-		}
-	],
-	"google-startups-cloud": [
-		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
@@ -81,6 +87,26 @@
 			"name": "muhakbarcom",
 			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
+		},
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/1abf005d93fb0d9d50189b09f70e16b841865958"
+		},
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/0f58ce2b1fa0a25d8d14434565519f69d4bd5628"
+		}
+	],
+	"google-startups-cloud": [
+		{
+			"login": "renzie2161",
+			"name": "Renzie2161",
+			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
 	"idwebhost-domain-gratis-1tahun": [
@@ -93,7 +119,7 @@
 	],
 	"inceptionlabs-get-started": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -107,7 +133,7 @@
 	],
 	"kie-ai-api-discount-credit": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -121,7 +147,7 @@
 	],
 	"kimchi-dev-serverless-ai": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -135,7 +161,7 @@
 	],
 	"microsoft-founders-hub": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
@@ -143,7 +169,7 @@
 	],
 	"mongodb-startups": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
@@ -151,7 +177,7 @@
 	],
 	"namecheap-hosting-trial": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/f264304560e07b2e7e58b1e37915227d2b1ee21a"
@@ -167,7 +193,7 @@
 	],
 	"namecom-domain-app": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -189,7 +215,7 @@
 	],
 	"qoder-qwen-max-free": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/b2c52d151481cf939939b2cd211a6c6f69f3507d"
@@ -197,7 +223,7 @@
 	],
 	"tokenrouter-minimax-m3-free": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8389c12d14e04ae8109e74f705084e7443bd987f"
@@ -205,7 +231,7 @@
 	],
 	"tokenrouter-model-gateway": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/772f271ea2d27cd1b0d687cec951f7cee54c4d9d"
@@ -219,7 +245,7 @@
 	],
 	"xai-grok-api-credits": [
 		{
-			"login": "Renzie2161",
+			"login": "renzie2161",
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
