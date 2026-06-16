@@ -28,7 +28,9 @@ jobs:
       - run: npm ci
 
       - name: Create .env file
-        run: echo "VITE_GA_ID=${{ vars.VITE_GA_ID }}" > .env
+        run: echo "VITE_GA_ID=$VITE_GA_ID" > .env
+        env:
+          VITE_GA_ID: ${{ vars.VITE_GA_ID }}
 
       - run: npm run build
 
