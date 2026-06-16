@@ -517,10 +517,16 @@
 		</div>
 	</div>
 
-	<button type="submit" class="btn-submit">
-		<i class="fa-brands fa-github"></i>
-		Submit ke GitHub
-	</button>
+	<div class="form-actions">
+		<button type="button" class="btn-reset" onclick={reset}>
+			<i class="fa-solid fa-rotate-left"></i>
+			Reset Form
+		</button>
+		<button type="submit" class="btn-submit">
+			<i class="fa-brands fa-github"></i>
+			Submit ke GitHub
+		</button>
+	</div>
 
 	{#if formErrors.length > 0}
 		<div class="form-errors">
@@ -786,6 +792,35 @@
 		color: var(--text-secondary);
 		font-size: 0.9rem;
 		font-weight: 600;
+	}
+
+	.form-actions {
+		display: flex;
+		gap: 0.75rem;
+		align-items: center;
+	}
+
+	.btn-reset {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		background: transparent;
+		color: var(--text-secondary);
+		border: 1px solid var(--border-color);
+		border-radius: 0.6rem;
+		padding: 0.85rem 1.25rem;
+		font-family: inherit;
+		font-size: 0.95rem;
+		font-weight: 650;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.btn-reset:hover {
+		background: rgba(239, 68, 68, 0.08);
+		border-color: rgba(239, 68, 68, 0.4);
+		color: #ef4444;
 	}
 
 	.btn-submit {
