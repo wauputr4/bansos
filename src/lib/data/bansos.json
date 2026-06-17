@@ -769,7 +769,7 @@
 		"status": "active"
 	},
 	{
-		"id": "x",
+		"id": "xiaomi-mimo-gratis-2",
 		"title": "Xiaomi Mimo Gratis $2",
 		"provider": "Xiaomi Mimo",
 		"description": "kalian wajib coba, Xiaomi lagi bagi-bagi credits $2 gratis cukup pake kode referal\n\n- setelah daftar, masuk ke console https://platform.xiaomimimo.com/console/balance\n- klik \"Enter invite code\" (pojok kiri bawah) \n- masukin kode \"NK2BLA\"\n\nnanti kalian dapet $2, gua juga dapet $2 :)",
@@ -782,7 +782,7 @@
 		"publishedAt": "2026-06-17",
 		"contributor": {
 			"name": "Akbar",
-			"url": "http://github.com/muhakbarcom"
+			"url": "https://github.com/muhakbarcom"
 		},
 		"ctaLink": "https://platform.xiaomimimo.com/?ref=NK2BLA",
 		"tags": ["AI Credits"],
