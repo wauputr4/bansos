@@ -798,7 +798,7 @@
 			"Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
 			"Bebas dihubungkan ke DNS pihak ketiga (bisa pake Cloudflare, AWS, dll.)",
 			"Full control atas DNS management",
-			"Tanpa biaya tersembunyi karena dikelola organisasi non-profit"
+			"Tanpa biaya tersembunyi (kecuali biaya opsional verifikasi KYC jika terdeteksi sistem anti-abuse)"
 		],
 		"validity": {
 			"type": "forever",
