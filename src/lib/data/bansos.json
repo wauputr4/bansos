@@ -745,7 +745,7 @@
 		"status": "active"
 	},
 	{
-		"id": "f",
+		"id": "codecrafters-free-token",
 		"title": "Gratis 10JT Token AI / Hari",
 		"provider": "CodeCrafters",
 		"description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
@@ -756,7 +756,7 @@
 		},
 		"requirements": [
 			"Memiliki akun codecrafters",
-			"Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher dibawah"
+			"Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas"
 		],
 		"publishedAt": "2026-06-17",
 		"contributor": {
