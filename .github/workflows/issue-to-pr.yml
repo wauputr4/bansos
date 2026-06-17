@@ -64,6 +64,8 @@ jobs:
         run: echo "Duplicate detected, workflow stopped." && exit 1
 
       - name: Generate commit contributors
+        env:
+          BANSOS_TARGET_IDS: ${{ steps.payload.outputs.id }}
         run: npm run generate:commit-contributors
 
       - name: Fix formatting

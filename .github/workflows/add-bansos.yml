@@ -28,11 +28,24 @@ jobs:
       - run: npm ci
 
       - name: Add bansos item
+        id: add-item
         run: node scripts/add-bansos.mjs --json "$BANSOS_PAYLOAD"
         env:
           BANSOS_PAYLOAD: ${{ inputs.payload }}
 
+      - name: Resolve item metadata
+        id: resolve-item-metadata
+        run: |
+          item_id="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); process.stdout.write(payload.id || "")')"
+          item_title="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); process.stdout.write(payload.title || "")')"
+          echo "item_id=$item_id" >> "$GITHUB_OUTPUT"
+          echo "item_title=$item_title" >> "$GITHUB_OUTPUT"
+        env:
+          BANSOS_PAYLOAD: ${{ inputs.payload }}
+
       - name: Generate commit contributors
+        env:
+          BANSOS_TARGET_IDS: ${{ steps.resolve-item-metadata.outputs.item_id }}
         run: npm run generate:commit-contributors
 
       - run: npm run build
@@ -41,20 +54,19 @@ jobs:
         id: pr
         env:
           GH_TOKEN: ${{ secrets.BANSOS_PAT || github.token }}
-          BANSOS_PAYLOAD: ${{ inputs.payload }}
+          ITEM_ID: ${{ steps.resolve-item-metadata.outputs.item_id }}
+          ITEM_TITLE: ${{ steps.resolve-item-metadata.outputs.item_title }}
           AUTH_TOKEN: ${{ secrets.BANSOS_PAT || github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          item_id="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); console.log(payload.id)')"
-          item_title="$(node -e 'const payload = JSON.parse(process.env.BANSOS_PAYLOAD); console.log(payload.title)')"
-          branch="bansos/direct-${{ github.run_id }}-${item_id}"
+          branch="bansos/direct-${{ github.run_id }}-${ITEM_ID}"
 
           git switch -c "$branch"
           git remote set-url origin https://x-access-token:${AUTH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
-          git commit -m "feat: add ${item_title}"
+          git commit -m "feat: add ${ITEM_TITLE}"
           git push --force origin "$branch"
 
           PR_BODY="Auto-generated from maintainer direct mode.
@@ -69,7 +81,7 @@ jobs:
 
           pr_url="$(
             gh pr create \
-              --title "Tambah bansos: ${item_title}" \
+              --title "Tambah bansos: ${ITEM_TITLE}" \
               --body "$PR_BODY" \
               --base main \
               --head "$branch"

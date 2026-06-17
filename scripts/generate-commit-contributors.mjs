@@ -4,6 +4,38 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const dataPath = 'src/lib/data/bansos.json';
 const outputPath = 'src/lib/data/commit-contributors.json';
 
+const targetIdsInput = process.env.BANSOS_TARGET_IDS || '';
+function normalizeTargetIds(value) {
+	if (!value) {
+		return new Set();
+	}
+
+	try {
+		if (value.trim().startsWith('[') && value.trim().endsWith(']')) {
+			const parsed = JSON.parse(value);
+			if (Array.isArray(parsed)) {
+				return new Set(
+					parsed
+						.map((entry) => String(entry || '').trim())
+						.filter(Boolean)
+				);
+			}
+		}
+	} catch {
+		// Ignore invalid JSON and fallback to delimiter split.
+	}
+
+	return new Set(
+		value
+			.split(/[\n,]+/)
+			.map((entry) => entry.trim())
+			.filter(Boolean)
+	);
+}
+
+const targetIds = normalizeTargetIds(targetIdsInput);
+const hasTargetIds = targetIds.size > 0;
+
 function git(args) {
 	return execFileSync('git', args, {
 		encoding: 'utf8',
@@ -145,6 +177,7 @@ for (const commit of commits) {
 	const contributor = contributorFrom(commit);
 
 	for (const [id, item] of after.entries()) {
+		if (hasTargetIds && !targetIds.has(id)) continue;
 		if (before.get(id) === item) continue;
 		const current = contributorsByItem.get(id) || [];
 		if (!current.some((entry) => entry.login === contributor.login)) {
@@ -159,6 +192,7 @@ const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
 const workingTreeContributor = currentContributor();
 
 for (const [id, item] of workingTreeData.entries()) {
+		if (hasTargetIds && !targetIds.has(id)) continue;
 	if (headData.get(id) === item) continue;
 	const current = contributorsByItem.get(id) || [];
 	if (!current.some((entry) => entry.login === workingTreeContributor.login)) {
