@@ -265,26 +265,20 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
 	],
-	"xai-grok-api-credits": [
-		{
-			"login": "renzie2161",
-			"name": "Renzie2161",
-			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
-		}
-	],
 	"xiaomi-mimo-gratis-2": [
 		{
 			"login": "muhakbarcom",
 			"name": "muhakbarcom",
 			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
-		},
+		}
+	],
+	"xai-grok-api-credits": [
 		{
-			"login": "wauputr4",
-			"name": "Wauputra",
-			"avatarUrl": "https://github.com/wauputr4.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commit/a47c50b332c6a2663fc24fe78d59c34138b8c717"
+			"login": "renzie2161",
+			"name": "Renzie2161",
+			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
 	"zcode-glm-52-free": [
