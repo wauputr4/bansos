@@ -43,6 +43,28 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
+	"claude-opus-48-sonnet-46-and-haiku-gratis-credit-350": [
+		{
+			"login": "muhakbarcom",
+			"name": "muhakbarcom",
+			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
+		}
+	],
+	"codecrafters-free-token": [
+		{
+			"login": "rupadana",
+			"name": "rupadana",
+			"avatarUrl": "https://github.com/rupadana.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=rupadana"
+		},
+		{
+			"login": "wauputr4",
+			"name": "Wauputra",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/c00f2a3be28caf01ee3ec8b5059b3a012feca7f7"
+		}
+	],
 	"dahono-labs-ai-api": [
 		{
 			"login": "wauputr4",
@@ -71,14 +93,6 @@
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
-		}
-	],
-	"codecrafters-free-token": [
-		{
-			"login": "rupadana",
-			"name": "rupadana",
-			"avatarUrl": "https://github.com/rupadana.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=rupadana"
 		}
 	],
 	"gemini-plus-3bulan-sim": [

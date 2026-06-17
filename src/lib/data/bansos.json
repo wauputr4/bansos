@@ -767,5 +767,27 @@
 		"tags": ["AI", "API", "Developer"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "claude-opus-48-sonnet-46-and-haiku-gratis-credit-350",
+		"title": "Claude Opus 4.8, Sonnet 4.6, and Haiku Gratis credit $350",
+		"provider": "Aerolink",
+		"description": "Claude Opus 4.8, Sonnet 4.6, and Haiku Gratis credit $350 dari aerolink",
+		"benefits": ["Credit $350", "Claude Opus 4.8", "Sonnet 4.6", "Haiku"],
+		"promoCode": "FRD8FHI",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": ["Daftar akun"],
+		"publishedAt": "2026-06-17",
+		"source": "Aerolink",
+		"contributor": {
+			"name": "Akbar",
+			"url": "http://github.com/muhakbarcom"
+		},
+		"ctaLink": "https://aerolink.lat/register?ref=FRD8FHI",
+		"tags": ["AI Credits"],
+		"featured": true,
+		"status": "active"
 	}
 ]
