@@ -43,14 +43,6 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
-	"gemini-plus-3bulan-sim": [
-		{
-			"login": "wauputr4",
-			"name": "wauputr4",
-			"avatarUrl": "https://github.com/wauputr4.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=wauputr4"
-		}
-	],
 	"dahono-labs-ai-api": [
 		{
 			"login": "wauputr4",
@@ -81,6 +73,22 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
+	"codecrafters-free-token": [
+		{
+			"login": "rupadana",
+			"name": "rupadana",
+			"avatarUrl": "https://github.com/rupadana.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=rupadana"
+		}
+	],
+	"gemini-plus-3bulan-sim": [
+		{
+			"login": "wauputr4",
+			"name": "wauputr4",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=wauputr4"
+		}
+	],
 	"google-ai-pro-4-bulan": [
 		{
 			"login": "muhakbarcom",
@@ -93,6 +101,12 @@
 			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/0f58ce2b1fa0a25d8d14434565519f69d4bd5628"
+		},
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/1abf005d93fb0d9d50189b09f70e16b841865958"
 		}
 	],
 	"google-startups-cloud": [
