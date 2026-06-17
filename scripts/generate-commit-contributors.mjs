@@ -27,7 +27,7 @@ function normalizeTargetIds(value) {
 
 	return new Set(
 		value
-			.split(/[\n,]+/)
+			.split(/[\s,]+/)
 			.map((entry) => entry.trim())
 			.filter(Boolean)
 	);
