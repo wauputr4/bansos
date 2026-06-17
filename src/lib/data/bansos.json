@@ -850,5 +850,25 @@
 		"tags": ["Domain", "Promo", "Diskon"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "domain-gratis-1-tahun-di-idwebhost-pakai-kupon",
+		"title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
+		"provider": "Devs.Surf",
+		"description": "Free domain dan DNS management support record A, AAAA, CName, TXT",
+		"benefits": ["Domain + DNS management Gratis"],
+		"validity": {
+			"type": "forever"
+		},
+		"requirements": ["Cukup login dan bisa langsung pakai"],
+		"publishedAt": "2026-06-17",
+		"contributor": {
+			"name": "ᴀᴢɪᴢ ʙᴜᴅɪ ꜱᴀᴛʀɪᴏ",
+			"url": "https://lynk.id/azizbudisatrio?utm_source=threads&utm_medium=social&utm_content=link_in_bio"
+		},
+		"ctaLink": "https://devs.surf/",
+		"tags": ["Domain", "Promo", "Gratisan"],
+		"featured": true,
+		"status": "active"
 	}
 ]
