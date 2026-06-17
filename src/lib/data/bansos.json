@@ -743,5 +743,31 @@
 		"tags": ["AI Credits", "Gemini", "Bima"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "g",
+		"title": "Gemini Pro Head 12 Bulan",
+		"provider": "Google",
+		"description": "Gemini Pro Head 12 Bulan 5TB Free dan bisa invite member sampai 5 email.",
+		"benefits": [
+			"Gemini Pro Head 12 Bulan",
+			"Storage 5 TB",
+			"Bisa invite 5 member",
+			"All Benefit Pro"
+		],
+		"validity": {
+			"type": "forever"
+		},
+		"requirements": ["Telegram"],
+		"publishedAt": "2026-06-17",
+		"source": "https://www.threads.com/@godentopup/post/DZqx_6Jga_u?xmt=AQG0L0gPTpoWx-8QC3fVSgKEzP89tJ_OPuLOn4Lc4vK141BKI6X1tJl39XItVpVbd89GA6zY&slof=1",
+		"contributor": {
+			"name": "Goden",
+			"url": "https://github.com/godencreative-alt"
+		},
+		"ctaLink": "https://t.me/gemini12pro_bot?start=inv_RY-UB3NHFV4",
+		"tags": ["Gemini"],
+		"featured": true,
+		"status": "active"
 	}
 ]
