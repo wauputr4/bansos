@@ -821,5 +821,34 @@
 		"tags": ["Domain", "Networking", "Free Tier", "Developer Tools", "Gratisan"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "sumopod-domain-rp1",
+		"title": "Promo Domain Rp 1/Tahun dari Sumopod",
+		"provider": "Sumopod.com",
+		"source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
+		"description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
+		"benefits": ["Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"],
+		"validity": {
+			"type": "fixed",
+			"date": "2026-06-30",
+			"description": "Promo berlaku hingga 30 Juni 2026"
+		},
+		"requirements": [
+			"Buat akun di platform Sumopod",
+			"Pilih menu Domain",
+			"Masukkan nama domain yang diinginkan",
+			"Lanjutkan ke proses checkout"
+		],
+		"tips": "Provider mungkin mengalami pembatasan (rate-limit) karena tingginya permintaan, harap coba berkala.",
+		"publishedAt": "2026-06-17",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://sumopod.com",
+		"tags": ["Domain", "Promo", "Diskon"],
+		"featured": false,
+		"status": "active"
 	}
 ]
