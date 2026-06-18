@@ -59,8 +59,24 @@ export const GET: RequestHandler = async ({ platform }) => {
 				{ status: 500 }
 			);
 		}
+		interface CloudflareGraphQLResponse {
+			data?: {
+				viewer?: {
+					zones?: Array<{
+						httpRequests1mGroups?: Array<{
+							dimensions: {
+								clientRequestPath?: string;
+							};
+							sum: {
+								pageViews?: number;
+							};
+						}>;
+					}>;
+				};
+			};
+		}
 
-		const result = (await cfResponse.json()) as any;
+		const result = (await cfResponse.json()) as CloudflareGraphQLResponse;
 		const rows = result?.data?.viewer?.zones?.[0]?.httpRequests1mGroups || [];
 
 		const popularity: Record<string, number> = {};
@@ -81,7 +97,8 @@ export const GET: RequestHandler = async ({ platform }) => {
 				'Cache-Control': 'public, max-age=600, s-maxage=600'
 			}
 		});
-	} catch (err: any) {
-		return json({ error: err.message || 'Unknown error' }, { status: 500 });
+	} catch (err) {
+		const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+		return json({ error: errorMessage }, { status: 500 });
 	}
 };

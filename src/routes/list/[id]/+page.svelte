@@ -114,6 +114,7 @@
 
 	$effect(() => {
 		if (browser && item && giscusContainer && GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID) {
+			// eslint-disable-next-line svelte/no-dom-manipulating
 			giscusContainer.innerHTML = '';
 			const script = document.createElement('script');
 			script.src = 'https://giscus.app/client.js';
@@ -130,6 +131,7 @@
 			script.setAttribute('data-lang', 'id');
 			script.setAttribute('crossorigin', 'anonymous');
 			script.async = true;
+			// eslint-disable-next-line svelte/no-dom-manipulating
 			giscusContainer.appendChild(script);
 		}
 	});
