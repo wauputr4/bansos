@@ -373,7 +373,9 @@
 			<!-- Giscus Comments Section -->
 			{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
 				<div class="glass-card comments-card" style="margin-top: 2rem; padding: 2rem;">
-					<h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
+					<h2
+						style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
+					>
 						<i class="fa-regular fa-comments"></i> Diskusi & Komentar
 					</h2>
 					<div bind:this={giscusContainer}></div>

@@ -40,7 +40,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 		const cfResponse = await fetch('https://api.cloudflare.com/client/v4/graphql', {
 			method: 'POST',
 			headers: {
-				'Authorization': `Bearer ${CF_API_TOKEN}`,
+				Authorization: `Bearer ${CF_API_TOKEN}`,
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
