@@ -899,7 +899,9 @@
 			"url": "https://github.com/inirey"
 		},
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
-		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"]
+		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"],
+		"featured": true,
+		"status": "active"
 	},
 	{
 		"id": "agentrouter-free-credits",
