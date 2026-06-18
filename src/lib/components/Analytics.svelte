@@ -35,7 +35,7 @@
 		if (browser && !dev && initialized && $page.url.pathname) {
 			window.gtag?.('event', 'page_view', {
 				page_path: $page.url.pathname,
-				page_location: window.location.href,
+				page_location: $page.url.href,
 				page_title: document.title
 			});
 		}
