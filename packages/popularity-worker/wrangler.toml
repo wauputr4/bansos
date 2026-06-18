@@ -1,0 +1,10 @@
+name = "bansos-popularity-worker"
+main = "src/index.ts"
+compatibility_date = "2026-06-18"
+
+[[routes]]
+pattern = "bansos.dev/api/popularity"
+custom_domain = true
+
+[observability]
+enabled = true

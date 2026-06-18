@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
@@ -8,12 +9,25 @@
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let selectedValidities: string[] = $state([]);
-	let sortOrder: 'newest' | 'oldest' = $state('newest');
+	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('newest');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
 	let searchQuery = $state('');
 	let modalOpen = $state(false);
 	const pageSize = 6;
+
+	let popularityData: Record<string, number> = $state({});
+
+	onMount(async () => {
+		try {
+			const res = await fetch('https://bansos.dev/api/popularity');
+			if (res.ok) {
+				popularityData = await res.json();
+			}
+		} catch (e) {
+			console.error('Failed to load popularity data:', e);
+		}
+	});
 
 	const dynamicTags = $derived(
 		Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort((a, b) => a.localeCompare(b))
@@ -66,7 +80,12 @@
 				if (searchQuery.trim() && a.score !== b.score) {
 					return b.score - a.score;
 				}
-				return sortOrder === 'newest' ? b.index - a.index : a.index - b.index;
+				if (sortOrder === 'popular') {
+					const viewsA = popularityData[a.item.id] || 0;
+					const viewsB = popularityData[b.item.id] || 0;
+					if (viewsA !== viewsB) return viewsB - viewsA;
+				}
+				return sortOrder === 'oldest' ? a.index - b.index : b.index - a.index;
 			})
 			.map(({ item }) => item);
 	});
@@ -213,6 +232,13 @@
 						<div class="filter-group">
 							<h3 class="filter-group-title">Urutan</h3>
 							<div class="tag-grid">
+								<button
+									class="tag-btn"
+									class:active={sortOrder === 'popular'}
+									onclick={() => (sortOrder = 'popular')}
+								>
+									Terpopuler
+								</button>
 								<button
 									class="tag-btn"
 									class:active={sortOrder === 'newest'}
