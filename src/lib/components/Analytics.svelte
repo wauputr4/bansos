@@ -23,6 +23,7 @@
 <svelte:head>
 	{#if GA_ID && !dev}
 		<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html scriptTag}
 	{/if}
 </svelte:head>
