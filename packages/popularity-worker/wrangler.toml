@@ -3,7 +3,7 @@ main = "src/index.ts"
 compatibility_date = "2026-06-18"
 
 [[routes]]
-pattern = "bansos.dev/api/popularity"
+pattern = "api.bansos.dev/*"
 custom_domain = true
 
 [observability]
