@@ -850,5 +850,31 @@
 		"tags": ["Domain", "Promo", "Diskon"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "f",
+		"title": "Free stream Fifa World Cup 2026 No Iklan",
+		"provider": "Tvstreamindonesia",
+		"description": "Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.",
+		"benefits": [
+			"Streaming FIFA World Cup 2026 Gratis Saluran RTB GO",
+			"Tanpa Iklan Mengganggu",
+			"Kualitas HD Stabil",
+			"Support Android, iPhone & PC"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buka website tvstreamindonesia.my.id",
+			"Cari Saluran RTB GO untuk nonton FIFA world cup 2026",
+			"Klik channel atau tombol Play Streaming"
+		],
+		"publishedAt": "2026-06-18",
+		"source": "https://t.me/tvstreamindonesia",
+		"ctaLink": "http://tvstreamindonesia.my.id",
+		"tags": ["Free Tier"],
+		"featured": true,
+		"status": "active"
 	}
 ]
