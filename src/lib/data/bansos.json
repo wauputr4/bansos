@@ -876,5 +876,31 @@
 		"tags": ["Free Tier"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "f",
+		"title": "Free domain .XYZ",
+		"provider": "Rumahweb",
+		"description": "Cara mendapatkan domain gratis .XYZ dari rumahweb:\n\nLangkah 1: Berikan rating dan review bintang 5 untuk Rumahweb di Google.\n\nLangkah 2: Setelah review berhasil dikirim, buat screenshot sebagai bukti.\n\n Langkah 3: Upload screenshot tersebut melalui formulir yang telah disediakan oleh Rumahweb Indonesia\n\nSetelah data diverifikasi, permohonan akan diproses pada hari kerja. Aktivasi biasanya membutuhkan waktu sekitar 30–60 menit sesuai antrean, dengan kuota maksimal 6 domain per hari\n\nNOTE:\n\npastikan kalian sudah daftar akun terlebih dahulu di website Rumahweb dan mengecek subdomain nya dahulu tersedia atau tidak.... jika tersedia langsung isi di form promosi domain .XYZ yang telah di sediakan oleh Rumahweb di ACC sekitar 1/2 hari pasti dapat",
+		"benefits": ["Hosting free  1  bulan"],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Memberikan review bintang 5 di Google untuk Rumahweb.",
+			"Upload screenshot bukti review melalui formulir klaim.",
+			"Mengisi data yang diperlukan pada formulir promo",
+			"Menunggu proses verifikasi dari tim Rumahweb."
+		],
+		"publishedAt": "2026-06-18",
+		"source": "https://www.rumahweb.com/domain-gratis",
+		"contributor": {
+			"name": "Rey",
+			"url": "https://github.com/inirey"
+		},
+		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
+		"tags": ["Cloud", "API", "AI", "Coding", "Free Tier", "Domain", "Diskon"],
+		"featured": true,
+		"status": "active"
 	}
 ]
