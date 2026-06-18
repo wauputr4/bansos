@@ -4,12 +4,12 @@
 
 	const GA_ID = import.meta.env.VITE_GA_ID;
 
-	const inlineScript = `
+	const scriptTag = `<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 		gtag('config', '${GA_ID}', { send_page_view: false });
-	`;
+	</` + 'script>';
 
 	// Track page views on route change
 	$effect(() => {
@@ -26,6 +26,6 @@
 <svelte:head>
 	{#if GA_ID && !dev}
 		<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
-		{@html `<script>${inlineScript}</script>`}
+		{@html scriptTag}
 	{/if}
 </svelte:head>
