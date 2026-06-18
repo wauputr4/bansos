@@ -11,6 +11,12 @@
 			"name": "Wauputra",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8105e48b0a6e5449d1fff3829b5968b02d84cdca4"
+		},
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/d279ea9e10c36b878f99c47ce28b4d6a0b8c9d01"
 		}
 	],
 	"aiclass-asean-courses": [
@@ -81,6 +87,14 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
 		}
 	],
+	"f": [
+		{
+			"login": "adefebrian",
+			"name": "Adefebrian",
+			"avatarUrl": "https://github.com/Adefebrian.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=Adefebrian"
+		}
+	],
 	"gemini-plus-3bulan-sim": [
 		{
 			"login": "wauputr4",
@@ -101,6 +115,12 @@
 			"name": "wauputr4",
 			"avatarUrl": "https://github.com/wauputr4.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/0f58ce2b1fa0a25d8d14434565519f69d4bd5628"
+		},
+		{
+			"login": "github-actions[bot]",
+			"name": "github-actions[bot]",
+			"avatarUrl": "https://github.com/github-actions[bot].png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/1abf005d93fb0d9d50189b09f70e16b841865958"
 		}
 	],
 	"google-startups-cloud": [
@@ -229,6 +249,20 @@
 			"name": "fazaimron27",
 			"avatarUrl": "https://github.com/fazaimron27.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=fazaimron27"
+		},
+		{
+			"login": "wauputr4",
+			"name": "Wauputra",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/ea8cc9d8295abb15223cc5ad15d40cd817b25220"
+		}
+	],
+	"sumopod-domain-rp1": [
+		{
+			"login": "renzie2161",
+			"name": "Renzie2161",
+			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/384d22a87de9577369d639455fe4a590a3e27df7"
 		}
 	],
 	"tokenrouter-minimax-m3-free": [
@@ -253,12 +287,18 @@
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/e800c501c507145bc29c90b6c833e23bf788ebd7"
 		}
 	],
-	"xiaomi-mimo-gratis-2": [
+	"tvstreamindonesia-fifa-2026": [
 		{
-			"login": "muhakbarcom",
-			"name": "muhakbarcom",
-			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
-			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
+			"login": "bang-joe",
+			"name": "bang-joe",
+			"avatarUrl": "https://github.com/bang-joe.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=bang-joe"
+		},
+		{
+			"login": "wauputr4",
+			"name": "Wauputra",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/91825af921db233219c2d05d852b9458a1657ac8"
 		}
 	],
 	"xai-grok-api-credits": [
@@ -267,6 +307,20 @@
 			"name": "Renzie2161",
 			"avatarUrl": "https://github.com/Renzie2161.png?size=96",
 			"commitUrl": "https://github.com/wauputr4/bansos/commit/8f6d1ff1f0ec806965e7d90c2ff3a51f99045b24"
+		}
+	],
+	"xiaomi-mimo-gratis-2": [
+		{
+			"login": "muhakbarcom",
+			"name": "muhakbarcom",
+			"avatarUrl": "https://github.com/muhakbarcom.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commits?author=muhakbarcom"
+		},
+		{
+			"login": "wauputr4",
+			"name": "Wauputra",
+			"avatarUrl": "https://github.com/wauputr4.png?size=96",
+			"commitUrl": "https://github.com/wauputr4/bansos/commit/a47c50b332c6a2663fc24fe78d59c34138b8c717"
 		}
 	],
 	"zcode-glm-52-free": [
