@@ -20,7 +20,7 @@
 
 	onMount(async () => {
 		try {
-			const res = await fetch('https://api.bansos.dev/');
+			const res = await fetch('/api/popularity');
 			if (res.ok) {
 				popularityData = await res.json();
 			}
