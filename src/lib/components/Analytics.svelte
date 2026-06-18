@@ -1,48 +1,42 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { browser, dev } from '$app/environment';
+	import { dev } from '$app/environment';
+	import { tick } from 'svelte';
 
-	const GA_ID = import.meta.env.VITE_GA_ID;
+	const GA_ID = (import.meta.env.VITE_GA_ID ?? '').trim();
+	const HAS_VALID_GA_ID = /^G-[A-Z0-9]+$/.test(GA_ID);
 
-	let initialized = $state(false);
-
-	function initGA() {
-		if (!GA_ID || !browser || dev || initialized) return;
-
-		// Initialize gtag function first
+	// Construct inline script with validation and safe serialization
+	const scriptTag =
+		`<script>
 		window.dataLayer = window.dataLayer || [];
-		window.gtag = function gtag(...args: unknown[]) {
-			window.dataLayer.push(args);
-		};
-		window.gtag('js', new Date());
-		// Don't send initial page view - let $effect handle it
-		window.gtag('config', GA_ID, { send_page_view: false });
+		window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', ${JSON.stringify(GA_ID)}, { send_page_view: false });
+	</` + 'script>';
 
-		// Load Google Analytics script
-		const script = document.createElement('script');
-		script.async = true;
-		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-		script.onerror = () => {
-			console.warn('Google Analytics script failed to load');
-		};
-		document.head.appendChild(script);
-
-		initialized = true;
-	}
-
-	// Track page views on route change
+	// Track page views on route change (runs only in browser)
 	$effect(() => {
-		if (browser && !dev && initialized && $page.url.pathname) {
-			window.gtag?.('event', 'page_view', {
-				page_path: $page.url.pathname,
-				page_location: $page.url.href,
-				page_title: document.title
+		if (!dev && HAS_VALID_GA_ID && $page.url.pathname) {
+			const currentPath = $page.url.pathname;
+			const currentHref = $page.url.href;
+
+			// Wait for SvelteKit and <svelte:head> to fully update the document title
+			tick().then(() => {
+				window.gtag?.('event', 'page_view', {
+					page_path: currentPath,
+					page_location: currentHref,
+					page_title: document.title
+				});
 			});
 		}
 	});
-
-	// Initialize on mount
-	if (browser) {
-		initGA();
-	}
 </script>
+
+<svelte:head>
+	{#if HAS_VALID_GA_ID && !dev}
+		<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html scriptTag}
+	{/if}
+</svelte:head>
