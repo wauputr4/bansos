@@ -1,6 +1,7 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { resolve } from '$app/paths';
+	import { browser } from '$app/environment';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import {
@@ -11,6 +12,13 @@
 		slugifyProvider,
 		bansosList
 	} from '$lib/data/bansos';
+
+	const GISCUS_REPO = import.meta.env.VITE_GISCUS_REPO || 'wauputr4/bansos';
+	const GISCUS_REPO_ID = import.meta.env.VITE_GISCUS_REPO_ID || 'R_kgDOS3nyxQ';
+	const GISCUS_CATEGORY = import.meta.env.VITE_GISCUS_CATEGORY || 'General';
+	const GISCUS_CATEGORY_ID = import.meta.env.VITE_GISCUS_CATEGORY_ID || '';
+
+	let giscusContainer: HTMLDivElement | null = $state(null);
 
 	let { data } = $props();
 
@@ -102,6 +110,28 @@
 	const recommendedBansos = $derived.by(() => {
 		if (!item) return [];
 		return recommendedBansosFor(item, bansosList, 3);
+	});
+
+	$effect(() => {
+		if (browser && item && giscusContainer && GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID) {
+			giscusContainer.innerHTML = '';
+			const script = document.createElement('script');
+			script.src = 'https://giscus.app/client.js';
+			script.setAttribute('data-repo', GISCUS_REPO);
+			script.setAttribute('data-repo-id', GISCUS_REPO_ID);
+			script.setAttribute('data-category', GISCUS_CATEGORY);
+			script.setAttribute('data-category-id', GISCUS_CATEGORY_ID);
+			script.setAttribute('data-mapping', 'pathname');
+			script.setAttribute('data-strict', '0');
+			script.setAttribute('data-reactions-enabled', '1');
+			script.setAttribute('data-emit-metadata', '0');
+			script.setAttribute('data-input-position', 'bottom');
+			script.setAttribute('data-theme', 'preferred_color_scheme');
+			script.setAttribute('data-lang', 'id');
+			script.setAttribute('crossorigin', 'anonymous');
+			script.async = true;
+			giscusContainer.appendChild(script);
+		}
 	});
 </script>
 
@@ -339,6 +369,16 @@
 					</a>
 				</div>
 			</div>
+
+			<!-- Giscus Comments Section -->
+			{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
+				<div class="glass-card comments-card" style="margin-top: 2rem; padding: 2rem;">
+					<h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
+						<i class="fa-regular fa-comments"></i> Diskusi & Komentar
+					</h2>
+					<div bind:this={giscusContainer}></div>
+				</div>
+			{/if}
 		</article>
 
 		<!-- Rekomendasi Bansos Lainnya -->
