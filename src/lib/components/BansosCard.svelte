@@ -3,6 +3,7 @@
 	import { getProviderBySlug, slugifyProvider, type BansosItem } from '$lib/data/bansos';
 
 	let { item, compact = false }: { item: BansosItem; compact?: boolean } = $props();
+	const status = $derived(item.status || 'unknown');
 
 	let showTooltip = $state(false);
 	const providerSlug = $derived(slugifyProvider(item.provider));
@@ -15,7 +16,7 @@
 	}
 </script>
 
-<article class:compact class:is-expired={item.status === 'expired'} class="glass-card bansos-card">
+<article class:compact class:is-expired={status === 'expired'} class="glass-card bansos-card">
 	<div class="card-header">
 		<div class="tags-scroll-container">
 			{#each item.tags as tag (tag)}
@@ -23,9 +24,9 @@
 			{/each}
 		</div>
 		<div class="status-container">
-			<span class="status-badge status-{item.status}">
+			<span class="status-badge status-{status}">
 				<i class="fa-solid fa-circle"></i>
-				{item.status.toUpperCase()}
+				{status.toUpperCase()}
 			</span>
 		</div>
 	</div>
@@ -40,7 +41,7 @@
 				<strong>{item.provider}</strong>
 			{/if}
 		</p>
-		{#if item.status !== 'expired'}
+		{#if status !== 'expired'}
 			{#if item.validity.description}
 				<button
 					type="button"

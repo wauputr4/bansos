@@ -19,6 +19,7 @@
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
+	const status = $derived(item?.status || 'unknown');
 
 	let copied = $state(false);
 	let floatingEmojis = $state<{ id: number; x: number; y: number; icon: string; color?: string }[]>(
@@ -179,8 +180,8 @@
 							{/each}
 						</div>
 						<div class="status-container">
-							<span class="status-badge status-{item.status}"
-								><i class="fa-solid fa-circle"></i> {item.status.toUpperCase()}</span
+							<span class="status-badge status-{status}"
+								><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
 							>
 						</div>
 					</div>
