@@ -899,18 +899,18 @@
 			"url": "https://github.com/inirey"
 		},
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
-		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"],
+		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"]
 	},
 	{
-		"id": "f",
+		"id": "agentrouter-free-credits",
 		"title": "Free $200 Credit API LLM Populer",
 		"provider": "AgentRouter",
-		"description": "Instant dapat  $200 setelah signup \n\nada 10 model LLM yang bisa dipakai melalui API KEY",
+		"description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
 		"benefits": ["Free Signup Credits"],
 		"validity": {
 			"type": "forever"
 		},
-		"requirements": ["Signup"],
+		"requirements": ["Daftar akun"],
 		"publishedAt": "2026-06-18",
 		"source": "https://agentrouter.org/register?aff=qdG1",
 		"contributor": {
