@@ -33,8 +33,10 @@
 	// Track page views on route change
 	$effect(() => {
 		if (browser && !dev && initialized && $page.url.pathname) {
-			window.gtag?.('config', GA_ID, {
-				page_path: $page.url.pathname
+			window.gtag?.('event', 'page_view', {
+				page_path: $page.url.pathname,
+				page_location: $page.url.href,
+				page_title: document.title
 			});
 		}
 	});
