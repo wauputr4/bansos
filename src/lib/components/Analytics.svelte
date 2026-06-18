@@ -4,35 +4,16 @@
 
 	const GA_ID = import.meta.env.VITE_GA_ID;
 
-	let initialized = $state(false);
-
-	function initGA() {
-		if (!GA_ID || !browser || dev || initialized) return;
-
-		// Initialize gtag function first
+	const inlineScript = `
 		window.dataLayer = window.dataLayer || [];
-		window.gtag = function gtag(...args: unknown[]) {
-			window.dataLayer.push(args);
-		};
-		window.gtag('js', new Date());
-		// Don't send initial page view - let $effect handle it
-		window.gtag('config', GA_ID, { send_page_view: false });
-
-		// Load Google Analytics script
-		const script = document.createElement('script');
-		script.async = true;
-		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-		script.onerror = () => {
-			console.warn('Google Analytics script failed to load');
-		};
-		document.head.appendChild(script);
-
-		initialized = true;
-	}
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', '${GA_ID}', { send_page_view: false });
+	`;
 
 	// Track page views on route change
 	$effect(() => {
-		if (browser && !dev && initialized && $page.url.pathname) {
+		if (browser && !dev && GA_ID && $page.url.pathname) {
 			window.gtag?.('event', 'page_view', {
 				page_path: $page.url.pathname,
 				page_location: $page.url.href,
@@ -40,9 +21,11 @@
 			});
 		}
 	});
-
-	// Initialize on mount
-	if (browser) {
-		initGA();
-	}
 </script>
+
+<svelte:head>
+	{#if GA_ID && !dev}
+		<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+		{@html `<script>${inlineScript}</script>`}
+	{/if}
+</svelte:head>
