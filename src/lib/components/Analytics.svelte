@@ -4,12 +4,9 @@
 
 	const GA_ID = import.meta.env.VITE_GA_ID;
 
-	const scriptTag = `<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', '${GA_ID}', { send_page_view: false });
-	</` + 'script>';
+	const scriptTag =
+		`<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GA_ID}', { send_page_view: false }); </` +
+		'script>';
 
 	// Track page views on route change
 	$effect(() => {
