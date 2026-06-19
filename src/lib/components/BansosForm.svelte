@@ -28,6 +28,7 @@
 	let formContributorUrl = $state('');
 	let formErrors = $state<string[]>([]);
 	let validityDropdownOpen = $state(false);
+	let tagError = $state('');
 
 	const validityOptions = [
 		{ value: 'uncertain', label: 'Tidak Tentu' },
@@ -128,14 +129,20 @@
 
 	function addTag(tag: string) {
 		const trimmed = tag.trim();
-		if (trimmed && !formTags.includes(trimmed)) {
+		if (trimmed.length < 2) {
+			tagError = 'Tag minimal 2 karakter';
+			return;
+		}
+		if (!formTags.includes(trimmed)) {
 			formTags = [...formTags, trimmed];
 		}
 		tagInput = '';
+		tagError = '';
 	}
 
 	function removeTag(index: number) {
 		formTags = formTags.filter((_, i) => i !== index);
+		tagError = '';
 	}
 
 	function handleTagInputKeydown(e: KeyboardEvent) {
@@ -146,6 +153,9 @@
 			}
 		} else if (e.key === 'Backspace' && !tagInput && formTags.length > 0) {
 			formTags = formTags.slice(0, -1);
+			tagError = '';
+		} else {
+			tagError = '';
 		}
 	}
 
@@ -321,7 +331,12 @@
 				maxlength="100"
 				placeholder="Contoh: GitHub Student Developer Pack"
 			/>
-			<span class="hint">ID akan otomatis terbuat dari title</span>
+			<div class="hint-row">
+				<span class="hint">ID akan otomatis terbuat dari title</span>
+				<span class="char-count" class:near-limit={formTitle.length > 80}
+					>{formTitle.length}/100</span
+				>
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -344,6 +359,12 @@
 				maxlength="250"
 				placeholder="Jelaskan secara singkat apa saja yang didapatkan (max 250 karakter)..."
 			></textarea>
+			<div class="hint-row">
+				<span></span>
+				<span class="char-count" class:near-limit={formDescription.length > 200}
+					>{formDescription.length}/250</span
+				>
+			</div>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -441,7 +462,12 @@
 					{/each}
 				</div>
 			{/if}
-			<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
+			<div class="hint-row">
+				<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
+				{#if tagError}
+					<span class="error-hint">{tagError}</span>
+				{/if}
+			</div>
 		</div>
 
 		<div class="form-group custom-select-container">
@@ -692,7 +718,33 @@
 
 	.hint {
 		color: var(--text-muted);
-		font-size: 0.8rem;
+		font-size: 0.75rem;
+		display: block;
+	}
+
+	.hint-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-top: 0.25rem;
+		gap: 1rem;
+	}
+
+	.char-count {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+	}
+
+	.char-count.near-limit {
+		color: var(--color-warning);
+	}
+
+	.error-hint {
+		color: var(--color-danger);
+		font-size: 0.75rem;
+		white-space: nowrap;
 	}
 
 	.hint-new {
