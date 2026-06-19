@@ -2,7 +2,17 @@
 	import { resolve } from '$app/paths';
 	import type { BansosItem } from '$lib/data/bansos';
 
-	let { title, icon, items }: { title: string; icon: string; items: BansosItem[] } = $props();
+	let {
+		title,
+		icon,
+		items,
+		popularityData = {}
+	}: {
+		title: string;
+		icon: string;
+		items: BansosItem[];
+		popularityData?: Record<string, number>;
+	} = $props();
 
 	let activeTooltip = $state<string | null>(null);
 </script>
@@ -25,6 +35,13 @@
 								<span class="tag-text">{tag}</span>
 							</span>
 						{/each}
+						<span
+							class="highlight-tag views-tag"
+							style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-accent); border-color: rgba(16, 185, 129, 0.3);"
+						>
+							<i class="fa-regular fa-eye"></i>
+							<span class="tag-text">{popularityData[item.id] || 0}</span>
+						</span>
 					</div>
 					{#if item.status !== 'expired'}
 						{#if item.validity.type === 'forever'}

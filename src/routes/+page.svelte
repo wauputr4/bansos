@@ -34,6 +34,7 @@
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
+	let popularityData: Record<string, number> = $state({});
 
 	function formatNumber(num: number | string) {
 		if (typeof num !== 'number') return num;
@@ -80,6 +81,13 @@
 						contributors: githubContributors
 					})
 				);
+			})
+			.catch(() => {});
+
+		fetch('/api/popularity')
+			.then((res) => (res.ok ? res.json() : {}))
+			.then((data) => {
+				popularityData = data;
 			})
 			.catch(() => {});
 	});
@@ -213,10 +221,16 @@
 					items={featuredBansosList}
 					title="Rekomendasi Utama"
 					icon="fa-solid fa-fire"
+					{popularityData}
 				/>
 			{/if}
 			{#if latestBansosList.length > 0}
-				<BansosHighlights items={latestBansosList} title="Bansos Terbaru" icon="fa-solid fa-bolt" />
+				<BansosHighlights
+					items={latestBansosList}
+					title="Bansos Terbaru"
+					icon="fa-solid fa-bolt"
+					{popularityData}
+				/>
 			{/if}
 		</div>
 
