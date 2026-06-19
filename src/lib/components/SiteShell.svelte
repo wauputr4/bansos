@@ -84,8 +84,19 @@
 	{@render children()}
 
 	<footer class="site-footer">
-		<div class="container footer-inner">
-			<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
+		<div class="container footer-inner" style="flex-wrap: wrap; gap: 1.5rem;">
+			<div class="footer-left" style="display: flex; flex-direction: column; gap: 0.5rem;">
+				<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
+				<div class="sponsor-button-wrapper" style="display: flex; align-items: center;">
+					<iframe
+						src="https://github.com/sponsors/wauputr4/button"
+						title="Sponsor wauputr4"
+						height="32"
+						width="114"
+						style="border: 0; border-radius: 6px;"
+					></iframe>
+				</div>
+			</div>
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
 				<span class="dot">·</span>

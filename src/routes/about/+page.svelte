@@ -67,6 +67,31 @@
 			<a href={resolve('/list')} class="btn-primary">Lihat List Bansos</a>
 			<a href={resolve('/contribute')} class="about-link">Cara Kontribusi</a>
 		</div>
+
+		<section
+			class="sponsor-section"
+			style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; text-align: center;"
+		>
+			<h2 style="font-size: var(--font-size-h2); color: var(--text-primary);">
+				<i class="fa-solid fa-heart" style="color: #ea4335;"></i> Dukung Proyek Ini
+			</h2>
+			<p style="max-width: 32rem; color: var(--text-secondary); margin: 0 auto;">
+				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Jika proyek ini membantumu
+				menghemat budget, pertimbangkan untuk mendukung kelangsungan proyek ini.
+			</p>
+			<div
+				class="sponsor-card-wrapper"
+				style="width: 100%; max-width: 600px; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); display: flex; justify-content: center; padding: 1rem; margin-top: 0.5rem;"
+			>
+				<iframe
+					src="https://github.com/sponsors/wauputr4/card"
+					title="Sponsor wauputr4"
+					height="225"
+					width="600"
+					style="border: 0; width: 100%;"
+				></iframe>
+			</div>
+		</section>
 	</section>
 </main>
 
