@@ -12,29 +12,27 @@ export const GET: RequestHandler = async ({ platform }) => {
 	}
 
 	const query = `
-		query GetPageViews($zoneTag: String!, $date: Date!) {
+		query GetPageViews($zoneTag: String!, $start: DateTime!) {
 			viewer {
 				zones(filter: { zoneTag: $zoneTag }) {
-					httpRequests1mGroups(
+					httpRequestsAdaptiveGroups(
 						limit: 100
-						filter: { date_geq: $date }
-						orderBy: [sum_pageViews_DESC]
+						filter: { datetime_geq: $start }
+						orderBy: [count_DESC]
 					) {
 						dimensions {
 							clientRequestPath
 						}
-						sum {
-							pageViews
-						}
+						count
 					}
 				}
 			}
 		}
 	`;
 
-	const oneWeekAgo = new Date();
-	oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-	const dateString = oneWeekAgo.toISOString().split('T')[0];
+	const oneDayAgo = new Date();
+	oneDayAgo.setHours(oneDayAgo.getHours() - 23);
+	const dateString = oneDayAgo.toISOString();
 
 	try {
 		const cfResponse = await fetch('https://api.cloudflare.com/client/v4/graphql', {
@@ -47,7 +45,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 				query,
 				variables: {
 					zoneTag: CF_ZONE_ID,
-					date: dateString
+					start: dateString
 				}
 			})
 		});
@@ -66,13 +64,11 @@ export const GET: RequestHandler = async ({ platform }) => {
 			data?: {
 				viewer?: {
 					zones?: Array<{
-						httpRequests1mGroups?: Array<{
+						httpRequestsAdaptiveGroups?: Array<{
 							dimensions: {
 								clientRequestPath?: string;
 							};
-							sum: {
-								pageViews?: number;
-							};
+							count?: number;
 						}>;
 					}>;
 				};
@@ -90,12 +86,12 @@ export const GET: RequestHandler = async ({ platform }) => {
 			);
 		}
 
-		const rows = result?.data?.viewer?.zones?.[0]?.httpRequests1mGroups || [];
+		const rows = result?.data?.viewer?.zones?.[0]?.httpRequestsAdaptiveGroups || [];
 
 		const popularity: Record<string, number> = {};
 		for (const row of rows) {
 			const path = (row.dimensions.clientRequestPath || '').toLowerCase();
-			const views = row.sum.pageViews || 0;
+			const views = row.count || 0;
 			const match = path.match(/\/list\/([^/]+)/);
 			if (match) {
 				const bansosId = match[1];
