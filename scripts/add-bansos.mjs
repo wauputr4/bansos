@@ -107,6 +107,16 @@ if (!isValidCalendarDate(publishedAt)) {
 	throw new Error('publishedAt must be a valid YYYY-MM-DD date');
 }
 
+const today = new Date().toISOString().slice(0, 10);
+const start = publishedAt || today;
+let calculatedStatus = 'active';
+
+if (start > today) {
+	calculatedStatus = 'upcoming';
+} else if (validity.type === 'fixed' && validity.date && validity.date < today) {
+	calculatedStatus = 'expired';
+}
+
 const item = {
 	id: required(mergedArgs, 'id'),
 	title: required(mergedArgs, 'title'),
@@ -133,7 +143,7 @@ const item = {
 	ctaLink: mergedArgs['cta-link'] || required(mergedArgs, 'ctaLink'),
 	tags: Array.isArray(mergedArgs.tags) ? mergedArgs.tags : csv(required(mergedArgs, 'tags')),
 	featured: mergedArgs.featured === true || mergedArgs.featured === 'true',
-	status: mergedArgs.status || 'active'
+	status: mergedArgs.status || calculatedStatus
 };
 
 if (item.benefits.length === 0) throw new Error('--benefits must contain at least one item');

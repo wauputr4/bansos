@@ -9,7 +9,7 @@
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let selectedValidities: string[] = $state([]);
-	let sortOrder: 'newest' | 'oldest' | 'popular' | 'comments' | 'reactions' = $state('popular');
+	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('popular');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
 	let searchQuery = $state('');
@@ -94,17 +94,15 @@
 					return b.score - a.score;
 				}
 				if (sortOrder === 'popular') {
-					const viewsA = popularityData[a.item.id] || 0;
-					const viewsB = popularityData[b.item.id] || 0;
-					if (viewsA !== viewsB) return viewsB - viewsA;
-				} else if (sortOrder === 'comments') {
-					const commentsA = discussionStats[a.item.id]?.comments || 0;
-					const commentsB = discussionStats[b.item.id]?.comments || 0;
-					if (commentsA !== commentsB) return commentsB - commentsA;
-				} else if (sortOrder === 'reactions') {
-					const reactionsA = discussionStats[a.item.id]?.reactions || 0;
-					const reactionsB = discussionStats[b.item.id]?.reactions || 0;
-					if (reactionsA !== reactionsB) return reactionsB - reactionsA;
+					const scoreA =
+						(popularityData[a.item.id] || 0) +
+						(discussionStats[a.item.id]?.comments || 0) +
+						(discussionStats[a.item.id]?.reactions || 0);
+					const scoreB =
+						(popularityData[b.item.id] || 0) +
+						(discussionStats[b.item.id]?.comments || 0) +
+						(discussionStats[b.item.id]?.reactions || 0);
+					if (scoreA !== scoreB) return scoreB - scoreA;
 				}
 				return sortOrder === 'oldest' ? a.index - b.index : b.index - a.index;
 			})
@@ -255,20 +253,6 @@
 									onclick={() => (sortOrder = 'popular')}
 								>
 									Terpopuler
-								</button>
-								<button
-									class="tag-btn"
-									class:active={sortOrder === 'comments'}
-									onclick={() => (sortOrder = 'comments')}
-								>
-									Komentar
-								</button>
-								<button
-									class="tag-btn"
-									class:active={sortOrder === 'reactions'}
-									onclick={() => (sortOrder = 'reactions')}
-								>
-									Reaksi
 								</button>
 								<button
 									class="tag-btn"

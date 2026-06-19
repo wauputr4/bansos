@@ -218,7 +218,17 @@ function payloadFromArgs(args) {
 	}
 	const publishedAt = args['published-at'] || new Date().toISOString().slice(0, 10);
 	if (!isValidCalendarDate(publishedAt)) {
-		throw new Error('--published-at must be a valid YYYY-MM-DD date');
+		throw new Error('publishedAt must be a valid YYYY-MM-DD date');
+	}
+
+	const today = new Date().toISOString().slice(0, 10);
+	const start = publishedAt || today;
+	let calculatedStatus = 'active';
+
+	if (start > today) {
+		calculatedStatus = 'upcoming';
+	} else if (validity.type === 'fixed' && validity.date && validity.date < today) {
+		calculatedStatus = 'expired';
 	}
 
 	const contributorName =
@@ -251,7 +261,7 @@ function payloadFromArgs(args) {
 		ctaLink: validateUrl(required(args, 'cta-link'), 'cta-link'),
 		tags: csv(required(args, 'tags')),
 		featured,
-		status: args.status || 'active'
+		status: args.status || calculatedStatus
 	};
 
 	if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.id)) {
