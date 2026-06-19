@@ -1,5 +1,6 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
@@ -22,7 +23,20 @@
 
 	let { data } = $props();
 
+	let popularityData: Record<string, number> = $state({});
 	const item = $derived(bansosList.find((i) => i.id === data.id) || data.item);
+	const views = $derived(item ? popularityData[item.id] || 0 : 0);
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/popularity');
+			if (res.ok) {
+				popularityData = await res.json();
+			}
+		} catch (e) {
+			console.error('Failed to load popularity data:', e);
+		}
+	});
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
@@ -199,6 +213,13 @@
 							{#each item.tags as tag (tag)}
 								<span class="tag-badge">{tag}</span>
 							{/each}
+							<span
+								class="tag-badge views-badge"
+								style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
+							>
+								<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
+								{views}
+							</span>
 						</div>
 						<div class="status-container">
 							<span class="status-badge status-{status}"
@@ -382,7 +403,7 @@
 			{#if recommendedBansos.length > 0}
 				<div class="recommendation-grid">
 					{#each recommendedBansos as recommend (recommend.id)}
-						<BansosCard item={recommend} compact={true} />
+						<BansosCard item={recommend} compact={true} views={popularityData[recommend.id] || 0} />
 					{/each}
 					<a href={resolve('/list')} class="glass-card recommendation-more-card">
 						<div class="more-card-content">
