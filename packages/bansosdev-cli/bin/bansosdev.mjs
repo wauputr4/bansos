@@ -100,7 +100,7 @@ function help() {
 	console.log(`bansosdev
 
 Usage:
-  npx bansosdev add --id my-bansos --title "Promo" --provider "Provider" ...
+  npx bansosdev add --id my-bansos --title "Promo" ...
 
 Modes:
   --mode direct   Trigger trusted GitHub Action commit (needs token)
@@ -110,7 +110,7 @@ Modes:
 Required:
   --id
   --title
-  --provider
+
   --description
   --benefits "Benefit 1|Benefit 2"
   --validity-type fixed|uncertain|forever
@@ -232,7 +232,7 @@ function payloadFromArgs(args) {
 	const payload = {
 		id: required(args, 'id'),
 		title: required(args, 'title'),
-		provider: required(args, 'provider'),
+
 		description: required(args, 'description'),
 		benefits: list(required(args, 'benefits')),
 		promoCode,

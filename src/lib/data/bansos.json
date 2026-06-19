@@ -2,7 +2,6 @@
 	{
 		"id": "namecom-domain-app",
 		"title": "Promo Domain .DEV & .APP Gratis dari Name.com",
-		"provider": "Name.com",
 		"description": "Bansos paling krusial buat kalian yang pengen rilis aplikasi tapi terhalang dana beli domain. Domain .dev dan .app premium langsung gas tanpa biaya, no cap! 🚀",
 		"benefits": [
 			"Domain .dev dan .app gratis tanpa bayar sama sekali",
@@ -34,7 +33,6 @@
 	{
 		"id": "namecheap-vps-hosting",
 		"title": "Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan",
-		"provider": "Namecheap",
 		"description": "Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.",
 		"benefits": [
 			"Plan VPS mulai dari Spark sampai Hypernova",
@@ -64,7 +62,6 @@
 	{
 		"id": "idwebhost-domain-gratis-1tahun",
 		"title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
-		"provider": "IDwebhost",
 		"description": "Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.",
 		"benefits": [
 			"Domain gratis 1 tahun untuk yang ambil paket sesuai campaign",
@@ -96,7 +93,6 @@
 	{
 		"id": "tokenrouter-model-gateway",
 		"title": "Free Credits TokenRouter buat Jajan Model AI",
-		"provider": "TokenRouter",
 		"description": "TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.",
 		"benefits": [
 			"Top up 6, dapat 4 credit gratis (bonus 40% off)",
@@ -131,7 +127,6 @@
 	{
 		"id": "deepseek-free-token",
 		"title": "DeepSeek 5M Token Gratis buat Ngoding AI",
-		"provider": "DeepSeek",
 		"description": "DeepSeek ngasih free tier 5M token pas signup buat developer yang mau cobain model AI tanpa kartu kredit. Cocok buat eksperimen chat, reasoning, dan integrasi API sebelum dompet ikut mikir keras.",
 		"benefits": [
 			"5M token gratis saat signup",
@@ -164,7 +159,6 @@
 	{
 		"id": "inceptionlabs-get-started",
 		"title": "10M Free Token Inception Platform",
-		"provider": "Inception",
 		"description": "Buat akun Inception Platform, dapetin bonus 10 juta token gratis buat ngoprek Mercury 2 API tanpa bayar dulu, biar bisa langsung test AI API integration kamu.",
 		"benefits": [
 			"Bonus 10.000.000 token gratis untuk user baru",
@@ -198,7 +192,6 @@
 	{
 		"id": "kimchi-dev-serverless-ai",
 		"title": "Kimchi.dev $50/Bulan Serverless AI Credit",
-		"provider": "Kimchi.dev",
 		"description": "Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.",
 		"benefits": ["$50 Serverless AI credit per bulan", "Tanpa syarat kartu kredit"],
 		"validity": {
@@ -219,7 +212,6 @@
 	{
 		"id": "kie-ai-api-discount-credit",
 		"title": "Kie.ai Free Credit & API Lebih Murah buat AI Builder",
-		"provider": "Kie.ai",
 		"description": "Kie.ai sering ngasih gratisan credit buat developer yang mau ngoprek AI image, video, dan text API. Selain itu pricing API-nya bisa jauh lebih murah dari official, cocok buat eksperimen tanpa bikin dompet langsung tumbang.",
 		"benefits": [
 			"Umumnya ada free credit berkala/bulanan untuk akun aktif",
@@ -253,7 +245,6 @@
 	{
 		"id": "aiclass-asean-courses",
 		"title": "Course Gratis AI dari AI Class ASEAN",
-		"provider": "AI Class ASEAN",
 		"description": "Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.",
 		"benefits": [
 			"Kursus gratis lewat program kolaborasi regional",
@@ -282,7 +273,6 @@
 	{
 		"id": "dahono-labs-ai-api",
 		"title": "Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs",
-		"provider": "Dahono Labs",
 		"description": "Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.",
 		"benefits": [
 			"100% OpenAI Compatible API",
@@ -308,7 +298,6 @@
 	{
 		"id": "aws-activate-credits",
 		"title": "Kredit AWS Activate hingga $200.000",
-		"provider": "Amazon Web Services",
 		"description": "AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.",
 		"benefits": [
 			"Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)",
@@ -336,7 +325,6 @@
 	{
 		"id": "google-startups-cloud",
 		"title": "Program Google for Startups Cloud",
-		"provider": "Google Cloud",
 		"description": "Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.",
 		"benefits": [
 			"Kredit hingga $2.000 USD selama setahun untuk startup tahap awal",
@@ -364,7 +352,6 @@
 	{
 		"id": "xai-grok-api-credits",
 		"title": "Kredit Gratis Uji Coba xAI Grok API",
-		"provider": "xAI",
 		"description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
 		"benefits": [
 			"Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
@@ -391,7 +378,6 @@
 	{
 		"id": "amd-ai-dev-program",
 		"title": "Program Developer AMD AI",
-		"provider": "AMD",
 		"description": "AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.",
 		"benefits": [
 			"Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI",
@@ -420,7 +406,6 @@
 	{
 		"id": "microsoft-founders-hub",
 		"title": "Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)",
-		"provider": "Microsoft",
 		"description": "Program Microsoft untuk startup yang memberikan kredit Azure hingga $150.000, ditambah akses infrastruktur pengembangan seperti GitHub Enterprise dan alat produktivitas.",
 		"benefits": [
 			"Kredit Azure didistribusikan bertahap mulai $1.000 hingga batas maksimal $150.000 berdasarkan penggunaan",
@@ -451,7 +436,6 @@
 	{
 		"id": "digitalocean-hatch",
 		"title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
-		"provider": "DigitalOcean",
 		"description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
 		"benefits": [
 			"Kredit komputasi cloud hingga batas $100.000",
@@ -481,7 +465,6 @@
 	{
 		"id": "mongodb-startups",
 		"title": "Kredit MongoDB Atlas untuk Startup",
-		"provider": "MongoDB",
 		"description": "Kredit penggunaan layanan database terkelola MongoDB Atlas khusus startup, memfasilitasi kebutuhan pencarian berbasis vektor (vector search) hingga pemrosesan aliran data tingkat lanjut.",
 		"benefits": [
 			"Kredit awal senilai $5.000 untuk MongoDB Atlas, dengan tambahan jumlah yang dapat diakses oleh startup berbasis AI",
@@ -510,7 +493,6 @@
 	{
 		"id": "namecheap-hosting-trial",
 		"title": "Trial Gratis 30 Hari Hosting Namecheap",
-		"provider": "Namecheap",
 		"description": "Namecheap memberikan akses trial gratis selama 30 hari untuk layanan Shared Web Hosting, Email Hosting, dan WordPress Hosting.",
 		"benefits": [
 			"Akses gratis selama 30 hari",
@@ -539,7 +521,6 @@
 	{
 		"id": "tokenrouter-minimax-m3-free",
 		"title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
-		"provider": "TokenRouter",
 		"description": "TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.",
 		"benefits": [
 			"Akses model MiniMax-M3 gratis untuk waktu terbatas",
@@ -567,7 +548,6 @@
 	{
 		"id": "zcode-glm-52-free",
 		"title": "GLM-5.2 Gratis 5 Hari di ZCode",
-		"provider": "ZCode",
 		"description": "ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.",
 		"benefits": [
 			"Gratis 5 hari untuk pengguna baru",
@@ -601,7 +581,6 @@
 	{
 		"id": "qoder-qwen-max-free",
 		"title": "200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder",
-		"provider": "Qoder",
 		"source": "https://docs.qoder.com/events/qwen-max-daily-free",
 		"description": "Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.",
 		"benefits": [
@@ -632,7 +611,6 @@
 	{
 		"id": "notion-ai-unlimited-1-bulan",
 		"title": "Notion AI Unlimited 1 Bulan",
-		"provider": "Notion",
 		"description": "Postingan Threads ini membagikan akses Notion AI unlimited selama 1 bulan, dengan model yang disebut Opus 4.8, ChatGPT 5.5, Gemini, dan Grok.",
 		"benefits": [
 			"Akses unlimited selama 1 bulan",
@@ -663,7 +641,6 @@
 	{
 		"id": "aerolink-free-credits",
 		"title": "Aerolink $350+ Free Credits",
-		"provider": "Aerolink",
 		"description": "Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.",
 		"benefits": [
 			"$350+ free credits untuk akun baru",
@@ -695,7 +672,6 @@
 	{
 		"id": "google-ai-pro-4-bulan",
 		"title": "Google AI Pro Gratis 4 Bulan",
-		"provider": "Google",
 		"description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
 		"benefits": ["Antigravity", "Gemini Pro", "Penyimpanan 5TB Google Drive/Gmail"],
 		"validity": {
@@ -717,7 +693,6 @@
 	{
 		"id": "gemini-plus-3bulan-sim",
 		"title": "Gemini Plus 3 Bulan via Bima+",
-		"provider": "Bima3",
 		"description": "Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.",
 		"benefits": [
 			"Kuota Gemini Plus selama 3 bulan",
@@ -747,7 +722,6 @@
 	{
 		"id": "codecrafters-free-token",
 		"title": "Gratis 10JT Token AI / Hari",
-		"provider": "CodeCrafters",
 		"description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
 		"benefits": ["Gratis 10JT Token/Hari", "Mimo 2.5", "Deepseek V4 Flash"],
 		"promoCode": "BANSOSDEV",
@@ -771,7 +745,6 @@
 	{
 		"id": "xiaomi-mimo-gratis-2",
 		"title": "Xiaomi Mimo Gratis $2",
-		"provider": "Xiaomi Mimo",
 		"description": "Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.",
 		"benefits": ["credits $2"],
 		"promoCode": "NK2BLA",
@@ -797,7 +770,6 @@
 	{
 		"id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
 		"title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
-		"provider": "DigitalPlat Foundation",
 		"description": "Layanan subdomain gratis permanen dari DigitalPlat Foundation untuk pelajar dan open-source developer. Mendukung kustomisasi DNS management via Cloudflare atau DNS hosting lainnya. Kebijakan satu akun per orang dengan limit awal 1 subdomain (bisa bertambah dengan memberi Star ke repo GitHub mereka).",
 		"benefits": [
 			"Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
@@ -830,7 +802,6 @@
 	{
 		"id": "sumopod-domain-rp1",
 		"title": "Promo Domain Rp 1/Tahun dari Sumopod",
-		"provider": "Sumopod",
 		"source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
 		"description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
 		"benefits": ["Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"],
@@ -859,7 +830,6 @@
 	{
 		"id": "tvstreamindonesia-fifa-2026",
 		"title": "Free stream Fifa World Cup 2026 No Iklan",
-		"provider": "Tvstreamindonesia",
 		"description": "Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.",
 		"benefits": [
 			"Streaming FIFA World Cup 2026 Gratis Saluran RTB GO",
@@ -885,7 +855,6 @@
 	{
 		"id": "rumahweb-free-domain-xyz",
 		"title": "Free domain .XYZ",
-		"provider": "Rumahweb",
 		"description": "Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.",
 		"benefits": ["Hosting free 1 bulan"],
 		"validity": {
@@ -913,7 +882,6 @@
 	{
 		"id": "agentrouter-free-credits",
 		"title": "Free $200 Credit API LLM Populer",
-		"provider": "AgentRouter",
 		"description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
 		"benefits": ["Free Signup Credits"],
 		"validity": {
@@ -934,7 +902,6 @@
 	{
 		"id": "zenmux-glm-52-free",
 		"title": "GLM-5.2 Lagi Gratis!",
-		"provider": "Z.ai",
 		"description": "salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.",
 		"benefits": ["GLM 5.2 Free sampe limit habis"],
 		"promoCode": "7RR544",

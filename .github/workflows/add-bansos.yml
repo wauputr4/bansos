@@ -32,9 +32,6 @@ jobs:
         env:
           BANSOS_PAYLOAD: ${{ inputs.payload }}
 
-      - name: Generate commit contributors
-        run: npm run generate:commit-contributors
-
       - run: npm run build
 
       - name: Create pull request
@@ -53,7 +50,7 @@ jobs:
 
           git switch -c "$branch"
           git remote set-url origin https://x-access-token:${AUTH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
+          git add src/lib/data/bansos.json
           git commit -m "feat: add ${item_title}"
           git push --force origin "$branch"
 

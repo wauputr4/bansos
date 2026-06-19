@@ -63,9 +63,6 @@ jobs:
         if: steps.check-duplicate.outputs.duplicate == 'true'
         run: echo "Duplicate detected, workflow stopped." && exit 1
 
-      - name: Generate commit contributors
-        run: npm run generate:commit-contributors
-
       - name: Fix formatting
         run: npm run format
 
