@@ -77,7 +77,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 
 		const result = (await cfResponse.json()) as CloudflareGraphQLResponse;
 
-		if (result.errors && result.errors.length > 0) {
+		if (result?.errors && result.errors.length > 0) {
 			const errorMsg = result.errors.map((e) => e.message).join(', ');
 			console.error('Cloudflare GraphQL errors:', errorMsg);
 			return json({ error: `Cloudflare GraphQL error: ${errorMsg}` }, { status: 500 });
