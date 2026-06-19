@@ -87,7 +87,6 @@ Kalau payload valid, GitHub Actions akan membuat Pull Request otomatis dari issu
 npx bansosdev add \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
-  --provider "Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
@@ -98,17 +97,21 @@ npx bansosdev add \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan" \
-  --status active
+  --tags "Cloud,Gratisan"
 ```
 
 ### Parameter validity
 
 - `--validity-type` wajib: pilih `fixed`, `uncertain`, atau `forever`.
-- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD`.
+- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD` (Berfungsi sebagai Tanggal Berakhir).
 - `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
-- `--published-at` opsional untuk tanggal publikasi entry dalam format `YYYY-MM-DD`.
+- `--published-at` opsional untuk tanggal mulai berlaku (start date) dalam format `YYYY-MM-DD`. Default adalah hari ini.
 - `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
+
+> **Catatan Otomatisasi:**
+>
+> - Parameter `provider` akan diekstrak secara otomatis dari domain `cta-link`.
+> - Parameter `status` akan dihitung otomatis (`active`, `upcoming`, atau `expired`) berdasarkan tanggal `published-at` dan `validity-date`.
 
 ### Cek payload JSON
 
@@ -122,7 +125,6 @@ npx bansosdev add ... --mode json
 npm run add:bansos -- \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
-  --provider "Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
