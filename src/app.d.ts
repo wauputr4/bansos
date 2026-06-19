@@ -17,6 +17,8 @@ declare global {
 			env: {
 				CF_API_TOKEN?: string;
 				CF_ZONE_ID?: string;
+				GITHUB_DISCUSS_TOKEN?: string;
+				VITE_GISCUS_REPO?: string;
 			};
 		}
 	}
