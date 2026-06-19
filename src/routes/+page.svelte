@@ -90,14 +90,18 @@
 			.then((data) => {
 				popularityData = data;
 			})
-			.catch(() => {});
+			.catch((err) => {
+				console.error('Failed to fetch popularity data:', err);
+			});
 
 		fetch('/api/discussion-stats')
 			.then((res) => (res.ok ? res.json() : {}))
 			.then((data) => {
 				discussionStats = data;
 			})
-			.catch(() => {});
+			.catch((err) => {
+				console.error('Failed to fetch discussion stats:', err);
+			});
 	});
 </script>
 

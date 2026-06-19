@@ -37,27 +37,18 @@
 								<span class="tag-text">{tag}</span>
 							</span>
 						{/each}
-						<span
-							class="highlight-tag views-tag"
-							style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-accent); border-color: rgba(16, 185, 129, 0.3);"
-						>
+						<span class="highlight-tag views-tag">
 							<i class="fa-regular fa-eye"></i>
 							<span class="tag-text">{popularityData[item.id] || 0}</span>
 						</span>
 						{#if (discussionStats[item.id]?.comments || 0) > 0}
-							<span
-								class="highlight-tag comments-tag"
-								style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-success); border-color: rgba(16, 185, 129, 0.3);"
-							>
+							<span class="highlight-tag comments-tag">
 								<i class="fa-regular fa-comment"></i>
 								<span class="tag-text">{discussionStats[item.id].comments}</span>
 							</span>
 						{/if}
 						{#if (discussionStats[item.id]?.reactions || 0) > 0}
-							<span
-								class="highlight-tag reactions-tag"
-								style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-warning); border-color: rgba(16, 185, 129, 0.3);"
-							>
+							<span class="highlight-tag reactions-tag">
 								<i class="fa-regular fa-thumbs-up"></i>
 								<span class="tag-text">{discussionStats[item.id].reactions}</span>
 							</span>
@@ -253,6 +244,18 @@
 		text-transform: uppercase;
 		max-width: 8rem;
 		line-height: 1;
+	}
+
+	.views-tag {
+		color: var(--color-accent) !important;
+	}
+
+	.comments-tag {
+		color: var(--color-success) !important;
+	}
+
+	.reactions-tag {
+		color: var(--color-warning) !important;
 	}
 
 	.tag-text {
