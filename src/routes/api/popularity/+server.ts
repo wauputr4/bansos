@@ -103,7 +103,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 
 		return json(popularity, {
 			headers: {
-				'Cache-Control': 'public, max-age=600, s-maxage=600'
+				'Cache-Control': 'public, max-age=3600, s-maxage=3600'
 			}
 		});
 	} catch (err) {
