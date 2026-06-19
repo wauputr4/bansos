@@ -26,15 +26,13 @@
 			{#each item.tags as tag (tag)}
 				<span class="tag-badge">{tag}</span>
 			{/each}
-			{#if views > 0}
-				<span
-					class="tag-badge views-badge"
-					style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
-				>
-					<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
-					{views}
-				</span>
-			{/if}
+			<span
+				class="tag-badge views-badge"
+				style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
+			>
+				<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
+				{views}
+			</span>
 		</div>
 		<div class="status-container">
 			<span class="status-badge status-{status}">
