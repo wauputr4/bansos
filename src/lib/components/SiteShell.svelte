@@ -84,16 +84,17 @@
 	{@render children()}
 
 	<footer class="site-footer">
-		<div class="container footer-inner" style="flex-wrap: wrap; gap: 1.5rem;">
-			<div class="footer-left" style="display: flex; flex-direction: column; gap: 0.5rem;">
+		<div class="container footer-inner">
+			<div class="footer-left">
 				<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
-				<div class="sponsor-button-wrapper" style="display: flex; align-items: center;">
+				<div class="sponsor-button-wrapper">
 					<iframe
 						src="https://github.com/sponsors/wauputr4/button"
 						title="Sponsor wauputr4"
 						height="32"
 						width="114"
-						style="border: 0; border-radius: 6px;"
+						class="sponsor-iframe"
+						loading="lazy"
 					></iframe>
 				</div>
 			</div>
@@ -223,7 +224,24 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
+	.footer-left {
+		display: flex;
+		flex-direction: column;
 		gap: 0.5rem;
+	}
+
+	.sponsor-button-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	.sponsor-iframe {
+		border: 0;
+		border-radius: 6px;
 	}
 
 	.footer-links {

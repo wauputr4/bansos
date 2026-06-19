@@ -22,7 +22,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 	const query = `
 		query GetRepoDiscussions($owner: String!, $name: String!) {
 			repository(owner: $owner, name: $name) {
-				discussions(first: 100) {
+				discussions(first: 1000) {
 					nodes {
 						title
 						upvoteCount
@@ -38,6 +38,9 @@ export const GET: RequestHandler = async ({ platform }) => {
 		}
 	`;
 
+	const controller = new AbortController();
+	const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+
 	try {
 		const ghResponse = await fetch('https://api.github.com/graphql', {
 			method: 'POST',
@@ -49,8 +52,10 @@ export const GET: RequestHandler = async ({ platform }) => {
 			body: JSON.stringify({
 				query,
 				variables: { owner, name }
-			})
+			}),
+			signal: controller.signal
 		});
+		clearTimeout(timeoutId);
 
 		if (!ghResponse.ok) {
 			const errorText = await ghResponse.text();
@@ -85,10 +90,13 @@ export const GET: RequestHandler = async ({ platform }) => {
 		const stats: Record<string, { comments: number; reactions: number }> = {};
 		for (const node of nodes) {
 			const title = (node.title || '').toLowerCase();
-			// Match pathname pattern /list/bansos-id
+			// Giscus mapping 'pathname' sets the discussion title to the exact page path (e.g. "/list/item-slug").
+			// We extract the item-slug (bansosId) using this regex match.
 			const match = title.match(/\/list\/([^/]+)/);
 			if (match) {
 				const bansosId = match[1];
+				// Exclude 'page' as it matches catalog pagination subroutes (e.g. "/list/page/2").
+				// Exclude items with dots to avoid matching static assets or extension files.
 				if (bansosId && bansosId !== 'page' && !bansosId.includes('.')) {
 					const comments = node.comments?.totalCount || 0;
 					const reactions = (node.reactions?.totalCount || 0) + (node.upvoteCount || 0);
@@ -103,6 +111,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 			}
 		});
 	} catch (err) {
+		clearTimeout(timeoutId);
 		const errorMessage = err instanceof Error ? err.message : 'Unknown error';
 		return json({ error: errorMessage }, { status: 500 });
 	}

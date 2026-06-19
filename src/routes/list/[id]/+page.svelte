@@ -241,13 +241,15 @@
 								<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
 								{views}
 							</span>
-							<span
-								class="tag-badge comments-badge"
-								style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
-							>
-								<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
-								{commentCount}
-							</span>
+							{#if commentCount > 0}
+								<span
+									class="tag-badge comments-badge"
+									style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+								>
+									<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
+									{commentCount}
+								</span>
+							{/if}
 						</div>
 						<div class="status-container">
 							<span class="status-badge status-{status}"
