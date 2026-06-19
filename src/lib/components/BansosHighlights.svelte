@@ -6,12 +6,14 @@
 		title,
 		icon,
 		items,
-		popularityData = {}
+		popularityData = {},
+		discussionStats = {}
 	}: {
 		title: string;
 		icon: string;
 		items: BansosItem[];
 		popularityData?: Record<string, number>;
+		discussionStats?: Record<string, { comments: number; reactions: number }>;
 	} = $props();
 
 	let activeTooltip = $state<string | null>(null);
@@ -42,6 +44,24 @@
 							<i class="fa-regular fa-eye"></i>
 							<span class="tag-text">{popularityData[item.id] || 0}</span>
 						</span>
+						{#if (discussionStats[item.id]?.comments || 0) > 0}
+							<span
+								class="highlight-tag comments-tag"
+								style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-success); border-color: rgba(16, 185, 129, 0.3);"
+							>
+								<i class="fa-regular fa-comment"></i>
+								<span class="tag-text">{discussionStats[item.id].comments}</span>
+							</span>
+						{/if}
+						{#if (discussionStats[item.id]?.reactions || 0) > 0}
+							<span
+								class="highlight-tag reactions-tag"
+								style="display: inline-flex; align-items: center; gap: 0.25rem; color: var(--color-warning); border-color: rgba(16, 185, 129, 0.3);"
+							>
+								<i class="fa-regular fa-thumbs-up"></i>
+								<span class="tag-text">{discussionStats[item.id].reactions}</span>
+							</span>
+						{/if}
 					</div>
 					{#if item.status !== 'expired'}
 						{#if item.validity.type === 'forever'}

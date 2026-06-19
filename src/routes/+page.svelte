@@ -35,6 +35,7 @@
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
 	let popularityData: Record<string, number> = $state({});
+	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
 
 	function formatNumber(num: number | string) {
 		if (typeof num !== 'number') return num;
@@ -88,6 +89,13 @@
 			.then((res) => (res.ok ? res.json() : {}))
 			.then((data) => {
 				popularityData = data;
+			})
+			.catch(() => {});
+
+		fetch('/api/discussion-stats')
+			.then((res) => (res.ok ? res.json() : {}))
+			.then((data) => {
+				discussionStats = data;
 			})
 			.catch(() => {});
 	});
@@ -222,6 +230,7 @@
 					title="Rekomendasi Utama"
 					icon="fa-solid fa-fire"
 					{popularityData}
+					{discussionStats}
 				/>
 			{/if}
 			{#if latestBansosList.length > 0}
@@ -230,6 +239,7 @@
 					title="Bansos Terbaru"
 					icon="fa-solid fa-bolt"
 					{popularityData}
+					{discussionStats}
 				/>
 			{/if}
 		</div>
