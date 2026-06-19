@@ -190,17 +190,6 @@
 	<main class="page-wrapper">
 		<div class="glow-orb detail-glow"></div>
 
-		<!-- Top Navigation -->
-		<nav class="top-nav container">
-			<a href={resolve('/list')} class="btn-back">
-				<span class="back-icon" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
-				<span>
-					<small>Kembali</small>
-					<strong>List Bansos</strong>
-				</span>
-			</a>
-		</nav>
-
 		<!-- Main Detail Card -->
 		<article class="detail-container container">
 			<div class="glass-card detail-card">
@@ -395,6 +384,12 @@
 					{#each recommendedBansos as recommend (recommend.id)}
 						<BansosCard item={recommend} compact={true} />
 					{/each}
+					<a href={resolve('/list')} class="glass-card recommendation-more-card">
+						<div class="more-card-content">
+							<i class="fa-solid fa-arrow-right-to-bracket"></i>
+							<span>Lihat Semua Bansos</span>
+						</div>
+					</a>
 				</div>
 			{:else}
 				<p class="empty-recommendation text-pretty">
@@ -423,66 +418,6 @@
 		left: 50%;
 		transform: translateX(-50%);
 		background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 60%);
-	}
-
-	.top-nav {
-		display: flex;
-	}
-
-	.btn-back {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.7rem;
-		font-weight: 750;
-		color: var(--text-secondary);
-		border: 1px solid var(--border-color);
-		padding: 0.45rem 0.8rem 0.45rem 0.45rem;
-		border-radius: 999px;
-		background:
-			linear-gradient(135deg, var(--color-accent-glow), transparent 80%),
-			color-mix(in srgb, var(--text-primary) 4%, transparent);
-		box-shadow: 0 12px 30px color-mix(in srgb, var(--glass-shadow) 65%, transparent);
-		transition:
-			background-color 0.2s,
-			border-color 0.2s,
-			color 0.2s,
-			transform 0.2s;
-	}
-
-	.btn-back:hover {
-		color: var(--text-primary);
-		border-color: color-mix(in srgb, var(--color-accent) 45%, var(--border-color));
-		transform: translateY(-1px);
-	}
-
-	.back-icon {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 2rem;
-		border-radius: 999px;
-		background: var(--color-accent-glow);
-		color: var(--color-accent);
-	}
-
-	.btn-back span:last-child {
-		display: flex;
-		flex-direction: column;
-		gap: 0.05rem;
-		line-height: 1.05;
-	}
-
-	.btn-back small {
-		color: var(--text-muted);
-		font-size: 0.68rem;
-		font-weight: 800;
-		text-transform: uppercase;
-	}
-
-	.btn-back strong {
-		color: var(--text-primary);
-		font-size: 0.88rem;
 	}
 
 	.detail-container {
@@ -858,6 +793,44 @@
 		gap: 1rem;
 	}
 
+	.recommendation-more-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 2rem;
+		gap: 0.75rem;
+		background: color-mix(in srgb, var(--color-accent) 8%, var(--glass-bg));
+		border: 1px dashed var(--color-accent);
+		color: var(--color-accent) !important;
+		transition: all 0.2s ease-in-out;
+		min-height: 100%;
+		border-radius: 1.25rem;
+	}
+
+	.recommendation-more-card:hover {
+		background: color-mix(in srgb, var(--color-accent) 15%, var(--glass-bg));
+		transform: translateY(-4px);
+		box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
+	}
+
+	.more-card-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.more-card-content i {
+		font-size: 1.75rem;
+	}
+
+	.more-card-content span {
+		font-weight: 750;
+		font-size: 1.05rem;
+	}
+
 	.empty-recommendation {
 		margin: 0;
 		color: var(--text-secondary);
@@ -877,6 +850,12 @@
 
 		.recommendation-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.recommendation-grid {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
@@ -929,6 +908,11 @@
 		.comments-card {
 			padding: 1.25rem 1rem;
 			margin-top: 0.85rem;
+		}
+
+		.recommendation-more-card {
+			padding: 1.5rem 1rem;
+			border-radius: 0.9rem;
 		}
 	}
 </style>
