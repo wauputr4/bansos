@@ -29,8 +29,21 @@
 	let formContributorName = $state('');
 	let formContributorUrl = $state('');
 	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
-	let formFeatured = $state(false);
 	let formErrors = $state<string[]>([]);
+	let validityDropdownOpen = $state(false);
+	let statusDropdownOpen = $state(false);
+
+	const validityOptions = [
+		{ value: 'uncertain', label: 'Tidak Tentu' },
+		{ value: 'fixed', label: 'Batas Waktu' },
+		{ value: 'forever', label: 'Selamanya' }
+	];
+
+	const statusOptions = [
+		{ value: 'active', label: 'Aktif' },
+		{ value: 'upcoming', label: 'Akan Datang' },
+		{ value: 'expired', label: 'Expired' }
+	];
 
 	const filteredProviders = $derived(
 		formProvider.trim()
@@ -90,34 +103,33 @@
 		formPromoCode = item.promoCode || '';
 		formSource = item.source || '';
 		formStatus = item.status;
-		formFeatured = item.featured || false;
 		formContributorName = item.contributor?.name || '';
 		formContributorUrl = item.contributor?.url || '';
 		formErrors = [];
 	}
 
-	function addBenefit() {
-		formBenefits = [...formBenefits, ''];
-	}
-
 	function removeBenefit(index: number) {
 		formBenefits = formBenefits.filter((_, i) => i !== index);
+		if (formBenefits.length === 0) formBenefits = [''];
 	}
 
 	function updateBenefit(index: number, value: string) {
 		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
-	}
-
-	function addRequirement() {
-		formRequirements = [...formRequirements, ''];
+		if (index === formBenefits.length - 1 && value.trim() !== '') {
+			formBenefits = [...formBenefits, ''];
+		}
 	}
 
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
+		if (formRequirements.length === 0) formRequirements = [''];
 	}
 
 	function updateRequirement(index: number, value: string) {
 		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
+		if (index === formRequirements.length - 1 && value.trim() !== '') {
+			formRequirements = [...formRequirements, ''];
+		}
 	}
 
 	function addTag(tag: string) {
@@ -215,7 +227,6 @@
 			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
 			ctaLink: formCtaLink.trim(),
 			tags: formTags,
-			featured: formFeatured,
 			status: formStatus
 		};
 
@@ -270,7 +281,6 @@
 		formContributorName = '';
 		formContributorUrl = '';
 		formStatus = 'active';
-		formFeatured = false;
 		formErrors = [];
 	}
 </script>
@@ -353,10 +363,12 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
-							placeholder="Benefit {i + 1}"
+							placeholder={i === formBenefits.length - 1
+								? 'Ketik untuk menambah benefit baru...'
+								: `Benefit ${i + 1}`}
 							aria-label="Benefit {i + 1}"
 						/>
-						{#if formBenefits.length > 1}
+						{#if i !== formBenefits.length - 1}
 							<button
 								type="button"
 								class="repeater-remove"
@@ -369,9 +381,6 @@
 					</div>
 				{/each}
 			</div>
-			<button type="button" class="repeater-add" onclick={addBenefit}>
-				<i class="fa-solid fa-plus"></i> Tambah Benefit
-			</button>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -385,10 +394,12 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
-							placeholder="Requirement {i + 1}"
+							placeholder={i === formRequirements.length - 1
+								? 'Ketik untuk menambah requirement baru...'
+								: `Requirement ${i + 1}`}
 							aria-label="Requirement {i + 1}"
 						/>
-						{#if formRequirements.length > 1}
+						{#if i !== formRequirements.length - 1}
 							<button
 								type="button"
 								class="repeater-remove"
@@ -401,9 +412,6 @@
 					</div>
 				{/each}
 			</div>
-			<button type="button" class="repeater-add" onclick={addRequirement}>
-				<i class="fa-solid fa-plus"></i> Tambah Requirement
-			</button>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -443,13 +451,40 @@
 			<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group custom-select-container">
 			<label for="bansos-form-validity-type">Masa Berlaku <span class="required">*</span></label>
-			<select id="bansos-form-validity-type" bind:value={formValidityType}>
-				<option value="uncertain">Tidak Tentu</option>
-				<option value="fixed">Batas Waktu</option>
-				<option value="forever">Selamanya</option>
-			</select>
+			<div class="custom-select" class:open={validityDropdownOpen}>
+				<button
+					type="button"
+					class="select-btn"
+					onclick={() => (validityDropdownOpen = !validityDropdownOpen)}
+				>
+					{validityOptions.find((o) => o.value === formValidityType)?.label}
+					<i class="fa-solid fa-chevron-down"></i>
+				</button>
+				{#if validityDropdownOpen}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (validityDropdownOpen = false)}></div>
+					<ul class="select-dropdown">
+						{#each validityOptions as opt (opt.value)}
+							<li>
+								<button
+									type="button"
+									class="select-option"
+									class:selected={formValidityType === opt.value}
+									onclick={() => {
+										formValidityType = opt.value as 'fixed' | 'uncertain' | 'forever';
+										validityDropdownOpen = false;
+									}}
+								>
+									{opt.label}
+								</button>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+			</div>
 		</div>
 
 		{#if formValidityType === 'fixed'}
@@ -476,13 +511,40 @@
 			<input id="bansos-form-published-at" type="date" bind:value={formPublishedAt} />
 		</div>
 
-		<div class="form-group">
+		<div class="form-group custom-select-container">
 			<label for="bansos-form-status">Status</label>
-			<select id="bansos-form-status" bind:value={formStatus}>
-				<option value="active">Aktif</option>
-				<option value="upcoming">Akan Datang</option>
-				<option value="expired">Expired</option>
-			</select>
+			<div class="custom-select" class:open={statusDropdownOpen}>
+				<button
+					type="button"
+					class="select-btn"
+					onclick={() => (statusDropdownOpen = !statusDropdownOpen)}
+				>
+					{statusOptions.find((o) => o.value === formStatus)?.label}
+					<i class="fa-solid fa-chevron-down"></i>
+				</button>
+				{#if statusDropdownOpen}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (statusDropdownOpen = false)}></div>
+					<ul class="select-dropdown">
+						{#each statusOptions as opt (opt.value)}
+							<li>
+								<button
+									type="button"
+									class="select-option"
+									class:selected={formStatus === opt.value}
+									onclick={() => {
+										formStatus = opt.value as 'active' | 'expired' | 'upcoming';
+										statusDropdownOpen = false;
+									}}
+								>
+									{opt.label}
+								</button>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -523,13 +585,6 @@
 				bind:value={formContributorUrl}
 				placeholder="https://github.com/username"
 			/>
-		</div>
-
-		<div class="form-group checkbox-group full-width">
-			<label class="checkbox-label">
-				<input type="checkbox" bind:checked={formFeatured} />
-				<span>Featured (tandai sebagai rekomendasi)</span>
-			</label>
 		</div>
 	</div>
 
@@ -969,8 +1024,94 @@
 	}
 
 	.repeater-remove:hover {
-		background: rgba(239, 68, 68, 0.2);
+		color: #ef4444;
+		background: rgba(239, 68, 68, 0.1);
 		border-color: #ef4444;
+	}
+
+	.custom-select-container {
+		position: relative;
+	}
+
+	.custom-select {
+		position: relative;
+		width: 100%;
+	}
+
+	.select-btn {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.65rem 0.85rem;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		text-align: left;
+		cursor: pointer;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.select-btn:focus,
+	.custom-select.open .select-btn {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.dropdown-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 10;
+		cursor: default;
+	}
+
+	.select-dropdown {
+		position: absolute;
+		top: calc(100% + 0.25rem);
+		left: 0;
+		width: 100%;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.5rem 0;
+		margin: 0;
+		list-style: none;
+		z-index: 20;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		max-height: 15rem;
+		overflow-y: auto;
+	}
+
+	.select-option {
+		width: 100%;
+		text-align: left;
+		padding: 0.5rem 1rem;
+		background: transparent;
+		border: none;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			color 0.2s;
+	}
+
+	.select-option:hover {
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		color: var(--text-primary);
+	}
+
+	.select-option.selected {
+		color: var(--color-accent);
+		background: rgba(16, 185, 129, 0.1);
+		font-weight: 700;
 	}
 
 	.repeater-add {

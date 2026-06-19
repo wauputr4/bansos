@@ -87,16 +87,14 @@
 		<div class="container footer-inner">
 			<div class="footer-left">
 				<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
-				<div class="sponsor-button-wrapper">
-					<iframe
-						src="https://github.com/sponsors/wauputr4/button"
-						title="Sponsor wauputr4"
-						height="32"
-						width="114"
-						class="sponsor-iframe"
-						loading="lazy"
-					></iframe>
-				</div>
+				<a
+					href="https://github.com/sponsors/wauputr4"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="sponsor-link"
+				>
+					<i class="fa-regular fa-heart"></i> Sponsor
+				</a>
 			</div>
 			<div class="footer-links">
 				<a href={resolve('/about')}>Tentang</a>
@@ -234,14 +232,23 @@
 		gap: 0.5rem;
 	}
 
-	.sponsor-button-wrapper {
-		display: flex;
+	.sponsor-link {
+		display: inline-flex;
 		align-items: center;
+		gap: 0.35rem;
+		color: var(--text-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		transition: color 0.2s;
+		width: max-content;
 	}
 
-	.sponsor-iframe {
-		border: 0;
-		border-radius: 6px;
+	.sponsor-link:hover {
+		color: #ec4899;
+	}
+
+	.sponsor-link i {
+		font-size: 0.9rem;
 	}
 
 	.footer-links {

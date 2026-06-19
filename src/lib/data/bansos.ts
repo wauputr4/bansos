@@ -292,8 +292,6 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 			items: sortBansosByNewest(provider.items)
 		}))
 		.sort((a, b) => {
-			if (b.activeCount !== a.activeCount) return b.activeCount - a.activeCount;
-			if (b.totalCount !== a.totalCount) return b.totalCount - a.totalCount;
 			return a.name.localeCompare(b.name);
 		});
 

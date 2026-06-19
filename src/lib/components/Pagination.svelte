@@ -75,7 +75,7 @@
 	<nav class="pagination" aria-label="Pagination">
 		<button
 			type="button"
-			class="page-btn hide-mobile"
+			class="page-btn"
 			aria-label="Halaman pertama"
 			disabled={currentPage === 1}
 			onclick={() => handlePageChange(1)}
@@ -126,7 +126,7 @@
 		</button>
 		<button
 			type="button"
-			class="page-btn hide-mobile"
+			class="page-btn"
 			aria-label="Halaman terakhir"
 			disabled={currentPage === totalPages}
 			onclick={() => handlePageChange(totalPages)}
