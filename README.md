@@ -170,6 +170,13 @@ Listing yang baik sebaiknya menyertakan:
 
 Ikuti [Code of Conduct](CODE_OF_CONDUCT.md).
 
+## Sponsor & Dukungan
+
+Proyek `bansos.dev` dibangun secara gratis oleh komunitas. Jika proyek ini membantumu menghemat budget developer-mu, silakan pertimbangkan untuk mendukung proyek ini melalui [GitHub Sponsors](https://github.com/sponsors/wauputr4).
+
+> [!NOTE]
+> **Soon:** Kami berencana menghadirkan fitur di mana donatur/pengunjung bisa mengirimkan dukungan (donasi) langsung ke masing-masing kontributor yang mendaftarkan/menulis listing bansos tersebut.
+
 ## Lisensi
 
 MIT. Lihat [LICENSE](LICENSE).
