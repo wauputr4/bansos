@@ -29,6 +29,7 @@
 	let formErrors = $state<string[]>([]);
 	let validityDropdownOpen = $state(false);
 	let tagError = $state('');
+	let ctaLinkError = $state('');
 
 	const validityOptions = [
 		{ value: 'uncertain', label: 'Tidak Tentu' },
@@ -45,6 +46,23 @@
 			if (formValidityDate < today) return 'expired';
 		}
 		return 'active';
+	});
+
+	$effect(() => {
+		if (!formCtaLink.trim()) {
+			ctaLinkError = '';
+			return;
+		}
+		try {
+			const url = new URL(formCtaLink.trim());
+			if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+				ctaLinkError = 'CTA Link harus menggunakan http:// atau https://';
+			} else {
+				ctaLinkError = '';
+			}
+		} catch {
+			ctaLinkError = 'CTA Link bukan URL yang valid (contoh: https://example.com)';
+		}
 	});
 
 	const filteredTags = $derived(
@@ -115,6 +133,11 @@
 		}
 	}
 
+	function cleanupBenefits() {
+		const filled = formBenefits.map((b) => b.trim()).filter((b) => b !== '');
+		formBenefits = [...filled, ''];
+	}
+
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
 		if (formRequirements.length === 0) formRequirements = [''];
@@ -125,6 +148,11 @@
 		if (index === formRequirements.length - 1 && value.trim() !== '') {
 			formRequirements = [...formRequirements, ''];
 		}
+	}
+
+	function cleanupRequirements() {
+		const filled = formRequirements.map((r) => r.trim()).filter((r) => r !== '');
+		formRequirements = [...filled, ''];
 	}
 
 	function addTag(tag: string) {
@@ -346,8 +374,12 @@
 				type="url"
 				bind:value={formCtaLink}
 				placeholder="https://example.com"
+				class:error-border={ctaLinkError !== ''}
 				required
 			/>
+			{#if ctaLinkError}
+				<span class="error-hint" style="margin-top: 0.25rem; display: block;">{ctaLinkError}</span>
+			{/if}
 		</div>
 
 		<div class="form-group full-width">
@@ -377,6 +409,7 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
+							onblur={cleanupBenefits}
 							placeholder={i === formBenefits.length - 1
 								? 'Ketik untuk menambah benefit baru...'
 								: `Benefit ${i + 1}`}
@@ -408,6 +441,7 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
+							onblur={cleanupRequirements}
 							placeholder={i === formRequirements.length - 1
 								? 'Ketik untuk menambah requirement baru...'
 								: `Requirement ${i + 1}`}
@@ -745,6 +779,10 @@
 		color: var(--color-danger);
 		font-size: 0.75rem;
 		white-space: nowrap;
+	}
+
+	.error-border {
+		border-color: var(--color-danger) !important;
 	}
 
 	.hint-new {
