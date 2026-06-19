@@ -98,9 +98,19 @@ function appendDefaultUtmParams(url: string) {
 	}
 }
 
-export function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
+export function extractProvider(url: string) {
+	try {
+		const parsed = parseAndValidateUrl(url);
+		return parsed ? parsed.hostname.replace(/^www\./, '') : 'Unknown';
+	} catch {
+		return 'Unknown';
+	}
+}
+
+export function sanitizeAndTrackBansosItem(item: Omit<BansosItem, 'provider'>): BansosItem {
 	const sanitizedItem = {
 		...item,
+		provider: extractProvider(item.ctaLink),
 		ctaLink: appendDefaultUtmParams(item.ctaLink)
 	};
 
@@ -111,13 +121,15 @@ export function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
 		};
 	}
 
-	return sanitizedItem;
+	return sanitizedItem as BansosItem;
 }
 
 export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new Date()) {
-	const todayStr = Number.isNaN(referenceDate.getTime())
-		? new Date().toISOString().split('T')[0]
-		: referenceDate.toISOString().split('T')[0];
+	const dateToUse = Number.isNaN(referenceDate.getTime()) ? new Date() : referenceDate;
+	const yyyy = dateToUse.getFullYear();
+	const mm = String(dateToUse.getMonth() + 1).padStart(2, '0');
+	const dd = String(dateToUse.getDate()).padStart(2, '0');
+	const todayStr = `${yyyy}-${mm}-${dd}`;
 
 	return items.map((item) => {
 		if (

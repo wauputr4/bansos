@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { bansosList } from '$lib/data/bansos';
 
-	const existingProviders = [...new Set(bansosList.map((i) => i.provider))].sort((a, b) =>
-		a.localeCompare(b)
-	);
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
 	);
@@ -13,7 +10,7 @@
 
 	let formId = $state('');
 	let formTitle = $state('');
-	let formProvider = $state('');
+
 	let formDescription = $state('');
 	let formBenefits = $state<string[]>(['']);
 	let formRequirements = $state<string[]>(['']);
@@ -44,12 +41,6 @@
 		{ value: 'upcoming', label: 'Akan Datang' },
 		{ value: 'expired', label: 'Expired' }
 	];
-
-	const filteredProviders = $derived(
-		formProvider.trim()
-			? existingProviders.filter((p) => p.toLowerCase().includes(formProvider.toLowerCase()))
-			: existingProviders
-	);
 
 	const filteredTags = $derived(
 		tagInput.trim()
@@ -90,7 +81,7 @@
 	function fillExample(item: (typeof bansosList)[number]) {
 		formId = '';
 		formTitle = item.title;
-		formProvider = item.provider;
+
 		formDescription = item.description;
 		formBenefits = [...item.benefits];
 		formRequirements = [...item.requirements];
@@ -166,7 +157,7 @@
 			errors.push('ID sudah ada di katalog. Gunakan ID yang berbeda.');
 
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
-		if (!formProvider.trim()) errors.push('Provider wajib diisi');
+
 		if (!formDescription.trim()) errors.push('Description wajib diisi');
 
 		const validBenefits = formBenefits.filter((b) => b.trim());
@@ -215,7 +206,7 @@
 		const payload: Record<string, unknown> = {
 			id: formId.trim(),
 			title: formTitle.trim(),
-			provider: formProvider.trim(),
+
 			description: formDescription.trim(),
 			benefits: validBenefits.map((b) => b.trim()),
 			validity: {
@@ -265,7 +256,7 @@
 	export function reset() {
 		formId = '';
 		formTitle = '';
-		formProvider = '';
+
 		formDescription = '';
 		formBenefits = [''];
 		formRequirements = [''];
@@ -309,26 +300,6 @@
 				required
 			/>
 			<span class="hint">ID akan otomatis terbuat dari title</span>
-		</div>
-
-		<div class="form-group">
-			<label for="bansos-form-provider">Provider <span class="required">*</span></label>
-			<input
-				id="bansos-form-provider"
-				type="text"
-				bind:value={formProvider}
-				placeholder="Pilih atau ketik provider baru"
-				list="provider-datalist"
-				required
-			/>
-			<datalist id="provider-datalist">
-				{#each filteredProviders as provider (provider)}
-					<option value={provider}></option>
-				{/each}
-			</datalist>
-			{#if formProvider && !existingProviders.includes(formProvider)}
-				<span class="hint hint-new">Provider baru, akan ditambahkan</span>
-			{/if}
 		</div>
 
 		<div class="form-group">

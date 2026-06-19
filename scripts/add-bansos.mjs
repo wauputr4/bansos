@@ -110,7 +110,7 @@ if (!isValidCalendarDate(publishedAt)) {
 const item = {
 	id: required(mergedArgs, 'id'),
 	title: required(mergedArgs, 'title'),
-	provider: required(mergedArgs, 'provider'),
+
 	description: required(mergedArgs, 'description'),
 	benefits: Array.isArray(mergedArgs.benefits)
 		? mergedArgs.benefits
