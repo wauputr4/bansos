@@ -34,6 +34,9 @@
 			const res = await fetch('/api/popularity');
 			if (res.ok) {
 				popularityData = await res.json();
+			} else {
+				const errorDetails = await res.json().catch(() => ({}));
+				console.error('Failed to load popularity data:', res.status, errorDetails.error || '');
 			}
 		} catch (e) {
 			console.error('Failed to load popularity data:', e);

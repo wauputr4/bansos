@@ -60,6 +60,9 @@ export const GET: RequestHandler = async ({ platform }) => {
 			);
 		}
 		interface CloudflareGraphQLResponse {
+			errors?: Array<{
+				message: string;
+			}>;
 			data?: {
 				viewer?: {
 					zones?: Array<{
@@ -77,6 +80,16 @@ export const GET: RequestHandler = async ({ platform }) => {
 		}
 
 		const result = (await cfResponse.json()) as CloudflareGraphQLResponse;
+
+		if (result.errors && result.errors.length > 0) {
+			const errorMsg = result.errors.map((e) => e.message).join(', ');
+			console.error('Cloudflare GraphQL errors:', errorMsg);
+			return json(
+				{ error: `Cloudflare GraphQL error: ${errorMsg}` },
+				{ status: 500 }
+			);
+		}
+
 		const rows = result?.data?.viewer?.zones?.[0]?.httpRequests1mGroups || [];
 
 		const popularity: Record<string, number> = {};
@@ -99,6 +112,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 		});
 	} catch (err) {
 		const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+		console.error('Failed to load popularity data:', errorMessage);
 		return json({ error: errorMessage }, { status: 500 });
 	}
 };
