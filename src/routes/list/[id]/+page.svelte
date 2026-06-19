@@ -27,6 +27,8 @@
 	const item = $derived(bansosList.find((i) => i.id === data.id) || data.item);
 	const views = $derived(item ? popularityData[item.id] || 0 : 0);
 
+	let commentCount = $state(0);
+
 	onMount(async () => {
 		try {
 			const res = await fetch('/api/popularity');
@@ -37,6 +39,25 @@
 			console.error('Failed to load popularity data:', e);
 		}
 	});
+
+	if (browser) {
+		const handleMessage = (event: MessageEvent) => {
+			if (event.origin !== 'https://giscus.app') return;
+			if (!(event.data && event.data.giscus)) return;
+
+			const giscusData = event.data.giscus;
+			if (giscusData.discussion && giscusData.discussion.totalCommentCount !== undefined) {
+				commentCount = giscusData.discussion.totalCommentCount;
+			}
+		};
+
+		onMount(() => {
+			window.addEventListener('message', handleMessage);
+			return () => {
+				window.removeEventListener('message', handleMessage);
+			};
+		});
+	}
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
@@ -139,7 +160,7 @@
 			script.setAttribute('data-mapping', 'pathname');
 			script.setAttribute('data-strict', '0');
 			script.setAttribute('data-reactions-enabled', '1');
-			script.setAttribute('data-emit-metadata', '0');
+			script.setAttribute('data-emit-metadata', '1');
 			script.setAttribute('data-input-position', 'bottom');
 			script.setAttribute('data-theme', 'preferred_color_scheme');
 			script.setAttribute('data-lang', 'id');
@@ -219,6 +240,13 @@
 							>
 								<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
 								{views}
+							</span>
+							<span
+								class="tag-badge comments-badge"
+								style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+							>
+								<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
+								{commentCount}
 							</span>
 						</div>
 						<div class="status-container">
