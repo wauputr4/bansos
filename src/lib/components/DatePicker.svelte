@@ -3,9 +3,23 @@
 
 	let open = $state(false);
 
-	let currentDate = $state(value ? new Date(value) : new Date());
+	function parseDateLocal(dateStr: string) {
+		if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return new Date();
+		const [year, month, day] = dateStr.split('-').map(Number);
+		return new Date(year, month - 1, day);
+	}
+
+	let currentDate = $state(value ? parseDateLocal(value) : new Date());
 	let currentMonth = $derived(currentDate.getMonth());
 	let currentYear = $derived(currentDate.getFullYear());
+
+	$effect(() => {
+		if (value) {
+			currentDate = parseDateLocal(value);
+		}
+	});
+
+	let selectedDateObj = $derived(value ? parseDateLocal(value) : null);
 
 	const monthNames = [
 		'Januari',
@@ -75,7 +89,7 @@
 
 	function formatDateDisplay(val: string) {
 		if (!val) return 'Pilih Tanggal';
-		const d = new Date(val);
+		const d = parseDateLocal(val);
 		if (isNaN(d.getTime())) return val;
 		return `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
 	}
@@ -93,11 +107,11 @@
 		<div class="dropdown-backdrop" onclick={() => (open = false)}></div>
 		<div class="calendar-dropdown glass-card">
 			<div class="calendar-header">
-				<button type="button" onclick={prevMonth} class="nav-btn"
+				<button type="button" onclick={prevMonth} class="nav-btn" aria-label="Bulan sebelumnya"
 					><i class="fa-solid fa-chevron-left"></i></button
 				>
 				<span class="month-year">{monthNames[currentMonth]} {currentYear}</span>
-				<button type="button" onclick={nextMonth} class="nav-btn"
+				<button type="button" onclick={nextMonth} class="nav-btn" aria-label="Bulan berikutnya"
 					><i class="fa-solid fa-chevron-right"></i></button
 				>
 			</div>
@@ -112,10 +126,10 @@
 						<div class="empty-day"></div>
 					{:else}
 						{@const isSelected =
-							value &&
-							new Date(value).getFullYear() === currentYear &&
-							new Date(value).getMonth() === currentMonth &&
-							new Date(value).getDate() === day}
+							selectedDateObj !== null &&
+							selectedDateObj.getFullYear() === currentYear &&
+							selectedDateObj.getMonth() === currentMonth &&
+							selectedDateObj.getDate() === day}
 						<button
 							type="button"
 							class="day-btn"

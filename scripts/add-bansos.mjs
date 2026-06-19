@@ -100,14 +100,16 @@ const contributorName =
 	mergedArgs['contributor-name'] || mergedArgs.contributorName || mergedArgs.contributor?.name;
 const contributorUrl =
 	mergedArgs['contributor-url'] || mergedArgs.contributorUrl || mergedArgs.contributor?.url;
-const publishedAt =
-	mergedArgs['published-at'] || mergedArgs.publishedAt || new Date().toISOString().slice(0, 10);
+const _d = new Date();
+const localToday = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`;
+
+const publishedAt = mergedArgs['published-at'] || mergedArgs.publishedAt || localToday;
 
 if (!isValidCalendarDate(publishedAt)) {
 	throw new Error('publishedAt must be a valid YYYY-MM-DD date');
 }
 
-const today = new Date().toISOString().slice(0, 10);
+const today = localToday;
 const start = publishedAt || today;
 let calculatedStatus = 'active';
 

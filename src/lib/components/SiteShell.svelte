@@ -9,7 +9,7 @@
 	let theme: ThemeMode = $state('dark');
 
 	let scrollY = $state(0);
-	let lastY = $state(0);
+	let lastY = 0;
 	let hideNavbar = $state(false);
 
 	$effect(() => {

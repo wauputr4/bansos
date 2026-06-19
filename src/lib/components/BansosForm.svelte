@@ -38,7 +38,11 @@
 	];
 
 	let autoStatus = $derived.by(() => {
-		const today = new Date().toISOString().slice(0, 10);
+		const d = new Date();
+		const yyyy = d.getFullYear();
+		const mm = String(d.getMonth() + 1).padStart(2, '0');
+		const dd = String(d.getDate()).padStart(2, '0');
+		const today = `${yyyy}-${mm}-${dd}`;
 		const start = formPublishedAt || today;
 		if (start > today) return 'upcoming';
 
@@ -133,11 +137,6 @@
 		}
 	}
 
-	function cleanupBenefits() {
-		const filled = formBenefits.map((b) => b.trim()).filter((b) => b !== '');
-		formBenefits = [...filled, ''];
-	}
-
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
 		if (formRequirements.length === 0) formRequirements = [''];
@@ -148,11 +147,6 @@
 		if (index === formRequirements.length - 1 && value.trim() !== '') {
 			formRequirements = [...formRequirements, ''];
 		}
-	}
-
-	function cleanupRequirements() {
-		const filled = formRequirements.map((r) => r.trim()).filter((r) => r !== '');
-		formRequirements = [...filled, ''];
 	}
 
 	function addTag(tag: string) {
@@ -185,15 +179,6 @@
 		} else {
 			tagError = '';
 		}
-	}
-
-	function sanitize(str: string): string {
-		if (typeof str !== 'string') return str;
-		return str
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;')
-			.replace(/'/g, '&#x27;');
 	}
 
 	function generateIssueUrl(): string | null {
@@ -261,31 +246,35 @@
 			return null;
 		}
 
+		const d = new Date();
+		const yyyy = d.getFullYear();
+		const mm = String(d.getMonth() + 1).padStart(2, '0');
+		const dd = String(d.getDate()).padStart(2, '0');
+		const localToday = `${yyyy}-${mm}-${dd}`;
+
 		const payload: Record<string, unknown> = {
-			id: sanitize(formId.trim()),
-			title: sanitize(formTitle.trim()),
-			description: sanitize(formDescription.trim()),
-			benefits: validBenefits.map((b) => sanitize(b.trim())),
+			id: formId.trim(),
+			title: formTitle.trim(),
+			description: formDescription.trim(),
+			benefits: validBenefits.map((b) => b.trim()),
 			validity: {
-				type: sanitize(formValidityType),
-				...(formValidityType === 'fixed' && formValidityDate
-					? { date: sanitize(formValidityDate) }
-					: {}),
-				...(formValidityDesc.trim() ? { description: sanitize(formValidityDesc.trim()) } : {})
+				type: formValidityType,
+				...(formValidityType === 'fixed' && formValidityDate ? { date: formValidityDate } : {}),
+				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
 			},
-			requirements: validRequirements.map((r) => sanitize(r.trim())),
-			publishedAt: sanitize(formPublishedAt) || new Date().toISOString().slice(0, 10),
-			ctaLink: sanitize(formCtaLink.trim()),
-			tags: formTags.map((t) => sanitize(t)),
+			requirements: validRequirements.map((r) => r.trim()),
+			publishedAt: formPublishedAt || localToday,
+			ctaLink: formCtaLink.trim(),
+			tags: formTags,
 			status: autoStatus
 		};
 
-		if (formPromoCode.trim()) payload.promoCode = sanitize(formPromoCode.trim());
-		if (formSource.trim()) payload.source = sanitize(formSource.trim());
+		if (formPromoCode.trim()) payload.promoCode = formPromoCode.trim();
+		if (formSource.trim()) payload.source = formSource.trim();
 		if (formContributorName.trim() && formContributorUrl.trim()) {
 			payload.contributor = {
-				name: sanitize(formContributorName.trim()),
-				url: sanitize(formContributorUrl.trim())
+				name: formContributorName.trim(),
+				url: formContributorUrl.trim()
 			};
 		}
 
@@ -409,7 +398,6 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
-							onblur={cleanupBenefits}
 							placeholder={i === formBenefits.length - 1
 								? 'Ketik untuk menambah benefit baru...'
 								: `Benefit ${i + 1}`}
@@ -441,7 +429,6 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
-							onblur={cleanupRequirements}
 							placeholder={i === formRequirements.length - 1
 								? 'Ketik untuk menambah requirement baru...'
 								: `Requirement ${i + 1}`}
@@ -509,6 +496,7 @@
 			<div class="custom-select" class:open={validityDropdownOpen}>
 				<button
 					type="button"
+					id="bansos-form-validity-type"
 					class="select-btn"
 					onclick={() => (validityDropdownOpen = !validityDropdownOpen)}
 				>
