@@ -76,15 +76,15 @@
 				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Jika proyek ini membantumu
 				menghemat budget, pertimbangkan untuk mendukung kelangsungan proyek ini.
 			</p>
-			<div class="sponsor-card-wrapper">
-				<iframe
-					src="https://github.com/sponsors/wauputr4/card"
-					title="Sponsor wauputr4"
-					height="225"
-					width="600"
-					class="sponsor-card-iframe"
-					loading="lazy"
-				></iframe>
+			<div class="sponsor-button-wrapper">
+				<a
+					href="https://github.com/sponsors/wauputr4"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="sponsor-pill"
+				>
+					<i class="fa-solid fa-heart"></i> Sponsor wauputra
+				</a>
 			</div>
 		</section>
 	</section>
@@ -193,21 +193,34 @@
 		margin: 0 auto;
 	}
 
-	.sponsor-card-wrapper {
-		width: 100%;
-		max-width: 600px;
-		overflow: hidden;
-		border-radius: 12px;
-		border: 1px solid var(--border-color);
-		background: rgba(255, 255, 255, 0.02);
-		display: flex;
-		justify-content: center;
-		padding: 1rem;
-		margin-top: 0.5rem;
+	.sponsor-button-wrapper {
+		margin-top: 1rem;
 	}
 
-	.sponsor-card-iframe {
-		border: 0;
-		width: 100%;
+	.sponsor-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 0.6rem 1.25rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+		box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+		text-decoration: none;
+	}
+
+	.sponsor-pill:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+		color: #fff;
+	}
+
+	.sponsor-pill i {
+		font-size: 1.1rem;
 	}
 </style>

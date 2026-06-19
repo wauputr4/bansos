@@ -26,10 +26,8 @@
 	let formSource = $state('');
 	let formContributorName = $state('');
 	let formContributorUrl = $state('');
-	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
 	let formErrors = $state<string[]>([]);
 	let validityDropdownOpen = $state(false);
-	let statusDropdownOpen = $state(false);
 
 	const validityOptions = [
 		{ value: 'uncertain', label: 'Tidak Tentu' },
@@ -37,11 +35,16 @@
 		{ value: 'forever', label: 'Selamanya' }
 	];
 
-	const statusOptions = [
-		{ value: 'active', label: 'Aktif' },
-		{ value: 'upcoming', label: 'Akan Datang' },
-		{ value: 'expired', label: 'Expired' }
-	];
+	let autoStatus = $derived.by(() => {
+		const today = new Date().toISOString().slice(0, 10);
+		const start = formPublishedAt || today;
+		if (start > today) return 'upcoming';
+
+		if (formValidityType === 'fixed' && formValidityDate) {
+			if (formValidityDate < today) return 'expired';
+		}
+		return 'active';
+	});
 
 	const filteredTags = $derived(
 		tagInput.trim()
@@ -94,7 +97,6 @@
 		formPublishedAt = item.publishedAt || new Date().toISOString().slice(0, 10);
 		formPromoCode = item.promoCode || '';
 		formSource = item.source || '';
-		formStatus = item.status;
 		formContributorName = item.contributor?.name || '';
 		formContributorUrl = item.contributor?.url || '';
 		formErrors = [];
@@ -173,8 +175,10 @@
 			errors.push('ID sudah ada di katalog. Gunakan ID yang berbeda.');
 
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
+		else if (formTitle.trim().length > 100) errors.push('Title maksimal 100 karakter');
 
 		if (!formDescription.trim()) errors.push('Description wajib diisi');
+		else if (formDescription.trim().length > 250) errors.push('Description maksimal 250 karakter');
 
 		const validBenefits = formBenefits.filter((b) => b.trim());
 		if (validBenefits.length === 0) errors.push('Minimal 1 benefit wajib diisi');
@@ -235,7 +239,7 @@
 			publishedAt: sanitize(formPublishedAt) || new Date().toISOString().slice(0, 10),
 			ctaLink: sanitize(formCtaLink.trim()),
 			tags: formTags.map((t) => sanitize(t)),
-			status: sanitize(formStatus)
+			status: autoStatus
 		};
 
 		if (formPromoCode.trim()) payload.promoCode = sanitize(formPromoCode.trim());
@@ -289,7 +293,6 @@
 		formSource = '';
 		formContributorName = '';
 		formContributorUrl = '';
-		formStatus = 'active';
 		formErrors = [];
 	}
 </script>
@@ -314,8 +317,9 @@
 				id="bansos-form-title"
 				type="text"
 				bind:value={formTitle}
-				placeholder="GitHub Copilot Gratis 3 Bulan"
 				required
+				maxlength="100"
+				placeholder="Contoh: GitHub Student Developer Pack"
 			/>
 			<span class="hint">ID akan otomatis terbuat dari title</span>
 		</div>
@@ -336,9 +340,9 @@
 			<textarea
 				id="bansos-form-description"
 				bind:value={formDescription}
-				placeholder="Deskripsi singkat tentang bansos ini..."
-				rows="2"
 				required
+				maxlength="250"
+				placeholder="Jelaskan secara singkat apa saja yang didapatkan (max 250 karakter)..."
 			></textarea>
 		</div>
 
@@ -495,45 +499,9 @@
 			/>
 		</div>
 
-		<div class="form-group">
-			<label for="bansos-form-published-at">Tanggal Publish</label>
+		<div class="form-group full-width">
+			<label for="bansos-form-published-at">Tanggal Mulai Berlaku</label>
 			<DatePicker id="bansos-form-published-at" bind:value={formPublishedAt} />
-		</div>
-
-		<div class="form-group custom-select-container">
-			<label for="bansos-form-status">Status</label>
-			<div class="custom-select" class:open={statusDropdownOpen}>
-				<button
-					type="button"
-					class="select-btn"
-					onclick={() => (statusDropdownOpen = !statusDropdownOpen)}
-				>
-					{statusOptions.find((o) => o.value === formStatus)?.label}
-					<i class="fa-solid fa-chevron-down"></i>
-				</button>
-				{#if statusDropdownOpen}
-					<!-- svelte-ignore a11y_click_events_have_key_events -->
-					<!-- svelte-ignore a11y_no_static_element_interactions -->
-					<div class="dropdown-backdrop" onclick={() => (statusDropdownOpen = false)}></div>
-					<ul class="select-dropdown">
-						{#each statusOptions as opt (opt.value)}
-							<li>
-								<button
-									type="button"
-									class="select-option"
-									class:selected={formStatus === opt.value}
-									onclick={() => {
-										formStatus = opt.value as 'active' | 'expired' | 'upcoming';
-										statusDropdownOpen = false;
-									}}
-								>
-									{opt.label}
-								</button>
-							</li>
-						{/each}
-					</ul>
-				{/if}
-			</div>
 		</div>
 
 		<div class="form-group">
