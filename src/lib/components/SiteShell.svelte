@@ -8,6 +8,19 @@
 	const THEME_KEY = 'bansos-theme';
 	let theme: ThemeMode = $state('dark');
 
+	let scrollY = $state(0);
+	let lastY = $state(0);
+	let hideNavbar = $state(false);
+
+	$effect(() => {
+		if (scrollY > lastY && scrollY > 60) {
+			hideNavbar = true;
+		} else if (scrollY < lastY) {
+			hideNavbar = false;
+		}
+		lastY = scrollY;
+	});
+
 	type ValidRoute = '/' | '/list' | '/contribute' | '/about' | '/providers';
 	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
 		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
@@ -46,8 +59,9 @@
 	<meta name="theme-color" content={theme === 'light' ? '#f8fafc' : '#090a0f'} />
 </svelte:head>
 
+<svelte:window bind:scrollY />
 <div class="site-shell">
-	<header class="site-header">
+	<header class="site-header" class:nav-hidden={hideNavbar}>
 		<nav class="container nav-shell" aria-label="Navigasi utama">
 			<a href={resolve('/')} class="brand-mark">Bansos Developer</a>
 			<div class="desktop-nav">
@@ -139,6 +153,13 @@
 		border-bottom: 1px solid var(--border-color);
 		background: color-mix(in srgb, var(--bg-primary) 86%, transparent);
 		backdrop-filter: blur(18px);
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	@media (min-width: 48rem) {
+		.site-header.nav-hidden {
+			transform: translateY(-100%);
+		}
 	}
 
 	.nav-shell {
@@ -229,22 +250,32 @@
 	.footer-left {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		align-items: center;
+		gap: 1rem;
 	}
 
 	.sponsor-link {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
-		color: var(--text-muted);
+		gap: 0.4rem;
+		color: #fff;
 		font-size: 0.85rem;
-		font-weight: 600;
-		transition: color 0.2s;
+		font-weight: 700;
+		padding: 0.4rem 0.9rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+		box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
 		width: max-content;
+		text-decoration: none;
 	}
 
 	.sponsor-link:hover {
-		color: #ec4899;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+		color: #fff;
 	}
 
 	.sponsor-link i {
@@ -334,6 +365,11 @@
 			align-items: center;
 			justify-content: space-between;
 			text-align: left;
+		}
+
+		.footer-left {
+			align-items: flex-start;
+			gap: 0.75rem;
 		}
 	}
 </style>

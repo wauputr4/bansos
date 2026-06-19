@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { bansosList } from '$lib/data/bansos';
+	import DatePicker from './DatePicker.svelte';
 
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
@@ -146,9 +147,24 @@
 		}
 	}
 
+	function sanitize(str: string): string {
+		if (typeof str !== 'string') return str;
+		return str
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#x27;');
+	}
+
 	function generateIssueUrl(): string | null {
 		formErrors = [];
 		const errors: string[] = [];
+
+		const now = Date.now();
+		const lastSubmission = localStorage.getItem('bansos_last_submission');
+		if (lastSubmission && now - parseInt(lastSubmission) < 60000) {
+			errors.push('Tunggu 1 menit sebelum submit form lagi (Rate Limit).');
+		}
 
 		if (!formId.trim()) errors.push('ID wajib diisi');
 		else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formId.trim()))
@@ -204,29 +220,30 @@
 		}
 
 		const payload: Record<string, unknown> = {
-			id: formId.trim(),
-			title: formTitle.trim(),
-
-			description: formDescription.trim(),
-			benefits: validBenefits.map((b) => b.trim()),
+			id: sanitize(formId.trim()),
+			title: sanitize(formTitle.trim()),
+			description: sanitize(formDescription.trim()),
+			benefits: validBenefits.map((b) => sanitize(b.trim())),
 			validity: {
-				type: formValidityType,
-				...(formValidityType === 'fixed' && formValidityDate ? { date: formValidityDate } : {}),
-				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
+				type: sanitize(formValidityType),
+				...(formValidityType === 'fixed' && formValidityDate
+					? { date: sanitize(formValidityDate) }
+					: {}),
+				...(formValidityDesc.trim() ? { description: sanitize(formValidityDesc.trim()) } : {})
 			},
-			requirements: validRequirements.map((r) => r.trim()),
-			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
-			ctaLink: formCtaLink.trim(),
-			tags: formTags,
-			status: formStatus
+			requirements: validRequirements.map((r) => sanitize(r.trim())),
+			publishedAt: sanitize(formPublishedAt) || new Date().toISOString().slice(0, 10),
+			ctaLink: sanitize(formCtaLink.trim()),
+			tags: formTags.map((t) => sanitize(t)),
+			status: sanitize(formStatus)
 		};
 
-		if (formPromoCode.trim()) payload.promoCode = formPromoCode.trim();
-		if (formSource.trim()) payload.source = formSource.trim();
+		if (formPromoCode.trim()) payload.promoCode = sanitize(formPromoCode.trim());
+		if (formSource.trim()) payload.source = sanitize(formSource.trim());
 		if (formContributorName.trim() && formContributorUrl.trim()) {
 			payload.contributor = {
-				name: formContributorName.trim(),
-				url: formContributorUrl.trim()
+				name: sanitize(formContributorName.trim()),
+				url: sanitize(formContributorUrl.trim())
 			};
 		}
 
@@ -249,6 +266,7 @@
 		e.preventDefault();
 		const url = generateIssueUrl();
 		if (url) {
+			localStorage.setItem('bansos_last_submission', Date.now().toString());
 			window.open(url, '_blank');
 		}
 	}
@@ -463,7 +481,7 @@
 				<label for="bansos-form-validity-date"
 					>Tanggal Berakhir <span class="required">*</span></label
 				>
-				<input id="bansos-form-validity-date" type="date" bind:value={formValidityDate} required />
+				<DatePicker id="bansos-form-validity-date" bind:value={formValidityDate} required={true} />
 			</div>
 		{/if}
 
@@ -479,7 +497,7 @@
 
 		<div class="form-group">
 			<label for="bansos-form-published-at">Tanggal Publish</label>
-			<input id="bansos-form-published-at" type="date" bind:value={formPublishedAt} />
+			<DatePicker id="bansos-form-published-at" bind:value={formPublishedAt} />
 		</div>
 
 		<div class="form-group custom-select-container">
@@ -808,6 +826,13 @@
 		font-family: inherit;
 		font-size: 0.9rem;
 		outline: none;
+	}
+
+	.form-group .tag-text-input {
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		padding: 0.2rem 0;
 	}
 
 	.tag-text-input::placeholder {

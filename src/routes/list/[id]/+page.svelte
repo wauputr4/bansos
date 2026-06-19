@@ -430,20 +430,19 @@
 
 		<!-- Rekomendasi Bansos Lainnya -->
 		<section class="recommendation-section container">
-			<h2 class="recommendation-title">
-				<i class="fa-solid fa-sparkles"></i> Rekomendasi Lain yang Mungkin Lo Butuhin
-			</h2>
+			<div class="recommendation-header">
+				<h2 class="recommendation-title">
+					<i class="fa-solid fa-sparkles"></i> Rekomendasi Lain yang Mungkin Lo Butuhin
+				</h2>
+				<a href={resolve('/list')} class="btn-lihat-semua"
+					>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
+				>
+			</div>
 			{#if recommendedBansos.length > 0}
 				<div class="recommendation-grid">
 					{#each recommendedBansos as recommend (recommend.id)}
 						<BansosCard item={recommend} compact={true} views={popularityData[recommend.id] || 0} />
 					{/each}
-					<a href={resolve('/list')} class="glass-card recommendation-more-card">
-						<div class="more-card-content">
-							<i class="fa-solid fa-arrow-right-to-bracket"></i>
-							<span>Lihat Semua Bansos</span>
-						</div>
-					</a>
 				</div>
 			{:else}
 				<p class="empty-recommendation text-pretty">
@@ -847,42 +846,30 @@
 		gap: 1rem;
 	}
 
-	.recommendation-more-card {
+	.recommendation-header {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding: 2rem;
-		gap: 0.75rem;
-		background: color-mix(in srgb, var(--color-accent) 8%, var(--glass-bg));
-		border: 1px dashed var(--color-accent);
-		color: var(--color-accent) !important;
-		transition: all 0.2s ease-in-out;
-		min-height: 100%;
-		border-radius: 1.25rem;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
-	.recommendation-more-card:hover {
-		background: color-mix(in srgb, var(--color-accent) 15%, var(--glass-bg));
-		transform: translateY(-4px);
-		box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
-	}
-
-	.more-card-content {
-		display: flex;
-		flex-direction: column;
+	.btn-lihat-semua {
+		display: inline-flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 0.5rem;
+		color: var(--color-accent);
+		font-size: 0.9rem;
+		font-weight: 700;
+		padding: 0.4rem 0.85rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+		transition: all 0.2s;
 	}
 
-	.more-card-content i {
-		font-size: 1.75rem;
-	}
-
-	.more-card-content span {
-		font-weight: 750;
-		font-size: 1.05rem;
+	.btn-lihat-semua:hover {
+		background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+		transform: translateX(4px);
 	}
 
 	.empty-recommendation {
@@ -962,11 +949,6 @@
 		.comments-card {
 			padding: 1.25rem 1rem;
 			margin-top: 0.85rem;
-		}
-
-		.recommendation-more-card {
-			padding: 1.5rem 1rem;
-			border-radius: 0.9rem;
 		}
 	}
 </style>
