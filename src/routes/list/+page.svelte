@@ -9,7 +9,7 @@
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let selectedValidities: string[] = $state([]);
-	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('newest');
+	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('popular');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
 	let searchQuery = $state('');
@@ -381,7 +381,7 @@
 			</div>
 			<div class="bansos-grid">
 				{#each paginatedBansos as item (item.id)}
-					<BansosCard {item} />
+					<BansosCard {item} views={popularityData[item.id] || 0} />
 				{/each}
 			</div>
 			<Pagination bind:currentPage {totalPages} />
