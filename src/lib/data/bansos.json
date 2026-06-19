@@ -772,13 +772,18 @@
 		"id": "xiaomi-mimo-gratis-2",
 		"title": "Xiaomi Mimo Gratis $2",
 		"provider": "Xiaomi Mimo",
-		"description": "kalian wajib coba, Xiaomi lagi bagi-bagi credits $2 gratis cukup pake kode referal\n\n- setelah daftar, masuk ke console https://platform.xiaomimimo.com/console/balance\n- klik \"Enter invite code\" (pojok kiri bawah) \n- masukin kode \"NK2BLA\"\n\nnanti kalian dapet $2, gua juga dapet $2 :)",
+		"description": "Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.",
 		"benefits": ["credits $2"],
 		"promoCode": "NK2BLA",
 		"validity": {
 			"type": "uncertain"
 		},
-		"requirements": ["Registrasi", "Masukan Referal NK2BLA"],
+		"requirements": [
+			"Registrasi akun di platform Xiaomi Mimo.",
+			"Buka dashboard console di https://platform.xiaomimimo.com/console/balance.",
+			"Klik tombol \"Enter invite code\" di pojok kiri bawah.",
+			"Masukkan kode referal \"NK2BLA\" untuk mendapatkan saldo $2 gratis."
+		],
 		"publishedAt": "2026-06-17",
 		"contributor": {
 			"name": "Akbar",
@@ -793,7 +798,7 @@
 		"id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
 		"title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
 		"provider": "DigitalPlat Foundation",
-		"description": "Layanan dari organisasi non-profit DigitalPlat Foundation yang nyediain public namespace atau subdomain gratis buat siapa aja. Cocok banget buat pelajar, developer open-source, atau komunitas yang mau ngedeploy proyeknya tapi mager keluar modal buat beli domain. Prosesnya gampang, tanpa ribet, dan mereka juga punya sistem keamanan bertenaga AI biar platform-nya ga disalahgunain buat phishing/malware.\n\nTestimoni: https://fazaimron.qzz.io",
+		"description": "Layanan subdomain gratis permanen dari DigitalPlat Foundation untuk pelajar dan open-source developer. Mendukung kustomisasi DNS management via Cloudflare atau DNS hosting lainnya. Kebijakan satu akun per orang dengan limit awal 1 subdomain (bisa bertambah dengan memberi Star ke repo GitHub mereka).",
 		"benefits": [
 			"Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
 			"Bebas dihubungkan ke DNS pihak ketiga (bisa pake Cloudflare, AWS, dll.)",
@@ -805,12 +810,12 @@
 			"description": "Gratis seterusnya selama project DigitalPlat Foundation jalan."
 		},
 		"requirements": [
-			"Melakukan registrasi dengan info legal asli (Nama lengkap sesuai WHOIS, Email, & Nomor Telepon aktif).",
-			"Kebijakan \"Satu Akun per Orang/Organisasi\" (Double akun bakal di-banned).",
-			"Default limit hanya 1 domain/subdomain per akun pengguna, tapi bakal dapet tambahan +1 slot lagi kalau kamu kasih star ke repository GitHub mereka di https://github.com/DigitalPlatDev/FreeDomain.",
-			"Menyediakan/menghubungkan ke DNS Hosting sendiri (Sangat direkomendasikan pakai Cloudflare untuk pemula karena DigitalPlat hanya menyediakan nameserver delegation).",
-			"Mengikuti aturan Acceptable Use Policy (Dilarang keras untuk malware, phishing, penipuan, reverse-proxy ilegal, atau mendaftarkan nama brand sensitif tanpa izin).",
-			"Optional/Conditional: Pada skenario tertentu (untuk mencegah abuse masal), sistem otomatis mereka kadang mewajibkan verifikasi identitas (KYC) atau biaya verifikasi sekali bayar (one-time fee untuk KYC Key) sebelum aktivasi domain."
+			"Siapkan akun DNS Hosting (direkomendasikan menggunakan Cloudflare).",
+			"Lakukan registrasi di dashboard DigitalPlat dengan identitas asli (Nama, email, & telepon aktif).",
+			"(Opsional) Berikan Star pada repository GitHub https://github.com/DigitalPlatDev/FreeDomain untuk klaim tambahan slot subdomain.",
+			"Daftarkan subdomain pilihan Anda (pilihan: qzz.io, dpdns.org, us.kg, xx.kg).",
+			"Delegasikan nameserver subdomain ke DNS Hosting pihak ketiga untuk mulai mengelola DNS.",
+			"Patuhi Acceptable Use Policy (dilarang phishing/malware/penipuan) agar domain tidak di-banned."
 		],
 		"publishedAt": "2026-06-17",
 		"contributor": {
