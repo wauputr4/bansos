@@ -60,6 +60,11 @@ const DEFAULT_UTM = {
 	campaign: 'bansos'
 };
 
+/**
+ * Parses and validates a URL string.
+ * @param url The URL string to parse.
+ * @returns The parsed URL object or null if invalid/not http(s).
+ */
 function parseAndValidateUrl(url: string): URL | null {
 	try {
 		const parsed = new URL(url.trim());
@@ -72,11 +77,22 @@ function parseAndValidateUrl(url: string): URL | null {
 	}
 }
 
+/**
+ * Sanitizes a URL string, returning a fallback if invalid.
+ * @param url The URL string to sanitize.
+ * @param fallback The fallback string (default: '#').
+ * @returns The sanitized URL string.
+ */
 export function sanitizeUrl(url: string, fallback = '#') {
 	const parsed = parseAndValidateUrl(url);
 	return parsed ? parsed.toString() : fallback;
 }
 
+/**
+ * Appends default UTM parameters to a URL.
+ * @param url The URL string to process.
+ * @returns The URL string with UTM parameters appended.
+ */
 function appendDefaultUtmParams(url: string) {
 	const safeUrl = sanitizeUrl(url);
 	if (safeUrl === '#') return safeUrl;
@@ -98,6 +114,11 @@ function appendDefaultUtmParams(url: string) {
 	}
 }
 
+/**
+ * Extracts the provider (hostname) from a URL.
+ * @param url The URL string to process.
+ * @returns The extracted provider string or 'Unknown'.
+ */
 export function extractProvider(url: string) {
 	try {
 		const parsed = parseAndValidateUrl(url);
@@ -107,6 +128,11 @@ export function extractProvider(url: string) {
 	}
 }
 
+/**
+ * Sanitizes and tracks a bansos item, appending UTM params and extracting provider.
+ * @param item The bansos item without provider.
+ * @returns The fully sanitized bansos item.
+ */
 export function sanitizeAndTrackBansosItem(item: Omit<BansosItem, 'provider'>): BansosItem {
 	const sanitizedItem = {
 		...item,
@@ -124,6 +150,12 @@ export function sanitizeAndTrackBansosItem(item: Omit<BansosItem, 'provider'>): 
 	return sanitizedItem as BansosItem;
 }
 
+/**
+ * Normalizes bansos statuses based on a reference date.
+ * @param items The list of bansos items.
+ * @param referenceDate The date to use as reference (default: today).
+ * @returns The list of bansos items with normalized statuses.
+ */
 export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new Date()) {
 	const dateToUse = Number.isNaN(referenceDate.getTime()) ? new Date() : referenceDate;
 	const yyyy = dateToUse.getFullYear();
@@ -149,12 +181,23 @@ export const bansosList: BansosItem[] = normalizeBansosStatuses(
 	(bansosData as BansosItem[]).map((item) => sanitizeAndTrackBansosItem(item))
 );
 
+/**
+ * Retrieves the timestamp value for an item's published date.
+ * @param item The bansos item.
+ * @param fallbackIndex The fallback index if date is missing or invalid.
+ * @returns The timestamp value.
+ */
 function itemDateValue(item: BansosItem, fallbackIndex: number) {
 	if (!item.publishedAt) return fallbackIndex;
 	const timestamp = Date.parse(`${item.publishedAt}T00:00:00.000Z`);
 	return Number.isNaN(timestamp) ? fallbackIndex : timestamp;
 }
 
+/**
+ * Sorts bansos items by newest first.
+ * @param items The list of bansos items.
+ * @returns The sorted list of bansos items.
+ */
 export function sortBansosByNewest(items: BansosItem[] = bansosList) {
 	return items
 		.map((item, index) => ({ item, index }))
@@ -174,6 +217,13 @@ export const featuredBansos = (limit = 3, items: BansosItem[] = bansosList) =>
 		.filter((i) => i.featured && i.status !== 'expired')
 		.slice(0, limit);
 
+/**
+ * Returns recommended bansos items based on a current item's tags.
+ * @param currentItem The item to base recommendations on.
+ * @param items The list of bansos items.
+ * @param limit The maximum number of recommendations.
+ * @returns The recommended bansos items.
+ */
 export function recommendedBansosFor(
 	currentItem: BansosItem,
 	items: BansosItem[] = bansosList,
@@ -197,22 +247,46 @@ export const allBansosTags = Array.from(new Set(bansosList.flatMap((item) => ite
 	(a, b) => a.localeCompare(b)
 );
 
+/**
+ * Gets a bansos item by its ID.
+ * @param id The item ID.
+ * @returns The matched bansos item or undefined.
+ */
 export function getBansosById(id: string) {
 	return bansosList.find((item) => item.id === id);
 }
 
+/**
+ * Gets bansos items containing a specific tag.
+ * @param tag The tag to filter by.
+ * @returns The matched bansos items.
+ */
 export function getBansosByTag(tag: string) {
 	return bansosList.filter((item) => item.tags.includes(tag));
 }
 
+/**
+ * Gets the source URL or identifier for an item.
+ * @param item The bansos item.
+ * @returns The source string.
+ */
 export function getItemSource(item: BansosItem) {
 	return item.source;
 }
 
+/**
+ * Gets commit contributors for a specific bansos item.
+ * @param id The item ID.
+ * @returns The list of commit contributors.
+ */
 export function getCommitContributorsForItem(id: string): CommitContributor[] {
 	return (commitContributorsData as Record<string, CommitContributor[]>)[id] || [];
 }
 
+/**
+ * Calculates aggregated commit contributor stats.
+ * @returns An array of contributors sorted by contribution count.
+ */
 export function getCommitContributorStats() {
 	const map = new Map<string, CommitContributor & { count: number }>();
 
@@ -237,6 +311,11 @@ export function getCommitContributorStats() {
 
 export const commitContributorCount = getCommitContributorStats().length;
 
+/**
+ * Slugifies a provider name for URLs and keys.
+ * @param provider The provider name.
+ * @returns The slugified provider name.
+ */
 export function slugifyProvider(provider: string) {
 	return provider
 		.trim()
@@ -246,15 +325,30 @@ export function slugifyProvider(provider: string) {
 		.replace(/^-+|-+$/g, '');
 }
 
+/**
+ * Generates a unique key for a provider.
+ * @param provider The provider name.
+ * @returns The provider key.
+ */
 function providerKey(provider: string) {
 	return slugifyProvider(provider);
 }
 
+/**
+ * Extracts the provider website URL from an item.
+ * @param item The bansos item.
+ * @returns The website origin URL or '#'.
+ */
 function providerWebsiteFrom(item: BansosItem) {
 	const parsed = parseAndValidateUrl(item.ctaLink);
 	return parsed ? parsed.origin : '#';
 }
 
+/**
+ * Generates a Google favicon URL for a given URL.
+ * @param url The website URL.
+ * @returns The favicon image URL.
+ */
 function faviconUrlFor(url: string) {
 	const parsed = parseAndValidateUrl(url);
 	return parsed ? `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128` : '';
@@ -262,6 +356,11 @@ function faviconUrlFor(url: string) {
 
 let cachedProviderStats: ProviderSummary[] | null = null;
 
+/**
+ * Calculates aggregated provider statistics.
+ * @param items The list of bansos items.
+ * @returns The calculated provider summaries.
+ */
 export function getProviderStats(items: BansosItem[] = bansosList) {
 	if (items === bansosList && cachedProviderStats) {
 		return cachedProviderStats;
@@ -314,20 +413,40 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 	return result;
 }
 
+/**
+ * Gets provider statistics by slug.
+ * @param slug The provider slug.
+ * @returns The matching provider summary or undefined.
+ */
 export function getProviderBySlug(slug: string) {
 	return getProviderStats().find((provider) => provider.slug === slug);
 }
 
+/**
+ * Generates a unique key for a contributor.
+ * @param name The contributor name.
+ * @param url The contributor URL.
+ * @returns The generated key.
+ */
 function contributorKey(name: string, url: string) {
 	return `${name.trim().toLowerCase()}::${normalizeContributorUrl(url)}`;
 }
 
+/**
+ * Normalizes a contributor URL.
+ * @param url The URL string.
+ * @returns The normalized URL string.
+ */
 function normalizeContributorUrl(url: string) {
 	const parsed = parseAndValidateUrl(url);
 	if (!parsed) return '#';
 	return `${parsed.origin}${parsed.pathname.replace(/\/+$/, '')}${parsed.search}${parsed.hash}`;
 }
 
+/**
+ * Calculates aggregated contributor statistics.
+ * @returns An array of contributor summaries sorted by count.
+ */
 export function getContributorStats() {
 	const map = new Map<string, ContributorSummary>();
 
