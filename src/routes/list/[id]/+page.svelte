@@ -374,7 +374,7 @@
 
 			<!-- Giscus Comments Section -->
 			{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
-				<div class="glass-card comments-card" style="margin-top: 2rem; padding: 2rem;">
+				<div class="glass-card comments-card">
 					<h2
 						style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
 					>
@@ -864,6 +864,11 @@
 		font-size: 0.9rem;
 	}
 
+	.comments-card {
+		margin-top: 1.5rem;
+		padding: 2rem;
+	}
+
 	@media (min-width: 48rem) {
 		.page-wrapper {
 			padding-block: 1.5rem 2.5rem;
@@ -872,6 +877,58 @@
 
 		.recommendation-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 47.99rem) {
+		.page-wrapper {
+			padding-block: 0.75rem 2rem;
+			gap: 0.85rem;
+		}
+
+		.detail-card {
+			padding: 1.25rem 1rem;
+			gap: 1.25rem;
+		}
+
+		.detail-header {
+			padding-bottom: 1rem;
+			gap: 0.6rem;
+		}
+
+		.detail-meta-grid {
+			gap: 0.5rem;
+		}
+
+		.meta-card {
+			padding: 0.65rem 0.75rem;
+		}
+
+		.promo-section {
+			padding: 1rem;
+		}
+
+		.promo-clipboard-box {
+			padding: 0.5rem 0.85rem;
+			gap: 0.75rem;
+		}
+
+		.promo-clipboard-box code {
+			font-size: 1.1rem;
+		}
+
+		.step-item {
+			padding: 0.85rem;
+			gap: 0.75rem;
+		}
+
+		.action-footer {
+			padding-top: 1.25rem;
+		}
+
+		.comments-card {
+			padding: 1.25rem 1rem;
+			margin-top: 0.85rem;
 		}
 	}
 </style>

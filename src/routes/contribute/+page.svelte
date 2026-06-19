@@ -898,6 +898,22 @@
 	}
 
 	@media (max-width: 48rem) {
+		.page-wrapper {
+			padding-block: 0.75rem 2.25rem;
+		}
+		.content-shell {
+			gap: 0.75rem;
+		}
+		.tab-content {
+			padding: 0.85rem;
+		}
+		.tab-panel {
+			gap: 0.85rem;
+		}
+		.form-wrapper {
+			padding: 0.85rem;
+			border-radius: 0.6rem;
+		}
 		.tab-btn span {
 			display: none;
 		}

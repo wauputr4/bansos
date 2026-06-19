@@ -630,6 +630,34 @@
 		}
 	}
 
+	@media (max-width: 48rem) {
+		.form-grid {
+			gap: 0.85rem;
+		}
+		.form-group {
+			gap: 0.25rem;
+		}
+		.form-group input,
+		.form-group textarea,
+		.form-group select {
+			padding: 0.55rem 0.75rem;
+			font-size: 0.9rem;
+		}
+		.repeater-item input {
+			padding: 0.55rem 0.75rem;
+			font-size: 0.9rem;
+		}
+		.btn-submit,
+		.btn-reset {
+			padding: 0.75rem 1.25rem;
+			font-size: 0.95rem;
+		}
+		.repeater-remove {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
 	.form-group {
 		display: flex;
 		flex-direction: column;
