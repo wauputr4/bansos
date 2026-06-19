@@ -952,5 +952,45 @@
 		"tags": ["AI Credits"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "agentrouter-free-250-ai-credit",
+		"title": "AgentRouter Free $250 AI Credit",
+		"provider": "AgentRouter",
+		"description": "AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.",
+		"benefits": [
+			"Mendapatkan $250 AI credit untuk pengguna baru",
+			"tambahan credit",
+			"Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2",
+			"Satu API, banyak AI"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Daftar menggunakan akun GitHub lama/old account",
+			"Registrasi melalui link referral yang tersedia",
+			"Login dan cek saldo credit di dashboard AgentRouter",
+			"Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter"
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://agentrouter.org/register?aff=txsb",
+		"contributor": {
+			"name": "Jovian",
+			"url": "https://github.com/vian0001"
+		},
+		"ctaLink": "https://agentrouter.org/register?aff=txsb",
+		"tags": [
+			"AI",
+			"AI Credits",
+			"API",
+			"Coding",
+			"Developer",
+			"Free Tier",
+			"GLM",
+			"Developer Tools"
+		],
+		"featured": true,
+		"status": "active"
 	}
 ]
