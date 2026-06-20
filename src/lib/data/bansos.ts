@@ -122,7 +122,13 @@ function appendDefaultUtmParams(url: string) {
 export function extractProvider(url: string) {
 	try {
 		const parsed = parseAndValidateUrl(url);
-		return parsed ? parsed.hostname.replace(/^www\./, '') : 'Unknown';
+		if (!parsed) return 'Unknown';
+		let hostname = parsed.hostname;
+		hostname = hostname.replace(
+			/^(?:www\.|platform\.|console\.|docs\.|dash\.|api\.|app\.|auth\.|login\.)+/i,
+			''
+		);
+		return hostname.charAt(0).toUpperCase() + hostname.slice(1);
 	} catch {
 		return 'Unknown';
 	}

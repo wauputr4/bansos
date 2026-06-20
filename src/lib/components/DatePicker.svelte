@@ -145,7 +145,13 @@
 	{/if}
 
 	<!-- Hidden input for native form validation if needed -->
-	<input type="date" bind:value {required} style="display: none;" />
+	<input
+		type="date"
+		bind:value
+		{required}
+		style="position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;"
+		tabindex="-1"
+	/>
 </div>
 
 <style>

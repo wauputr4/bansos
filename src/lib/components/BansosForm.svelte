@@ -130,6 +130,13 @@
 		if (formBenefits.length === 0) formBenefits = [''];
 	}
 
+	function cleanupBenefits() {
+		setTimeout(() => {
+			const filled = formBenefits.map((b) => b.trim()).filter((b) => b !== '');
+			formBenefits = [...filled, ''];
+		}, 150);
+	}
+
 	function updateBenefit(index: number, value: string) {
 		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
 		if (index === formBenefits.length - 1 && value.trim() !== '') {
@@ -140,6 +147,13 @@
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
 		if (formRequirements.length === 0) formRequirements = [''];
+	}
+
+	function cleanupRequirements() {
+		setTimeout(() => {
+			const filled = formRequirements.map((r) => r.trim()).filter((r) => r !== '');
+			formRequirements = [...filled, ''];
+		}, 150);
 	}
 
 	function updateRequirement(index: number, value: string) {
@@ -398,6 +412,7 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
+							onblur={cleanupBenefits}
 							placeholder={i === formBenefits.length - 1
 								? 'Ketik untuk menambah benefit baru...'
 								: `Benefit ${i + 1}`}
@@ -429,6 +444,7 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
+							onblur={cleanupRequirements}
 							placeholder={i === formRequirements.length - 1
 								? 'Ketik untuk menambah requirement baru...'
 								: `Requirement ${i + 1}`}
