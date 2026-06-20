@@ -195,12 +195,6 @@
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	@media (min-width: 48rem) {
-		.site-header.nav-hidden {
-			transform: translateY(-100%);
-		}
-	}
-
 	.nav-shell {
 		display: flex;
 		align-items: center;

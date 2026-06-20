@@ -320,19 +320,6 @@
 		</div>
 	</header>
 
-	<!-- Quotes Section -->
-	<section class="quotes-section container">
-		<div class="glass-card quote-card">
-			<span class="quote-mark">“</span>
-			<blockquote class="main-quote text-gradient">Developer butuh dollar!</blockquote>
-			<cite class="quote-author">— Suara Hati Dev Jelata</cite>
-			<p class="quote-sub">
-				Kerja rodi fix bug seharian, dibayarnya pake ucapan terima kasih dan 'exposure'. Kami butuh
-				dollar riil buat bayar internet sama kopi, bos! 💸
-			</p>
-		</div>
-	</section>
-
 	<!-- Kelebihan Section -->
 	<section class="advantages-section container">
 		<h2 class="advantages-title text-gradient">Mengapa bansos.dev?</h2>
@@ -341,6 +328,16 @@
 				<div class="advantage-icon"><i class="fa-solid fa-bolt"></i></div>
 				<h3>100% Terkurasi & Cepat</h3>
 				<p>Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi. Tanpa link shortener jebakan!</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-eye"></i></div>
+				<h3>100% Transparan</h3>
+				<p>Semua request bansos baru, validasi data, serta diskusi komunitas terbuka lebar langsung di GitHub Issue & PR.</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-code"></i></div>
+				<h3>Open Source & Self-Hosted</h3>
+				<p>Kode sumber dan data bebas diaudit, difork, atau di-host mandiri sepenuhnya di infrastruktur milikmu.</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-users"></i></div>
@@ -702,57 +699,6 @@
 		.stats-strip {
 			grid-template-columns: repeat(4, 1fr);
 		}
-	}
-
-	.quotes-section {
-		display: flex;
-		justify-content: center;
-	}
-
-	.quote-card {
-		width: 100%;
-		text-align: center;
-		padding: 3rem 2rem;
-		position: relative;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-		cursor: pointer;
-	}
-
-	.quote-mark {
-		font-size: 6rem;
-		line-height: 1;
-		font-family: serif;
-		color: var(--color-accent);
-		opacity: 0.15;
-		position: absolute;
-		top: -0.5rem;
-		left: 2rem;
-	}
-
-	.main-quote {
-		font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
-		font-weight: 800;
-		line-height: 1.2;
-		font-style: italic;
-		letter-spacing: -0.02em;
-	}
-
-	.quote-author {
-		font-size: 0.95rem;
-		font-weight: 600;
-		color: var(--text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.quote-sub {
-		max-width: 38rem;
-		font-size: 0.95rem;
-		color: var(--text-secondary);
 	}
 
 	.github-card {

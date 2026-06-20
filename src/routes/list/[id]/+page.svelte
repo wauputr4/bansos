@@ -231,72 +231,183 @@
 	<main class="page-wrapper">
 		<div class="glow-orb detail-glow"></div>
 
-		<!-- Main Detail Card -->
-		<article class="detail-container container">
-			<div class="glass-card detail-card">
-				<header class="detail-header">
-					<div class="header-top-row">
-						<div class="tags-scroll-container">
-							{#each item.tags as tag (tag)}
-								<span class="tag-badge">{tag}</span>
-							{/each}
-							<span
-								class="tag-badge views-badge"
-								style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
-							>
-								<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
-								{views}
-							</span>
-							{#if commentCount > 0}
+		<!-- Main Layout Grid on Desktop -->
+		<div class="detail-layout-grid container">
+			<!-- Left Column: Main Detail & Comments -->
+			<div class="detail-main-col">
+				<article class="glass-card detail-card">
+					<header class="detail-header">
+						<div class="header-top-row">
+							<div class="tags-scroll-container">
+								{#each item.tags as tag (tag)}
+									<span class="tag-badge">{tag}</span>
+								{/each}
 								<span
-									class="tag-badge comments-badge"
-									style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+									class="tag-badge views-badge"
+									style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
 								>
-									<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
-									{commentCount}
+									<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
+									{views}
 								</span>
-							{/if}
-						</div>
-						<div class="status-container">
-							<span class="status-badge status-{status}"
-								><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
-							>
-						</div>
-					</div>
-					<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
-					<div class="provider-meta">
-						{#if provider?.faviconUrl}
-							<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
-						{/if}
-						<p class="detail-subtitle">
-							Disponsori oleh
-							{#if provider}
-								<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a
+								{#if commentCount > 0}
+									<span
+										class="tag-badge comments-badge"
+										style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+									>
+										<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
+										{commentCount}
+									</span>
+								{/if}
+							</div>
+							<div class="status-container">
+								<span class="status-badge status-{status}"
+									><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
 								>
-							{:else}
-								<strong>{item.provider}</strong>
+							</div>
+						</div>
+						<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
+						<div class="provider-meta">
+							{#if provider?.faviconUrl}
+								<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
 							{/if}
-							<span aria-hidden="true">·</span>
-							<span
-								>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
-									'id-ID',
-									{ day: 'numeric', month: 'long', year: 'numeric' }
-								)}</span
+							<p class="detail-subtitle">
+								Disponsori oleh
+								{#if provider}
+									<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}
+										>{item.provider}</a
+									>
+								{:else}
+									<strong>{item.provider}</strong>
+								{/if}
+								<span aria-hidden="true">·</span>
+								<span
+									>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
+										'id-ID',
+										{ day: 'numeric', month: 'long', year: 'numeric' }
+									)}</span
+								>
+							</p>
+						</div>
+						{#if item.contributor}
+							<p class="detail-contributor">
+								Dikontribusikan oleh
+								<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
+									{item.contributor.name}
+								</a>
+							</p>
+						{/if}
+					</header>
+
+					{#if item.status === 'expired'}
+						<div
+							class="tips-box"
+							style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
+						>
+							<span class="tips-icon" style="color: #ef4444;"
+								><i class="fa-solid fa-triangle-exclamation"></i></span
 							>
-						</p>
-					</div>
-					{#if item.contributor}
-						<p class="detail-contributor">
-							Dikontribusikan oleh
-							<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-								{item.contributor.name}
-							</a>
-						</p>
+							<div class="tips-content">
+								<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
+								<p>
+									Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa
+									baca panduannya buat referensi ya!
+								</p>
+							</div>
+						</div>
 					{/if}
-					<div class="detail-meta-grid">
+
+					{#if item.tips}
+						<div class="tips-box">
+							<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
+							<div class="tips-content">
+								<h3>Tips Pro Jelata:</h3>
+								<p>{item.tips}</p>
+							</div>
+						</div>
+					{/if}
+
+					<section class="section-block">
+						<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
+						<p class="description-text text-pretty">{item.description}</p>
+					</section>
+
+					<section class="section-block">
+						<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
+						<ul class="benefit-list">
+							{#each item.benefits as benefit (benefit)}
+								<li><span class="check-icon">✓</span> {benefit}</li>
+							{/each}
+						</ul>
+					</section>
+
+					{#if item.promoCode}
+						<section class="section-block promo-section">
+							<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
+							<p class="promo-subtitle">
+								Salin kode ini dan masukkan saat checkout di {item.provider}:
+							</p>
+							<div class="promo-clipboard-box">
+								<code>{item.promoCode}</code>
+								<button
+									class="btn-primary copy-btn"
+									onclick={(e) => copyCode(item.promoCode || '', e)}
+								>
+									{#if copied}
+										<i class="fa-solid fa-check"></i> Copied!
+									{:else}
+										<i class="fa-solid fa-copy"></i> Salin
+									{/if}
+								</button>
+							</div>
+						</section>
+					{/if}
+
+					<section class="section-block guide-section">
+						<h2>
+							<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
+						</h2>
+						<ol class="step-list">
+							{#each item.requirements as req, idx (req)}
+								<li class="step-item">
+									<span class="step-num">{idx + 1}</span>
+									<p class="step-content text-pretty">{req}</p>
+								</li>
+							{/each}
+						</ol>
+					</section>
+
+					<div class="action-footer">
+						<a
+							href={item.ctaLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn-primary cta-btn"
+						>
+							<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+						</a>
+					</div>
+				</article>
+
+				<!-- Giscus Comments Section -->
+				{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
+					<div class="glass-card comments-card">
+						<h2
+							style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
+						>
+							<i class="fa-regular fa-comments"></i> Diskusi & Komentar
+						</h2>
+						<div bind:this={giscusContainer}></div>
+					</div>
+				{/if}
+			</div>
+
+			<!-- Right Column: Sidebar (Meta & CTAs) -->
+			<aside class="detail-sidebar-col">
+				{#if source || commitContributors.length > 0}
+					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
+								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
 								{#if sourceIsUrl}
 									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
 								{:else}
@@ -326,110 +437,32 @@
 							</div>
 						{/if}
 					</div>
-				</header>
+				{/if}
 
-				{#if item.status === 'expired'}
-					<div
-						class="tips-box"
-						style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
-					>
-						<span class="tips-icon" style="color: #ef4444;"
-							><i class="fa-solid fa-triangle-exclamation"></i></span
+				<!-- CTA Tentang bansos.dev & Ajakan Kontribusi -->
+				<div class="glass-card sidebar-cta-card">
+					<h3><i class="fa-solid fa-circle-info text-emerald"></i> Tentang bansos.dev</h3>
+					<p>
+						Katalog kurasi promo & diskonan developer gratisan. Dikelola 100% transparan oleh
+						komunitas di GitHub.
+					</p>
+
+					<div class="sidebar-cta-actions">
+						<a href={resolve('/contribute')} class="btn-primary sidebar-cta-btn">
+							<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
+						</a>
+						<a
+							href="https://github.com/wauputr4/bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn-secondary sidebar-cta-btn"
 						>
-						<div class="tips-content">
-							<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
-							<p>
-								Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa baca
-								panduannya buat referensi ya!
-							</p>
-						</div>
+							<i class="fa-solid fa-star"></i> Star di GitHub
+						</a>
 					</div>
-				{/if}
-
-				{#if item.tips}
-					<div class="tips-box">
-						<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
-						<div class="tips-content">
-							<h3>Tips Pro Jelata:</h3>
-							<p>{item.tips}</p>
-						</div>
-					</div>
-				{/if}
-
-				<section class="section-block">
-					<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
-					<p class="description-text text-pretty">{item.description}</p>
-				</section>
-
-				<section class="section-block">
-					<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
-					<ul class="benefit-list">
-						{#each item.benefits as benefit (benefit)}
-							<li><span class="check-icon">✓</span> {benefit}</li>
-						{/each}
-					</ul>
-				</section>
-
-				{#if item.promoCode}
-					<section class="section-block promo-section">
-						<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
-						<p class="promo-subtitle">
-							Salin kode ini dan masukkan saat checkout di {item.provider}:
-						</p>
-						<div class="promo-clipboard-box">
-							<code>{item.promoCode}</code>
-							<button
-								class="btn-primary copy-btn"
-								onclick={(e) => copyCode(item.promoCode || '', e)}
-							>
-								{#if copied}
-									<i class="fa-solid fa-check"></i> Copied!
-								{:else}
-									<i class="fa-solid fa-copy"></i> Salin
-								{/if}
-							</button>
-						</div>
-					</section>
-				{/if}
-
-				<section class="section-block guide-section">
-					<h2>
-						<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
-					</h2>
-					<ol class="step-list">
-						{#each item.requirements as req, idx (req)}
-							<li class="step-item">
-								<span class="step-num">{idx + 1}</span>
-								<p class="step-content text-pretty">{req}</p>
-							</li>
-						{/each}
-					</ol>
-				</section>
-
-				<div class="action-footer">
-					<a
-						href={item.ctaLink}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="btn-primary cta-btn"
-					>
-						<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
-					</a>
 				</div>
-			</div>
-
-			<!-- Giscus Comments Section -->
-			{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
-				<div class="glass-card comments-card">
-					<h2
-						style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
-					>
-						<i class="fa-regular fa-comments"></i> Diskusi & Komentar
-					</h2>
-					<div bind:this={giscusContainer}></div>
-				</div>
-			{/if}
-		</article>
+			</aside>
+		</div>
 
 		<!-- Rekomendasi Bansos Lainnya -->
 		<section class="recommendation-section container">
@@ -897,61 +930,99 @@
 		}
 	}
 
-	@media (min-width: 64rem) {
-		.recommendation-grid {
-			grid-template-columns: repeat(4, 1fr);
-		}
+	.detail-layout-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		width: 100%;
 	}
 
-	@media (max-width: 47.99rem) {
-		.page-wrapper {
-			padding-block: 0.75rem 2rem;
-			gap: 0.85rem;
+	.detail-main-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.detail-sidebar-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		width: 100%;
+	}
+
+	.detail-sidebar-meta {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.sidebar-cta-card {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		text-align: left;
+	}
+
+	.sidebar-cta-card h3 {
+		font-size: 1.1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.sidebar-cta-card h3 i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.sidebar-cta-card p {
+		font-size: 0.88rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	.sidebar-cta-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 0.25rem;
+	}
+
+	.sidebar-cta-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		width: 100%;
+		font-size: 0.85rem;
+		font-weight: 750;
+		padding: 0.55rem 1rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+	}
+
+	@media (min-width: 64rem) {
+		.detail-layout-grid {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 2rem;
 		}
 
-		.detail-card {
-			padding: 1.25rem 1rem;
-			gap: 1.25rem;
+		.detail-main-col {
+			flex: 1;
 		}
 
-		.detail-header {
-			padding-bottom: 1rem;
-			gap: 0.6rem;
-		}
-
-		.detail-meta-grid {
-			gap: 0.5rem;
-		}
-
-		.meta-card {
-			padding: 0.65rem 0.75rem;
-		}
-
-		.promo-section {
-			padding: 1rem;
-		}
-
-		.promo-clipboard-box {
-			padding: 0.5rem 0.85rem;
-			gap: 0.75rem;
-		}
-
-		.promo-clipboard-box code {
-			font-size: 1.1rem;
-		}
-
-		.step-item {
-			padding: 0.85rem;
-			gap: 0.75rem;
-		}
-
-		.action-footer {
-			padding-top: 1.25rem;
-		}
-
-		.comments-card {
-			padding: 1.25rem 1rem;
-			margin-top: 0.85rem;
+		.detail-sidebar-col {
+			width: 20rem;
+			flex-shrink: 0;
+			position: sticky;
+			top: 5.5rem;
 		}
 	}
 </style>

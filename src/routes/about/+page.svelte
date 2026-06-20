@@ -57,33 +57,45 @@
 
 		<div class="info-grid">
 			<section class="info-card">
-				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah ditemukan</h2>
+				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah Ditemukan</h2>
 				<p>
 					Setiap listing disimpan sebagai data terstruktur, punya tag, status aktif/expired, masa
-					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list
-					maupun mesin pencari.
+					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-code-branch"></i> Open source</h2>
+				<h2><i class="fa-solid fa-eye"></i> 100% Transparan</h2>
 				<p>
-					Repo `wauputr4/bansos` dibangun sebagai SvelteKit static site yang bisa diaudit, difork,
-					dan dikontribusikan lewat GitHub. Data utama tersimpan di `src/lib/data/bansos.json`.
+					Semua request penambahan bansos baru, validasi data, serta diskusi komunitas dilakukan
+					secara terbuka langsung di GitHub Issue &amp; Pull Request.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-terminal"></i> Kontribusi via CLI</h2>
+				<h2><i class="fa-solid fa-code"></i> Open Source &amp; Self-Hosted</h2>
 				<p>
-					Kontributor bisa menambahkan program baru lewat `npx bansosdev add`. Payload yang valid
-					akan masuk ke issue dan dapat diproses menjadi Pull Request otomatis.
+					Kode sumber dan data bansos.dev sepenuhnya open-source. Kamu bisa clone, review kodenya,
+					bahkan meng-host situs ini sendiri di infrastruktur milikmu.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi komunitas</h2>
+				<h2><i class="fa-solid fa-terminal"></i> Kontribusi Instan</h2>
 				<p>
-					Setiap entry sebaiknya memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
-					jelas. Tujuannya bukan clickbait, tapi katalog praktis buat developer yang lagi hemat
-					budget.
+					Kontributor bisa menambahkan program baru secara otomatis lewat form interaktif atau
+					perintah CLI `npx bansosdev add` tanpa perlu setup code environment.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi Komunitas</h2>
+				<p>
+					Setiap entry dipastikan memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
+					jelas. Tujuannya murni buat saling bantu menghemat budget.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-handshake"></i> Adil &amp; Sportif</h2>
+				<p>
+					Mendukung pemakaian link referral pribadi kontributor sebagai bentuk reward, dengan aturan
+					ketat dilarang menimpa link referral milik orang lain.
 				</p>
 			</section>
 		</div>
