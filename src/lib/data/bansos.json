@@ -992,5 +992,40 @@
 		],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "gumloop-free-credits",
+		"title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
+		"provider": "gumloop",
+		"description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
+		"benefits": [
+			"5.000 Kredit Rutin Bulanan",
+			"1.600 Bonus Koneksi (Satu Kali)",
+			"Akses ke Berbagai Model AI Populer",
+			"Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buat akun baru",
+			"Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
+		],
+		"instructions": [
+			"Daftar untuk membuat akun gratis di platform Gumloop.",
+			"Terima 5.000 kredit bulanan dasar Anda secara otomatis.",
+			"Hubungkan aplikasi produktivitas eksternal (seperti Google Docs) di dalam dasbor Anda untuk membuka tambahan 1.600 kredit bonus.",
+			"Pilih dari model AI yang tersedia dan mulai gunakan."
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://www.gumloop.com/pricing",
+		"contributor": {
+			"name": "Brian",
+			"url": "https://github.com/adefebrian"
+		},
+		"ctaLink": "https://www.gumloop.com/",
+		"tags": ["AI", "AI Credits", "Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
