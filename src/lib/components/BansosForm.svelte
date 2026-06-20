@@ -5,6 +5,9 @@
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
 	);
+	const existingProviders = [...new Set(bansosList.map((i) => i.provider).filter(Boolean))].sort(
+		(a, b) => a.localeCompare(b)
+	);
 	const existingIds = new Set(bansosList.map((i) => i.id));
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
@@ -13,6 +16,14 @@
 	let formTitle = $state('');
 	let formProvider = $state('');
 	let providerManuallyEdited = $state(false);
+	let providerDropdownOpen = $state(false);
+	let isTypingProvider = $state(false);
+
+	let filteredProviders = $derived(
+		isTypingProvider && formProvider.trim()
+			? existingProviders.filter((p) => p.toLowerCase().includes(formProvider.toLowerCase()))
+			: existingProviders
+	);
 
 	let formDescription = $state('');
 	let formBenefits = $state<string[]>(['']);
@@ -146,13 +157,6 @@
 		if (formBenefits.length === 0) formBenefits = [''];
 	}
 
-	function cleanupBenefits() {
-		setTimeout(() => {
-			const filled = formBenefits.map((b) => b.trim()).filter((b) => b !== '');
-			formBenefits = [...filled, ''];
-		}, 150);
-	}
-
 	function updateBenefit(index: number, value: string) {
 		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
 		if (index === formBenefits.length - 1 && value.trim() !== '') {
@@ -163,13 +167,6 @@
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
 		if (formRequirements.length === 0) formRequirements = [''];
-	}
-
-	function cleanupRequirements() {
-		setTimeout(() => {
-			const filled = formRequirements.map((r) => r.trim()).filter((r) => r !== '');
-			formRequirements = [...filled, ''];
-		}, 150);
 	}
 
 	function updateRequirement(index: number, value: string) {
@@ -391,16 +388,75 @@
 			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group custom-select-container">
 			<label for="bansos-form-provider">Provider <span class="required">*</span></label>
-			<input
-				id="bansos-form-provider"
-				type="text"
-				bind:value={formProvider}
-				oninput={() => (providerManuallyEdited = true)}
-				required
-				placeholder="Contoh: GitHub, Vercel"
-			/>
+			<div class="custom-select" class:open={providerDropdownOpen}>
+				<input
+					id="bansos-form-provider"
+					type="text"
+					bind:value={formProvider}
+					role="combobox"
+					aria-expanded={providerDropdownOpen}
+					aria-autocomplete="list"
+					aria-haspopup="listbox"
+					aria-controls="provider-listbox"
+					oninput={() => {
+						providerManuallyEdited = true;
+						providerDropdownOpen = true;
+						isTypingProvider = true;
+					}}
+					onfocus={() => {
+						providerDropdownOpen = true;
+						isTypingProvider = false;
+					}}
+					onkeydown={(e) => {
+						if (e.key === 'Enter' && providerDropdownOpen) {
+							e.preventDefault();
+							providerDropdownOpen = false;
+							isTypingProvider = false;
+						}
+					}}
+					required
+					autocomplete="off"
+					class="select-btn"
+					style="text-align: left; cursor: text;"
+					placeholder="Contoh: GitHub, Vercel"
+				/>
+				<i class="fa-solid fa-chevron-down select-chevron"></i>
+				{#if providerDropdownOpen}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (providerDropdownOpen = false)}></div>
+					<ul class="select-dropdown" id="provider-listbox" role="listbox">
+						{#each filteredProviders as opt (opt)}
+							<li>
+								<button
+									type="button"
+									class="select-option"
+									onclick={() => {
+										formProvider = opt;
+										providerManuallyEdited = true;
+										providerDropdownOpen = false;
+										isTypingProvider = false;
+									}}
+								>
+									{opt}
+								</button>
+							</li>
+						{/each}
+						{#if filteredProviders.length === 0}
+							<li>
+								<div
+									class="select-option"
+									style="color: var(--text-secondary); cursor: default; background: transparent;"
+								>
+									<i>Tekan Enter untuk menggunakan "{formProvider}"</i>
+								</div>
+							</li>
+						{/if}
+					</ul>
+				{/if}
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -445,7 +501,6 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
-							onblur={cleanupBenefits}
 							placeholder={i === formBenefits.length - 1
 								? 'Ketik untuk menambah benefit baru...'
 								: `Benefit ${i + 1}`}
@@ -477,7 +532,6 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
-							onblur={cleanupRequirements}
 							placeholder={i === formRequirements.length - 1
 								? 'Ketik untuk menambah requirement baru...'
 								: `Requirement ${i + 1}`}
@@ -747,8 +801,7 @@
 			gap: 0.25rem;
 		}
 		.form-group input,
-		.form-group textarea,
-		.form-group select {
+		.form-group textarea {
 			padding: 0.55rem 0.75rem;
 			font-size: 0.9rem;
 		}
@@ -822,14 +875,8 @@
 		border-color: var(--color-danger) !important;
 	}
 
-	.hint-new {
-		color: var(--color-accent);
-		font-weight: 600;
-	}
-
 	.form-group input,
-	.form-group textarea,
-	.form-group select {
+	.form-group textarea {
 		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 		border: 1px solid var(--border-color);
 		border-radius: 0.5rem;
@@ -843,8 +890,7 @@
 	}
 
 	.form-group input:focus,
-	.form-group textarea:focus,
-	.form-group select:focus {
+	.form-group textarea:focus {
 		outline: none;
 		border-color: var(--color-accent);
 		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
@@ -957,31 +1003,6 @@
 		border-color: var(--color-accent);
 		color: var(--color-accent);
 		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
-	}
-
-	.checkbox-group {
-		flex-direction: row;
-		align-items: center;
-	}
-
-	.checkbox-label {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-	}
-
-	.checkbox-label input[type='checkbox'] {
-		width: 1.1rem;
-		height: 1.1rem;
-		accent-color: var(--color-accent);
-		cursor: pointer;
-	}
-
-	.checkbox-label span {
-		color: var(--text-secondary);
-		font-size: 0.9rem;
-		font-weight: 600;
 	}
 
 	.form-actions {
@@ -1155,6 +1176,26 @@
 		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
 	}
 
+	.select-btn i {
+		transition: transform 0.2s;
+	}
+	.custom-select.open .select-btn i {
+		transform: rotate(180deg);
+	}
+
+	.select-chevron {
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		color: var(--text-secondary);
+		transition: transform 0.2s;
+	}
+	.custom-select.open .select-chevron {
+		transform: translateY(-50%) rotate(180deg);
+	}
+
 	.dropdown-backdrop {
 		position: fixed;
 		inset: 0;
@@ -1203,28 +1244,5 @@
 		color: var(--color-accent);
 		background: rgba(16, 185, 129, 0.1);
 		font-weight: 700;
-	}
-
-	.repeater-add {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-top: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: transparent;
-		border: 1px dashed var(--border-color);
-		border-radius: 0.5rem;
-		color: var(--text-secondary);
-		font-family: inherit;
-		font-size: 0.85rem;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.2s;
-	}
-
-	.repeater-add:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
 	}
 </style>

@@ -95,7 +95,11 @@
 		</p>
 	{/if}
 
-	<p class="card-desc text-pretty">{item.description}</p>
+	<p class="card-desc text-pretty">
+		{item.description.length > 250
+			? item.description.substring(0, 250).trim() + '...'
+			: item.description}
+	</p>
 
 	<div class="card-footer">
 		<div class="card-actions">

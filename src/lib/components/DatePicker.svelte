@@ -83,7 +83,7 @@
 	function toggleCalendar() {
 		open = !open;
 		if (open && value) {
-			currentDate = new Date(value);
+			currentDate = parseDateLocal(value);
 		}
 	}
 
