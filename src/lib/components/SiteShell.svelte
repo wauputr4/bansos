@@ -132,8 +132,25 @@
 					>Open Source</a
 				>
 				<span class="dot">·</span>
-				<a href="https://discord.gg/m4WFaQpNGs" target="_blank" rel="noopener noreferrer">Discord</a
+				<a
+					href="https://discord.gg/m4WFaQpNGs"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Discord"
+					class="social-footer-link"
 				>
+					<i class="fa-brands fa-discord"></i>
+				</a>
+				<span class="dot">·</span>
+				<a
+					href="https://www.threads.net/@wauputra"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Threads"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-threads"></i>
+				</a>
 			</div>
 		</div>
 	</footer>
@@ -345,6 +362,20 @@
 	.footer-links .dot {
 		color: var(--text-muted);
 		opacity: 0.5;
+	}
+
+	.social-footer-link {
+		display: inline-flex;
+		align-items: center;
+		font-size: 1.05rem;
+		color: var(--text-secondary);
+		transition: color 0.2s ease;
+		vertical-align: middle;
+	}
+
+	.social-footer-link:hover {
+		color: var(--text-primary);
+		text-decoration: none;
 	}
 
 	.mobile-bottom-nav {

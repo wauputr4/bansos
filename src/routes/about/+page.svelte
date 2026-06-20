@@ -119,26 +119,54 @@
 				<i class="fa-solid fa-heart"></i> Dukung Proyek Ini
 			</h2>
 			<p>
-				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Jika proyek ini membantumu
-				menghemat budget, pertimbangkan untuk mendukung kelangsungan proyek ini.
+				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Kamu bisa dukung proyek ini lewat
+				sponsor finansial maupun kontribusi langsung!
 			</p>
-			<div class="sponsor-button-wrapper">
-				<a
-					href="https://github.com/sponsors/wauputr4"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="sponsor-pill"
-				>
-					<i class="fa-solid fa-heart"></i> Sponsor wauputr4
-				</a>
-				<a
-					href="https://github.com/sponsors/Renzie2161"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="sponsor-pill"
-				>
-					<i class="fa-solid fa-heart"></i> Sponsor Renzie2161
-				</a>
+
+			<div class="support-options-grid">
+				<div class="support-card">
+					<h3><i class="fa-solid fa-circle-dollar-to-slot text-rose"></i> Finansial (Sponsor)</h3>
+					<p>Bantu bayar hosting atau beli kopi buat core developer lewat GitHub Sponsors:</p>
+					<div class="support-actions">
+						<a
+							href="https://github.com/sponsors/wauputr4"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="sponsor-pill"
+						>
+							<i class="fa-solid fa-heart"></i> wauputr4
+						</a>
+						<a
+							href="https://github.com/sponsors/Renzie2161"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="sponsor-pill"
+						>
+							<i class="fa-solid fa-heart"></i> Renzie2161
+						</a>
+					</div>
+				</div>
+
+				<div class="support-card">
+					<h3><i class="fa-solid fa-code-branch text-emerald"></i> Kontribusi Kode & Data</h3>
+					<p>
+						Bantu kasih star di GitHub, submit info bansos baru, atau open PR buat nambah/update
+						fitur:
+					</p>
+					<div class="support-actions">
+						<a
+							href="https://github.com/wauputr4/bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="contrib-pill github-star-pill"
+						>
+							<i class="fa-solid fa-star"></i> Star di GitHub
+						</a>
+						<a href={resolve('/contribute')} class="contrib-pill submit-bansos-pill">
+							<i class="fa-solid fa-plus"></i> Submit / Open PR
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 	</section>
@@ -224,7 +252,7 @@
 	}
 
 	.sponsor-section {
-		margin-top: 3rem;
+		margin-top: 3.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -247,25 +275,75 @@
 		margin: 0 auto;
 	}
 
-	.sponsor-button-wrapper {
-		margin-top: 1rem;
+	.support-options-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		width: 100%;
+		margin-top: 1.5rem;
+		text-align: left;
+	}
+
+	@media (min-width: 48rem) {
+		.support-options-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.support-card {
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.02);
+		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		gap: 0.75rem;
+	}
+
+	.support-card h3 {
+		font-size: 1.15rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.support-card h3 i.text-rose {
+		color: #ec4899;
+	}
+
+	.support-card h3 i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.support-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	.support-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+		padding-top: 0.5rem;
 	}
 
 	.sponsor-pill {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 0.4rem;
 		color: #fff;
-		font-size: 1rem;
+		font-size: 0.85rem;
 		font-weight: 700;
-		padding: 0.6rem 1.25rem;
+		padding: 0.5rem 1rem;
 		border-radius: 999px;
 		background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-		box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+		box-shadow: 0 4px 10px rgba(236, 72, 153, 0.2);
 		transition:
 			transform 0.2s,
 			box-shadow 0.2s;
@@ -273,13 +351,54 @@
 	}
 
 	.sponsor-pill:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+		transform: translateY(-1px);
+		box-shadow: 0 6px 14px rgba(236, 72, 153, 0.3);
 		color: #fff;
 	}
 
-	.sponsor-pill i {
-		font-size: 1.1rem;
+	.contrib-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--text-primary);
+		font-size: 0.85rem;
+		font-weight: 700;
+		padding: 0.5rem 1rem;
+		border-radius: 999px;
+		border: 1px solid var(--border-color);
+		background: rgba(255, 255, 255, 0.05);
+		transition: all 0.2s ease;
+		text-decoration: none;
+	}
+
+	.contrib-pill:hover {
+		transform: translateY(-1px);
+		background: rgba(255, 255, 255, 0.08);
+		border-color: var(--text-secondary);
+	}
+
+	.github-star-pill {
+		background: rgba(241, 196, 15, 0.1);
+		border-color: rgba(241, 196, 15, 0.2);
+		color: #f1c40f;
+	}
+
+	.github-star-pill:hover {
+		background: rgba(241, 196, 15, 0.15);
+		border-color: rgba(241, 196, 15, 0.35);
+		color: #f1c40f;
+	}
+
+	.submit-bansos-pill {
+		background: rgba(16, 185, 129, 0.1);
+		border-color: rgba(16, 185, 129, 0.25);
+		color: var(--color-success);
+	}
+
+	.submit-bansos-pill:hover {
+		background: rgba(16, 185, 129, 0.15);
+		border-color: rgba(16, 185, 129, 0.4);
+		color: var(--color-success);
 	}
 
 	.discord-community-section {
