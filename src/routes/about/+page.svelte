@@ -98,6 +98,34 @@
 					ketat dilarang menimpa link referral milik orang lain.
 				</p>
 			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-credit-card"></i> Tanpa Kartu Kredit</h2>
+				<p>
+					Semua program yang terdaftar diupayakan gratis tanpa minta nomor kartu kredit. Bebas dari
+					jebakan auto-debit langganan setelah masa promo berakhir.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-user-shield"></i> Bebas Iklan &amp; Tracker</h2>
+				<p>
+					Situs ini murni dibangun untuk membantu developer. Tidak ada banner iklan berkedip, spam
+					popup, tracker nakal, ataupun link shortener jebakan.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-gauge-high"></i> Ringan &amp; Hemat Kuota</h2>
+				<p>
+					Dibangun menggunakan SvelteKit static generation yang super gesit. Halaman dimuat instant,
+					hemat kuota data, dan ramah koneksi internet pas-pasan.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-comments"></i> Grup Komunitas Kompak</h2>
+				<p>
+					Punya kendala klaim atau butuh info bansos terbaru paling cepat? Dapatkan bantuan dan
+					bocoran promo langsung di grup komunitas Discord atau Telegram kami.
+				</p>
+			</section>
 		</div>
 
 		<div class="actions">

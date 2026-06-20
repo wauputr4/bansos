@@ -349,6 +349,11 @@
 				<h3>Referral Sahabat Dev</h3>
 				<p>Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link referral milik orang lain!</p>
 			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+				<h3>Adil & Sportif</h3>
+				<p>Mendukung pemakaian link referral pribadi sebagai reward kontribusi, dilarang menimpa link milik orang lain!</p>
+			</div>
 		</div>
 	</section>
 
@@ -449,8 +454,11 @@
 
 	.badge-container {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.75rem;
 		margin-bottom: 0.5rem;
+		width: 100%;
 	}
 
 	.version-badge {

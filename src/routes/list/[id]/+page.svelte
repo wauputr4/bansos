@@ -64,6 +64,16 @@
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
+	const displaySource = $derived.by(() => {
+		if (!source) return '';
+		if (!sourceIsUrl) return source;
+		try {
+			const url = new URL(source);
+			return url.hostname;
+		} catch {
+			return source;
+		}
+	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 	const status = $derived(item?.status || 'unknown');
 
@@ -290,58 +300,6 @@
 						</div>
 					</header>
 
-					<div class="detail-meta-grid">
-						{#if source}
-							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
-								{#if sourceIsUrl}
-									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
-								{:else}
-									<strong>{source}</strong>
-								{/if}
-							</div>
-						{/if}
-						{#if item.contributor || commitContributors.length > 0}
-							<div class="meta-card">
-								<span class="meta-label"
-									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
-								>
-								{#if item.contributor}
-									<div
-										class="original-contributor"
-										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
-									>
-										Dikontribusikan oleh:
-										<a
-											href={item.contributor.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											style="color: var(--color-accent); font-weight: 700;"
-										>
-											{item.contributor.name}
-										</a>
-									</div>
-								{/if}
-								{#if commitContributors.length > 0}
-									<div class="commit-list">
-										{#each commitContributors as contributor (contributor.login)}
-											<a
-												href={contributor.commitUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												class="commit-person"
-												title={`Commit oleh ${contributor.login}`}
-											>
-												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-												<span>@{contributor.login}</span>
-											</a>
-										{/each}
-									</div>
-								{/if}
-							</div>
-						{/if}
-					</div>
-
 					{#if item.status === 'expired'}
 						<div
 							class="tips-box"
@@ -445,8 +403,62 @@
 				{/if}
 			</div>
 
-			<!-- Right Column: Sidebar (Recommendations) -->
+			<!-- Right Column: Sidebar (Meta & Recommendations) -->
 			<aside class="detail-sidebar-col">
+				{#if source || item.contributor || commitContributors.length > 0}
+					<div class="detail-sidebar-meta">
+						{#if source}
+							<div class="meta-card">
+								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
+								{#if sourceIsUrl}
+									<a href={source} target="_blank" rel="noopener noreferrer">{displaySource}</a>
+								{:else}
+									<strong>{source}</strong>
+								{/if}
+							</div>
+						{/if}
+						{#if item.contributor || commitContributors.length > 0}
+							<div class="meta-card">
+								<span class="meta-label"
+									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
+								>
+								{#if item.contributor}
+									<div
+										class="original-contributor"
+										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
+									>
+										Dikontribusikan oleh:
+										<a
+											href={item.contributor.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											style="color: var(--color-accent); font-weight: 700;"
+										>
+											{item.contributor.name}
+										</a>
+									</div>
+								{/if}
+								{#if commitContributors.length > 0}
+									<div class="commit-list">
+										{#each commitContributors as contributor (contributor.login)}
+											<a
+												href={contributor.commitUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="commit-person"
+												title={`Commit oleh ${contributor.login}`}
+											>
+												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+												<span>@{contributor.login}</span>
+											</a>
+										{/each}
+									</div>
+								{/if}
+							</div>
+						{/if}
+					</div>
+				{/if}
+
 				<div class="sidebar-recommendations-header">
 					<h3 class="sidebar-recommendations-title">
 						<i class="fa-solid fa-sparkles text-emerald"></i> Rekomendasi Lainnya
@@ -859,12 +871,13 @@
 
 	.cta-btn {
 		width: 100%;
-		font-size: 1.1rem;
-		padding: 1rem;
+		font-size: 0.95rem;
+		padding: 0.7rem 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
+		border-radius: 0.6rem;
 	}
 
 	.sidebar-recommendations-header {
@@ -1068,5 +1081,21 @@
 			position: sticky;
 			top: 5.5rem;
 		}
+	}
+
+	/* Sidebar Compact Cards styling adjustments */
+	.detail-sidebar-col :global(.bansos-card .card-title) {
+		font-size: 1.05rem;
+	}
+
+	.detail-sidebar-col :global(.bansos-card .card-desc) {
+		font-size: 0.82rem;
+		line-height: 1.4;
+	}
+
+	.detail-sidebar-col :global(.bansos-card .btn-primary) {
+		padding: 0.5rem 1rem;
+		font-size: 0.82rem;
+		border-radius: 0.5rem;
 	}
 </style>
