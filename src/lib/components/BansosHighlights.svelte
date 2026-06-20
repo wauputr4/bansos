@@ -17,16 +17,35 @@
 	} = $props();
 
 	let activeTooltip = $state<string | null>(null);
+	let scrollContainer: HTMLDivElement | undefined = $state();
+
+	function scrollLeft() {
+		if (scrollContainer) scrollContainer.scrollBy({ left: -320, behavior: 'smooth' });
+	}
+
+	function scrollRight() {
+		if (scrollContainer) scrollContainer.scrollBy({ left: 320, behavior: 'smooth' });
+	}
 </script>
 
 <div class="scroll-section">
 	<div class="section-header">
 		<h2><i class={icon}></i> {title}</h2>
-		<a href={resolve('/list')} class="see-all"
-			>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
-		>
+		<div class="header-actions">
+			<div class="desktop-nav-arrows">
+				<button type="button" class="nav-arrow" aria-label="Scroll left" onclick={scrollLeft}>
+					<i class="fa-solid fa-chevron-left"></i>
+				</button>
+				<button type="button" class="nav-arrow" aria-label="Scroll right" onclick={scrollRight}>
+					<i class="fa-solid fa-chevron-right"></i>
+				</button>
+			</div>
+			<a href={resolve('/list')} class="see-all"
+				>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
+			>
+		</div>
 	</div>
-	<div class="highlight-scroll">
+	<div class="highlight-scroll" bind:this={scrollContainer}>
 		{#each items as item (item.id)}
 			<a href={resolve(`/list/${item.id}`)} class="highlight-card glass-card">
 				<div class="highlight-header">
@@ -163,6 +182,39 @@
 
 	.section-header h2 i {
 		color: var(--color-accent);
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.desktop-nav-arrows {
+		display: none;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.nav-arrow {
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		color: var(--text-secondary);
+		border-radius: 999px;
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			color 0.2s;
+	}
+
+	.nav-arrow:hover {
+		background: color-mix(in srgb, var(--text-primary) 15%, transparent);
+		color: var(--text-primary);
 	}
 
 	.see-all {
@@ -392,6 +444,10 @@
 	@media (min-width: 48rem) {
 		.scroll-section {
 			max-width: min(100%, 74rem);
+		}
+
+		.desktop-nav-arrows {
+			display: flex;
 		}
 
 		.highlight-card {

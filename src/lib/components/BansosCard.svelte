@@ -34,31 +34,6 @@
 			{#each item.tags as tag (tag)}
 				<span class="tag-badge">{tag}</span>
 			{/each}
-			<span
-				class="tag-badge views-badge"
-				style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
-			>
-				<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
-				{views}
-			</span>
-			{#if comments > 0}
-				<span
-					class="tag-badge comments-badge"
-					style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
-				>
-					<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
-					{comments}
-				</span>
-			{/if}
-			{#if reactions > 0}
-				<span
-					class="tag-badge reactions-badge"
-					style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-warning); border-color: var(--color-warning-glow);"
-				>
-					<i class="fa-regular fa-thumbs-up" style="font-size: 0.7rem;"></i>
-					{reactions}
-				</span>
-			{/if}
 		</div>
 		<div class="status-container">
 			<span class="status-badge status-{status}">
@@ -122,8 +97,23 @@
 
 	<p class="card-desc text-pretty">{item.description}</p>
 
-	<div class="card-actions">
-		<a href={resolve(`/list/${item.id}`)} class="btn-primary"> Lihat Cara Klaim Lengkap </a>
+	<div class="card-footer">
+		<div class="card-actions">
+			<a href={resolve(`/list/${item.id}`)} class="btn-primary"> Lihat Cara Klaim Lengkap </a>
+		</div>
+		<div class="card-stats">
+			<span class="stat-icon" title="Views"><i class="fa-regular fa-eye"></i> {views}</span>
+			{#if comments > 0}
+				<span class="stat-icon" title="Comments"
+					><i class="fa-regular fa-comment"></i> {comments}</span
+				>
+			{/if}
+			{#if reactions > 0}
+				<span class="stat-icon" title="Reactions"
+					><i class="fa-regular fa-thumbs-up"></i> {reactions}</span
+				>
+			{/if}
+		</div>
 	</div>
 </article>
 
@@ -320,12 +310,40 @@
 		font-size: 0.95rem;
 	}
 
-	.card-actions {
+	.card-footer {
 		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.card-actions {
+		flex: 1;
 	}
 
 	.card-actions .btn-primary {
 		width: 100%;
+	}
+
+	.card-stats {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.stat-icon {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		font-weight: 600;
+	}
+
+	.stat-icon i {
+		font-size: 0.8rem;
+		opacity: 0.8;
 	}
 
 	@media (max-width: 48rem) {

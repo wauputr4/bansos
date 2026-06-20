@@ -5,7 +5,7 @@ const match = text.match(/export const bansosList: BansosItem\[\] = (\[[\s\S]*?\
 if (match) {
 	const fn = new Function(`return ${match[1]}`);
 	const data = fn();
-	fs.writeFileSync('src/lib/data/bansos.json', JSON.stringify(data, null, 2));
+	fs.writeFileSync('src/lib/data/bansos.json', JSON.stringify(data, null, '\t') + '\n');
 	console.log('Success');
 } else {
 	console.log('No match');

@@ -16,11 +16,12 @@ jobs:
   add:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
+          persist-credentials: false
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
@@ -31,9 +32,6 @@ jobs:
         run: node scripts/add-bansos.mjs --json "$BANSOS_PAYLOAD"
         env:
           BANSOS_PAYLOAD: ${{ inputs.payload }}
-
-      - name: Generate commit contributors
-        run: npm run generate:commit-contributors
 
       - run: npm run build
 
@@ -53,7 +51,7 @@ jobs:
 
           git switch -c "$branch"
           git remote set-url origin https://x-access-token:${AUTH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git add src/lib/data/bansos.json src/lib/data/commit-contributors.json
+          git add src/lib/data/bansos.json
           git commit -m "feat: add ${item_title}"
           git push --force origin "$branch"
 

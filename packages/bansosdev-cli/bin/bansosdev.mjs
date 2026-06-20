@@ -7,6 +7,11 @@ const DEFAULT_OWNER = 'wauputr4';
 const DEFAULT_REPO = 'bansos';
 const WORKFLOW_ID = 'add-bansos.yml';
 
+/**
+ * Parses command-line arguments into a structured object.
+ * @param {string[]} argv The raw command-line arguments array.
+ * @returns {Record<string, string>} A dictionary of parsed arguments.
+ */
 function parseArgs(argv) {
 	const [command, ...rest] = argv;
 	const args = { command };
@@ -25,6 +30,11 @@ function parseArgs(argv) {
 	return args;
 }
 
+/**
+ * Parses a JSON payload from either a string or file path.
+ * @param {string} jsonInput A valid JSON string or path to a JSON file.
+ * @returns {Record<string, any>} The parsed JSON object.
+ */
 function parseJsonPayload(jsonInput) {
 	if (!jsonInput) {
 		return {};
@@ -51,6 +61,11 @@ function parseJsonPayload(jsonInput) {
 	}
 }
 
+/**
+ * Parses a value into a strict boolean.
+ * @param {any} value The value to parse.
+ * @returns {boolean} True if truthy, false otherwise.
+ */
 function parseBooleanValue(value) {
 	if (typeof value === 'boolean') return value;
 	if (typeof value === 'number') return value === 1;
@@ -61,6 +76,11 @@ function parseBooleanValue(value) {
 	return false;
 }
 
+/**
+ * Merges arguments with JSON payload if provided.
+ * @param {Record<string, string>} args The arguments object.
+ * @returns {Record<string, any>} The merged payload inputs.
+ */
 function mergePayloadInput(args) {
 	const jsonPayload = parseJsonPayload(args.json);
 	const mergedArgs = { ...jsonPayload, ...args };
@@ -92,15 +112,21 @@ function mergePayloadInput(args) {
 	if (!mergedArgs['published-at'] && jsonPayload.publishedAt) {
 		mergedArgs['published-at'] = jsonPayload.publishedAt;
 	}
+	if (!mergedArgs['provider'] && jsonPayload.provider) {
+		mergedArgs['provider'] = jsonPayload.provider;
+	}
 
 	return mergedArgs;
 }
 
+/**
+ * Prints the CLI help message.
+ */
 function help() {
 	console.log(`bansosdev
 
 Usage:
-  npx bansosdev add --id my-bansos --title "Promo" --provider "Provider" ...
+  npx bansosdev add --id my-bansos --title "Promo" --provider "Provider Name" ...
 
 Modes:
   --mode direct   Trigger trusted GitHub Action commit (needs token)
@@ -110,7 +136,8 @@ Modes:
 Required:
   --id
   --title
-  --provider
+  --provider "Nama Provider"
+
   --description
   --benefits "Benefit 1|Benefit 2"
   --validity-type fixed|uncertain|forever
@@ -135,6 +162,13 @@ Optional:
 `);
 }
 
+/**
+ * Retrieves a required argument or throws an error.
+ * @param {Record<string, string>} args The parsed arguments object.
+ * @param {string} key The argument key to retrieve.
+ * @returns {string} The argument value.
+ * @throws {Error} If the argument is missing.
+ */
 function required(args, key) {
 	if (!args[key]) {
 		throw new Error(`Missing required argument --${key}`);
@@ -142,6 +176,11 @@ function required(args, key) {
 	return args[key];
 }
 
+/**
+ * Splits a pipe-separated string into an array of trimmed strings.
+ * @param {string} value The pipe-separated string.
+ * @returns {string[]} The array of trimmed strings.
+ */
 function list(value) {
 	if (Array.isArray(value)) {
 		return value.map((item) => String(item || '').trim()).filter(Boolean);
@@ -153,6 +192,11 @@ function list(value) {
 		.filter(Boolean);
 }
 
+/**
+ * Splits a comma-separated string into an array of trimmed strings.
+ * @param {string|string[]} value The comma-separated string or array.
+ * @returns {string[]} The array of trimmed strings.
+ */
 function csv(value) {
 	if (Array.isArray(value)) {
 		return value.map((item) => String(item || '').trim()).filter(Boolean);
@@ -164,6 +208,13 @@ function csv(value) {
 		.filter(Boolean);
 }
 
+/**
+ * Validates and formats a URL string.
+ * @param {string} value The URL string to validate.
+ * @param {string} key The argument key used for error reporting.
+ * @returns {string} The validated URL string.
+ * @throws {Error} If the URL is invalid or protocol is not http(s).
+ */
 function validateUrl(value, key) {
 	let parsed;
 	try {
@@ -179,6 +230,11 @@ function validateUrl(value, key) {
 	return parsed.toString();
 }
 
+/**
+ * Checks if a string is a valid calendar date in YYYY-MM-DD format.
+ * @param {string} value The date string to check.
+ * @returns {boolean} True if valid calendar date, false otherwise.
+ */
 function isValidCalendarDate(value) {
 	if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
 		return false;
@@ -192,6 +248,11 @@ function isValidCalendarDate(value) {
 	);
 }
 
+/**
+ * Builds the bansos payload object from merged arguments.
+ * @param {Record<string, any>} args The parsed and merged arguments.
+ * @returns {Record<string, any>} The complete JSON payload.
+ */
 function payloadFromArgs(args) {
 	const validityType = required(args, 'validity-type');
 	if (!['fixed', 'uncertain', 'forever'].includes(validityType)) {
@@ -216,9 +277,22 @@ function payloadFromArgs(args) {
 	if (args['validity-desc']) {
 		validity.description = args['validity-desc'];
 	}
-	const publishedAt = args['published-at'] || new Date().toISOString().slice(0, 10);
+	const _d = new Date();
+	const localToday = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`;
+
+	const publishedAt = args['published-at'] || localToday;
 	if (!isValidCalendarDate(publishedAt)) {
-		throw new Error('--published-at must be a valid YYYY-MM-DD date');
+		throw new Error('publishedAt must be a valid YYYY-MM-DD date');
+	}
+
+	const today = localToday;
+	const start = publishedAt || today;
+	let calculatedStatus = 'active';
+
+	if (start > today) {
+		calculatedStatus = 'upcoming';
+	} else if (validity.type === 'fixed' && validity.date && validity.date < today) {
+		calculatedStatus = 'expired';
 	}
 
 	const contributorName =
@@ -233,6 +307,7 @@ function payloadFromArgs(args) {
 		id: required(args, 'id'),
 		title: required(args, 'title'),
 		provider: required(args, 'provider'),
+
 		description: required(args, 'description'),
 		benefits: list(required(args, 'benefits')),
 		promoCode,
@@ -251,7 +326,7 @@ function payloadFromArgs(args) {
 		ctaLink: validateUrl(required(args, 'cta-link'), 'cta-link'),
 		tags: csv(required(args, 'tags')),
 		featured,
-		status: args.status || 'active'
+		status: args.status || calculatedStatus
 	};
 
 	if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.id)) {

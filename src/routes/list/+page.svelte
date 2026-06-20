@@ -3,17 +3,17 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
-	import ContributeModal from '$lib/components/ContributeModal.svelte';
+
 	import { bansosList } from '$lib/data/bansos';
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let selectedValidities: string[] = $state([]);
-	let sortOrder: 'newest' | 'oldest' | 'popular' | 'comments' | 'reactions' = $state('popular');
+	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('popular');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
 	let searchQuery = $state('');
-	let modalOpen = $state(false);
+
 	const pageSize = 6;
 
 	let popularityData: Record<string, number> = $state({});
@@ -94,17 +94,15 @@
 					return b.score - a.score;
 				}
 				if (sortOrder === 'popular') {
-					const viewsA = popularityData[a.item.id] || 0;
-					const viewsB = popularityData[b.item.id] || 0;
-					if (viewsA !== viewsB) return viewsB - viewsA;
-				} else if (sortOrder === 'comments') {
-					const commentsA = discussionStats[a.item.id]?.comments || 0;
-					const commentsB = discussionStats[b.item.id]?.comments || 0;
-					if (commentsA !== commentsB) return commentsB - commentsA;
-				} else if (sortOrder === 'reactions') {
-					const reactionsA = discussionStats[a.item.id]?.reactions || 0;
-					const reactionsB = discussionStats[b.item.id]?.reactions || 0;
-					if (reactionsA !== reactionsB) return reactionsB - reactionsA;
+					const scoreA =
+						(popularityData[a.item.id] || 0) +
+						(discussionStats[a.item.id]?.comments || 0) +
+						(discussionStats[a.item.id]?.reactions || 0);
+					const scoreB =
+						(popularityData[b.item.id] || 0) +
+						(discussionStats[b.item.id]?.comments || 0) +
+						(discussionStats[b.item.id]?.reactions || 0);
+					if (scoreA !== scoreB) return scoreB - scoreA;
 				}
 				return sortOrder === 'oldest' ? a.index - b.index : b.index - a.index;
 			})
@@ -207,10 +205,6 @@
 				</h1>
 			</div>
 			<div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;">
-				<button class="btn-submit-bansos" onclick={() => (modalOpen = true)}>
-					<i class="fa-solid fa-plus"></i>
-					Tambah Bansos
-				</button>
 				<p class="subtitle-text text-pretty">
 					Eksplorasi {bansosList.length} program bantuan sosial untuk developer jelata. Klik kartu bansos
 					untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
@@ -259,20 +253,6 @@
 									onclick={() => (sortOrder = 'popular')}
 								>
 									Terpopuler
-								</button>
-								<button
-									class="tag-btn"
-									class:active={sortOrder === 'comments'}
-									onclick={() => (sortOrder = 'comments')}
-								>
-									Komentar
-								</button>
-								<button
-									class="tag-btn"
-									class:active={sortOrder === 'reactions'}
-									onclick={() => (sortOrder = 'reactions')}
-								>
-									Reaksi
 								</button>
 								<button
 									class="tag-btn"
@@ -429,8 +409,6 @@
 	</section>
 </main>
 
-<ContributeModal bind:open={modalOpen} />
-
 <style>
 	.page-wrapper {
 		position: relative;
@@ -523,6 +501,7 @@
 		font-weight: 650;
 		cursor: pointer;
 		padding: 1rem 1.5rem;
+		gap: 0.75rem;
 	}
 
 	.filter-title {
@@ -789,28 +768,5 @@
 		.bansos-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
-	}
-
-	.btn-submit-bansos {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		background: var(--color-accent);
-		color: #ffffff;
-		border: none;
-		border-radius: 0.5rem;
-		padding: 0.5rem 1rem;
-		font-family: inherit;
-		font-size: 0.85rem;
-		font-weight: 750;
-		cursor: pointer;
-		transition: all 0.2s;
-		white-space: nowrap;
-	}
-
-	.btn-submit-bansos:hover {
-		background: color-mix(in srgb, var(--color-accent) 85%, #000);
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px var(--color-accent-glow);
 	}
 </style>

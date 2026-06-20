@@ -20,9 +20,9 @@
 	const repoUrl = `https://github.com/${repo}`;
 
 	// SEO metadata
-	const metaTitle = 'Bansos Developer - Bantuan Sosial untuk Developer Jelata';
+	const metaTitle = 'Bansos Developer & AI - Bantuan Sosial untuk Programmer Jelata';
 	const metaDescription =
-		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
+		'Kumpulan promo gratisan, diskon, credit API AI gratis, dan bantuan sosial (bansos) khusus untuk developer dan programmer di Indonesia. Domain gratis, cloud server, credit AI, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev';
 	const latestBansosList = latestBansos(10);
 	const featuredBansosList = featuredBansos(10);
@@ -111,7 +111,7 @@
 	<meta name="description" content={metaDescription} />
 	<meta
 		name="keywords"
-		content="bansos dev, bantuan sosial developer, domain gratis, name.com gratis, devweek26, developer jelata, promo developer, cloud gratis, coding gratisan"
+		content="bansos dev, bansos ai, bansos developer, bansos programmer, bantuan sosial developer, bantuan sosial ai, api ai gratis, domain gratis, server gratis, promo developer, cloud gratis, coding gratisan"
 	/>
 
 	<meta property="og:type" content="website" />
