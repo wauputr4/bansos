@@ -107,6 +107,7 @@
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
+	let activeContributorTab = $state<'project' | 'registered'>('project');
 
 	const copyToClipboard = async (text: string, id: string) => {
 		try {
@@ -430,68 +431,86 @@
 			</div>
 		{/if}
 
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-code-commit"></i>
-				Kontributor Proyek
-			</h2>
-			<p class="section-note">
-				Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode atau data
-				lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau pernah diupdate.
-			</p>
-			<ul class="commit-contributors-list">
-				{#each commitContributors as contributor (contributor.login)}
-					<li
-						class="commit-contributor-card"
-						class:author-highlight={contributor.login === 'wauputr4'}
-					>
-						<a
-							href={`https://github.com/${contributor.login}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-							<span class="login-name">@{contributor.login}</span>
-							{#if contributor.login === 'wauputr4'}
-								<span class="author-badge" title="Author">
-									<i class="fa-solid fa-crown"></i>
-									<span class="author-text">Author</span>
-								</span>
-							{/if}
-						</a>
-						<span class="contributor-count">{contributor.count} data tersentuh</span>
-					</li>
-				{/each}
-			</ul>
-		</section>
+		<div class="contributor-tabs-container">
+			<div class="contributor-tabs-header">
+				<button
+					class="contrib-tab-btn"
+					class:active={activeContributorTab === 'project'}
+					onclick={() => (activeContributorTab = 'project')}
+				>
+					<i class="fa-solid fa-code-commit"></i>
+					<span>Kontributor Proyek ({commitContributors.length})</span>
+				</button>
+				<button
+					class="contrib-tab-btn"
+					class:active={activeContributorTab === 'registered'}
+					onclick={() => (activeContributorTab = 'registered')}
+				>
+					<i class="fa-solid fa-users"></i>
+					<span>Kontributor Terdaftar ({contributors.length})</span>
+				</button>
+			</div>
 
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-users"></i>
-				Kontributor Terdaftar
-			</h2>
-			<p class="section-note">
-				Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update data
-				bansos via CLI/sistem.
-			</p>
-			{#if contributors.length > 0}
-				<ul class="contributors-list">
-					{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
-						<li class="contributor-card">
-							<div class="contributor-name">
-								<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-								<a href={contributor.url} target="_blank" rel="noopener noreferrer">
-									{contributor.name}
-								</a>
-							</div>
-							<span class="contributor-count">{contributor.count} kontribusi</span>
-						</li>
-					{/each}
-				</ul>
-			{:else}
-				<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
-			{/if}
-		</section>
+			<div class="contributor-tab-content">
+				{#if activeContributorTab === 'project'}
+					<div class="contrib-tab-panel">
+						<p class="section-note">
+							Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode
+							atau data lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau
+							pernah diupdate.
+						</p>
+						<ul class="commit-contributors-list">
+							{#each commitContributors as contributor (contributor.login)}
+								<li
+									class="commit-contributor-card"
+									class:author-highlight={contributor.login === 'wauputr4'}
+								>
+									<a
+										href={`https://github.com/${contributor.login}`}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+										<span class="login-name">@{contributor.login}</span>
+										{#if contributor.login === 'wauputr4'}
+											<span class="author-badge" title="Author">
+												<i class="fa-solid fa-crown"></i>
+												<span class="author-text">Author</span>
+											</span>
+										{/if}
+									</a>
+									<span class="contributor-count">{contributor.count} data tersentuh</span>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{:else if activeContributorTab === 'registered'}
+					<div class="contrib-tab-panel">
+						<p class="section-note">
+							Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update
+							data bansos via CLI/sistem.
+						</p>
+						{#if contributors.length > 0}
+							<ul class="contributors-list">
+								{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
+									<li class="contributor-card">
+										<div class="contributor-name">
+											<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+											<a href={contributor.url} target="_blank" rel="noopener noreferrer">
+												{contributor.name}
+											</a>
+										</div>
+										<span class="contributor-count">{contributor.count} kontribusi</span>
+									</li>
+								{/each}
+							</ul>
+						{:else}
+							<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
+						{/if}
+					</div>
+				{/if}
+			</div>
+		</div>
 	</section>
 </main>
 
@@ -1138,5 +1157,56 @@
 			transform: scale(1.08);
 			opacity: 1;
 		}
+	}
+
+	.contributor-tabs-container {
+		margin-top: 3.5rem;
+		border: 1px solid var(--border-color);
+		border-radius: 1.25rem;
+		background: rgba(255, 255, 255, 0.02);
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.contributor-tabs-header {
+		display: flex;
+		border-bottom: 1px solid var(--border-color);
+		padding-bottom: 0.5rem;
+		gap: 1.5rem;
+	}
+
+	.contrib-tab-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: transparent;
+		border: none;
+		border-bottom: 2px solid transparent;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 750;
+		padding: 0.5rem 0.25rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		padding-bottom: 0.75rem;
+		margin-bottom: -0.6rem;
+	}
+
+	.contrib-tab-btn:hover {
+		color: var(--text-primary);
+	}
+
+	.contrib-tab-btn.active {
+		color: var(--color-accent);
+		border-bottom-color: var(--color-accent);
+	}
+
+	.contrib-tab-panel {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 </style>
