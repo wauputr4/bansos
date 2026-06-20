@@ -8,7 +8,8 @@ export const GET: RequestHandler = async ({ platform }) => {
 	const CF_ZONE_ID = platform?.env?.CF_ZONE_ID || process.env.CF_ZONE_ID;
 
 	if (!CF_API_TOKEN || !CF_ZONE_ID) {
-		return json({ error: 'Cloudflare credentials not configured' }, { status: 500 });
+		// Return empty popularity data gracefully if token is not configured (local dev / preview)
+		return json({});
 	}
 
 	const query = `
