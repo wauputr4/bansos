@@ -20,6 +20,13 @@
 	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
 
 	onMount(async () => {
+		// Hydrate search query from URL parameter if present (e.g. from Google SearchAction)
+		const urlParams = new URLSearchParams(window.location.search);
+		const q = urlParams.get('q');
+		if (q) {
+			searchQuery = q;
+		}
+
 		try {
 			const res = await fetch('/api/popularity');
 			if (res.ok) {
@@ -140,6 +147,25 @@
 		name="description"
 		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
 	/>
+	<link rel="canonical" href="https://bansos.dev/list/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/list/" />
+	<meta property="og:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
+	<meta
+		property="og:description"
+		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/list/" />
+	<meta property="twitter:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
+	<meta
+		property="twitter:description"
+		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
@@ -207,7 +233,7 @@
 			<div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;">
 				<p class="subtitle-text text-pretty">
 					Eksplorasi {bansosList.length} program bantuan sosial untuk developer jelata. Klik kartu bansos
-					untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
+					untuk melihat langkah-langkah detail dan cara klaim kodenya.
 				</p>
 			</div>
 		</div>
@@ -229,14 +255,16 @@
 					aria-expanded={filterExpanded}
 				>
 					<div class="filter-title">
-						<i class="fa-solid fa-filter"></i> Filter
+						<i class="fa-solid fa-filter"></i>
+						<span class="filter-text-desktop"> Filter</span>
 						{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
 							<span class="active-count"
 								>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
 							>
 						{/if}
 					</div>
-					<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
+					<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'} filter-chevron-desktop"
+					></i>
 				</button>
 				{#if filterExpanded}
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -334,78 +362,114 @@
 								{/each}
 							</div>
 						</div>
-
-						<div class="filter-group">
-							<h3 class="filter-group-title">Kategori</h3>
-							<div class="tag-grid">
-								<button
-									class="tag-btn"
-									class:active={selectedTags.length === 0}
-									onclick={() => (selectedTags = [])}
-								>
-									Semua Kategori
-								</button>
-								{#each dynamicTags as tag (tag)}
-									<button
-										class="tag-btn"
-										class:active={selectedTags.includes(tag)}
-										onclick={() => {
-											if (selectedTags.includes(tag)) {
-												selectedTags = selectedTags.filter((t) => t !== tag);
-											} else {
-												selectedTags = [...selectedTags, tag];
-											}
-										}}
-									>
-										{tag}
-									</button>
-								{/each}
-							</div>
-						</div>
 					</div>
 				{/if}
 			</div>
 		</div>
-	</section>
 
-	<!-- Grid List -->
-	<section class="feed-section container">
-		{#if filteredBansos.length === 0}
-			<div class="empty-state glass-card">
-				<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
-				<h2>Wah, Bansos Kosong!</h2>
-				<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+		<!-- Category Slider for Mobile/Tablet -->
+		<div class="category-slider-wrapper mobile-only-categories">
+			<div class="category-slider">
 				<button
-					class="btn-primary"
-					onclick={() => {
-						selectedTags = [];
-						selectedStatuses = [];
-						selectedValidities = [];
-						sortOrder = 'popular';
-						searchQuery = '';
-						currentPage = 1;
-					}}
+					class="category-slide-btn"
+					class:active={selectedTags.length === 0}
+					onclick={() => (selectedTags = [])}
 				>
-					Reset Filter
+					Semua Kategori
 				</button>
-			</div>
-		{:else}
-			<div class="result-summary">
-				<span>Menampilkan {pageStart}-{pageEnd} dari {filteredBansos.length} bansos</span>
-				<span>Halaman {currentPage} dari {totalPages}</span>
-			</div>
-			<div class="bansos-grid">
-				{#each paginatedBansos as item (item.id)}
-					<BansosCard
-						{item}
-						views={popularityData[item.id] || 0}
-						comments={discussionStats[item.id]?.comments || 0}
-						reactions={discussionStats[item.id]?.reactions || 0}
-					/>
+				{#each dynamicTags as tag (tag)}
+					<button
+						class="category-slide-btn"
+						class:active={selectedTags.includes(tag)}
+						onclick={() => {
+							if (selectedTags.includes(tag)) {
+								selectedTags = selectedTags.filter((t) => t !== tag);
+							} else {
+								selectedTags = [...selectedTags, tag];
+							}
+						}}
+					>
+						{tag}
+					</button>
 				{/each}
 			</div>
-			<Pagination bind:currentPage {totalPages} />
-		{/if}
+		</div>
+	</section>
+
+	<!-- Grid List with Desktop Sidebar Layout -->
+	<section class="feed-section container">
+		<div class="list-layout-container">
+			<!-- Sidebar for Desktop -->
+			<aside class="desktop-sidebar">
+				<div class="sidebar-filter-card">
+					<h3 class="sidebar-title">Kategori</h3>
+					<div class="sidebar-tag-list">
+						<button
+							class="sidebar-tag-btn"
+							class:active={selectedTags.length === 0}
+							onclick={() => (selectedTags = [])}
+						>
+							Semua Kategori
+						</button>
+						{#each dynamicTags as tag (tag)}
+							<button
+								class="sidebar-tag-btn"
+								class:active={selectedTags.includes(tag)}
+								onclick={() => {
+									if (selectedTags.includes(tag)) {
+										selectedTags = selectedTags.filter((t) => t !== tag);
+									} else {
+										selectedTags = [...selectedTags, tag];
+									}
+								}}
+							>
+								{tag}
+							</button>
+						{/each}
+					</div>
+				</div>
+			</aside>
+
+			<!-- Main Content Area -->
+			<div class="main-content-area">
+				{#if filteredBansos.length === 0}
+					<div class="empty-state glass-card">
+						<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
+						<h2>Wah, Bansos Kosong!</h2>
+						<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+						<button
+							class="btn-primary"
+							onclick={() => {
+								selectedTags = [];
+								selectedStatuses = [];
+								selectedValidities = [];
+								sortOrder = 'popular';
+								searchQuery = '';
+								currentPage = 1;
+							}}
+						>
+							Reset Filter
+						</button>
+					</div>
+				{:else}
+					<div class="result-summary">
+						<span>Menampilkan {pageStart}-{pageEnd} dari {filteredBansos.length} bansos</span>
+						<span>Halaman {currentPage} dari {totalPages}</span>
+					</div>
+					<div class="bansos-grid">
+						{#each paginatedBansos as item (item.id)}
+							<BansosCard
+								{item}
+								views={popularityData[item.id] || 0}
+								comments={discussionStats[item.id]?.comments || 0}
+								reactions={discussionStats[item.id]?.reactions || 0}
+							/>
+						{/each}
+					</div>
+					<Pagination bind:currentPage {totalPages} />
+				{/if}
+			</div>
+		</div>
 	</section>
 </main>
 
@@ -453,13 +517,16 @@
 	}
 
 	.controls-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 		margin-bottom: -1rem;
 	}
 
 	.controls-wrapper {
 		display: flex;
 		flex-direction: row;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		align-items: stretch;
 	}
 
@@ -489,7 +556,7 @@
 
 	.filter-header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		width: 100%;
 		height: 100%;
@@ -500,8 +567,32 @@
 		font-size: 1.05rem;
 		font-weight: 650;
 		cursor: pointer;
-		padding: 1rem 1.5rem;
-		gap: 0.75rem;
+		padding: 1rem;
+		gap: 0.5rem;
+	}
+
+	.filter-text-desktop {
+		display: none;
+	}
+
+	.filter-chevron-desktop {
+		display: none;
+	}
+
+	@media (min-width: 48rem) {
+		.filter-header {
+			justify-content: space-between;
+			padding: 1rem 1.5rem;
+			gap: 0.75rem;
+		}
+
+		.filter-text-desktop {
+			display: inline;
+		}
+
+		.filter-chevron-desktop {
+			display: inline-block;
+		}
 	}
 
 	.filter-title {
@@ -767,6 +858,130 @@
 	@media (min-width: 48rem) {
 		.bansos-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.category-slider {
+		display: flex;
+		gap: 0.5rem;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		padding-block: 0.5rem;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none; /* Hide scrollbar */
+	}
+
+	.category-slider::-webkit-scrollbar {
+		display: none;
+	}
+
+	.category-slide-btn {
+		white-space: nowrap;
+		padding: 0.5rem 1.15rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		font-weight: 750;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.category-slide-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		border-color: var(--text-secondary);
+	}
+
+	.category-slide-btn.active {
+		color: #fff;
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+	}
+
+	.list-layout-container {
+		display: flex;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.desktop-sidebar {
+		display: none;
+		width: 16rem;
+		flex-shrink: 0;
+	}
+
+	.sidebar-filter-card {
+		background: color-mix(in srgb, var(--text-primary) 2%, var(--bg-secondary));
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		padding: 1.5rem;
+		position: sticky;
+		top: 5.5rem;
+	}
+
+	.sidebar-title {
+		font-size: 0.95rem;
+		font-weight: 850;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.sidebar-tag-list {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.sidebar-tag-btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		font-weight: 750;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.sidebar-tag-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		border-color: var(--text-secondary);
+	}
+
+	.sidebar-tag-btn.active {
+		color: #fff;
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+	}
+
+	.main-content-area {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.category-slider-wrapper {
+		margin-top: 1rem;
+		width: 100%;
+	}
+
+	@media (min-width: 64rem) {
+		.desktop-sidebar {
+			display: block;
+		}
+		.mobile-only-categories {
+			display: none;
 		}
 	}
 </style>

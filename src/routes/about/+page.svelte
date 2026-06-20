@@ -12,6 +12,31 @@
 		name="keywords"
 		content="bansos.dev, katalog promo developer, open source Indonesia, domain gratis, cloud credits gratis, API credits, hosting free tier, startup credits, SvelteKit"
 	/>
+	<link rel="canonical" href="https://bansos.dev/about/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/about/" />
+	<meta
+		property="og:title"
+		content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia"
+	/>
+	<meta
+		property="og:description"
+		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/about/" />
+	<meta
+		property="twitter:title"
+		content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia"
+	/>
+	<meta
+		property="twitter:description"
+		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
@@ -32,33 +57,73 @@
 
 		<div class="info-grid">
 			<section class="info-card">
-				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah ditemukan</h2>
+				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah Ditemukan</h2>
 				<p>
 					Setiap listing disimpan sebagai data terstruktur, punya tag, status aktif/expired, masa
-					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list
-					maupun mesin pencari.
+					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-code-branch"></i> Open source</h2>
+				<h2><i class="fa-solid fa-eye"></i> 100% Transparan</h2>
 				<p>
-					Repo `wauputr4/bansos` dibangun sebagai SvelteKit static site yang bisa diaudit, difork,
-					dan dikontribusikan lewat GitHub. Data utama tersimpan di `src/lib/data/bansos.json`.
+					Semua request penambahan bansos baru, validasi data, serta diskusi komunitas dilakukan
+					secara terbuka langsung di GitHub Issue &amp; Pull Request.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-terminal"></i> Kontribusi via CLI</h2>
+				<h2><i class="fa-solid fa-code"></i> Open Source &amp; Self-Hosted</h2>
 				<p>
-					Kontributor bisa menambahkan program baru lewat `npx bansosdev add`. Payload yang valid
-					akan masuk ke issue dan dapat diproses menjadi Pull Request otomatis.
+					Kode sumber dan data bansos.dev sepenuhnya open-source. Kamu bisa clone, review kodenya,
+					bahkan meng-host situs ini sendiri di infrastruktur milikmu.
 				</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi komunitas</h2>
+				<h2><i class="fa-solid fa-terminal"></i> Kontribusi Instan</h2>
 				<p>
-					Setiap entry sebaiknya memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
-					jelas. Tujuannya bukan clickbait, tapi katalog praktis buat developer yang lagi hemat
-					budget.
+					Kontributor bisa menambahkan program baru secara otomatis lewat form interaktif atau
+					perintah CLI `npx bansosdev add` tanpa perlu setup code environment.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi Komunitas</h2>
+				<p>
+					Setiap entry dipastikan memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
+					jelas. Tujuannya murni buat saling bantu menghemat budget.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-handshake"></i> Adil &amp; Sportif</h2>
+				<p>
+					Mendukung pemakaian link referral pribadi kontributor sebagai bentuk reward, dengan aturan
+					ketat dilarang menimpa link referral milik orang lain.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-credit-card"></i> Tanpa Kartu Kredit</h2>
+				<p>
+					Semua program yang terdaftar diupayakan gratis tanpa minta nomor kartu kredit. Bebas dari
+					jebakan auto-debit langganan setelah masa promo berakhir.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-user-shield"></i> Bebas Iklan &amp; Tracker</h2>
+				<p>
+					Situs ini murni dibangun untuk membantu developer. Tidak ada banner iklan berkedip, spam
+					popup, tracker nakal, ataupun link shortener jebakan.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-gauge-high"></i> Ringan &amp; Hemat Kuota</h2>
+				<p>
+					Dibangun menggunakan SvelteKit static generation yang super gesit. Halaman dimuat instant,
+					hemat kuota data, dan ramah koneksi internet pas-pasan.
+				</p>
+			</section>
+			<section class="info-card">
+				<h2><i class="fa-solid fa-comments"></i> Grup Komunitas Kompak</h2>
+				<p>
+					Punya kendala klaim atau butuh info bansos terbaru paling cepat? Dapatkan bantuan dan
+					bocoran promo langsung di grup komunitas Discord atau Telegram kami.
 				</p>
 			</section>
 		</div>
@@ -68,23 +133,80 @@
 			<a href={resolve('/contribute')} class="about-link">Cara Kontribusi</a>
 		</div>
 
+		<section class="discord-community-section">
+			<h2>
+				<i class="fa-brands fa-discord"></i> Gabung Discord Community!
+			</h2>
+			<p>
+				Mau bahas info bansos terbaru, tanya-tanya seputar development, kolaborasi side project,
+				atau sekadar nongkrong bareng developer jelata lainnya? Yuk, join server Discord kami
+				sekarang!
+			</p>
+			<div class="discord-button-wrapper">
+				<a
+					href="https://discord.gg/m4WFaQpNGs"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="discord-pill"
+				>
+					<i class="fa-brands fa-discord"></i> Join Discord Server
+				</a>
+			</div>
+		</section>
+
 		<section class="sponsor-section">
 			<h2>
 				<i class="fa-solid fa-heart"></i> Dukung Proyek Ini
 			</h2>
 			<p>
-				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Jika proyek ini membantumu
-				menghemat budget, pertimbangkan untuk mendukung kelangsungan proyek ini.
+				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Kamu bisa dukung proyek ini lewat
+				sponsor finansial maupun kontribusi langsung!
 			</p>
-			<div class="sponsor-button-wrapper">
-				<a
-					href="https://github.com/sponsors/wauputr4"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="sponsor-pill"
-				>
-					<i class="fa-solid fa-heart"></i> Sponsor wauputra
-				</a>
+
+			<div class="support-options-grid">
+				<div class="support-card">
+					<h3><i class="fa-solid fa-circle-dollar-to-slot text-rose"></i> Finansial (Sponsor)</h3>
+					<p>Bantu bayar hosting atau beli kopi buat core developer lewat GitHub Sponsors:</p>
+					<div class="support-actions">
+						<a
+							href="https://github.com/sponsors/wauputr4"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="sponsor-pill"
+						>
+							<i class="fa-solid fa-heart"></i> wauputr4
+						</a>
+						<a
+							href="https://github.com/sponsors/Renzie2161"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="sponsor-pill"
+						>
+							<i class="fa-solid fa-heart"></i> Renzie2161
+						</a>
+					</div>
+				</div>
+
+				<div class="support-card">
+					<h3><i class="fa-solid fa-code-branch text-emerald"></i> Kontribusi Kode & Data</h3>
+					<p>
+						Bantu kasih star di GitHub, submit info bansos baru, atau open PR buat nambah/update
+						fitur:
+					</p>
+					<div class="support-actions">
+						<a
+							href="https://github.com/wauputr4/bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="contrib-pill github-star-pill"
+						>
+							<i class="fa-solid fa-star"></i> Star di GitHub
+						</a>
+						<a href={resolve('/contribute')} class="contrib-pill submit-bansos-pill">
+							<i class="fa-solid fa-plus"></i> Submit / Open PR
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 	</section>
@@ -170,7 +292,7 @@
 	}
 
 	.sponsor-section {
-		margin-top: 3rem;
+		margin-top: 3.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -193,11 +315,171 @@
 		margin: 0 auto;
 	}
 
-	.sponsor-button-wrapper {
-		margin-top: 1rem;
+	.support-options-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		width: 100%;
+		margin-top: 1.5rem;
+		text-align: left;
+	}
+
+	@media (min-width: 48rem) {
+		.support-options-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.support-card {
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.02);
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.support-card h3 {
+		font-size: 1.15rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.support-card h3 i.text-rose {
+		color: #ec4899;
+	}
+
+	.support-card h3 i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.support-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	.support-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+		padding-top: 0.5rem;
 	}
 
 	.sponsor-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: #fff;
+		font-size: 0.85rem;
+		font-weight: 700;
+		padding: 0.5rem 1rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+		box-shadow: 0 4px 10px rgba(236, 72, 153, 0.2);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+		text-decoration: none;
+	}
+
+	.sponsor-pill:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 6px 14px rgba(236, 72, 153, 0.3);
+		color: #fff;
+	}
+
+	.contrib-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--text-primary);
+		font-size: 0.85rem;
+		font-weight: 700;
+		padding: 0.5rem 1rem;
+		border-radius: 999px;
+		border: 1px solid var(--border-color);
+		background: rgba(255, 255, 255, 0.05);
+		transition: all 0.2s ease;
+		text-decoration: none;
+	}
+
+	.contrib-pill:hover {
+		transform: translateY(-1px);
+		background: rgba(255, 255, 255, 0.08);
+		border-color: var(--text-secondary);
+	}
+
+	.github-star-pill {
+		background: rgba(241, 196, 15, 0.1);
+		border-color: rgba(241, 196, 15, 0.2);
+		color: #f1c40f;
+	}
+
+	.github-star-pill:hover {
+		background: rgba(241, 196, 15, 0.15);
+		border-color: rgba(241, 196, 15, 0.35);
+		color: #f1c40f;
+	}
+
+	.submit-bansos-pill {
+		background: rgba(16, 185, 129, 0.1);
+		border-color: rgba(16, 185, 129, 0.25);
+		color: var(--color-success);
+	}
+
+	.submit-bansos-pill:hover {
+		background: rgba(16, 185, 129, 0.15);
+		border-color: rgba(16, 185, 129, 0.4);
+		color: var(--color-success);
+	}
+
+	.discord-community-section {
+		margin-top: 3.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		text-align: center;
+		border: 1px dashed rgba(88, 101, 242, 0.45);
+		border-radius: 1rem;
+		padding: 2.25rem 1.5rem;
+		background: rgba(88, 101, 242, 0.03);
+	}
+
+	.discord-community-section h2 {
+		font-size: var(--font-size-h2);
+		color: var(--text-primary);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0;
+	}
+
+	.discord-community-section h2 i {
+		color: #5865f2;
+	}
+
+	.discord-community-section p {
+		max-width: 36rem;
+		color: var(--text-secondary);
+		margin: 0 auto;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.discord-button-wrapper {
+		margin-top: 0.5rem;
+	}
+
+	.discord-pill {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
@@ -206,21 +488,17 @@
 		font-weight: 700;
 		padding: 0.6rem 1.25rem;
 		border-radius: 999px;
-		background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-		box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+		background: #5865f2;
+		box-shadow: 0 4px 14px rgba(88, 101, 242, 0.35);
 		transition:
 			transform 0.2s,
 			box-shadow 0.2s;
 		text-decoration: none;
 	}
 
-	.sponsor-pill:hover {
+	.discord-pill:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+		box-shadow: 0 6px 20px rgba(88, 101, 242, 0.45);
 		color: #fff;
-	}
-
-	.sponsor-pill i {
-		font-size: 1.1rem;
 	}
 </style>

@@ -26,7 +26,7 @@
 			"url": "https://wau.my.id"
 		},
 		"ctaLink": "https://www.name.com",
-		"tags": ["Domain", "Gratisan", "No Credit Card"],
+		"tags": ["Domain", "No Credit Card"],
 		"featured": true,
 		"status": "expired",
 		"provider": "Name.com"
@@ -56,7 +56,7 @@
 			"url": "https://wau.my.id"
 		},
 		"ctaLink": "https://www.namecheap.com/hosting/vps/",
-		"tags": ["VPS", "Hosting", "Server", "Gratis Trial"],
+		"tags": ["VPS & Server", "Hosting", "Free Tier"],
 		"featured": false,
 		"status": "active",
 		"provider": "Namecheap"
@@ -88,7 +88,7 @@
 			"url": "https://lynk.id/azizbudisatrio?utm_source=threads&utm_medium=social&utm_content=link_in_bio"
 		},
 		"ctaLink": "https://idwebhost.com/",
-		"tags": ["Domain", "Promo", "Kupon", "Gratisan"],
+		"tags": ["Domain", "Diskon"],
 		"featured": false,
 		"status": "active",
 		"provider": "IDwebhost"
@@ -123,7 +123,7 @@
 			"url": "https://www.mikacend.xyz/"
 		},
 		"ctaLink": "https://www.tokenrouter.com/campaign-rules",
-		"tags": ["AI Credits", "Model API", "Top-up Bonus"],
+		"tags": ["AI Credits", "Diskon"],
 		"featured": false,
 		"status": "active",
 		"provider": "TokenRouter"
@@ -156,7 +156,7 @@
 			"url": "https://www.tokengratis.id/provider/deepseek"
 		},
 		"ctaLink": "https://platform.deepseek.com/api_keys",
-		"tags": ["AI Credits", "Model API", "No Credit Card", "Free Tier"],
+		"tags": ["AI Credits", "No Credit Card", "Free Tier"],
 		"featured": true,
 		"status": "active",
 		"provider": "DeepSeek"
@@ -190,7 +190,7 @@
 			"url": "https://wau.my.id/"
 		},
 		"ctaLink": "https://docs.inceptionlabs.ai/get-started/get-started",
-		"tags": ["AI Credits", "OpenAI Compatible", "API", "Free Tier"],
+		"tags": ["AI Credits", "API", "Free Tier"],
 		"featured": false,
 		"status": "active",
 		"provider": "Inception"
@@ -211,7 +211,7 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://kimchi.dev",
-		"tags": ["AI Credits", "Serverless", "No Credit Card", "Gratisan"],
+		"tags": ["AI Credits", "No Credit Card"],
 		"featured": false,
 		"status": "active",
 		"provider": "Kimchi.dev"
@@ -245,7 +245,7 @@
 			"url": "https://penadigital.tech/"
 		},
 		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
-		"tags": ["AI Credits", "API", "AI Image", "AI Video", "Diskon", "Gratisan"],
+		"tags": ["AI Credits", "API", "AI Tools", "Diskon"],
 		"featured": false,
 		"status": "active",
 		"provider": "Kie.ai"
@@ -274,7 +274,7 @@
 			"url": "https://kelas.bisnix.com/"
 		},
 		"ctaLink": "https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
-		"tags": ["AI Education", "Course", "Gratisan", "Sertifikat", "Referral"],
+		"tags": ["Course", "Diskon"],
 		"featured": true,
 		"status": "active",
 		"provider": "AI Class ASEAN"
@@ -300,7 +300,7 @@
 			"url": "https://labs.dahono.com/"
 		},
 		"ctaLink": "https://labs.dahono.com",
-		"tags": ["API", "AI", "OpenAI Compatible", "Gratisan", "No Credit Card"],
+		"tags": ["API", "AI Tools", "AI Credits", "No Credit Card"],
 		"featured": true,
 		"status": "active",
 		"provider": "Dahono Labs"
@@ -324,7 +324,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://aws.amazon.com/startups/credits/",
-		"tags": ["Cloud", "Gratisan", "Startup"],
+		"tags": ["Cloud Services", "Startup"],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -352,7 +352,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://startup.google.com/cloud/",
-		"tags": ["Cloud", "AI Credits", "Gratisan", "Startup"],
+		"tags": ["Cloud Services", "AI Credits", "Startup"],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -379,7 +379,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://console.x.ai",
-		"tags": ["AI Credits", "API", "Model API"],
+		"tags": ["AI Credits", "API"],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -408,7 +408,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
-		"tags": ["AI Credits", "Course", "AI Education"],
+		"tags": ["AI Credits", "Course"],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -439,7 +439,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://startups.microsoft.com/",
-		"tags": ["Cloud", "Startup", "Gratisan"],
+		"tags": ["Cloud Services", "Startup"],
 		"featured": true,
 		"status": "active",
 		"contributor": {
@@ -469,7 +469,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.digitalocean.com/hatch/",
-		"tags": ["Cloud", "VPS", "Startup", "AI Credits"],
+		"tags": ["Cloud Services", "VPS & Server", "Startup", "AI Credits"],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -498,7 +498,7 @@
 		],
 		"publishedAt": "2026-06-13",
 		"ctaLink": "https://www.mongodb.com/solutions/startups",
-		"tags": ["Database", "Cloud", "Startup"],
+		"tags": ["Cloud Services", "Startup"],
 		"featured": false,
 		"status": "active",
 		"contributor": {
@@ -531,7 +531,7 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://www.namecheap.com/hosting/",
-		"tags": ["Hosting", "Gratis Trial", "Server"],
+		"tags": ["Hosting", "Free Tier", "VPS & Server"],
 		"featured": false,
 		"status": "active",
 		"provider": "Namecheap"
@@ -559,7 +559,7 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://www.tokenrouter.com/",
-		"tags": ["AI Credits", "Model API", "Gratisan"],
+		"tags": ["AI Credits"],
 		"featured": false,
 		"status": "active",
 		"provider": "TokenRouter"
@@ -592,7 +592,7 @@
 			"url": "https://github.com/Aofsnorth"
 		},
 		"ctaLink": "https://zcode.z.ai/en",
-		"tags": ["AI", "Coding", "Gratisan", "GLM", "Z.ai"],
+		"tags": ["AI Tools", "Developer Tools"],
 		"featured": false,
 		"status": "active",
 		"source": "https://zcode.z.ai/en/changelog",
@@ -624,7 +624,7 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://qoder.com/",
-		"tags": ["AI Credits", "Model API", "Gratisan"],
+		"tags": ["AI Credits"],
 		"featured": false,
 		"status": "active",
 		"provider": "Qoder"
@@ -655,7 +655,7 @@
 			"url": "https://www.threads.com/@rizkysiregar23"
 		},
 		"ctaLink": "https://www.notion.so/",
-		"tags": ["AI", "Productivity", "Gratisan", "Notion"],
+		"tags": ["AI Tools"],
 		"featured": false,
 		"status": "active",
 		"provider": "Notion"
@@ -687,7 +687,7 @@
 			"url": "https://github.com/Aofsnorth"
 		},
 		"ctaLink": "https://aerolink.lat/",
-		"tags": ["AI", "API", "Cloud", "Gratisan", "Developer"],
+		"tags": ["AI Tools", "API", "Cloud Services"],
 		"featured": false,
 		"status": "active",
 		"provider": "Aerolink"
@@ -709,7 +709,7 @@
 		},
 		"source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
 		"ctaLink": "http://g.co/g1referral/JG620Z3F",
-		"tags": ["AI", "Cloud", "Gratisan", "Google"],
+		"tags": ["AI Tools", "Cloud Services"],
 		"featured": false,
 		"status": "active",
 		"provider": "Google"
@@ -739,7 +739,7 @@
 			"url": "https://wau.my.id"
 		},
 		"ctaLink": "https://bima.tri.co.id",
-		"tags": ["AI Credits", "Gemini", "Bima"],
+		"tags": ["AI Credits", "AI Tools"],
 		"featured": false,
 		"status": "active",
 		"provider": "Bima3"
@@ -763,7 +763,7 @@
 			"url": "https://github.com/rupadana"
 		},
 		"ctaLink": "https://cloud.codecrafters.id",
-		"tags": ["AI", "API", "Developer"],
+		"tags": ["AI Tools", "API"],
 		"featured": true,
 		"status": "active",
 		"provider": "CodeCrafters"
@@ -822,7 +822,7 @@
 			"url": "https://github.com/fazaimron27"
 		},
 		"ctaLink": "https://dash.domain.digitalplat.org",
-		"tags": ["Domain", "Networking", "Free Tier", "Developer Tools", "Gratisan"],
+		"tags": ["Domain", "API", "Free Tier", "Developer Tools"],
 		"featured": true,
 		"status": "active",
 		"provider": "DigitalPlat Foundation"
@@ -851,7 +851,7 @@
 			"url": "https://renzlab.my.id"
 		},
 		"ctaLink": "https://sumopod.com",
-		"tags": ["Domain", "Promo", "Diskon"],
+		"tags": ["Domain", "Diskon"],
 		"featured": false,
 		"status": "active",
 		"provider": "Sumopod"
@@ -905,7 +905,7 @@
 			"url": "https://github.com/inirey"
 		},
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
-		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"],
+		"tags": ["Domain", "Free Tier", "Diskon"],
 		"featured": true,
 		"status": "active",
 		"provider": "Rumahweb"
@@ -926,7 +926,7 @@
 			"url": "https://github.com/adefebrian"
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=qdG1",
-		"tags": ["AI", "AI Credits", "API"],
+		"tags": ["AI Tools", "AI Credits", "API"],
 		"featured": true,
 		"status": "active",
 		"provider": "AgentRouter"
@@ -980,16 +980,7 @@
 			"url": "https://github.com/vian0001"
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=txsb",
-		"tags": [
-			"AI",
-			"AI Credits",
-			"API",
-			"Coding",
-			"Developer",
-			"Free Tier",
-			"GLM",
-			"Developer Tools"
-		],
+		"tags": ["AI Tools", "AI Credits", "API", "Developer Tools", "Free Tier"],
 		"featured": true,
 		"status": "active"
 	},

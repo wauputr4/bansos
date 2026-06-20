@@ -63,7 +63,16 @@
 <div class="site-shell">
 	<header class="site-header" class:nav-hidden={hideNavbar}>
 		<nav class="container nav-shell" aria-label="Navigasi utama">
-			<a href={resolve('/')} class="brand-mark">Bansos Developer</a>
+			<a href={resolve('/')} class="brand-mark" aria-label="Bansos Developer">
+				<div class="logo-container">
+					<div class="logo-main"><span class="ban">ban</span><span class="sos">sos</span></div>
+					<div class="logo-sub">
+						<span class="line"></span>
+						<span class="dev">.dev</span>
+						<span class="line"></span>
+					</div>
+				</div>
+			</a>
 			<div class="desktop-nav">
 				{#each navItems as item (item.href)}
 					<a
@@ -122,6 +131,36 @@
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
 				>
+				<span class="dot">·</span>
+				<a
+					href="https://discord.gg/m4WFaQpNGs"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Discord"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-discord"></i>
+				</a>
+				<span class="dot">·</span>
+				<a
+					href="https://www.threads.net/@wauputra"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Threads"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-threads"></i>
+				</a>
+				<span class="dot">·</span>
+				<a
+					href="https://t.me/bansos_dev"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Telegram"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-telegram"></i>
+				</a>
 			</div>
 		</div>
 	</footer>
@@ -156,12 +195,6 @@
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	@media (min-width: 48rem) {
-		.site-header.nav-hidden {
-			transform: translateY(-100%);
-		}
-	}
-
 	.nav-shell {
 		display: flex;
 		align-items: center;
@@ -172,10 +205,50 @@
 	}
 
 	.brand-mark {
+		text-decoration: none;
+	}
+
+	.logo-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		line-height: 1;
+	}
+
+	.logo-main {
+		font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.logo-main .ban {
 		color: var(--text-primary);
-		font-size: 1rem;
-		font-weight: 850;
-		letter-spacing: 0;
+	}
+
+	.logo-main .sos {
+		color: #10b981;
+	}
+
+	.logo-sub {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 0.3rem;
+		margin-top: -0.15rem;
+	}
+
+	.logo-sub .line {
+		flex: 1;
+		height: 2px;
+		background: #10b981;
+	}
+
+	.logo-sub .dev {
+		font-family: 'Plus Jakarta Sans', monospace;
+		font-size: 0.7rem;
+		font-weight: 800;
+		color: var(--text-primary);
 	}
 
 	.desktop-nav {
@@ -293,6 +366,20 @@
 	.footer-links .dot {
 		color: var(--text-muted);
 		opacity: 0.5;
+	}
+
+	.social-footer-link {
+		display: inline-flex;
+		align-items: center;
+		font-size: 1.05rem;
+		color: var(--text-secondary);
+		transition: color 0.2s ease;
+		vertical-align: middle;
+	}
+
+	.social-footer-link:hover {
+		color: var(--text-primary);
+		text-decoration: none;
 	}
 
 	.mobile-bottom-nav {
