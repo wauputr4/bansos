@@ -57,7 +57,7 @@ if (!payload.publishedAt) {
 	throw new Error('Issue JSON payload publishedAt must be a valid date in YYYY-MM-DD format');
 }
 
-writeFileSync(outputPath, JSON.stringify(payload, null, 2) + '\n');
+writeFileSync(outputPath, JSON.stringify(payload, null, '\t') + '\n');
 
 if (githubOutput) {
 	appendFileSync(githubOutput, `id=${payload.id}\n`);
