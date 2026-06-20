@@ -1029,11 +1029,11 @@
 		"status": "active"
 	},
 	{
-		"id": "f",
+		"id": "proxy-model-opencode-kilocode-mimo",
 		"title": "Proxy model dari Opencode, KiloCode, Mimo",
-		"provider": "OpenAiCompatible/AntrophicCompatible",
+		"provider": "OpenAICompatible/AnthropicCompatible",
 		"description": "proxy AI multi-upstream yang kompatibel dengan format OpenAI yang ditujukan untuk mengakses model-model AI gratis, dengan lalu lintas jaringan yang dirutekan melalui jaringan Tor untuk privasi/keamanan.\n\nProyek ini dibangun menggunakan bahasa pemrograman Go dan dilengkapi dengan antarmuka dasbor yang menggunakan teknologi HTMX.\n\nTor digunakan untuk bypass limit usage.",
-		"benefits": ["Free", "SelfHost", "AntrophicCompatible", "OpenAiCompatible"],
+		"benefits": ["Free", "SelfHost", "AnthropicCompatible", "OpenAICompatible"],
 		"validity": {
 			"type": "forever",
 			"description": "selama provider upstream ada"
