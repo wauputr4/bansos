@@ -16,6 +16,14 @@
 	let formTitle = $state('');
 	let formProvider = $state('');
 	let providerManuallyEdited = $state(false);
+	let providerDropdownOpen = $state(false);
+	let isTypingProvider = $state(false);
+
+	let filteredProviders = $derived(
+		isTypingProvider && formProvider.trim()
+			? existingProviders.filter((p) => p.toLowerCase().includes(formProvider.toLowerCase()))
+			: existingProviders
+	);
 
 	let formDescription = $state('');
 	let formBenefits = $state<string[]>(['']);
@@ -394,22 +402,70 @@
 			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group custom-select-container">
 			<label for="bansos-form-provider">Provider <span class="required">*</span></label>
-			<input
-				id="bansos-form-provider"
-				type="text"
-				bind:value={formProvider}
-				oninput={() => (providerManuallyEdited = true)}
-				required
-				list="provider-list"
-				placeholder="Contoh: GitHub, Vercel"
-			/>
-			<datalist id="provider-list">
-				{#each existingProviders as provider}
-					<option value={provider}></option>
-				{/each}
-			</datalist>
+			<div class="custom-select" class:open={providerDropdownOpen}>
+				<input
+					id="bansos-form-provider"
+					type="text"
+					bind:value={formProvider}
+					oninput={() => {
+						providerManuallyEdited = true;
+						providerDropdownOpen = true;
+						isTypingProvider = true;
+					}}
+					onfocus={() => {
+						providerDropdownOpen = true;
+						isTypingProvider = false;
+					}}
+					onkeydown={(e) => {
+						if (e.key === 'Enter') {
+							e.preventDefault();
+							providerDropdownOpen = false;
+							isTypingProvider = false;
+						}
+					}}
+					required
+					autocomplete="off"
+					class="select-btn"
+					style="text-align: left; cursor: text;"
+					placeholder="Contoh: GitHub, Vercel"
+				/>
+				<i class="fa-solid fa-chevron-down select-chevron"></i>
+				{#if providerDropdownOpen}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (providerDropdownOpen = false)}></div>
+					<ul class="select-dropdown">
+						{#each filteredProviders as opt (opt)}
+							<li>
+								<button
+									type="button"
+									class="select-option"
+									onclick={() => {
+										formProvider = opt;
+										providerManuallyEdited = true;
+										providerDropdownOpen = false;
+										isTypingProvider = false;
+									}}
+								>
+									{opt}
+								</button>
+							</li>
+						{/each}
+						{#if filteredProviders.length === 0}
+							<li>
+								<div
+									class="select-option"
+									style="color: var(--text-secondary); cursor: default; background: transparent;"
+								>
+									<i>Tekan Enter untuk membuat "{formProvider}"</i>
+								</div>
+							</li>
+						{/if}
+					</ul>
+				{/if}
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -1162,6 +1218,26 @@
 		outline: none;
 		border-color: var(--color-accent);
 		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.select-btn i {
+		transition: transform 0.2s;
+	}
+	.custom-select.open .select-btn i {
+		transform: rotate(180deg);
+	}
+
+	.select-chevron {
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		color: var(--text-secondary);
+		transition: transform 0.2s;
+	}
+	.custom-select.open .select-chevron {
+		transform: translateY(-50%) rotate(180deg);
 	}
 
 	.dropdown-backdrop {

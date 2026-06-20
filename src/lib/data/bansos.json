@@ -596,7 +596,7 @@
 		"featured": false,
 		"status": "active",
 		"source": "https://zcode.z.ai/en/changelog",
-		"provider": "ZCode"
+		"provider": "Z.ai"
 	},
 	{
 		"id": "qoder-qwen-max-free",
