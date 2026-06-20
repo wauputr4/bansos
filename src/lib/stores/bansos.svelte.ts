@@ -1,5 +1,4 @@
 import { browser } from '$app/environment';
-import { SvelteDate } from 'svelte/reactivity';
 import {
 	bansosList as initialBansosList,
 	normalizeBansosStatuses,

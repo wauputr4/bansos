@@ -395,6 +395,11 @@
 					id="bansos-form-provider"
 					type="text"
 					bind:value={formProvider}
+					role="combobox"
+					aria-expanded={providerDropdownOpen}
+					aria-autocomplete="list"
+					aria-haspopup="listbox"
+					aria-controls="provider-listbox"
 					oninput={() => {
 						providerManuallyEdited = true;
 						providerDropdownOpen = true;
@@ -422,7 +427,7 @@
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div class="dropdown-backdrop" onclick={() => (providerDropdownOpen = false)}></div>
-					<ul class="select-dropdown">
+					<ul class="select-dropdown" id="provider-listbox" role="listbox">
 						{#each filteredProviders as opt (opt)}
 							<li>
 								<button
@@ -445,7 +450,7 @@
 									class="select-option"
 									style="color: var(--text-secondary); cursor: default; background: transparent;"
 								>
-									<i>Tekan Enter untuk membuat "{formProvider}"</i>
+									<i>Tekan Enter untuk menggunakan "{formProvider}"</i>
 								</div>
 							</li>
 						{/if}
@@ -796,8 +801,7 @@
 			gap: 0.25rem;
 		}
 		.form-group input,
-		.form-group textarea,
-		.form-group select {
+		.form-group textarea {
 			padding: 0.55rem 0.75rem;
 			font-size: 0.9rem;
 		}
@@ -871,14 +875,8 @@
 		border-color: var(--color-danger) !important;
 	}
 
-	.hint-new {
-		color: var(--color-accent);
-		font-weight: 600;
-	}
-
 	.form-group input,
-	.form-group textarea,
-	.form-group select {
+	.form-group textarea {
 		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
 		border: 1px solid var(--border-color);
 		border-radius: 0.5rem;
@@ -892,8 +890,7 @@
 	}
 
 	.form-group input:focus,
-	.form-group textarea:focus,
-	.form-group select:focus {
+	.form-group textarea:focus {
 		outline: none;
 		border-color: var(--color-accent);
 		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
@@ -1006,31 +1003,6 @@
 		border-color: var(--color-accent);
 		color: var(--color-accent);
 		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
-	}
-
-	.checkbox-group {
-		flex-direction: row;
-		align-items: center;
-	}
-
-	.checkbox-label {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-	}
-
-	.checkbox-label input[type='checkbox'] {
-		width: 1.1rem;
-		height: 1.1rem;
-		accent-color: var(--color-accent);
-		cursor: pointer;
-	}
-
-	.checkbox-label span {
-		color: var(--text-secondary);
-		font-size: 0.9rem;
-		font-weight: 600;
 	}
 
 	.form-actions {
@@ -1272,28 +1244,5 @@
 		color: var(--color-accent);
 		background: rgba(16, 185, 129, 0.1);
 		font-weight: 700;
-	}
-
-	.repeater-add {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-top: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: transparent;
-		border: 1px dashed var(--border-color);
-		border-radius: 0.5rem;
-		color: var(--text-secondary);
-		font-family: inherit;
-		font-size: 0.85rem;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.2s;
-	}
-
-	.repeater-add:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
 	}
 </style>
