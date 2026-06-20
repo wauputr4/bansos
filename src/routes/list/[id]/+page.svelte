@@ -288,15 +288,59 @@
 								>
 							</p>
 						</div>
-						{#if item.contributor}
-							<p class="detail-contributor">
-								Dikontribusikan oleh
-								<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-									{item.contributor.name}
-								</a>
-							</p>
-						{/if}
 					</header>
+
+					<div class="detail-meta-grid">
+						{#if source}
+							<div class="meta-card">
+								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
+								{#if sourceIsUrl}
+									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
+								{:else}
+									<strong>{source}</strong>
+								{/if}
+							</div>
+						{/if}
+						{#if item.contributor || commitContributors.length > 0}
+							<div class="meta-card">
+								<span class="meta-label"
+									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
+								>
+								{#if item.contributor}
+									<div
+										class="original-contributor"
+										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
+									>
+										Dikontribusikan oleh:
+										<a
+											href={item.contributor.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											style="color: var(--color-accent); font-weight: 700;"
+										>
+											{item.contributor.name}
+										</a>
+									</div>
+								{/if}
+								{#if commitContributors.length > 0}
+									<div class="commit-list">
+										{#each commitContributors as contributor (contributor.login)}
+											<a
+												href={contributor.commitUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="commit-person"
+												title={`Commit oleh ${contributor.login}`}
+											>
+												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+												<span>@{contributor.login}</span>
+											</a>
+										{/each}
+									</div>
+								{/if}
+							</div>
+						{/if}
+					</div>
 
 					{#if item.status === 'expired'}
 						<div
@@ -401,90 +445,57 @@
 				{/if}
 			</div>
 
-			<!-- Right Column: Sidebar (Meta & CTAs) -->
+			<!-- Right Column: Sidebar (Recommendations) -->
 			<aside class="detail-sidebar-col">
-				{#if source || commitContributors.length > 0}
-					<div class="detail-sidebar-meta">
-						{#if source}
-							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
-								{#if sourceIsUrl}
-									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
-								{:else}
-									<strong>{source}</strong>
-								{/if}
-							</div>
-						{/if}
-						{#if commitContributors.length > 0}
-							<div class="meta-card">
-								<span class="meta-label"
-									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
-								>
-								<div class="commit-list">
-									{#each commitContributors as contributor (contributor.login)}
-										<a
-											href={contributor.commitUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="commit-person"
-											title={`Commit oleh ${contributor.login}`}
-										>
-											<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-											<span>@{contributor.login}</span>
-										</a>
-									{/each}
-								</div>
-							</div>
-						{/if}
-					</div>
-				{/if}
-
-				<!-- CTA Tentang bansos.dev & Ajakan Kontribusi -->
-				<div class="glass-card sidebar-cta-card">
-					<h3><i class="fa-solid fa-circle-info text-emerald"></i> Tentang bansos.dev</h3>
-					<p>
-						Katalog kurasi promo & diskonan developer gratisan. Dikelola 100% transparan oleh
-						komunitas di GitHub.
-					</p>
-
-					<div class="sidebar-cta-actions">
-						<a href={resolve('/contribute')} class="btn-primary sidebar-cta-btn">
-							<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
-						</a>
-						<a
-							href="https://github.com/wauputr4/bansos"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="btn-secondary sidebar-cta-btn"
-						>
-							<i class="fa-solid fa-star"></i> Star di GitHub
-						</a>
-					</div>
+				<div class="sidebar-recommendations-header">
+					<h3 class="sidebar-recommendations-title">
+						<i class="fa-solid fa-sparkles text-emerald"></i> Rekomendasi Lainnya
+					</h3>
+					<a href={resolve('/list')} class="btn-lihat-semua-sidebar"
+						>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
+					>
 				</div>
+				{#if recommendedBansos.length > 0}
+					<div class="sidebar-recommendations-list">
+						{#each recommendedBansos as recommend (recommend.id)}
+							<BansosCard
+								item={recommend}
+								compact={true}
+								views={popularityData[recommend.id] || 0}
+							/>
+						{/each}
+					</div>
+				{:else}
+					<p class="empty-recommendation text-pretty">Belum ada rekomendasi saat ini.</p>
+				{/if}
 			</aside>
 		</div>
 
-		<!-- Rekomendasi Bansos Lainnya -->
-		<section class="recommendation-section container">
-			<div class="recommendation-header">
-				<h2 class="recommendation-title">
-					<i class="fa-solid fa-sparkles"></i> Rekomendasi Lain yang Mungkin Lo Butuhin
-				</h2>
-				<a href={resolve('/list')} class="btn-lihat-semua"
-					>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
-				>
-			</div>
-			{#if recommendedBansos.length > 0}
-				<div class="recommendation-grid">
-					{#each recommendedBansos as recommend (recommend.id)}
-						<BansosCard item={recommend} compact={true} views={popularityData[recommend.id] || 0} />
-					{/each}
+		<!-- CTA Tentang bansos.dev & Ajakan Kontribusi (Bottom of the page) -->
+		<section class="bottom-cta-section container">
+			<div class="glass-card bottom-cta-card">
+				<div class="bottom-cta-info">
+					<h2><i class="fa-solid fa-circle-info text-emerald"></i> Tentang bansos.dev</h2>
+					<p>
+						Katalog kurasi promo & diskonan developer gratisan. Dikelola 100% transparan oleh
+						komunitas di GitHub. Yuk bantu sesama developer jelata bertahan hidup dengan ikutan
+						kontribusi!
+					</p>
 				</div>
-			{:else}
-				<p class="empty-recommendation text-pretty">
-					Belum ada rekomendasi lain saat ini, balik ke list ya.
-				</p>
-			{/if}
+				<div class="bottom-cta-actions">
+					<a href={resolve('/contribute')} class="btn-primary">
+						<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
+					</a>
+					<a
+						href="https://github.com/wauputr4/bansos"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-secondary"
+					>
+						<i class="fa-solid fa-star"></i> Star di GitHub
+					</a>
+				</div>
+			</div>
 		</section>
 
 		<!-- Floating Particles -->
@@ -625,22 +636,17 @@
 		padding: 0.3rem;
 		flex-shrink: 0;
 	}
-
-	.detail-contributor {
-		font-size: 0.9rem;
-		color: var(--text-muted);
-	}
-
-	.detail-contributor a {
-		color: var(--color-accent);
-		font-weight: 700;
-	}
-
 	.detail-meta-grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 0.75rem;
 		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 48rem) {
+		.detail-meta-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	.meta-card {
@@ -861,51 +867,47 @@
 		gap: 0.75rem;
 	}
 
-	.recommendation-section {
+	.sidebar-recommendations-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.sidebar-recommendations-title {
+		font-size: 1.1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.sidebar-recommendations-title i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.btn-lihat-semua-sidebar {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--color-accent);
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 0.2s;
+	}
+
+	.btn-lihat-semua-sidebar:hover {
+		transform: translateX(3px);
+	}
+
+	.sidebar-recommendations-list {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-	}
-
-	.recommendation-title {
-		color: var(--text-primary);
-		font-size: 1.1rem;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.recommendation-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-	}
-
-	.recommendation-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		flex-wrap: wrap;
-	}
-
-	.btn-lihat-semua {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		color: var(--color-accent);
-		font-size: 0.9rem;
-		font-weight: 700;
-		padding: 0.4rem 0.85rem;
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--color-accent) 10%, transparent);
-		transition: all 0.2s;
-	}
-
-	.btn-lihat-semua:hover {
-		background: color-mix(in srgb, var(--color-accent) 20%, transparent);
-		transform: translateX(4px);
+		width: 100%;
 	}
 
 	.empty-recommendation {
@@ -919,14 +921,84 @@
 		padding: 2rem;
 	}
 
+	.bottom-cta-section {
+		margin-top: 1.5rem;
+	}
+
+	.bottom-cta-card {
+		padding: 2.25rem 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		text-align: center;
+		align-items: center;
+		background: radial-gradient(
+			circle at 50% 50%,
+			rgba(16, 185, 129, 0.03) 0%,
+			var(--glass-bg) 100%
+		);
+		border-color: rgba(16, 185, 129, 0.15);
+	}
+
+	.bottom-cta-info h2 {
+		font-size: var(--font-size-h2);
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0 0 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	.bottom-cta-info h2 i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.bottom-cta-info p {
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin: 0;
+		max-width: 48rem;
+	}
+
+	.bottom-cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.bottom-cta-actions :global(.btn-primary),
+	.bottom-cta-actions :global(.btn-secondary) {
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-weight: 750;
+		padding: 0.75rem 1.75rem;
+		border-radius: 0.75rem;
+		font-size: 0.9rem;
+	}
+
 	@media (min-width: 48rem) {
 		.page-wrapper {
 			padding-block: 1.5rem 2.5rem;
 			gap: 1.5rem;
 		}
 
-		.recommendation-grid {
+		.sidebar-recommendations-list {
+			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+			gap: 1.25rem;
+		}
+
+		.bottom-cta-card {
+			padding: 3rem;
+			gap: 2rem;
 		}
 	}
 
@@ -952,62 +1024,34 @@
 		width: 100%;
 	}
 
-	.detail-sidebar-meta {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	.sidebar-cta-card {
-		padding: 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		text-align: left;
-	}
-
-	.sidebar-cta-card h3 {
-		font-size: 1.1rem;
-		font-weight: 800;
-		color: var(--text-primary);
-		margin: 0;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.sidebar-cta-card h3 i.text-emerald {
-		color: var(--color-accent);
-	}
-
-	.sidebar-cta-card p {
-		font-size: 0.88rem;
-		color: var(--text-secondary);
-		line-height: 1.45;
-		margin: 0;
-	}
-
-	.sidebar-cta-actions {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		margin-top: 0.25rem;
-	}
-
-	.sidebar-cta-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		width: 100%;
-		font-size: 0.85rem;
-		font-weight: 750;
-		padding: 0.55rem 1rem;
-		border-radius: 0.5rem;
-		text-decoration: none;
-	}
-
 	@media (min-width: 64rem) {
+		.sidebar-recommendations-list {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.bottom-cta-card {
+			flex-direction: row;
+			justify-content: space-between;
+			text-align: left;
+			align-items: center;
+			gap: 3rem;
+		}
+
+		.bottom-cta-info {
+			flex: 1;
+		}
+
+		.bottom-cta-info h2 {
+			justify-content: flex-start;
+		}
+
+		.bottom-cta-actions {
+			width: auto;
+			flex-shrink: 0;
+		}
+
 		.detail-layout-grid {
 			flex-direction: row;
 			align-items: flex-start;
