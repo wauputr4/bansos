@@ -118,6 +118,41 @@
 				console.error('Failed to fetch discussion stats:', err);
 			});
 	});
+
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+	let isHovered = $state(false);
+	let containerEl = $state<HTMLElement | null>(null);
+
+	function handleMouseMove(event: MouseEvent) {
+		if (!containerEl) return;
+		const rect = containerEl.getBoundingClientRect();
+		const centerX = rect.left + rect.width / 2;
+		const centerY = rect.top + rect.height / 2;
+		const dx = event.clientX - centerX;
+		const dy = event.clientY - centerY;
+
+		// Magnetic factor: follow cursor but damp it
+		const pullStrength = 0.35;
+		mouseX = dx * pullStrength;
+		mouseY = dy * pullStrength;
+
+		// Cap the translation
+		const maxDist = 45; // Max translation offset
+		const currentDist = Math.hypot(mouseX, mouseY);
+		if (currentDist > maxDist) {
+			const angle = Math.atan2(mouseY, mouseX);
+			mouseX = Math.cos(angle) * maxDist;
+			mouseY = Math.sin(angle) * maxDist;
+		}
+		isHovered = true;
+	}
+
+	function handleMouseLeave() {
+		isHovered = false;
+		mouseX = 0;
+		mouseY = 0;
+	}
 </script>
 
 <svelte:head>
@@ -170,58 +205,38 @@
 			</a>
 		</div>
 
-		<h1 class="main-title text-gradient text-balance">Bansos Developer</h1>
+		<h1 class="main-title text-balance">
+			<span class="title-ban">Ban</span><span class="title-sos">sos</span> <span class="title-dev">Developer</span>
+		</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
 		<p class="community-tagline text-pretty">
 			Gotong Royong dalam bantuin developer jelata lainnya untuk glow up pada projectnya
 		</p>
 
-		<!-- Anxious Sweating Computer SVG -->
-		<div class="anxious-container">
-			<svg
-				class="anxious-icon"
-				viewBox="0 0 100 100"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
+		<!-- Interactive Heart Code Logo -->
+		<div
+			bind:this={containerEl}
+			class="logo-hero-wrapper"
+			onmousemove={handleMouseMove}
+			onmouseleave={handleMouseLeave}
+			role="presentation"
+			aria-hidden="true"
+		>
+			<div
+				class="logo-hero-translate"
+				style:transform="translate({mouseX}px, {mouseY}px)"
 			>
-				<rect
-					x="15"
-					y="15"
-					width="70"
-					height="50"
-					rx="8"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="var(--bg-primary)" />
-				<path
-					d="M40 65 L35 80 L65 80 L60 65 Z"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<path
-					d="M35 36 L43 39 M65 36 L57 39"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-				<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
-				<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
-				<path
-					class="sweat-drop"
-					d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
-					fill="#38bdf8"
-				/>
-				<path
-					d="M44 51 Q48 48 52 51 T60 51"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-					fill="none"
-				/>
-			</svg>
+				<div class="logo-hero-rotate" class:spinning={isHovered}>
+					<svg class="logo-hero-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<!-- Left bracket < -->
+						<path class="bracket-path" d="M 6.5 7.5 L 2.5 12 L 6.5 16.5" />
+						<!-- Right bracket > -->
+						<path class="bracket-path" d="M 17.5 7.5 L 21.5 12 L 17.5 16.5" />
+						<!-- Green Heart -->
+						<path class="heart-path" d="M12 18.2C10.7 17 6.5 13.2 6.5 9.7C6.5 7.1 8.3 5.3 10.8 5.3C12.3 5.3 13.2 6.1 13.8 7C14.4 6.1 15.3 5.3 16.8 5.3C19.3 5.3 21.1 7.1 21.1 9.7C21.1 13.2 16.9 17 15.6 18.2L13.8 19.8Z" transform="translate(4.41, 5.0975) scale(0.55)" />
+					</svg>
+				</div>
+			</div>
 		</div>
 
 		<p class="intro-text text-pretty">
@@ -430,6 +445,18 @@
 		margin: 0;
 	}
 
+	.main-title .title-ban {
+		color: var(--text-primary);
+	}
+
+	.main-title .title-sos {
+		color: #10b981;
+	}
+
+	.main-title .title-dev {
+		color: var(--text-primary);
+	}
+
 	.tagline {
 		font-size: var(--font-size-h3);
 		font-weight: 600;
@@ -522,44 +549,58 @@
 		}
 	}
 
-	.anxious-container {
+	.logo-hero-wrapper {
 		display: flex;
 		justify-content: center;
-		margin-block: 1rem;
+		margin-block: 1.5rem;
+		perspective: 1000px;
 	}
 
-	.anxious-icon {
+	.logo-hero-translate {
+		transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+		will-change: transform;
+	}
+
+	.logo-hero-rotate {
 		width: 5rem;
 		height: 5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		will-change: transform;
 		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.logo-hero-rotate.spinning {
+		animation: spin-icon 2s linear infinite;
+	}
+
+	@keyframes spin-icon {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.logo-hero-icon {
+		width: 100%;
+		height: 100%;
 		filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
 	}
 
-	.anxious-icon:hover {
-		animation: shake 0.4s infinite alternate;
-		cursor: help;
+	.logo-hero-icon .bracket-path {
+		stroke: var(--text-primary);
+		fill: none;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
-	.sweat-drop {
-		animation: drip 1.8s infinite ease-in;
-		transform-origin: center;
-	}
-
-	@keyframes drip {
-		0% {
-			transform: translateY(-4px);
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		80% {
-			opacity: 0.8;
-		}
-		100% {
-			transform: translateY(12px);
-			opacity: 0;
-		}
+	.logo-hero-icon .heart-path {
+		fill: var(--color-accent);
 	}
 
 	@media (min-width: 48rem) {
@@ -746,41 +787,5 @@
 		width: 1.25rem;
 		height: 1.25rem;
 		margin-right: 0.5rem;
-	}
-
-	@keyframes shake {
-		0% {
-			transform: translate(1px, 1px) rotate(0deg);
-		}
-		10% {
-			transform: translate(-1px, -2px) rotate(-1deg);
-		}
-		20% {
-			transform: translate(-3px, 0px) rotate(1deg);
-		}
-		30% {
-			transform: translate(0px, 2px) rotate(0deg);
-		}
-		40% {
-			transform: translate(1px, -1px) rotate(1deg);
-		}
-		50% {
-			transform: translate(-1px, 2px) rotate(-1deg);
-		}
-		60% {
-			transform: translate(-3px, 1px) rotate(0deg);
-		}
-		70% {
-			transform: translate(2px, 1px) rotate(-1deg);
-		}
-		80% {
-			transform: translate(-1px, -1px) rotate(1deg);
-		}
-		90% {
-			transform: translate(2px, 2px) rotate(0deg);
-		}
-		100% {
-			transform: translate(1px, -2px) rotate(-1deg);
-		}
 	}
 </style>
