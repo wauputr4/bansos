@@ -24,6 +24,21 @@
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev/';
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const websiteSchema = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'Bansos Developer',
+		url: 'https://bansos.dev/',
+		potentialAction: {
+			'@type': 'SearchAction',
+			target: {
+				'@type': 'EntryPoint',
+				urlTemplate: 'https://bansos.dev/list/?q={search_term_string}'
+			},
+			'query-input': 'required name=search_term_string'
+		}
+	});
 	const latestBansosList = latestBansos(10);
 	const featuredBansosList = featuredBansos(10);
 	const totalBansos = bansosList.length;
@@ -127,21 +142,9 @@
 	<meta property="twitter:description" content={metaDescription} />
 	<meta property="twitter:image" content="{siteUrl}og.png" />
 
+	<!-- prettier-ignore -->
 	<script type="application/ld+json">
-		{@html JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "WebSite",
-			"name": "Bansos Developer",
-			"url": "https://bansos.dev/",
-			"potentialAction": {
-				"@type": "SearchAction",
-				"target": {
-					"@type": "EntryPoint",
-					"urlTemplate": "https://bansos.dev/list/?q={search_term_string}"
-				},
-				"query-input": "required name=search_term_string"
-			}
-		})}
+		{@html websiteSchema}
 	</script>
 </svelte:head>
 

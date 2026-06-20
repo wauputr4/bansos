@@ -134,13 +134,19 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/contribute/" />
 	<meta property="og:title" content="Kontribusi bansos.dev" />
-	<meta property="og:description" content="Cara menambahkan daftar bansos developer ke bansos.dev." />
+	<meta
+		property="og:description"
+		content="Cara menambahkan daftar bansos developer ke bansos.dev."
+	/>
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://bansos.dev/contribute/" />
 	<meta property="twitter:title" content="Kontribusi bansos.dev" />
-	<meta property="twitter:description" content="Cara menambahkan daftar bansos developer ke bansos.dev." />
+	<meta
+		property="twitter:description"
+		content="Cara menambahkan daftar bansos developer ke bansos.dev."
+	/>
 	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 

@@ -25,7 +25,10 @@ export async function GET({ params }) {
 	const contributors = getCommitContributorsForItem(item.id).slice(0, 5);
 
 	// Escape description to prevent HTML parsing errors
-	const escapedTitle = item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	const escapedTitle = item.title
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
 	const escapedDescription = item.description
 		.replace(/&/g, '&amp;')
 		.replace(/</g, '&lt;')
@@ -36,9 +39,9 @@ export async function GET({ params }) {
 		.replace(/>/g, '&gt;');
 
 	// Build contributor avatars HTML
-	let contributorsHtml = '';
-	if (contributors.length > 0) {
-		contributorsHtml = `
+	const contributorsHtml =
+		contributors.length > 0
+			? `
 			<div style="display: flex; align-items: center; gap: 12px;">
 				<span style="font-size: 18px; color: #9ca3af; margin-right: 8px; display: flex;">Kontributor:</span>
 				<div style="display: flex; position: relative;">
@@ -62,14 +65,12 @@ export async function GET({ params }) {
 						.join('')}
 				</div>
 			</div>
-		`;
-	} else {
-		contributorsHtml = `
+		`
+			: `
 			<div style="display: flex; align-items: center;">
 				<span style="font-size: 18px; color: #9ca3af; display: flex;">Kontributor: @wauputr4</span>
 			</div>
 		`;
-	}
 
 	const template = html(`
 		<div style="display: flex; flex-direction: column; width: 1200px; height: 630px; background-color: #090a0f; color: #f3f4f6; padding: 70px; justify-content: space-between; box-sizing: border-box; border: 2px solid #1f2937;">
@@ -125,7 +126,7 @@ export async function GET({ params }) {
 	const pngData = resvg.render();
 	const pngBuffer = pngData.asPng();
 
-	return new Response(pngBuffer, {
+	return new Response(new Uint8Array(pngBuffer), {
 		headers: {
 			'Content-Type': 'image/png',
 			'Cache-Control': 'public, max-age=31536000, immutable'
