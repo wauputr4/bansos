@@ -108,7 +108,15 @@
 					rel="noopener noreferrer"
 					class="sponsor-pill"
 				>
-					<i class="fa-solid fa-heart"></i> Sponsor wauputra
+					<i class="fa-solid fa-heart"></i> Sponsor wauputr4
+				</a>
+				<a
+					href="https://github.com/sponsors/Renzie2161"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="sponsor-pill"
+				>
+					<i class="fa-solid fa-heart"></i> Sponsor Renzie2161
 				</a>
 			</div>
 		</section>
@@ -220,6 +228,10 @@
 
 	.sponsor-button-wrapper {
 		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
 	}
 
 	.sponsor-pill {

@@ -552,7 +552,7 @@
 	.logo-hero-wrapper {
 		display: flex;
 		justify-content: center;
-		margin-block: 1.5rem;
+		margin-block: 0.5rem;
 		perspective: 1000px;
 	}
 

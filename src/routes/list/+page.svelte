@@ -226,7 +226,7 @@
 			<div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;">
 				<p class="subtitle-text text-pretty">
 					Eksplorasi {bansosList.length} program bantuan sosial untuk developer jelata. Klik kartu bansos
-					untuk melihat langkah-langkah detail dan cara klaim kodenya, fr fr! 🚀
+					untuk melihat langkah-langkah detail dan cara klaim kodenya.
 				</p>
 			</div>
 		</div>
@@ -353,78 +353,117 @@
 								{/each}
 							</div>
 						</div>
-
-						<div class="filter-group">
-							<h3 class="filter-group-title">Kategori</h3>
-							<div class="tag-grid">
-								<button
-									class="tag-btn"
-									class:active={selectedTags.length === 0}
-									onclick={() => (selectedTags = [])}
-								>
-									Semua Kategori
-								</button>
-								{#each dynamicTags as tag (tag)}
-									<button
-										class="tag-btn"
-										class:active={selectedTags.includes(tag)}
-										onclick={() => {
-											if (selectedTags.includes(tag)) {
-												selectedTags = selectedTags.filter((t) => t !== tag);
-											} else {
-												selectedTags = [...selectedTags, tag];
-											}
-										}}
-									>
-										{tag}
-									</button>
-								{/each}
-							</div>
-						</div>
 					</div>
 				{/if}
 			</div>
 		</div>
 	</section>
 
-	<!-- Grid List -->
-	<section class="feed-section container">
-		{#if filteredBansos.length === 0}
-			<div class="empty-state glass-card">
-				<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
-				<h2>Wah, Bansos Kosong!</h2>
-				<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+	<!-- Category Slider for Mobile/Tablet -->
+	<section
+		class="category-slider-section container mobile-only-categories"
+		aria-label="Kategori slider"
+	>
+		<div class="category-slider">
+			<button
+				class="category-slide-btn"
+				class:active={selectedTags.length === 0}
+				onclick={() => (selectedTags = [])}
+			>
+				Semua Kategori
+			</button>
+			{#each dynamicTags as tag (tag)}
 				<button
-					class="btn-primary"
+					class="category-slide-btn"
+					class:active={selectedTags.includes(tag)}
 					onclick={() => {
-						selectedTags = [];
-						selectedStatuses = [];
-						selectedValidities = [];
-						sortOrder = 'popular';
-						searchQuery = '';
-						currentPage = 1;
+						if (selectedTags.includes(tag)) {
+							selectedTags = selectedTags.filter((t) => t !== tag);
+						} else {
+							selectedTags = [...selectedTags, tag];
+						}
 					}}
 				>
-					Reset Filter
+					{tag}
 				</button>
+			{/each}
+		</div>
+	</section>
+
+	<!-- Grid List with Desktop Sidebar Layout -->
+	<section class="feed-section container">
+		<div class="list-layout-container">
+			<!-- Sidebar for Desktop -->
+			<aside class="desktop-sidebar">
+				<div class="sidebar-filter-card">
+					<h3 class="sidebar-title">Kategori</h3>
+					<div class="sidebar-tag-list">
+						<button
+							class="sidebar-tag-btn"
+							class:active={selectedTags.length === 0}
+							onclick={() => (selectedTags = [])}
+						>
+							Semua Kategori
+						</button>
+						{#each dynamicTags as tag (tag)}
+							<button
+								class="sidebar-tag-btn"
+								class:active={selectedTags.includes(tag)}
+								onclick={() => {
+									if (selectedTags.includes(tag)) {
+										selectedTags = selectedTags.filter((t) => t !== tag);
+									} else {
+										selectedTags = [...selectedTags, tag];
+									}
+								}}
+							>
+								{tag}
+							</button>
+						{/each}
+					</div>
+				</div>
+			</aside>
+
+			<!-- Main Content Area -->
+			<div class="main-content-area">
+				{#if filteredBansos.length === 0}
+					<div class="empty-state glass-card">
+						<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
+						<h2>Wah, Bansos Kosong!</h2>
+						<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+						<button
+							class="btn-primary"
+							onclick={() => {
+								selectedTags = [];
+								selectedStatuses = [];
+								selectedValidities = [];
+								sortOrder = 'popular';
+								searchQuery = '';
+								currentPage = 1;
+							}}
+						>
+							Reset Filter
+						</button>
+					</div>
+				{:else}
+					<div class="result-summary">
+						<span>Menampilkan {pageStart}-{pageEnd} dari {filteredBansos.length} bansos</span>
+						<span>Halaman {currentPage} dari {totalPages}</span>
+					</div>
+					<div class="bansos-grid">
+						{#each paginatedBansos as item (item.id)}
+							<BansosCard
+								{item}
+								views={popularityData[item.id] || 0}
+								comments={discussionStats[item.id]?.comments || 0}
+								reactions={discussionStats[item.id]?.reactions || 0}
+							/>
+						{/each}
+					</div>
+					<Pagination bind:currentPage {totalPages} />
+				{/if}
 			</div>
-		{:else}
-			<div class="result-summary">
-				<span>Menampilkan {pageStart}-{pageEnd} dari {filteredBansos.length} bansos</span>
-				<span>Halaman {currentPage} dari {totalPages}</span>
-			</div>
-			<div class="bansos-grid">
-				{#each paginatedBansos as item (item.id)}
-					<BansosCard
-						{item}
-						views={popularityData[item.id] || 0}
-						comments={discussionStats[item.id]?.comments || 0}
-						reactions={discussionStats[item.id]?.reactions || 0}
-					/>
-				{/each}
-			</div>
-			<Pagination bind:currentPage {totalPages} />
-		{/if}
+		</div>
 	</section>
 </main>
 
@@ -786,6 +825,128 @@
 	@media (min-width: 48rem) {
 		.bansos-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.category-slider {
+		display: flex;
+		gap: 0.5rem;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		padding-block: 0.5rem;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none; /* Hide scrollbar */
+	}
+
+	.category-slider::-webkit-scrollbar {
+		display: none;
+	}
+
+	.category-slide-btn {
+		white-space: nowrap;
+		padding: 0.5rem 1.15rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		font-weight: 750;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.category-slide-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		border-color: var(--text-secondary);
+	}
+
+	.category-slide-btn.active {
+		color: #fff;
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+	}
+
+	.list-layout-container {
+		display: flex;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.desktop-sidebar {
+		display: none;
+		width: 16rem;
+		flex-shrink: 0;
+	}
+
+	.sidebar-filter-card {
+		background: color-mix(in srgb, var(--text-primary) 2%, var(--bg-secondary));
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		padding: 1.5rem;
+		position: sticky;
+		top: 5.5rem;
+	}
+
+	.sidebar-title {
+		font-size: 0.95rem;
+		font-weight: 850;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.sidebar-tag-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.sidebar-tag-btn {
+		width: 100%;
+		padding: 0.6rem 0.85rem;
+		border: 1px solid transparent;
+		border-radius: 0.75rem;
+		background: transparent;
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		font-weight: 750;
+		text-align: left;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.sidebar-tag-btn:hover {
+		color: var(--text-primary);
+		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+	}
+
+	.sidebar-tag-btn.active {
+		color: #fff;
+		background: var(--color-accent);
+		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+	}
+
+	.main-content-area {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.category-slider-section {
+		margin-block: -2.5rem 0.5rem;
+	}
+
+	@media (min-width: 64rem) {
+		.desktop-sidebar {
+			display: block;
+		}
+		.mobile-only-categories {
+			display: none;
 		}
 	}
 </style>
