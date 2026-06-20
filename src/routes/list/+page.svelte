@@ -20,6 +20,13 @@
 	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
 
 	onMount(async () => {
+		// Hydrate search query from URL parameter if present (e.g. from Google SearchAction)
+		const urlParams = new URLSearchParams(window.location.search);
+		const q = urlParams.get('q');
+		if (q) {
+			searchQuery = q;
+		}
+
 		try {
 			const res = await fetch('/api/popularity');
 			if (res.ok) {

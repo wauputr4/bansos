@@ -89,6 +89,12 @@ export const GET: RequestHandler = async ({ platform }) => {
 		const popularity: Record<string, number> = {};
 		for (const row of rows) {
 			const path = (row.dimensions.clientRequestPath || '').toLowerCase();
+
+			// Exclude OG image hits from popularity counts to avoid bot traffic distortion
+			if (path.includes('/og.png') || path.endsWith('.png')) {
+				continue;
+			}
+
 			const views = row.count || 0;
 			const match = path.match(/\/list\/([^/]+)/);
 			if (match) {
