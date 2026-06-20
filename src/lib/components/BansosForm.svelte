@@ -5,6 +5,9 @@
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
 	);
+	const existingProviders = [...new Set(bansosList.map((i) => i.provider).filter(Boolean))].sort(
+		(a, b) => a.localeCompare(b)
+	);
 	const existingIds = new Set(bansosList.map((i) => i.id));
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
@@ -399,8 +402,14 @@
 				bind:value={formProvider}
 				oninput={() => (providerManuallyEdited = true)}
 				required
+				list="provider-list"
 				placeholder="Contoh: GitHub, Vercel"
 			/>
+			<datalist id="provider-list">
+				{#each existingProviders as provider}
+					<option value={provider}></option>
+				{/each}
+			</datalist>
 		</div>
 
 		<div class="form-group">
