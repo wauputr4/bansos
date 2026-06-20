@@ -155,7 +155,12 @@ const commits = git(['log', '--reverse', '--format=%H', '--', dataPath])
 const contributorsByItem = new Map();
 const headData = byId(parseDataAt('HEAD'));
 const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
-const changedItemIds = getChangedItemIds(headData, workingTreeData);
+const existingContributors = readCommitContributors();
+
+let changedItemIds = getChangedItemIds(headData, workingTreeData);
+if (Object.keys(existingContributors).length === 0) {
+	changedItemIds = new Set(workingTreeData.keys());
+}
 
 for (const commit of commits) {
 	const before = byId(parseDataAt(`${commit}^`));
@@ -189,7 +194,6 @@ for (const id of changedItemIds) {
 	contributorsByItem.set(id, current);
 }
 
-const existingContributors = readCommitContributors();
 const finalContributors = new Map(Object.entries(existingContributors));
 
 for (const [id, contributors] of contributorsByItem.entries()) {
