@@ -303,10 +303,7 @@
 
 @layer utilities {
 	.text-gradient {
-		background: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #064e3b 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-accent);
 	}
 
 	:root[data-theme='light'] .text-gradient {
