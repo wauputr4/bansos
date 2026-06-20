@@ -7,7 +7,7 @@
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
 [![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
 
-![Bansos Developer Banner](https://bansos.dev/og.png)
+![Bansos Developer Banner](static/og-banner.png)
 
 `Bantuan sosial untuk developer jelata`
 
