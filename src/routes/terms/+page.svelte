@@ -8,6 +8,25 @@
 		name="description"
 		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
 	/>
+	<link rel="canonical" href="https://bansos.dev/terms/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/terms/" />
+	<meta property="og:title" content="Syarat dan Ketentuan bansos.dev" />
+	<meta
+		property="og:description"
+		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/terms/" />
+	<meta property="twitter:title" content="Syarat dan Ketentuan bansos.dev" />
+	<meta
+		property="twitter:description"
+		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

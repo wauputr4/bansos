@@ -40,13 +40,19 @@
 <svelte:head>
 	<title>{seoTitle}</title>
 	<meta name="description" content={seoDescription} />
+	<link rel="canonical" href="https://bansos.dev/providers/{provider.slug}/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/providers/{provider.slug}/" />
 	<meta property="og:title" content={seoTitle} />
 	<meta property="og:description" content={seoDescription} />
-	<meta property="og:image" content={provider.faviconUrl} />
+	<meta property="og:image" content={provider.faviconUrl || 'https://bansos.dev/og.png'} />
+
 	<meta property="twitter:card" content="summary" />
+	<meta property="twitter:url" content="https://bansos.dev/providers/{provider.slug}/" />
 	<meta property="twitter:title" content={seoTitle} />
 	<meta property="twitter:description" content={seoDescription} />
-	<meta property="twitter:image" content={provider.faviconUrl} />
+	<meta property="twitter:image" content={provider.faviconUrl || 'https://bansos.dev/og.png'} />
 </svelte:head>
 
 <main class="page-wrapper">

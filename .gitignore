@@ -24,3 +24,7 @@ vite.config.ts.timestamp-*
 
 # Temp files
 .tmp-*.json
+
+# Custom Agent Skills & Config
+.agents/
+skills-lock.json

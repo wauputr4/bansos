@@ -49,7 +49,16 @@
 <div class="site-shell">
 	<header class="site-header">
 		<nav class="container nav-shell" aria-label="Navigasi utama">
-			<a href={resolve('/')} class="brand-mark">Bansos Developer</a>
+			<a href={resolve('/')} class="brand-mark" aria-label="Bansos Developer">
+				<div class="logo-container">
+					<div class="logo-main"><span class="ban">ban</span><span class="sos">sos</span></div>
+					<div class="logo-sub">
+						<span class="line"></span>
+						<span class="dev">.dev</span>
+						<span class="line"></span>
+					</div>
+				</div>
+			</a>
 			<div class="desktop-nav">
 				{#each navItems as item (item.href)}
 					<a
@@ -153,10 +162,50 @@
 	}
 
 	.brand-mark {
+		text-decoration: none;
+	}
+
+	.logo-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		line-height: 1;
+	}
+
+	.logo-main {
+		font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.logo-main .ban {
 		color: var(--text-primary);
-		font-size: 1rem;
-		font-weight: 850;
-		letter-spacing: 0;
+	}
+
+	.logo-main .sos {
+		color: #10b981;
+	}
+
+	.logo-sub {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 0.3rem;
+		margin-top: -0.15rem;
+	}
+
+	.logo-sub .line {
+		flex: 1;
+		height: 2px;
+		background: #10b981;
+	}
+
+	.logo-sub .dev {
+		font-family: 'Plus Jakarta Sans', monospace;
+		font-size: 0.7rem;
+		font-weight: 800;
+		color: var(--text-primary);
 	}
 
 	.desktop-nav {

@@ -142,6 +142,25 @@
 		name="description"
 		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
 	/>
+	<link rel="canonical" href="https://bansos.dev/list/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/list/" />
+	<meta property="og:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
+	<meta
+		property="og:description"
+		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/list/" />
+	<meta property="twitter:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
+	<meta
+		property="twitter:description"
+		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

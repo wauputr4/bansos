@@ -104,7 +104,7 @@
 			? `Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
 			: ''
 	);
-	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}` : '');
+	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
 
 	// JSON-LD Specific Product / Guide Schema
 	const schemaData = $derived(
@@ -184,16 +184,19 @@
 			name="keywords"
 			content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card"
 		/>
+		<link rel="canonical" href={pageUrl} />
 
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={seoTitle} />
 		<meta property="og:description" content={seoDesc} />
+		<meta property="og:image" content="{pageUrl}og.png" />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={pageUrl} />
 		<meta property="twitter:title" content={seoTitle} />
 		<meta property="twitter:description" content={seoDesc} />
+		<meta property="twitter:image" content="{pageUrl}og.png" />
 
 		<svelte:element this={schemaScriptTag} type="application/ld+json">{schemaJson}</svelte:element>
 	{/if}

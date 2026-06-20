@@ -42,6 +42,25 @@
 		name="description"
 		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
 	/>
+	<link rel="canonical" href="https://bansos.dev/providers/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/providers/" />
+	<meta property="og:title" content="Daftar Provider Bansos Developer - bansos.dev" />
+	<meta
+		property="og:description"
+		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/providers/" />
+	<meta property="twitter:title" content="Daftar Provider Bansos Developer - bansos.dev" />
+	<meta
+		property="twitter:description"
+		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

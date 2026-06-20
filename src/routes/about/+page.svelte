@@ -12,6 +12,25 @@
 		name="keywords"
 		content="bansos.dev, katalog promo developer, open source Indonesia, domain gratis, cloud credits gratis, API credits, hosting free tier, startup credits, SvelteKit"
 	/>
+	<link rel="canonical" href="https://bansos.dev/about/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/about/" />
+	<meta property="og:title" content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia" />
+	<meta
+		property="og:description"
+		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://bansos.dev/about/" />
+	<meta property="twitter:title" content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia" />
+	<meta
+		property="twitter:description"
+		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
+	/>
+	<meta property="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

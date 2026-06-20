@@ -23,7 +23,7 @@
 	const metaTitle = 'Bansos Developer - Bantuan Sosial untuk Developer Jelata';
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
-	const siteUrl = 'https://bansos.dev';
+	const siteUrl = 'https://bansos.dev/';
 	const latestBansosList = latestBansos(10);
 	const featuredBansosList = featuredBansos(10);
 	const totalBansos = bansosList.length;
@@ -113,16 +113,36 @@
 		name="keywords"
 		content="bansos dev, bantuan sosial developer, domain gratis, name.com gratis, devweek26, developer jelata, promo developer, cloud gratis, coding gratisan"
 	/>
+	<link rel="canonical" href={siteUrl} />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={siteUrl} />
 	<meta property="og:title" content={metaTitle} />
 	<meta property="og:description" content={metaDescription} />
+	<meta property="og:image" content="{siteUrl}og.png" />
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={siteUrl} />
 	<meta property="twitter:title" content={metaTitle} />
 	<meta property="twitter:description" content={metaDescription} />
+	<meta property="twitter:image" content="{siteUrl}og.png" />
+
+	<script type="application/ld+json">
+		{@html JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Bansos Developer",
+			"url": "https://bansos.dev/",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": {
+					"@type": "EntryPoint",
+					"urlTemplate": "https://bansos.dev/list/?q={search_term_string}"
+				},
+				"query-input": "required name=search_term_string"
+			}
+		})}
+	</script>
 </svelte:head>
 
 <main class="page-wrapper">
