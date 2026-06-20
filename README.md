@@ -64,80 +64,70 @@ packages/bansosdev-cli/        # CLI npx bansosdev
 .github/workflows/             # CI, add-entry automation, publish CLI
 ```
 
-## Cara menambah bansos
+## Cara Menambah Bansos
 
-Ada dua cara:
+Ada 3 opsi utama yang bisa kamu pilih untuk mendaftarkan info bansos developer baru, sesuai dengan kenyamananmu:
 
-### 1. Via CLI
+### 1. Opsi 1: Lewat Web Form (Paling Mudah & Tanpa Coding)
+Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
+1. Buka halaman kontribusi di browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
+2. Isi formulir informasi bansos secara lengkap (nama bansos, provider, deskripsi, benefit, dll).
+3. Klik tombol **Kirim Info**. Sistem akan secara otomatis men-generate halaman Issue GitHub dengan template yang sudah terisi.
+4. Klik **Submit new issue** di GitHub. Bot Actions kami akan memproses issue tersebut dan membuatkan Pull Request secara otomatis.
 
-Jalankan ini, nanti CLI akan mengembalikan URL issue GitHub yang siap dikirim.
-Kalau payload valid, GitHub Actions akan membuat Pull Request otomatis dari issue tersebut:
+---
 
+### 2. Opsi 2: Lewat Command Line (npx CLI)
+Opsi ini ditujukan buat kamu yang lebih suka bermain dengan terminal.
+Kamu bisa menjalankan perintah ini untuk menjalankan wizard interaktif di terminalmu:
+```bash
+npx bansosdev add
+```
+CLI akan menuntunmu mengisi field demi field, lalu memberikan link instan untuk membuka Issue GitHub. Setelah disubmit, bot otomatis memprosesnya menjadi Pull Request.
+
+*Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:*
 ```bash
 npx bansosdev add \
-  --id contoh-bansos \
-  --title "Contoh Bansos Developer" \
-  --provider "Provider" \
-  --description "Deskripsi singkat bansos." \
-  --benefits "Benefit satu|Benefit dua" \
+  --id nama-bansos \
+  --title "Nama Program Bansos" \
+  --provider "Nama Provider" \
+  --description "Deskripsi singkat mengenai program bansos." \
+  --benefits "Benefit A|Benefit B" \
   --validity-type fixed \
-  --validity-date 2026-06-30 \
-  --validity-desc "Berlaku khusus pelajar" \
-  --published-at 2026-06-13 \
-  --requirements "Buat akun|Klaim program" \
-  --cta-link "https://example.com" \
-  --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan" \
-  --status active
+  --validity-date 2026-12-31 \
+  --requirements "Syarat 1|Syarat 2" \
+  --cta-link "https://link-resmi.com" \
+  --tags "Cloud,Domain"
 ```
 
-### Parameter validity
+---
 
-- `--validity-type` wajib: pilih `fixed`, `uncertain`, atau `forever`.
-- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD`.
-- `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
-- `--published-at` opsional untuk tanggal publikasi entry dalam format `YYYY-MM-DD`.
-- `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
+### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
+Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
+1. Clone repositori ini ke komputermu:
+   ```bash
+   git clone https://github.com/wauputr4/bansos.git
+   cd bansos
+   npm install
+   ```
+2. Tambahkan data secara lokal menggunakan helper script:
+   ```bash
+   npm run add:bansos -- \
+     --id nama-bansos \
+     --title "Nama Program" \
+     --provider "Provider" \
+     --description "Deskripsi singkat." \
+     --benefits "Benefit A|Benefit B" \
+     --validity-type forever \
+     --requirements "Syarat 1" \
+     --cta-link "https://link-resmi.com" \
+     --tags "Database,API"
+   ```
+   Script ini akan memvalidasi data dan menyimpannya di file data terstruktur `src/lib/data/bansos.json`.
+3. Buat branch baru, tambahkan commit, push ke fork, dan kirim Pull Request (PR) ke repositori utama.
 
-### Cek payload JSON
+---
 
-```bash
-npx bansosdev add ... --mode json
-```
-
-### Lokal
-
-```bash
-npm run add:bansos -- \
-  --id contoh-bansos \
-  --title "Contoh Bansos Developer" \
-  --provider "Provider" \
-  --description "Deskripsi singkat bansos." \
-  --benefits "Benefit satu|Benefit dua" \
-  --validity-type fixed \
-  --validity-date 2026-06-30 \
-  --requirements "Buat akun|Klaim program" \
-  --cta-link "https://example.com" \
-  --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan"
-```
-
-Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
-Argumen `--tags` dipisahkan dengan koma.
-
-### 2. Maintainer mode
-
-Jika punya token maintainer, gunakan mode direct:
-
-```bash
-BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
-```
-
-Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke main akan memicu deploy otomatis ke Cloudflare Pages.
-
-Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
 ## Panduan kualitas listing
 
