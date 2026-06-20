@@ -7,6 +7,7 @@
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
 [![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/m4WFaQpNGs)
+[![Telegram](https://img.shields.io/badge/Telegram-Join%20Channel-0088cc?logo=telegram&logoColor=white)](https://t.me/bansos_dev)
 
 ![Bansos Developer Banner](static/og-banner.png)
 
@@ -67,6 +68,14 @@ packages/bansosdev-cli/        # CLI npx bansosdev
 ## Cara Menambah Bansos
 
 Ada 3 opsi utama yang bisa kamu pilih untuk mendaftarkan info bansos developer baru, sesuai dengan kenyamananmu:
+
+> [!TIP]
+> **Soon: Submisi via Discord & Telegram Bot!**
+> Kami sedang membangun integrasi bot agar kamu bisa mengirimkan bansos baru secara otomatis langsung dari server Discord atau channel Telegram tanpa buka GitHub/website.
+> Sembari menunggu, yuk gabung ke komunitas kami:
+>
+> - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
+> - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
 
 ### 1. Opsi 1: Lewat Web Form (Paling Mudah & Tanpa Coding)
 
