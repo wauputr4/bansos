@@ -69,6 +69,21 @@ function byId(items) {
 	return new Map(items.map((item) => [item.id, JSON.stringify(item)]));
 }
 
+function getChangedItemIds(previous, current) {
+	const changed = new Set();
+	for (const [id, item] of current.entries()) {
+		if (previous.get(id) !== item) {
+			changed.add(id);
+		}
+	}
+	for (const [id] of previous.entries()) {
+		if (!current.has(id)) {
+			changed.add(id);
+		}
+	}
+	return changed;
+}
+
 function normalizeContributor(contributor) {
 	if (!contributor || typeof contributor !== 'object') {
 		return null;
@@ -138,6 +153,9 @@ const commits = git(['log', '--reverse', '--format=%H', '--', dataPath])
 	.split('\n')
 	.filter(Boolean);
 const contributorsByItem = new Map();
+const headData = byId(parseDataAt('HEAD'));
+const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
+const changedItemIds = getChangedItemIds(headData, workingTreeData);
 
 for (const commit of commits) {
 	const before = byId(parseDataAt(`${commit}^`));
@@ -145,6 +163,9 @@ for (const commit of commits) {
 	const contributor = contributorFrom(commit);
 
 	for (const [id, item] of after.entries()) {
+		if (!changedItemIds.has(id)) {
+			continue;
+		}
 		if (before.get(id) === item) continue;
 		const current = contributorsByItem.get(id) || [];
 		if (!current.some((entry) => entry.login === contributor.login)) {
@@ -153,12 +174,13 @@ for (const commit of commits) {
 		contributorsByItem.set(id, current);
 	}
 }
-
-const headData = byId(parseDataAt('HEAD'));
-const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
 const workingTreeContributor = currentContributor();
 
-for (const [id, item] of workingTreeData.entries()) {
+for (const id of changedItemIds) {
+	const item = workingTreeData.get(id);
+	if (!item) {
+		continue;
+	}
 	if (headData.get(id) === item) continue;
 	const current = contributorsByItem.get(id) || [];
 	if (!current.some((entry) => entry.login === workingTreeContributor.login)) {
