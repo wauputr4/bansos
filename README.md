@@ -35,7 +35,6 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 
 Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada Pull Request atau push ke branch `main`/`ui-refactor`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
-
 ## Menjalankan proyek
 
 ```bash
@@ -69,7 +68,9 @@ packages/bansosdev-cli/        # CLI npx bansosdev
 Ada 3 opsi utama yang bisa kamu pilih untuk mendaftarkan info bansos developer baru, sesuai dengan kenyamananmu:
 
 ### 1. Opsi 1: Lewat Web Form (Paling Mudah & Tanpa Coding)
+
 Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
+
 1. Buka halaman kontribusi di browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
 2. Isi formulir informasi bansos secara lengkap (nama bansos, provider, deskripsi, benefit, dll).
 3. Klik tombol **Kirim Info**. Sistem akan secara otomatis men-generate halaman Issue GitHub dengan template yang sudah terisi.
@@ -78,14 +79,18 @@ Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu
 ---
 
 ### 2. Opsi 2: Lewat Command Line (npx CLI)
+
 Opsi ini ditujukan buat kamu yang lebih suka bermain dengan terminal.
 Kamu bisa menjalankan perintah ini untuk menjalankan wizard interaktif di terminalmu:
+
 ```bash
 npx bansosdev add
 ```
+
 CLI akan menuntunmu mengisi field demi field, lalu memberikan link instan untuk membuka Issue GitHub. Setelah disubmit, bot otomatis memprosesnya menjadi Pull Request.
 
-*Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:*
+_Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:_
+
 ```bash
 npx bansosdev add \
   --id nama-bansos \
@@ -103,7 +108,9 @@ npx bansosdev add \
 ---
 
 ### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
+
 Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
+
 1. Clone repositori ini ke komputermu:
    ```bash
    git clone https://github.com/wauputr4/bansos.git
@@ -127,7 +134,6 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
 3. Buat branch baru, tambahkan commit, push ke fork, dan kirim Pull Request (PR) ke repositori utama.
 
 ---
-
 
 ## Panduan kualitas listing
 
