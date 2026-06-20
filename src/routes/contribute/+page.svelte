@@ -8,7 +8,7 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-	type TabId = 'form' | 'npx' | 'git' | 'ai';
+	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'discord';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
@@ -21,7 +21,8 @@
 		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
 		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
-		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' }
+		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
+		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' }
 	];
 
 	let activeTab = $state<TabId>('form');
@@ -357,6 +358,35 @@
 							Lihat skill di skills.sh
 							<i class="fa-solid fa-arrow-up-right-from-square"></i>
 						</a>
+					</div>
+				{:else if activeTab === 'discord'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Submit via Discord Bot (Coming Soon)</h2>
+							<p>
+								Kami sedang menyiapkan Discord Bot interaktif untuk memudahkan pengajuan bansos
+								langsung lewat chat. Cukup bagikan link promo di channel khusus, bot kami yang akan
+								memvalidasi dan memproses datanya!
+							</p>
+						</div>
+						<div class="discord-coming-soon-card">
+							<div class="coming-soon-icon">
+								<i class="fa-brands fa-discord"></i>
+							</div>
+							<h3>Discord Bot Integration</h3>
+							<span class="status-badge-soon">Coming Soon</span>
+							<p>
+								Yuk join server Discord kami terlebih dahulu untuk bersiap-siap dan diskusi bareng!
+							</p>
+							<a
+								href="https://discord.gg/m4WFaQpNGs"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="discord-join-btn"
+							>
+								<i class="fa-brands fa-discord"></i> Join Discord Server
+							</a>
+						</div>
 					</div>
 				{/if}
 			</div>
@@ -947,6 +977,85 @@
 		.contributor-count {
 			font-size: 0.8rem;
 			text-align: right;
+		}
+	}
+
+	.discord-coming-soon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 3rem 2rem;
+		border: 1px dashed rgba(88, 101, 242, 0.35);
+		border-radius: 1rem;
+		background: rgba(88, 101, 242, 0.02);
+		margin-top: 1.5rem;
+		gap: 1rem;
+	}
+
+	.coming-soon-icon {
+		font-size: 3.5rem;
+		color: #5865f2;
+		animation: pulse-slow 2s infinite alternate;
+	}
+
+	.discord-coming-soon-card h3 {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.status-badge-soon {
+		background: rgba(16, 185, 129, 0.1);
+		color: var(--color-success);
+		font-size: 0.75rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 0.25rem 0.75rem;
+		border-radius: 999px;
+		border: 1px solid rgba(16, 185, 129, 0.2);
+	}
+
+	.discord-coming-soon-card p {
+		color: var(--text-secondary);
+		max-width: 24rem;
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.discord-join-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 750;
+		padding: 0.55rem 1.1rem;
+		border-radius: 999px;
+		background: #5865f2;
+		box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+		transition: all 0.2s ease;
+		text-decoration: none;
+		margin-top: 0.5rem;
+	}
+
+	.discord-join-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+		color: #fff;
+	}
+
+	@keyframes pulse-slow {
+		0% {
+			transform: scale(1);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1.08);
+			opacity: 1;
 		}
 	}
 </style>

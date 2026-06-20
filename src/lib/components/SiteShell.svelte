@@ -131,6 +131,9 @@
 				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
 				>
+				<span class="dot">·</span>
+				<a href="https://discord.gg/m4WFaQpNGs" target="_blank" rel="noopener noreferrer">Discord</a
+				>
 			</div>
 		</div>
 	</footer>

@@ -93,6 +93,27 @@
 			<a href={resolve('/contribute')} class="about-link">Cara Kontribusi</a>
 		</div>
 
+		<section class="discord-community-section">
+			<h2>
+				<i class="fa-brands fa-discord"></i> Gabung Discord Community!
+			</h2>
+			<p>
+				Mau bahas info bansos terbaru, tanya-tanya seputar development, kolaborasi side project,
+				atau sekadar nongkrong bareng developer jelata lainnya? Yuk, join server Discord kami
+				sekarang!
+			</p>
+			<div class="discord-button-wrapper">
+				<a
+					href="https://discord.gg/m4WFaQpNGs"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="discord-pill"
+				>
+					<i class="fa-brands fa-discord"></i> Join Discord Server
+				</a>
+			</div>
+		</section>
+
 		<section class="sponsor-section">
 			<h2>
 				<i class="fa-solid fa-heart"></i> Dukung Proyek Ini
@@ -259,5 +280,66 @@
 
 	.sponsor-pill i {
 		font-size: 1.1rem;
+	}
+
+	.discord-community-section {
+		margin-top: 3.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		text-align: center;
+		border: 1px dashed rgba(88, 101, 242, 0.45);
+		border-radius: 1rem;
+		padding: 2.25rem 1.5rem;
+		background: rgba(88, 101, 242, 0.03);
+	}
+
+	.discord-community-section h2 {
+		font-size: var(--font-size-h2);
+		color: var(--text-primary);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0;
+	}
+
+	.discord-community-section h2 i {
+		color: #5865f2;
+	}
+
+	.discord-community-section p {
+		max-width: 36rem;
+		color: var(--text-secondary);
+		margin: 0 auto;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.discord-button-wrapper {
+		margin-top: 0.5rem;
+	}
+
+	.discord-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 0.6rem 1.25rem;
+		border-radius: 999px;
+		background: #5865f2;
+		box-shadow: 0 4px 14px rgba(88, 101, 242, 0.35);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+		text-decoration: none;
+	}
+
+	.discord-pill:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(88, 101, 242, 0.45);
+		color: #fff;
 	}
 </style>
