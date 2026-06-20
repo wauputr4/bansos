@@ -31,15 +31,6 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 - Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
 - Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
 
-## Tech stack
-
-- [SvelteKit](https://kit.svelte.dev/) static site
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vite.dev/)
-- [Cloudflare Pages](https://pages.cloudflare.com/)
-- GitHub Actions untuk CI dan workflow kontribusi data
-- `bansosdev` CLI untuk submit listing baru
-
 ## Deploy dan Hosting
 
 Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada Pull Request atau push ke branch `main`/`ui-refactor`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
