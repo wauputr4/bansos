@@ -5,13 +5,15 @@
 [![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
-[![Deploy: GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-181717)](https://pages.github.com/)
+[![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
+
+![Bansos Developer Banner](https://bansos.dev/og.png)
 
 `Bantuan sosial untuk developer jelata`
 
-**bansos.dev** adalah open-source katalog promo developer Indonesia untuk menemukan domain gratis, hosting free-tier, cloud credits, API credits, database credits, startup credits, diskon tools coding, dan program gratisan lain yang relevan buat developer.
+**bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang SEO-friendly, data-driven, dan mudah dikontribusikan lewat CLI atau Pull Request.
+Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat CLI atau Pull Request.
 
 ## Keyword cepat
 
@@ -34,17 +36,14 @@ Situs ini dibangun sebagai static SvelteKit site yang SEO-friendly, data-driven,
 - [SvelteKit](https://kit.svelte.dev/) static site
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/)
-- [GitHub Pages](https://pages.github.com/)
+- [Cloudflare Pages](https://pages.cloudflare.com/)
 - GitHub Actions untuk CI dan workflow kontribusi data
 - `bansosdev` CLI untuk submit listing baru
 
-## Deploy dan domain
+## Deploy dan Hosting
 
-Deploy produksi berjalan lewat GitHub Pages dari workflow `.github/workflows/deploy-pages.yml`.
-Repository ini tidak membutuhkan token Cloudflare untuk deploy.
+Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada Pull Request atau push ke branch `main`/`ui-refactor`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
-Jika memakai Cloudflare sebagai DNS untuk custom domain, arahkan DNS ke GitHub Pages dan gunakan mode DNS only sampai verifikasi domain dan sertifikat HTTPS GitHub Pages aktif.
-Jangan menyimpan `CLOUDFLARE_API_TOKEN` atau `CLOUDFLARE_ACCOUNT_ID` di GitHub Actions secrets untuk deploy situs ini.
 
 ## Menjalankan proyek
 
@@ -145,7 +144,7 @@ Jika punya token maintainer, gunakan mode direct:
 BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
 ```
 
-Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke `main` akan memicu deploy GitHub Pages.
+Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke main akan memicu deploy otomatis ke Cloudflare Pages.
 
 Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
