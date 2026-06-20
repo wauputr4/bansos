@@ -151,6 +151,16 @@
 				>
 					<i class="fa-brands fa-threads"></i>
 				</a>
+				<span class="dot">·</span>
+				<a
+					href="https://t.me/bansos_dev"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Telegram"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-telegram"></i>
+				</a>
 			</div>
 		</div>
 	</footer>

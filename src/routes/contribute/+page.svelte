@@ -8,7 +8,7 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'discord';
+	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
@@ -22,7 +22,8 @@
 		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
 		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
-		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' }
+		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' },
+		{ id: 'telegram', label: 'Telegram (Soon)', icon: 'fa-brands fa-telegram' }
 	];
 
 	let activeTab = $state<TabId>('form');
@@ -385,6 +386,36 @@
 								class="discord-join-btn"
 							>
 								<i class="fa-brands fa-discord"></i> Join Discord Server
+							</a>
+						</div>
+					</div>
+				{:else if activeTab === 'telegram'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Submit via Telegram Bot (Coming Soon)</h2>
+							<p>
+								Selain Discord, kami juga sedang membangun Telegram Bot interaktif! Nantinya kamu
+								bisa langsung kirim detail promo lewat chat bot untuk memproses data bansos secara
+								otomatis.
+							</p>
+						</div>
+						<div class="telegram-coming-soon-card">
+							<div class="coming-soon-icon">
+								<i class="fa-brands fa-telegram"></i>
+							</div>
+							<h3>Telegram Channel &amp; Bot Integration</h3>
+							<span class="status-badge-soon">Coming Soon</span>
+							<p>
+								Yuk follow channel Telegram kami biar gak ketinggalan update program bansos
+								developer terbaru dan info perilisan bot kontribusi!
+							</p>
+							<a
+								href="https://t.me/bansos_dev"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="telegram-join-btn"
+							>
+								<i class="fa-brands fa-telegram"></i> Join Telegram Channel
 							</a>
 						</div>
 					</div>
@@ -1045,6 +1076,56 @@
 	.discord-join-btn:hover {
 		transform: translateY(-1px);
 		box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+		color: #fff;
+	}
+
+	.telegram-coming-soon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 3rem 2rem;
+		border: 1px dashed rgba(34, 158, 217, 0.35);
+		border-radius: 1rem;
+		background: rgba(34, 158, 217, 0.02);
+		margin-top: 1.5rem;
+		gap: 1rem;
+	}
+
+	.telegram-coming-soon-card h3 {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.telegram-coming-soon-card p {
+		color: var(--text-secondary);
+		max-width: 24rem;
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.telegram-join-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 750;
+		padding: 0.55rem 1.1rem;
+		border-radius: 999px;
+		background: #229ed9;
+		box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
+		transition: all 0.2s ease;
+		text-decoration: none;
+		margin-top: 0.5rem;
+	}
+
+	.telegram-join-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 6px 16px rgba(34, 158, 217, 0.4);
 		color: #fff;
 	}
 

@@ -216,6 +216,19 @@
 				</svg>
 				<span>Discord</span>
 			</a>
+			<a
+				href="https://t.me/bansos_dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="telegram-badge"
+			>
+				<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+					<path
+						d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.61l-1.92 9.06c-.14.63-.52.79-1.04.5l-2.93-2.16-1.41 1.36c-.16.16-.29.29-.6.29l.21-3.01 5.48-4.95c.24-.22-.05-.34-.37-.13l-6.78 4.27-2.92-.91c-.63-.2-.65-.63.13-.94l11.41-4.4c.53-.19 1 .13.83.99z"
+					/>
+				</svg>
+				<span>Telegram</span>
+			</a>
 		</div>
 
 		<h1 class="main-title text-balance">
@@ -468,6 +481,28 @@
 	}
 
 	.discord-badge .icon {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.telegram-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		background: rgba(34, 158, 217, 0.1);
+		border: 1px solid rgba(34, 158, 217, 0.2);
+		padding: 0.25rem 0.75rem;
+		border-radius: 2rem;
+		color: #229ed9 !important;
+	}
+
+	.telegram-badge:hover {
+		background: rgba(34, 158, 217, 0.15);
+	}
+
+	.telegram-badge .icon {
 		width: 0.875rem;
 		height: 0.875rem;
 	}
