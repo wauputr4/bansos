@@ -1027,5 +1027,26 @@
 		"tags": ["AI", "AI Credits", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "f",
+		"title": "Proxy model dari Opencode, KiloCode, Mimo",
+		"provider": "OpenAiCompatible/AntrophicCompatible",
+		"description": "proxy AI multi-upstream yang kompatibel dengan format OpenAI yang ditujukan untuk mengakses model-model AI gratis, dengan lalu lintas jaringan yang dirutekan melalui jaringan Tor untuk privasi/keamanan.\n\nProyek ini dibangun menggunakan bahasa pemrograman Go dan dilengkapi dengan antarmuka dasbor yang menggunakan teknologi HTMX.\n\nTor digunakan untuk bypass limit usage.",
+		"benefits": ["Free", "SelfHost", "AntrophicCompatible", "OpenAiCompatible"],
+		"validity": {
+			"type": "forever",
+			"description": "selama provider upstream ada"
+		},
+		"requirements": ["Docker"],
+		"publishedAt": "2026-06-20",
+		"contributor": {
+			"name": "nofendian17",
+			"url": "https://github.com/nofendian17"
+		},
+		"ctaLink": "https://github.com/nofendian17/freegate",
+		"tags": ["AI", "Developer Tools"],
+		"featured": false,
+		"status": "active"
 	}
 ]
