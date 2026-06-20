@@ -1027,5 +1027,34 @@
 		"tags": ["AI", "AI Credits", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "a",
+		"title": "FREE 1 Year subscription ATOMESUS",
+		"provider": "ATOMESUS",
+		"description": "Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).",
+		"benefits": [
+			"Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).",
+			"Memiliki kemampuan untuk membuat gambar (generate images)."
+		],
+		"promoCode": "ATOMESUS",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buat akun di platform atau aplikasi Atomesus.",
+			"Arahkan atau navigasikan ke menu Apply Referral Code.",
+			"Ketik dan masukkan kode kupon/redeem ini: ATOMESUS."
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://www.threads.com/@atomesus/post/DZzXJySAc_g",
+		"contributor": {
+			"name": "ALFIAN GADING",
+			"url": "https://github.com/Alfian57"
+		},
+		"ctaLink": "https://www.atomesus.com/",
+		"tags": ["AI"],
+		"featured": true,
+		"status": "active"
 	}
 ]
