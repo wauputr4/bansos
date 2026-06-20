@@ -153,7 +153,6 @@
 	const schemaJson = $derived(
 		schemaData ? JSON.stringify(schemaData).replace(/</g, '\\u003c') : ''
 	);
-	const schemaScriptTag = 'script';
 
 	const recommendedBansos = $derived.by(() => {
 		if (!item) return [];
@@ -208,7 +207,10 @@
 		<meta property="twitter:description" content={seoDesc} />
 		<meta property="twitter:image" content="{pageUrl}og.png" />
 
-		<svelte:element this={schemaScriptTag} type="application/ld+json">{schemaJson}</svelte:element>
+		{#if schemaJson}
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html '<script type="application/ld+json">' + schemaJson + '</' + 'script>'}
+		{/if}
 	{/if}
 </svelte:head>
 

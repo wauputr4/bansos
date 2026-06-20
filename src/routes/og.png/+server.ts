@@ -1,25 +1,23 @@
 import satori from 'satori';
 import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
-import fs from 'fs';
-import path from 'path';
 
 export const prerender = true;
 
-export async function GET() {
-	const fontPath = path.resolve('src/lib/assets/PlusJakartaSans-Bold.ttf');
-	const fontData = fs.readFileSync(fontPath);
+export async function GET({ fetch }) {
+	const fontResponse = await fetch('/PlusJakartaSans-Bold.ttf');
+	const fontData = await fontResponse.arrayBuffer();
 
 	const template = html(`
 		<div style="display: flex; flex-direction: column; width: 1200px; height: 630px; background-color: #090a0f; color: #f3f4f6; padding: 80px; justify-content: space-between; box-sizing: border-box; border: 2px solid #1f2937;">
 			<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: auto; margin-bottom: auto; width: 100%;">
 				<div style="display: flex; flex-direction: column; align-items: center; line-height: 1;">
-					<div style="display: flex; font-size: 96px; font-weight: 800; letter-spacing: -0.03em;">
+					<div style="display: flex; font-size: 96px; font-weight: 700; letter-spacing: -0.03em;">
 						<span style="color: #ffffff; display: flex;">ban</span><span style="color: #10b981; display: flex;">sos</span>
 					</div>
 					<div style="display: flex; align-items: center; width: 320px; gap: 16px; margin-top: -10px;">
 						<div style="display: flex; flex: 1; height: 6px; background-color: #10b981;"></div>
-						<span style="font-size: 32px; font-weight: 800; color: #ffffff; display: flex;">.dev</span>
+						<span style="font-size: 32px; font-weight: 700; color: #ffffff; display: flex;">.dev</span>
 						<div style="display: flex; flex: 1; height: 6px; background-color: #10b981;"></div>
 					</div>
 				</div>

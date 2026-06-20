@@ -24,7 +24,6 @@
 	const metaDescription =
 		'Kumpulan promo gratisan, diskon, credit API AI gratis, dan bantuan sosial (bansos) khusus untuk developer dan programmer di Indonesia. Domain gratis, cloud server, credit AI, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev/';
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const websiteSchema = JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
@@ -177,10 +176,8 @@
 	<meta property="twitter:description" content={metaDescription} />
 	<meta property="twitter:image" content="{siteUrl}og.png" />
 
-	<!-- prettier-ignore -->
-	<script type="application/ld+json">
-		{@html websiteSchema}
-	</script>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html '<script type="application/ld+json">' + websiteSchema + '</' + 'script>'}
 </svelte:head>
 
 <main class="page-wrapper">
@@ -232,7 +229,8 @@
 		</div>
 
 		<h1 class="main-title text-balance">
-			<span class="title-ban">Ban</span><span class="title-sos">sos</span> <span class="title-dev">Developer</span>
+			<span class="title-ban">Ban</span><span class="title-sos">sos</span>
+			<span class="title-dev">Developer</span>
 		</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
 		<p class="community-tagline text-pretty">
@@ -248,18 +246,24 @@
 			role="presentation"
 			aria-hidden="true"
 		>
-			<div
-				class="logo-hero-translate"
-				style:transform="translate({mouseX}px, {mouseY}px)"
-			>
+			<div class="logo-hero-translate" style:transform="translate({mouseX}px, {mouseY}px)">
 				<div class="logo-hero-rotate" class:spinning={isHovered}>
-					<svg class="logo-hero-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						class="logo-hero-icon"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
 						<!-- Left bracket < -->
 						<path class="bracket-path" d="M 6.5 7.5 L 2.5 12 L 6.5 16.5" />
 						<!-- Right bracket > -->
 						<path class="bracket-path" d="M 17.5 7.5 L 21.5 12 L 17.5 16.5" />
 						<!-- Green Heart -->
-						<path class="heart-path" d="M12 18.2C10.7 17 6.5 13.2 6.5 9.7C6.5 7.1 8.3 5.3 10.8 5.3C12.3 5.3 13.2 6.1 13.8 7C14.4 6.1 15.3 5.3 16.8 5.3C19.3 5.3 21.1 7.1 21.1 9.7C21.1 13.2 16.9 17 15.6 18.2L13.8 19.8Z" transform="translate(4.41, 5.0975) scale(0.55)" />
+						<path
+							class="heart-path"
+							d="M12 18.2C10.7 17 6.5 13.2 6.5 9.7C6.5 7.1 8.3 5.3 10.8 5.3C12.3 5.3 13.2 6.1 13.8 7C14.4 6.1 15.3 5.3 16.8 5.3C19.3 5.3 21.1 7.1 21.1 9.7C21.1 13.2 16.9 17 15.6 18.2L13.8 19.8Z"
+							transform="translate(4.41, 5.0975) scale(0.55)"
+						/>
 					</svg>
 				</div>
 			</div>
@@ -327,32 +331,50 @@
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-bolt"></i></div>
 				<h3>100% Terkurasi & Cepat</h3>
-				<p>Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi. Tanpa link shortener jebakan!</p>
+				<p>
+					Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi.
+					Tanpa link shortener jebakan!
+				</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-eye"></i></div>
 				<h3>100% Transparan</h3>
-				<p>Semua request bansos baru, validasi data, serta diskusi komunitas terbuka lebar langsung di GitHub Issue & PR.</p>
+				<p>
+					Semua request bansos baru, validasi data, serta diskusi komunitas terbuka lebar langsung
+					di GitHub Issue & PR.
+				</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-code"></i></div>
 				<h3>Open Source & Self-Hosted</h3>
-				<p>Kode sumber dan data bebas diaudit, difork, atau di-host mandiri sepenuhnya di infrastruktur milikmu.</p>
+				<p>
+					Kode sumber dan data bebas diaudit, difork, atau di-host mandiri sepenuhnya di
+					infrastruktur milikmu.
+				</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-users"></i></div>
 				<h3>Didukung Komunitas</h3>
-				<p>Data dikelola secara transparan oleh komunitas developer Indonesia. Siapapun bisa bantu kontribusi & update.</p>
+				<p>
+					Data dikelola secara transparan oleh komunitas developer Indonesia. Siapapun bisa bantu
+					kontribusi & update.
+				</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-gift"></i></div>
 				<h3>Referral Sahabat Dev</h3>
-				<p>Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link referral milik orang lain!</p>
+				<p>
+					Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link
+					referral milik orang lain!
+				</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-scale-balanced"></i></div>
 				<h3>Adil & Sportif</h3>
-				<p>Mendukung pemakaian link referral pribadi sebagai reward kontribusi, dilarang menimpa link milik orang lain!</p>
+				<p>
+					Mendukung pemakaian link referral pribadi sebagai reward kontribusi, dilarang menimpa link
+					milik orang lain!
+				</p>
 			</div>
 		</div>
 	</section>
