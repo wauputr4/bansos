@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { bansosList } from '$lib/data/bansos';
+	import { bansosList, extractProvider } from '$lib/data/bansos';
 	import DatePicker from './DatePicker.svelte';
 
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
@@ -11,6 +11,8 @@
 
 	let formId = $state('');
 	let formTitle = $state('');
+	let formProvider = $state('');
+	let providerManuallyEdited = $state(false);
 
 	let formDescription = $state('');
 	let formBenefits = $state<string[]>(['']);
@@ -55,6 +57,9 @@
 	$effect(() => {
 		if (!formCtaLink.trim()) {
 			ctaLinkError = '';
+			if (!providerManuallyEdited) {
+				formProvider = '';
+			}
 			return;
 		}
 		try {
@@ -66,6 +71,15 @@
 			}
 		} catch {
 			ctaLinkError = 'CTA Link bukan URL yang valid (contoh: https://example.com)';
+		}
+
+		if (formCtaLink.trim() && !providerManuallyEdited) {
+			const extracted = extractProvider(formCtaLink);
+			if (extracted !== 'Unknown') {
+				formProvider = extracted;
+			} else {
+				formProvider = '';
+			}
 		}
 	});
 
@@ -108,6 +122,8 @@
 	function fillExample(item: (typeof bansosList)[number]) {
 		formId = '';
 		formTitle = item.title;
+		formProvider = item.provider;
+		providerManuallyEdited = true;
 
 		formDescription = item.description;
 		formBenefits = [...item.benefits];
@@ -214,6 +230,8 @@
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
 		else if (formTitle.trim().length > 100) errors.push('Title maksimal 100 karakter');
 
+		if (!formProvider.trim()) errors.push('Provider wajib diisi');
+
 		if (!formDescription.trim()) errors.push('Description wajib diisi');
 		else if (formDescription.trim().length > 250) errors.push('Description maksimal 250 karakter');
 
@@ -269,6 +287,7 @@
 		const payload: Record<string, unknown> = {
 			id: formId.trim(),
 			title: formTitle.trim(),
+			provider: formProvider.trim(),
 			description: formDescription.trim(),
 			benefits: validBenefits.map((b) => b.trim()),
 			validity: {
@@ -319,6 +338,8 @@
 	export function reset() {
 		formId = '';
 		formTitle = '';
+		formProvider = '';
+		providerManuallyEdited = false;
 
 		formDescription = '';
 		formBenefits = [''];
@@ -368,6 +389,18 @@
 					>{formTitle.length}/100</span
 				>
 			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="bansos-form-provider">Provider <span class="required">*</span></label>
+			<input
+				id="bansos-form-provider"
+				type="text"
+				bind:value={formProvider}
+				oninput={() => (providerManuallyEdited = true)}
+				required
+				placeholder="Contoh: GitHub, Vercel"
+			/>
 		</div>
 
 		<div class="form-group">

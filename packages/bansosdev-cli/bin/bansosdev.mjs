@@ -112,6 +112,9 @@ function mergePayloadInput(args) {
 	if (!mergedArgs['published-at'] && jsonPayload.publishedAt) {
 		mergedArgs['published-at'] = jsonPayload.publishedAt;
 	}
+	if (!mergedArgs['provider'] && jsonPayload.provider) {
+		mergedArgs['provider'] = jsonPayload.provider;
+	}
 
 	return mergedArgs;
 }
@@ -123,7 +126,7 @@ function help() {
 	console.log(`bansosdev
 
 Usage:
-  npx bansosdev add --id my-bansos --title "Promo" ...
+  npx bansosdev add --id my-bansos --title "Promo" --provider "Provider Name" ...
 
 Modes:
   --mode direct   Trigger trusted GitHub Action commit (needs token)
@@ -133,6 +136,7 @@ Modes:
 Required:
   --id
   --title
+  --provider "Nama Provider"
 
   --description
   --benefits "Benefit 1|Benefit 2"
@@ -302,6 +306,7 @@ function payloadFromArgs(args) {
 	const payload = {
 		id: required(args, 'id'),
 		title: required(args, 'title'),
+		provider: required(args, 'provider'),
 
 		description: required(args, 'description'),
 		benefits: list(required(args, 'benefits')),

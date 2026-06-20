@@ -28,7 +28,8 @@
 		"ctaLink": "https://www.name.com",
 		"tags": ["Domain", "Gratisan", "No Credit Card"],
 		"featured": true,
-		"status": "expired"
+		"status": "expired",
+		"provider": "Name.com"
 	},
 	{
 		"id": "namecheap-vps-hosting",
@@ -57,7 +58,8 @@
 		"ctaLink": "https://www.namecheap.com/hosting/vps/",
 		"tags": ["VPS", "Hosting", "Server", "Gratis Trial"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Namecheap"
 	},
 	{
 		"id": "idwebhost-domain-gratis-1tahun",
@@ -88,7 +90,8 @@
 		"ctaLink": "https://idwebhost.com/",
 		"tags": ["Domain", "Promo", "Kupon", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "IDwebhost"
 	},
 	{
 		"id": "tokenrouter-model-gateway",
@@ -122,7 +125,8 @@
 		"ctaLink": "https://www.tokenrouter.com/campaign-rules",
 		"tags": ["AI Credits", "Model API", "Top-up Bonus"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "TokenRouter"
 	},
 	{
 		"id": "deepseek-free-token",
@@ -154,7 +158,8 @@
 		"ctaLink": "https://platform.deepseek.com/api_keys",
 		"tags": ["AI Credits", "Model API", "No Credit Card", "Free Tier"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "DeepSeek"
 	},
 	{
 		"id": "inceptionlabs-get-started",
@@ -187,7 +192,8 @@
 		"ctaLink": "https://docs.inceptionlabs.ai/get-started/get-started",
 		"tags": ["AI Credits", "OpenAI Compatible", "API", "Free Tier"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Inception"
 	},
 	{
 		"id": "kimchi-dev-serverless-ai",
@@ -207,7 +213,8 @@
 		"ctaLink": "https://kimchi.dev",
 		"tags": ["AI Credits", "Serverless", "No Credit Card", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Kimchi.dev"
 	},
 	{
 		"id": "kie-ai-api-discount-credit",
@@ -240,7 +247,8 @@
 		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
 		"tags": ["AI Credits", "API", "AI Image", "AI Video", "Diskon", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Kie.ai"
 	},
 	{
 		"id": "aiclass-asean-courses",
@@ -268,7 +276,8 @@
 		"ctaLink": "https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
 		"tags": ["AI Education", "Course", "Gratisan", "Sertifikat", "Referral"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "AI Class ASEAN"
 	},
 	{
 		"id": "dahono-labs-ai-api",
@@ -293,7 +302,8 @@
 		"ctaLink": "https://labs.dahono.com",
 		"tags": ["API", "AI", "OpenAI Compatible", "Gratisan", "No Credit Card"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "Dahono Labs"
 	},
 	{
 		"id": "aws-activate-credits",
@@ -320,7 +330,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "Amazon Web Services"
 	},
 	{
 		"id": "google-startups-cloud",
@@ -347,7 +358,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "Google Cloud"
 	},
 	{
 		"id": "xai-grok-api-credits",
@@ -373,7 +385,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "xAI"
 	},
 	{
 		"id": "amd-ai-dev-program",
@@ -401,7 +414,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "AMD"
 	},
 	{
 		"id": "microsoft-founders-hub",
@@ -431,7 +445,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "Microsoft"
 	},
 	{
 		"id": "digitalocean-hatch",
@@ -460,7 +475,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "DigitalOcean"
 	},
 	{
 		"id": "mongodb-startups",
@@ -488,7 +504,8 @@
 		"contributor": {
 			"name": "DevERS",
 			"url": "https://renzlab.my.id"
-		}
+		},
+		"provider": "MongoDB"
 	},
 	{
 		"id": "namecheap-hosting-trial",
@@ -516,7 +533,8 @@
 		"ctaLink": "https://www.namecheap.com/hosting/",
 		"tags": ["Hosting", "Gratis Trial", "Server"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Namecheap"
 	},
 	{
 		"id": "tokenrouter-minimax-m3-free",
@@ -543,7 +561,8 @@
 		"ctaLink": "https://www.tokenrouter.com/",
 		"tags": ["AI Credits", "Model API", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "TokenRouter"
 	},
 	{
 		"id": "zcode-glm-52-free",
@@ -576,7 +595,8 @@
 		"tags": ["AI", "Coding", "Gratisan", "GLM", "Z.ai"],
 		"featured": false,
 		"status": "active",
-		"source": "https://zcode.z.ai/en/changelog"
+		"source": "https://zcode.z.ai/en/changelog",
+		"provider": "ZCode"
 	},
 	{
 		"id": "qoder-qwen-max-free",
@@ -606,7 +626,8 @@
 		"ctaLink": "https://qoder.com/",
 		"tags": ["AI Credits", "Model API", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Qoder"
 	},
 	{
 		"id": "notion-ai-unlimited-1-bulan",
@@ -636,7 +657,8 @@
 		"ctaLink": "https://www.notion.so/",
 		"tags": ["AI", "Productivity", "Gratisan", "Notion"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Notion"
 	},
 	{
 		"id": "aerolink-free-credits",
@@ -667,7 +689,8 @@
 		"ctaLink": "https://aerolink.lat/",
 		"tags": ["AI", "API", "Cloud", "Gratisan", "Developer"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Aerolink"
 	},
 	{
 		"id": "google-ai-pro-4-bulan",
@@ -688,7 +711,8 @@
 		"ctaLink": "http://g.co/g1referral/JG620Z3F",
 		"tags": ["AI", "Cloud", "Gratisan", "Google"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Google"
 	},
 	{
 		"id": "gemini-plus-3bulan-sim",
@@ -717,7 +741,8 @@
 		"ctaLink": "https://bima.tri.co.id",
 		"tags": ["AI Credits", "Gemini", "Bima"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Bima3"
 	},
 	{
 		"id": "codecrafters-free-token",
@@ -740,7 +765,8 @@
 		"ctaLink": "https://cloud.codecrafters.id",
 		"tags": ["AI", "API", "Developer"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "CodeCrafters"
 	},
 	{
 		"id": "xiaomi-mimo-gratis-2",
@@ -765,7 +791,8 @@
 		"ctaLink": "https://platform.xiaomimimo.com/?ref=NK2BLA",
 		"tags": ["AI Credits"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Xiaomi Mimo"
 	},
 	{
 		"id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
@@ -797,7 +824,8 @@
 		"ctaLink": "https://dash.domain.digitalplat.org",
 		"tags": ["Domain", "Networking", "Free Tier", "Developer Tools", "Gratisan"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "DigitalPlat Foundation"
 	},
 	{
 		"id": "sumopod-domain-rp1",
@@ -825,7 +853,8 @@
 		"ctaLink": "https://sumopod.com",
 		"tags": ["Domain", "Promo", "Diskon"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Sumopod"
 	},
 	{
 		"id": "tvstreamindonesia-fifa-2026",
@@ -850,7 +879,8 @@
 		"ctaLink": "https://tvstreamindonesia.my.id",
 		"tags": ["Free Tier"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "Tvstreamindonesia"
 	},
 	{
 		"id": "rumahweb-free-domain-xyz",
@@ -877,7 +907,8 @@
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
 		"tags": ["Domain", "Free Tier", "Diskon", "Gratisan"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "Rumahweb"
 	},
 	{
 		"id": "agentrouter-free-credits",
@@ -897,7 +928,8 @@
 		"ctaLink": "https://agentrouter.org/register?aff=qdG1",
 		"tags": ["AI", "AI Credits", "API"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"provider": "AgentRouter"
 	},
 	{
 		"id": "zenmux-glm-52-free",
@@ -918,7 +950,8 @@
 		"ctaLink": "https://zenmux.ai/invite/7RR544",
 		"tags": ["AI Credits"],
 		"featured": false,
-		"status": "active"
+		"status": "active",
+		"provider": "Z.ai"
 	},
 	{
 		"id": "agentrouter-free-250-ai-credit",

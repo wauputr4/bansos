@@ -124,25 +124,55 @@ export function extractProvider(url: string) {
 		const parsed = parseAndValidateUrl(url);
 		if (!parsed) return 'Unknown';
 		let hostname = parsed.hostname;
+
+		// Strip common known subdomains first so we don't accidentally treat them as root domains later
 		hostname = hostname.replace(
 			/^(?:www\.|platform\.|console\.|docs\.|dash\.|api\.|app\.|auth\.|login\.)+/i,
 			''
 		);
-		return hostname.charAt(0).toUpperCase() + hostname.slice(1);
+
+		const parts = hostname.split('.');
+
+		if (parts.length > 2) {
+			const secondToLast = parts[parts.length - 2];
+			const isTwoPartTld = [
+				'co',
+				'com',
+				'org',
+				'net',
+				'edu',
+				'gov',
+				'mil',
+				'ac',
+				'go',
+				'or'
+			].includes(secondToLast);
+			if (isTwoPartTld) {
+				parts.pop(); // Remove the country code (e.g., 'uk')
+				parts.pop(); // Remove the second level TLD (e.g., 'co')
+			} else {
+				parts.pop(); // Remove single TLD (e.g., 'com')
+			}
+		} else if (parts.length > 1) {
+			parts.pop(); // Remove single TLD
+		}
+
+		const rootName = parts.pop() || 'Unknown';
+		return rootName.charAt(0).toUpperCase() + rootName.slice(1);
 	} catch {
 		return 'Unknown';
 	}
 }
 
 /**
- * Sanitizes and tracks a bansos item, appending UTM params and extracting provider.
- * @param item The bansos item without provider.
+ * Sanitizes and tracks a bansos item, appending UTM params and using explicit provider if available.
+ * @param item The bansos item.
  * @returns The fully sanitized bansos item.
  */
-export function sanitizeAndTrackBansosItem(item: Omit<BansosItem, 'provider'>): BansosItem {
+export function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
 	const sanitizedItem = {
 		...item,
-		provider: extractProvider(item.ctaLink),
+		provider: item.provider?.trim() ? item.provider.trim() : extractProvider(item.ctaLink),
 		ctaLink: appendDefaultUtmParams(item.ctaLink)
 	};
 

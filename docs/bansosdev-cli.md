@@ -15,6 +15,7 @@
 npx bansosdev add \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type "uncertain" \
@@ -34,6 +35,7 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \
   --mode direct \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type "fixed" \

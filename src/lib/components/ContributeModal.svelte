@@ -26,7 +26,7 @@
 			'npx bansosdev add \\',
 			`  --id ${item.id} \\`,
 			`  --title "${item.title}" \\`,
-
+			`  --provider "${item.provider}" \\`,
 			`  --description "${item.description}" \\`,
 			`  --benefits "${item.benefits.join('|')}" \\`,
 			`  --validity-type ${item.validity.type} \\`
@@ -57,7 +57,7 @@
 			'npm run add:bansos -- \\',
 			`  --id ${item.id} \\`,
 			`  --title "${item.title}" \\`,
-
+			`  --provider "${item.provider}" \\`,
 			`  --description "${item.description}" \\`,
 			`  --benefits "${item.benefits.join('|')}" \\`,
 			`  --validity-type ${item.validity.type} \\`

@@ -87,6 +87,7 @@ Kalau payload valid, GitHub Actions akan membuat Pull Request otomatis dari issu
 npx bansosdev add \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
@@ -125,6 +126,7 @@ npx bansosdev add ... --mode json
 npm run add:bansos -- \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
