@@ -160,6 +160,18 @@
 			payload JSON yang sama, lalu bot otomatis bikin Pull Request dari issue yang kamu submit.
 		</p>
 
+		<div class="referral-policy-banner glass-card">
+			<i class="fa-solid fa-circle-exclamation info-icon"></i>
+			<div class="banner-content">
+				<h4>Kebijakan Link Referral (Gentleman's Agreement)</h4>
+				<p>
+					Kamu dibebaskan memakai link referral pribadimu saat mengirim data bansos baru. Namun,
+					tolong <strong>jangan menimpa atau mengganti link referral milik kontributor lain</strong>
+					yang sudah terdaftar. Mari kita hargai kontributor pertama yang membagikan info tersebut!
+				</p>
+			</div>
+		</div>
+
 		<div class="repo-status-card">
 			<p class="eyebrow">Open Source Repo</p>
 			<GithubBadge />
@@ -1208,5 +1220,37 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	.referral-policy-banner {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		border-left: 4px solid var(--color-accent);
+		background: rgba(16, 185, 129, 0.03);
+		border-radius: 0.75rem;
+		margin-bottom: 0.5rem;
+		text-align: left;
+	}
+
+	.referral-policy-banner .info-icon {
+		font-size: 1.35rem;
+		color: var(--color-accent);
+		margin-top: 0.15rem;
+	}
+
+	.banner-content h4 {
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0 0 0.35rem;
+	}
+
+	.banner-content p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
 	}
 </style>

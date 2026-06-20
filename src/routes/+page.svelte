@@ -333,6 +333,28 @@
 		</div>
 	</section>
 
+	<!-- Kelebihan Section -->
+	<section class="advantages-section container">
+		<h2 class="advantages-title text-gradient">Mengapa bansos.dev?</h2>
+		<div class="advantages-grid">
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-bolt"></i></div>
+				<h3>100% Terkurasi & Cepat</h3>
+				<p>Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi. Tanpa link shortener jebakan!</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-users"></i></div>
+				<h3>Didukung Komunitas</h3>
+				<p>Data dikelola secara transparan oleh komunitas developer Indonesia. Siapapun bisa bantu kontribusi & update.</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-gift"></i></div>
+				<h3>Referral Sahabat Dev</h3>
+				<p>Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link referral milik orang lain!</p>
+			</div>
+		</div>
+	</section>
+
 	<!-- Contribution & GitHub Section -->
 	<section class="github-section container">
 		<div class="glass-card github-card">
@@ -377,6 +399,9 @@
 				<a href={resolve('/contribute')} class="btn-secondary">
 					<i class="fa-solid fa-code-pull-request btn-icon" aria-hidden="true"></i>
 					Kontribusi
+				</a>
+				<a href={resolve('/about')} class="btn-text">
+					Selengkapnya <i class="fa-solid fa-arrow-right btn-icon" aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>
@@ -857,5 +882,98 @@
 		width: 1.25rem;
 		height: 1.25rem;
 		margin-right: 0.5rem;
+	}
+
+	.btn-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		font-weight: 750;
+		transition: color 0.2s;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	.btn-text:hover {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+
+	.btn-text .btn-icon {
+		font-size: 0.85rem;
+		margin-right: 0;
+	}
+
+	.advantages-section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+		text-align: center;
+	}
+
+	.advantages-title {
+		font-size: var(--font-size-h2);
+		font-weight: 800;
+		margin: 0;
+	}
+
+	.advantages-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		width: 100%;
+	}
+
+	@media (min-width: 48rem) {
+		.advantages-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.advantage-card {
+		padding: 2rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		text-align: center;
+		transition:
+			transform 0.2s,
+			border-color 0.2s;
+	}
+
+	.advantage-card:hover {
+		transform: translateY(-4px);
+		border-color: var(--color-accent);
+	}
+
+	.advantage-icon {
+		font-size: 2.25rem;
+		color: var(--color-accent);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		background: rgba(16, 185, 129, 0.08);
+		border: 1px solid rgba(16, 185, 129, 0.15);
+	}
+
+	.advantage-card h3 {
+		font-size: 1.2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.advantage-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin: 0;
 	}
 </style>
