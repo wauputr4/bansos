@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { SvelteDate } from 'svelte/reactivity';
 import {
 	bansosList as initialBansosList,
 	normalizeBansosStatuses,
@@ -10,12 +11,12 @@ export const bansosState = $state({
 });
 
 // Perform an initial local check so SSG/SSR starts somewhat correct
-bansosState.data = normalizeBansosStatuses(initialBansosList, new Date());
+bansosState.data = normalizeBansosStatuses(initialBansosList, new SvelteDate());
 
 let isInitialized = false;
 
 export function initBansosStore() {
 	if (!browser || isInitialized) return;
 	isInitialized = true;
-	bansosState.data = normalizeBansosStatuses(bansosState.data, new Date());
+	bansosState.data = normalizeBansosStatuses(bansosState.data, new SvelteDate());
 }
