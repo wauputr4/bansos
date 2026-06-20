@@ -93,16 +93,39 @@ _Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:_
 
 ```bash
 npx bansosdev add \
-  --id nama-bansos \
-  --title "Nama Program Bansos" \
-  --provider "Nama Provider" \
-  --description "Deskripsi singkat mengenai program bansos." \
-  --benefits "Benefit A|Benefit B" \
+  --id contoh-bansos \
+  --title "Contoh Bansos Developer" \
+  --provider "Example Provider" \
+  --description "Deskripsi singkat bansos." \
+  --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
-  --validity-date 2026-12-31 \
-  --requirements "Syarat 1|Syarat 2" \
-  --cta-link "https://link-resmi.com" \
-  --tags "Cloud,Domain"
+  --validity-date 2026-06-30 \
+  --validity-desc "Berlaku khusus pelajar" \
+  --published-at 2026-06-13 \
+  --requirements "Buat akun|Klaim program" \
+  --cta-link "https://example.com" \
+  --contributor-name "Nama Kamu" \
+  --contributor-url "https://example.com" \
+  --tags "Cloud,Gratisan"
+```
+
+### Parameter validity
+
+- `--validity-type` wajib: pilih `fixed`, `uncertain`, atau `forever`.
+- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD` (Berfungsi sebagai Tanggal Berakhir).
+- `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
+- `--published-at` opsional untuk tanggal mulai berlaku (start date) dalam format `YYYY-MM-DD`. Default adalah hari ini.
+- `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
+
+> **Catatan Otomatisasi:**
+>
+> - Parameter `provider` akan diekstrak secara otomatis dari domain `cta-link`.
+> - Parameter `status` akan dihitung otomatis (`active`, `upcoming`, atau `expired`) berdasarkan tanggal `published-at` dan `validity-date`.
+
+### Cek payload JSON
+
+```bash
+npx bansosdev add ... --mode json
 ```
 
 ---
@@ -118,22 +141,43 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
    npm install
    ```
 2. Tambahkan data secara lokal menggunakan helper script:
+
    ```bash
    npm run add:bansos -- \
-     --id nama-bansos \
-     --title "Nama Program" \
-     --provider "Provider" \
-     --description "Deskripsi singkat." \
-     --benefits "Benefit A|Benefit B" \
-     --validity-type forever \
-     --requirements "Syarat 1" \
-     --cta-link "https://link-resmi.com" \
-     --tags "Database,API"
+     --id contoh-bansos \
+     --title "Contoh Bansos Developer" \
+     --provider "Example Provider" \
+     --description "Deskripsi singkat bansos." \
+     --benefits "Benefit satu|Benefit dua" \
+     --validity-type fixed \
+     --validity-date 2026-06-30 \
+     --requirements "Buat akun|Klaim program" \
+     --cta-link "https://example.com" \
+     --contributor-name "Nama Kamu" \
+     --contributor-url "https://example.com" \
+     --tags "Cloud,Gratisan"
    ```
+
    Script ini akan memvalidasi data dan menyimpannya di file data terstruktur `src/lib/data/bansos.json`.
+
+   Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
+   Argumen `--tags` dipisahkan dengan koma.
+
 3. Buat branch baru, tambahkan commit, push ke fork, dan kirim Pull Request (PR) ke repositori utama.
 
 ---
+
+### Maintainer mode (Khusus Admin / Maintainer)
+
+Jika punya token maintainer, gunakan mode direct:
+
+```bash
+BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
+```
+
+Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke `main` akan memicu deploy Cloudflare Pages.
+
+Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
 ## Panduan kualitas listing
 

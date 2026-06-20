@@ -5,7 +5,6 @@ import {
 	normalizeBansosStatuses,
 	type BansosItem
 } from '$lib/data/bansos';
-import { base } from '$app/paths';
 
 export const bansosState = $state({
 	data: initialBansosList as BansosItem[]
@@ -41,14 +40,5 @@ export function initBansosStore() {
 	if (!browser || isInitialized) return;
 	isInitialized = true;
 
-	// Fetch true server time to prevent local client clock bypass
-	fetch(`${base}/robots.txt`, { method: 'HEAD' })
-		.then((res) => {
-			const dateHeader = res.headers.get('Date');
-			if (dateHeader) {
-				const serverDate = new SvelteDate(dateHeader);
-				bansosState.data = checkExpired(bansosState.data, serverDate);
-			}
-		})
-		.catch(() => {});
+	bansosState.data = checkExpired(bansosState.data, new SvelteDate());
 }

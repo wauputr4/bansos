@@ -5,6 +5,11 @@ import { dirname, join } from 'node:path';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const dataPath = join(root, 'src/lib/data/bansos.json');
 
+/**
+ * Checks if a string is a valid calendar date in YYYY-MM-DD format.
+ * @param {string} value The date string to check.
+ * @returns {boolean} True if valid calendar date, false otherwise.
+ */
 function isValidCalendarDate(value) {
 	if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
 		return false;
@@ -18,6 +23,11 @@ function isValidCalendarDate(value) {
 	);
 }
 
+/**
+ * Parses command line arguments into an object.
+ * @param {string[]} argv The command line arguments array.
+ * @returns {Record<string, string>} The parsed arguments object.
+ */
 function parseArgs(argv) {
 	const args = {};
 	for (let index = 0; index < argv.length; index += 1) {
@@ -35,6 +45,13 @@ function parseArgs(argv) {
 	return args;
 }
 
+/**
+ * Retrieves a required argument or throws an error.
+ * @param {Record<string, string>} args The parsed arguments object.
+ * @param {string} key The argument key to retrieve.
+ * @returns {string} The argument value.
+ * @throws {Error} If the argument is missing.
+ */
 function required(args, key) {
 	if (!args[key]) {
 		throw new Error(`Missing required argument --${key}`);
@@ -42,6 +59,11 @@ function required(args, key) {
 	return args[key];
 }
 
+/**
+ * Splits a pipe-separated string into an array of trimmed strings.
+ * @param {string} value The pipe-separated string.
+ * @returns {string[]} The array of trimmed strings.
+ */
 function list(value) {
 	return String(value || '')
 		.split('|')
@@ -49,6 +71,11 @@ function list(value) {
 		.filter(Boolean);
 }
 
+/**
+ * Splits a comma-separated string into an array of trimmed strings.
+ * @param {string} value The comma-separated string.
+ * @returns {string[]} The array of trimmed strings.
+ */
 function csv(value) {
 	return String(value || '')
 		.split(',')
@@ -100,17 +127,29 @@ const contributorName =
 	mergedArgs['contributor-name'] || mergedArgs.contributorName || mergedArgs.contributor?.name;
 const contributorUrl =
 	mergedArgs['contributor-url'] || mergedArgs.contributorUrl || mergedArgs.contributor?.url;
-const publishedAt =
-	mergedArgs['published-at'] || mergedArgs.publishedAt || new Date().toISOString().slice(0, 10);
+const _d = new Date();
+const localToday = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`;
+
+const publishedAt = mergedArgs['published-at'] || mergedArgs.publishedAt || localToday;
 
 if (!isValidCalendarDate(publishedAt)) {
 	throw new Error('publishedAt must be a valid YYYY-MM-DD date');
 }
 
+const today = localToday;
+const start = publishedAt || today;
+let calculatedStatus = 'active';
+
+if (start > today) {
+	calculatedStatus = 'upcoming';
+} else if (validity.type === 'fixed' && validity.date && validity.date < today) {
+	calculatedStatus = 'expired';
+}
+
 const item = {
 	id: required(mergedArgs, 'id'),
 	title: required(mergedArgs, 'title'),
-	provider: required(mergedArgs, 'provider'),
+
 	description: required(mergedArgs, 'description'),
 	benefits: Array.isArray(mergedArgs.benefits)
 		? mergedArgs.benefits
@@ -133,7 +172,7 @@ const item = {
 	ctaLink: mergedArgs['cta-link'] || required(mergedArgs, 'ctaLink'),
 	tags: Array.isArray(mergedArgs.tags) ? mergedArgs.tags : csv(required(mergedArgs, 'tags')),
 	featured: mergedArgs.featured === true || mergedArgs.featured === 'true',
-	status: mergedArgs.status || 'active'
+	status: mergedArgs.status || calculatedStatus
 };
 
 if (item.benefits.length === 0) throw new Error('--benefits must contain at least one item');

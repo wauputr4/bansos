@@ -48,8 +48,7 @@
 
 		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}" \\`);
-		parts.push(`  --status ${item.status}`);
+		parts.push(`  --tags "${item.tags.join(',')}"`);
 
 		return parts.join('\n');
 	}
@@ -79,8 +78,7 @@
 
 		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}" \\`);
-		parts.push(`  --status ${item.status}`);
+		parts.push(`  --tags "${item.tags.join(',')}"`);
 		parts.push('');
 		parts.push(`git checkout -b ${branchName}`);
 		parts.push('git add .');
@@ -88,14 +86,14 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.provider} to bansos list" --base main`
+			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.title} to bansos list" --base main`
 		);
 
 		return parts.join('\n');
 	}
 
 	function generateAiPrompt(item: (typeof bansosList)[number]): string {
-		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nProvider: ${item.provider}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
+		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
 	}
 
 	const npxExamples = examples.map(generateNpxCommand);

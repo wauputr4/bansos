@@ -4,6 +4,11 @@ const eventPath = process.env.GITHUB_EVENT_PATH;
 const outputPath = process.env.BANSOS_PAYLOAD_PATH || '.tmp-bansos-issue.json';
 const githubOutput = process.env.GITHUB_OUTPUT;
 
+/**
+ * Checks if a string is a valid calendar date in YYYY-MM-DD format.
+ * @param {string} value The date string to check.
+ * @returns {boolean} True if valid calendar date, false otherwise.
+ */
 function isValidCalendarDate(value) {
 	if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
 		return false;
@@ -46,12 +51,13 @@ if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.id)) {
 }
 
 if (!payload.publishedAt) {
-	payload.publishedAt = new Date().toISOString().slice(0, 10);
+	const _d = new Date();
+	payload.publishedAt = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`;
 } else if (!isValidCalendarDate(payload.publishedAt)) {
 	throw new Error('Issue JSON payload publishedAt must be a valid date in YYYY-MM-DD format');
 }
 
-writeFileSync(outputPath, JSON.stringify(payload, null, 2) + '\n');
+writeFileSync(outputPath, JSON.stringify(payload, null, '\t') + '\n');
 
 if (githubOutput) {
 	appendFileSync(githubOutput, `id=${payload.id}\n`);

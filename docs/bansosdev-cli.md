@@ -15,7 +15,7 @@
 npx bansosdev add \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
-  --provider "Provider" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type "uncertain" \
@@ -25,8 +25,7 @@ npx bansosdev add \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan" \
-  --status active
+  --tags "Cloud,Gratisan"
 ```
 
 ## Maintainer (otomatis ke repo)
@@ -36,7 +35,7 @@ BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \
   --mode direct \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
-  --provider "Provider" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type "fixed" \

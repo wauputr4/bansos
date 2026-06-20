@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { bansosList } from '$lib/data/bansos';
+	import { bansosList, extractProvider } from '$lib/data/bansos';
+	import DatePicker from './DatePicker.svelte';
 
-	const existingProviders = [...new Set(bansosList.map((i) => i.provider))].sort((a, b) =>
-		a.localeCompare(b)
-	);
 	const existingTags = [...new Set(bansosList.flatMap((i) => i.tags))].sort((a, b) =>
 		a.localeCompare(b)
 	);
@@ -14,6 +12,8 @@
 	let formId = $state('');
 	let formTitle = $state('');
 	let formProvider = $state('');
+	let providerManuallyEdited = $state(false);
+
 	let formDescription = $state('');
 	let formBenefits = $state<string[]>(['']);
 	let formRequirements = $state<string[]>(['']);
@@ -28,15 +28,60 @@
 	let formSource = $state('');
 	let formContributorName = $state('');
 	let formContributorUrl = $state('');
-	let formStatus = $state<'active' | 'expired' | 'upcoming'>('active');
-	let formFeatured = $state(false);
 	let formErrors = $state<string[]>([]);
+	let validityDropdownOpen = $state(false);
+	let tagError = $state('');
+	let ctaLinkError = $state('');
 
-	const filteredProviders = $derived(
-		formProvider.trim()
-			? existingProviders.filter((p) => p.toLowerCase().includes(formProvider.toLowerCase()))
-			: existingProviders
-	);
+	const validityOptions = [
+		{ value: 'uncertain', label: 'Tidak Tentu' },
+		{ value: 'fixed', label: 'Batas Waktu' },
+		{ value: 'forever', label: 'Selamanya' }
+	];
+
+	let autoStatus = $derived.by(() => {
+		const d = new Date();
+		const yyyy = d.getFullYear();
+		const mm = String(d.getMonth() + 1).padStart(2, '0');
+		const dd = String(d.getDate()).padStart(2, '0');
+		const today = `${yyyy}-${mm}-${dd}`;
+		const start = formPublishedAt || today;
+		if (start > today) return 'upcoming';
+
+		if (formValidityType === 'fixed' && formValidityDate) {
+			if (formValidityDate < today) return 'expired';
+		}
+		return 'active';
+	});
+
+	$effect(() => {
+		if (!formCtaLink.trim()) {
+			ctaLinkError = '';
+			if (!providerManuallyEdited) {
+				formProvider = '';
+			}
+			return;
+		}
+		try {
+			const url = new URL(formCtaLink.trim());
+			if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+				ctaLinkError = 'CTA Link harus menggunakan http:// atau https://';
+			} else {
+				ctaLinkError = '';
+			}
+		} catch {
+			ctaLinkError = 'CTA Link bukan URL yang valid (contoh: https://example.com)';
+		}
+
+		if (formCtaLink.trim() && !providerManuallyEdited) {
+			const extracted = extractProvider(formCtaLink);
+			if (extracted !== 'Unknown') {
+				formProvider = extracted;
+			} else {
+				formProvider = '';
+			}
+		}
+	});
 
 	const filteredTags = $derived(
 		tagInput.trim()
@@ -78,6 +123,8 @@
 		formId = '';
 		formTitle = item.title;
 		formProvider = item.provider;
+		providerManuallyEdited = true;
+
 		formDescription = item.description;
 		formBenefits = [...item.benefits];
 		formRequirements = [...item.requirements];
@@ -89,47 +136,65 @@
 		formPublishedAt = item.publishedAt || new Date().toISOString().slice(0, 10);
 		formPromoCode = item.promoCode || '';
 		formSource = item.source || '';
-		formStatus = item.status;
-		formFeatured = item.featured || false;
 		formContributorName = item.contributor?.name || '';
 		formContributorUrl = item.contributor?.url || '';
 		formErrors = [];
 	}
 
-	function addBenefit() {
-		formBenefits = [...formBenefits, ''];
-	}
-
 	function removeBenefit(index: number) {
 		formBenefits = formBenefits.filter((_, i) => i !== index);
+		if (formBenefits.length === 0) formBenefits = [''];
+	}
+
+	function cleanupBenefits() {
+		setTimeout(() => {
+			const filled = formBenefits.map((b) => b.trim()).filter((b) => b !== '');
+			formBenefits = [...filled, ''];
+		}, 150);
 	}
 
 	function updateBenefit(index: number, value: string) {
 		formBenefits = formBenefits.map((item, i) => (i === index ? value : item));
-	}
-
-	function addRequirement() {
-		formRequirements = [...formRequirements, ''];
+		if (index === formBenefits.length - 1 && value.trim() !== '') {
+			formBenefits = [...formBenefits, ''];
+		}
 	}
 
 	function removeRequirement(index: number) {
 		formRequirements = formRequirements.filter((_, i) => i !== index);
+		if (formRequirements.length === 0) formRequirements = [''];
+	}
+
+	function cleanupRequirements() {
+		setTimeout(() => {
+			const filled = formRequirements.map((r) => r.trim()).filter((r) => r !== '');
+			formRequirements = [...filled, ''];
+		}, 150);
 	}
 
 	function updateRequirement(index: number, value: string) {
 		formRequirements = formRequirements.map((item, i) => (i === index ? value : item));
+		if (index === formRequirements.length - 1 && value.trim() !== '') {
+			formRequirements = [...formRequirements, ''];
+		}
 	}
 
 	function addTag(tag: string) {
 		const trimmed = tag.trim();
-		if (trimmed && !formTags.includes(trimmed)) {
+		if (trimmed.length < 2) {
+			tagError = 'Tag minimal 2 karakter';
+			return;
+		}
+		if (!formTags.includes(trimmed)) {
 			formTags = [...formTags, trimmed];
 		}
 		tagInput = '';
+		tagError = '';
 	}
 
 	function removeTag(index: number) {
 		formTags = formTags.filter((_, i) => i !== index);
+		tagError = '';
 	}
 
 	function handleTagInputKeydown(e: KeyboardEvent) {
@@ -140,12 +205,21 @@
 			}
 		} else if (e.key === 'Backspace' && !tagInput && formTags.length > 0) {
 			formTags = formTags.slice(0, -1);
+			tagError = '';
+		} else {
+			tagError = '';
 		}
 	}
 
 	function generateIssueUrl(): string | null {
 		formErrors = [];
 		const errors: string[] = [];
+
+		const now = Date.now();
+		const lastSubmission = localStorage.getItem('bansos_last_submission');
+		if (lastSubmission && now - parseInt(lastSubmission) < 60000) {
+			errors.push('Tunggu 1 menit sebelum submit form lagi (Rate Limit).');
+		}
 
 		if (!formId.trim()) errors.push('ID wajib diisi');
 		else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formId.trim()))
@@ -154,8 +228,12 @@
 			errors.push('ID sudah ada di katalog. Gunakan ID yang berbeda.');
 
 		if (!formTitle.trim()) errors.push('Title wajib diisi');
+		else if (formTitle.trim().length > 100) errors.push('Title maksimal 100 karakter');
+
 		if (!formProvider.trim()) errors.push('Provider wajib diisi');
+
 		if (!formDescription.trim()) errors.push('Description wajib diisi');
+		else if (formDescription.trim().length > 250) errors.push('Description maksimal 250 karakter');
 
 		const validBenefits = formBenefits.filter((b) => b.trim());
 		if (validBenefits.length === 0) errors.push('Minimal 1 benefit wajib diisi');
@@ -200,6 +278,12 @@
 			return null;
 		}
 
+		const d = new Date();
+		const yyyy = d.getFullYear();
+		const mm = String(d.getMonth() + 1).padStart(2, '0');
+		const dd = String(d.getDate()).padStart(2, '0');
+		const localToday = `${yyyy}-${mm}-${dd}`;
+
 		const payload: Record<string, unknown> = {
 			id: formId.trim(),
 			title: formTitle.trim(),
@@ -212,11 +296,10 @@
 				...(formValidityDesc.trim() ? { description: formValidityDesc.trim() } : {})
 			},
 			requirements: validRequirements.map((r) => r.trim()),
-			publishedAt: formPublishedAt || new Date().toISOString().slice(0, 10),
+			publishedAt: formPublishedAt || localToday,
 			ctaLink: formCtaLink.trim(),
 			tags: formTags,
-			featured: formFeatured,
-			status: formStatus
+			status: autoStatus
 		};
 
 		if (formPromoCode.trim()) payload.promoCode = formPromoCode.trim();
@@ -247,6 +330,7 @@
 		e.preventDefault();
 		const url = generateIssueUrl();
 		if (url) {
+			localStorage.setItem('bansos_last_submission', Date.now().toString());
 			window.open(url, '_blank');
 		}
 	}
@@ -255,6 +339,8 @@
 		formId = '';
 		formTitle = '';
 		formProvider = '';
+		providerManuallyEdited = false;
+
 		formDescription = '';
 		formBenefits = [''];
 		formRequirements = [''];
@@ -269,8 +355,6 @@
 		formSource = '';
 		formContributorName = '';
 		formContributorUrl = '';
-		formStatus = 'active';
-		formFeatured = false;
 		formErrors = [];
 	}
 </script>
@@ -295,10 +379,16 @@
 				id="bansos-form-title"
 				type="text"
 				bind:value={formTitle}
-				placeholder="GitHub Copilot Gratis 3 Bulan"
 				required
+				maxlength="100"
+				placeholder="Contoh: GitHub Student Developer Pack"
 			/>
-			<span class="hint">ID akan otomatis terbuat dari title</span>
+			<div class="hint-row">
+				<span class="hint">ID akan otomatis terbuat dari title</span>
+				<span class="char-count" class:near-limit={formTitle.length > 80}
+					>{formTitle.length}/100</span
+				>
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -307,18 +397,10 @@
 				id="bansos-form-provider"
 				type="text"
 				bind:value={formProvider}
-				placeholder="Pilih atau ketik provider baru"
-				list="provider-datalist"
+				oninput={() => (providerManuallyEdited = true)}
 				required
+				placeholder="Contoh: GitHub, Vercel"
 			/>
-			<datalist id="provider-datalist">
-				{#each filteredProviders as provider (provider)}
-					<option value={provider}></option>
-				{/each}
-			</datalist>
-			{#if formProvider && !existingProviders.includes(formProvider)}
-				<span class="hint hint-new">Provider baru, akan ditambahkan</span>
-			{/if}
 		</div>
 
 		<div class="form-group">
@@ -328,8 +410,12 @@
 				type="url"
 				bind:value={formCtaLink}
 				placeholder="https://example.com"
+				class:error-border={ctaLinkError !== ''}
 				required
 			/>
+			{#if ctaLinkError}
+				<span class="error-hint" style="margin-top: 0.25rem; display: block;">{ctaLinkError}</span>
+			{/if}
 		</div>
 
 		<div class="form-group full-width">
@@ -337,10 +423,16 @@
 			<textarea
 				id="bansos-form-description"
 				bind:value={formDescription}
-				placeholder="Deskripsi singkat tentang bansos ini..."
-				rows="2"
 				required
+				maxlength="250"
+				placeholder="Jelaskan secara singkat apa saja yang didapatkan (max 250 karakter)..."
 			></textarea>
+			<div class="hint-row">
+				<span></span>
+				<span class="char-count" class:near-limit={formDescription.length > 200}
+					>{formDescription.length}/250</span
+				>
+			</div>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -353,10 +445,13 @@
 							type="text"
 							value={benefit}
 							oninput={(e) => updateBenefit(i, e.currentTarget.value)}
-							placeholder="Benefit {i + 1}"
+							onblur={cleanupBenefits}
+							placeholder={i === formBenefits.length - 1
+								? 'Ketik untuk menambah benefit baru...'
+								: `Benefit ${i + 1}`}
 							aria-label="Benefit {i + 1}"
 						/>
-						{#if formBenefits.length > 1}
+						{#if i !== formBenefits.length - 1}
 							<button
 								type="button"
 								class="repeater-remove"
@@ -369,9 +464,6 @@
 					</div>
 				{/each}
 			</div>
-			<button type="button" class="repeater-add" onclick={addBenefit}>
-				<i class="fa-solid fa-plus"></i> Tambah Benefit
-			</button>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -385,10 +477,13 @@
 							type="text"
 							value={requirement}
 							oninput={(e) => updateRequirement(i, e.currentTarget.value)}
-							placeholder="Requirement {i + 1}"
+							onblur={cleanupRequirements}
+							placeholder={i === formRequirements.length - 1
+								? 'Ketik untuk menambah requirement baru...'
+								: `Requirement ${i + 1}`}
 							aria-label="Requirement {i + 1}"
 						/>
-						{#if formRequirements.length > 1}
+						{#if i !== formRequirements.length - 1}
 							<button
 								type="button"
 								class="repeater-remove"
@@ -401,9 +496,6 @@
 					</div>
 				{/each}
 			</div>
-			<button type="button" class="repeater-add" onclick={addRequirement}>
-				<i class="fa-solid fa-plus"></i> Tambah Requirement
-			</button>
 		</div>
 
 		<!-- svelte-ignore a11y_label_has_associated_control -->
@@ -440,16 +532,49 @@
 					{/each}
 				</div>
 			{/if}
-			<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
+			<div class="hint-row">
+				<span class="hint">Klik tag untuk pilih, atau ketik tag baru lalu tekan Enter</span>
+				{#if tagError}
+					<span class="error-hint">{tagError}</span>
+				{/if}
+			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group custom-select-container">
 			<label for="bansos-form-validity-type">Masa Berlaku <span class="required">*</span></label>
-			<select id="bansos-form-validity-type" bind:value={formValidityType}>
-				<option value="uncertain">Tidak Tentu</option>
-				<option value="fixed">Batas Waktu</option>
-				<option value="forever">Selamanya</option>
-			</select>
+			<div class="custom-select" class:open={validityDropdownOpen}>
+				<button
+					type="button"
+					id="bansos-form-validity-type"
+					class="select-btn"
+					onclick={() => (validityDropdownOpen = !validityDropdownOpen)}
+				>
+					{validityOptions.find((o) => o.value === formValidityType)?.label}
+					<i class="fa-solid fa-chevron-down"></i>
+				</button>
+				{#if validityDropdownOpen}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="dropdown-backdrop" onclick={() => (validityDropdownOpen = false)}></div>
+					<ul class="select-dropdown">
+						{#each validityOptions as opt (opt.value)}
+							<li>
+								<button
+									type="button"
+									class="select-option"
+									class:selected={formValidityType === opt.value}
+									onclick={() => {
+										formValidityType = opt.value as 'fixed' | 'uncertain' | 'forever';
+										validityDropdownOpen = false;
+									}}
+								>
+									{opt.label}
+								</button>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+			</div>
 		</div>
 
 		{#if formValidityType === 'fixed'}
@@ -457,7 +582,7 @@
 				<label for="bansos-form-validity-date"
 					>Tanggal Berakhir <span class="required">*</span></label
 				>
-				<input id="bansos-form-validity-date" type="date" bind:value={formValidityDate} required />
+				<DatePicker id="bansos-form-validity-date" bind:value={formValidityDate} required={true} />
 			</div>
 		{/if}
 
@@ -471,18 +596,9 @@
 			/>
 		</div>
 
-		<div class="form-group">
-			<label for="bansos-form-published-at">Tanggal Publish</label>
-			<input id="bansos-form-published-at" type="date" bind:value={formPublishedAt} />
-		</div>
-
-		<div class="form-group">
-			<label for="bansos-form-status">Status</label>
-			<select id="bansos-form-status" bind:value={formStatus}>
-				<option value="active">Aktif</option>
-				<option value="upcoming">Akan Datang</option>
-				<option value="expired">Expired</option>
-			</select>
+		<div class="form-group full-width">
+			<label for="bansos-form-published-at">Tanggal Mulai Berlaku</label>
+			<DatePicker id="bansos-form-published-at" bind:value={formPublishedAt} />
 		</div>
 
 		<div class="form-group">
@@ -523,13 +639,6 @@
 				bind:value={formContributorUrl}
 				placeholder="https://github.com/username"
 			/>
-		</div>
-
-		<div class="form-group checkbox-group full-width">
-			<label class="checkbox-label">
-				<input type="checkbox" bind:checked={formFeatured} />
-				<span>Featured (tandai sebagai rekomendasi)</span>
-			</label>
 		</div>
 	</div>
 
@@ -680,7 +789,37 @@
 
 	.hint {
 		color: var(--text-muted);
-		font-size: 0.8rem;
+		font-size: 0.75rem;
+		display: block;
+	}
+
+	.hint-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-top: 0.25rem;
+		gap: 1rem;
+	}
+
+	.char-count {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+	}
+
+	.char-count.near-limit {
+		color: var(--color-warning);
+	}
+
+	.error-hint {
+		color: var(--color-danger);
+		font-size: 0.75rem;
+		white-space: nowrap;
+	}
+
+	.error-border {
+		border-color: var(--color-danger) !important;
 	}
 
 	.hint-new {
@@ -782,6 +921,13 @@
 		font-family: inherit;
 		font-size: 0.9rem;
 		outline: none;
+	}
+
+	.form-group .tag-text-input {
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		padding: 0.2rem 0;
 	}
 
 	.tag-text-input::placeholder {
@@ -969,8 +1115,94 @@
 	}
 
 	.repeater-remove:hover {
-		background: rgba(239, 68, 68, 0.2);
+		color: #ef4444;
+		background: rgba(239, 68, 68, 0.1);
 		border-color: #ef4444;
+	}
+
+	.custom-select-container {
+		position: relative;
+	}
+
+	.custom-select {
+		position: relative;
+		width: 100%;
+	}
+
+	.select-btn {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.65rem 0.85rem;
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		text-align: left;
+		cursor: pointer;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.select-btn:focus,
+	.custom-select.open .select-btn {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.dropdown-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 10;
+		cursor: default;
+	}
+
+	.select-dropdown {
+		position: absolute;
+		top: calc(100% + 0.25rem);
+		left: 0;
+		width: 100%;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.5rem 0;
+		margin: 0;
+		list-style: none;
+		z-index: 20;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		max-height: 15rem;
+		overflow-y: auto;
+	}
+
+	.select-option {
+		width: 100%;
+		text-align: left;
+		padding: 0.5rem 1rem;
+		background: transparent;
+		border: none;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 0.95rem;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			color 0.2s;
+	}
+
+	.select-option:hover {
+		background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+		color: var(--text-primary);
+	}
+
+	.select-option.selected {
+		color: var(--color-accent);
+		background: rgba(16, 185, 129, 0.1);
+		font-weight: 700;
 	}
 
 	.repeater-add {
