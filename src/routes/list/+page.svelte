@@ -248,14 +248,16 @@
 					aria-expanded={filterExpanded}
 				>
 					<div class="filter-title">
-						<i class="fa-solid fa-filter"></i> Filter
+						<i class="fa-solid fa-filter"></i>
+						<span class="filter-text-desktop"> Filter</span>
 						{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
 							<span class="active-count"
 								>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
 							>
 						{/if}
 					</div>
-					<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'}"></i>
+					<i class="fa-solid fa-chevron-{filterExpanded ? 'up' : 'down'} filter-chevron-desktop"
+					></i>
 				</button>
 				{#if filterExpanded}
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -357,36 +359,33 @@
 				{/if}
 			</div>
 		</div>
-	</section>
 
-	<!-- Category Slider for Mobile/Tablet -->
-	<section
-		class="category-slider-section container mobile-only-categories"
-		aria-label="Kategori slider"
-	>
-		<div class="category-slider">
-			<button
-				class="category-slide-btn"
-				class:active={selectedTags.length === 0}
-				onclick={() => (selectedTags = [])}
-			>
-				Semua Kategori
-			</button>
-			{#each dynamicTags as tag (tag)}
+		<!-- Category Slider for Mobile/Tablet -->
+		<div class="category-slider-wrapper mobile-only-categories">
+			<div class="category-slider">
 				<button
 					class="category-slide-btn"
-					class:active={selectedTags.includes(tag)}
-					onclick={() => {
-						if (selectedTags.includes(tag)) {
-							selectedTags = selectedTags.filter((t) => t !== tag);
-						} else {
-							selectedTags = [...selectedTags, tag];
-						}
-					}}
+					class:active={selectedTags.length === 0}
+					onclick={() => (selectedTags = [])}
 				>
-					{tag}
+					Semua Kategori
 				</button>
-			{/each}
+				{#each dynamicTags as tag (tag)}
+					<button
+						class="category-slide-btn"
+						class:active={selectedTags.includes(tag)}
+						onclick={() => {
+							if (selectedTags.includes(tag)) {
+								selectedTags = selectedTags.filter((t) => t !== tag);
+							} else {
+								selectedTags = [...selectedTags, tag];
+							}
+						}}
+					>
+						{tag}
+					</button>
+				{/each}
+			</div>
 		</div>
 	</section>
 
@@ -511,13 +510,16 @@
 	}
 
 	.controls-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 		margin-bottom: -1rem;
 	}
 
 	.controls-wrapper {
 		display: flex;
 		flex-direction: row;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		align-items: stretch;
 	}
 
@@ -547,7 +549,7 @@
 
 	.filter-header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		width: 100%;
 		height: 100%;
@@ -558,8 +560,32 @@
 		font-size: 1.05rem;
 		font-weight: 650;
 		cursor: pointer;
-		padding: 1rem 1.5rem;
-		gap: 0.75rem;
+		padding: 1rem;
+		gap: 0.5rem;
+	}
+
+	.filter-text-desktop {
+		display: none;
+	}
+
+	.filter-chevron-desktop {
+		display: none;
+	}
+
+	@media (min-width: 48rem) {
+		.filter-header {
+			justify-content: space-between;
+			padding: 1rem 1.5rem;
+			gap: 0.75rem;
+		}
+
+		.filter-text-desktop {
+			display: inline;
+		}
+
+		.filter-chevron-desktop {
+			display: inline-block;
+		}
 	}
 
 	.filter-title {
@@ -900,35 +926,36 @@
 
 	.sidebar-tag-list {
 		display: flex;
-		flex-direction: column;
-		gap: 0.4rem;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 0.5rem;
 	}
 
 	.sidebar-tag-btn {
-		width: 100%;
-		padding: 0.6rem 0.85rem;
-		border: 1px solid transparent;
-		border-radius: 0.75rem;
-		background: transparent;
+		display: inline-flex;
+		align-items: center;
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
 		color: var(--text-secondary);
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		font-weight: 750;
-		text-align: left;
 		cursor: pointer;
 		transition: all 0.2s ease;
 		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 
 	.sidebar-tag-btn:hover {
 		color: var(--text-primary);
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		border-color: var(--text-secondary);
 	}
 
 	.sidebar-tag-btn.active {
 		color: #fff;
 		background: var(--color-accent);
+		border-color: var(--color-accent);
 		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 	}
 
@@ -937,8 +964,9 @@
 		min-width: 0;
 	}
 
-	.category-slider-section {
-		margin-block: -2.5rem 0.5rem;
+	.category-slider-wrapper {
+		margin-top: 1rem;
+		width: 100%;
 	}
 
 	@media (min-width: 64rem) {
