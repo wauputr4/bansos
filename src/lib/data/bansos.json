@@ -954,6 +954,46 @@
 		"status": "active"
 	},
 	{
+		"id": "agentrouter-free-250-ai-credit",
+		"title": "AgentRouter Free $250 AI Credit",
+		"provider": "AgentRouter",
+		"description": "AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.",
+		"benefits": [
+			"Mendapatkan $250 AI credit untuk pengguna baru",
+			"Tambahan credit",
+			"Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2",
+			"Satu API, banyak AI"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Daftar menggunakan akun GitHub lama/old account",
+			"Registrasi melalui link referral yang tersedia",
+			"Login dan cek saldo credit di dashboard AgentRouter",
+			"Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter"
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://agentrouter.org/register?aff=txsb",
+		"contributor": {
+			"name": "Jovian",
+			"url": "https://github.com/vian0001"
+		},
+		"ctaLink": "https://agentrouter.org/register?aff=txsb",
+		"tags": [
+			"AI",
+			"AI Credits",
+			"API",
+			"Coding",
+			"Developer",
+			"Free Tier",
+			"GLM",
+			"Developer Tools"
+		],
+		"featured": true,
+		"status": "active"
+	},
+	{
 		"id": "servernusa-free-xiaomi-mimo",
 		"title": "Akses Gratis Model AI Xiaomi Mimo via ServerNusa",
 		"provider": "ServerNusa",
@@ -977,6 +1017,70 @@
 		"ctaLink": "https://servernusa.com/ai/models",
 		"tags": ["AI", "AI Credits", "Gratisan"],
 		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "gumloop-free-credits",
+		"title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
+		"provider": "gumloop",
+		"description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
+		"benefits": [
+			"5.000 Kredit Rutin Bulanan",
+			"1.600 Bonus Koneksi (Satu Kali)",
+			"Akses ke Berbagai Model AI Populer",
+			"Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buat akun baru",
+			"Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
+		],
+		"instructions": [
+			"Daftar untuk membuat akun gratis di platform Gumloop.",
+			"Terima 5.000 kredit bulanan dasar Anda secara otomatis.",
+			"Hubungkan aplikasi produktivitas eksternal (seperti Google Docs) di dalam dasbor Anda untuk membuka tambahan 1.600 kredit bonus.",
+			"Pilih dari model AI yang tersedia dan mulai gunakan."
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://www.gumloop.com/pricing",
+		"contributor": {
+			"name": "Brian",
+			"url": "https://github.com/adefebrian"
+		},
+		"ctaLink": "https://www.gumloop.com/",
+		"tags": ["AI", "AI Credits", "Gratisan"],
+		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "atomesus-free-1-year-subscription",
+		"title": "FREE 1 Year subscription ATOMESUS",
+		"provider": "ATOMESUS",
+		"description": "Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).",
+		"benefits": [
+			"Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).",
+			"Memiliki kemampuan untuk membuat gambar (generate images)."
+		],
+		"promoCode": "ATOMESUS",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buat akun di platform atau aplikasi Atomesus.",
+			"Arahkan atau navigasikan ke menu Apply Referral Code.",
+			"Ketik dan masukkan kode kupon/redeem ini: ATOMESUS."
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://www.threads.com/@atomesus/post/DZzXJySAc_g",
+		"contributor": {
+			"name": "Alfian57",
+			"url": "https://github.com/Alfian57"
+		},
+		"ctaLink": "https://www.atomesus.com/",
+		"tags": ["AI"],
+		"featured": true,
 		"status": "active"
 	}
 ]
