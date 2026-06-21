@@ -1018,5 +1018,126 @@
 		"tags": ["AI", "AI Credits", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "openmodel-deepseek-v4-flash-free",
+		"title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
+		"provider": "OpenModel",
+		"description": "OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.",
+		"benefits": [
+			"Akses gratis penuh ke model DeepSeek-V4-Flash",
+			"Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa",
+			"Mudah diuji dan diintegrasikan melalui platform OpenModel",
+			"Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel"
+		},
+		"requirements": [
+			"Daftar atau masuk ke akun OpenModel kamu",
+			"Buka halaman pricing atau event resmi",
+			"Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya"
+		],
+		"publishedAt": "2026-06-21",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://www.openmodel.ai/model-pricing/deepseek-v4-flash",
+		"tags": ["AI", "AI Credits", "Gratisan"],
+		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "servernusa-free-xiaomi-mimo",
+		"title": "Akses Gratis Model AI Xiaomi Mimo via ServerNusa",
+		"provider": "ServerNusa",
+		"description": "ServerNusa menyediakan akses gratis untuk menggunakan model AI Xiaomi Mimo. Layanan ini memungkinkan para pengembang dan antusias AI untuk mencoba, mengeksplorasi, dan mengintegrasikan model AI dari Xiaomi tanpa biaya langsung melalui infrastruktur ServerNusa.",
+		"benefits": [
+			"Akses Gratis ke Model AI Xiaomi Mimo",
+			"Tidak perlu mengatur infrastruktur atau server lokal",
+			"Proses integrasi yang mudah melalui platform ServerNusa"
+		],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Kunjungi halaman resmi model AI ServerNusa di tautan yang disediakan.",
+			"Daftar untuk membuat akun baru atau masuk jika Anda sudah memiliki akun.",
+			"Arahkan ke dasbor model AI dan cari model 'Xiaomi Mimo' dari daftar yang tersedia.",
+			"Dapatkan kredensial atau akses API Anda untuk mulai menggunakan model tersebut dalam proyek Anda."
+		],
+		"tips": "Selalu simpan kredensial API Anda dengan aman dan jangan mengeksposnya di repositori publik.",
+		"publishedAt": "2026-06-21",
+		"source": "https://www.threads.com/@panggilajadwiya/post/DZ0JwFTks3y",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://servernusa.com/ai/models",
+		"tags": ["AI", "AI Credits", "Gratisan"],
+		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "atomesus-free-1-year-subscription",
+		"title": "FREE 1 Year subscription ATOMESUS",
+		"provider": "ATOMESUS",
+		"description": "Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).",
+		"benefits": [
+			"Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).",
+			"Memiliki kemampuan untuk membuat gambar (generate images)."
+		],
+		"promoCode": "ATOMESUS",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Buat akun di platform atau aplikasi Atomesus.",
+			"Arahkan atau navigasikan ke menu Apply Referral Code.",
+			"Ketik dan masukkan kode kupon/redeem ini: ATOMESUS."
+		],
+		"publishedAt": "2026-06-20",
+		"source": "https://www.threads.com/@atomesus/post/DZzXJySAc_g",
+		"contributor": {
+			"name": "Alfian57",
+			"url": "https://github.com/Alfian57"
+		},
+		"ctaLink": "https://www.atomesus.com/",
+		"tags": ["AI"],
+		"featured": true,
+		"status": "active"
+	},
+	{
+		"id": "merlin-ai-free-pro-1-month",
+		"title": "Gratis 1 Bulan Pro Plan Merlin AI",
+		"provider": "Merlin AI",
+		"description": "Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
+		"benefits": [
+			"Akses gratis Pro Plan selama 1 bulan",
+			"Menikmati fitur premium secara gratisan di bulan pertama"
+		],
+		"promoCode": "BCFREE",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.",
+			"Pilih paket langganan Pro Plan untuk durasi 1 bulan.",
+			"Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.",
+			"Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis."
+		],
+		"tips": "Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.",
+		"publishedAt": "2026-06-21",
+		"source": "https://www.getmerlin.in/",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://www.getmerlin.in/",
+		"tags": ["AI", "Promo", "Credit Card Required", "Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
