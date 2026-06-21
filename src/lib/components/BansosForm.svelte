@@ -217,7 +217,7 @@
 		const errors: string[] = [];
 
 		const now = Date.now();
-		let lastSubmission: string | null = null;
+		let lastSubmission: string | null;
 		try {
 			lastSubmission = localStorage.getItem('bansos_last_submission');
 		} catch {
