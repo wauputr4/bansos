@@ -1117,5 +1117,36 @@
 		"tags": ["AI"],
 		"featured": true,
 		"status": "active"
+	},
+	{
+		"id": "merlin-ai-free-pro-1-month",
+		"title": "Gratis 1 Bulan Pro Plan Merlin AI",
+		"provider": "Merlin AI",
+		"description": "Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
+		"benefits": [
+			"Akses gratis Pro Plan selama 1 bulan",
+			"Menikmati fitur premium secara gratisan di bulan pertama"
+		],
+		"promoCode": "BCFREE",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": [
+			"Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.",
+			"Pilih paket langganan Pro Plan untuk durasi 1 bulan.",
+			"Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.",
+			"Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis."
+		],
+		"tips": "Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.",
+		"publishedAt": "2026-06-21",
+		"source": "https://www.getmerlin.in/",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://www.getmerlin.in/",
+		"tags": ["AI", "Promo", "Credit Card Required", "Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
