@@ -5,13 +5,14 @@ on:
       - main
     paths:
       - 'src/lib/data/bansos.json'
+permissions:
+  contents: write
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
-          persist-credentials: false
           fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
