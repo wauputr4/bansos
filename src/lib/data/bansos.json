@@ -1139,5 +1139,48 @@
 		"tags": ["AI", "Promo", "Credit Card Required", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10",
+		"title": "GRATIS Pro Plan – $10/5 Jam + Bonus Referral $10",
+		"provider": "FreeModel",
+		"description": "FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.",
+		"benefits": [
+			"Akses FreeModel Pro selama 1 bulan",
+			"Usage limit $10 setiap 5 jam",
+			"Usage limit sekitar $70 per minggu",
+			"Bonus tambahan $10 jika daftar menggunakan referral.",
+			"Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.",
+			"Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4",
+			"Bisa dipasang di 9ROUTER"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "disarankan punya TELEGRAM"
+		},
+		"requirements": [
+			"Daftar akun FreeModel.dev.",
+			"Gunakan link referral saat signup agar bonus $10 masuk.",
+			"Verify pakai Telegram, nomor China, top up (pilih salah satu)",
+			"cuma kirim start di Telegram untuk verifikasinya"
+		],
+		"publishedAt": "2026-06-21",
+		"source": "https://freemodel.dev/invite/FRE-679677b5",
+		"contributor": {
+			"name": "Jovian",
+			"url": "https://github.com/vian0001"
+		},
+		"ctaLink": "https://freemodel.dev/invite/FRE-679677b5",
+		"tags": [
+			"AI",
+			"AI Credits",
+			"API",
+			"AI Tools",
+			"No Credit Card",
+			"Gratisan",
+			"Developer Tools"
+		],
+		"featured": false,
+		"status": "active"
 	}
 ]
