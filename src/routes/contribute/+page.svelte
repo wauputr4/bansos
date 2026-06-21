@@ -8,7 +8,7 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-	type TabId = 'form' | 'npx' | 'git' | 'ai';
+	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
@@ -21,7 +21,9 @@
 		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
 		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
-		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' }
+		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
+		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' },
+		{ id: 'telegram', label: 'Telegram (Soon)', icon: 'fa-brands fa-telegram' }
 	];
 
 	let activeTab = $state<TabId>('form');
@@ -48,8 +50,7 @@
 
 		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}" \\`);
-		parts.push(`  --status ${item.status}`);
+		parts.push(`  --tags "${item.tags.join(',')}"`);
 
 		return parts.join('\n');
 	}
@@ -79,8 +80,7 @@
 
 		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}" \\`);
-		parts.push(`  --status ${item.status}`);
+		parts.push(`  --tags "${item.tags.join(',')}"`);
 		parts.push('');
 		parts.push(`git checkout -b ${branchName}`);
 		parts.push('git add .');
@@ -88,14 +88,14 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.provider} to bansos list" --base main`
+			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.title} to bansos list" --base main`
 		);
 
 		return parts.join('\n');
 	}
 
 	function generateAiPrompt(item: (typeof bansosList)[number]): string {
-		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nProvider: ${item.provider}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
+		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
 	}
 
 	const npxExamples = examples.map(generateNpxCommand);
@@ -107,6 +107,7 @@
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
+	let activeContributorTab = $state<'project' | 'registered'>('project');
 
 	const copyToClipboard = async (text: string, id: string) => {
 		try {
@@ -129,6 +130,25 @@
 <svelte:head>
 	<title>Kontribusi bansos.dev</title>
 	<meta name="description" content="Cara menambahkan daftar bansos developer ke bansos.dev." />
+	<link rel="canonical" href="https://bansos.dev/contribute/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/contribute/" />
+	<meta property="og:title" content="Kontribusi bansos.dev" />
+	<meta
+		property="og:description"
+		content="Cara menambahkan daftar bansos developer ke bansos.dev."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://bansos.dev/contribute/" />
+	<meta name="twitter:title" content="Kontribusi bansos.dev" />
+	<meta
+		name="twitter:description"
+		content="Cara menambahkan daftar bansos developer ke bansos.dev."
+	/>
+	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
@@ -139,6 +159,18 @@
 			Pilih cara kontribusi yang paling nyaman buat kamu. Semua cara di bawah akan menghasilkan
 			payload JSON yang sama, lalu bot otomatis bikin Pull Request dari issue yang kamu submit.
 		</p>
+
+		<div class="referral-policy-banner glass-card">
+			<i class="fa-solid fa-circle-exclamation info-icon"></i>
+			<div class="banner-content">
+				<h4>Kebijakan Link Referral (Gentleman's Agreement)</h4>
+				<p>
+					Kamu dibebaskan memakai link referral pribadimu saat mengirim data bansos baru. Namun,
+					tolong <strong>jangan menimpa atau mengganti link referral milik kontributor lain</strong>
+					yang sudah terdaftar. Mari kita hargai kontributor pertama yang membagikan info tersebut!
+				</p>
+			</div>
+		</div>
 
 		<div class="repo-status-card">
 			<p class="eyebrow">Open Source Repo</p>
@@ -341,6 +373,65 @@
 							<i class="fa-solid fa-arrow-up-right-from-square"></i>
 						</a>
 					</div>
+				{:else if activeTab === 'discord'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Submit via Discord Bot (Coming Soon)</h2>
+							<p>
+								Kami sedang menyiapkan Discord Bot interaktif untuk memudahkan pengajuan bansos
+								langsung lewat chat. Cukup bagikan link promo di channel khusus, bot kami yang akan
+								memvalidasi dan memproses datanya!
+							</p>
+						</div>
+						<div class="discord-coming-soon-card">
+							<div class="coming-soon-icon">
+								<i class="fa-brands fa-discord"></i>
+							</div>
+							<h3>Discord Bot Integration</h3>
+							<span class="status-badge-soon">Coming Soon</span>
+							<p>
+								Yuk join server Discord kami terlebih dahulu untuk bersiap-siap dan diskusi bareng!
+							</p>
+							<a
+								href="https://discord.gg/m4WFaQpNGs"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="discord-join-btn"
+							>
+								<i class="fa-brands fa-discord"></i> Join Discord Server
+							</a>
+						</div>
+					</div>
+				{:else if activeTab === 'telegram'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Submit via Telegram Bot (Coming Soon)</h2>
+							<p>
+								Selain Discord, kami juga sedang membangun Telegram Bot interaktif! Nantinya kamu
+								bisa langsung kirim detail promo lewat chat bot untuk memproses data bansos secara
+								otomatis.
+							</p>
+						</div>
+						<div class="telegram-coming-soon-card">
+							<div class="coming-soon-icon">
+								<i class="fa-brands fa-telegram"></i>
+							</div>
+							<h3>Telegram Channel &amp; Bot Integration</h3>
+							<span class="status-badge-soon">Coming Soon</span>
+							<p>
+								Yuk follow channel Telegram kami biar gak ketinggalan update program bansos
+								developer terbaru dan info perilisan bot kontribusi!
+							</p>
+							<a
+								href="https://t.me/bansos_dev"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="telegram-join-btn"
+							>
+								<i class="fa-brands fa-telegram"></i> Join Telegram Channel
+							</a>
+						</div>
+					</div>
 				{/if}
 			</div>
 		</div>
@@ -352,68 +443,86 @@
 			</div>
 		{/if}
 
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-code-commit"></i>
-				Kontributor Proyek
-			</h2>
-			<p class="section-note">
-				Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode atau data
-				lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau pernah diupdate.
-			</p>
-			<ul class="commit-contributors-list">
-				{#each commitContributors as contributor (contributor.login)}
-					<li
-						class="commit-contributor-card"
-						class:author-highlight={contributor.login === 'wauputr4'}
-					>
-						<a
-							href={`https://github.com/${contributor.login}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-							<span class="login-name">@{contributor.login}</span>
-							{#if contributor.login === 'wauputr4'}
-								<span class="author-badge" title="Author">
-									<i class="fa-solid fa-crown"></i>
-									<span class="author-text">Author</span>
-								</span>
-							{/if}
-						</a>
-						<span class="contributor-count">{contributor.count} data tersentuh</span>
-					</li>
-				{/each}
-			</ul>
-		</section>
+		<div class="contributor-tabs-container">
+			<div class="contributor-tabs-header">
+				<button
+					class="contrib-tab-btn"
+					class:active={activeContributorTab === 'project'}
+					onclick={() => (activeContributorTab = 'project')}
+				>
+					<i class="fa-solid fa-code-commit"></i>
+					<span>Kontributor Proyek ({commitContributors.length})</span>
+				</button>
+				<button
+					class="contrib-tab-btn"
+					class:active={activeContributorTab === 'registered'}
+					onclick={() => (activeContributorTab = 'registered')}
+				>
+					<i class="fa-solid fa-users"></i>
+					<span>Kontributor Terdaftar ({contributors.length})</span>
+				</button>
+			</div>
 
-		<section class="contributors-section">
-			<h2 class="section-title">
-				<i class="fa-solid fa-users"></i>
-				Kontributor Terdaftar
-			</h2>
-			<p class="section-note">
-				Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update data
-				bansos via CLI/sistem.
-			</p>
-			{#if contributors.length > 0}
-				<ul class="contributors-list">
-					{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
-						<li class="contributor-card">
-							<div class="contributor-name">
-								<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-								<a href={contributor.url} target="_blank" rel="noopener noreferrer">
-									{contributor.name}
-								</a>
-							</div>
-							<span class="contributor-count">{contributor.count} kontribusi</span>
-						</li>
-					{/each}
-				</ul>
-			{:else}
-				<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
-			{/if}
-		</section>
+			<div class="contributor-tab-content">
+				{#if activeContributorTab === 'project'}
+					<div class="contrib-tab-panel">
+						<p class="section-note">
+							Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode
+							atau data lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau
+							pernah diupdate.
+						</p>
+						<ul class="commit-contributors-list">
+							{#each commitContributors as contributor (contributor.login)}
+								<li
+									class="commit-contributor-card"
+									class:author-highlight={contributor.login === 'wauputr4'}
+								>
+									<a
+										href={`https://github.com/${contributor.login}`}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+										<span class="login-name">@{contributor.login}</span>
+										{#if contributor.login === 'wauputr4'}
+											<span class="author-badge" title="Author">
+												<i class="fa-solid fa-crown"></i>
+												<span class="author-text">Author</span>
+											</span>
+										{/if}
+									</a>
+									<span class="contributor-count">{contributor.count} data tersentuh</span>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{:else if activeContributorTab === 'registered'}
+					<div class="contrib-tab-panel">
+						<p class="section-note">
+							Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update
+							data bansos via CLI/sistem.
+						</p>
+						{#if contributors.length > 0}
+							<ul class="contributors-list">
+								{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
+									<li class="contributor-card">
+										<div class="contributor-name">
+											<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+											<a href={contributor.url} target="_blank" rel="noopener noreferrer">
+												{contributor.name}
+											</a>
+										</div>
+										<span class="contributor-count">{contributor.count} kontribusi</span>
+									</li>
+								{/each}
+							</ul>
+						{:else}
+							<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
+						{/if}
+					</div>
+				{/if}
+			</div>
+		</div>
 	</section>
 </main>
 
@@ -931,5 +1040,217 @@
 			font-size: 0.8rem;
 			text-align: right;
 		}
+	}
+
+	.discord-coming-soon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 3rem 2rem;
+		border: 1px dashed rgba(88, 101, 242, 0.35);
+		border-radius: 1rem;
+		background: rgba(88, 101, 242, 0.02);
+		margin-top: 1.5rem;
+		gap: 1rem;
+	}
+
+	.coming-soon-icon {
+		font-size: 3.5rem;
+		color: #5865f2;
+		animation: pulse-slow 2s infinite alternate;
+	}
+
+	.discord-coming-soon-card h3 {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.status-badge-soon {
+		background: rgba(16, 185, 129, 0.1);
+		color: var(--color-success);
+		font-size: 0.75rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 0.25rem 0.75rem;
+		border-radius: 999px;
+		border: 1px solid rgba(16, 185, 129, 0.2);
+	}
+
+	.discord-coming-soon-card p {
+		color: var(--text-secondary);
+		max-width: 24rem;
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.discord-join-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 750;
+		padding: 0.55rem 1.1rem;
+		border-radius: 999px;
+		background: #5865f2;
+		box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+		transition: all 0.2s ease;
+		text-decoration: none;
+		margin-top: 0.5rem;
+	}
+
+	.discord-join-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+		color: #fff;
+	}
+
+	.telegram-coming-soon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 3rem 2rem;
+		border: 1px dashed rgba(34, 158, 217, 0.35);
+		border-radius: 1rem;
+		background: rgba(34, 158, 217, 0.02);
+		margin-top: 1.5rem;
+		gap: 1rem;
+	}
+
+	.telegram-coming-soon-card h3 {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.telegram-coming-soon-card p {
+		color: var(--text-secondary);
+		max-width: 24rem;
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.telegram-join-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 750;
+		padding: 0.55rem 1.1rem;
+		border-radius: 999px;
+		background: #229ed9;
+		box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
+		transition: all 0.2s ease;
+		text-decoration: none;
+		margin-top: 0.5rem;
+	}
+
+	.telegram-join-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 6px 16px rgba(34, 158, 217, 0.4);
+		color: #fff;
+	}
+
+	@keyframes pulse-slow {
+		0% {
+			transform: scale(1);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1.08);
+			opacity: 1;
+		}
+	}
+
+	.contributor-tabs-container {
+		margin-top: 3.5rem;
+		border: 1px solid var(--border-color);
+		border-radius: 1.25rem;
+		background: rgba(255, 255, 255, 0.02);
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.contributor-tabs-header {
+		display: flex;
+		border-bottom: 1px solid var(--border-color);
+		padding-bottom: 0.5rem;
+		gap: 1.5rem;
+	}
+
+	.contrib-tab-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: transparent;
+		border: none;
+		border-bottom: 2px solid transparent;
+		color: var(--text-secondary);
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 750;
+		padding: 0.5rem 0.25rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		padding-bottom: 0.75rem;
+		margin-bottom: -0.6rem;
+	}
+
+	.contrib-tab-btn:hover {
+		color: var(--text-primary);
+	}
+
+	.contrib-tab-btn.active {
+		color: var(--color-accent);
+		border-bottom-color: var(--color-accent);
+	}
+
+	.contrib-tab-panel {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.referral-policy-banner {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		border-left: 4px solid var(--color-accent);
+		background: rgba(16, 185, 129, 0.03);
+		border-radius: 0.75rem;
+		margin-bottom: 0.5rem;
+		text-align: left;
+	}
+
+	.referral-policy-banner .info-icon {
+		font-size: 1.35rem;
+		color: var(--color-accent);
+		margin-top: 0.15rem;
+	}
+
+	.banner-content h4 {
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0 0 0.35rem;
+	}
+
+	.banner-content p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
 	}
 </style>

@@ -4,11 +4,13 @@ import type { RequestHandler } from './$types';
 export const prerender = false;
 
 export const GET: RequestHandler = async ({ platform }) => {
-	const CF_API_TOKEN = platform?.env?.CF_API_TOKEN || process.env.CF_API_TOKEN;
-	const CF_ZONE_ID = platform?.env?.CF_ZONE_ID || process.env.CF_ZONE_ID;
+	const nodeEnv = typeof process !== 'undefined' ? process.env : undefined;
+	const CF_API_TOKEN = platform?.env?.CF_API_TOKEN || nodeEnv?.CF_API_TOKEN;
+	const CF_ZONE_ID = platform?.env?.CF_ZONE_ID || nodeEnv?.CF_ZONE_ID;
 
 	if (!CF_API_TOKEN || !CF_ZONE_ID) {
-		return json({ error: 'Cloudflare credentials not configured' }, { status: 500 });
+		// Return empty popularity data gracefully if token is not configured (local dev / preview)
+		return json({});
 	}
 
 	const query = `
@@ -88,6 +90,12 @@ export const GET: RequestHandler = async ({ platform }) => {
 		const popularity: Record<string, number> = {};
 		for (const row of rows) {
 			const path = (row.dimensions.clientRequestPath || '').toLowerCase();
+
+			// Exclude OG image hits from popularity counts to avoid bot traffic distortion
+			if (path.includes('/og.png') || path.endsWith('.png')) {
+				continue;
+			}
+
 			const views = row.count || 0;
 			const match = path.match(/\/list\/([^/]+)/);
 			if (match) {

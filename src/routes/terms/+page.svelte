@@ -8,6 +8,25 @@
 		name="description"
 		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
 	/>
+	<link rel="canonical" href="https://bansos.dev/terms/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://bansos.dev/terms/" />
+	<meta property="og:title" content="Syarat dan Ketentuan bansos.dev" />
+	<meta
+		property="og:description"
+		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
+	/>
+	<meta property="og:image" content="https://bansos.dev/og.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://bansos.dev/terms/" />
+	<meta name="twitter:title" content="Syarat dan Ketentuan bansos.dev" />
+	<meta
+		name="twitter:description"
+		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
+	/>
+	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
@@ -46,11 +65,18 @@
 		</section>
 
 		<section class="terms-section">
-			<h2>4. Kontribusi komunitas</h2>
+			<h2>4. Kontribusi komunitas &amp; Aturan Link Referral</h2>
 			<p>
 				Kontribusi harus menyertakan informasi yang benar, sumber resmi, dan tidak menyesatkan.
-				Kontributor tidak boleh mengirim spam, link berbahaya, program palsu, atau konten yang
-				melanggar hak pihak lain.
+				Kontributor dilarang keras mengirim spam, link berbahaya, atau program palsu.
+			</p>
+			<p style="margin-top: 0.5rem;">
+				<strong>Kebijakan Link Referral:</strong> Siapa pun diperbolehkan memasukkan link referral
+				milik mereka sendiri saat mengajukan program bansos baru. Namun,
+				<strong
+					>dilarang keras menimpa atau mengganti (replace) link referral milik kontributor lain</strong
+				> yang sudah terdaftar sebelumnya demi menjaga sportivitas dan menghargai kontributor pertama
+				program tersebut (gentleman's agreement).
 			</p>
 		</section>
 

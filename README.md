@@ -5,13 +5,17 @@
 [![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
-[![Deploy: GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-181717)](https://pages.github.com/)
+[![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/m4WFaQpNGs)
+[![Telegram](https://img.shields.io/badge/Telegram-Join%20Channel-0088cc?logo=telegram&logoColor=white)](https://t.me/bansos_dev)
+
+![Bansos Developer Banner](static/og-banner.png)
 
 `Bantuan sosial untuk developer jelata`
 
-**bansos.dev** adalah open-source katalog promo developer Indonesia untuk menemukan domain gratis, hosting free-tier, cloud credits, API credits, database credits, startup credits, diskon tools coding, dan program gratisan lain yang relevan buat developer.
+**bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang SEO-friendly, data-driven, dan mudah dikontribusikan lewat CLI atau Pull Request.
+Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat CLI atau Pull Request.
 
 ## Keyword cepat
 
@@ -29,22 +33,9 @@ Situs ini dibangun sebagai static SvelteKit site yang SEO-friendly, data-driven,
 - Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
 - Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
 
-## Tech stack
+## Deploy dan Hosting
 
-- [SvelteKit](https://kit.svelte.dev/) static site
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vite.dev/)
-- [GitHub Pages](https://pages.github.com/)
-- GitHub Actions untuk CI dan workflow kontribusi data
-- `bansosdev` CLI untuk submit listing baru
-
-## Deploy dan domain
-
-Deploy produksi berjalan lewat GitHub Pages dari workflow `.github/workflows/deploy-pages.yml`.
-Repository ini tidak membutuhkan token Cloudflare untuk deploy.
-
-Jika memakai Cloudflare sebagai DNS untuk custom domain, arahkan DNS ke GitHub Pages dan gunakan mode DNS only sampai verifikasi domain dan sertifikat HTTPS GitHub Pages aktif.
-Jangan menyimpan `CLOUDFLARE_API_TOKEN` atau `CLOUDFLARE_ACCOUNT_ID` di GitHub Actions secrets untuk deploy situs ini.
+Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada Pull Request atau push ke branch `main`/`ui-refactor`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
 ## Menjalankan proyek
 
@@ -74,20 +65,47 @@ packages/bansosdev-cli/        # CLI npx bansosdev
 .github/workflows/             # CI, add-entry automation, publish CLI
 ```
 
-## Cara menambah bansos
+## Cara Menambah Bansos
 
-Ada dua cara:
+Ada 3 opsi utama yang bisa kamu pilih untuk mendaftarkan info bansos developer baru, sesuai dengan kenyamananmu:
 
-### 1. Via CLI
+> [!TIP]
+> **Soon: Submisi via Discord & Telegram Bot!**
+> Kami sedang membangun integrasi bot agar kamu bisa mengirimkan bansos baru secara otomatis langsung dari server Discord atau channel Telegram tanpa buka GitHub/website.
+> Sembari menunggu, yuk gabung ke komunitas kami:
+>
+> - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
+> - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
 
-Jalankan ini, nanti CLI akan mengembalikan URL issue GitHub yang siap dikirim.
-Kalau payload valid, GitHub Actions akan membuat Pull Request otomatis dari issue tersebut:
+### 1. Opsi 1: Lewat Web Form (Paling Mudah & Tanpa Coding)
+
+Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
+
+1. Buka halaman kontribusi di browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
+2. Isi formulir informasi bansos secara lengkap (nama bansos, provider, deskripsi, benefit, dll).
+3. Klik tombol **Kirim Info**. Sistem akan secara otomatis men-generate halaman Issue GitHub dengan template yang sudah terisi.
+4. Klik **Submit new issue** di GitHub. Bot Actions kami akan memproses issue tersebut dan membuatkan Pull Request secara otomatis.
+
+---
+
+### 2. Opsi 2: Lewat Command Line (npx CLI)
+
+Opsi ini ditujukan buat kamu yang lebih suka bermain dengan terminal.
+Kamu bisa menjalankan perintah ini untuk menjalankan wizard interaktif di terminalmu:
+
+```bash
+npx bansosdev add
+```
+
+CLI akan menuntunmu mengisi field demi field, lalu memberikan link instan untuk membuka Issue GitHub. Setelah disubmit, bot otomatis memprosesnya menjadi Pull Request.
+
+_Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:_
 
 ```bash
 npx bansosdev add \
   --id contoh-bansos \
   --title "Contoh Bansos Developer" \
-  --provider "Provider" \
+  --provider "Example Provider" \
   --description "Deskripsi singkat bansos." \
   --benefits "Benefit satu|Benefit dua" \
   --validity-type fixed \
@@ -98,17 +116,21 @@ npx bansosdev add \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan" \
-  --status active
+  --tags "Cloud,Gratisan"
 ```
 
 ### Parameter validity
 
 - `--validity-type` wajib: pilih `fixed`, `uncertain`, atau `forever`.
-- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD`.
+- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD` (Berfungsi sebagai Tanggal Berakhir).
 - `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
-- `--published-at` opsional untuk tanggal publikasi entry dalam format `YYYY-MM-DD`.
+- `--published-at` opsional untuk tanggal mulai berlaku (start date) dalam format `YYYY-MM-DD`. Default adalah hari ini.
 - `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
+
+> **Catatan Otomatisasi:**
+>
+> - Parameter `provider` akan diekstrak secara otomatis dari domain `cta-link`.
+> - Parameter `status` akan dihitung otomatis (`active`, `upcoming`, atau `expired`) berdasarkan tanggal `published-at` dan `validity-date`.
 
 ### Cek payload JSON
 
@@ -116,28 +138,46 @@ npx bansosdev add \
 npx bansosdev add ... --mode json
 ```
 
-### Lokal
+---
 
-```bash
-npm run add:bansos -- \
-  --id contoh-bansos \
-  --title "Contoh Bansos Developer" \
-  --provider "Provider" \
-  --description "Deskripsi singkat bansos." \
-  --benefits "Benefit satu|Benefit dua" \
-  --validity-type fixed \
-  --validity-date 2026-06-30 \
-  --requirements "Buat akun|Klaim program" \
-  --cta-link "https://example.com" \
-  --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan"
-```
+### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
 
-Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
-Argumen `--tags` dipisahkan dengan koma.
+Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
 
-### 2. Maintainer mode
+1. Clone repositori ini ke komputermu:
+   ```bash
+   git clone https://github.com/wauputr4/bansos.git
+   cd bansos
+   npm install
+   ```
+2. Tambahkan data secara lokal menggunakan helper script:
+
+   ```bash
+   npm run add:bansos -- \
+     --id contoh-bansos \
+     --title "Contoh Bansos Developer" \
+     --provider "Example Provider" \
+     --description "Deskripsi singkat bansos." \
+     --benefits "Benefit satu|Benefit dua" \
+     --validity-type fixed \
+     --validity-date 2026-06-30 \
+     --requirements "Buat akun|Klaim program" \
+     --cta-link "https://example.com" \
+     --contributor-name "Nama Kamu" \
+     --contributor-url "https://example.com" \
+     --tags "Cloud,Gratisan"
+   ```
+
+   Script ini akan memvalidasi data dan menyimpannya di file data terstruktur `src/lib/data/bansos.json`.
+
+   Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
+   Argumen `--tags` dipisahkan dengan koma.
+
+3. Buat branch baru, tambahkan commit, push ke fork, dan kirim Pull Request (PR) ke repositori utama.
+
+---
+
+### Maintainer mode (Khusus Admin / Maintainer)
 
 Jika punya token maintainer, gunakan mode direct:
 
@@ -145,7 +185,7 @@ Jika punya token maintainer, gunakan mode direct:
 BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
 ```
 
-Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke `main` akan memicu deploy GitHub Pages.
+Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke `main` akan memicu deploy Cloudflare Pages.
 
 Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 

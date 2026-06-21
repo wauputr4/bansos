@@ -20,10 +20,24 @@
 	const repoUrl = `https://github.com/${repo}`;
 
 	// SEO metadata
-	const metaTitle = 'Bansos Developer - Bantuan Sosial untuk Developer Jelata';
+	const metaTitle = 'Bansos Developer & AI - Bantuan Sosial untuk Programmer Jelata';
 	const metaDescription =
-		'Kumpulan promo gratisan, diskon, dan bantuan sosial (bansos) khusus untuk developer jelata di Indonesia. Domain gratis, cloud gratis, no credit card! fr fr 🚀';
-	const siteUrl = 'https://bansos.dev';
+		'Kumpulan promo gratisan, diskon, credit API AI gratis, dan bantuan sosial (bansos) khusus untuk developer dan programmer di Indonesia. Domain gratis, cloud server, credit AI, no credit card! fr fr 🚀';
+	const siteUrl = 'https://bansos.dev/';
+	const websiteSchema = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'Bansos Developer',
+		url: 'https://bansos.dev/',
+		potentialAction: {
+			'@type': 'SearchAction',
+			target: {
+				'@type': 'EntryPoint',
+				urlTemplate: 'https://bansos.dev/list/?q={search_term_string}'
+			},
+			'query-input': 'required name=search_term_string'
+		}
+	});
 	const latestBansosList = latestBansos(10);
 	const featuredBansosList = featuredBansos(10);
 	const totalBansos = bansosList.length;
@@ -103,6 +117,41 @@
 				console.error('Failed to fetch discussion stats:', err);
 			});
 	});
+
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+	let isHovered = $state(false);
+	let containerEl = $state<HTMLElement | null>(null);
+
+	function handleMouseMove(event: MouseEvent) {
+		if (!containerEl) return;
+		const rect = containerEl.getBoundingClientRect();
+		const centerX = rect.left + rect.width / 2;
+		const centerY = rect.top + rect.height / 2;
+		const dx = event.clientX - centerX;
+		const dy = event.clientY - centerY;
+
+		// Magnetic factor: follow cursor but damp it
+		const pullStrength = 0.35;
+		mouseX = dx * pullStrength;
+		mouseY = dy * pullStrength;
+
+		// Cap the translation
+		const maxDist = 45; // Max translation offset
+		const currentDist = Math.hypot(mouseX, mouseY);
+		if (currentDist > maxDist) {
+			const angle = Math.atan2(mouseY, mouseX);
+			mouseX = Math.cos(angle) * maxDist;
+			mouseY = Math.sin(angle) * maxDist;
+		}
+		isHovered = true;
+	}
+
+	function handleMouseLeave() {
+		isHovered = false;
+		mouseX = 0;
+		mouseY = 0;
+	}
 </script>
 
 <svelte:head>
@@ -111,18 +160,24 @@
 	<meta name="description" content={metaDescription} />
 	<meta
 		name="keywords"
-		content="bansos dev, bantuan sosial developer, domain gratis, name.com gratis, devweek26, developer jelata, promo developer, cloud gratis, coding gratisan"
+		content="bansos dev, bansos ai, bansos developer, bansos programmer, bantuan sosial developer, bantuan sosial ai, api ai gratis, domain gratis, server gratis, promo developer, cloud gratis, coding gratisan"
 	/>
+	<link rel="canonical" href={siteUrl} />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={siteUrl} />
 	<meta property="og:title" content={metaTitle} />
 	<meta property="og:description" content={metaDescription} />
+	<meta property="og:image" content="{siteUrl}og.png" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={siteUrl} />
-	<meta property="twitter:title" content={metaTitle} />
-	<meta property="twitter:description" content={metaDescription} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content={siteUrl} />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDescription} />
+	<meta name="twitter:image" content="{siteUrl}og.png" />
+
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html '<script type="application/ld+json">' + websiteSchema + '</' + 'script>'}
 </svelte:head>
 
 <main class="page-wrapper">
@@ -145,60 +200,73 @@
 				</svg>
 				<span>Open Source</span>
 			</a>
+			<a
+				href="https://discord.gg/m4WFaQpNGs"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="discord-badge"
+			>
+				<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+					<path
+						d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"
+					/>
+				</svg>
+				<span>Discord</span>
+			</a>
+			<a
+				href="https://t.me/bansos_dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="telegram-badge"
+			>
+				<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+					<path
+						d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.61l-1.92 9.06c-.14.63-.52.79-1.04.5l-2.93-2.16-1.41 1.36c-.16.16-.29.29-.6.29l.21-3.01 5.48-4.95c.24-.22-.05-.34-.37-.13l-6.78 4.27-2.92-.91c-.63-.2-.65-.63.13-.94l11.41-4.4c.53-.19 1 .13.83.99z"
+					/>
+				</svg>
+				<span>Telegram</span>
+			</a>
 		</div>
 
-		<h1 class="main-title text-gradient text-balance">Bansos Developer</h1>
+		<h1 class="main-title text-balance">
+			<span class="title-ban">Ban</span><span class="title-sos">sos</span>
+			<span class="title-dev">Developer</span>
+		</h1>
 		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
 		<p class="community-tagline text-pretty">
 			Gotong Royong dalam bantuin developer jelata lainnya untuk glow up pada projectnya
 		</p>
 
-		<!-- Anxious Sweating Computer SVG -->
-		<div class="anxious-container">
-			<svg
-				class="anxious-icon"
-				viewBox="0 0 100 100"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<rect
-					x="15"
-					y="15"
-					width="70"
-					height="50"
-					rx="8"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<rect x="20" y="20" width="60" height="40" rx="4" fill="var(--bg-primary)" />
-				<path
-					d="M40 65 L35 80 L65 80 L60 65 Z"
-					fill="var(--bg-secondary)"
-					stroke="var(--color-accent)"
-					stroke-width="4"
-				/>
-				<path
-					d="M35 36 L43 39 M65 36 L57 39"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-				<circle cx="38" cy="44" r="3" fill="var(--text-primary)" />
-				<circle cx="62" cy="44" r="3" fill="var(--text-primary)" />
-				<path
-					class="sweat-drop"
-					d="M72 32 C72 35 70 37 68 37 C66 37 66 35 68 32 C69 30 71 28 72 26 C72 28 72 30 72 32 Z"
-					fill="#38bdf8"
-				/>
-				<path
-					d="M44 51 Q48 48 52 51 T60 51"
-					stroke="var(--text-primary)"
-					stroke-width="3"
-					stroke-linecap="round"
-					fill="none"
-				/>
-			</svg>
+		<!-- Interactive Heart Code Logo -->
+		<div
+			bind:this={containerEl}
+			class="logo-hero-wrapper"
+			onmousemove={handleMouseMove}
+			onmouseleave={handleMouseLeave}
+			role="presentation"
+			aria-hidden="true"
+		>
+			<div class="logo-hero-translate" style:transform="translate({mouseX}px, {mouseY}px)">
+				<div class="logo-hero-rotate" class:spinning={isHovered}>
+					<svg
+						class="logo-hero-icon"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<!-- Left bracket < -->
+						<path class="bracket-path" d="M 6.5 7.5 L 2.5 12 L 6.5 16.5" />
+						<!-- Right bracket > -->
+						<path class="bracket-path" d="M 17.5 7.5 L 21.5 12 L 17.5 16.5" />
+						<!-- Green Heart -->
+						<path
+							class="heart-path"
+							d="M12 18.2C10.7 17 6.5 13.2 6.5 9.7C6.5 7.1 8.3 5.3 10.8 5.3C12.3 5.3 13.2 6.1 13.8 7C14.4 6.1 15.3 5.3 16.8 5.3C19.3 5.3 21.1 7.1 21.1 9.7C21.1 13.2 16.9 17 15.6 18.2L13.8 19.8Z"
+							transform="translate(4.41, 5.0975) scale(0.55)"
+						/>
+					</svg>
+				</div>
+			</div>
 		</div>
 
 		<p class="intro-text text-pretty">
@@ -256,16 +324,58 @@
 		</div>
 	</header>
 
-	<!-- Quotes Section -->
-	<section class="quotes-section container">
-		<div class="glass-card quote-card">
-			<span class="quote-mark">“</span>
-			<blockquote class="main-quote text-gradient">Developer butuh dollar!</blockquote>
-			<cite class="quote-author">— Suara Hati Dev Jelata</cite>
-			<p class="quote-sub">
-				Kerja rodi fix bug seharian, dibayarnya pake ucapan terima kasih dan 'exposure'. Kami butuh
-				dollar riil buat bayar internet sama kopi, bos! 💸
-			</p>
+	<!-- Kelebihan Section -->
+	<section class="advantages-section container">
+		<h2 class="advantages-title text-gradient">Mengapa bansos.dev?</h2>
+		<div class="advantages-grid">
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-bolt"></i></div>
+				<h3>100% Terkurasi & Cepat</h3>
+				<p>
+					Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi.
+					Tanpa link shortener jebakan!
+				</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-eye"></i></div>
+				<h3>100% Transparan</h3>
+				<p>
+					Semua request bansos baru, validasi data, serta diskusi komunitas terbuka lebar langsung
+					di GitHub Issue & PR.
+				</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-code"></i></div>
+				<h3>Open Source & Self-Hosted</h3>
+				<p>
+					Kode sumber dan data bebas diaudit, difork, atau di-host mandiri sepenuhnya di
+					infrastruktur milikmu.
+				</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-users"></i></div>
+				<h3>Didukung Komunitas</h3>
+				<p>
+					Data dikelola secara transparan oleh komunitas developer Indonesia. Siapapun bisa bantu
+					kontribusi & update.
+				</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-gift"></i></div>
+				<h3>Referral Sahabat Dev</h3>
+				<p>
+					Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link
+					referral milik orang lain!
+				</p>
+			</div>
+			<div class="glass-card advantage-card">
+				<div class="advantage-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+				<h3>Adil & Sportif</h3>
+				<p>
+					Mendukung pemakaian link referral pribadi sebagai reward kontribusi, dilarang menimpa link
+					milik orang lain!
+				</p>
+			</div>
 		</div>
 	</section>
 
@@ -313,6 +423,9 @@
 				<a href={resolve('/contribute')} class="btn-secondary">
 					<i class="fa-solid fa-code-pull-request btn-icon" aria-hidden="true"></i>
 					Kontribusi
+				</a>
+				<a href={resolve('/about')} class="btn-text">
+					Selengkapnya <i class="fa-solid fa-arrow-right btn-icon" aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>
@@ -363,8 +476,11 @@
 
 	.badge-container {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.75rem;
 		margin-bottom: 0.5rem;
+		width: 100%;
 	}
 
 	.version-badge {
@@ -399,12 +515,68 @@
 		height: 0.875rem;
 	}
 
+	.discord-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		background: rgba(88, 101, 242, 0.1);
+		border: 1px solid rgba(88, 101, 242, 0.2);
+		padding: 0.25rem 0.75rem;
+		border-radius: 2rem;
+		color: #5865f2 !important;
+	}
+
+	.discord-badge:hover {
+		background: rgba(88, 101, 242, 0.15);
+	}
+
+	.discord-badge .icon {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.telegram-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		background: rgba(34, 158, 217, 0.1);
+		border: 1px solid rgba(34, 158, 217, 0.2);
+		padding: 0.25rem 0.75rem;
+		border-radius: 2rem;
+		color: #229ed9 !important;
+	}
+
+	.telegram-badge:hover {
+		background: rgba(34, 158, 217, 0.15);
+	}
+
+	.telegram-badge .icon {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
 	.main-title {
 		font-size: var(--font-size-h1);
 		font-weight: 800;
 		letter-spacing: -0.05em;
 		line-height: 1.1;
 		margin: 0;
+	}
+
+	.main-title .title-ban {
+		color: var(--text-primary);
+	}
+
+	.main-title .title-sos {
+		color: #10b981;
+	}
+
+	.main-title .title-dev {
+		color: var(--text-primary);
 	}
 
 	.tagline {
@@ -499,101 +671,64 @@
 		}
 	}
 
-	.anxious-container {
+	.logo-hero-wrapper {
 		display: flex;
 		justify-content: center;
-		margin-block: 1rem;
+		margin-block: 0.5rem;
+		perspective: 1000px;
 	}
 
-	.anxious-icon {
+	.logo-hero-translate {
+		transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+		will-change: transform;
+	}
+
+	.logo-hero-rotate {
 		width: 5rem;
 		height: 5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		will-change: transform;
 		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.logo-hero-rotate.spinning {
+		animation: spin-icon 2s linear infinite;
+	}
+
+	@keyframes spin-icon {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.logo-hero-icon {
+		width: 100%;
+		height: 100%;
 		filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
 	}
 
-	.anxious-icon:hover {
-		animation: shake 0.4s infinite alternate;
-		cursor: help;
+	.logo-hero-icon .bracket-path {
+		stroke: var(--text-primary);
+		fill: none;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
-	.sweat-drop {
-		animation: drip 1.8s infinite ease-in;
-		transform-origin: center;
-	}
-
-	@keyframes drip {
-		0% {
-			transform: translateY(-4px);
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		80% {
-			opacity: 0.8;
-		}
-		100% {
-			transform: translateY(12px);
-			opacity: 0;
-		}
+	.logo-hero-icon .heart-path {
+		fill: var(--color-accent);
 	}
 
 	@media (min-width: 48rem) {
 		.stats-strip {
 			grid-template-columns: repeat(4, 1fr);
 		}
-	}
-
-	.quotes-section {
-		display: flex;
-		justify-content: center;
-	}
-
-	.quote-card {
-		width: 100%;
-		text-align: center;
-		padding: 3rem 2rem;
-		position: relative;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-		cursor: pointer;
-	}
-
-	.quote-mark {
-		font-size: 6rem;
-		line-height: 1;
-		font-family: serif;
-		color: var(--color-accent);
-		opacity: 0.15;
-		position: absolute;
-		top: -0.5rem;
-		left: 2rem;
-	}
-
-	.main-quote {
-		font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
-		font-weight: 800;
-		line-height: 1.2;
-		font-style: italic;
-		letter-spacing: -0.02em;
-	}
-
-	.quote-author {
-		font-size: 0.95rem;
-		font-weight: 600;
-		color: var(--text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.quote-sub {
-		max-width: 38rem;
-		font-size: 0.95rem;
-		color: var(--text-secondary);
 	}
 
 	.github-card {
@@ -725,39 +860,96 @@
 		margin-right: 0.5rem;
 	}
 
-	@keyframes shake {
-		0% {
-			transform: translate(1px, 1px) rotate(0deg);
+	.btn-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		font-weight: 750;
+		transition: color 0.2s;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	.btn-text:hover {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+
+	.btn-text .btn-icon {
+		font-size: 0.85rem;
+		margin-right: 0;
+	}
+
+	.advantages-section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+		text-align: center;
+	}
+
+	.advantages-title {
+		font-size: var(--font-size-h2);
+		font-weight: 800;
+		margin: 0;
+	}
+
+	.advantages-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		width: 100%;
+	}
+
+	@media (min-width: 48rem) {
+		.advantages-grid {
+			grid-template-columns: repeat(3, 1fr);
 		}
-		10% {
-			transform: translate(-1px, -2px) rotate(-1deg);
-		}
-		20% {
-			transform: translate(-3px, 0px) rotate(1deg);
-		}
-		30% {
-			transform: translate(0px, 2px) rotate(0deg);
-		}
-		40% {
-			transform: translate(1px, -1px) rotate(1deg);
-		}
-		50% {
-			transform: translate(-1px, 2px) rotate(-1deg);
-		}
-		60% {
-			transform: translate(-3px, 1px) rotate(0deg);
-		}
-		70% {
-			transform: translate(2px, 1px) rotate(-1deg);
-		}
-		80% {
-			transform: translate(-1px, -1px) rotate(1deg);
-		}
-		90% {
-			transform: translate(2px, 2px) rotate(0deg);
-		}
-		100% {
-			transform: translate(1px, -2px) rotate(-1deg);
-		}
+	}
+
+	.advantage-card {
+		padding: 2rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		text-align: center;
+		transition:
+			transform 0.2s,
+			border-color 0.2s;
+	}
+
+	.advantage-card:hover {
+		transform: translateY(-4px);
+		border-color: var(--color-accent);
+	}
+
+	.advantage-icon {
+		font-size: 2.25rem;
+		color: var(--color-accent);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		background: rgba(16, 185, 129, 0.08);
+		border: 1px solid rgba(16, 185, 129, 0.15);
+	}
+
+	.advantage-card h3 {
+		font-size: 1.2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.advantage-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin: 0;
 	}
 </style>

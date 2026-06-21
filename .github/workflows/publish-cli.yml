@@ -18,11 +18,14 @@ jobs:
         working-directory: packages/bansosdev-cli
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
       - run: npm install -g npm@latest
 

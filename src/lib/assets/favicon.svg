@@ -1,13 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-  <defs>
-    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34d399" />
-      <stop offset="100%" stop-color="#10b981" />
-    </linearGradient>
-  </defs>
-  <!-- Rounded card backing -->
-  <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#neonGrad)" />
-  <!-- Social hand / gift shape (simplified: a dollar sign and a developer code icon </>) -->
-  <path d="M8 10l-3 2 3 2m8-4l3 2-3 2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-  <text x="12" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">$</text>
+  <style>
+    .bracket {
+      stroke: #1e293b;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .heart {
+      fill: #10b981;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bracket {
+        stroke: #f1f5f9;
+      }
+    }
+  </style>
+  <!-- Left bracket < -->
+  <path class="bracket" d="M 6.5 7.5 L 2.5 12 L 6.5 16.5" />
+  <!-- Right bracket > -->
+  <path class="bracket" d="M 17.5 7.5 L 21.5 12 L 17.5 16.5" />
+  <!-- Green Heart -->
+  <path class="heart" d="M12 18.2C10.7 17 6.5 13.2 6.5 9.7C6.5 7.1 8.3 5.3 10.8 5.3C12.3 5.3 13.2 6.1 13.8 7C14.4 6.1 15.3 5.3 16.8 5.3C19.3 5.3 21.1 7.1 21.1 9.7C21.1 13.2 16.9 17 15.6 18.2L13.8 19.8Z" transform="translate(4.41, 5.0975) scale(0.55)" />
 </svg>

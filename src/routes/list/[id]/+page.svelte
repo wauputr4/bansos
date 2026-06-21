@@ -64,6 +64,16 @@
 	const provider = $derived(item ? getProviderBySlug(slugifyProvider(item.provider)) : null);
 	const source = $derived(item ? getItemSource(item) : undefined);
 	const sourceIsUrl = $derived(source ? /^https?:\/\//.test(source) : false);
+	const displaySource = $derived.by(() => {
+		if (!source) return '';
+		if (!sourceIsUrl) return source;
+		try {
+			const url = new URL(source);
+			return url.hostname;
+		} catch {
+			return source;
+		}
+	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 	const status = $derived(item?.status || 'unknown');
 
@@ -104,7 +114,7 @@
 			? `Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
 			: ''
 	);
-	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}` : '');
+	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
 
 	// JSON-LD Specific Product / Guide Schema
 	const schemaData = $derived(
@@ -143,7 +153,6 @@
 	const schemaJson = $derived(
 		schemaData ? JSON.stringify(schemaData).replace(/</g, '\\u003c') : ''
 	);
-	const schemaScriptTag = 'script';
 
 	const recommendedBansos = $derived.by(() => {
 		if (!item) return [];
@@ -184,18 +193,24 @@
 			name="keywords"
 			content="cara klaim bansos, {item.provider} gratisan, tutorial domain gratis, devweek26, domain gratisan, no credit card"
 		/>
+		<link rel="canonical" href={pageUrl} />
 
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={seoTitle} />
 		<meta property="og:description" content={seoDesc} />
+		<meta property="og:image" content="{pageUrl}og.png" />
 
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={pageUrl} />
-		<meta property="twitter:title" content={seoTitle} />
-		<meta property="twitter:description" content={seoDesc} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={seoTitle} />
+		<meta name="twitter:description" content={seoDesc} />
+		<meta name="twitter:image" content="{pageUrl}og.png" />
 
-		<svelte:element this={schemaScriptTag} type="application/ld+json">{schemaJson}</svelte:element>
+		{#if schemaJson}
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html '<script type="application/ld+json">' + schemaJson + '</' + 'script>'}
+		{/if}
 	{/if}
 </svelte:head>
 
@@ -228,228 +243,273 @@
 	<main class="page-wrapper">
 		<div class="glow-orb detail-glow"></div>
 
-		<!-- Main Detail Card -->
-		<article class="detail-container container">
-			<div class="glass-card detail-card">
-				<header class="detail-header">
-					<div class="header-top-row">
-						<div class="tags-scroll-container">
-							{#each item.tags as tag (tag)}
-								<span class="tag-badge">{tag}</span>
-							{/each}
-							<span
-								class="tag-badge views-badge"
-								style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
-							>
-								<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
-								{views}
-							</span>
-							{#if commentCount > 0}
+		<!-- Main Layout Grid on Desktop -->
+		<div class="detail-layout-grid container">
+			<!-- Left Column: Main Detail & Comments -->
+			<div class="detail-main-col">
+				<article class="glass-card detail-card">
+					<header class="detail-header">
+						<div class="header-top-row">
+							<div class="tags-scroll-container">
+								{#each item.tags as tag (tag)}
+									<span class="tag-badge">{tag}</span>
+								{/each}
 								<span
-									class="tag-badge comments-badge"
-									style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+									class="tag-badge views-badge"
+									style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-accent); border-color: var(--color-accent-glow);"
 								>
-									<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
-									{commentCount}
+									<i class="fa-regular fa-eye" style="font-size: 0.7rem;"></i>
+									{views}
 								</span>
-							{/if}
-						</div>
-						<div class="status-container">
-							<span class="status-badge status-{status}"
-								><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
-							>
-						</div>
-					</div>
-					<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
-					<div class="provider-meta">
-						{#if provider?.faviconUrl}
-							<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
-						{/if}
-						<p class="detail-subtitle">
-							Disponsori oleh
-							{#if provider}
-								<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}>{item.provider}</a
+								{#if commentCount > 0}
+									<span
+										class="tag-badge comments-badge"
+										style="gap: 0.25rem; display: inline-flex; align-items: center; color: var(--color-success); border-color: var(--color-success-glow);"
+									>
+										<i class="fa-regular fa-comment" style="font-size: 0.7rem;"></i>
+										{commentCount}
+									</span>
+								{/if}
+							</div>
+							<div class="status-container">
+								<span class="status-badge status-{status}"
+									><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
 								>
-							{:else}
-								<strong>{item.provider}</strong>
+							</div>
+						</div>
+						<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
+						<div class="provider-meta">
+							{#if provider?.faviconUrl}
+								<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
 							{/if}
-							<span aria-hidden="true">·</span>
-							<span
-								>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
-									'id-ID',
-									{ day: 'numeric', month: 'long', year: 'numeric' }
-								)}</span
+							<p class="detail-subtitle">
+								Disponsori oleh
+								{#if provider}
+									<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}
+										>{item.provider}</a
+									>
+								{:else}
+									<strong>{item.provider}</strong>
+								{/if}
+								<span aria-hidden="true">·</span>
+								<span
+									>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
+										'id-ID',
+										{ day: 'numeric', month: 'long', year: 'numeric' }
+									)}</span
+								>
+							</p>
+						</div>
+					</header>
+
+					{#if item.status === 'expired'}
+						<div
+							class="tips-box"
+							style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
+						>
+							<span class="tips-icon" style="color: #ef4444;"
+								><i class="fa-solid fa-triangle-exclamation"></i></span
 							>
-						</p>
-					</div>
-					{#if item.contributor}
-						<p class="detail-contributor">
-							Dikontribusikan oleh
-							<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-								{item.contributor.name}
-							</a>
-						</p>
+							<div class="tips-content">
+								<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
+								<p>
+									Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa
+									baca panduannya buat referensi ya!
+								</p>
+							</div>
+						</div>
 					{/if}
-					<div class="detail-meta-grid">
+
+					{#if item.tips}
+						<div class="tips-box">
+							<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
+							<div class="tips-content">
+								<h3>Tips Pro Jelata:</h3>
+								<p>{item.tips}</p>
+							</div>
+						</div>
+					{/if}
+
+					<section class="section-block">
+						<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
+						<p class="description-text text-pretty">{item.description}</p>
+					</section>
+
+					<section class="section-block">
+						<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
+						<ul class="benefit-list">
+							{#each item.benefits as benefit (benefit)}
+								<li><span class="check-icon">✓</span> {benefit}</li>
+							{/each}
+						</ul>
+					</section>
+
+					{#if item.promoCode}
+						<section class="section-block promo-section">
+							<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
+							<p class="promo-subtitle">
+								Salin kode ini dan masukkan saat checkout di {item.provider}:
+							</p>
+							<div class="promo-clipboard-box">
+								<code>{item.promoCode}</code>
+								<button
+									class="btn-primary copy-btn"
+									onclick={(e) => copyCode(item.promoCode || '', e)}
+								>
+									{#if copied}
+										<i class="fa-solid fa-check"></i> Copied!
+									{:else}
+										<i class="fa-solid fa-copy"></i> Salin
+									{/if}
+								</button>
+							</div>
+						</section>
+					{/if}
+
+					<section class="section-block guide-section">
+						<h2>
+							<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
+						</h2>
+						<ol class="step-list">
+							{#each item.requirements as req, idx (req)}
+								<li class="step-item">
+									<span class="step-num">{idx + 1}</span>
+									<p class="step-content text-pretty">{req}</p>
+								</li>
+							{/each}
+						</ol>
+					</section>
+
+					<div class="action-footer">
+						<a
+							href={item.ctaLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn-primary cta-btn"
+						>
+							<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+						</a>
+					</div>
+				</article>
+
+				<!-- Giscus Comments Section -->
+				{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
+					<div class="glass-card comments-card">
+						<h2
+							style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
+						>
+							<i class="fa-regular fa-comments"></i> Diskusi & Komentar
+						</h2>
+						<div bind:this={giscusContainer}></div>
+					</div>
+				{/if}
+			</div>
+
+			<!-- Right Column: Sidebar (Meta & Recommendations) -->
+			<aside class="detail-sidebar-col">
+				{#if source || item.contributor || commitContributors.length > 0}
+					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber</span>
+								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
 								{#if sourceIsUrl}
-									<a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
+									<a href={source} target="_blank" rel="noopener noreferrer">{displaySource}</a>
 								{:else}
 									<strong>{source}</strong>
 								{/if}
 							</div>
 						{/if}
-						{#if commitContributors.length > 0}
+						{#if item.contributor || commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"
 									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
 								>
-								<div class="commit-list">
-									{#each commitContributors as contributor (contributor.login)}
+								{#if item.contributor}
+									<div
+										class="original-contributor"
+										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
+									>
+										Dikontribusikan oleh:
 										<a
-											href={contributor.commitUrl}
+											href={item.contributor.url}
 											target="_blank"
 											rel="noopener noreferrer"
-											class="commit-person"
-											title={`Commit oleh ${contributor.login}`}
+											style="color: var(--color-accent); font-weight: 700;"
 										>
-											<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
-											<span>@{contributor.login}</span>
+											{item.contributor.name}
 										</a>
-									{/each}
-								</div>
+									</div>
+								{/if}
+								{#if commitContributors.length > 0}
+									<div class="commit-list">
+										{#each commitContributors as contributor (contributor.login)}
+											<a
+												href={contributor.commitUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="commit-person"
+												title={`Commit oleh ${contributor.login}`}
+											>
+												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+												<span>@{contributor.login}</span>
+											</a>
+										{/each}
+									</div>
+								{/if}
 							</div>
 						{/if}
 					</div>
-				</header>
+				{/if}
 
-				{#if item.status === 'expired'}
-					<div
-						class="tips-box"
-						style="background: rgba(239, 68, 68, 0.08); border-left-color: #ef4444;"
+				<div class="sidebar-recommendations-header">
+					<h3 class="sidebar-recommendations-title">
+						<i class="fa-solid fa-sparkles text-emerald"></i> Rekomendasi Lainnya
+					</h3>
+					<a href={resolve('/list')} class="btn-lihat-semua-sidebar"
+						>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
 					>
-						<span class="tips-icon" style="color: #ef4444;"
-							><i class="fa-solid fa-triangle-exclamation"></i></span
-						>
-						<div class="tips-content">
-							<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
-							<p>
-								Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa baca
-								panduannya buat referensi ya!
-							</p>
-						</div>
-					</div>
-				{/if}
-
-				{#if item.tips}
-					<div class="tips-box">
-						<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
-						<div class="tips-content">
-							<h3>Tips Pro Jelata:</h3>
-							<p>{item.tips}</p>
-						</div>
-					</div>
-				{/if}
-
-				<section class="section-block">
-					<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
-					<p class="description-text text-pretty">{item.description}</p>
-				</section>
-
-				<section class="section-block">
-					<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
-					<ul class="benefit-list">
-						{#each item.benefits as benefit (benefit)}
-							<li><span class="check-icon">✓</span> {benefit}</li>
+				</div>
+				{#if recommendedBansos.length > 0}
+					<div class="sidebar-recommendations-list">
+						{#each recommendedBansos as recommend (recommend.id)}
+							<BansosCard
+								item={recommend}
+								compact={true}
+								views={popularityData[recommend.id] || 0}
+							/>
 						{/each}
-					</ul>
-				</section>
-
-				{#if item.promoCode}
-					<section class="section-block promo-section">
-						<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
-						<p class="promo-subtitle">
-							Salin kode ini dan masukkan saat checkout di {item.provider}:
-						</p>
-						<div class="promo-clipboard-box">
-							<code>{item.promoCode}</code>
-							<button
-								class="btn-primary copy-btn"
-								onclick={(e) => copyCode(item.promoCode || '', e)}
-							>
-								{#if copied}
-									<i class="fa-solid fa-check"></i> Copied!
-								{:else}
-									<i class="fa-solid fa-copy"></i> Salin
-								{/if}
-							</button>
-						</div>
-					</section>
+					</div>
+				{:else}
+					<p class="empty-recommendation text-pretty">Belum ada rekomendasi saat ini.</p>
 				{/if}
+			</aside>
+		</div>
 
-				<section class="section-block guide-section">
-					<h2>
-						<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
-					</h2>
-					<ol class="step-list">
-						{#each item.requirements as req, idx (req)}
-							<li class="step-item">
-								<span class="step-num">{idx + 1}</span>
-								<p class="step-content text-pretty">{req}</p>
-							</li>
-						{/each}
-					</ol>
-				</section>
-
-				<div class="action-footer">
+		<!-- CTA Tentang bansos.dev & Ajakan Kontribusi (Bottom of the page) -->
+		<section class="bottom-cta-section container">
+			<div class="glass-card bottom-cta-card">
+				<div class="bottom-cta-info">
+					<h2><i class="fa-solid fa-circle-info text-emerald"></i> Tentang bansos.dev</h2>
+					<p>
+						Katalog kurasi promo & diskonan developer gratisan. Dikelola 100% transparan oleh
+						komunitas di GitHub. Yuk bantu sesama developer jelata bertahan hidup dengan ikutan
+						kontribusi!
+					</p>
+				</div>
+				<div class="bottom-cta-actions">
+					<a href={resolve('/contribute')} class="btn-primary">
+						<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
+					</a>
 					<a
-						href={item.ctaLink}
+						href="https://github.com/wauputr4/bansos"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="btn-primary cta-btn"
+						class="btn-secondary"
 					>
-						<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+						<i class="fa-solid fa-star"></i> Star di GitHub
 					</a>
 				</div>
 			</div>
-
-			<!-- Giscus Comments Section -->
-			{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
-				<div class="glass-card comments-card">
-					<h2
-						style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
-					>
-						<i class="fa-regular fa-comments"></i> Diskusi & Komentar
-					</h2>
-					<div bind:this={giscusContainer}></div>
-				</div>
-			{/if}
-		</article>
-
-		<!-- Rekomendasi Bansos Lainnya -->
-		<section class="recommendation-section container">
-			<h2 class="recommendation-title">
-				<i class="fa-solid fa-sparkles"></i> Rekomendasi Lain yang Mungkin Lo Butuhin
-			</h2>
-			{#if recommendedBansos.length > 0}
-				<div class="recommendation-grid">
-					{#each recommendedBansos as recommend (recommend.id)}
-						<BansosCard item={recommend} compact={true} views={popularityData[recommend.id] || 0} />
-					{/each}
-					<a href={resolve('/list')} class="glass-card recommendation-more-card">
-						<div class="more-card-content">
-							<i class="fa-solid fa-arrow-right-to-bracket"></i>
-							<span>Lihat Semua Bansos</span>
-						</div>
-					</a>
-				</div>
-			{:else}
-				<p class="empty-recommendation text-pretty">
-					Belum ada rekomendasi lain saat ini, balik ke list ya.
-				</p>
-			{/if}
 		</section>
 
 		<!-- Floating Particles -->
@@ -590,22 +650,17 @@
 		padding: 0.3rem;
 		flex-shrink: 0;
 	}
-
-	.detail-contributor {
-		font-size: 0.9rem;
-		color: var(--text-muted);
-	}
-
-	.detail-contributor a {
-		color: var(--color-accent);
-		font-weight: 700;
-	}
-
 	.detail-meta-grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 0.75rem;
 		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 48rem) {
+		.detail-meta-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	.meta-card {
@@ -818,71 +873,56 @@
 
 	.cta-btn {
 		width: 100%;
-		font-size: 1.1rem;
-		padding: 1rem;
+		font-size: 0.95rem;
+		padding: 0.7rem 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
+		border-radius: 0.6rem;
 	}
 
-	.recommendation-section {
+	.sidebar-recommendations-header {
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.5rem;
 	}
 
-	.recommendation-title {
-		color: var(--text-primary);
+	.sidebar-recommendations-title {
 		font-size: 1.1rem;
-		font-weight: 700;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 	}
 
-	.recommendation-grid {
-		display: grid;
-		grid-template-columns: 1fr;
+	.sidebar-recommendations-title i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.btn-lihat-semua-sidebar {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--color-accent);
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 0.2s;
+	}
+
+	.btn-lihat-semua-sidebar:hover {
+		transform: translateX(3px);
+	}
+
+	.sidebar-recommendations-list {
+		display: flex;
+		flex-direction: column;
 		gap: 1rem;
-	}
-
-	.recommendation-more-card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding: 2rem;
-		gap: 0.75rem;
-		background: color-mix(in srgb, var(--color-accent) 8%, var(--glass-bg));
-		border: 1px dashed var(--color-accent);
-		color: var(--color-accent) !important;
-		transition: all 0.2s ease-in-out;
-		min-height: 100%;
-		border-radius: 1.25rem;
-	}
-
-	.recommendation-more-card:hover {
-		background: color-mix(in srgb, var(--color-accent) 15%, var(--glass-bg));
-		transform: translateY(-4px);
-		box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
-	}
-
-	.more-card-content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	.more-card-content i {
-		font-size: 1.75rem;
-	}
-
-	.more-card-content span {
-		font-weight: 750;
-		font-size: 1.05rem;
+		width: 100%;
 	}
 
 	.empty-recommendation {
@@ -896,77 +936,168 @@
 		padding: 2rem;
 	}
 
+	.bottom-cta-section {
+		margin-top: 1.5rem;
+	}
+
+	.bottom-cta-card {
+		padding: 2.25rem 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		text-align: center;
+		align-items: center;
+		background: radial-gradient(
+			circle at 50% 50%,
+			rgba(16, 185, 129, 0.03) 0%,
+			var(--glass-bg) 100%
+		);
+		border-color: rgba(16, 185, 129, 0.15);
+	}
+
+	.bottom-cta-info h2 {
+		font-size: var(--font-size-h2);
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0 0 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	.bottom-cta-info h2 i.text-emerald {
+		color: var(--color-accent);
+	}
+
+	.bottom-cta-info p {
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin: 0;
+		max-width: 48rem;
+	}
+
+	.bottom-cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.bottom-cta-actions :global(.btn-primary),
+	.bottom-cta-actions :global(.btn-secondary) {
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-weight: 750;
+		padding: 0.75rem 1.75rem;
+		border-radius: 0.75rem;
+		font-size: 0.9rem;
+	}
+
 	@media (min-width: 48rem) {
 		.page-wrapper {
 			padding-block: 1.5rem 2.5rem;
 			gap: 1.5rem;
 		}
 
-		.recommendation-grid {
+		.sidebar-recommendations-list {
+			display: grid;
 			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 64rem) {
-		.recommendation-grid {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-	@media (max-width: 47.99rem) {
-		.page-wrapper {
-			padding-block: 0.75rem 2rem;
-			gap: 0.85rem;
-		}
-
-		.detail-card {
-			padding: 1.25rem 1rem;
 			gap: 1.25rem;
 		}
 
-		.detail-header {
-			padding-bottom: 1rem;
-			gap: 0.6rem;
+		.bottom-cta-card {
+			padding: 3rem;
+			gap: 2rem;
+		}
+	}
+
+	.detail-layout-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		width: 100%;
+	}
+
+	.detail-main-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.detail-sidebar-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		width: 100%;
+	}
+
+	@media (min-width: 64rem) {
+		.sidebar-recommendations-list {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
 		}
 
-		.detail-meta-grid {
-			gap: 0.5rem;
+		.bottom-cta-card {
+			flex-direction: row;
+			justify-content: space-between;
+			text-align: left;
+			align-items: center;
+			gap: 3rem;
 		}
 
-		.meta-card {
-			padding: 0.65rem 0.75rem;
+		.bottom-cta-info {
+			flex: 1;
 		}
 
-		.promo-section {
-			padding: 1rem;
+		.bottom-cta-info h2 {
+			justify-content: flex-start;
 		}
 
-		.promo-clipboard-box {
-			padding: 0.5rem 0.85rem;
-			gap: 0.75rem;
+		.bottom-cta-actions {
+			width: auto;
+			flex-shrink: 0;
 		}
 
-		.promo-clipboard-box code {
-			font-size: 1.1rem;
+		.detail-layout-grid {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 2rem;
 		}
 
-		.step-item {
-			padding: 0.85rem;
-			gap: 0.75rem;
+		.detail-main-col {
+			flex: 1;
 		}
 
-		.action-footer {
-			padding-top: 1.25rem;
+		.detail-sidebar-col {
+			width: 20rem;
+			flex-shrink: 0;
+			position: sticky;
+			top: 5.5rem;
 		}
+	}
 
-		.comments-card {
-			padding: 1.25rem 1rem;
-			margin-top: 0.85rem;
-		}
+	/* Sidebar Compact Cards styling adjustments */
+	.detail-sidebar-col :global(.bansos-card .card-title) {
+		font-size: 1.05rem;
+	}
 
-		.recommendation-more-card {
-			padding: 1.5rem 1rem;
-			border-radius: 0.9rem;
-		}
+	.detail-sidebar-col :global(.bansos-card .card-desc) {
+		font-size: 0.82rem;
+		line-height: 1.4;
+	}
+
+	.detail-sidebar-col :global(.bansos-card .btn-primary) {
+		padding: 0.5rem 1rem;
+		font-size: 0.82rem;
+		border-radius: 0.5rem;
 	}
 </style>
