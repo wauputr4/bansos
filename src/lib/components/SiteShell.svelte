@@ -195,6 +195,10 @@
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
+	.site-header.nav-hidden {
+		transform: translateY(-110%);
+	}
+
 	.nav-shell {
 		display: flex;
 		align-items: center;

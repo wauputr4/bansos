@@ -200,6 +200,10 @@ export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new
 	const todayStr = `${yyyy}-${mm}-${dd}`;
 
 	return items.map((item) => {
+		if (item.status === 'upcoming' && item.publishedAt && item.publishedAt <= todayStr) {
+			return { ...item, status: 'active' as const };
+		}
+
 		if (
 			item.status !== 'expired' &&
 			item.validity.type === 'fixed' &&

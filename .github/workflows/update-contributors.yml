@@ -21,6 +21,8 @@ jobs:
       - run: npm ci
       - name: Generate commit contributors
         run: npm run generate:commit-contributors
+        env:
+          BASE_REV: ${{ github.event.before }}
       - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"

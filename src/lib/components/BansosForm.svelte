@@ -217,8 +217,14 @@
 		const errors: string[] = [];
 
 		const now = Date.now();
-		const lastSubmission = localStorage.getItem('bansos_last_submission');
-		if (lastSubmission && now - parseInt(lastSubmission) < 60000) {
+		let lastSubmission: string | null = null;
+		try {
+			lastSubmission = localStorage.getItem('bansos_last_submission');
+		} catch {
+			lastSubmission = null;
+		}
+		const lastTs = Number(lastSubmission);
+		if (Number.isFinite(lastTs) && lastTs <= now && now - lastTs < 60000) {
 			errors.push('Tunggu 1 menit sebelum submit form lagi (Rate Limit).');
 		}
 
@@ -331,7 +337,11 @@
 		e.preventDefault();
 		const url = generateIssueUrl();
 		if (url) {
-			localStorage.setItem('bansos_last_submission', Date.now().toString());
+			try {
+				localStorage.setItem('bansos_last_submission', Date.now().toString());
+			} catch {
+				// Storage can be blocked; don't block the submit flow.
+			}
 			window.open(url, '_blank');
 		}
 	}

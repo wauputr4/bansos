@@ -149,7 +149,7 @@
 		type="date"
 		bind:value
 		{required}
-		style="position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;"
+		style="position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none;"
 		tabindex="-1"
 	/>
 </div>

@@ -4,8 +4,9 @@ import type { RequestHandler } from './$types';
 export const prerender = false;
 
 export const GET: RequestHandler = async ({ platform }) => {
-	const CF_API_TOKEN = platform?.env?.CF_API_TOKEN || process.env.CF_API_TOKEN;
-	const CF_ZONE_ID = platform?.env?.CF_ZONE_ID || process.env.CF_ZONE_ID;
+	const nodeEnv = typeof process !== 'undefined' ? process.env : undefined;
+	const CF_API_TOKEN = platform?.env?.CF_API_TOKEN || nodeEnv?.CF_API_TOKEN;
+	const CF_ZONE_ID = platform?.env?.CF_ZONE_ID || nodeEnv?.CF_ZONE_ID;
 
 	if (!CF_API_TOKEN || !CF_ZONE_ID) {
 		// Return empty popularity data gracefully if token is not configured (local dev / preview)

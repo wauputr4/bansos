@@ -153,7 +153,8 @@ const commits = git(['log', '--reverse', '--format=%H', '--', dataPath])
 	.split('\n')
 	.filter(Boolean);
 const contributorsByItem = new Map();
-const headData = byId(parseDataAt('HEAD'));
+const baseRev = process.env.BASE_REV || 'HEAD';
+const headData = byId(parseDataAt(baseRev));
 const workingTreeData = byId(JSON.parse(readFileSync(dataPath, 'utf8')));
 const existingContributors = readCommitContributors();
 
