@@ -141,14 +141,14 @@
 	/>
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="https://bansos.dev/contribute/" />
-	<meta property="twitter:title" content="Kontribusi bansos.dev" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://bansos.dev/contribute/" />
+	<meta name="twitter:title" content="Kontribusi bansos.dev" />
 	<meta
-		property="twitter:description"
+		name="twitter:description"
 		content="Cara menambahkan daftar bansos developer ke bansos.dev."
 	/>
-	<meta property="twitter:image" content="https://bansos.dev/og.png" />
+	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

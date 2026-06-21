@@ -158,14 +158,14 @@
 	/>
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="https://bansos.dev/list/" />
-	<meta property="twitter:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://bansos.dev/list/" />
+	<meta name="twitter:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
 	<meta
-		property="twitter:description"
+		name="twitter:description"
 		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
 	/>
-	<meta property="twitter:image" content="https://bansos.dev/og.png" />
+	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
@@ -253,6 +253,7 @@
 					class="filter-header"
 					onclick={() => (filterExpanded = !filterExpanded)}
 					aria-expanded={filterExpanded}
+					aria-label="Toggle filter menu"
 				>
 					<div class="filter-title">
 						<i class="fa-solid fa-filter"></i>

@@ -5,6 +5,18 @@ import { bansosList, getCommitContributorsForItem } from '$lib/data/bansos';
 
 export const prerender = true;
 
+let fontDataPromise: Promise<ArrayBuffer> | undefined;
+
+function loadFont(fetch: typeof globalThis.fetch) {
+	fontDataPromise ??= fetch('/PlusJakartaSans-Bold.ttf').then((response) => {
+		if (!response.ok) {
+			throw new Error(`Failed to load OG font: ${response.status}`);
+		}
+		return response.arrayBuffer();
+	});
+	return fontDataPromise;
+}
+
 export const entries = () => {
 	return bansosList.map((item) => ({ id: item.id }));
 };
@@ -17,8 +29,7 @@ export async function GET({ params, fetch }) {
 		return new Response('Not Found', { status: 404 });
 	}
 
-	const fontResponse = await fetch('/PlusJakartaSans-Bold.ttf');
-	const fontData = await fontResponse.arrayBuffer();
+	const fontData = await loadFont(fetch);
 
 	const contributors = getCommitContributorsForItem(item.id).slice(0, 5);
 

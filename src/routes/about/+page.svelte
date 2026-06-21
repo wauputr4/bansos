@@ -26,17 +26,17 @@
 	/>
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="https://bansos.dev/about/" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://bansos.dev/about/" />
 	<meta
-		property="twitter:title"
+		name="twitter:title"
 		content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia"
 	/>
 	<meta
-		property="twitter:description"
+		name="twitter:description"
 		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
 	/>
-	<meta property="twitter:image" content="https://bansos.dev/og.png" />
+	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">

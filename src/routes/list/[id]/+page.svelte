@@ -201,11 +201,11 @@
 		<meta property="og:description" content={seoDesc} />
 		<meta property="og:image" content="{pageUrl}og.png" />
 
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={pageUrl} />
-		<meta property="twitter:title" content={seoTitle} />
-		<meta property="twitter:description" content={seoDesc} />
-		<meta property="twitter:image" content="{pageUrl}og.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={seoTitle} />
+		<meta name="twitter:description" content={seoDesc} />
+		<meta name="twitter:image" content="{pageUrl}og.png" />
 
 		{#if schemaJson}
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->

@@ -48,11 +48,11 @@
 	<meta property="og:description" content={seoDescription} />
 	<meta property="og:image" content={provider.faviconUrl || 'https://bansos.dev/og.png'} />
 
-	<meta property="twitter:card" content="summary" />
-	<meta property="twitter:url" content="https://bansos.dev/providers/{provider.slug}/" />
-	<meta property="twitter:title" content={seoTitle} />
-	<meta property="twitter:description" content={seoDescription} />
-	<meta property="twitter:image" content={provider.faviconUrl || 'https://bansos.dev/og.png'} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:url" content="https://bansos.dev/providers/{provider.slug}/" />
+	<meta name="twitter:title" content={seoTitle} />
+	<meta name="twitter:description" content={seoDescription} />
+	<meta name="twitter:image" content={provider.faviconUrl || 'https://bansos.dev/og.png'} />
 </svelte:head>
 
 <main class="page-wrapper">

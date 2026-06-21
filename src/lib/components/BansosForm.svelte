@@ -11,6 +11,10 @@
 	const existingIds = new Set(bansosList.map((i) => i.id));
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
+	function localDateString() {
+		const date = new Date();
+		return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+	}
 
 	let formId = $state('');
 	let formTitle = $state('');
@@ -34,7 +38,7 @@
 	let formValidityType = $state<'fixed' | 'uncertain' | 'forever'>('uncertain');
 	let formValidityDate = $state('');
 	let formValidityDesc = $state('');
-	let formPublishedAt = $state(new Date().toISOString().slice(0, 10));
+	let formPublishedAt = $state(localDateString());
 	let formPromoCode = $state('');
 	let formSource = $state('');
 	let formContributorName = $state('');
@@ -144,7 +148,7 @@
 		formValidityType = item.validity.type;
 		formValidityDate = item.validity.date || '';
 		formValidityDesc = item.validity.description || '';
-		formPublishedAt = item.publishedAt || new Date().toISOString().slice(0, 10);
+		formPublishedAt = item.publishedAt || localDateString();
 		formPromoCode = item.promoCode || '';
 		formSource = item.source || '';
 		formContributorName = item.contributor?.name || '';
@@ -347,7 +351,7 @@
 		formValidityType = 'uncertain';
 		formValidityDate = '';
 		formValidityDesc = '';
-		formPublishedAt = new Date().toISOString().slice(0, 10);
+		formPublishedAt = localDateString();
 		formPromoCode = '';
 		formSource = '';
 		formContributorName = '';

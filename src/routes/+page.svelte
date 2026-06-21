@@ -170,11 +170,11 @@
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:image" content="{siteUrl}og.png" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={siteUrl} />
-	<meta property="twitter:title" content={metaTitle} />
-	<meta property="twitter:description" content={metaDescription} />
-	<meta property="twitter:image" content="{siteUrl}og.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content={siteUrl} />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDescription} />
+	<meta name="twitter:image" content="{siteUrl}og.png" />
 
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html '<script type="application/ld+json">' + websiteSchema + '</' + 'script>'}

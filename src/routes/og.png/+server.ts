@@ -4,9 +4,20 @@ import { Resvg } from '@resvg/resvg-js';
 
 export const prerender = true;
 
+let fontDataPromise: Promise<ArrayBuffer> | undefined;
+
+function loadFont(fetch: typeof globalThis.fetch) {
+	fontDataPromise ??= fetch('/PlusJakartaSans-Bold.ttf').then((response) => {
+		if (!response.ok) {
+			throw new Error(`Failed to load OG font: ${response.status}`);
+		}
+		return response.arrayBuffer();
+	});
+	return fontDataPromise;
+}
+
 export async function GET({ fetch }) {
-	const fontResponse = await fetch('/PlusJakartaSans-Bold.ttf');
-	const fontData = await fontResponse.arrayBuffer();
+	const fontData = await loadFont(fetch);
 
 	const template = html(`
 		<div style="display: flex; flex-direction: column; width: 1200px; height: 630px; background-color: #090a0f; color: #f3f4f6; padding: 80px; justify-content: space-between; box-sizing: border-box; border: 2px solid #1f2937;">
