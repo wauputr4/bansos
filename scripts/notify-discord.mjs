@@ -27,11 +27,25 @@ if (newBansos.length === 0) {
 	process.exit(0);
 }
 
+const truncate = (str, max) => {
+	if (!str) return '';
+	return str.length > max ? str.slice(0, max - 3) + '...' : str;
+};
+
+const getTimestamp = (dateStr) => {
+	if (!dateStr) return new Date().toISOString();
+	try {
+		const date = new Date(dateStr);
+		if (isNaN(date.getTime())) return new Date().toISOString();
+		return date.toISOString();
+	} catch {
+		return new Date().toISOString();
+	}
+};
+
 for (const bansos of newBansos) {
 	let validity = bansos.validity?.description || bansos.validity?.date;
 	if (!validity && bansos.validity?.type === 'unlimited') validity = 'Selamanya';
-
-	const truncate = (str, max) => (str && str.length > max ? str.slice(0, max - 3) + '...' : str);
 
 	const benefitsList = bansos.benefits?.map((b) => `• ${b}`).join('\n') || '-';
 	const requirementsList = bansos.requirements?.map((r) => `• ${r}`).join('\n') || '-';
@@ -94,9 +108,7 @@ for (const bansos of newBansos) {
 					}
 				],
 				footer: { text: 'Bansos Info • bansos.dev' },
-				timestamp: bansos.publishedAt
-					? new Date(bansos.publishedAt).toISOString()
-					: new Date().toISOString()
+				timestamp: getTimestamp(bansos.publishedAt)
 			}
 		]
 	};
