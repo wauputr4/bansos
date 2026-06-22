@@ -72,8 +72,9 @@
 			"Tidak perlu tambahan paket hosting, SSL, maupun email hosting"
 		],
 		"validity": {
-			"type": "uncertain",
-			"description": "Promo dan validitas kupon bisa berubah sesuai campaign saat ini"
+			"type": "fixed",
+			"description": "Promo dan validitas kupon bisa berubah sesuai campaign saat ini",
+			"date": "2026-06-14"
 		},
 		"requirements": [
 			"Punya akun di IDwebhost",
@@ -90,7 +91,7 @@
 		"ctaLink": "https://idwebhost.com/",
 		"tags": ["Domain", "Diskon"],
 		"featured": false,
-		"status": "active",
+		"status": "expired",
 		"provider": "IDwebhost"
 	},
 	{
@@ -1138,7 +1139,7 @@
 		"ctaLink": "https://www.getmerlin.in/",
 		"tags": ["AI", "Promo", "Credit Card Required", "Gratisan"],
 		"featured": false,
-		"status": "active"
+		"status": "expired"
 	},
 	{
 		"id": "freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10",
