@@ -923,6 +923,11 @@
 	.btn-text .btn-icon {
 		font-size: 0.85rem;
 		margin-right: 0;
+		width: auto;
+		height: auto;
+		display: flex;
+		align-items: center;
+		transform: translateY(1px);
 	}
 
 	.advantages-section {

@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { getProviderStats, formatNumber } from '$lib/data/bansos';
+	import {
+		getCachedFavicon,
+		setCachedFavicon,
+		handleFaviconFallback
+	} from '$lib/utils/faviconCache';
+
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
 	import { onMount } from 'svelte';
@@ -114,14 +120,15 @@
 				<a href={resolve(`/providers/${provider.slug}`)} class="provider-card glass-card">
 					<div class="provider-top">
 						<img
-							src={provider.faviconUrl}
+							src={getCachedFavicon(provider.websiteUrl) || provider.faviconUrl}
 							alt=""
 							loading="lazy"
 							class="provider-logo"
-							onerror={(e) => {
-								(e.currentTarget as HTMLImageElement).src =
-									`https://ui-avatars.com/api/?name=${encodeURIComponent(provider.name)}&background=10b981&color=fff&size=128`;
+							onload={(e) => {
+								const target = e.currentTarget as HTMLImageElement;
+								setCachedFavicon(provider.websiteUrl, target.src);
 							}}
+							onerror={(e) => handleFaviconFallback(e, provider.websiteUrl)}
 						/>
 						<div class="provider-badges">
 							{#if providerViews > 0}

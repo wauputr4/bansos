@@ -3,6 +3,12 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import {
+		getCachedFavicon,
+		setCachedFavicon,
+		handleFaviconFallback
+	} from '$lib/utils/faviconCache';
+
 	import { onMount } from 'svelte';
 	import type { BansosItem } from '$lib/data/bansos';
 
@@ -79,13 +85,14 @@
 	<header class="container provider-header">
 		<div class="provider-identity">
 			<img
-				src={provider.faviconUrl}
+				src={getCachedFavicon(provider.websiteUrl) || provider.faviconUrl}
 				alt=""
 				class="provider-logo"
-				onerror={(e) => {
-					(e.currentTarget as HTMLImageElement).src =
-						`https://ui-avatars.com/api/?name=${encodeURIComponent(provider.name)}&background=10b981&color=fff&size=128`;
+				onload={(e) => {
+					const target = e.currentTarget as HTMLImageElement;
+					setCachedFavicon(provider.websiteUrl, target.src);
 				}}
+				onerror={(e) => handleFaviconFallback(e, provider.websiteUrl)}
 			/>
 			<div>
 				<p class="eyebrow">Provider</p>
