@@ -45,11 +45,14 @@ const getTimestamp = (dateStr) => {
 
 for (const bansos of newBansos) {
 	let validity = bansos.validity?.description || bansos.validity?.date;
-	if (!validity && bansos.validity?.type === 'unlimited') validity = 'Selamanya';
+	if (!validity && bansos.validity?.type === 'forever') validity = 'Selamanya';
 
 	const benefitsList = bansos.benefits?.map((b) => `• ${b}`).join('\n') || '-';
 	const requirementsList = bansos.requirements?.map((r) => `• ${r}`).join('\n') || '-';
 	const tagsList = bansos.tags?.map((t) => `\`${t}\``).join(', ') || '-';
+
+	const ctaText = `\n\n**🔗 [Klaim Bansos di Sini](https://bansos.dev/list/${bansos.id})**`;
+	const maxDescLen = 4096 - ctaText.length;
 
 	const payload = {
 		content:
@@ -57,12 +60,12 @@ for (const bansos of newBansos) {
 		allowed_mentions: { roles: ['1518499313947512832'] },
 		embeds: [
 			{
-				title: bansos.title,
+				title: truncate(bansos.title, 256),
 				url: `https://bansos.dev/list/${bansos.id}`,
-				description: `${truncate(bansos.description, 2048)}\n\n**🔗 [Klaim Bansos di Sini](https://bansos.dev/list/${bansos.id})**`,
+				description: `${truncate(bansos.description, maxDescLen)}${ctaText}`,
 				color: 5814783,
 				author: {
-					name: `🙌 Kontributor: ${bansos.contributor?.name || 'Anonim'}`,
+					name: truncate(`🙌 Kontributor: ${bansos.contributor?.name || 'Anonim'}`, 256),
 					url: bansos.contributor?.url || 'https://bansos.dev'
 				},
 				fields: [
@@ -83,7 +86,7 @@ for (const bansos of newBansos) {
 					},
 					{
 						name: '🎟️ Kode Promo',
-						value: bansos.promoCode ? `\`${bansos.promoCode}\`` : '-',
+						value: bansos.promoCode ? truncate(`\`${bansos.promoCode}\``, 1024) : '-',
 						inline: true
 					},
 					{
