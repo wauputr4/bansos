@@ -9,7 +9,12 @@ function loadCache() {
 		return;
 	}
 	try {
-		memoryCache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+		const parsed = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+		if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+			memoryCache = parsed;
+		} else {
+			memoryCache = {};
+		}
 	} catch {
 		memoryCache = {};
 	}

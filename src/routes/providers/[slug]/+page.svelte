@@ -47,7 +47,10 @@
 
 	onMount(() => {
 		fetch('/api/popularity')
-			.then((res) => (res.ok ? res.json() : {}))
+			.then((res) => {
+				if (!res.ok) throw new Error(`API error: ${res.status}`);
+				return res.json();
+			})
 			.then((data) => {
 				popularityData = data;
 			})
