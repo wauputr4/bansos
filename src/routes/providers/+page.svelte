@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { getProviderStats } from '$lib/data/bansos';
+	import { getProviderStats, formatNumber } from '$lib/data/bansos';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import { onMount } from 'svelte';
 
 	const providers = getProviderStats();
 	let searchQuery = $state('');
@@ -33,6 +34,19 @@
 
 	$effect(() => {
 		if (searchQuery) currentPage = 1;
+	});
+
+	let popularityData: Record<string, number> = $state({});
+
+	onMount(() => {
+		fetch('/api/popularity')
+			.then((res) => (res.ok ? res.json() : {}))
+			.then((data) => {
+				popularityData = data;
+			})
+			.catch((err) => {
+				console.error('Failed to fetch popularity data:', err);
+			});
 	});
 </script>
 
@@ -93,12 +107,32 @@
 		</div>
 		<div class="provider-grid">
 			{#each paginatedProviders as provider (provider.slug)}
+				{@const providerViews = provider.items.reduce(
+					(sum, item) => sum + (popularityData[item.id] || 0),
+					0
+				)}
 				<a href={resolve(`/providers/${provider.slug}`)} class="provider-card glass-card">
 					<div class="provider-top">
-						<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
-						<span class="active-pill"
-							><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span
-						>
+						<img
+							src={provider.faviconUrl}
+							alt=""
+							loading="lazy"
+							class="provider-logo"
+							onerror={(e) => {
+								(e.currentTarget as HTMLImageElement).src =
+									`https://ui-avatars.com/api/?name=${encodeURIComponent(provider.name)}&background=10b981&color=fff&size=128`;
+							}}
+						/>
+						<div class="provider-badges">
+							{#if providerViews > 0}
+								<span class="active-pill views-pill"
+									><i class="fa-regular fa-eye"></i> {formatNumber(providerViews)}</span
+								>
+							{/if}
+							<span class="active-pill"
+								><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span
+							>
+						</div>
 					</div>
 					<div>
 						<h2>{provider.name}</h2>
@@ -198,6 +232,7 @@
 		color: var(--text-secondary);
 		font-size: 0.85rem;
 		font-weight: 750;
+		margin-bottom: 0.5rem;
 	}
 
 	.provider-grid {
@@ -240,6 +275,14 @@
 		object-fit: contain;
 	}
 
+	.provider-badges {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
 	.active-pill {
 		display: inline-flex;
 		align-items: center;
@@ -250,6 +293,12 @@
 		font-size: 0.8rem;
 		font-weight: 800;
 		padding: 0.35rem 0.65rem;
+	}
+
+	.views-pill {
+		background: transparent;
+		border: 1px solid var(--border-color);
+		color: var(--text-secondary);
 	}
 
 	h2 {

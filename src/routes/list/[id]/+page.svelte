@@ -657,6 +657,13 @@
 		margin-top: 0.5rem;
 	}
 
+	.detail-sidebar-meta {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
 	@media (min-width: 48rem) {
 		.detail-meta-grid {
 			grid-template-columns: repeat(2, 1fr);

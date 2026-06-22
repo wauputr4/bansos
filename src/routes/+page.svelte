@@ -6,7 +6,8 @@
 		bansosList,
 		latestBansos,
 		featuredBansos,
-		getCommitContributorStats
+		getCommitContributorStats,
+		formatNumber
 	} from '$lib/data/bansos';
 
 	type GithubContributor = {
@@ -50,12 +51,6 @@
 	let githubContributors: GithubContributor[] = $state([]);
 	let popularityData: Record<string, number> = $state({});
 	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
-
-	function formatNumber(num: number | string) {
-		if (typeof num !== 'number') return num;
-		if (num >= 1000) return `${(num / 1000).toFixed(1).replace(/\.0$/, '')}k`;
-		return num;
-	}
 
 	onMount(() => {
 		const CACHE_KEY = `bansos_home_repo_v1_${repo}`;
@@ -478,9 +473,54 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		align-items: center;
 		gap: 0.75rem;
 		margin-bottom: 0.5rem;
 		width: 100%;
+	}
+
+	@media (max-width: 48rem) {
+		.badge-container {
+			flex-wrap: nowrap;
+			justify-content: center;
+			gap: 0.5rem;
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.version-badge {
+			font-size: 0.75rem;
+			padding: 0 0.65rem;
+			height: 1.7rem; /* Match the 1rem icon + 0.35rem padding * 2 */
+			white-space: nowrap;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.github-badge,
+		.discord-badge,
+		.telegram-badge {
+			padding: 0.35rem;
+			border-radius: 50%;
+			aspect-ratio: 1;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.github-badge span,
+		.discord-badge span,
+		.telegram-badge span {
+			display: none;
+		}
+
+		.github-badge .icon,
+		.discord-badge .icon,
+		.telegram-badge .icon {
+			width: 1rem;
+			height: 1rem;
+		}
 	}
 
 	.version-badge {
@@ -491,6 +531,9 @@
 		padding: 0.25rem 0.75rem;
 		border-radius: 2rem;
 		color: var(--text-secondary);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.github-badge {

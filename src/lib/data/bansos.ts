@@ -61,6 +61,15 @@ const DEFAULT_UTM = {
 };
 
 /**
+ * Formats a number to a compact string (e.g. 1100 -> 1.1k)
+ */
+export function formatNumber(num: number | string) {
+	if (typeof num !== 'number') return num;
+	if (num >= 1000) return `${(num / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+	return num;
+}
+
+/**
  * Parses and validates a URL string.
  * @param url The URL string to parse.
  * @returns The parsed URL object or null if invalid/not http(s).

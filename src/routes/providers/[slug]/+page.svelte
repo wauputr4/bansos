@@ -3,6 +3,7 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import { onMount } from 'svelte';
 	import type { BansosItem } from '$lib/data/bansos';
 
 	let { data } = $props();
@@ -35,6 +36,19 @@
 	$effect(() => {
 		if (searchQuery) currentPage = 1;
 	});
+
+	let popularityData: Record<string, number> = $state({});
+
+	onMount(() => {
+		fetch('/api/popularity')
+			.then((res) => (res.ok ? res.json() : {}))
+			.then((data) => {
+				popularityData = data;
+			})
+			.catch((err) => {
+				console.error('Failed to fetch popularity data:', err);
+			});
+	});
 </script>
 
 <svelte:head>
@@ -64,7 +78,15 @@
 
 	<header class="container provider-header">
 		<div class="provider-identity">
-			<img src={provider.faviconUrl} alt="" class="provider-logo" />
+			<img
+				src={provider.faviconUrl}
+				alt=""
+				class="provider-logo"
+				onerror={(e) => {
+					(e.currentTarget as HTMLImageElement).src =
+						`https://ui-avatars.com/api/?name=${encodeURIComponent(provider.name)}&background=10b981&color=fff&size=128`;
+				}}
+			/>
 			<div>
 				<p class="eyebrow">Provider</p>
 				<h1 class="text-gradient text-balance">{provider.name}</h1>
@@ -101,7 +123,7 @@
 		{:else}
 			<div class="bansos-grid">
 				{#each paginatedItems as item (item.id)}
-					<BansosCard {item} />
+					<BansosCard {item} views={popularityData[item.id] || 0} />
 				{/each}
 			</div>
 			<Pagination bind:currentPage {totalPages} />
