@@ -1184,7 +1184,7 @@
 		"status": "active"
 	},
 	{
-		"id": "kredit-gratis-2",
+		"id": "neosantara-ai-gateway",
 		"title": "Neosantara AI Gateway",
 		"provider": "Neosantara",
 		"description": "Gateway API AI terpadu untuk developer Indonesia yang menyatukan 40+ model AI terbaik dunia (seperti Claude, Gemini, GPT, hingga Llama) dalam satu endpoint kompatibel SDK OpenAI & Anthropic.",
