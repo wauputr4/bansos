@@ -1220,7 +1220,7 @@
 		"status": "active"
 	},
 	{
-		"id": "a",
+		"id": "openmodel-deepseek-v4-flash-free-access",
 		"title": "FREE AKSES model deepseek-v4-flash - OpenModel.ai",
 		"provider": "OpenModel",
 		"description": "Gratis akses model deepseek-v4-flash di https://openmodel.ai\n\nBerlaku sampai tanggal 28 Juni 2026",
@@ -1233,7 +1233,7 @@
 			"Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4",
 			"Buat Apikey",
 			"Arahkan base url : https://api.openmodel.ai/v1",
-			"Gunakan model 1deepseek-v4-flash"
+			"Gunakan model deepseek-v4-flash"
 		],
 		"publishedAt": "2026-06-23",
 		"source": "https://www.openmodel.ai/event",
