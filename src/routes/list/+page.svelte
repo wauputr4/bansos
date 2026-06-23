@@ -714,6 +714,7 @@
 		color: var(--text-secondary);
 		font-size: 0.85rem;
 		font-weight: 750;
+		margin-bottom: 0.5rem;
 	}
 
 	.empty-state {

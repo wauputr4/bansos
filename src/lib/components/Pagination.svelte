@@ -227,9 +227,6 @@
 	}
 
 	@media (max-width: 48rem) {
-		.hide-mobile {
-			display: none !important;
-		}
 		.page-btn {
 			min-width: 1.8rem;
 			height: 2.2rem;

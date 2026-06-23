@@ -3,6 +3,13 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import {
+		getCachedFavicon,
+		setCachedFavicon,
+		handleFaviconFallback
+	} from '$lib/utils/faviconCache';
+
+	import { onMount } from 'svelte';
 	import type { BansosItem } from '$lib/data/bansos';
 
 	let { data } = $props();
@@ -35,6 +42,22 @@
 	$effect(() => {
 		if (searchQuery) currentPage = 1;
 	});
+
+	let popularityData: Record<string, number> = $state({});
+
+	onMount(() => {
+		fetch('/api/popularity')
+			.then((res) => {
+				if (!res.ok) throw new Error(`API error: ${res.status}`);
+				return res.json();
+			})
+			.then((data) => {
+				popularityData = data;
+			})
+			.catch((err) => {
+				console.error('Failed to fetch popularity data:', err);
+			});
+	});
 </script>
 
 <svelte:head>
@@ -64,7 +87,16 @@
 
 	<header class="container provider-header">
 		<div class="provider-identity">
-			<img src={provider.faviconUrl} alt="" class="provider-logo" />
+			<img
+				src={getCachedFavicon(provider.websiteUrl) || provider.faviconUrl}
+				alt=""
+				class="provider-logo"
+				onload={(e) => {
+					const target = e.currentTarget as HTMLImageElement;
+					setCachedFavicon(provider.websiteUrl, target.src);
+				}}
+				onerror={(e) => handleFaviconFallback(e, provider.websiteUrl)}
+			/>
 			<div>
 				<p class="eyebrow">Provider</p>
 				<h1 class="text-gradient text-balance">{provider.name}</h1>
@@ -101,7 +133,7 @@
 		{:else}
 			<div class="bansos-grid">
 				{#each paginatedItems as item (item.id)}
-					<BansosCard {item} />
+					<BansosCard {item} views={popularityData[item.id] || 0} />
 				{/each}
 			</div>
 			<Pagination bind:currentPage {totalPages} />

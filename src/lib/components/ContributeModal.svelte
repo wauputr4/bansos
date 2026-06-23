@@ -7,8 +7,8 @@
 	type TabId = 'form' | 'npx' | 'git' | 'ai';
 
 	let activeTab = $state<TabId>('form');
-	let modalContainer: HTMLDivElement | null = null;
-	let closeButton: HTMLButtonElement | null = null;
+	let modalContainer: HTMLDivElement | null = $state(null);
+	let closeButton: HTMLButtonElement | null = $state(null);
 	let previouslyFocused: HTMLElement | null = null;
 
 	const tabs: { id: TabId; label: string; icon: string }[] = [

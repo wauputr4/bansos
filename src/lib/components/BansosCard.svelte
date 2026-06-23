@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { getProviderBySlug, slugifyProvider, type BansosItem } from '$lib/data/bansos';
+	import {
+		getProviderBySlug,
+		slugifyProvider,
+		formatNumber,
+		type BansosItem
+	} from '$lib/data/bansos';
 
 	let {
 		item,
@@ -106,15 +111,17 @@
 			<a href={resolve(`/list/${item.id}`)} class="btn-primary"> Lihat Cara Klaim Lengkap </a>
 		</div>
 		<div class="card-stats">
-			<span class="stat-icon" title="Views"><i class="fa-regular fa-eye"></i> {views}</span>
+			<span class="stat-icon" title="Views"
+				><i class="fa-regular fa-eye"></i> {formatNumber(views)}</span
+			>
 			{#if comments > 0}
 				<span class="stat-icon" title="Comments"
-					><i class="fa-regular fa-comment"></i> {comments}</span
+					><i class="fa-regular fa-comment"></i> {formatNumber(comments)}</span
 				>
 			{/if}
 			{#if reactions > 0}
 				<span class="stat-icon" title="Reactions"
-					><i class="fa-regular fa-thumbs-up"></i> {reactions}</span
+					><i class="fa-regular fa-thumbs-up"></i> {formatNumber(reactions)}</span
 				>
 			{/if}
 		</div>

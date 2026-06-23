@@ -61,6 +61,19 @@ const DEFAULT_UTM = {
 };
 
 /**
+ * Formats a number to a compact string (e.g. 1100 -> 1.1k)
+ */
+export function formatNumber(num: number | string): string {
+	if (typeof num === 'string') num = parseInt(num, 10);
+	if (isNaN(num)) return '0';
+
+	return new Intl.NumberFormat('en-US', {
+		notation: 'compact',
+		maximumFractionDigits: 1
+	}).format(num);
+}
+
+/**
  * Parses and validates a URL string.
  * @param url The URL string to parse.
  * @returns The parsed URL object or null if invalid/not http(s).
@@ -383,15 +396,16 @@ function providerWebsiteFrom(item: BansosItem) {
 	const parsed = parseAndValidateUrl(item.ctaLink);
 	return parsed ? parsed.origin : '#';
 }
-
 /**
- * Generates a Google favicon URL for a given URL.
+ * Generates a direct favicon URL for a given URL.
  * @param url The website URL.
  * @returns The favicon image URL.
  */
 function faviconUrlFor(url: string) {
 	const parsed = parseAndValidateUrl(url);
-	return parsed ? `https://www.google.com/s2/favicons?domain=${parsed.hostname}&sz=128` : '';
+	return parsed
+		? `${parsed.origin}/favicon.ico`
+		: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e5e7eb'/%3E%3C/svg%3E";
 }
 
 let cachedProviderStats: ProviderSummary[] | null = null;
