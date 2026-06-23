@@ -1267,5 +1267,27 @@
 		"tags": ["Domain"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "f",
+		"title": "Free domain .WEB.ID",
+		"provider": "Jagoan Hosting",
+		"description": "Domain gratis dari Jagoan Hosting khusus ekstensi .web.id",
+		"benefits": ["Dapatkan domain .web.id secara gratis selama 1 tahun"],
+		"promoCode": "FREEWEBID100",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": ["Tambahkan domain .web.id kedalam keranjang", "Masukkan kode promonya"],
+		"publishedAt": "2026-06-23",
+		"source": "https://www.jagoanhosting.com",
+		"contributor": {
+			"name": "Risal",
+			"url": "https://github.com/risal1107"
+		},
+		"ctaLink": "https://www.jagoanhosting.com",
+		"tags": ["Domain"],
+		"featured": false,
+		"status": "active"
 	}
 ]
