@@ -45,7 +45,7 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
-	const commitContributors = getCommitContributorStats().slice(0, 8);
+	const commitContributors = getCommitContributorStats();
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
@@ -386,16 +386,18 @@
 			<div class="repo-live-panel" aria-label="Statistik repository GitHub bansos.dev">
 				<div class="commit-contributor-panel">
 					<span class="repo-panel-label">Commit kontributor</span>
-					<div class="contributors-stack" aria-label="Commit kontributor bansos data">
+					<div class="contributors-list" aria-label="Commit kontributor bansos data">
 						{#each commitContributors as contributor (contributor.login)}
 							<a
 								href={`https://github.com/${contributor.login}`}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="contributor-avatar"
+								class="contributor-row"
 								aria-label={`${contributor.login}, ${contributor.count} commit kontribusi`}
 							>
 								<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+								<span class="contributor-login">{contributor.login}</span>
+								<span class="contributor-commit-count">{contributor.count}</span>
 							</a>
 						{/each}
 					</div>
@@ -848,39 +850,54 @@
 		text-transform: uppercase;
 	}
 
-	.contributors-stack {
+	.contributors-list {
 		display: flex;
-		justify-content: center;
-		padding-left: 0.75rem;
-	}
-
-	.contributor-avatar {
-		width: 2.35rem;
-		height: 2.35rem;
-		margin-left: -0.75rem;
-		border: 2px solid var(--bg-primary);
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-	}
-
-	.contributor-avatar {
-		overflow: hidden;
-		transition:
-			transform 0.2s ease,
-			border-color 0.2s ease;
-	}
-
-	.contributor-avatar:hover {
-		transform: translateY(-2px);
-		border-color: rgba(16, 185, 129, 0.8);
-	}
-
-	.contributor-avatar img {
+		flex-direction: column;
+		gap: 0.5rem;
 		width: 100%;
-		height: 100%;
+		align-items: stretch;
+	}
+
+	.contributor-row {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.45rem 0.65rem;
+		border-radius: 0.65rem;
+		color: var(--text-primary);
+		text-decoration: none;
+		transition: background-color 0.2s ease;
+	}
+
+	.contributor-row:hover {
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		text-decoration: none;
+	}
+
+	.contributor-row img {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 999px;
 		object-fit: cover;
-		display: block;
+		border: 2px solid var(--border-color);
+		flex-shrink: 0;
+	}
+
+	.contributor-login {
+		font-size: 0.88rem;
+		font-weight: 700;
+		margin-right: auto;
+	}
+
+	.contributor-commit-count {
+		font-size: 0.8rem;
+		font-weight: 750;
+		color: var(--text-secondary);
+		background: color-mix(in srgb, var(--text-primary) 6%, transparent);
+		padding: 0.15rem 0.55rem;
+		border-radius: 999px;
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.repo-live-stats {
