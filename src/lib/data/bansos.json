@@ -1410,5 +1410,26 @@
 		"tags": ["AI Credits", "AI", "API", "Promo"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "merlin-ai-claude-opus-48-diskon-1tahun",
+		"title": "CLAUDE opus 4.8 1tahun 500k",
+		"provider": "Merlin AI",
+		"description": "Merlin AI menawarkan diskon untuk paket Pro Plan selama 1 tahun. Promo ini dipastikan tetap tersedia, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
+		"benefits": ["Pro Subscription 1 Tahun", "Teams"],
+		"promoCode": "HY2",
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": ["Berlangganan dengan code promo"],
+		"publishedAt": "2026-06-25",
+		"contributor": {
+			"name": "priyambodo",
+			"url": "https://github.com/maspriyambodo"
+		},
+		"ctaLink": "https://www.getmerlin.in/chat?ref=nwe2zwf",
+		"tags": ["Diskon", "AI"],
+		"featured": false,
+		"status": "active"
 	}
 ]
