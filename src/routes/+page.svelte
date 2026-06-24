@@ -45,7 +45,7 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
-	const commitContributors = getCommitContributorStats().slice(0, 8);
+	const commitContributors = getCommitContributorStats();
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
