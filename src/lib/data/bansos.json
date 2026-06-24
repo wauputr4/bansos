@@ -1251,14 +1251,26 @@
 		"title": "Domain .WEB.ID GRATIS 1 Tahun | Jagoan Hosting",
 		"provider": "Jagoan Hosting",
 		"description": "Ingin memiliki website pribadi, portofolio, blog, atau bisnis online tanpa biaya domain?",
-		"benefits": ["Domain .WEB.ID GRATIS 1 Tahun", "Cocok untuk website pribadi maupun bisnis", "Proses aktivasi cepat dan mudah", "Bisa langsung digunakan untuk website, landing page, toko online, maupun email bisnis"],
+		"benefits": [
+			"Domain .WEB.ID GRATIS 1 Tahun",
+			"Cocok untuk website pribadi maupun bisnis",
+			"Proses aktivasi cepat dan mudah",
+			"Bisa langsung digunakan untuk website, landing page, toko online, maupun email bisnis"
+		],
 		"promoCode": "FREEWEBID100",
 		"validity": {
 			"type": "uncertain"
 		},
-		"requirements": ["Masukkan nama domain yang diinginkan dengan ekstensi .WEB.ID.", "Pilih masa aktif 1 Tahun.", "Masukkan kode promo", "Pastikan muncul keterangan 'Kode Promo Terpasang'.", "Total tagihan akan otomatis menjadi Rp0.", "Klik Bayar Sekarang untuk menyelesaikan proses pemesanan."],
+		"requirements": [
+			"Masukkan nama domain yang diinginkan dengan ekstensi .WEB.ID.",
+			"Pilih masa aktif 1 Tahun.",
+			"Masukkan kode promo",
+			"Pastikan muncul keterangan 'Kode Promo Terpasang'.",
+			"Total tagihan akan otomatis menjadi Rp0.",
+			"Klik Bayar Sekarang untuk menyelesaikan proses pemesanan."
+		],
 		"publishedAt": "2026-06-23",
-    "source": "https://www.jagoanhosting.com",
+		"source": "https://www.jagoanhosting.com",
 		"contributor": {
 			"name": "Risal",
 			"url": "https://github.com/risal1107"
