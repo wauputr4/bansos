@@ -1330,12 +1330,16 @@
 		"validity": {
 			"type": "uncertain"
 		},
-		"requirements": ["Via Nararouter"],
-		"publishedAt": "2026-06-24",
+		"requirements": [
+			"Registrasi akun di Nararouter melalui link tersedia",
+			"Verifikasi email dan login ke dashboard",
+			"Akses AI Models dan mulai gunakan 7M token gratis per hari"
+		],
+		"publishedAt": "2026-06-23",
 		"source": "https://router.bynara.id/register?ref=CJWVMGPR",
 		"contributor": {
 			"name": "AB Codeworks",
-			"url": "https://github.com/abcodeworks-cod"
+			"url": "https://github.com/abcodeworks"
 		},
 		"ctaLink": "https://router.bynara.id/register?ref=CJWVMGPR",
 		"tags": ["AI", "AI Credits", "API"],
