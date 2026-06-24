@@ -1390,5 +1390,25 @@
 		"tags": ["AI Credits", "Gratisan", "AI"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "f",
+		"title": "Free $5 Credit in Opencode GO - Refferal links",
+		"provider": "Opencode Go",
+		"description": "Subscribe ke opencode go ai untuk mendapatkan free $5 melalui akun kamu",
+		"benefits": ["Free $5 Credit"],
+		"validity": {
+			"type": "forever"
+		},
+		"requirements": ["Subscribe Opencode AI"],
+		"publishedAt": "2026-06-24",
+		"contributor": {
+			"name": "QRocket-Lab",
+			"url": "https://github.com/Qrocket-lab"
+		},
+		"ctaLink": "https://opencode.ai/go?ref=YCFKG306YB",
+		"tags": ["AI Credits", "AI", "API", "Promo"],
+		"featured": false,
+		"status": "active"
 	}
 ]
