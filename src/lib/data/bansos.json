@@ -1258,7 +1258,7 @@
 		},
 		"requirements": ["Masukkan nama domain yang diinginkan dengan ekstensi .WEB.ID.", "Pilih masa aktif 1 Tahun.", "Masukkan kode promo", "Pastikan muncul keterangan 'Kode Promo Terpasang'.", "Total tagihan akan otomatis menjadi Rp0.", "Klik Bayar Sekarang untuk menyelesaikan proses pemesanan."],
 		"publishedAt": "2026-06-23",
-		"source": "www.jagoanhosting.com",
+    "source": "https://www.jagoanhosting.com",
 		"contributor": {
 			"name": "Risal",
 			"url": "https://github.com/risal1107"
