@@ -816,7 +816,15 @@
 
 	.github-actions {
 		display: flex;
+		flex-direction: row;
 		gap: 1rem;
+	}
+
+	@media (max-width: 48rem) {
+		.github-actions {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	.repo-live-panel {
