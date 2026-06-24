@@ -7,6 +7,7 @@
 		latestBansos,
 		featuredBansos,
 		getCommitContributorStats,
+		getContributorStats,
 		formatNumber
 	} from '$lib/data/bansos';
 
@@ -45,7 +46,27 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
-	const commitContributors = getCommitContributorStats();
+	const commitContributors = getCommitContributorStats()
+		.filter((c) => c.login !== 'github-actions[bot]');
+	// Gabungin dengan kontributor dari bansos.json (entry contributor field)
+	const entryContributors = getContributorStats();
+	const combinedLogins = new Set(commitContributors.map((c) => c.login.toLowerCase()));
+	for (const ec of entryContributors) {
+		const githubMatch = ec.url.match(new RegExp('^https://github.com/([^/?#]+)'));
+		if (githubMatch) {
+			const ghLogin = githubMatch[1].toLowerCase();
+			if (!combinedLogins.has(ghLogin)) {
+				combinedLogins.add(ghLogin);
+				commitContributors.push({
+					login: ghLogin,
+					name: ec.name,
+					avatarUrl: `https://github.com/${ghLogin}.png?size=96`,
+					commitUrl: `https://github.com/${ghLogin}`,
+					count: ec.count
+				});
+			}
+		}
+	}
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
