@@ -1456,5 +1456,26 @@
 		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "g",
+		"title": "Gmail unlimited created",
+		"provider": "Github",
+		"description": "bisa bikin akun unlimited tanpa ada batasan apapun buat  akun  baru tanpa izin. cara pakai baca readme yg ada di github",
+		"benefits": ["free unlimited Gmail akun created"],
+		"validity": {
+			"type": "uncertain"
+		},
+		"requirements": ["laptop /pc"],
+		"publishedAt": "2026-06-25",
+		"source": "https://github.com/ShadowHackrs/gmail-account-creator",
+		"contributor": {
+			"name": "nafian",
+			"url": "https://github.com/sanafaksa"
+		},
+		"ctaLink": "https://github.com/ShadowHackrs/gmail-account-creator",
+		"tags": ["Gratisan"],
+		"featured": false,
+		"status": "active"
 	}
 ]
