@@ -6,6 +6,7 @@ export interface BansosItem {
 	title: string;
 	provider: string;
 	providerLogoUrl?: string;
+	providerWebsiteUrl?: string;
 	description: string;
 	benefits: string[];
 	promoCode?: string;
@@ -393,7 +394,7 @@ function providerKey(provider: string) {
  * @returns The website origin URL or '#'.
  */
 function providerWebsiteFrom(item: BansosItem) {
-	const parsed = parseAndValidateUrl(item.ctaLink);
+	const parsed = parseAndValidateUrl(item.providerWebsiteUrl || item.ctaLink);
 	return parsed ? parsed.origin : '#';
 }
 /**
