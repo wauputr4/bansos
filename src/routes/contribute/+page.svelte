@@ -63,7 +63,7 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.title} to bansos list" --base main`
+			`glab mr create --title "feat: add ${item.title}" --description "Added ${item.title} to bansos list" --target-branch main --yes`
 		);
 
 		return parts.join('\n');
@@ -126,6 +126,20 @@
 			Email yang tersedia, metode lain dinonaktifkan sementara karena spam.
 		</p>
 
+		<div class="integrity-warning-banner glass-card">
+			<i class="fa-solid fa-shield-halved warning-icon"></i>
+			<div class="banner-content">
+				<h4>⛔ Larangan Keras: DILARANG KERAS</h4>
+				<p>
+					<strong>JANGAN</strong> submit informasi bansos yang
+					<strong>menyesatkan, palsu, atau tidak bisa diklaim</strong>.
+					<strong>DILARANG KERAS</strong> menyertakan langkah-langkah yang bersifat
+					<strong>abuse, ilegal, atau melanggar ketentuan layanan (ToS)</strong> pihak lain. Setiap pelanggaran
+					akan ditindak tegas, kontributor akan dikeluarkan secara permanen dari bansos.dev tanpa pemberitahuan.
+				</p>
+			</div>
+		</div>
+
 		<div class="referral-policy-banner glass-card">
 			<i class="fa-solid fa-circle-exclamation info-icon"></i>
 			<div class="banner-content">
@@ -164,10 +178,17 @@
 							<h2>Submit via Form (Dinonaktifkan)</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
-								<p>
-									Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-									mengelirukan, kami menonaktifkan submit via GitHub.
-								</p>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via GitHub.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -177,10 +198,17 @@
 							<h2>Submit via npx CLI (Dinonaktifkan)</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
-								<p>
-									Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-									mengelirukan, kami menonaktifkan submit via npx.
-								</p>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via npx.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -192,6 +220,17 @@
 								Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu
 								kamu bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu
 								hasilnya sebelum submit.
+							</p>
+						</div>
+						<div class="integrity-note">
+							<i class="fa-solid fa-shield-halved"></i>
+							<p>
+								<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
+								<strong>valid</strong>
+								dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
+								<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan akan
+								dihapus tanpa pemberitahuan. Kontributor nakal akan
+								<strong>dibanned permanen</strong>.
 							</p>
 						</div>
 						<div class="examples-section">
@@ -240,10 +279,17 @@
 							<h2>Submit via AI Agent (Dinonaktifkan)</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
-								<p>
-									Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-									mengelirukan, kami menonaktifkan submit via AI Agent.
-								</p>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via AI Agent.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -255,6 +301,17 @@
 								Kirim info bansos langsung ke email kami. Tinggal klik tombol di bawah, isi detail
 								bansos di body email, dan kirim!
 							</p>
+							<div class="integrity-note">
+								<i class="fa-solid fa-shield-halved"></i>
+								<p>
+									<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
+									<strong>valid</strong>
+									dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
+									<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan
+									akan dihapus tanpa pemberitahuan. Kontributor nakal akan
+									<strong>dibanned permanen</strong>.
+								</p>
+							</div>
 							<div class="email-submit-card">
 								<div class="email-icon">
 									<i class="fa-solid fa-envelope"></i>
@@ -1176,9 +1233,72 @@ Kontributor URL: [https://...]</pre>
 		margin: 0;
 	}
 
+	.integrity-warning-banner {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		border-left: 4px solid #ef4444;
+		background: rgba(239, 68, 68, 0.04);
+		border-radius: 0.75rem;
+		margin-bottom: 0.5rem;
+		text-align: left;
+	}
+
+	.integrity-warning-banner .warning-icon {
+		font-size: 1.35rem;
+		color: #ef4444;
+		margin-top: 0.15rem;
+	}
+
+	.integrity-warning-banner h4 {
+		font-size: 1rem;
+		font-weight: 800;
+		color: #ef4444;
+		margin: 0 0 0.35rem;
+	}
+
+	.integrity-warning-banner p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	.integrity-note {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.7rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid rgba(239, 68, 68, 0.3);
+		border-radius: 0.6rem;
+		background: rgba(239, 68, 68, 0.04);
+	}
+
+	.integrity-note i {
+		font-size: 1.1rem;
+		color: #ef4444;
+		margin-top: 0.1rem;
+		flex-shrink: 0;
+	}
+
+	.integrity-note p {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+	}
+
+	.warning-extra {
+		font-size: 0.85rem !important;
+		color: #ef4444 !important;
+		margin-top: 0.35rem !important;
+		line-height: 1.45;
+	}
+
 	.disabled-notice {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		gap: 1rem;
 		padding: 1.25rem;
 		border: 2px dashed rgba(239, 68, 68, 0.35);
@@ -1190,6 +1310,11 @@ Kontributor URL: [https://...]</pre>
 		font-size: 1.5rem;
 		color: #ef4444;
 		flex-shrink: 0;
+	}
+	.disabled-notice > div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
 	}
 	.disabled-notice p {
 		font-size: 0.9rem;
