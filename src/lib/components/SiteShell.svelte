@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { t, switchLocale, currentLocale } from '$lib/i18n';
+	import { t, switchLocale } from '$lib/i18n';
 	import { locale } from 'svelte-i18n';
 	let { children } = $props();
 	type ThemeMode = 'dark' | 'light';
@@ -23,7 +23,6 @@
 		lastY = scrollY;
 	});
 
-	type ValidRoute = '/' | '/list' | '/contribute' | '/about' | '/providers';
 	let navItems = $derived([
 		{ href: '/' as const, label: $t('nav.home'), icon: 'fa-solid fa-house' },
 		{ href: '/list' as const, label: $t('nav.bansos'), icon: 'fa-solid fa-list' },

@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
 	import { t } from '$lib/i18n';
 	import { get } from 'svelte/store';

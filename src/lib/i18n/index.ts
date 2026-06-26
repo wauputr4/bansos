@@ -1,4 +1,4 @@
-import { register, init, locale, getLocaleFromNavigator } from 'svelte-i18n';
+import { register, init, locale } from 'svelte-i18n';
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 

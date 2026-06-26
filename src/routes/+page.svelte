@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { resolve } from '$app/paths';
@@ -28,10 +29,6 @@
 		url: 'https://gitlab.com/wauputr4'
 	};
 
-	// SEO metadata
-	const metaTitle = 'Bansos Developer & AI - Bantuan Sosial untuk Programmer Jelata';
-	const metaDescription =
-		'Kumpulan promo gratisan, diskon, credit API AI gratis, dan bantuan sosial (bansos) khusus untuk developer dan programmer di Indonesia. Domain gratis, cloud server, credit AI, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev/';
 	const websiteSchema = JSON.stringify({
 		'@context': 'https://schema.org',
