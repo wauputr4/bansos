@@ -85,7 +85,9 @@
 	);
 	const emailTemplate = $derived(
 		($locale || 'id') === 'en'
-			? `NEW BANSOS SUBMISSION
+			? `Hello bansos.dev team,
+
+NEW BANSOS SUBMISSION
 
 ID/Slug: [example: provider-free-promo]
 Title: [Bansos name]
@@ -115,9 +117,17 @@ Categories/Tags: [AI, Cloud, Domain, etc]
 Featured: [true/false]
 Status: [active/upcoming]
 
+Why this bansos deserves to be listed and is NOT a violation:
+[Explain why this is legitimate, non-abusive, and complies with ToS]
+
 Contributor: [Your name]
-Contributor URL: [https://...]`
-			: `USULAN BANSOS BARU
+Contributor URL: [https://...]
+
+Thank you,
+[Your name]`
+			: `Halo tim bansos.dev,
+
+USULAN BANSOS BARU
 
 ID/Slug: [contoh: provider-promo-gratis]
 Judul: [Nama bansos]
@@ -147,8 +157,14 @@ Kategori/Tags: [AI, Cloud, Domain, dll]
 Featured: [true/false]
 Status: [active/upcoming]
 
+Alasan kenapa bansos ini layak masuk dan BUKAN violation:
+[Jelaskan kenapa ini legitimate, tidak abusive, dan sesuai ToS]
+
 Kontributor: [Nama kamu]
-Kontributor URL: [https://...]`
+Kontributor URL: [https://...]
+
+Terima kasih,
+[Nama kamu]`
 	);
 	const emailHref = $derived(
 		`mailto:submit@bansos.dev?subject=${encodeURIComponent(

@@ -162,6 +162,14 @@
 				>
 					<i class="fa-brands fa-telegram"></i>
 				</a>
+				<a
+					href="mailto:submit@bansos.dev"
+					aria-label="Email"
+					class="social-footer-link email-footer-link"
+				>
+					<i class="fa-regular fa-envelope"></i>
+					<span class="email-text">submit@bansos.dev</span>
+				</a>
 			</div>
 		</div>
 	</footer>
