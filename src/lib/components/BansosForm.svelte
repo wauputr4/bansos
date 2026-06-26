@@ -330,7 +330,7 @@
 			body,
 			labels: 'submission,bansos'
 		});
-		return `https://github.com/wauputr4/bansos/issues/new?${params.toString()}`;
+		return `https://gitlab.com/wauputr4/bansos/issues/new?${params.toString()}`;
 	}
 
 	function handleSubmit(e: SubmitEvent) {

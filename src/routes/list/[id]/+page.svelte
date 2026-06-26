@@ -501,7 +501,7 @@
 						<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
 					</a>
 					<a
-						href="https://github.com/wauputr4/bansos"
+						href="https://gitlab.com/wauputr4/bansos"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="btn-secondary"

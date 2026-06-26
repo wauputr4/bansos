@@ -83,7 +83,7 @@
 			</div>
 			<div class="nav-actions">
 				<a
-					href="https://github.com/wauputr4/bansos"
+					href="https://gitlab.com/wauputr4/bansos"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="icon-btn"
@@ -128,7 +128,7 @@
 				<span class="dot">·</span>
 				<a href={resolve('/terms')}>Terms</a>
 				<span class="dot">·</span>
-				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
+				<a href="https://gitlab.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>Open Source</a
 				>
 				<span class="dot">·</span>

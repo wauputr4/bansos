@@ -43,7 +43,7 @@ export async function GET({ fetch }) {
 					100% GRATISAN · NO CLICKBAIT · NO RIBET
 				</span>
 				<span style="font-size: 20px; color: #9ca3af; font-weight: 600; display: flex;">
-					github.com/wauputr4/bansos
+					gitlab.com/wauputr4/bansos
 				</span>
 			</div>
 		</div>

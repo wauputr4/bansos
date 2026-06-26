@@ -1,7 +1,7 @@
 # bansos.dev
 
-[![CI](https://github.com/wauputr4/bansos/actions/workflows/ci.yml/badge.svg)](https://github.com/wauputr4/bansos/actions/workflows/ci.yml)
-[![Add Bansos](https://github.com/wauputr4/bansos/actions/workflows/add-bansos.yml/badge.svg)](https://github.com/wauputr4/bansos/actions/workflows/add-bansos.yml)
+[![CI](https://gitlab.com/wauputr4/bansos/actions/workflows/ci.yml/badge.svg)](https://gitlab.com/wauputr4/bansos/actions/workflows/ci.yml)
+[![Add Bansos](https://gitlab.com/wauputr4/bansos/actions/workflows/add-bansos.yml/badge.svg)](https://gitlab.com/wauputr4/bansos/actions/workflows/add-bansos.yml)
 [![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
@@ -146,7 +146,7 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
 
 1. Clone repositori ini ke komputermu:
    ```bash
-   git clone https://github.com/wauputr4/bansos.git
+   git clone https://gitlab.com/wauputr4/bansos.git
    cd bansos
    npm install
    ```
@@ -204,7 +204,7 @@ Listing yang baik sebaiknya menyertakan:
 
 - Kirim data lewat CLI, buka issue dari URL yang muncul, lalu tunggu PR otomatis dari bot.
 - Jika lebih nyaman, tambahkan melalui branch dan Pull Request manual.
-- Baca panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos?tab=contributing-ov-file).
+- Baca panduan kontribusi lengkap di [CONTRIBUTING](https://gitlab.com/wauputr4/bansos?tab=contributing-ov-file).
 
 ## Kode etik komunitas
 
@@ -212,7 +212,7 @@ Ikuti [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Sponsor & Dukungan
 
-Proyek `bansos.dev` dibangun secara gratis oleh komunitas. Jika proyek ini membantumu menghemat budget developer-mu, silakan pertimbangkan untuk mendukung proyek ini melalui [GitHub Sponsors](https://github.com/sponsors/wauputr4).
+Proyek `bansos.dev` dibangun secara gratis oleh komunitas. Jika proyek ini membantumu menghemat budget developer-mu, silakan kirim dukungan via email ke [me@wau.my.id](mailto:me@wau.my.id).
 
 > [!NOTE]
 > **Soon:** Kami berencana menghadirkan fitur di mana donatur/pengunjung bisa mengirimkan dukungan (donasi) langsung ke masing-masing kontributor yang mendaftarkan/menulis listing bansos tersebut.
@@ -223,6 +223,6 @@ MIT. Lihat [LICENSE](LICENSE).
 
 ## Contributors
 
-<a href="https://github.com/wauputr4/bansos/graphs/contributors">
+<a href="https://gitlab.com/wauputr4/bansos/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=wauputr4/bansos" alt="Kontributor bansos.dev" />
 </a>
