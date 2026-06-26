@@ -2,6 +2,7 @@
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
 	import { t } from '$lib/i18n';
 	import { get } from 'svelte/store';
+	import { locale } from 'svelte-i18n';
 	import {
 		bansosList,
 		getCommitContributorStats,
@@ -38,7 +39,8 @@
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
-	function generateGitCommand(item: (typeof bansosList)[number]): string {
+	function generateGitCommand(item: (typeof bansosList)[number], activeLocale = 'id'): string {
+		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
 			'git clone https://gitlab.com/wauputr4/bansos.git',
@@ -71,14 +73,48 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`glab mr create --title "feat: add ${item.title}" --description "Added ${item.title} to bansos list" --target-branch main --yes`
+			`glab mr create --title "feat: add ${item.title}" --description "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --target-branch main --yes`
 		);
 
 		return parts.join('\n');
 	}
 
-	const gitExamples = examples.map(generateGitCommand);
-	const emailTemplate = `USULAN BANSOS BARU
+	const gitExamples = $derived(examples.map((example) => generateGitCommand(example, $locale || 'id')));
+	const emailTemplate = $derived(
+		($locale || 'id') === 'en'
+			? `NEW BANSOS SUBMISSION
+
+ID/Slug: [example: provider-free-promo]
+Title: [Bansos name]
+Provider: [Provider name]
+Provider Logo URL: [optional, logo/favicon URL]
+Description: [Short description]
+
+Benefits:
+- [Benefit 1]
+- [Benefit 2]
+
+Promo Code: [optional]
+
+Validity:
+- Type: [fixed/uncertain/forever]
+- Date: [YYYY-MM-DD, if fixed]
+- Description: [example: while quota lasts]
+
+Claim Requirements:
+1. [Requirement 1]
+2. [Requirement 2]
+
+Tips: [optional, safest claim method]
+Claim Link: [Official URL]
+Source: [Official source/post URL]
+Categories/Tags: [AI, Cloud, Domain, etc]
+Featured: [true/false]
+Status: [active/upcoming]
+
+Contributor: [Your name]
+Contributor URL: [https://...]`
+			: `USULAN BANSOS BARU
 
 ID/Slug: [contoh: provider-promo-gratis]
 Judul: [Nama bansos]
@@ -109,10 +145,11 @@ Featured: [true/false]
 Status: [active/upcoming]
 
 Kontributor: [Nama kamu]
-Kontributor URL: [https://...]`;
-	const emailHref = `mailto:submit@bansos.dev?subject=${encodeURIComponent(
+Kontributor URL: [https://...]`
+	);
+	const emailHref = $derived(`mailto:submit@bansos.dev?subject=${encodeURIComponent(
 		$t('contribute.emailSubject')
-	)}&body=${encodeURIComponent(emailTemplate)}`;
+	)}&body=${encodeURIComponent(emailTemplate)}`);
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -458,7 +495,7 @@ Kontributor URL: [https://...]`;
 										{/if}
 									</a>
 									<span class="contributor-count"
-										>{$t('contribute.contribProjectCount', { count: contributor.count })}</span
+										>{$t('contribute.contribProjectCount', { values: { count: contributor.count } })}</span
 									>
 								</li>
 							{/each}
@@ -480,7 +517,7 @@ Kontributor URL: [https://...]`;
 											</a>
 										</div>
 										<span class="contributor-count"
-											>{$t('contribute.contribRegisteredCount', { count: contributor.count })}</span
+											>{$t('contribute.contribRegisteredCount', { values: { count: contributor.count } })}</span
 										>
 									</li>
 								{/each}

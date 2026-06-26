@@ -224,7 +224,7 @@
 			</div>
 			<div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;">
 				<p class="subtitle-text text-pretty">
-					{$t('list.subtitle', { total: bansosList.length })}
+					{$t('list.subtitle', { values: { total: bansosList.length } })}
 				</p>
 			</div>
 		</div>
@@ -443,13 +443,9 @@
 				{:else}
 					<div class="result-summary">
 						<span
-							>{$t('list.resultSummary', {
-								start: pageStart,
-								end: pageEnd,
-								total: filteredBansos.length
-							})}</span
+							>{$t('list.resultSummary', { values: { start: pageStart, end: pageEnd, total: filteredBansos.length } })}</span
 						>
-						<span>{$t('list.resultPage', { current: currentPage, total: totalPages })}</span>
+						<span>{$t('list.resultPage', { values: { current: currentPage, total: totalPages } })}</span>
 					</div>
 					<div class="bansos-grid">
 						{#each paginatedBansos as item (item.id)}

@@ -6,6 +6,7 @@
 		formatNumber,
 		type BansosItem
 	} from '$lib/data/bansos';
+	import { t } from '$lib/i18n';
 
 	let {
 		item,
@@ -21,6 +22,12 @@
 		reactions?: number;
 	} = $props();
 	const status = $derived(item.status || 'unknown');
+	const statusLabel = $derived.by(() => {
+		if (status === 'active') return $t('list.statusActive');
+		if (status === 'upcoming') return $t('list.statusUpcoming');
+		if (status === 'expired') return $t('list.statusExpired');
+		return status;
+	});
 
 	let showTooltip = $state(false);
 	const providerSlug = $derived(slugifyProvider(item.provider));
@@ -43,7 +50,7 @@
 		<div class="status-container">
 			<span class="status-badge status-{status}">
 				<i class="fa-solid fa-circle"></i>
-				{status.toUpperCase()}
+				{statusLabel.toUpperCase()}
 			</span>
 		</div>
 	</div>
@@ -51,7 +58,7 @@
 	<h2 class="card-title">{item.title}</h2>
 	<div class="provider-row">
 		<p class="provider-label">
-			Provider:
+			{$t('common.provider')}:
 			{#if provider}
 				<a href={resolve(`/providers/${providerSlug}`)}>{item.provider}</a>
 			{:else}
@@ -67,11 +74,11 @@
 					onmouseleave={() => (showTooltip = false)}
 				>
 					{#if item.validity.type === 'forever'}
-						<i class="fa-solid fa-infinity"></i> Selamanya
+						<i class="fa-solid fa-infinity"></i> {$t('common.forever')}
 					{:else if item.validity.type === 'fixed'}
 						<i class="fa-regular fa-calendar"></i> {item.validity.date}
 					{:else}
-						<i class="fa-solid fa-question"></i> Tidak Tentu
+						<i class="fa-solid fa-question"></i> {$t('common.uncertain')}
 					{/if}
 					<span class="tooltip-text" class:show-mobile={showTooltip}
 						>{item.validity.description}</span
@@ -80,11 +87,11 @@
 			{:else}
 				<span class="validity-text">
 					{#if item.validity.type === 'forever'}
-						<i class="fa-solid fa-infinity"></i> Selamanya
+						<i class="fa-solid fa-infinity"></i> {$t('common.forever')}
 					{:else if item.validity.type === 'fixed'}
 						<i class="fa-regular fa-calendar"></i> {item.validity.date}
 					{:else}
-						<i class="fa-solid fa-question"></i> Tidak Tentu
+						<i class="fa-solid fa-question"></i> {$t('common.uncertain')}
 					{/if}
 				</span>
 			{/if}
@@ -92,7 +99,7 @@
 	</div>
 	{#if item.contributor}
 		<p class="contributor-label">
-			Kontributor:
+			{$t('common.contributor')}:
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
 				{item.contributor.name}
@@ -108,7 +115,7 @@
 
 	<div class="card-footer">
 		<div class="card-actions">
-			<a href={resolve(`/list/${item.id}`)} class="btn-primary"> Lihat Cara Klaim Lengkap </a>
+			<a href={resolve(`/list/${item.id}`)} class="btn-primary"> {$t('common.viewClaimGuide')} </a>
 		</div>
 		<div class="card-stats">
 			<span class="stat-icon" title="Views"

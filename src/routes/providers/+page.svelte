@@ -103,13 +103,9 @@
 		</div>
 		<div class="result-summary">
 			<span
-				>{$t('providers.resultSummary', {
-					start: pageStart,
-					end: pageEnd,
-					total: filteredProviders.length
-				})}</span
+				>{$t('providers.resultSummary', { values: { start: pageStart, end: pageEnd, total: filteredProviders.length } })}</span
 			>
-			<span>{$t('providers.resultPage', { current: currentPage, total: totalPages })}</span>
+			<span>{$t('providers.resultPage', { values: { current: currentPage, total: totalPages } })}</span>
 		</div>
 		<div class="provider-grid">
 			{#each paginatedProviders as provider (provider.slug)}
@@ -146,9 +142,9 @@
 					<div>
 						<h2>{provider.name}</h2>
 						<p>
-							{$t('providers.countTemplate', { count: provider.totalCount })}
+							{$t('providers.countTemplate', { values: { count: provider.totalCount } })}
 							{#if provider.expiredCount > 0}
-								<span> · {$t('providers.expiredTemplate', { count: provider.expiredCount })}</span>
+								<span> · {$t('providers.expiredTemplate', { values: { count: provider.expiredCount } })}</span>
 							{/if}
 						</p>
 					</div>
