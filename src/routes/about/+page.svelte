@@ -154,6 +154,32 @@
 			</div>
 		</section>
 
+		<section class="bansos-community-section">
+			<div class="community-section-copy">
+				<p class="eyebrow">Bansos Community</p>
+				<h2>Mitra komunitas yang ikut nyebarin bansos.dev.</h2>
+				<p>
+					Komunitas yang sudah bantu kontribusi, promosi, atau membagikan info bansos.dev di
+					grupnya akan kami promote di sini.
+				</p>
+			</div>
+			<div class="community-partner-grid">
+				<a
+					href="https://discord.gg/3wFyhHDsuK"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="community-partner-card"
+				>
+					<span class="partner-icon"><i class="fa-brands fa-discord"></i></span>
+					<span class="partner-copy">
+						<strong>Titik Kumpul - Bansos</strong>
+						<span>Discord community partner</span>
+					</span>
+					<i class="fa-solid fa-arrow-up-right-from-square partner-arrow"></i>
+				</a>
+			</div>
+		</section>
+
 		<section class="sponsor-section">
 			<h2>
 				<i class="fa-solid fa-heart"></i> Dukung Proyek Ini
@@ -500,5 +526,119 @@
 		transform: translateY(-2px);
 		box-shadow: 0 6px 20px rgba(88, 101, 242, 0.45);
 		color: #fff;
+	}
+
+	.bansos-community-section {
+		margin-top: 1.25rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		border: 1px solid rgba(16, 185, 129, 0.2);
+		border-radius: 1rem;
+		padding: 1.5rem;
+		background: linear-gradient(
+			135deg,
+			rgba(16, 185, 129, 0.08) 0%,
+			rgba(255, 255, 255, 0.02) 58%,
+			rgba(88, 101, 242, 0.07) 100%
+		);
+	}
+
+	.community-section-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.community-section-copy h2 {
+		margin: 0;
+		color: var(--text-primary);
+		font-size: clamp(1.35rem, 3vw, 1.9rem);
+		line-height: 1.2;
+	}
+
+	.community-section-copy p {
+		margin: 0;
+	}
+
+	.community-partner-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+	}
+
+	.community-partner-card {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.8rem;
+		padding: 1rem;
+		background: rgba(255, 255, 255, 0.04);
+		text-decoration: none;
+		transition:
+			transform 0.2s,
+			border-color 0.2s,
+			background-color 0.2s;
+	}
+
+	.community-partner-card:hover {
+		transform: translateY(-2px);
+		border-color: rgba(88, 101, 242, 0.55);
+		background: rgba(88, 101, 242, 0.08);
+	}
+
+	.partner-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 999px;
+		color: #fff;
+		background: #5865f2;
+		box-shadow: 0 8px 18px rgba(88, 101, 242, 0.25);
+		flex-shrink: 0;
+	}
+
+	.partner-icon i {
+		font-size: 1.25rem;
+	}
+
+	.partner-copy {
+		display: flex;
+		flex: 1;
+		min-width: 0;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.partner-copy strong {
+		color: var(--text-primary);
+		font-size: 1rem;
+		line-height: 1.25;
+	}
+
+	.partner-copy span {
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		font-weight: 650;
+	}
+
+	.partner-arrow {
+		color: var(--text-muted);
+		flex-shrink: 0;
+		transition: color 0.2s;
+	}
+
+	.community-partner-card:hover .partner-arrow {
+		color: #5865f2;
+	}
+
+	@media (min-width: 48rem) {
+		.bansos-community-section {
+			grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+			align-items: center;
+		}
 	}
 </style>
