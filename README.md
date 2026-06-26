@@ -216,3 +216,19 @@ Proyek `bansos.dev` dibangun secara gratis oleh komunitas. Jika proyek ini memba
 ## Lisensi
 
 MIT. Lihat [LICENSE](LICENSE).
+
+## Disclaimer
+
+bansos.dev adalah **platform komunitas open-source** yang bertujuan membantu sesama developer Indonesia menemukan program bantuan sosial yang sah dan legal dari provider resmi. Kami tidak terafiliasi dengan provider mana pun.
+
+**Kami dengan tegas melarang:**
+
+- Penyalahgunaan informasi bansos untuk tujuan **abuse** atau mengeksploitasi celah kebijakan provider.
+- Pelanggaran terhadap **ketentuan layanan (ToS)** platform atau provider pihak ketiga.
+- Tindakan yang melanggar **privasi data** individu atau organisasi.
+- Segala bentuk **tindakan ilegal** atau melanggar hukum yang berlaku.
+- Submit informasi bansos yang **palsu, menyesatkan, atau tidak bisa diklaim**.
+
+Semua informasi yang ditampilkan bersifat **referensi**. Selalu verifikasi langsung ke situs resmi provider sebelum melakukan klaim. Kami tidak bertanggung jawab atas perubahan kebijakan sepihak dari provider, interpretasi manfaat yang keliru, ataupun penyalahgunaan informasi oleh pihak tidak bertanggung jawab.
+
+Dengan menggunakan bansos.dev, Anda menyetujui bahwa platform ini hanyalah **katalog komunitas** dan segala klaim, transaksi, atau interaksi dengan provider sepenuhnya merupakan tanggung jawab pribadi masing-masing pengguna.
