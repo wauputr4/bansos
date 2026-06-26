@@ -208,7 +208,7 @@
 		<div class="badge-container">
 			<span class="version-badge">{__BUILD_DATE__}</span>
 			<a
-				href="https://github.com/wauputr4/bansos"
+				href="https://gitlab.com/wauputr4/bansos"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="github-badge"

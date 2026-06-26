@@ -166,15 +166,15 @@
 			<div class="support-options-grid">
 				<div class="support-card">
 					<h3><i class="fa-solid fa-circle-dollar-to-slot text-rose"></i> Finansial (Sponsor)</h3>
-					<p>Bantu bayar hosting atau beli kopi buat core developer lewat GitHub Sponsors:</p>
+					<p>Dukung proyek ini via email:</p>
 					<div class="support-actions">
 						<a
-							href="https://github.com/sponsors/wauputr4"
+							href="mailto:me@wau.my.id"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="sponsor-pill"
 						>
-							<i class="fa-solid fa-heart"></i> wauputr4
+							<i class="fa-solid fa-heart"></i> me@wau.my.id
 						</a>
 						<a
 							href="https://github.com/sponsors/Renzie2161"
@@ -190,17 +190,17 @@
 				<div class="support-card">
 					<h3><i class="fa-solid fa-code-branch text-emerald"></i> Kontribusi Kode & Data</h3>
 					<p>
-						Bantu kasih star di GitHub, submit info bansos baru, atau open PR buat nambah/update
+						Bantu kasih star di GitLab, submit info bansos baru, atau open PR buat nambah/update
 						fitur:
 					</p>
 					<div class="support-actions">
 						<a
-							href="https://github.com/wauputr4/bansos"
+							href="https://gitlab.com/wauputr4/bansos"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="contrib-pill github-star-pill"
 						>
-							<i class="fa-solid fa-star"></i> Star di GitHub
+							<i class="fa-solid fa-star"></i> Star di GitLab
 						</a>
 						<a href={resolve('/contribute')} class="contrib-pill submit-bansos-pill">
 							<i class="fa-solid fa-plus"></i> Submit / Open PR

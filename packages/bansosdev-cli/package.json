@@ -13,7 +13,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wauputr4/bansos.git",
+		"url": "git+https://gitlab.com/wauputr4/bansos.git",
 		"directory": "packages/bansosdev-cli"
 	},
 	"engines": {

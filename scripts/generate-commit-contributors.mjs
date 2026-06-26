@@ -33,7 +33,7 @@ function contributorFrom(commit) {
 		login,
 		name,
 		avatarUrl: `https://github.com/${login}.png?size=96`,
-		commitUrl: `https://github.com/wauputr4/bansos/commit/${hash}`
+		commitUrl: `https://gitlab.com/wauputr4/bansos/commit/${hash}`
 	};
 }
 
@@ -61,7 +61,7 @@ function currentContributor() {
 		login,
 		name,
 		avatarUrl: `https://github.com/${login}.png?size=96`,
-		commitUrl: `https://github.com/wauputr4/bansos/commits?author=${login}`
+		commitUrl: `https://gitlab.com/wauputr4/bansos/commits?author=${login}`
 	};
 }
 

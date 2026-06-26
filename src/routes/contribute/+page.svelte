@@ -1,6 +1,5 @@
 <script lang="ts">
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
-	import BansosForm from '$lib/components/BansosForm.svelte';
 	import {
 		bansosList,
 		getCommitContributorStats,
@@ -8,7 +7,7 @@
 		type ContributorSummary
 	} from '$lib/data/bansos';
 
-	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'discord' | 'telegram';
+	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
@@ -22,6 +21,7 @@
 		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
 		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
+		{ id: 'email', label: 'Email', icon: 'fa-solid fa-envelope' },
 		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' },
 		{ id: 'telegram', label: 'Telegram (Soon)', icon: 'fa-brands fa-telegram' }
 	];
@@ -30,35 +30,10 @@
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
-	function generateNpxCommand(item: (typeof bansosList)[number]): string {
-		const parts = [
-			'npx bansosdev add \\',
-			`  --id ${item.id} \\`,
-			`  --title "${item.title}" \\`,
-			`  --provider "${item.provider}" \\`,
-			`  --description "${item.description}" \\`,
-			`  --benefits "${item.benefits.join('|')}" \\`,
-			`  --validity-type ${item.validity.type} \\`
-		];
-
-		if (item.validity.date) {
-			parts.push(`  --validity-date ${item.validity.date} \\`);
-		}
-		if (item.validity.description) {
-			parts.push(`  --validity-desc "${item.validity.description}" \\`);
-		}
-
-		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
-		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}"`);
-
-		return parts.join('\n');
-	}
-
 	function generateGitCommand(item: (typeof bansosList)[number]): string {
 		const branchName = `add/${item.id}`;
 		const parts = [
-			'git clone https://github.com/wauputr4/bansos.git',
+			'git clone https://gitlab.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',
@@ -88,22 +63,13 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`gh pr create --title "feat: add ${item.title}" --body "Added ${item.title} to bansos list" --base main`
+			`glab mr create --title "feat: add ${item.title}" --description "Added ${item.title} to bansos list" --target-branch main --yes`
 		);
 
 		return parts.join('\n');
 	}
 
-	function generateAiPrompt(item: (typeof bansosList)[number]): string {
-		return `Use $bansos-add-entry to research and add this bansos to bansos.dev:\n\nTitle: ${item.title}\nURL: ${item.ctaLink}\n\nPlease research the source, verify the benefits and requirements, then prepare a valid submission.`;
-	}
-
-	const npxExamples = examples.map(generateNpxCommand);
 	const gitExamples = examples.map(generateGitCommand);
-	const aiExamples = examples.map(generateAiPrompt);
-
-	const aiSkillInstall =
-		"npx skills add wauputr4/skill-bansos --skill bansos-add-entry --agent '*'";
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -156,9 +122,23 @@
 		<p class="eyebrow">Kontribusi</p>
 		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
 		<p>
-			Pilih cara kontribusi yang paling nyaman buat kamu. Semua cara di bawah akan menghasilkan
-			payload JSON yang sama, lalu bot otomatis bikin Pull Request dari issue yang kamu submit.
+			Pilih cara kontribusi yang paling nyaman buat kamu. Untuk saat ini submit via Git Clone dan
+			Email yang tersedia, metode lain dinonaktifkan sementara karena spam.
 		</p>
+
+		<div class="integrity-warning-banner glass-card">
+			<i class="fa-solid fa-shield-halved warning-icon"></i>
+			<div class="banner-content">
+				<h4>⛔ Larangan Keras: DILARANG KERAS</h4>
+				<p>
+					<strong>JANGAN</strong> submit informasi bansos yang
+					<strong>menyesatkan, palsu, atau tidak bisa diklaim</strong>.
+					<strong>DILARANG KERAS</strong> menyertakan langkah-langkah yang bersifat
+					<strong>abuse, ilegal, atau melanggar ketentuan layanan (ToS)</strong> pihak lain. Setiap pelanggaran
+					akan ditindak tegas, kontributor akan dikeluarkan secara permanen dari bansos.dev tanpa pemberitahuan.
+				</p>
+			</div>
+		</div>
 
 		<div class="referral-policy-banner glass-card">
 			<i class="fa-solid fa-circle-exclamation info-icon"></i>
@@ -195,64 +175,41 @@
 				{#if activeTab === 'form'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Isi form, langsung submit ke GitHub</h2>
-							<p>
-								Gak perlu CLI. Isi form di bawah, klik Submit, dan issue GitHub otomatis terbuka.
-								Bot akan bikin PR dari issue tersebut.
-							</p>
-						</div>
-						<div class="form-wrapper">
-							<BansosForm />
+							<h2>Submit via Form (Dinonaktifkan)</h2>
+							<div class="disabled-notice">
+								<i class="fa-solid fa-triangle-exclamation"></i>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via GitHub.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				{:else if activeTab === 'npx'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Via npx CLI</h2>
-							<p>
-								Pakai command line? Jalankan satu baris perintah ini di terminal kamu. Nanti URL
-								issue GitHub otomatis muncul, tinggal buka dan submit. Bot langsung bikin PR-nya.
-							</p>
-						</div>
-						<div class="examples-section">
-							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
-							>
-							<div class="examples-buttons">
-								{#each examples as example, i (example.id)}
-									<button
-										type="button"
-										class="example-btn"
-										onclick={() => copyToClipboard(npxExamples[i], `npx-${i}`)}
-										title={example.title}
-									>
-										<i class="fa-solid fa-arrow-right"></i>
-										{example.provider}
-									</button>
-								{/each}
+							<h2>Submit via npx CLI (Dinonaktifkan)</h2>
+							<div class="disabled-notice">
+								<i class="fa-solid fa-triangle-exclamation"></i>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via npx.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
 							</div>
-						</div>
-						<div class="command-block-wrapper">
-							<div class="command-head">
-								<span>npx bansosdev add</span>
-								<button
-									type="button"
-									class="copy-btn"
-									class:copied={copiedId === 'npx-0'}
-									onclick={() => copyToClipboard(npxExamples[0], 'npx-0')}
-								>
-									<i class="fa-solid fa-{copiedId === 'npx-0' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'npx-0' ? 'Tersalin' : 'Copy'}
-								</button>
-							</div>
-							<pre class="command-block"><code>{npxExamples[0]}</code></pre>
-						</div>
-						<div class="tab-note">
-							<p>
-								<i class="fa-solid fa-circle-info"></i>
-								Argumen <code>--benefits</code> dan <code>--requirements</code> dipisahkan dengan
-								<code>|</code>. Argumen <code>--tags</code> dipisahkan dengan koma. Pakai
-								<code>--mode json</code> untuk cek payload tanpa buka issue.
-							</p>
 						</div>
 					</div>
 				{:else if activeTab === 'git'}
@@ -263,6 +220,17 @@
 								Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu
 								kamu bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu
 								hasilnya sebelum submit.
+							</p>
+						</div>
+						<div class="integrity-note">
+							<i class="fa-solid fa-shield-halved"></i>
+							<p>
+								<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
+								<strong>valid</strong>
+								dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
+								<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan akan
+								dihapus tanpa pemberitahuan. Kontributor nakal akan
+								<strong>dibanned permanen</strong>.
 							</p>
 						</div>
 						<div class="examples-section">
@@ -308,70 +276,81 @@
 				{:else if activeTab === 'ai'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>AI Agent Skill</h2>
+							<h2>Submit via AI Agent (Dinonaktifkan)</h2>
+							<div class="disabled-notice">
+								<i class="fa-solid fa-triangle-exclamation"></i>
+								<div>
+									<p>
+										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
+										mengelirukan, kami menonaktifkan submit via AI Agent.
+									</p>
+									<p class="warning-extra">
+										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
+										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
+										lain. Pelanggaran = banned permanen.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{:else if activeTab === 'email'}
+					<div class="tab-panel">
+						<div class="tab-description">
+							<h2>Submit via Email</h2>
 							<p>
-								Pakai AI agent kayak Claude, ChatGPT, atau yang lain? Install skill resmi bansos.dev
-								biar agent-nya ngerti cara riset sumber dan bikin data yang valid sesuai format
-								kita.
+								Kirim info bansos langsung ke email kami. Tinggal klik tombol di bawah, isi detail
+								bansos di body email, dan kirim!
 							</p>
-						</div>
-						<div class="command-block-wrapper">
-							<div class="command-head">
-								<span>Install skill untuk agent</span>
-								<button
-									type="button"
-									class="copy-btn"
-									class:copied={copiedId === 'ai-install'}
-									onclick={() => copyToClipboard(aiSkillInstall, 'ai-install')}
+							<div class="integrity-note">
+								<i class="fa-solid fa-shield-halved"></i>
+								<p>
+									<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
+									<strong>valid</strong>
+									dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
+									<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan
+									akan dihapus tanpa pemberitahuan. Kontributor nakal akan
+									<strong>dibanned permanen</strong>.
+								</p>
+							</div>
+							<div class="email-submit-card">
+								<div class="email-icon">
+									<i class="fa-solid fa-envelope"></i>
+								</div>
+								<h3>Kirim ke: new@bansos.dev</h3>
+								<a
+									href="mailto:new@bansos.dev?subject=Usulan%20Bansos%20Baru&body=%3D%3D%3D%20INFO%20BANSOS%20BARU%20%3D%3D%3D%0A%0AJudul%3A%20%5BNama%20bansos%5D%0AProvider%3A%20%5BNama%20provider%5D%0ADeskripsi%3A%20%5BDeskripsi%20singkat%5D%0ABenefit%3A%0A-%20%5BBenefit%201%5D%0A-%20%5BBenefit%202%5D%0ASyarat%20Klaim%3A%0A1.%20%5BSyarat%201%5D%0A2.%20%5BSyarat%202%5D%0ALink%3A%20%5BURL%20resmi%5D%0AMasa%20Berlaku%3A%20%5BTanggal%5D%0AKategori%3A%20%5BAI%2FCloud%2FDomain%5D%0AKontributor%3A%20%5BNama%20kamu%5D%0AKontributor%20URL%3A%20%5Bhttps%3A%2F%2F...%5D"
+									target="_blank"
+									class="email-send-btn"
 								>
-									<i class="fa-solid fa-{copiedId === 'ai-install' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'ai-install' ? 'Tersalin' : 'Copy'}
-								</button>
+									<i class="fa-solid fa-paper-plane"></i> Kirim Email Sekarang
+								</a>
+								<p class="email-hint">
+									Atau copy template di bawah, kirim manual ke <strong>new@bansos.dev</strong>
+								</p>
+								<pre class="email-template">
+================================
+USULAN BANSOS BARU
+================================
+
+Judul: [Nama bansos]
+Provider: [Nama provider]
+Deskripsi: [Deskripsi singkat]
+
+Benefit:
+- [Benefit 1]
+- [Benefit 2]
+
+Syarat Klaim:
+1. [Syarat 1]
+2. [Syarat 2]
+
+Link: [URL resmi]
+Masa Berlaku: [Tanggal]
+Kategori: [AI/Cloud/Domain/dll]
+Kontributor: [Nama kamu]
+Kontributor URL: [https://...]</pre>
 							</div>
-							<pre class="command-block"><code>{aiSkillInstall}</code></pre>
 						</div>
-						<div class="examples-section">
-							<span class="examples-label"
-								><i class="fa-solid fa-lightbulb"></i> Contoh prompt:</span
-							>
-							<div class="examples-buttons">
-								{#each examples as example, i (example.id)}
-									<button
-										type="button"
-										class="example-btn"
-										onclick={() => copyToClipboard(aiExamples[i], `ai-${i}`)}
-										title={example.title}
-									>
-										<i class="fa-solid fa-arrow-right"></i>
-										{example.provider}
-									</button>
-								{/each}
-							</div>
-						</div>
-						<div class="command-block-wrapper">
-							<div class="command-head">
-								<span>Contoh prompt</span>
-								<button
-									type="button"
-									class="copy-btn"
-									class:copied={copiedId === 'ai-0'}
-									onclick={() => copyToClipboard(aiExamples[0], 'ai-0')}
-								>
-									<i class="fa-solid fa-{copiedId === 'ai-0' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'ai-0' ? 'Tersalin' : 'Copy'}
-								</button>
-							</div>
-							<pre class="command-block"><code>{aiExamples[0]}</code></pre>
-						</div>
-						<a
-							href="https://www.skills.sh/wauputr4/skill-bansos"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="skill-link"
-						>
-							Lihat skill di skills.sh
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
-						</a>
 					</div>
 				{:else if activeTab === 'discord'}
 					<div class="tab-panel">
@@ -1252,5 +1231,155 @@
 		color: var(--text-secondary);
 		line-height: 1.45;
 		margin: 0;
+	}
+
+	.integrity-warning-banner {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		border-left: 4px solid #ef4444;
+		background: rgba(239, 68, 68, 0.04);
+		border-radius: 0.75rem;
+		margin-bottom: 0.5rem;
+		text-align: left;
+	}
+
+	.integrity-warning-banner .warning-icon {
+		font-size: 1.35rem;
+		color: #ef4444;
+		margin-top: 0.15rem;
+	}
+
+	.integrity-warning-banner h4 {
+		font-size: 1rem;
+		font-weight: 800;
+		color: #ef4444;
+		margin: 0 0 0.35rem;
+	}
+
+	.integrity-warning-banner p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	.integrity-note {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.7rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid rgba(239, 68, 68, 0.3);
+		border-radius: 0.6rem;
+		background: rgba(239, 68, 68, 0.04);
+	}
+
+	.integrity-note i {
+		font-size: 1.1rem;
+		color: #ef4444;
+		margin-top: 0.1rem;
+		flex-shrink: 0;
+	}
+
+	.integrity-note p {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+	}
+
+	.warning-extra {
+		font-size: 0.85rem !important;
+		color: #ef4444 !important;
+		margin-top: 0.35rem !important;
+		line-height: 1.45;
+	}
+
+	.disabled-notice {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		border: 2px dashed rgba(239, 68, 68, 0.35);
+		border-radius: 0.75rem;
+		background: rgba(239, 68, 68, 0.04);
+		margin-top: 0.5rem;
+	}
+	.disabled-notice i {
+		font-size: 1.5rem;
+		color: #ef4444;
+		flex-shrink: 0;
+	}
+	.disabled-notice > div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+	.disabled-notice p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.45;
+		margin: 0;
+	}
+	.email-submit-card {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		padding: 2rem;
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.02);
+		text-align: center;
+	}
+	.email-submit-card .email-icon i {
+		font-size: 2.5rem;
+		color: var(--color-accent);
+	}
+	.email-submit-card h3 {
+		font-size: 1.1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin: 0;
+	}
+	.email-send-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 0.75rem 1.5rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #10b981, #059669);
+		box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+		transition: all 0.2s ease;
+		text-decoration: none;
+	}
+	.email-send-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+		color: #fff;
+	}
+	.email-hint {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		margin: 0;
+	}
+	.email-template {
+		background: rgba(0, 0, 0, 0.2);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		padding: 1rem;
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		text-align: left;
+		width: 100%;
+		overflow-x: auto;
+		white-space: pre-wrap;
+		word-break: break-word;
+		line-height: 1.4;
 	}
 </style>
