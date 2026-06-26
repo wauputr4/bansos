@@ -87,8 +87,9 @@
 		($locale || 'id') === 'en'
 			? `Hello bansos.dev team,
 
-NEW BANSOS SUBMISSION
+I would like to submit a new bansos entry for the directory. Here are the details:
 
+Submission: New Bansos
 ID/Slug: [example: provider-free-promo]
 Title: [Bansos name]
 Provider: [Provider name]
@@ -121,14 +122,14 @@ Why this bansos deserves to be listed and is NOT a violation:
 [Explain why this is legitimate, non-abusive, and complies with ToS]
 
 Contributor: [Your name]
-Contributor URL: [https://...]
 
 Thank you,
 [Your name]`
 			: `Halo tim bansos.dev,
 
-USULAN BANSOS BARU
+Saya ingin mengusulkan bansos baru untuk ditambahkan ke direktori. Berikut detailnya:
 
+Usulan: Bansos Baru
 ID/Slug: [contoh: provider-promo-gratis]
 Judul: [Nama bansos]
 Provider: [Nama provider]
@@ -161,7 +162,6 @@ Alasan kenapa bansos ini layak masuk dan BUKAN violation:
 [Jelaskan kenapa ini legitimate, tidak abusive, dan sesuai ToS]
 
 Kontributor: [Nama kamu]
-Kontributor URL: [https://...]
 
 Terima kasih,
 [Nama kamu]`
