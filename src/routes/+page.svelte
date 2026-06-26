@@ -403,6 +403,21 @@
 				</p>
 			</div>
 		</div>
+
+		<div class="glass-card disclaimer-card">
+			<div class="disclaimer-icon"><i class="fa-solid fa-shield-halved"></i></div>
+			<div class="disclaimer-copy">
+				<h3>⚠️ Platform Komunitas — Bukan Ajang Abuse</h3>
+				<p>
+					bansos.dev adalah <strong>platform komunitas open-source</strong> untuk saling support
+					sesama developer Indonesia. <strong>DILARANG KERAS</strong> memanfaatkan informasi di sini
+					untuk tujuan
+					<strong>abuse, pelanggaran ToS, pelanggaran privasi, atau tindakan ilegal</strong> lainnya.
+					Informasi bersifat referensi — selalu verifikasi ke provider resmi sebelum klaim. Penyalahgunaan
+					akan ditindak tegas tanpa peringatan.
+				</p>
+			</div>
+		</div>
 	</section>
 
 	<!-- Contribution & GitHub Section -->
@@ -1053,5 +1068,42 @@
 		color: var(--text-secondary);
 		line-height: 1.5;
 		margin: 0;
+	}
+
+	.disclaimer-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+		padding: 1.5rem;
+		border-left: 4px solid #ef4444;
+		background: rgba(239, 68, 68, 0.04);
+	}
+
+	.disclaimer-icon {
+		flex-shrink: 0;
+		font-size: 1.5rem;
+		color: #ef4444;
+		margin-top: 0.15rem;
+	}
+
+	.disclaimer-copy h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--text-primary);
+	}
+
+	.disclaimer-copy p {
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		line-height: 1.55;
+		margin: 0;
+	}
+
+	@media (max-width: 48rem) {
+		.disclaimer-card {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
 	}
 </style>
