@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
@@ -142,29 +143,20 @@
 </script>
 
 <svelte:head>
-	<title>Daftar Bantuan Sosial Developer - bansos.dev</title>
-	<meta
-		name="description"
-		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
-	/>
+	<title>{$t('meta.listTitle')}</title>
+	<meta name="description" content={$t('meta.listDesc')} />
 	<link rel="canonical" href="https://bansos.dev/list/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/list/" />
-	<meta property="og:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
-	<meta
-		property="og:description"
-		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
-	/>
+	<meta property="og:title" content={$t('meta.listTitle')} />
+	<meta property="og:description" content={$t('meta.listDesc')} />
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://bansos.dev/list/" />
-	<meta name="twitter:title" content="Daftar Bantuan Sosial Developer - bansos.dev" />
-	<meta
-		name="twitter:description"
-		content="Temukan berbagai program bantuan sosial (bansos), diskon, dan gratisan tools khusus untuk developer dan programmer Indonesia."
-	/>
+	<meta name="twitter:title" content={$t('meta.listTitle')} />
+	<meta name="twitter:description" content={$t('meta.listDesc')} />
 	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
@@ -177,9 +169,9 @@
 			style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;"
 		>
 			<div style="flex: 1; min-width: 250px;">
-				<p class="eyebrow">Katalog</p>
+				<p class="eyebrow">{$t('list.eyebrow')}</p>
 				<h1 class="text-gradient" style="display: flex; align-items: center;">
-					<span>Semua Info Bansos</span>
+					<span>{$t('list.h1')}</span>
 					<svg
 						class="anxious-icon inline-anxious"
 						viewBox="0 0 100 100"
@@ -232,20 +224,16 @@
 			</div>
 			<div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;">
 				<p class="subtitle-text text-pretty">
-					Eksplorasi {bansosList.length} program bantuan sosial untuk developer jelata. Klik kartu bansos
-					untuk melihat langkah-langkah detail dan cara klaim kodenya.
+					{$t('list.subtitle', { values: { total: bansosList.length } })}
 				</p>
 			</div>
 		</div>
 	</header>
 
-	<section class="controls-section container" aria-label="Pencarian dan filter bansos">
+	<section class="controls-section container" aria-label={$t('list.controlsAria')}>
 		<div class="controls-wrapper">
 			<div class="search-box-wrapper">
-				<SearchBox
-					bind:searchQuery
-					placeholder="Cari nama, provider, benefit, tag, kontributor..."
-				/>
+				<SearchBox bind:searchQuery placeholder={$t('list.searchPlaceholder')} />
 			</div>
 
 			<div class="filter-card">
@@ -257,7 +245,7 @@
 				>
 					<div class="filter-title">
 						<i class="fa-solid fa-filter"></i>
-						<span class="filter-text-desktop"> Filter</span>
+						<span class="filter-text-desktop"> {$t('list.filterTitle')}</span>
 						{#if selectedTags.length > 0 || selectedStatuses.length > 0 || selectedValidities.length > 0}
 							<span class="active-count"
 								>{selectedTags.length + selectedStatuses.length + selectedValidities.length}</span
@@ -274,41 +262,41 @@
 
 					<div class="filter-dropdown">
 						<div class="filter-group">
-							<h3 class="filter-group-title">Urutan</h3>
+							<h3 class="filter-group-title">{$t('list.filterSortLabel')}</h3>
 							<div class="tag-grid">
 								<button
 									class="tag-btn"
 									class:active={sortOrder === 'popular'}
 									onclick={() => (sortOrder = 'popular')}
 								>
-									Terpopuler
+									{$t('list.sortPopular')}
 								</button>
 								<button
 									class="tag-btn"
 									class:active={sortOrder === 'newest'}
 									onclick={() => (sortOrder = 'newest')}
 								>
-									Terbaru
+									{$t('list.sortNewest')}
 								</button>
 								<button
 									class="tag-btn"
 									class:active={sortOrder === 'oldest'}
 									onclick={() => (sortOrder = 'oldest')}
 								>
-									Terlama
+									{$t('list.sortOldest')}
 								</button>
 							</div>
 						</div>
 
 						<div class="filter-group">
-							<h3 class="filter-group-title">Status</h3>
+							<h3 class="filter-group-title">{$t('list.filterStatusLabel')}</h3>
 							<div class="tag-grid">
 								<button
 									class="tag-btn"
 									class:active={selectedStatuses.length === 0}
 									onclick={() => (selectedStatuses = [])}
 								>
-									Semua Status
+									{$t('list.statusAll')}
 								</button>
 								{#each ['active', 'upcoming', 'expired'] as status (status)}
 									<button
@@ -323,24 +311,24 @@
 										}}
 									>
 										{status === 'active'
-											? 'Aktif'
+											? $t('list.statusActive')
 											: status === 'upcoming'
-												? 'Akan datang'
-												: 'Expired'}
+												? $t('list.statusUpcoming')
+												: $t('list.statusExpired')}
 									</button>
 								{/each}
 							</div>
 						</div>
 
 						<div class="filter-group">
-							<h3 class="filter-group-title">Masa Berlaku</h3>
+							<h3 class="filter-group-title">{$t('list.filterValidityLabel')}</h3>
 							<div class="tag-grid">
 								<button
 									class="tag-btn"
 									class:active={selectedValidities.length === 0}
 									onclick={() => (selectedValidities = [])}
 								>
-									Semua Masa Berlaku
+									{$t('list.validityAll')}
 								</button>
 								{#each ['forever', 'fixed', 'uncertain'] as validity (validity)}
 									<button
@@ -355,10 +343,10 @@
 										}}
 									>
 										{validity === 'forever'
-											? 'Selamanya'
+											? $t('list.validityForever')
 											: validity === 'fixed'
-												? 'Batas Waktu'
-												: 'Tidak Tentu'}
+												? $t('list.validityFixed')
+												: $t('list.validityUncertain')}
 									</button>
 								{/each}
 							</div>
@@ -376,7 +364,7 @@
 					class:active={selectedTags.length === 0}
 					onclick={() => (selectedTags = [])}
 				>
-					Semua Kategori
+					{$t('list.categoryAll')}
 				</button>
 				{#each dynamicTags as tag (tag)}
 					<button
@@ -403,14 +391,14 @@
 			<!-- Sidebar for Desktop -->
 			<aside class="desktop-sidebar">
 				<div class="sidebar-filter-card">
-					<h3 class="sidebar-title">Kategori</h3>
+					<h3 class="sidebar-title">{$t('list.sidebarTitle')}</h3>
 					<div class="sidebar-tag-list">
 						<button
 							class="sidebar-tag-btn"
 							class:active={selectedTags.length === 0}
 							onclick={() => (selectedTags = [])}
 						>
-							Semua Kategori
+							{$t('list.categoryAll')}
 						</button>
 						{#each dynamicTags as tag (tag)}
 							<button
@@ -436,8 +424,8 @@
 				{#if filteredBansos.length === 0}
 					<div class="empty-state glass-card">
 						<div class="empty-icon"><i class="fa-solid fa-ghost"></i></div>
-						<h2>Wah, Bansos Kosong!</h2>
-						<p>Tidak ada bansos yang sesuai dengan filter yang kamu pilih.</p>
+						<h2>{$t('list.emptyTitle')}</h2>
+						<p>{$t('list.emptyDesc')}</p>
 						<button
 							class="btn-primary"
 							onclick={() => {
@@ -449,13 +437,21 @@
 								currentPage = 1;
 							}}
 						>
-							Reset Filter
+							{$t('list.emptyResetBtn')}
 						</button>
 					</div>
 				{:else}
 					<div class="result-summary">
-						<span>Menampilkan {pageStart}-{pageEnd} dari {filteredBansos.length} bansos</span>
-						<span>Halaman {currentPage} dari {totalPages}</span>
+						<span
+							>{$t('list.resultSummary', {
+								values: { start: pageStart, end: pageEnd, total: filteredBansos.length }
+							})}</span
+						>
+						<span
+							>{$t('list.resultPage', {
+								values: { current: currentPage, total: totalPages }
+							})}</span
+						>
 					</div>
 					<div class="bansos-grid">
 						{#each paginatedBansos as item (item.id)}

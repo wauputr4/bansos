@@ -1,0 +1,46 @@
+image: node:22-alpine
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .svelte-kit/
+
+before_script:
+  - npm ci --prefer-offline --no-audit
+
+stages:
+  - lint
+  - type-check
+  - build
+
+lint:
+  stage: lint
+  script:
+    - npx prettier --check 'src/**/*.{svelte,ts,json}' 'README.md'
+    - npx eslint 'src/**/*.{ts,svelte}'
+  allow_failure: false
+
+type-check:
+  stage: type-check
+  script:
+    - npx svelte-kit sync
+    - npx svelte-check --tsconfig ./tsconfig.json
+  allow_failure: false
+
+build:
+  stage: build
+  script:
+    - npm run build
+  allow_failure: false
+
+notify-discord:
+  stage: build
+  image: node:22-alpine
+  script:
+    - apk add --no-cache git
+    - node scripts/notify-discord.mjs
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE != "merge_request_event"
+      changes:
+        - src/lib/data/bansos.json

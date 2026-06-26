@@ -1,5 +1,9 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
+	import { t } from '$lib/i18n';
+	import { get } from 'svelte/store';
+	import { locale } from 'svelte-i18n';
 	import {
 		bansosList,
 		getCommitContributorStats,
@@ -22,21 +26,22 @@
 		return 0;
 	});
 
-	const tabs: { id: TabId; label: string; icon: string }[] = [
-		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
-		{ id: 'email', label: 'Email', icon: 'fa-solid fa-envelope' },
-		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
-		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
-		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
-		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' },
-		{ id: 'telegram', label: 'Telegram (Soon)', icon: 'fa-brands fa-telegram' }
-	];
+	let tabs = $derived<{ id: TabId; label: string; icon: string }[]>([
+		{ id: 'form', label: $t('contribute.tabs.form'), icon: 'fa-solid fa-pen-to-square' },
+		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
+		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal' },
+		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
+		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot' },
+		{ id: 'discord', label: $t('contribute.tabs.discord'), icon: 'fa-brands fa-discord' },
+		{ id: 'telegram', label: $t('contribute.tabs.telegram'), icon: 'fa-brands fa-telegram' }
+	]);
 
 	let activeTab = $state<TabId>('form');
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
-	function generateGitCommand(item: (typeof bansosList)[number]): string {
+	function generateGitCommand(item: (typeof bansosList)[number], activeLocale = 'id'): string {
+		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
 			'git clone https://gitlab.com/wauputr4/bansos.git',
@@ -69,14 +74,50 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`glab mr create --title "feat: add ${item.title}" --description "Added ${item.title} to bansos list" --target-branch main --yes`
+			`glab mr create --title "feat: add ${item.title}" --description "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --target-branch main --yes`
 		);
 
 		return parts.join('\n');
 	}
 
-	const gitExamples = examples.map(generateGitCommand);
-	const emailTemplate = `USULAN BANSOS BARU
+	const gitExamples = $derived(
+		examples.map((example) => generateGitCommand(example, $locale || 'id'))
+	);
+	const emailTemplate = $derived(
+		($locale || 'id') === 'en'
+			? `NEW BANSOS SUBMISSION
+
+ID/Slug: [example: provider-free-promo]
+Title: [Bansos name]
+Provider: [Provider name]
+Provider Logo URL: [optional, logo/favicon URL]
+Description: [Short description]
+
+Benefits:
+- [Benefit 1]
+- [Benefit 2]
+
+Promo Code: [optional]
+
+Validity:
+- Type: [fixed/uncertain/forever]
+- Date: [YYYY-MM-DD, if fixed]
+- Description: [example: while quota lasts]
+
+Claim Requirements:
+1. [Requirement 1]
+2. [Requirement 2]
+
+Tips: [optional, safest claim method]
+Claim Link: [Official URL]
+Source: [Official source/post URL]
+Categories/Tags: [AI, Cloud, Domain, etc]
+Featured: [true/false]
+Status: [active/upcoming]
+
+Contributor: [Your name]
+Contributor URL: [https://...]`
+			: `USULAN BANSOS BARU
 
 ID/Slug: [contoh: provider-promo-gratis]
 Judul: [Nama bansos]
@@ -107,10 +148,13 @@ Featured: [true/false]
 Status: [active/upcoming]
 
 Kontributor: [Nama kamu]
-Kontributor URL: [https://...]`;
-	const emailHref = `mailto:submit@bansos.dev?subject=${encodeURIComponent(
-		'Usulan Bansos Baru'
-	)}&body=${encodeURIComponent(emailTemplate)}`;
+Kontributor URL: [https://...]`
+	);
+	const emailHref = $derived(
+		`mailto:submit@bansos.dev?subject=${encodeURIComponent(
+			$t('contribute.emailSubject')
+		)}&body=${encodeURIComponent(emailTemplate)}`
+	);
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -120,13 +164,13 @@ Kontributor URL: [https://...]`;
 		try {
 			await navigator.clipboard.writeText(text);
 			copiedId = id;
-			copiedNotice = 'Tersalin ke clipboard!';
+			copiedNotice = (get(t) as (id: string) => string)('contribute.toastCopied');
 			setTimeout(() => {
 				if (copiedId === id) copiedId = '';
 				copiedNotice = '';
 			}, 2000);
 		} catch {
-			copiedNotice = 'Gagal copy, coba blok URL manual dulu ya.';
+			copiedNotice = (get(t) as (id: string) => string)('contribute.toastCopyFailed');
 			setTimeout(() => {
 				copiedNotice = '';
 			}, 2200);
@@ -135,48 +179,37 @@ Kontributor URL: [https://...]`;
 </script>
 
 <svelte:head>
-	<title>Kontribusi bansos.dev</title>
-	<meta name="description" content="Cara menambahkan daftar bansos developer ke bansos.dev." />
+	<title>{$t('meta.contribTitle')}</title>
+	<meta name="description" content={$t('meta.contribDesc')} />
 	<link rel="canonical" href="https://bansos.dev/contribute/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/contribute/" />
-	<meta property="og:title" content="Kontribusi bansos.dev" />
-	<meta
-		property="og:description"
-		content="Cara menambahkan daftar bansos developer ke bansos.dev."
-	/>
+	<meta property="og:title" content={$t('meta.contribTitle')} />
+	<meta property="og:description" content={$t('meta.contribDesc')} />
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://bansos.dev/contribute/" />
-	<meta name="twitter:title" content="Kontribusi bansos.dev" />
-	<meta
-		name="twitter:description"
-		content="Cara menambahkan daftar bansos developer ke bansos.dev."
-	/>
+	<meta name="twitter:title" content={$t('meta.contribTitle')} />
+	<meta name="twitter:description" content={$t('meta.contribDesc')} />
 	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
 	<section class="container content-shell">
-		<p class="eyebrow">Kontribusi</p>
-		<h1 class="text-gradient">Punya info bansos? Jangan dinikmati sendirian.</h1>
+		<p class="eyebrow">{$t('contribute.eyebrow')}</p>
+		<h1 class="text-gradient">{$t('contribute.h1')}</h1>
 		<p>
-			Pilih cara kontribusi yang paling nyaman buat kamu. Untuk saat ini submit via Git Clone dan
-			Email yang tersedia, metode lain dinonaktifkan sementara karena spam.
+			{$t('contribute.intro')}
 		</p>
 
 		<div class="integrity-warning-banner glass-card">
 			<i class="fa-solid fa-shield-halved warning-icon"></i>
 			<div class="banner-content">
-				<h4>⛔ Larangan Keras: DILARANG KERAS</h4>
+				<h4>{$t('contribute.warningTitle')}</h4>
 				<p>
-					<strong>JANGAN</strong> submit informasi bansos yang
-					<strong>menyesatkan, palsu, atau tidak bisa diklaim</strong>.
-					<strong>DILARANG KERAS</strong> menyertakan langkah-langkah yang bersifat
-					<strong>abuse, ilegal, atau melanggar ketentuan layanan (ToS)</strong> pihak lain. Setiap pelanggaran
-					akan ditindak tegas, kontributor akan dikeluarkan secara permanen dari bansos.dev tanpa pemberitahuan.
+					{$t('contribute.warningText')}
 				</p>
 			</div>
 		</div>
@@ -184,17 +217,15 @@ Kontributor URL: [https://...]`;
 		<div class="referral-policy-banner glass-card">
 			<i class="fa-solid fa-circle-exclamation info-icon"></i>
 			<div class="banner-content">
-				<h4>Kebijakan Link Referral (Gentleman's Agreement)</h4>
+				<h4>{$t('contribute.referralTitle')}</h4>
 				<p>
-					Kamu dibebaskan memakai link referral pribadimu saat mengirim data bansos baru. Namun,
-					tolong <strong>jangan menimpa atau mengganti link referral milik kontributor lain</strong>
-					yang sudah terdaftar. Mari kita hargai kontributor pertama yang membagikan info tersebut!
+					{$t('contribute.referralText')}
 				</p>
 			</div>
 		</div>
 
 		<div class="repo-status-card">
-			<p class="eyebrow">Open Source Repo</p>
+			<p class="eyebrow">{$t('contribute.repoEyebrow')}</p>
 			<GithubBadge />
 		</div>
 
@@ -216,18 +247,15 @@ Kontributor URL: [https://...]`;
 				{#if activeTab === 'form'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via Form (Dinonaktifkan)</h2>
+							<h2>{$t('contribute.formTitle')}</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
 								<div>
 									<p>
-										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-										mengelirukan, kami menonaktifkan submit via GitHub.
+										{$t('contribute.formDisabled')}
 									</p>
 									<p class="warning-extra">
-										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
-										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
-										lain. Pelanggaran = banned permanen.
+										{$t('contribute.formWarning')}
 									</p>
 								</div>
 							</div>
@@ -236,18 +264,15 @@ Kontributor URL: [https://...]`;
 				{:else if activeTab === 'npx'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via npx CLI (Dinonaktifkan)</h2>
+							<h2>{$t('contribute.npxTitle')}</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
 								<div>
 									<p>
-										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-										mengelirukan, kami menonaktifkan submit via npx.
+										{$t('contribute.npxDisabled')}
 									</p>
 									<p class="warning-extra">
-										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
-										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
-										lain. Pelanggaran = banned permanen.
+										{$t('contribute.npxWarning')}
 									</p>
 								</div>
 							</div>
@@ -256,26 +281,20 @@ Kontributor URL: [https://...]`;
 				{:else if activeTab === 'git'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Clone repo &amp; npm run add:bansos</h2>
+							<h2>{$t('contribute.gitTitle')}</h2>
 							<p>
-								Download repo-nya dulu, terus jalankan script lokal buat nambah data. Setelah itu
-								kamu bisa review dulu sebelum bikin PR manual. Cocok buat yang mau lihat dulu
-								hasilnya sebelum submit.
+								{$t('contribute.gitDesc')}
 							</p>
 						</div>
 						<div class="integrity-note">
 							<i class="fa-solid fa-shield-halved"></i>
 							<p>
-								<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
-								<strong>valid</strong>
-								dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
-								<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan akan
-								dihapus tanpa pemberitahuan. Kontributor nakal akan
-								<strong>dibanned permanen</strong>.
+								{$t('contribute.gitIntegrity')}
 							</p>
 						</div>
 						<div class="examples-section">
-							<span class="examples-label"><i class="fa-solid fa-lightbulb"></i> Pilih contoh:</span
+							<span class="examples-label"
+								><i class="fa-solid fa-lightbulb"></i> {$t('contribute.gitExamplesLabel')}</span
 							>
 							<div class="examples-buttons">
 								{#each examples as example, i (example.id)}
@@ -293,7 +312,7 @@ Kontributor URL: [https://...]`;
 						</div>
 						<div class="command-block-wrapper">
 							<div class="command-head">
-								<span>git clone + npm run add:bansos</span>
+								<span>{$t('contribute.gitCommandHead')}</span>
 								<button
 									type="button"
 									class="copy-btn"
@@ -301,7 +320,7 @@ Kontributor URL: [https://...]`;
 									onclick={() => copyToClipboard(gitExamples[0], 'git-0')}
 								>
 									<i class="fa-solid fa-{copiedId === 'git-0' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'git-0' ? 'Tersalin' : 'Copy'}
+									{copiedId === 'git-0' ? $t('contribute.gitCopied') : $t('contribute.gitCopy')}
 								</button>
 							</div>
 							<pre class="command-block"><code>{gitExamples[0]}</code></pre>
@@ -309,26 +328,22 @@ Kontributor URL: [https://...]`;
 						<div class="tab-note">
 							<p>
 								<i class="fa-solid fa-circle-info"></i>
-								Setelah data masuk <code>bansos.json</code>, push branch kamu dan buka PR ke
-								<code>main</code>. CI akan validasi data otomatis.
+								{$t('contribute.gitNote')}
 							</p>
 						</div>
 					</div>
 				{:else if activeTab === 'ai'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via AI Agent (Dinonaktifkan)</h2>
+							<h2>{$t('contribute.aiTitle')}</h2>
 							<div class="disabled-notice">
 								<i class="fa-solid fa-triangle-exclamation"></i>
 								<div>
 									<p>
-										Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan
-										mengelirukan, kami menonaktifkan submit via AI Agent.
+										{$t('contribute.aiDisabled')}
 									</p>
 									<p class="warning-extra">
-										<strong>⚠️ JANGAN</strong> submit informasi bansos yang
-										<strong>palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS</strong> pihak
-										lain. Pelanggaran = banned permanen.
+										{$t('contribute.aiWarning')}
 									</p>
 								</div>
 							</div>
@@ -337,59 +352,48 @@ Kontributor URL: [https://...]`;
 				{:else if activeTab === 'email'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via Email</h2>
+							<h2>{$t('contribute.emailTitle')}</h2>
 							<p>
-								Kirim info bansos langsung ke email kami. Tinggal klik tombol di bawah, isi detail
-								bansos di body email, dan kirim!
+								{$t('contribute.emailDesc')}
 							</p>
 							<div class="integrity-note">
 								<i class="fa-solid fa-shield-halved"></i>
 								<p>
-									<strong>Perhatian:</strong> Hanya submit bansos yang benar-benar
-									<strong>valid</strong>
-									dan <strong>bisa diklaim</strong>. Informasi menyesatkan, langkah
-									<strong>abuse</strong>, atau konten <strong>ilegal</strong> dilarang keras dan
-									akan dihapus tanpa pemberitahuan. Kontributor nakal akan
-									<strong>dibanned permanen</strong>.
+									{$t('contribute.emailIntegrity')}
 								</p>
 							</div>
 							<div class="email-submit-card">
 								<div class="email-icon">
 									<i class="fa-solid fa-envelope"></i>
-							</div>
-							<h3>Kirim ke: submit@bansos.dev</h3>
-							<a
-								href={emailHref}
-									target="_blank"
-									class="email-send-btn"
-								>
-									<i class="fa-solid fa-paper-plane"></i> Kirim Email Sekarang
+								</div>
+								<h3>{$t('contribute.emailTo')}</h3>
+								<a href={emailHref} target="_blank" class="email-send-btn">
+									<i class="fa-solid fa-paper-plane"></i>
+									{$t('contribute.emailSendBtn')}
 								</a>
 								<p class="email-hint">
-								Atau copy template di bawah, kirim manual ke <strong>submit@bansos.dev</strong>
+									{$t('contribute.emailHint')}
 								</p>
-							<pre class="email-template">{emailTemplate}</pre>
+								<pre class="email-template">{emailTemplate}</pre>
 							</div>
 						</div>
 					</div>
 				{:else if activeTab === 'discord'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via Discord Bot (Coming Soon)</h2>
+							<h2>{$t('contribute.discordTitle')}</h2>
 							<p>
-								Kami sedang menyiapkan Discord Bot interaktif untuk memudahkan pengajuan bansos
-								langsung lewat chat. Cukup bagikan link promo di channel khusus, bot kami yang akan
-								memvalidasi dan memproses datanya!
+								{$t('contribute.discordDesc')}
 							</p>
 						</div>
 						<div class="discord-coming-soon-card">
 							<div class="coming-soon-icon">
 								<i class="fa-brands fa-discord"></i>
 							</div>
-							<h3>Discord Bot Integration</h3>
-							<span class="status-badge-soon">Coming Soon</span>
+							<h3>{$t('contribute.discordCardTitle')}</h3>
+							<span class="status-badge-soon">{$t('contribute.discordBadge')}</span>
 							<p>
-								Yuk join server Discord kami terlebih dahulu untuk bersiap-siap dan diskusi bareng!
+								{$t('contribute.discordCardDesc')}
 							</p>
 							<a
 								href="https://discord.gg/m4WFaQpNGs"
@@ -397,29 +401,27 @@ Kontributor URL: [https://...]`;
 								rel="noopener noreferrer"
 								class="discord-join-btn"
 							>
-								<i class="fa-brands fa-discord"></i> Join Discord Server
+								<i class="fa-brands fa-discord"></i>
+								{$t('contribute.discordJoinBtn')}
 							</a>
 						</div>
 					</div>
 				{:else if activeTab === 'telegram'}
 					<div class="tab-panel">
 						<div class="tab-description">
-							<h2>Submit via Telegram Bot (Coming Soon)</h2>
+							<h2>{$t('contribute.telegramTitle')}</h2>
 							<p>
-								Selain Discord, kami juga sedang membangun Telegram Bot interaktif! Nantinya kamu
-								bisa langsung kirim detail promo lewat chat bot untuk memproses data bansos secara
-								otomatis.
+								{$t('contribute.telegramDesc')}
 							</p>
 						</div>
 						<div class="telegram-coming-soon-card">
 							<div class="coming-soon-icon">
 								<i class="fa-brands fa-telegram"></i>
 							</div>
-							<h3>Telegram Channel &amp; Bot Integration</h3>
-							<span class="status-badge-soon">Coming Soon</span>
+							<h3>{$t('contribute.telegramCardTitle')}</h3>
+							<span class="status-badge-soon">{$t('contribute.telegramBadge')}</span>
 							<p>
-								Yuk follow channel Telegram kami biar gak ketinggalan update program bansos
-								developer terbaru dan info perilisan bot kontribusi!
+								{$t('contribute.telegramCardDesc')}
 							</p>
 							<a
 								href="https://t.me/bansos_dev"
@@ -427,7 +429,8 @@ Kontributor URL: [https://...]`;
 								rel="noopener noreferrer"
 								class="telegram-join-btn"
 							>
-								<i class="fa-brands fa-telegram"></i> Join Telegram Channel
+								<i class="fa-brands fa-telegram"></i>
+								{$t('contribute.telegramJoinBtn')}
 							</a>
 						</div>
 					</div>
@@ -450,7 +453,7 @@ Kontributor URL: [https://...]`;
 					onclick={() => (activeContributorTab = 'project')}
 				>
 					<i class="fa-solid fa-code-commit"></i>
-					<span>Kontributor Proyek ({commitContributors.length})</span>
+					<span>{$t('contribute.contribTabProject')} ({commitContributors.length})</span>
 				</button>
 				<button
 					class="contrib-tab-btn"
@@ -458,7 +461,7 @@ Kontributor URL: [https://...]`;
 					onclick={() => (activeContributorTab = 'registered')}
 				>
 					<i class="fa-solid fa-users"></i>
-					<span>Kontributor Terdaftar ({contributors.length})</span>
+					<span>{$t('contribute.contribTabRegistered')} ({contributors.length})</span>
 				</button>
 			</div>
 
@@ -466,9 +469,7 @@ Kontributor URL: [https://...]`;
 				{#if activeContributorTab === 'project'}
 					<div class="contrib-tab-panel">
 						<p class="section-note">
-							Kontributor proyek adalah akun GitHub yang benar-benar menambah atau mengubah kode
-							atau data lewat commit. Satu bansos bisa punya beberapa kontributor proyek kalau
-							pernah diupdate.
+							{$t('contribute.contribProjectDesc')}
 						</p>
 						<ul class="commit-contributors-list">
 							{#each commitContributors as contributor (contributor.login)}
@@ -492,13 +493,17 @@ Kontributor URL: [https://...]`;
 										/>
 										<span class="login-name">@{contributor.login}</span>
 										{#if contributor.login === 'wauputr4'}
-											<span class="author-badge" title="Author">
+											<span class="author-badge" title={$t('contribute.contribAuthorBadge')}>
 												<i class="fa-solid fa-crown"></i>
-												<span class="author-text">Author</span>
+												<span class="author-text">{$t('contribute.contribAuthorBadge')}</span>
 											</span>
 										{/if}
 									</a>
-									<span class="contributor-count">{contributor.count} data tersentuh</span>
+									<span class="contributor-count"
+										>{$t('contribute.contribProjectCount', {
+											values: { count: contributor.count }
+										})}</span
+									>
 								</li>
 							{/each}
 						</ul>
@@ -506,8 +511,7 @@ Kontributor URL: [https://...]`;
 				{:else if activeContributorTab === 'registered'}
 					<div class="contrib-tab-panel">
 						<p class="section-note">
-							Kontributor terdaftar adalah orang yang berkontribusi menambahkan atau meng-update
-							data bansos via CLI/sistem.
+							{$t('contribute.contribRegisteredDesc')}
 						</p>
 						{#if contributors.length > 0}
 							<ul class="contributors-list">
@@ -519,12 +523,16 @@ Kontributor URL: [https://...]`;
 												{contributor.name}
 											</a>
 										</div>
-										<span class="contributor-count">{contributor.count} kontribusi</span>
+										<span class="contributor-count"
+											>{$t('contribute.contribRegisteredCount', {
+												values: { count: contributor.count }
+											})}</span
+										>
 									</li>
 								{/each}
 							</ul>
 						{:else}
-							<p class="empty-contributor">Belum ada kontributor yang terdeteksi di data.</p>
+							<p class="empty-contributor">{$t('contribute.contribRegisteredEmpty')}</p>
 						{/if}
 					</div>
 				{/if}

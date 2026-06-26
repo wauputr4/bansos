@@ -2,6 +2,8 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { t, switchLocale } from '$lib/i18n';
+	import { locale } from 'svelte-i18n';
 	let { children } = $props();
 	type ThemeMode = 'dark' | 'light';
 
@@ -21,14 +23,13 @@
 		lastY = scrollY;
 	});
 
-	type ValidRoute = '/' | '/list' | '/contribute' | '/about' | '/providers';
-	const navItems: { href: ValidRoute; label: string; icon: string }[] = [
-		{ href: '/', label: 'Beranda', icon: 'fa-solid fa-house' },
-		{ href: '/list', label: 'Bansos', icon: 'fa-solid fa-list' },
-		{ href: '/contribute', label: 'Kontribusi', icon: 'fa-solid fa-plus' },
-		{ href: '/providers', label: 'Provider', icon: 'fa-solid fa-server' },
-		{ href: '/about', label: 'Tentang', icon: 'fa-solid fa-circle-question' }
-	];
+	let navItems = $derived([
+		{ href: '/' as const, label: $t('nav.home'), icon: 'fa-solid fa-house' },
+		{ href: '/list' as const, label: $t('nav.bansos'), icon: 'fa-solid fa-list' },
+		{ href: '/contribute' as const, label: $t('nav.contribute'), icon: 'fa-solid fa-plus' },
+		{ href: '/providers' as const, label: $t('nav.providers'), icon: 'fa-solid fa-server' },
+		{ href: '/about' as const, label: $t('nav.about'), icon: 'fa-solid fa-circle-question' }
+	]);
 
 	function isActivePath(pathname: string, href: string) {
 		return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
@@ -62,8 +63,8 @@
 <svelte:window bind:scrollY />
 <div class="site-shell">
 	<header class="site-header" class:nav-hidden={hideNavbar}>
-		<nav class="container nav-shell" aria-label="Navigasi utama">
-			<a href={resolve('/')} class="brand-mark" aria-label="Bansos Developer">
+		<nav class="container nav-shell" aria-label={$t('nav.mainAria')}>
+			<a href={resolve('/')} class="brand-mark" aria-label={$t('nav.brandAria')}>
 				<div class="logo-container">
 					<div class="logo-main"><span class="ban">ban</span><span class="sos">sos</span></div>
 					<div class="logo-sub">
@@ -95,10 +96,20 @@
 					type="button"
 					class="icon-btn"
 					onclick={toggleTheme}
-					aria-label={theme === 'light' ? 'Aktifkan mode gelap' : 'Aktifkan mode terang'}
+					aria-label={theme === 'light' ? $t('theme.darkAria') : $t('theme.lightAria')}
 				>
 					<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
 					></i>
+				</button>
+				<button
+					type="button"
+					class="icon-btn lang-btn"
+					onclick={() => switchLocale($locale === 'id' ? 'en' : 'id')}
+					aria-label={$t('lang.switchTo')}
+					title={$t('lang.switchTo')}
+				>
+					<i class="fa-solid fa-language"></i>
+					<span class="lang-label">{$locale === 'id' ? 'ID' : 'EN'}</span>
 				</button>
 			</div>
 		</nav>
@@ -109,27 +120,28 @@
 	<footer class="site-footer">
 		<div class="container footer-inner">
 			<div class="footer-left">
-				<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. Bantuan sosial untuk developer jelata.</p>
+				<p>© 2026 <a href={resolve('/')}>bansos.dev</a>. {$t('footer.tagline')}</p>
 				<a
 					href="https://github.com/sponsors/wauputr4"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="sponsor-link"
 				>
-					<i class="fa-regular fa-heart"></i> Sponsor
+					<i class="fa-regular fa-heart"></i>
+					{$t('footer.sponsor')}
 				</a>
 			</div>
 			<div class="footer-links">
-				<a href={resolve('/about')}>Tentang</a>
+				<a href={resolve('/about')}>{$t('footer.about')}</a>
 				<span class="dot">·</span>
-				<a href={resolve('/providers')}>Provider</a>
+				<a href={resolve('/providers')}>{$t('footer.providers')}</a>
 				<span class="dot">·</span>
-				<a href={resolve('/contribute')}>Kontribusi</a>
+				<a href={resolve('/contribute')}>{$t('footer.contribute')}</a>
 				<span class="dot">·</span>
-				<a href={resolve('/terms')}>Terms</a>
+				<a href={resolve('/terms')}>{$t('footer.terms')}</a>
 				<span class="dot">·</span>
 				<a href="https://gitlab.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
-					>Open Source</a
+					>{$t('footer.openSource')}</a
 				>
 				<span class="dot">·</span>
 				<a
@@ -141,17 +153,6 @@
 				>
 					<i class="fa-brands fa-discord"></i>
 				</a>
-				<span class="dot">·</span>
-				<a
-					href="https://www.threads.net/@wauputra"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="Threads"
-					class="social-footer-link"
-				>
-					<i class="fa-brands fa-threads"></i>
-				</a>
-				<span class="dot">·</span>
 				<a
 					href="https://t.me/bansos_dev"
 					target="_blank"
@@ -165,7 +166,7 @@
 		</div>
 	</footer>
 
-	<nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
+	<nav class="mobile-bottom-nav" aria-label={$t('nav.mobileAria')}>
 		{#each navItems as item (item.href)}
 			<a
 				href={resolve(item.href)}
@@ -306,6 +307,17 @@
 		color: var(--text-primary);
 		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 		border-color: var(--text-secondary);
+	}
+
+	.lang-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.2rem;
+	}
+	.lang-label {
+		font-size: 0.65rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
 	}
 
 	.site-footer {

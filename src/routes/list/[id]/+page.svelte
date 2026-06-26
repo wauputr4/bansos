@@ -3,8 +3,10 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
+	import { locale } from 'svelte-i18n';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
+	import { t } from '$lib/i18n';
 	import {
 		getCommitContributorsForItem,
 		getItemSource,
@@ -76,6 +78,19 @@
 	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 	const status = $derived(item?.status || 'unknown');
+	const currentLocale = $derived($locale || 'id');
+	const currentDateLocale = $derived(currentLocale === 'en' ? 'en-US' : 'id-ID');
+	const giscusLang = $derived(currentLocale === 'en' ? 'en' : 'id');
+	const detailT = $derived(
+		(key: string, values?: Record<string, string | number | boolean | Date | null | undefined>) =>
+			values ? $t(`detail.${key}`, { values }) : $t(`detail.${key}`)
+	);
+	const statusLabel = $derived.by(() => {
+		if (status === 'active') return $t('list.statusActive');
+		if (status === 'upcoming') return $t('list.statusUpcoming');
+		if (status === 'expired') return $t('list.statusExpired');
+		return status;
+	});
 
 	let copied = $state(false);
 	let floatingEmojis = $state<{ id: number; x: number; y: number; icon: string; color?: string }[]>(
@@ -107,13 +122,9 @@
 
 	// Dynamic SEO Meta definitions
 	const seoTitle = $derived(
-		item ? `Cara Dapat ${item.title} - bansos.dev` : 'Bansos Tidak Ditemukan'
+		item ? detailT('seoTitle', { title: item.title }) : detailT('notFoundTitle')
 	);
-	const seoDesc = $derived(
-		item
-			? `Panduan step-by-step paling lengkap buat klaim ${item.title} khusus developer jelata. 100% legal, no credit card required!`
-			: ''
-	);
+	const seoDesc = $derived(item ? detailT('seoDesc', { title: item.title }) : '');
 	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
 
 	// JSON-LD Specific Product / Guide Schema
@@ -122,29 +133,29 @@
 			? {
 					'@context': 'https://schema.org',
 					'@type': 'HowTo',
-					name: `Cara Klaim ${item.title}`,
+					name: detailT('schemaName', { title: item.title }),
 					description: item.description,
 					totalTime: 'PT5M',
 					supply: [
 						{
 							'@type': 'HowToSupply',
-							name: 'Koneksi Internet'
+							name: detailT('schemaInternet')
 						},
 						{
 							'@type': 'HowToSupply',
-							name: 'Akun Dev Aktif'
+							name: detailT('schemaDevAccount')
 						}
 					],
 					tool: [
 						{
 							'@type': 'HowToTool',
-							name: 'Web Browser'
+							name: detailT('schemaBrowser')
 						}
 					],
 					step: item.requirements.map((req: string, index: number) => ({
 						'@type': 'HowToStep',
 						position: index + 1,
-						name: `Langkah ${index + 1}`,
+						name: detailT('schemaStep', { number: index + 1 }),
 						text: req
 					}))
 				}
@@ -175,7 +186,7 @@
 			script.setAttribute('data-emit-metadata', '1');
 			script.setAttribute('data-input-position', 'bottom');
 			script.setAttribute('data-theme', 'preferred_color_scheme');
-			script.setAttribute('data-lang', 'id');
+			script.setAttribute('data-lang', giscusLang);
 			script.setAttribute('crossorigin', 'anonymous');
 			script.async = true;
 			// eslint-disable-next-line svelte/no-dom-manipulating
@@ -226,16 +237,17 @@
 			<div class="empty-icon" style="font-size: 4rem;">
 				<i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning);"></i>
 			</div>
-			<h2>Waduh, Bansos ini gak ketemu!</h2>
+			<h2>{detailT('notFoundTitle')}</h2>
 			<p style="color: var(--text-secondary);">
-				Sepertinya bansos ini udah digondol koruptor atau belum masuk ke sistem, fr fr 😭
+				{detailT('notFoundDesc')}
 			</p>
 			<a
 				href={resolve('/list')}
 				class="btn-primary"
 				style="margin-top: 1rem; gap: 0.5rem; text-decoration: none;"
 			>
-				<i class="fa-solid fa-arrow-left"></i> Kembali ke List
+				<i class="fa-solid fa-arrow-left"></i>
+				{detailT('backToList')}
 			</a>
 		</div>
 	</main>
@@ -273,7 +285,7 @@
 							</div>
 							<div class="status-container">
 								<span class="status-badge status-{status}"
-									><i class="fa-solid fa-circle"></i> {status.toUpperCase()}</span
+									><i class="fa-solid fa-circle"></i> {statusLabel.toUpperCase()}</span
 								>
 							</div>
 						</div>
@@ -283,7 +295,7 @@
 								<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
 							{/if}
 							<p class="detail-subtitle">
-								Disponsori oleh
+								{detailT('sponsoredBy')}
 								{#if provider}
 									<a href={resolve(`/providers/${slugifyProvider(item.provider)}`)}
 										>{item.provider}</a
@@ -293,8 +305,9 @@
 								{/if}
 								<span aria-hidden="true">·</span>
 								<span
-									>Diterbitkan pada {new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
-										'id-ID',
+									>{detailT('publishedOn')}
+									{new Date(item.publishedAt || '2026-06-11').toLocaleDateString(
+										currentDateLocale,
 										{ day: 'numeric', month: 'long', year: 'numeric' }
 									)}</span
 								>
@@ -311,10 +324,9 @@
 								><i class="fa-solid fa-triangle-exclamation"></i></span
 							>
 							<div class="tips-content">
-								<h3 style="color: #ef4444;">Yah, Promo Sudah Berakhir!</h3>
+								<h3 style="color: #ef4444;">{detailT('expiredTitle')}</h3>
 								<p>
-									Sayang sekali promo bansos ini sudah tidak aktif alias expired. Kamu tetep bisa
-									baca panduannya buat referensi ya!
+									{detailT('expiredDesc')}
 								</p>
 							</div>
 						</div>
@@ -324,19 +336,19 @@
 						<div class="tips-box">
 							<span class="tips-icon"><i class="fa-solid fa-lightbulb"></i></span>
 							<div class="tips-content">
-								<h3>Tips Pro Jelata:</h3>
+								<h3>{detailT('tipsTitle')}</h3>
 								<p>{item.tips}</p>
 							</div>
 						</div>
 					{/if}
 
 					<section class="section-block">
-						<h2><i class="fa-solid fa-circle-question"></i> Apa ini?</h2>
+						<h2><i class="fa-solid fa-circle-question"></i> {detailT('aboutTitle')}</h2>
 						<p class="description-text text-pretty">{item.description}</p>
 					</section>
 
 					<section class="section-block">
-						<h2><i class="fa-solid fa-gift"></i> Benefit yang Didapatkan:</h2>
+						<h2><i class="fa-solid fa-gift"></i> {detailT('benefitsTitle')}</h2>
 						<ul class="benefit-list">
 							{#each item.benefits as benefit (benefit)}
 								<li><span class="check-icon">✓</span> {benefit}</li>
@@ -346,9 +358,9 @@
 
 					{#if item.promoCode}
 						<section class="section-block promo-section">
-							<h2><i class="fa-solid fa-key"></i> Kode Promo Spesial:</h2>
+							<h2><i class="fa-solid fa-key"></i> {detailT('promoTitle')}</h2>
 							<p class="promo-subtitle">
-								Salin kode ini dan masukkan saat checkout di {item.provider}:
+								{detailT('promoDesc', { provider: item.provider })}
 							</p>
 							<div class="promo-clipboard-box">
 								<code>{item.promoCode}</code>
@@ -357,9 +369,9 @@
 									onclick={(e) => copyCode(item.promoCode || '', e)}
 								>
 									{#if copied}
-										<i class="fa-solid fa-check"></i> Copied!
+										<i class="fa-solid fa-check"></i> {$t('common.copied')}
 									{:else}
-										<i class="fa-solid fa-copy"></i> Salin
+										<i class="fa-solid fa-copy"></i> {$t('common.copy')}
 									{/if}
 								</button>
 							</div>
@@ -368,7 +380,8 @@
 
 					<section class="section-block guide-section">
 						<h2>
-							<i class="fa-solid fa-screwdriver-wrench"></i> Step-by-Step Cara Dapetinnya (No Cap):
+							<i class="fa-solid fa-screwdriver-wrench"></i>
+							{detailT('guideTitle')}
 						</h2>
 						<ol class="step-list">
 							{#each item.requirements as req, idx (req)}
@@ -387,7 +400,8 @@
 							rel="noopener noreferrer"
 							class="btn-primary cta-btn"
 						>
-							<i class="fa-solid fa-rocket"></i> Eksekusi ke Website Official
+							<i class="fa-solid fa-rocket"></i>
+							{detailT('ctaOfficial')}
 						</a>
 					</div>
 				</article>
@@ -398,7 +412,8 @@
 						<h2
 							style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
 						>
-							<i class="fa-regular fa-comments"></i> Diskusi & Komentar
+							<i class="fa-regular fa-comments"></i>
+							{detailT('commentsTitle')}
 						</h2>
 						<div bind:this={giscusContainer}></div>
 					</div>
@@ -411,7 +426,9 @@
 					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> Sumber Resmi</span>
+								<span class="meta-label"
+									><i class="fa-solid fa-link"></i> {detailT('officialSource')}</span
+								>
 								{#if sourceIsUrl}
 									<a href={source} target="_blank" rel="noopener noreferrer">{displaySource}</a>
 								{:else}
@@ -422,14 +439,14 @@
 						{#if item.contributor || commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"
-									><i class="fa-solid fa-code-branch"></i> Kontributor Proyek</span
+									><i class="fa-solid fa-code-branch"></i> {detailT('projectContributor')}</span
 								>
 								{#if item.contributor}
 									<div
 										class="original-contributor"
 										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
 									>
-										Dikontribusikan oleh:
+										{detailT('contributedBy')}
 										<a
 											href={item.contributor.url}
 											target="_blank"
@@ -448,7 +465,7 @@
 												target="_blank"
 												rel="noopener noreferrer"
 												class="commit-person"
-												title={`Commit oleh ${contributor.login}`}
+												title={detailT('commitBy', { login: contributor.login })}
 											>
 												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
 												<span>@{contributor.login}</span>
@@ -463,10 +480,11 @@
 
 				<div class="sidebar-recommendations-header">
 					<h3 class="sidebar-recommendations-title">
-						<i class="fa-solid fa-sparkles text-emerald"></i> Rekomendasi Lainnya
+						<i class="fa-solid fa-sparkles text-emerald"></i>
+						{detailT('recommendations')}
 					</h3>
 					<a href={resolve('/list')} class="btn-lihat-semua-sidebar"
-						>Lihat Semua <i class="fa-solid fa-arrow-right"></i></a
+						>{$t('home.ctaViewAll')} <i class="fa-solid fa-arrow-right"></i></a
 					>
 				</div>
 				{#if recommendedBansos.length > 0}
@@ -480,25 +498,24 @@
 						{/each}
 					</div>
 				{:else}
-					<p class="empty-recommendation text-pretty">Belum ada rekomendasi saat ini.</p>
+					<p class="empty-recommendation text-pretty">{detailT('emptyRecommendations')}</p>
 				{/if}
 			</aside>
 		</div>
 
-		<!-- CTA Tentang bansos.dev & Ajakan Kontribusi (Bottom of the page) -->
+		<!-- Bottom CTA -->
 		<section class="bottom-cta-section container">
 			<div class="glass-card bottom-cta-card">
 				<div class="bottom-cta-info">
-					<h2><i class="fa-solid fa-circle-info text-emerald"></i> Tentang bansos.dev</h2>
+					<h2><i class="fa-solid fa-circle-info text-emerald"></i> {detailT('bottomTitle')}</h2>
 					<p>
-						Katalog kurasi promo & diskonan developer gratisan. Dikelola 100% transparan oleh
-						komunitas di GitHub. Yuk bantu sesama developer jelata bertahan hidup dengan ikutan
-						kontribusi!
+						{detailT('bottomDesc')}
 					</p>
 				</div>
 				<div class="bottom-cta-actions">
 					<a href={resolve('/contribute')} class="btn-primary">
-						<i class="fa-solid fa-code-pull-request"></i> Ajukan Bansos Baru
+						<i class="fa-solid fa-code-pull-request"></i>
+						{detailT('submitNew')}
 					</a>
 					<a
 						href="https://gitlab.com/wauputr4/bansos"
@@ -506,7 +523,8 @@
 						rel="noopener noreferrer"
 						class="btn-secondary"
 					>
-						<i class="fa-solid fa-star"></i> Star di GitHub
+						<i class="fa-solid fa-star"></i>
+						{detailT('starGitlab')}
 					</a>
 				</div>
 			</div>

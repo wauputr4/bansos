@@ -1,13 +1,11 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
-	<title>Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia</title>
-	<meta
-		name="description"
-		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
-	/>
+	<title>{$t('meta.aboutTitle')}</title>
+	<meta name="description" content={$t('meta.aboutDesc')} />
 	<meta
 		name="keywords"
 		content="bansos.dev, katalog promo developer, open source Indonesia, domain gratis, cloud credits gratis, API credits, hosting free tier, startup credits, SvelteKit"
@@ -16,132 +14,78 @@
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/about/" />
-	<meta
-		property="og:title"
-		content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia"
-	/>
-	<meta
-		property="og:description"
-		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
-	/>
+	<meta property="og:title" content={$t('meta.aboutTitle')} />
+	<meta property="og:description" content={$t('meta.aboutDesc')} />
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://bansos.dev/about/" />
-	<meta
-		name="twitter:title"
-		content="Tentang bansos.dev - Open Source Katalog Promo Developer Indonesia"
-	/>
-	<meta
-		name="twitter:description"
-		content="bansos.dev adalah proyek open-source katalog promo developer Indonesia untuk menemukan domain gratis, cloud credits, API credits, hosting free-tier, dan benefit startup."
-	/>
+	<meta name="twitter:title" content={$t('meta.aboutTitle')} />
+	<meta name="twitter:description" content={$t('meta.aboutDesc')} />
 	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
 	<section class="container content-shell">
-		<p class="eyebrow">Tentang</p>
-		<h1 class="text-gradient">Open-source katalog promo developer Indonesia.</h1>
-		<p>
-			`bansos.dev` adalah katalog bantuan sosial untuk developer jelata: tempat ngumpulin program
-			gratisan, voucher, credit, diskon, dan benefit startup yang relevan buat developer Indonesia.
-			Fokusnya simpel: bantu developer hemat budget saat belajar, eksperimen, bikin portofolio, atau
-			ship side project.
-		</p>
-		<p>
-			Daftar di dalamnya mencakup domain gratis, hosting free-tier, cloud credits, API credits,
-			database credits, program startup, dan promo tools coding lain yang bisa diklaim dari sumber
-			resmi provider.
-		</p>
+		<p class="eyebrow">{$t('about.eyebrow')}</p>
+		<h1 class="text-gradient">{$t('about.h1')}</h1>
+		<p>{$t('about.introP1')}</p>
+		<p>{$t('about.introP2')}</p>
 
 		<div class="info-grid">
 			<section class="info-card">
-				<h2><i class="fa-solid fa-magnifying-glass"></i> Mudah Ditemukan</h2>
-				<p>
-					Setiap listing disimpan sebagai data terstruktur, punya tag, status aktif/expired, masa
-					berlaku, provider, benefit, dan langkah klaim supaya gampang dicari dari halaman list.
-				</p>
+				<h2><i class="fa-solid fa-magnifying-glass"></i> {$t('about.infoCards.easyTitle')}</h2>
+				<p>{$t('about.infoCards.easyDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-eye"></i> 100% Transparan</h2>
-				<p>
-					Semua request penambahan bansos baru, validasi data, serta diskusi komunitas dilakukan
-					secara terbuka langsung di GitHub Issue &amp; Pull Request.
-				</p>
+				<h2><i class="fa-solid fa-eye"></i> {$t('about.infoCards.transparentTitle')}</h2>
+				<p>{$t('about.infoCards.transparentDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-code"></i> Open Source &amp; Self-Hosted</h2>
-				<p>
-					Kode sumber dan data bansos.dev sepenuhnya open-source. Kamu bisa clone, review kodenya,
-					bahkan meng-host situs ini sendiri di infrastruktur milikmu.
-				</p>
+				<h2><i class="fa-solid fa-code"></i> {$t('about.infoCards.opensourceTitle')}</h2>
+				<p>{$t('about.infoCards.opensourceDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-terminal"></i> Kontribusi Instan</h2>
-				<p>
-					Kontributor bisa menambahkan program baru secara otomatis lewat form interaktif atau
-					perintah CLI `npx bansosdev add` tanpa perlu setup code environment.
-				</p>
+				<h2><i class="fa-solid fa-terminal"></i> {$t('about.infoCards.instantTitle')}</h2>
+				<p>{$t('about.infoCards.instantDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-shield-heart"></i> Kurasi Komunitas</h2>
-				<p>
-					Setiap entry dipastikan memakai link resmi, deskripsi jujur, dan catatan masa berlaku yang
-					jelas. Tujuannya murni buat saling bantu menghemat budget.
-				</p>
+				<h2><i class="fa-solid fa-shield-heart"></i> {$t('about.infoCards.curationTitle')}</h2>
+				<p>{$t('about.infoCards.curationDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-handshake"></i> Adil &amp; Sportif</h2>
-				<p>
-					Mendukung pemakaian link referral pribadi kontributor sebagai bentuk reward, dengan aturan
-					ketat dilarang menimpa link referral milik orang lain.
-				</p>
+				<h2><i class="fa-solid fa-handshake"></i> {$t('about.infoCards.fairTitle')}</h2>
+				<p>{$t('about.infoCards.fairDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-credit-card"></i> Tanpa Kartu Kredit</h2>
-				<p>
-					Semua program yang terdaftar diupayakan gratis tanpa minta nomor kartu kredit. Bebas dari
-					jebakan auto-debit langganan setelah masa promo berakhir.
-				</p>
+				<h2><i class="fa-solid fa-credit-card"></i> {$t('about.infoCards.noccTitle')}</h2>
+				<p>{$t('about.infoCards.noccDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-user-shield"></i> Bebas Iklan &amp; Tracker</h2>
-				<p>
-					Situs ini murni dibangun untuk membantu developer. Tidak ada banner iklan berkedip, spam
-					popup, tracker nakal, ataupun link shortener jebakan.
-				</p>
+				<h2><i class="fa-solid fa-user-shield"></i> {$t('about.infoCards.noadsTitle')}</h2>
+				<p>{$t('about.infoCards.noadsDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-gauge-high"></i> Ringan &amp; Hemat Kuota</h2>
-				<p>
-					Dibangun menggunakan SvelteKit static generation yang super gesit. Halaman dimuat instant,
-					hemat kuota data, dan ramah koneksi internet pas-pasan.
-				</p>
+				<h2><i class="fa-solid fa-gauge-high"></i> {$t('about.infoCards.lightTitle')}</h2>
+				<p>{$t('about.infoCards.lightDesc')}</p>
 			</section>
 			<section class="info-card">
-				<h2><i class="fa-solid fa-comments"></i> Grup Komunitas Kompak</h2>
-				<p>
-					Punya kendala klaim atau butuh info bansos terbaru paling cepat? Dapatkan bantuan dan
-					bocoran promo langsung di grup komunitas Discord atau Telegram kami.
-				</p>
+				<h2><i class="fa-solid fa-comments"></i> {$t('about.infoCards.communityTitle')}</h2>
+				<p>{$t('about.infoCards.communityDesc')}</p>
 			</section>
 		</div>
 
 		<div class="actions">
-			<a href={resolve('/list')} class="btn-primary">Lihat List Bansos</a>
-			<a href={resolve('/contribute')} class="about-link">Cara Kontribusi</a>
+			<a href={resolve('/list')} class="btn-primary">{$t('about.ctaList')}</a>
+			<a href={resolve('/contribute')} class="about-link">{$t('about.ctaContribute')}</a>
 		</div>
 
 		<section class="discord-community-section">
 			<h2>
-				<i class="fa-brands fa-discord"></i> Gabung Discord Community!
+				<i class="fa-brands fa-discord"></i>
+				{$t('about.discordTitle')}
 			</h2>
-			<p>
-				Mau bahas info bansos terbaru, tanya-tanya seputar development, kolaborasi side project,
-				atau sekadar nongkrong bareng developer jelata lainnya? Yuk, join server Discord kami
-				sekarang!
-			</p>
+			<p>{$t('about.discordDesc')}</p>
 			<div class="discord-button-wrapper">
 				<a
 					href="https://discord.gg/m4WFaQpNGs"
@@ -149,19 +93,17 @@
 					rel="noopener noreferrer"
 					class="discord-pill"
 				>
-					<i class="fa-brands fa-discord"></i> Join Discord Server
+					<i class="fa-brands fa-discord"></i>
+					{$t('about.discordJoinBtn')}
 				</a>
 			</div>
 		</section>
 
 		<section class="bansos-community-section">
 			<div class="community-section-copy">
-				<p class="eyebrow">Bansos Community</p>
-				<h2>Mitra komunitas yang ikut nyebarin bansos.dev.</h2>
-				<p>
-					Komunitas yang sudah bantu kontribusi, promosi, atau membagikan info bansos.dev di grupnya
-					akan kami promote di sini.
-				</p>
+				<p class="eyebrow">{$t('about.communityEyebrow')}</p>
+				<h2>{$t('about.communityTitle')}</h2>
+				<p>{$t('about.communityDesc')}</p>
 			</div>
 			<div class="community-partner-grid">
 				<a
@@ -172,8 +114,8 @@
 				>
 					<span class="partner-icon"><i class="fa-brands fa-discord"></i></span>
 					<span class="partner-copy">
-						<strong>Titik Kumpul - Bansos</strong>
-						<span>Discord community partner</span>
+						<strong>{$t('about.communityPartner1')}</strong>
+						<span>{$t('about.communityPartnerRole')}</span>
 					</span>
 					<i class="fa-solid fa-arrow-up-right-from-square partner-arrow"></i>
 				</a>
@@ -185,8 +127,8 @@
 				>
 					<span class="partner-icon"><i class="fa-brands fa-discord"></i></span>
 					<span class="partner-copy">
-						<strong>Gen AI Labs</strong>
-						<span>Discord community partner</span>
+						<strong>{$t('about.communityPartner2')}</strong>
+						<span>{$t('about.communityPartnerRole')}</span>
 					</span>
 					<i class="fa-solid fa-arrow-up-right-from-square partner-arrow"></i>
 				</a>
@@ -195,17 +137,18 @@
 
 		<section class="sponsor-section">
 			<h2>
-				<i class="fa-solid fa-heart"></i> Dukung Proyek Ini
+				<i class="fa-solid fa-heart"></i>
+				{$t('about.sponsorTitle')}
 			</h2>
-			<p>
-				bansos.dev sepenuhnya gratis dan dibangun oleh komunitas. Kamu bisa dukung proyek ini lewat
-				sponsor finansial maupun kontribusi langsung!
-			</p>
+			<p>{$t('about.sponsorDesc')}</p>
 
 			<div class="support-options-grid">
 				<div class="support-card">
-					<h3><i class="fa-solid fa-circle-dollar-to-slot text-rose"></i> Finansial (Sponsor)</h3>
-					<p>Dukung proyek ini via email:</p>
+					<h3>
+						<i class="fa-solid fa-circle-dollar-to-slot text-rose"></i>
+						{$t('about.sponsorFinancial')}
+					</h3>
+					<p>{$t('about.sponsorEmailLabel')}</p>
 					<div class="support-actions">
 						<a
 							href="mailto:me@wau.my.id"
@@ -227,11 +170,11 @@
 				</div>
 
 				<div class="support-card">
-					<h3><i class="fa-solid fa-code-branch text-emerald"></i> Kontribusi Kode & Data</h3>
-					<p>
-						Bantu kasih star di GitLab, submit info bansos baru, atau open PR buat nambah/update
-						fitur:
-					</p>
+					<h3>
+						<i class="fa-solid fa-code-branch text-emerald"></i>
+						{$t('about.sponsorCodeTitle')}
+					</h3>
+					<p>{$t('about.sponsorCodeDesc')}</p>
 					<div class="support-actions">
 						<a
 							href="https://gitlab.com/wauputr4/bansos"
@@ -239,10 +182,12 @@
 							rel="noopener noreferrer"
 							class="contrib-pill github-star-pill"
 						>
-							<i class="fa-solid fa-star"></i> Star di GitLab
+							<i class="fa-solid fa-star"></i>
+							{$t('about.sponsorStarBtn')}
 						</a>
 						<a href={resolve('/contribute')} class="contrib-pill submit-bansos-pill">
-							<i class="fa-solid fa-plus"></i> Submit / Open PR
+							<i class="fa-solid fa-plus"></i>
+							{$t('about.sponsorPrBtn')}
 						</a>
 					</div>
 				</div>
@@ -250,47 +195,21 @@
 		</section>
 
 		<section class="disclaimer-section">
-			<h2><i class="fa-solid fa-scale-balanced"></i> Disclaimer & Kebijakan Penggunaan</h2>
+			<h2><i class="fa-solid fa-scale-balanced"></i> {$t('about.disclaimerTitle')}</h2>
 			<div class="disclaimer-body">
+				<p>{$t('about.disclaimerP1')}</p>
 				<p>
-					bansos.dev adalah <strong>platform komunitas open-source</strong> yang bertujuan membantu sesama
-					developer Indonesia menemukan program bantuan sosial yang sah dan legal dari provider resmi.
-					Kami tidak terafiliasi dengan provider mana pun.
-				</p>
-				<p>
-					<strong>Kami dengan tegas melarang:</strong>
+					<strong>{$t('about.disclaimerProhibition')}</strong>
 				</p>
 				<ul>
-					<li>
-						Penyalahgunaan informasi bansos untuk tujuan <strong>abuse</strong> atau mengeksploitasi celah
-						kebijakan provider.
-					</li>
-					<li>
-						Pelanggaran terhadap <strong>ketentuan layanan (ToS)</strong> platform atau provider pihak
-						ketiga.
-					</li>
-					<li>
-						Tindakan yang melanggar <strong>privasi data</strong> individu atau organisasi.
-					</li>
-					<li>
-						Segala bentuk <strong>tindakan ilegal</strong> atau melanggar hukum yang berlaku.
-					</li>
-					<li>
-						Submit informasi bansos yang <strong>palsu, menyesatkan, atau tidak bisa diklaim</strong
-						>.
-					</li>
+					<li>{$t('about.disclaimerLi1')}</li>
+					<li>{$t('about.disclaimerLi2')}</li>
+					<li>{$t('about.disclaimerLi3')}</li>
+					<li>{$t('about.disclaimerLi4')}</li>
+					<li>{$t('about.disclaimerLi5')}</li>
 				</ul>
-				<p>
-					Semua informasi yang ditampilkan bersifat <strong>referensi</strong>. Selalu verifikasi
-					langsung ke situs resmi provider sebelum melakukan klaim. Kami tidak bertanggung jawab
-					atas perubahan kebijakan sepihak dari provider, interpretasi manfaat yang keliru, ataupun
-					penyalahgunaan informasi oleh pihak tidak bertanggung jawab.
-				</p>
-				<p>
-					Dengan menggunakan bansos.dev, kamu menyetujui bahwa platform ini hanyalah
-					<strong>katalog komunitas</strong> dan segala klaim, transaksi, atau interaksi dengan provider
-					sepenuhnya merupakan tanggung jawab pribadi masing-masing pengguna.
-				</p>
+				<p>{$t('about.disclaimerReference')}</p>
+				<p>{$t('about.disclaimerAgreement')}</p>
 			</div>
 		</section>
 	</section>
@@ -741,9 +660,5 @@
 		color: var(--text-secondary);
 		font-size: 0.9rem;
 		line-height: 1.5;
-	}
-
-	.disclaimer-body li strong {
-		color: #ef4444;
 	}
 </style>

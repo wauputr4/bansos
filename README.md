@@ -9,6 +9,12 @@
 
 ![Bansos Developer Banner](static/og-banner.png)
 
+[**🇮🇩 Indonesia**](#) · [**🌐 English**](#english-version)
+
+---
+
+# 🌏 Bahasa Indonesia (Default)
+
 `Bantuan sosial untuk developer jelata`
 
 **bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
@@ -232,3 +238,48 @@ bansos.dev adalah **platform komunitas open-source** yang bertujuan membantu ses
 Semua informasi yang ditampilkan bersifat **referensi**. Selalu verifikasi langsung ke situs resmi provider sebelum melakukan klaim. Kami tidak bertanggung jawab atas perubahan kebijakan sepihak dari provider, interpretasi manfaat yang keliru, ataupun penyalahgunaan informasi oleh pihak tidak bertanggung jawab.
 
 Dengan menggunakan bansos.dev, Anda menyetujui bahwa platform ini hanyalah **katalog komunitas** dan segala klaim, transaksi, atau interaksi dengan provider sepenuhnya merupakan tanggung jawab pribadi masing-masing pengguna.
+
+---
+
+## 🌐 English Version <a id="english-version"></a>
+
+# bansos.dev
+
+`Social assistance for broke developers`
+
+**bansos.dev** is an open-source catalog of giveaways, freebies, and the most legit coding tool discounts specifically for Indonesian broke developers. Made so our portfolios stay lit even when our wallets are dying. Looking for free domains, hosting free-tier, cloud credits, API credits, free databases, or startup credits? This is the gathering place! 100% Free, No Clickbait, No Hassle. fr fr 🚀
+
+This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or merge request.
+
+### Key Features
+
+- Crawlable and easy-to-search developer bansos catalog.
+- Listings for free domains, free cloud, hosting free-tier, API credits, database credits, and startup benefits.
+- Detail pages with provider, benefits, claim requirements, validity period, active/expired status, and official links.
+- Tag filters and featured/latest highlights.
+- Structured data at [`src/lib/data/bansos.json`](src/lib/data/bansos.json).
+- SEO metadata for public pages, including meta description and social card pattern.
+- Public contribution workflow via email and Git clone.
+- Public contribution page: [bansos.dev/contribute](https://bansos.dev/contribute).
+- Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
+
+### How to Contribute
+
+1. **Via Email** — Open [bansos.dev/contribute](https://bansos.dev/contribute), select the Email tab, and send your proposal to **new@bansos.dev** using the provided template.
+2. **Via Git Clone** — Clone the repo, add data locally via `npm run add:bansos`, push your branch, and open a Merge Request.
+
+### Disclaimer
+
+bansos.dev is an **open-source community platform** aimed at helping fellow Indonesian developers find legitimate and legal social assistance programs from official providers. We are not affiliated with any provider.
+
+**We strictly prohibit:**
+
+- Misuse of bansos information for **abuse** or exploiting provider policy/security loopholes.
+- Violation of **Terms of Service (ToS)** of any platform or third-party provider.
+- Actions that violate **data privacy** of individuals or organizations.
+- Any form of **illegal activity** or violation of applicable law.
+- Submitting **false, misleading, or unclaimable** bansos information.
+
+All displayed information is for **reference only**. Always verify directly with the official provider site before claiming. We are not responsible for unilateral policy changes by providers, misinterpretation of benefits, or misuse of information by irresponsible parties.
+
+By using bansos.dev, you agree that this platform is merely a **community catalog** and all claims, transactions, or interactions with providers are entirely the personal responsibility of each user.

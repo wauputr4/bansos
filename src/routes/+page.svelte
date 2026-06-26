@@ -1,5 +1,7 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n';
 	import { resolve } from '$app/paths';
 	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
 	import {
@@ -27,10 +29,6 @@
 		url: 'https://gitlab.com/wauputr4'
 	};
 
-	// SEO metadata
-	const metaTitle = 'Bansos Developer & AI - Bantuan Sosial untuk Programmer Jelata';
-	const metaDescription =
-		'Kumpulan promo gratisan, diskon, credit API AI gratis, dan bantuan sosial (bansos) khusus untuk developer dan programmer di Indonesia. Domain gratis, cloud server, credit AI, no credit card! fr fr 🚀';
 	const siteUrl = 'https://bansos.dev/';
 	const websiteSchema = JSON.stringify({
 		'@context': 'https://schema.org',
@@ -181,25 +179,22 @@
 </script>
 
 <svelte:head>
-	<title>{metaTitle}</title>
-	<meta name="title" content={metaTitle} />
-	<meta name="description" content={metaDescription} />
-	<meta
-		name="keywords"
-		content="bansos dev, bansos ai, bansos developer, bansos programmer, bantuan sosial developer, bantuan sosial ai, api ai gratis, domain gratis, server gratis, promo developer, cloud gratis, coding gratisan"
-	/>
+	<title>{$t('meta.homeTitle')}</title>
+	<meta name="title" content={$t('meta.homeTitle')} />
+	<meta name="description" content={$t('meta.homeDesc')} />
+	<meta name="keywords" content={$t('meta.homeKeywords')} />
 	<link rel="canonical" href={siteUrl} />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={siteUrl} />
-	<meta property="og:title" content={metaTitle} />
-	<meta property="og:description" content={metaDescription} />
+	<meta property="og:title" content={$t('meta.homeTitle')} />
+	<meta property="og:description" content={$t('meta.homeDesc')} />
 	<meta property="og:image" content="{siteUrl}og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content={siteUrl} />
-	<meta name="twitter:title" content={metaTitle} />
-	<meta name="twitter:description" content={metaDescription} />
+	<meta name="twitter:title" content={$t('meta.homeTitle')} />
+	<meta name="twitter:description" content={$t('meta.homeDesc')} />
 	<meta name="twitter:image" content="{siteUrl}og.png" />
 
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -219,12 +214,8 @@
 				rel="noopener noreferrer"
 				class="github-badge"
 			>
-				<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-					<path
-						d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-					/>
-				</svg>
-				<span>Open Source</span>
+				<i class="fa-brands fa-gitlab icon"></i>
+				<span>{$t('badge.opensource')}</span>
 			</a>
 			<a
 				href="https://discord.gg/m4WFaQpNGs"
@@ -237,7 +228,7 @@
 						d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"
 					/>
 				</svg>
-				<span>Discord</span>
+				<span>{$t('badge.discord')}</span>
 			</a>
 			<a
 				href="https://t.me/bansos_dev"
@@ -250,7 +241,7 @@
 						d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.61l-1.92 9.06c-.14.63-.52.79-1.04.5l-2.93-2.16-1.41 1.36c-.16.16-.29.29-.6.29l.21-3.01 5.48-4.95c.24-.22-.05-.34-.37-.13l-6.78 4.27-2.92-.91c-.63-.2-.65-.63.13-.94l11.41-4.4c.53-.19 1 .13.83.99z"
 					/>
 				</svg>
-				<span>Telegram</span>
+				<span>{$t('badge.telegram')}</span>
 			</a>
 		</div>
 
@@ -258,10 +249,8 @@
 			<span class="title-ban">Ban</span><span class="title-sos">sos</span>
 			<span class="title-dev">Developer</span>
 		</h1>
-		<p class="tagline text-gradient">"Bantuan sosial untuk developer jelata"</p>
-		<p class="community-tagline text-pretty">
-			Gotong Royong dalam bantuin developer jelata lainnya untuk glow up pada projectnya
-		</p>
+		<p class="tagline text-gradient">{$t('home.heroTagline')}</p>
+		<p class="community-tagline text-pretty">{$t('home.heroCommunity')}</p>
 
 		<!-- Interactive Heart Code Logo -->
 		<div
@@ -296,27 +285,26 @@
 		</div>
 
 		<p class="intro-text text-pretty">
-			Tempat ngumpulnya info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling
-			legit. Dibuat khusus untuk kita-kita yang butuh portofolio menyala tapi dompet lagi sekarat.
-			<strong>100% Gratisan, No Clickbait, No Ribet.</strong>
+			{$t('home.heroIntro')}
+			<strong>{$t('home.heroIntroStrong')}</strong>
 		</p>
 
-		<div class="stats-strip" aria-label="Statistik bansos.dev">
+		<div class="stats-strip" aria-label={$t('home.statsAria')}>
 			<div class="stat-item">
 				<span class="stat-value">{totalBansos}</span>
-				<span class="stat-label">Total bansos</span>
+				<span class="stat-label">{$t('home.statTotal')}</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-value">{activeBansos}</span>
-				<span class="stat-label">Masih aktif</span>
+				<span class="stat-label">{$t('home.statActive')}</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-value">{upcomingBansos}</span>
-				<span class="stat-label">Akan datang</span>
+				<span class="stat-label">{$t('home.statUpcoming')}</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-value">{expiredBansos}</span>
-				<span class="stat-label">Arsip expired</span>
+				<span class="stat-label">{$t('home.statExpired')}</span>
 			</div>
 		</div>
 
@@ -325,7 +313,7 @@
 			{#if featuredBansosList.length > 0}
 				<BansosHighlights
 					items={featuredBansosList}
-					title="Rekomendasi Utama"
+					title={$t('home.sectionFeatured')}
 					icon="fa-solid fa-fire"
 					{popularityData}
 					{discussionStats}
@@ -334,7 +322,7 @@
 			{#if latestBansosList.length > 0}
 				<BansosHighlights
 					items={latestBansosList}
-					title="Bansos Terbaru"
+					title={$t('home.sectionLatest')}
 					icon="fa-solid fa-bolt"
 					{popularityData}
 					{discussionStats}
@@ -345,77 +333,53 @@
 		<!-- Large Glowing CTA -->
 		<div class="cta-container">
 			<a href={resolve('/list')} class="btn-primary main-cta">
-				<i class="fa-solid fa-magnifying-glass"></i> Lihat Semua Bansos
+				<i class="fa-solid fa-magnifying-glass"></i>
+				{$t('home.ctaViewAll')}
 			</a>
 		</div>
 	</header>
 
 	<!-- Kelebihan Section -->
 	<section class="advantages-section container">
-		<h2 class="advantages-title text-gradient">Mengapa bansos.dev?</h2>
+		<h2 class="advantages-title text-gradient">{$t('home.advantagesTitle')}</h2>
 		<div class="advantages-grid">
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-bolt"></i></div>
-				<h3>100% Terkurasi & Cepat</h3>
-				<p>
-					Info domain gratis, hosting, API, dan serverless credits langsung dari provider resmi.
-					Tanpa link shortener jebakan!
-				</p>
+				<h3>{$t('home.adv.curatedTitle')}</h3>
+				<p>{$t('home.adv.curatedDesc')}</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-eye"></i></div>
-				<h3>100% Transparan</h3>
-				<p>
-					Semua request bansos baru, validasi data, serta diskusi komunitas terbuka lebar langsung
-					di GitHub Issue & PR.
-				</p>
+				<h3>{$t('home.adv.transparentTitle')}</h3>
+				<p>{$t('home.adv.transparentDesc')}</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-code"></i></div>
-				<h3>Open Source & Self-Hosted</h3>
-				<p>
-					Kode sumber dan data bebas diaudit, difork, atau di-host mandiri sepenuhnya di
-					infrastruktur milikmu.
-				</p>
+				<h3>{$t('home.adv.opensourceTitle')}</h3>
+				<p>{$t('home.adv.opensourceDesc')}</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-users"></i></div>
-				<h3>Didukung Komunitas</h3>
-				<p>
-					Data dikelola secara transparan oleh komunitas developer Indonesia. Siapapun bisa bantu
-					kontribusi & update.
-				</p>
+				<h3>{$t('home.adv.communityTitle')}</h3>
+				<p>{$t('home.adv.communityDesc')}</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-gift"></i></div>
-				<h3>Referral Sahabat Dev</h3>
-				<p>
-					Kamu bebas submit link referral-mu untuk dapat komisi. Yang penting, dilarang menimpa link
-					referral milik orang lain!
-				</p>
+				<h3>{$t('home.adv.referralTitle')}</h3>
+				<p>{$t('home.adv.referralDesc')}</p>
 			</div>
 			<div class="glass-card advantage-card">
 				<div class="advantage-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-				<h3>Adil & Sportif</h3>
-				<p>
-					Mendukung pemakaian link referral pribadi sebagai reward kontribusi, dilarang menimpa link
-					milik orang lain!
-				</p>
+				<h3>{$t('home.adv.fairTitle')}</h3>
+				<p>{$t('home.adv.fairDesc')}</p>
 			</div>
 		</div>
 
 		<div class="glass-card disclaimer-card">
 			<div class="disclaimer-icon"><i class="fa-solid fa-shield-halved"></i></div>
 			<div class="disclaimer-copy">
-				<h3>⚠️ Platform Komunitas — Bukan Ajang Abuse</h3>
-				<p>
-					bansos.dev adalah <strong>platform komunitas open-source</strong> untuk saling support
-					sesama developer Indonesia. <strong>DILARANG KERAS</strong> memanfaatkan informasi di sini
-					untuk tujuan
-					<strong>abuse, pelanggaran ToS, pelanggaran privasi, atau tindakan ilegal</strong> lainnya.
-					Informasi bersifat referensi — selalu verifikasi ke provider resmi sebelum klaim. Penyalahgunaan
-					akan ditindak tegas tanpa peringatan.
-				</p>
+				<h3>{$t('home.disclaimerTitle')}</h3>
+				<p>{$t('home.disclaimerText')}</p>
 			</div>
 		</div>
 	</section>
@@ -423,16 +387,12 @@
 	<!-- Contribution & GitHub Section -->
 	<section class="github-section container">
 		<div class="glass-card github-card">
-			<h2><i class="fa-solid fa-handshake"></i> Proyek Ini Open Source!</h2>
-			<p class="text-pretty">
-				Punya info bansos developer lainnya? Domain gratis, hosting free-tier, API credits gratisan,
-				atau program bagi-bagi cloud? Jangan dipendam sendiri, abangku! Kirim Pull Request dan bantu
-				sesama developer jelata bertahan hidup.
-			</p>
-			<div class="repo-live-panel" aria-label="Statistik repository GitHub bansos.dev">
+			<h2><i class="fa-solid fa-handshake"></i> {$t('home.ossTitle')}</h2>
+			<p class="text-pretty">{$t('home.ossDesc')}</p>
+			<div class="repo-live-panel" aria-label={$t('home.statsAria')}>
 				<div class="commit-contributor-panel">
-					<span class="repo-panel-label">Commit kontributor</span>
-					<div class="contributors-stack" aria-label="Commit kontributor bansos data">
+					<span class="repo-panel-label">{$t('home.ossContribLabel')}</span>
+					<div class="contributors-stack" aria-label={$t('home.ossContribStackAria')}>
 						{#each commitContributors as contributor (contributor.login)}
 							<a
 								href={contributor.login === gitlabOwner.login
@@ -441,7 +401,9 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								class="contributor-avatar"
-								aria-label={`${contributor.login}, ${contributor.count} commit kontribusi`}
+								aria-label={$t('home.ossContribAria', {
+									values: { login: contributor.login, count: contributor.count }
+								})}
 							>
 								<img
 									src={contributor.login === gitlabOwner.login
@@ -458,23 +420,24 @@
 					<a href={repoUrl} target="_blank" rel="noopener noreferrer" class="repo-stat">
 						<i class="fa-solid fa-star" aria-hidden="true"></i>
 						<span>{formatNumber(githubStars)}</span>
-						Stars
+						{$t('home.ossStarsLabel')}
 					</a>
 					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					<a href={`${repoUrl}/pulls`} target="_blank" rel="noopener noreferrer" class="repo-stat">
 						<i class="fa-solid fa-code-pull-request" aria-hidden="true"></i>
 						<span>{formatNumber(githubPrs)}</span>
-						PR
+						{$t('home.ossPrLabel')}
 					</a>
 				</div>
 			</div>
 			<div class="github-actions">
 				<a href={resolve('/contribute')} class="btn-secondary">
 					<i class="fa-solid fa-code-pull-request btn-icon" aria-hidden="true"></i>
-					Kontribusi
+					{$t('home.ossContributeBtn')}
 				</a>
 				<a href={resolve('/about')} class="btn-text">
-					Selengkapnya <i class="fa-solid fa-arrow-right btn-icon" aria-hidden="true"></i>
+					{$t('home.ossLearnMore')}
+					<i class="fa-solid fa-arrow-right btn-icon" aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>

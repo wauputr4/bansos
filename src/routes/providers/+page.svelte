@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { t } from '$lib/i18n';
 	import { getProviderStats, formatNumber } from '$lib/data/bansos';
 	import {
 		getCachedFavicon,
@@ -60,59 +61,55 @@
 </script>
 
 <svelte:head>
-	<title>Daftar Provider Bansos Developer - bansos.dev</title>
-	<meta
-		name="description"
-		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
-	/>
+	<title>{$t('meta.provTitle')}</title>
+	<meta name="description" content={$t('meta.provDesc')} />
 	<link rel="canonical" href="https://bansos.dev/providers/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/providers/" />
-	<meta property="og:title" content="Daftar Provider Bansos Developer - bansos.dev" />
-	<meta
-		property="og:description"
-		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
-	/>
+	<meta property="og:title" content={$t('meta.provTitle')} />
+	<meta property="og:description" content={$t('meta.provDesc')} />
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://bansos.dev/providers/" />
-	<meta name="twitter:title" content="Daftar Provider Bansos Developer - bansos.dev" />
-	<meta
-		name="twitter:description"
-		content="Lihat daftar provider bansos developer seperti cloud credit, domain gratis, hosting trial, AI credits, dan program startup yang bisa diklaim developer Indonesia."
-	/>
+	<meta name="twitter:title" content={$t('meta.provTitle')} />
+	<meta name="twitter:description" content={$t('meta.provDesc')} />
 	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
 	<section class="container provider-hero">
-		<p class="eyebrow">Provider</p>
-		<h1 class="text-gradient text-balance">Provider bansos developer</h1>
+		<p class="eyebrow">{$t('providers.eyebrow')}</p>
+		<h1 class="text-gradient text-balance">{$t('providers.h1')}</h1>
 		<p class="subtitle-text text-pretty">
-			Semua provider diambil otomatis dari daftar bansos. Saat ada bansos baru, halaman ini ikut
-			nambah tanpa perlu maintain manual.
+			{$t('providers.subtitle')}
 		</p>
-		<div class="stats-grid" aria-label="Ringkasan provider">
+		<div class="stats-grid" aria-label={$t('providers.statsAria')}>
 			<div>
 				<strong>{totalProviders}</strong>
-				<span>Total provider</span>
+				<span>{$t('providers.statTotal')}</span>
 			</div>
 			<div>
 				<strong>{totalActive}</strong>
-				<span>Bansos aktif</span>
+				<span>{$t('providers.statActive')}</span>
 			</div>
 		</div>
 	</section>
 
-	<section class="container provider-list" aria-label="Daftar provider">
+	<section class="container provider-list" aria-label={$t('providers.listAria')}>
 		<div class="controls-section">
-			<SearchBox bind:searchQuery placeholder="Cari nama provider atau tag..." />
+			<SearchBox bind:searchQuery placeholder={$t('providers.searchPlaceholder')} />
 		</div>
 		<div class="result-summary">
-			<span>Menampilkan {pageStart}-{pageEnd} dari {filteredProviders.length} provider</span>
-			<span>Halaman {currentPage} dari {totalPages}</span>
+			<span
+				>{$t('providers.resultSummary', {
+					values: { start: pageStart, end: pageEnd, total: filteredProviders.length }
+				})}</span
+			>
+			<span
+				>{$t('providers.resultPage', { values: { current: currentPage, total: totalPages } })}</span
+			>
 		</div>
 		<div class="provider-grid">
 			{#each paginatedProviders as provider (provider.slug)}
@@ -140,16 +137,22 @@
 								>
 							{/if}
 							<span class="active-pill"
-								><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span
+								><i class="fa-solid fa-circle"></i>
+								{provider.activeCount}
+								{$t('providers.activeLabel')}</span
 							>
 						</div>
 					</div>
 					<div>
 						<h2>{provider.name}</h2>
 						<p>
-							{provider.totalCount} bansos terdaftar
+							{$t('providers.countTemplate', { values: { count: provider.totalCount } })}
 							{#if provider.expiredCount > 0}
-								<span> · {provider.expiredCount} expired</span>
+								<span>
+									· {$t('providers.expiredTemplate', {
+										values: { count: provider.expiredCount }
+									})}</span
+								>
 							{/if}
 						</p>
 					</div>
