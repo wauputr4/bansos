@@ -1436,6 +1436,7 @@
 		"id": "jagoanhosting-promo-domain-myid",
 		"title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
 		"provider": "Jagoan Hosting",
+		"providerWebsiteUrl": "https://www.jagoanhosting.com",
 		"description": "Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!",
 		"benefits": [
 			"Domain .MY.ID gratis 1 tahun",
@@ -1461,7 +1462,7 @@
 			"name": "wauputra",
 			"url": "https://wau.my.id/"
 		},
-		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+		"ctaLink": "https://s.id/myid-jagoan",
 		"tags": ["Domain", "Diskon"],
 		"featured": false,
 		"status": "active"
