@@ -85,8 +85,11 @@
 	);
 	const emailTemplate = $derived(
 		($locale || 'id') === 'en'
-			? `NEW BANSOS SUBMISSION
+			? `Hello bansos.dev team,
 
+I would like to submit a new bansos entry for the directory. Here are the details:
+
+Submission: New Bansos
 ID/Slug: [example: provider-free-promo]
 Title: [Bansos name]
 Provider: [Provider name]
@@ -115,10 +118,18 @@ Categories/Tags: [AI, Cloud, Domain, etc]
 Featured: [true/false]
 Status: [active/upcoming]
 
-Contributor: [Your name]
-Contributor URL: [https://...]`
-			: `USULAN BANSOS BARU
+Why this bansos deserves to be listed and is NOT a violation:
+[Explain why this is legitimate, non-abusive, and complies with ToS]
 
+Contributor: [Your name]
+
+Thank you,
+[Your name]`
+			: `Halo tim bansos.dev,
+
+Saya ingin mengusulkan bansos baru untuk ditambahkan ke direktori. Berikut detailnya:
+
+Usulan: Bansos Baru
 ID/Slug: [contoh: provider-promo-gratis]
 Judul: [Nama bansos]
 Provider: [Nama provider]
@@ -147,8 +158,13 @@ Kategori/Tags: [AI, Cloud, Domain, dll]
 Featured: [true/false]
 Status: [active/upcoming]
 
+Alasan kenapa bansos ini layak masuk dan BUKAN violation:
+[Jelaskan kenapa ini legitimate, tidak abusive, dan sesuai ToS]
+
 Kontributor: [Nama kamu]
-Kontributor URL: [https://...]`
+
+Terima kasih,
+[Nama kamu]`
 	);
 	const emailHref = $derived(
 		`mailto:submit@bansos.dev?subject=${encodeURIComponent(
