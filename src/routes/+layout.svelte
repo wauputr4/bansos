@@ -3,6 +3,7 @@
 	import Analytics from '$lib/components/Analytics.svelte';
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import '$lib/i18n';
 
 	let { children } = $props();
 </script>

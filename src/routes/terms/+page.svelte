@@ -1,106 +1,79 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
-	<title>Syarat dan Ketentuan bansos.dev</title>
-	<meta
-		name="description"
-		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
-	/>
+	<title>{$t('meta.termsTitle')}</title>
+	<meta name="description" content={$t('meta.termsDesc')} />
 	<link rel="canonical" href="https://bansos.dev/terms/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://bansos.dev/terms/" />
-	<meta property="og:title" content="Syarat dan Ketentuan bansos.dev" />
-	<meta
-		property="og:description"
-		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
-	/>
+	<meta property="og:title" content={$t('meta.termsTitle')} />
+	<meta property="og:description" content={$t('meta.termsDesc')} />
 	<meta property="og:image" content="https://bansos.dev/og.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://bansos.dev/terms/" />
-	<meta name="twitter:title" content="Syarat dan Ketentuan bansos.dev" />
-	<meta
-		name="twitter:description"
-		content="Syarat dan ketentuan penggunaan bansos.dev sebagai katalog promo, credit, diskon, dan program gratisan untuk developer."
-	/>
+	<meta name="twitter:title" content={$t('meta.termsTitle')} />
+	<meta name="twitter:description" content={$t('meta.termsDesc')} />
 	<meta name="twitter:image" content="https://bansos.dev/og.png" />
 </svelte:head>
 
 <main class="page-wrapper">
 	<section class="container content-shell">
-		<p class="eyebrow">Terms and Conditions</p>
-		<h1 class="text-gradient">Syarat dan ketentuan bansos.dev.</h1>
-		<p class="lead">
-			Dengan memakai bansos.dev, kamu setuju bahwa situs ini adalah katalog komunitas untuk
-			menemukan info promo, credit, diskon, dan program gratisan yang relevan buat developer.
-		</p>
+		<p class="eyebrow">{$t('terms.eyebrow')}</p>
+		<h1 class="text-gradient">{$t('terms.h1')}</h1>
+		<p class="lead">{$t('terms.lead')}</p>
 
 		<section class="terms-section">
-			<h2>1. Informasi bersifat referensi</h2>
-			<p>
-				Daftar bansos dikurasi dari sumber publik atau kontribusi komunitas. Kami berusaha menjaga
-				data tetap akurat, tapi detail program seperti masa berlaku, kuota, syarat klaim, benefit,
-				dan link dapat berubah sewaktu-waktu oleh penyedia program.
-			</p>
+			<h2>{$t('terms.section1Title')}</h2>
+			<p>{$t('terms.section1Desc')}</p>
 		</section>
 
 		<section class="terms-section">
-			<h2>2. Bukan afiliasi resmi</h2>
-			<p>
-				bansos.dev bukan perwakilan resmi dari provider yang tercantum, kecuali dinyatakan secara
-				eksplisit. Semua merek, nama produk, dan logo tetap menjadi milik pemiliknya masing-masing.
-			</p>
+			<h2>{$t('terms.section2Title')}</h2>
+			<p>{$t('terms.section2Desc')}</p>
 		</section>
 
 		<section class="terms-section">
-			<h2>3. Gunakan link resmi</h2>
-			<p>
-				Sebelum klaim program, cek ulang detailnya di halaman resmi provider. Keputusan untuk
-				mendaftar, mengirim data, memasukkan kartu pembayaran, atau memakai layanan pihak ketiga
-				sepenuhnya menjadi tanggung jawab pengguna.
-			</p>
+			<h2>{$t('terms.section3Title')}</h2>
+			<p>{$t('terms.section3Desc')}</p>
 		</section>
 
 		<section class="terms-section">
-			<h2>4. Kontribusi komunitas &amp; Aturan Link Referral</h2>
-			<p>
-				Kontribusi harus menyertakan informasi yang benar, sumber resmi, dan tidak menyesatkan.
-				Kontributor dilarang keras mengirim spam, link berbahaya, atau program palsu.
-			</p>
-			<p style="margin-top: 0.5rem;">
-				<strong>Kebijakan Link Referral:</strong> Siapa pun diperbolehkan memasukkan link referral
-				milik mereka sendiri saat mengajukan program bansos baru. Namun,
-				<strong
-					>dilarang keras menimpa atau mengganti (replace) link referral milik kontributor lain</strong
-				> yang sudah terdaftar sebelumnya demi menjaga sportivitas dan menghargai kontributor pertama
-				program tersebut (gentleman's agreement).
-			</p>
+			<h2>{$t('terms.section4Title')}</h2>
+			<p>{$t('terms.section4P1')}</p>
+			<p style="margin-top: 0.5rem;">{$t('terms.section4P2')}</p>
 		</section>
 
 		<section class="terms-section">
-			<h2>5. Perubahan konten</h2>
-			<p>
-				Maintainer dapat memperbarui, menolak, menyunting, menandai expired, atau menghapus listing
-				jika informasinya tidak valid, sudah tidak relevan, berisiko menyesatkan, atau tidak sesuai
-				dengan tujuan bansos.dev.
-			</p>
+			<h2>{$t('terms.section5Title')}</h2>
+			<p>{$t('terms.section5Intro')}</p>
+			<ul class="terms-list">
+				<li>{$t('terms.liAbuse')}</li>
+				<li>{$t('terms.liTos')}</li>
+				<li>{$t('terms.liPrivacy')}</li>
+				<li>{$t('terms.liIllegal')}</li>
+				<li>{$t('terms.liFalse')}</li>
+			</ul>
+			<p style="margin-top: 0.5rem;">{$t('terms.section5Outro')}</p>
 		</section>
 
 		<section class="terms-section">
-			<h2>6. Batas tanggung jawab</h2>
-			<p>
-				bansos.dev disediakan apa adanya. Kami tidak menjamin setiap program masih aktif, tersedia
-				untuk semua pengguna, atau memberikan benefit sesuai ekspektasi. Kerugian akibat penggunaan
-				layanan pihak ketiga berada di luar tanggung jawab bansos.dev.
-			</p>
+			<h2>{$t('terms.section6Title')}</h2>
+			<p>{$t('terms.section6Desc')}</p>
+		</section>
+
+		<section class="terms-section">
+			<h2>{$t('terms.section7Title')}</h2>
+			<p>{$t('terms.section7Desc')}</p>
 		</section>
 
 		<div class="actions">
-			<a href={resolve('/list')} class="btn-primary">Lihat List Bansos</a>
-			<a href={resolve('/contribute')} class="terms-link">Kontribusi info baru</a>
+			<a href={resolve('/list')} class="btn-primary">{$t('terms.ctaList')}</a>
+			<a href={resolve('/contribute')} class="terms-link">{$t('terms.ctaContribute')}</a>
 		</div>
 	</section>
 </main>
@@ -170,5 +143,23 @@
 	.terms-link {
 		color: var(--color-accent);
 		font-weight: 800;
+	}
+
+	.terms-list {
+		margin: 0.25rem 0 0;
+		padding-left: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.terms-list li {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.terms-list li strong {
+		color: #ef4444;
 	}
 </style>
