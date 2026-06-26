@@ -1,7 +1,5 @@
 # bansos.dev
 
-[![CI](https://gitlab.com/wauputr4/bansos/actions/workflows/ci.yml/badge.svg)](https://gitlab.com/wauputr4/bansos/actions/workflows/ci.yml)
-[![Add Bansos](https://gitlab.com/wauputr4/bansos/actions/workflows/add-bansos.yml/badge.svg)](https://gitlab.com/wauputr4/bansos/actions/workflows/add-bansos.yml)
 [![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
@@ -15,7 +13,7 @@
 
 **bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat CLI atau Pull Request.
+Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau merge request.
 
 ## Keyword cepat
 
@@ -29,13 +27,13 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 - Filter tag dan highlight rekomendasi/terbaru.
 - Data terstruktur di [`src/lib/data/bansos.json`](src/lib/data/bansos.json).
 - SEO metadata untuk halaman publik, termasuk meta description dan social card pattern.
-- Workflow kontribusi via `npx bansosdev add`, GitHub issue, dan Pull Request otomatis.
+- Workflow kontribusi publik via email dan Git clone.
 - Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
 - Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
 
 ## Deploy dan Hosting
 
-Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada Pull Request atau push ke branch `main`/`ui-refactor`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
+Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada merge request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
 ## Menjalankan proyek
 
@@ -61,43 +59,41 @@ src/lib/components/            # komponen UI reusable
 src/routes/list/               # halaman list dan detail bansos
 src/routes/contribute/         # panduan kontribusi publik
 scripts/add-bansos.mjs         # script lokal tambah data
-packages/bansosdev-cli/        # CLI npx bansosdev
-.github/workflows/             # CI, add-entry automation, publish CLI
+packages/bansosdev-cli/        # CLI bansosdev (disabled untuk submit publik)
 ```
 
 ## Cara Menambah Bansos
 
-Ada 3 opsi utama yang bisa kamu pilih untuk mendaftarkan info bansos developer baru, sesuai dengan kenyamananmu:
+Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur form, npx CLI, dan bot dinonaktifkan sementara karena spam.
 
 > [!TIP]
 > **Soon: Submisi via Discord & Telegram Bot!**
-> Kami sedang membangun integrasi bot agar kamu bisa mengirimkan bansos baru secara otomatis langsung dari server Discord atau channel Telegram tanpa buka GitHub/website.
+> Kami sedang membangun integrasi bot agar kamu bisa mengirimkan bansos baru secara otomatis langsung dari server Discord atau channel Telegram.
 > Sembari menunggu, yuk gabung ke komunitas kami:
 >
 > - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
 > - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
 
-### 1. Opsi 1: Lewat Web Form (Paling Mudah & Tanpa Coding)
+### 1. Opsi 1: Lewat Email
 
 Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
 
 1. Buka halaman kontribusi di browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
-2. Isi formulir informasi bansos secara lengkap (nama bansos, provider, deskripsi, benefit, dll).
-3. Klik tombol **Kirim Info**. Sistem akan secara otomatis men-generate halaman Issue GitHub dengan template yang sudah terisi.
-4. Klik **Submit new issue** di GitHub. Bot Actions kami akan memproses issue tersebut dan membuatkan Pull Request secara otomatis.
+2. Pilih tab **Email**.
+3. Kirim usulan ke **[submit@bansos.dev](mailto:submit@bansos.dev)** memakai template yang tersedia.
+4. Pastikan semua field penting terisi: judul, provider, benefit, syarat klaim, link resmi, status, sumber, dan kontributor.
 
 ---
 
-### 2. Opsi 2: Lewat Command Line (npx CLI)
+### 2. Opsi 2: Lewat Command Line (npx CLI) - Dinonaktifkan
 
-Opsi ini ditujukan buat kamu yang lebih suka bermain dengan terminal.
-Kamu bisa menjalankan perintah ini untuk menjalankan wizard interaktif di terminalmu:
+Submit publik via `npx bansosdev add` sedang dinonaktifkan sementara karena spam. Dokumentasi CLI tetap disimpan untuk maintainer dan pengujian lokal, tetapi jangan dipakai untuk submit publik saat ini.
 
 ```bash
 npx bansosdev add
 ```
 
-CLI akan menuntunmu mengisi field demi field, lalu memberikan link instan untuk membuka Issue GitHub. Setelah disubmit, bot otomatis memprosesnya menjadi Pull Request.
+CLI akan menuntunmu mengisi field demi field untuk menyiapkan data lokal.
 
 _Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:_
 
@@ -140,7 +136,7 @@ npx bansosdev add ... --mode json
 
 ---
 
-### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
+### 3. Opsi 3: Lewat Git Clone (Manual Merge Request)
 
 Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
 
@@ -173,19 +169,19 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
    Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
    Argumen `--tags` dipisahkan dengan koma.
 
-3. Buat branch baru, tambahkan commit, push ke fork, dan kirim Pull Request (PR) ke repositori utama.
+3. Buat branch baru, tambahkan commit, push ke fork, dan kirim merge request ke repositori utama.
 
 ---
 
 ### Maintainer mode (Khusus Admin / Maintainer)
 
-Jika punya token maintainer, gunakan mode direct:
+Mode direct untuk submit otomatis sedang dinonaktifkan. Untuk perubahan maintainer, gunakan Git clone, commit manual, dan merge request ke `main`.
 
 ```bash
-BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
+npx bansosdev add ... --mode json
 ```
 
-Token perlu punya akses repository yang cukup untuk memicu workflow. Mode ini membuat Pull Request otomatis; merge ke `main` akan memicu deploy Cloudflare Pages.
+Perintah di atas hanya untuk mengecek payload JSON secara lokal.
 
 Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
 
@@ -202,8 +198,8 @@ Listing yang baik sebaiknya menyertakan:
 
 ## Kontribusi
 
-- Kirim data lewat CLI, buka issue dari URL yang muncul, lalu tunggu PR otomatis dari bot.
-- Jika lebih nyaman, tambahkan melalui branch dan Pull Request manual.
+- Kirim data lewat email ke [submit@bansos.dev](mailto:submit@bansos.dev).
+- Jika lebih nyaman, tambahkan melalui branch dan merge request manual.
 - Baca panduan kontribusi lengkap di [CONTRIBUTING](https://gitlab.com/wauputr4/bansos?tab=contributing-ov-file).
 
 ## Kode etik komunitas
@@ -220,9 +216,3 @@ Proyek `bansos.dev` dibangun secara gratis oleh komunitas. Jika proyek ini memba
 ## Lisensi
 
 MIT. Lihat [LICENSE](LICENSE).
-
-## Contributors
-
-<a href="https://gitlab.com/wauputr4/bansos/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=wauputr4/bansos" alt="Kontributor bansos.dev" />
-</a>
