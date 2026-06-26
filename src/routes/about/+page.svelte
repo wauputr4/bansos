@@ -177,6 +177,19 @@
 					</span>
 					<i class="fa-solid fa-arrow-up-right-from-square partner-arrow"></i>
 				</a>
+				<a
+					href="https://discord.gg/fgG4aHgWpE"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="community-partner-card"
+				>
+					<span class="partner-icon"><i class="fa-brands fa-discord"></i></span>
+					<span class="partner-copy">
+						<strong>Gen AI Labs</strong>
+						<span>Discord community partner</span>
+					</span>
+					<i class="fa-solid fa-arrow-up-right-from-square partner-arrow"></i>
+				</a>
 			</div>
 		</section>
 
