@@ -19,7 +19,13 @@
 	};
 
 	const repo = 'wauputr4/bansos';
-	const repoUrl = `https://github.com/${repo}`;
+	const repoUrl = `https://gitlab.com/${repo}`;
+	const gitlabOwner = {
+		login: 'wauputr4',
+		avatarUrl:
+			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
+		url: 'https://gitlab.com/wauputr4'
+	};
 
 	// SEO metadata
 	const metaTitle = 'Bansos Developer & AI - Bantuan Sosial untuk Programmer Jelata';
@@ -414,13 +420,21 @@
 					<div class="contributors-stack" aria-label="Commit kontributor bansos data">
 						{#each commitContributors as contributor (contributor.login)}
 							<a
-								href={`https://github.com/${contributor.login}`}
+								href={contributor.login === gitlabOwner.login
+									? gitlabOwner.url
+									: `https://github.com/${contributor.login}`}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="contributor-avatar"
 								aria-label={`${contributor.login}, ${contributor.count} commit kontribusi`}
 							>
-								<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+								<img
+									src={contributor.login === gitlabOwner.login
+										? gitlabOwner.avatarUrl
+										: contributor.avatarUrl}
+									alt={contributor.login}
+									loading="lazy"
+								/>
 							</a>
 						{/each}
 					</div>

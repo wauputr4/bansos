@@ -87,9 +87,9 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					class="icon-btn"
-					aria-label="GitHub Repository"
+					aria-label="GitLab Repository"
 				>
-					<i class="fa-brands fa-github"></i>
+					<i class="fa-brands fa-gitlab"></i>
 				</a>
 				<button
 					type="button"

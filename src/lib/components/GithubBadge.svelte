@@ -15,7 +15,7 @@
 	}
 
 	onMount(() => {
-		const CACHE_KEY = `bansos_gh_v2_${repo}`;
+		const CACHE_KEY = `bansos_gitlab_v1_${repo}`;
 
 		const cached = localStorage.getItem(CACHE_KEY);
 		if (cached) {
@@ -30,19 +30,16 @@
 		}
 
 		Promise.all([
-			fetch(`https://api.github.com/repos/${repo}`).then((r) => (r.ok ? r.json() : null)),
-			fetch(`https://api.github.com/repos/${repo}/releases/latest`).then((r) =>
+			fetch(`https://gitlab.com/api/v4/projects/${encodeURIComponent(repo)}`).then((r) =>
 				r.ok ? r.json() : null
 			)
 		])
-			.then(([repoData, releaseData]) => {
-				if (repoData || releaseData) {
-					if (repoData) {
-						stars = repoData.stargazers_count;
-						forks = repoData.forks_count;
-					}
-					if (releaseData && releaseData.tag_name) {
-						version = releaseData.tag_name;
+			.then(([repoData]) => {
+				if (repoData) {
+					stars = repoData.star_count;
+					forks = repoData.forks_count;
+					if (repoData.tag_list?.[0]) {
+						version = repoData.tag_list[0];
 					}
 					localStorage.setItem(CACHE_KEY, JSON.stringify({ stars, forks, version }));
 				}
@@ -52,11 +49,11 @@
 </script>
 
 <a
-	href={`https://github.com/${repo}`}
+	href={`https://gitlab.com/${repo}`}
 	target="_blank"
 	rel="noopener noreferrer"
 	class="repo-link"
-	aria-label="GitHub Repository"
+	aria-label="GitLab Repository"
 >
 	<i class="fa-brands fa-git-alt git-icon"></i>
 	<div class="repo-info">

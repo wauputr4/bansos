@@ -10,6 +10,12 @@
 	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
+	const gitlabOwner = {
+		login: 'wauputr4',
+		avatarUrl:
+			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
+		url: 'https://gitlab.com/wauputr4'
+	};
 	const commitContributors = getCommitContributorStats().sort((a, b) => {
 		if (a.login === 'wauputr4') return -1;
 		if (b.login === 'wauputr4') return 1;
@@ -18,10 +24,10 @@
 
 	const tabs: { id: TabId; label: string; icon: string }[] = [
 		{ id: 'form', label: 'Form', icon: 'fa-solid fa-pen-to-square' },
+		{ id: 'email', label: 'Email', icon: 'fa-solid fa-envelope' },
 		{ id: 'npx', label: 'npx CLI', icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: 'Git Clone', icon: 'fa-solid fa-code-branch' },
 		{ id: 'ai', label: 'AI Agent', icon: 'fa-solid fa-robot' },
-		{ id: 'email', label: 'Email', icon: 'fa-solid fa-envelope' },
 		{ id: 'discord', label: 'Discord (Soon)', icon: 'fa-brands fa-discord' },
 		{ id: 'telegram', label: 'Telegram (Soon)', icon: 'fa-brands fa-telegram' }
 	];
@@ -70,6 +76,41 @@
 	}
 
 	const gitExamples = examples.map(generateGitCommand);
+	const emailTemplate = `USULAN BANSOS BARU
+
+ID/Slug: [contoh: provider-promo-gratis]
+Judul: [Nama bansos]
+Provider: [Nama provider]
+Provider Logo URL: [opsional, URL logo/favicon]
+Deskripsi: [Deskripsi singkat]
+
+Benefit:
+- [Benefit 1]
+- [Benefit 2]
+
+Promo Code: [opsional]
+
+Validitas:
+- Tipe: [fixed/uncertain/forever]
+- Tanggal: [YYYY-MM-DD, jika fixed]
+- Deskripsi: [contoh: selama kuota tersedia]
+
+Syarat Klaim:
+1. [Syarat 1]
+2. [Syarat 2]
+
+Tips: [opsional, cara klaim paling aman]
+Link Klaim: [URL resmi]
+Sumber Info: [URL sumber resmi/postingan]
+Kategori/Tags: [AI, Cloud, Domain, dll]
+Featured: [true/false]
+Status: [active/upcoming]
+
+Kontributor: [Nama kamu]
+Kontributor URL: [https://...]`;
+	const emailHref = `mailto:submit@bansos.dev?subject=${encodeURIComponent(
+		'Usulan Bansos Baru'
+	)}&body=${encodeURIComponent(emailTemplate)}`;
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -315,40 +356,19 @@
 							<div class="email-submit-card">
 								<div class="email-icon">
 									<i class="fa-solid fa-envelope"></i>
-								</div>
-								<h3>Kirim ke: new@bansos.dev</h3>
-								<a
-									href="mailto:new@bansos.dev?subject=Usulan%20Bansos%20Baru&body=%3D%3D%3D%20INFO%20BANSOS%20BARU%20%3D%3D%3D%0A%0AJudul%3A%20%5BNama%20bansos%5D%0AProvider%3A%20%5BNama%20provider%5D%0ADeskripsi%3A%20%5BDeskripsi%20singkat%5D%0ABenefit%3A%0A-%20%5BBenefit%201%5D%0A-%20%5BBenefit%202%5D%0ASyarat%20Klaim%3A%0A1.%20%5BSyarat%201%5D%0A2.%20%5BSyarat%202%5D%0ALink%3A%20%5BURL%20resmi%5D%0AMasa%20Berlaku%3A%20%5BTanggal%5D%0AKategori%3A%20%5BAI%2FCloud%2FDomain%5D%0AKontributor%3A%20%5BNama%20kamu%5D%0AKontributor%20URL%3A%20%5Bhttps%3A%2F%2F...%5D"
+							</div>
+							<h3>Kirim ke: submit@bansos.dev</h3>
+							<a
+								href={emailHref}
 									target="_blank"
 									class="email-send-btn"
 								>
 									<i class="fa-solid fa-paper-plane"></i> Kirim Email Sekarang
 								</a>
 								<p class="email-hint">
-									Atau copy template di bawah, kirim manual ke <strong>new@bansos.dev</strong>
+								Atau copy template di bawah, kirim manual ke <strong>submit@bansos.dev</strong>
 								</p>
-								<pre class="email-template">
-================================
-USULAN BANSOS BARU
-================================
-
-Judul: [Nama bansos]
-Provider: [Nama provider]
-Deskripsi: [Deskripsi singkat]
-
-Benefit:
-- [Benefit 1]
-- [Benefit 2]
-
-Syarat Klaim:
-1. [Syarat 1]
-2. [Syarat 2]
-
-Link: [URL resmi]
-Masa Berlaku: [Tanggal]
-Kategori: [AI/Cloud/Domain/dll]
-Kontributor: [Nama kamu]
-Kontributor URL: [https://...]</pre>
+							<pre class="email-template">{emailTemplate}</pre>
 							</div>
 						</div>
 					</div>
@@ -457,11 +477,19 @@ Kontributor URL: [https://...]</pre>
 									class:author-highlight={contributor.login === 'wauputr4'}
 								>
 									<a
-										href={`https://github.com/${contributor.login}`}
+										href={contributor.login === gitlabOwner.login
+											? gitlabOwner.url
+											: `https://github.com/${contributor.login}`}
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
+										<img
+											src={contributor.login === gitlabOwner.login
+												? gitlabOwner.avatarUrl
+												: contributor.avatarUrl}
+											alt={contributor.login}
+											loading="lazy"
+										/>
 										<span class="login-name">@{contributor.login}</span>
 										{#if contributor.login === 'wauputr4'}
 											<span class="author-badge" title="Author">
