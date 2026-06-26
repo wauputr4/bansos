@@ -283,6 +283,19 @@
 		"activeLabel": "active",
 		"listAria": "Provider list"
 	},
+	"providerDetail": {
+		"seoTitle": "{provider} developer bansos - bansos.dev",
+		"seoDesc": "Developer bansos from {provider}: {total} programs, {active} still active, with claim guides and official links.",
+		"backToProviders": "All Providers",
+		"subtitle": "{provider} has {total} developer bansos listed in this catalog. {active} are still active and can be checked from each detail page.",
+		"website": "Provider website",
+		"activeCount": "{count} active",
+		"expiredCount": "{count} expired",
+		"sectionTitle": "Bansos from {provider}",
+		"itemCount": "{count} items",
+		"searchPlaceholder": "Search program name or tag...",
+		"emptyState": "No programs match your search."
+	},
 	"detail": {
 		"seoTitle": "How to Claim {title} - bansos.dev",
 		"seoDesc": "A step-by-step guide to claim {title} for broke developers. 100% legal, no credit card required!",

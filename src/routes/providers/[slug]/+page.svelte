@@ -3,6 +3,7 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import { t } from '$lib/i18n';
 	import {
 		getCachedFavicon,
 		setCachedFavicon,
@@ -14,9 +15,17 @@
 
 	let { data } = $props();
 	const provider = $derived(data.provider);
-	const seoTitle = $derived(`${provider.name} bansos developer - bansos.dev`);
+	const providerDetailT = $derived(
+		(key: string, values?: Record<string, string | number | boolean | Date | null | undefined>) =>
+			values ? $t(`providerDetail.${key}`, { values }) : $t(`providerDetail.${key}`)
+	);
+	const seoTitle = $derived(providerDetailT('seoTitle', { provider: provider.name }));
 	const seoDescription = $derived(
-		`Daftar bansos developer dari ${provider.name}: ${provider.totalCount} program, ${provider.activeCount} masih aktif, lengkap dengan cara klaim dan link resmi.`
+		providerDetailT('seoDesc', {
+			provider: provider.name,
+			total: provider.totalCount,
+			active: provider.activeCount
+		})
 	);
 
 	let searchQuery = $state('');
@@ -81,7 +90,8 @@
 <main class="page-wrapper">
 	<nav class="container top-nav">
 		<a href={resolve('/providers')} class="btn-back">
-			<i class="fa-solid fa-arrow-left"></i> Semua Provider
+			<i class="fa-solid fa-arrow-left"></i>
+			{providerDetailT('backToProviders')}
 		</a>
 	</nav>
 
@@ -98,20 +108,34 @@
 				onerror={(e) => handleFaviconFallback(e, provider.websiteUrl)}
 			/>
 			<div>
-				<p class="eyebrow">Provider</p>
+				<p class="eyebrow">{$t('providers.eyebrow')}</p>
 				<h1 class="text-gradient text-balance">{provider.name}</h1>
 			</div>
 		</div>
 		<p class="subtitle-text text-pretty">
-			{provider.name} punya {provider.totalCount} bansos developer di katalog ini.
-			{provider.activeCount} masih aktif dan bisa dicek cara klaimnya dari halaman detail.
+			{providerDetailT('subtitle', {
+				provider: provider.name,
+				total: provider.totalCount,
+				active: provider.activeCount
+			})}
 		</p>
 		<div class="meta-row">
 			<a href={provider.websiteUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
-				<i class="fa-solid fa-arrow-up-right-from-square"></i> Website provider
+				<i class="fa-solid fa-arrow-up-right-from-square"></i>
+				{providerDetailT('website')}
 			</a>
-			<span><i class="fa-solid fa-circle"></i> {provider.activeCount} aktif</span>
-			<span><i class="fa-solid fa-box-archive"></i> {provider.expiredCount} expired</span>
+			<span
+				><i class="fa-solid fa-circle"></i>
+				{providerDetailT('activeCount', {
+					count: provider.activeCount
+				})}</span
+			>
+			<span
+				><i class="fa-solid fa-box-archive"></i>
+				{providerDetailT('expiredCount', {
+					count: provider.expiredCount
+				})}</span
+			>
 		</div>
 		<div class="tag-list">
 			{#each provider.tags as tag (tag)}
@@ -122,14 +146,14 @@
 
 	<section class="container related-section">
 		<div class="section-header">
-			<h2>Bansos dari {provider.name}</h2>
-			<span>{filteredItems.length} item</span>
+			<h2>{providerDetailT('sectionTitle', { provider: provider.name })}</h2>
+			<span>{providerDetailT('itemCount', { count: filteredItems.length })}</span>
 		</div>
 		<div class="controls-section">
-			<SearchBox bind:searchQuery placeholder="Cari nama program atau tag..." />
+			<SearchBox bind:searchQuery placeholder={providerDetailT('searchPlaceholder')} />
 		</div>
 		{#if filteredItems.length === 0}
-			<p class="empty-state">Tidak ada program yang sesuai pencarian.</p>
+			<p class="empty-state">{providerDetailT('emptyState')}</p>
 		{:else}
 			<div class="bansos-grid">
 				{#each paginatedItems as item (item.id)}

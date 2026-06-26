@@ -283,6 +283,19 @@
 		"activeLabel": "aktif",
 		"listAria": "Daftar provider"
 	},
+	"providerDetail": {
+		"seoTitle": "{provider} bansos developer - bansos.dev",
+		"seoDesc": "Daftar bansos developer dari {provider}: {total} program, {active} masih aktif, lengkap dengan cara klaim dan link resmi.",
+		"backToProviders": "Semua Provider",
+		"subtitle": "{provider} punya {total} bansos developer di katalog ini. {active} masih aktif dan bisa dicek cara klaimnya dari halaman detail.",
+		"website": "Website provider",
+		"activeCount": "{count} aktif",
+		"expiredCount": "{count} expired",
+		"sectionTitle": "Bansos dari {provider}",
+		"itemCount": "{count} item",
+		"searchPlaceholder": "Cari nama program atau tag...",
+		"emptyState": "Tidak ada program yang sesuai pencarian."
+	},
 	"detail": {
 		"seoTitle": "Cara Dapat {title} - bansos.dev",
 		"seoDesc": "Panduan step-by-step paling lengkap buat klaim {title} khusus developer jelata. 100% legal, no credit card required!",
