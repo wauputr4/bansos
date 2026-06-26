@@ -159,8 +159,8 @@
 				<p class="eyebrow">Bansos Community</p>
 				<h2>Mitra komunitas yang ikut nyebarin bansos.dev.</h2>
 				<p>
-					Komunitas yang sudah bantu kontribusi, promosi, atau membagikan info bansos.dev di
-					grupnya akan kami promote di sini.
+					Komunitas yang sudah bantu kontribusi, promosi, atau membagikan info bansos.dev di grupnya
+					akan kami promote di sini.
 				</p>
 			</div>
 			<div class="community-partner-grid">
@@ -246,6 +246,51 @@
 						</a>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<section class="disclaimer-section">
+			<h2><i class="fa-solid fa-scale-balanced"></i> Disclaimer & Kebijakan Penggunaan</h2>
+			<div class="disclaimer-body">
+				<p>
+					bansos.dev adalah <strong>platform komunitas open-source</strong> yang bertujuan membantu sesama
+					developer Indonesia menemukan program bantuan sosial yang sah dan legal dari provider resmi.
+					Kami tidak terafiliasi dengan provider mana pun.
+				</p>
+				<p>
+					<strong>Kami dengan tegas melarang:</strong>
+				</p>
+				<ul>
+					<li>
+						Penyalahgunaan informasi bansos untuk tujuan <strong>abuse</strong> atau mengeksploitasi celah
+						kebijakan provider.
+					</li>
+					<li>
+						Pelanggaran terhadap <strong>ketentuan layanan (ToS)</strong> platform atau provider pihak
+						ketiga.
+					</li>
+					<li>
+						Tindakan yang melanggar <strong>privasi data</strong> individu atau organisasi.
+					</li>
+					<li>
+						Segala bentuk <strong>tindakan ilegal</strong> atau melanggar hukum yang berlaku.
+					</li>
+					<li>
+						Submit informasi bansos yang <strong>palsu, menyesatkan, atau tidak bisa diklaim</strong
+						>.
+					</li>
+				</ul>
+				<p>
+					Semua informasi yang ditampilkan bersifat <strong>referensi</strong>. Selalu verifikasi
+					langsung ke situs resmi provider sebelum melakukan klaim. Kami tidak bertanggung jawab
+					atas perubahan kebijakan sepihak dari provider, interpretasi manfaat yang keliru, ataupun
+					penyalahgunaan informasi oleh pihak tidak bertanggung jawab.
+				</p>
+				<p>
+					Dengan menggunakan bansos.dev, kamu menyetujui bahwa platform ini hanyalah
+					<strong>katalog komunitas</strong> dan segala klaim, transaksi, atau interaksi dengan provider
+					sepenuhnya merupakan tanggung jawab pribadi masing-masing pengguna.
+				</p>
 			</div>
 		</section>
 	</section>
@@ -653,5 +698,52 @@
 			grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
 			align-items: center;
 		}
+	}
+
+	.disclaimer-section {
+		margin-top: 4rem;
+		padding-top: 2.5rem;
+		border-top: 1px solid var(--border-color);
+	}
+
+	.disclaimer-section h2 {
+		font-size: var(--font-size-h2);
+		color: var(--text-primary);
+		margin: 0 0 1.25rem;
+	}
+
+	.disclaimer-section h2 i {
+		color: #ef4444;
+	}
+
+	.disclaimer-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+	}
+
+	.disclaimer-body p {
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+		font-size: 0.9rem;
+	}
+
+	.disclaimer-body ul {
+		margin: 0;
+		padding-left: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.disclaimer-body li {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.disclaimer-body li strong {
+		color: #ef4444;
 	}
 </style>
