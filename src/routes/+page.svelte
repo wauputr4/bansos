@@ -404,7 +404,9 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								class="contributor-avatar"
-								aria-label={$t('home.ossContribAria', { values: { login: contributor.login, count: contributor.count } })}
+								aria-label={$t('home.ossContribAria', {
+									values: { login: contributor.login, count: contributor.count }
+								})}
 							>
 								<img
 									src={contributor.login === gitlabOwner.login

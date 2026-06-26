@@ -81,8 +81,9 @@
 	const currentLocale = $derived($locale || 'id');
 	const currentDateLocale = $derived(currentLocale === 'en' ? 'en-US' : 'id-ID');
 	const giscusLang = $derived(currentLocale === 'en' ? 'en' : 'id');
-	const detailT = $derived((key: string, values?: Record<string, string | number | boolean | Date | null | undefined>) =>
-		values ? $t(`detail.${key}`, { values }) : $t(`detail.${key}`)
+	const detailT = $derived(
+		(key: string, values?: Record<string, string | number | boolean | Date | null | undefined>) =>
+			values ? $t(`detail.${key}`, { values }) : $t(`detail.${key}`)
 	);
 	const statusLabel = $derived.by(() => {
 		if (status === 'active') return $t('list.statusActive');
@@ -123,9 +124,7 @@
 	const seoTitle = $derived(
 		item ? detailT('seoTitle', { title: item.title }) : detailT('notFoundTitle')
 	);
-	const seoDesc = $derived(
-		item ? detailT('seoDesc', { title: item.title }) : ''
-	);
+	const seoDesc = $derived(item ? detailT('seoDesc', { title: item.title }) : '');
 	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
 
 	// JSON-LD Specific Product / Guide Schema
@@ -247,7 +246,8 @@
 				class="btn-primary"
 				style="margin-top: 1rem; gap: 0.5rem; text-decoration: none;"
 			>
-				<i class="fa-solid fa-arrow-left"></i> {detailT('backToList')}
+				<i class="fa-solid fa-arrow-left"></i>
+				{detailT('backToList')}
 			</a>
 		</div>
 	</main>
@@ -369,9 +369,9 @@
 									onclick={(e) => copyCode(item.promoCode || '', e)}
 								>
 									{#if copied}
-											<i class="fa-solid fa-check"></i> {$t('common.copied')}
-										{:else}
-											<i class="fa-solid fa-copy"></i> {$t('common.copy')}
+										<i class="fa-solid fa-check"></i> {$t('common.copied')}
+									{:else}
+										<i class="fa-solid fa-copy"></i> {$t('common.copy')}
 									{/if}
 								</button>
 							</div>
@@ -380,7 +380,8 @@
 
 					<section class="section-block guide-section">
 						<h2>
-							<i class="fa-solid fa-screwdriver-wrench"></i> {detailT('guideTitle')}
+							<i class="fa-solid fa-screwdriver-wrench"></i>
+							{detailT('guideTitle')}
 						</h2>
 						<ol class="step-list">
 							{#each item.requirements as req, idx (req)}
@@ -399,7 +400,8 @@
 							rel="noopener noreferrer"
 							class="btn-primary cta-btn"
 						>
-							<i class="fa-solid fa-rocket"></i> {detailT('ctaOfficial')}
+							<i class="fa-solid fa-rocket"></i>
+							{detailT('ctaOfficial')}
 						</a>
 					</div>
 				</article>
@@ -410,7 +412,8 @@
 						<h2
 							style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
 						>
-							<i class="fa-regular fa-comments"></i> {detailT('commentsTitle')}
+							<i class="fa-regular fa-comments"></i>
+							{detailT('commentsTitle')}
 						</h2>
 						<div bind:this={giscusContainer}></div>
 					</div>
@@ -423,7 +426,9 @@
 					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
-								<span class="meta-label"><i class="fa-solid fa-link"></i> {detailT('officialSource')}</span>
+								<span class="meta-label"
+									><i class="fa-solid fa-link"></i> {detailT('officialSource')}</span
+								>
 								{#if sourceIsUrl}
 									<a href={source} target="_blank" rel="noopener noreferrer">{displaySource}</a>
 								{:else}
@@ -460,7 +465,7 @@
 												target="_blank"
 												rel="noopener noreferrer"
 												class="commit-person"
-										title={detailT('commitBy', { login: contributor.login })}
+												title={detailT('commitBy', { login: contributor.login })}
 											>
 												<img src={contributor.avatarUrl} alt={contributor.login} loading="lazy" />
 												<span>@{contributor.login}</span>
@@ -475,7 +480,8 @@
 
 				<div class="sidebar-recommendations-header">
 					<h3 class="sidebar-recommendations-title">
-						<i class="fa-solid fa-sparkles text-emerald"></i> {detailT('recommendations')}
+						<i class="fa-solid fa-sparkles text-emerald"></i>
+						{detailT('recommendations')}
 					</h3>
 					<a href={resolve('/list')} class="btn-lihat-semua-sidebar"
 						>{$t('home.ctaViewAll')} <i class="fa-solid fa-arrow-right"></i></a
@@ -508,7 +514,8 @@
 				</div>
 				<div class="bottom-cta-actions">
 					<a href={resolve('/contribute')} class="btn-primary">
-						<i class="fa-solid fa-code-pull-request"></i> {detailT('submitNew')}
+						<i class="fa-solid fa-code-pull-request"></i>
+						{detailT('submitNew')}
 					</a>
 					<a
 						href="https://gitlab.com/wauputr4/bansos"
@@ -516,7 +523,8 @@
 						rel="noopener noreferrer"
 						class="btn-secondary"
 					>
-						<i class="fa-solid fa-star"></i> {detailT('starGitlab')}
+						<i class="fa-solid fa-star"></i>
+						{detailT('starGitlab')}
 					</a>
 				</div>
 			</div>

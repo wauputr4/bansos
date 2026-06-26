@@ -79,7 +79,9 @@
 		return parts.join('\n');
 	}
 
-	const gitExamples = $derived(examples.map((example) => generateGitCommand(example, $locale || 'id')));
+	const gitExamples = $derived(
+		examples.map((example) => generateGitCommand(example, $locale || 'id'))
+	);
 	const emailTemplate = $derived(
 		($locale || 'id') === 'en'
 			? `NEW BANSOS SUBMISSION
@@ -147,9 +149,11 @@ Status: [active/upcoming]
 Kontributor: [Nama kamu]
 Kontributor URL: [https://...]`
 	);
-	const emailHref = $derived(`mailto:submit@bansos.dev?subject=${encodeURIComponent(
-		$t('contribute.emailSubject')
-	)}&body=${encodeURIComponent(emailTemplate)}`);
+	const emailHref = $derived(
+		`mailto:submit@bansos.dev?subject=${encodeURIComponent(
+			$t('contribute.emailSubject')
+		)}&body=${encodeURIComponent(emailTemplate)}`
+	);
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
@@ -495,7 +499,9 @@ Kontributor URL: [https://...]`
 										{/if}
 									</a>
 									<span class="contributor-count"
-										>{$t('contribute.contribProjectCount', { values: { count: contributor.count } })}</span
+										>{$t('contribute.contribProjectCount', {
+											values: { count: contributor.count }
+										})}</span
 									>
 								</li>
 							{/each}
@@ -517,7 +523,9 @@ Kontributor URL: [https://...]`
 											</a>
 										</div>
 										<span class="contributor-count"
-											>{$t('contribute.contribRegisteredCount', { values: { count: contributor.count } })}</span
+											>{$t('contribute.contribRegisteredCount', {
+												values: { count: contributor.count }
+											})}</span
 										>
 									</li>
 								{/each}
