@@ -265,7 +265,7 @@ This site is built as a static SvelteKit site that is super SEO-friendly, data-d
 
 ### How to Contribute
 
-1. **Via Email** — Open [bansos.dev/contribute](https://bansos.dev/contribute), select the Email tab, and send your proposal to **new@bansos.dev** using the provided template.
+1. **Via Email** — Open [bansos.dev/contribute](https://bansos.dev/contribute), select the Email tab, and send your proposal to **submit@bansos.dev** using the provided template.
 2. **Via Git Clone** — Clone the repo, add data locally via `npm run add:bansos`, push your branch, and open a Merge Request.
 
 ### Disclaimer
