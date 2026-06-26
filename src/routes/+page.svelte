@@ -7,6 +7,7 @@
 		latestBansos,
 		featuredBansos,
 		getCommitContributorStats,
+		getContributorStats,
 		formatNumber
 	} from '$lib/data/bansos';
 
@@ -45,7 +46,31 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
-	const commitContributors = getCommitContributorStats();
+	const commitContributors = getCommitContributorStats().filter(
+		(c) => c.login !== 'github-actions[bot]'
+	);
+	// Gabungin dengan kontributor dari bansos.json (entry contributor field)
+	const entryContributors = getContributorStats();
+	const combinedLogins: Record<string, boolean> = {};
+	for (const c of commitContributors) {
+		combinedLogins[c.login.toLowerCase()] = true;
+	}
+	for (const ec of entryContributors) {
+		const githubMatch = ec.url.match(new RegExp('^https://github.com/([^/?#]+)'));
+		if (githubMatch) {
+			const ghLogin = githubMatch[1].toLowerCase();
+			if (!combinedLogins[ghLogin]) {
+				combinedLogins[ghLogin] = true;
+				commitContributors.push({
+					login: ghLogin,
+					name: ec.name,
+					avatarUrl: `https://github.com/${ghLogin}.png?size=96`,
+					commitUrl: `https://github.com/${ghLogin}`,
+					count: ec.count
+				});
+			}
+		}
+	}
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
 	let githubContributors: GithubContributor[] = $state([]);
@@ -816,7 +841,15 @@
 
 	.github-actions {
 		display: flex;
+		flex-direction: row;
 		gap: 1rem;
+	}
+
+	@media (max-width: 48rem) {
+		.github-actions {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	.repo-live-panel {
@@ -842,8 +875,10 @@
 
 	.contributors-stack {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		padding-left: 0.75rem;
+		gap: 0;
 	}
 
 	.contributor-avatar {
@@ -854,9 +889,6 @@
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-	}
-
-	.contributor-avatar {
 		overflow: hidden;
 		transition:
 			transform 0.2s ease,
