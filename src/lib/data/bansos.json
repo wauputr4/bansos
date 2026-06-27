@@ -247,7 +247,7 @@
 		},
 		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
 		"tags": ["AI Credits", "API", "AI Tools", "Diskon"],
-		"featured": false,
+		"featured": true,
 		"status": "active",
 		"provider": "Kie.ai"
 	},
@@ -879,7 +879,7 @@
 		"source": "https://t.me/tvstreamindonesia",
 		"ctaLink": "https://tvstreamindonesia.my.id",
 		"tags": ["Free Tier"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Tvstreamindonesia"
 	},
@@ -907,7 +907,7 @@
 		},
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
 		"tags": ["Domain", "Free Tier", "Diskon"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Rumahweb"
 	},
@@ -1464,7 +1464,7 @@
 		},
 		"ctaLink": "https://s.id/myid-jagoan",
 		"tags": ["Domain", "Diskon"],
-		"featured": false,
+		"featured": true,
 		"status": "active"
 	},
 	{
