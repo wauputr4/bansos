@@ -1491,5 +1491,33 @@
 		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "Gratisan"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "noblehost-hosting-gratis",
+		"title": "NobleHost - Web Hosting Gratis",
+		"provider": "NobleHost",
+		"description": "NobleHost adalah platform hosting gratis dengan fitur lengkap untuk developer, mahasiswa, dan siapa aja yang butuh hosting website tanpa keluar duit. NobleHost cocok buat portfolio, tugas kuliah, side project, atau blog.",
+		"benefits": [
+			"Hosting gratis selamanya",
+			"Subdomain dan custom domain + Auto SSL",
+			"Panel dashboard mudah dengan fitur lengkap"
+		],
+		"promoCode": "",
+		"validity": {
+			"type": "forever",
+			"description": "Selama layanan aktif"
+		},
+		"requirements": ["Daftar akun", "Verifikasi email", "Setuju dengan kebijakan penggunaan"],
+		"tips": "Tinggal Klik buat website pertama kamu, pilih domain, dan langsung live di internet",
+		"source": "https://noblehost.xyz",
+		"publishedAt": "2026-06-27",
+		"contributor": {
+			"name": "NobleHost",
+			"url": "https://noblehost.xyz/"
+		},
+		"ctaLink": "https://noblehost.xyz/",
+		"tags": ["Hosting", "Domain", "Cloud Services"],
+		"featured": true,
+		"status": "active"
 	}
 ]
