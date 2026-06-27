@@ -153,13 +153,13 @@
 		"tips": "Gas buat prototype dulu, tapi jangan taruh API key di frontend. Developer jelata juga wajib punya secret management.",
 		"publishedAt": "2026-06-12",
 		"contributor": {
-			"name": "TokenGratis.id",
-			"url": "https://www.tokengratis.id/provider/deepseek"
+			"name": "wauputra",
+			"url": "https://deepseek.com"
 		},
 		"ctaLink": "https://platform.deepseek.com/api_keys",
 		"tags": ["AI Credits", "No Credit Card", "Free Tier"],
 		"featured": true,
-		"status": "active",
+		"status": "expired",
 		"provider": "DeepSeek"
 	},
 	{
