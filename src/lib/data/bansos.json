@@ -153,13 +153,13 @@
 		"tips": "Gas buat prototype dulu, tapi jangan taruh API key di frontend. Developer jelata juga wajib punya secret management.",
 		"publishedAt": "2026-06-12",
 		"contributor": {
-			"name": "TokenGratis.id",
-			"url": "https://www.tokengratis.id/provider/deepseek"
+			"name": "wauputra",
+			"url": "https://deepseek.com"
 		},
 		"ctaLink": "https://platform.deepseek.com/api_keys",
 		"tags": ["AI Credits", "No Credit Card", "Free Tier"],
 		"featured": true,
-		"status": "active",
+		"status": "expired",
 		"provider": "DeepSeek"
 	},
 	{
@@ -247,7 +247,7 @@
 		},
 		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
 		"tags": ["AI Credits", "API", "AI Tools", "Diskon"],
-		"featured": false,
+		"featured": true,
 		"status": "active",
 		"provider": "Kie.ai"
 	},
@@ -879,7 +879,7 @@
 		"source": "https://t.me/tvstreamindonesia",
 		"ctaLink": "https://tvstreamindonesia.my.id",
 		"tags": ["Free Tier"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Tvstreamindonesia"
 	},
@@ -907,7 +907,7 @@
 		},
 		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
 		"tags": ["Domain", "Free Tier", "Diskon"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Rumahweb"
 	},
@@ -1464,7 +1464,7 @@
 		},
 		"ctaLink": "https://s.id/myid-jagoan",
 		"tags": ["Domain", "Diskon"],
-		"featured": false,
+		"featured": true,
 		"status": "active"
 	},
 	{
@@ -1517,7 +1517,38 @@
 		},
 		"ctaLink": "https://noblehost.xyz/",
 		"tags": ["Hosting", "Domain", "Cloud Services"],
-		"featured": true,
+		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "v0-vercel-ai-credits-up-to-200",
+		"title": "v0 (Vercel) - AI Credits hingga $200",
+		"provider": "v0 (Vercel)",
+		"description": "Platform AI coding dari Vercel yang memungkinkan pengguna membuat aplikasi dan frontend menggunakan prompt berbasis AI. Pengguna dapat memperoleh AI Credits secara gratis hingga $200 setelah mendaftar tanpa perlu kartu kredit maupun metode pembayaran.",
+		"benefits": [
+			"Mendapat $10 langsung saat pertama kali daftar",
+			"Dapatkan hingga $200 total AI Credits",
+			"Bisa deploy project secara langsung dan gratis",
+			"AI Coding dan UI generation berkualitas tinggi"
+		],
+		"promoCode": "",
+		"validity": {
+			"type": "uncertain",
+			"description": "Selama kuota tersedia"
+		},
+		"requirements": [
+			"Daftar akun di v0.dev (mungkin perlu verifikasi nomor telepon)",
+			"$10 pertama otomatis masuk ke akun setelah selesai registrasi"
+		],
+		"source": "https://community.vercel.com/t/the-new-v0-is-here/32845",
+		"publishedAt": "2026-06-27",
+		"contributor": {
+			"name": "Juan",
+			"url": ""
+		},
+		"ctaLink": "https://v0.app/ref/8EFMVE",
+		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "No Credit Card"],
+		"featured": false,
 		"status": "active"
 	}
 ]
