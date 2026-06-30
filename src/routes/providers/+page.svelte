@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { t } from '$lib/i18n';
-	import { getProviderStats, formatNumber } from '$lib/data/bansos';
+	import { getProviderStats, formatNumber, slugifyProvider } from '$lib/data/bansos';
 	import {
 		getCachedFavicon,
 		setCachedFavicon,
@@ -25,6 +25,8 @@
 				p.tags.some((t) => t.toLowerCase().includes(query))
 		);
 	});
+
+	const featuredProvider = $derived(providers.find((p) => p.slug === 'jagoan-hosting'));
 
 	const totalProviders = $derived(filteredProviders.length);
 	const totalActive = $derived(
@@ -96,6 +98,46 @@
 			</div>
 		</div>
 	</section>
+
+	{#if featuredProvider}
+		<section class="container featured-provider-section" aria-label="Featured Provider">
+			<div class="featured-header">
+				<i class="fa-solid fa-star"></i>
+				<span>Featured Provider</span>
+			</div>
+			<a href={resolve(`/providers/${featuredProvider.slug}`)} class="featured-card glass-card">
+				<div class="featured-card-top">
+					<img
+						src={getCachedFavicon(featuredProvider.websiteUrl) || featuredProvider.faviconUrl}
+						alt=""
+						class="featured-provider-logo"
+						onload={(e) => {
+							const target = e.currentTarget as HTMLImageElement;
+							setCachedFavicon(featuredProvider.websiteUrl, target.src);
+						}}
+						onerror={(e) => handleFaviconFallback(e, featuredProvider.websiteUrl)}
+					/>
+					<div class="featured-provider-info">
+						<h2>{featuredProvider.name}</h2>
+						<p>
+							{$t('providers.countTemplate', { values: { count: featuredProvider.totalCount } })}
+							<span class="active-count">
+								<i class="fa-solid fa-circle"></i>
+								{featuredProvider.activeCount}
+								{$t('providers.activeLabel')}
+							</span>
+						</p>
+					</div>
+					<i class="fa-solid fa-arrow-up-right-from-square featured-arrow"></i>
+				</div>
+				<div class="featured-tags">
+					{#each featuredProvider.tags.slice(0, 5) as tag (tag)}
+						<span>{tag}</span>
+					{/each}
+				</div>
+			</a>
+		</section>
+	{/if}
 
 	<section class="container provider-list" aria-label={$t('providers.listAria')}>
 		<div class="controls-section">
@@ -335,6 +377,120 @@
 
 	.tag-list span {
 		border: 1px solid var(--border-color);
+		border-radius: 0.45rem;
+		color: var(--text-secondary);
+		font-size: 0.75rem;
+		font-weight: 700;
+		padding: 0.2rem 0.55rem;
+	}
+
+	.featured-provider-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+	}
+
+	.featured-header {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		font-size: 0.75rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-accent);
+	}
+
+	.featured-header i {
+		color: #f1c40f;
+		font-size: 0.7rem;
+	}
+
+	.featured-card {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		color: inherit;
+		padding: 1.25rem;
+		border: 1px solid rgba(241, 196, 15, 0.25);
+		background: rgba(241, 196, 15, 0.03);
+		transition:
+			transform 0.2s,
+			border-color 0.2s;
+	}
+
+	.featured-card:hover {
+		transform: translateY(-2px);
+		border-color: rgba(241, 196, 15, 0.5);
+	}
+
+	.featured-card-top {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.featured-provider-logo {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.7rem;
+		border: 1px solid var(--border-color);
+		background: var(--bg-secondary);
+		padding: 0.45rem;
+		object-fit: contain;
+	}
+
+	.featured-provider-info {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.featured-provider-info h2 {
+		font-size: 1.2rem;
+		margin: 0;
+		line-height: 1.25;
+	}
+
+	.featured-provider-info p {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		font-weight: 650;
+		margin: 0.15rem 0 0;
+	}
+
+	.active-count {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		margin-left: 0.5rem;
+		font-size: 0.8rem;
+		color: var(--color-success);
+	}
+
+	.active-count i {
+		font-size: 0.4rem;
+	}
+
+	.featured-arrow {
+		flex-shrink: 0;
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		opacity: 0.5;
+		transition: opacity 0.2s;
+	}
+
+	.featured-card:hover .featured-arrow {
+		opacity: 1;
+	}
+
+	.featured-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+	}
+
+	.featured-tags span {
+		border: 1px solid rgba(241, 196, 15, 0.25);
 		border-radius: 0.45rem;
 		color: var(--text-secondary);
 		font-size: 0.75rem;
