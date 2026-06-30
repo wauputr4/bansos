@@ -280,6 +280,7 @@
 		"statsAria": "Provider summary",
 		"statTotal": "Total providers",
 		"statActive": "Active bansos",
+		"featuredLabel": "Featured Provider",
 		"resultSummary": "Showing {start}-{end} of {total} providers",
 		"resultPage": "Page {current} of {total}",
 		"countTemplate": "{count} registered bansos",

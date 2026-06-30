@@ -103,7 +103,7 @@
 		<section class="container featured-provider-section" aria-label="Featured Provider">
 			<div class="featured-header">
 				<i class="fa-solid fa-star"></i>
-				<span>Featured Provider</span>
+				<span>{$t('providers.featuredLabel')}</span>
 			</div>
 			<a href={resolve(`/providers/${featuredProvider.slug}`)} class="featured-card glass-card">
 				<div class="featured-card-top">

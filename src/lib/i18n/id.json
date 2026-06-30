@@ -280,6 +280,7 @@
 		"statsAria": "Ringkasan provider",
 		"statTotal": "Total provider",
 		"statActive": "Bansos aktif",
+		"featuredLabel": "Featured Provider",
 		"resultSummary": "Menampilkan {start}-{end} dari {total} provider",
 		"resultPage": "Halaman {current} dari {total}",
 		"countTemplate": "{count} bansos terdaftar",
