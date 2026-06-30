@@ -46,7 +46,8 @@
 	"badge": {
 		"opensource": "Open Source",
 		"discord": "Discord",
-		"telegram": "Telegram"
+		"telegram": "Telegram",
+		"whatsapp": "WhatsApp"
 	},
 	"home": {
 		"heroTagline": "Bantuan sosial untuk developer jelata",
@@ -120,6 +121,9 @@
 		"discordTitle": "Gabung Discord Community!",
 		"discordDesc": "Mau bahas info bansos terbaru, tanya-tanya seputar development, kolaborasi side project, atau sekadar nongkrong bareng developer jelata lainnya? Yuk, join server Discord kami sekarang!",
 		"discordJoinBtn": "Join Discord Server",
+		"whatsappTitle": "Ikuti WhatsApp Channel!",
+		"whatsappDesc": "Dapatkan notifikasi bansos terbaru langsung lewat WhatsApp. Update, diskon, dan promo terbaru dikirim otomatis ke channel.",
+		"whatsappJoinBtn": "Ikuti WhatsApp Channel",
 		"communityEyebrow": "Bansos Community",
 		"communityTitle": "Mitra komunitas yang ikut nyebarin bansos.dev.",
 		"communityDesc": "Komunitas yang sudah bantu kontribusi, promosi, atau membagikan info bansos.dev di grupnya akan kami promote di sini.",

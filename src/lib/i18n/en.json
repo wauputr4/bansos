@@ -46,7 +46,8 @@
 	"badge": {
 		"opensource": "Open Source",
 		"discord": "Discord",
-		"telegram": "Telegram"
+		"telegram": "Telegram",
+		"whatsapp": "WhatsApp"
 	},
 	"home": {
 		"heroTagline": "Social assistance for broke developers",
@@ -120,6 +121,9 @@
 		"discordTitle": "Join Discord Community!",
 		"discordDesc": "Want to discuss the latest bansos info, ask development questions, collaborate on side projects, or just hang out with other broke developers? Join our Discord server now!",
 		"discordJoinBtn": "Join Discord Server",
+		"whatsappTitle": "Follow WhatsApp Channel!",
+		"whatsappDesc": "Get the latest bansos notifications directly via WhatsApp. Updates, discounts, and promos sent automatically to the channel.",
+		"whatsappJoinBtn": "Follow WhatsApp Channel",
 		"communityEyebrow": "Bansos Community",
 		"communityTitle": "Community partners spreading bansos.dev.",
 		"communityDesc": "Communities that have helped contribute, promote, or share bansos.dev info in their groups will be promoted here.",
