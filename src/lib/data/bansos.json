@@ -1550,5 +1550,38 @@
 		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "No Credit Card"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "jagoanhosting-promo-exclusive",
+		"title": "Promo exlusive Diskon VPS, Hosting JagoanHosting",
+		"provider": "Jagoan Hosting",
+		"providerWebsiteUrl": "https://www.jagoanhosting.com",
+		"description": "Diskon 10% spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga untuk berbagai layanan hosting. Berlaku untuk Shared Hosting, Dedicated Hosting, VPS (General, Plus, Ultra), VPS Windows, dan VPS Hosting. Bisa dipakai akun lama juga, tanpa syarat ribet!",
+		"benefits": [
+			"Potongan 10% untuk semua layanan hosting",
+			"Berlaku untuk Shared Hosting, Dedicated Hosting, VPS, VPS Windows, VPS Hosting",
+			"Bisa dipakai untuk akun lama (bukan cuma new user)",
+			"Tanpa batasan minimum transaksi"
+		],
+		"promoCode": "JERITANJELATA",
+		"validity": {
+			"type": "forever"
+		},
+		"requirements": [
+			"Pilih produk hosting yang diinginkan (Shared/Dedicated/VPS)",
+			"Masukkan kode promo JERITANJELATA saat checkout",
+			"Pastikan diskon 10% sudah terapply di total tagihan",
+			"Selesaikan pembayaran"
+		],
+		"source": "https://www.jagoanhosting.com",
+		"publishedAt": "2026-06-30",
+		"contributor": {
+			"name": "wauputra",
+			"url": "https://wau.my.id/"
+		},
+		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+		"tags": ["Hosting", "Diskon", "VPS"],
+		"featured": true,
+		"status": "active"
 	}
 ]

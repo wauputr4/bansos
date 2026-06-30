@@ -243,6 +243,15 @@
 				</svg>
 				<span>{$t('badge.telegram')}</span>
 			</a>
+			<a
+				href="https://whatsapp.com/channel/0029Vb8ZXgW1Hsq7j1uhRm0G"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="whatsapp-badge"
+			>
+				<i class="fa-brands fa-whatsapp icon"></i>
+				<span>{$t('badge.whatsapp')}</span>
+			</a>
 		</div>
 
 		<h1 class="main-title text-balance">
@@ -517,7 +526,8 @@
 
 		.github-badge,
 		.discord-badge,
-		.telegram-badge {
+		.telegram-badge,
+		.whatsapp-badge {
 			padding: 0.35rem;
 			border-radius: 50%;
 			aspect-ratio: 1;
@@ -528,7 +538,8 @@
 
 		.github-badge span,
 		.discord-badge span,
-		.telegram-badge span {
+		.telegram-badge span,
+		.whatsapp-badge span {
 			position: absolute;
 			width: 1px;
 			height: 1px;
@@ -542,7 +553,8 @@
 
 		.github-badge .icon,
 		.discord-badge .icon,
-		.telegram-badge .icon {
+		.telegram-badge .icon,
+		.whatsapp-badge .icon {
 			width: 1rem;
 			height: 1rem;
 		}
@@ -623,6 +635,28 @@
 	}
 
 	.telegram-badge .icon {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.whatsapp-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		background: rgba(37, 211, 102, 0.1);
+		border: 1px solid rgba(37, 211, 102, 0.2);
+		padding: 0.25rem 0.75rem;
+		border-radius: 2rem;
+		color: #25d366 !important;
+	}
+
+	.whatsapp-badge:hover {
+		background: rgba(37, 211, 102, 0.15);
+	}
+
+	.whatsapp-badge .icon {
 		width: 0.875rem;
 		height: 0.875rem;
 	}

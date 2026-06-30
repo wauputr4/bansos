@@ -99,6 +99,25 @@
 			</div>
 		</section>
 
+		<section class="whatsapp-community-section">
+			<h2>
+				<i class="fa-brands fa-whatsapp"></i>
+				{$t('about.whatsappTitle')}
+			</h2>
+			<p>{$t('about.whatsappDesc')}</p>
+			<div class="whatsapp-button-wrapper">
+				<a
+					href="https://whatsapp.com/channel/0029Vb8ZXgW1Hsq7j1uhRm0G"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="whatsapp-pill"
+				>
+					<i class="fa-brands fa-whatsapp"></i>
+					{$t('about.whatsappJoinBtn')}
+				</a>
+			</div>
+		</section>
+
 		<section class="bansos-community-section">
 			<div class="community-section-copy">
 				<p class="eyebrow">{$t('about.communityEyebrow')}</p>
@@ -502,6 +521,67 @@
 	.discord-pill:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 6px 20px rgba(88, 101, 242, 0.45);
+		color: #fff;
+	}
+
+	.whatsapp-community-section {
+		margin-top: 3.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		text-align: center;
+		border: 1px dashed rgba(37, 211, 102, 0.45);
+		border-radius: 1rem;
+		padding: 2.25rem 1.5rem;
+		background: rgba(37, 211, 102, 0.03);
+	}
+
+	.whatsapp-community-section h2 {
+		font-size: var(--font-size-h2);
+		color: var(--text-primary);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0;
+	}
+
+	.whatsapp-community-section h2 i {
+		color: #25d366;
+	}
+
+	.whatsapp-community-section p {
+		max-width: 36rem;
+		color: var(--text-secondary);
+		margin: 0 auto;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.whatsapp-button-wrapper {
+		margin-top: 0.5rem;
+	}
+
+	.whatsapp-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 0.6rem 1.25rem;
+		border-radius: 999px;
+		background: #25d366;
+		box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+		text-decoration: none;
+	}
+
+	.whatsapp-pill:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
 		color: #fff;
 	}
 

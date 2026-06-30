@@ -15,6 +15,11 @@
 		slugifyProvider,
 		bansosList
 	} from '$lib/data/bansos';
+	import {
+		getCachedFavicon,
+		setCachedFavicon,
+		handleFaviconFallback
+	} from '$lib/utils/faviconCache';
 
 	const GISCUS_REPO = import.meta.env.VITE_GISCUS_REPO || 'wauputr4/bansos';
 	const GISCUS_REPO_ID = import.meta.env.VITE_GISCUS_REPO_ID || 'R_kgDOS3nyxQ';
@@ -291,8 +296,18 @@
 						</div>
 						<h1 class="detail-title text-gradient text-pretty">{item.title}</h1>
 						<div class="provider-meta">
-							{#if provider?.faviconUrl}
-								<img src={provider.faviconUrl} alt="" loading="lazy" class="provider-logo" />
+							{#if provider}
+								<img
+									src={getCachedFavicon(provider.websiteUrl) || provider.faviconUrl}
+									alt=""
+									loading="lazy"
+									class="provider-logo"
+									onload={(e) => {
+										const target = e.currentTarget as HTMLImageElement;
+										setCachedFavicon(provider.websiteUrl, target.src);
+									}}
+									onerror={(e) => handleFaviconFallback(e, provider.websiteUrl)}
+								/>
 							{/if}
 							<p class="detail-subtitle">
 								{detailT('sponsoredBy')}

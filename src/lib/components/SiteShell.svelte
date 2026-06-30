@@ -163,6 +163,15 @@
 					<i class="fa-brands fa-telegram"></i>
 				</a>
 				<a
+					href="https://whatsapp.com/channel/0029Vb8ZXgW1Hsq7j1uhRm0G"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="WhatsApp"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-whatsapp"></i>
+				</a>
+				<a
 					href="mailto:submit@bansos.dev"
 					aria-label="Email"
 					class="social-footer-link email-footer-link"
