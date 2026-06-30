@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { t } from '$lib/i18n';
-	import { getProviderStats, formatNumber, slugifyProvider } from '$lib/data/bansos';
+	import { getProviderStats, formatNumber } from '$lib/data/bansos';
 	import {
 		getCachedFavicon,
 		setCachedFavicon,
