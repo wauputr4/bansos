@@ -1556,7 +1556,7 @@
 		"title": "Promo exlusive Diskon VPS, Hosting JagoanHosting",
 		"provider": "Jagoan Hosting",
 		"providerWebsiteUrl": "https://www.jagoanhosting.com",
-		"description": "Diskon 10% spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga untuk berbagai layanan hosting. Berlaku untuk Shared Hosting, Dedicated Hosting, VPS (General, Plus, Ultra), VPS Windows, dan VPS Hosting. Bisa dipakai akun lama juga, tanpa syarat ribet!",
+		"description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga untuk berbagai layanan hosting. Berlaku untuk Shared Hosting, Dedicated Hosting, VPS (General, Plus, Ultra), VPS Windows, dan VPS Hosting. Bisa dipakai akun lama juga, tanpa syarat ribet!",
 		"benefits": [
 			"Potongan 10% untuk semua layanan hosting",
 			"Berlaku untuk Shared Hosting, Dedicated Hosting, VPS, VPS Windows, VPS Hosting",
@@ -1582,6 +1582,41 @@
 		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
 		"tags": ["Hosting", "Diskon", "VPS"],
 		"featured": true,
+		"status": "active"
+	},
+	{
+		"id": "zenhosta-gratis-domain-1-tahun",
+		"title": "Gratis Domain 1 Tahun Walau Order Hosting 1 Bulan",
+		"provider": "Zenhosta",
+		"description": "Zenhosta memberikan gratis domain selama 1 tahun untuk pengguna yang melakukan order hosting, bahkan cukup dengan memilih paket hosting bulanan.",
+		"benefits": [
+			"Gratis domain selama 1 tahun",
+			"Bisa didapatkan hanya dengan order hosting 1 bulan",
+			"Pilihan domain gratis tersedia untuk ekstensi .my.id, .web.id, dan .biz.id"
+		],
+		"promoCode": "",
+		"validity": {
+			"type": "fixed",
+			"date": "2026-12-31",
+			"description": "Promo berlaku sampai 31 Desember 2026."
+		},
+		"requirements": [
+			"Masuk ke halaman https://zenhosta.com/hosting",
+			"Pilih paket hosting, bisa menggunakan paket paling murah.",
+			"Pilih opsi \"Gratis Domain\".",
+			"Pilih domain gratis yang tersedia, yaitu .my.id, .web.id, atau .biz.id.",
+			"Selesaikan pembayaran, lalu pengguna akan mendapatkan hosting + free domain selama 1 tahun."
+		],
+		"tips": "Pastikan memilih opsi \"Gratis Domain\" saat proses order dan memilih ekstensi domain yang termasuk promo, yaitu .my.id, .web.id, atau .biz.id.",
+		"source": "https://zenhosta.com/hosting",
+		"publishedAt": "2026-07-01",
+		"contributor": {
+			"name": "Ogya Adyatma Putra",
+			"url": "https://www.linkedin.com/in/ogya-adyatma-putra/"
+		},
+		"ctaLink": "https://zenhosta.com/member/aff.php?aff=20",
+		"tags": ["Hosting", "Domain", "Cloud Services"],
+		"featured": false,
 		"status": "active"
 	}
 ]
