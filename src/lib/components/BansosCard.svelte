@@ -40,8 +40,16 @@
 	}
 </script>
 
-<article class:compact class:is-expired={status === 'expired'} class="glass-card bansos-card">
+<article
+	class:compact
+	class:is-expired={status === 'expired'}
+	class:is-featured={item.featured && status !== 'expired'}
+	class="glass-card bansos-card"
+>
 	<div class="card-header">
+		{#if item.featured && status !== 'expired'}
+			<span class="featured-badge"><i class="fa-solid fa-fire"></i> FEATURED</span>
+		{/if}
 		<div class="tags-scroll-container">
 			{#each item.tags as tag (tag)}
 				<span class="tag-badge">{tag}</span>
@@ -163,6 +171,43 @@
 		align-items: center;
 		gap: 0.75rem;
 		min-width: 0;
+	}
+
+	.featured-badge {
+		flex-shrink: 0;
+		font-size: 0.65rem;
+		font-weight: 850;
+		background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.15));
+		color: #fbbf24;
+		padding: 0.3rem 0.6rem;
+		border-radius: 0.5rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		line-height: 1;
+		border: 1px solid rgba(251, 191, 36, 0.25);
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+	}
+
+	.featured-badge i {
+		font-size: 0.7rem;
+	}
+
+	.is-featured {
+		border: 1px solid rgba(251, 191, 36, 0.2);
+		position: relative;
+		background: linear-gradient(135deg, rgba(251, 191, 36, 0.03), rgba(217, 119, 6, 0.02));
+		box-shadow:
+			0 0 20px rgba(251, 191, 36, 0.06),
+			inset 0 0 20px rgba(251, 191, 36, 0.02);
+	}
+
+	.is-featured:hover {
+		border-color: rgba(251, 191, 36, 0.4);
+		box-shadow:
+			0 0 30px rgba(251, 191, 36, 0.1),
+			inset 0 0 20px rgba(251, 191, 36, 0.03);
 	}
 
 	.tags-scroll-container {

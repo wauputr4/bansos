@@ -98,6 +98,11 @@
 				return tagMatch && statusMatch && validityMatch;
 			})
 			.sort((a, b) => {
+				// Featured items always come first (within featured, use sort order)
+				const aFeatured = a.item.featured && a.item.status !== 'expired' ? 0 : 1;
+				const bFeatured = b.item.featured && b.item.status !== 'expired' ? 0 : 1;
+				if (aFeatured !== bFeatured) return aFeatured - bFeatured;
+
 				if (searchQuery.trim() && a.score !== b.score) {
 					return b.score - a.score;
 				}
