@@ -1717,7 +1717,7 @@
 		},
 		"ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
 		"tags": ["AI Credits", "API", "Free Tier"],
-		"featured": false,
+		"featured": true,
 		"status": "active"
 	}
 ]
