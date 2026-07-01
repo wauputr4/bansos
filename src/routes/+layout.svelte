@@ -43,7 +43,9 @@
 	<link rel="manifest" href="/site.webmanifest" />
 
 	<!-- GEO: JSON-LD structured data -->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html '<script type="application/ld+json">' + organizationSchema + '</' + 'script>'}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html '<script type="application/ld+json">' + websiteSchema + '</' + 'script>'}
 </svelte:head>
 
