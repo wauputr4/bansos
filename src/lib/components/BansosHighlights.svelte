@@ -49,6 +49,9 @@
 		{#each items as item (item.id)}
 			<a href={resolve(`/list/${item.id}`)} class="highlight-card glass-card">
 				<div class="highlight-header">
+					{#if item.featured && item.status !== 'expired'}
+						<span class="featured-badge-sm"><i class="fa-solid fa-fire"></i> FEATURED</span>
+					{/if}
 					<div class="tags-container">
 						{#each item.tags.slice(0, 1) as tag (tag)}
 							<span class="highlight-tag">
@@ -268,6 +271,28 @@
 	.highlight-card:hover {
 		transform: translateY(-2px);
 		border-color: rgba(16, 185, 129, 0.6);
+	}
+
+	.featured-badge-sm {
+		flex-shrink: 0;
+		font-size: 0.55rem;
+		font-weight: 850;
+		background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.2));
+		color: #fbbf24;
+		padding: 0.2rem 0.45rem;
+		border-radius: 0.35rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.2rem;
+		line-height: 1;
+		border: 1px solid rgba(251, 191, 36, 0.25);
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+		margin-bottom: 0.15rem;
+	}
+
+	.featured-badge-sm i {
+		font-size: 0.6rem;
 	}
 
 	.highlight-header {

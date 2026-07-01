@@ -302,7 +302,7 @@
 		},
 		"ctaLink": "https://labs.dahono.com",
 		"tags": ["API", "AI Tools", "AI Credits", "No Credit Card"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Dahono Labs"
 	},
@@ -765,7 +765,7 @@
 		},
 		"ctaLink": "https://cloud.codecrafters.id",
 		"tags": ["AI Tools", "API"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "CodeCrafters"
 	},
@@ -928,7 +928,7 @@
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=qdG1",
 		"tags": ["AI Tools", "AI Credits", "API"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "AgentRouter"
 	},
@@ -982,7 +982,7 @@
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=txsb",
 		"tags": ["AI Tools", "AI Credits", "API", "Developer Tools", "Free Tier"],
-		"featured": true,
+		"featured": false,
 		"status": "active"
 	},
 	{
@@ -1107,7 +1107,7 @@
 		},
 		"ctaLink": "https://www.atomesus.com/",
 		"tags": ["AI"],
-		"featured": true,
+		"featured": false,
 		"status": "active"
 	},
 	{
@@ -1653,5 +1653,38 @@
 		"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "No Credit Card"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "lovable-free-pro-plan",
+		"title": "Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder",
+		"description": "Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.",
+		"benefits": [
+			"Akses gratis ke tier Pro Plan",
+			"100 kredit per bulan untuk generate dan edit kode",
+			"Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya"
+		],
+		"promoCode": "SIMONPRO26",
+		"validity": {
+			"type": "uncertain",
+			"description": "Selama kuota kode promo SIMONPRO26 masih tersedia dari Lovable"
+		},
+		"requirements": [
+			"Daftar atau masuk ke akun Lovable",
+			"Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout",
+			"Siapkan Virtual Credit Card (VCC) untuk verifikasi billing"
+		],
+		"tips": "Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.",
+		"source": "https://x.com/simonsquibb/status/2050180383069581420",
+		"publishedAt": "2026-07-01",
+		"contributor": {
+			"name": "DevERS",
+			"url": "https://renzlab.my.id"
+		},
+		"ctaLink": "https://lovable.dev/pricing",
+		"tags": ["AI Tools", "Developer Tools", "Free Tier"],
+		"featured": false,
+		"status": "active",
+		"provider": "Lovable",
+		"providerWebsiteUrl": "https://lovable.dev"
 	}
 ]

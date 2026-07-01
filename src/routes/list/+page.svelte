@@ -98,6 +98,19 @@
 				return tagMatch && statusMatch && validityMatch;
 			})
 			.sort((a, b) => {
+				// Only force featured first on default view (no filters, no search, default sort)
+				const isDefaultView =
+					selectedTags.length === 0 &&
+					selectedStatuses.length === 0 &&
+					selectedValidities.length === 0 &&
+					!searchQuery.trim() &&
+					sortOrder === 'popular';
+				if (isDefaultView) {
+					const aFeatured = a.item.featured && a.item.status !== 'expired' ? 0 : 1;
+					const bFeatured = b.item.featured && b.item.status !== 'expired' ? 0 : 1;
+					if (aFeatured !== bFeatured) return aFeatured - bFeatured;
+				}
+
 				if (searchQuery.trim() && a.score !== b.score) {
 					return b.score - a.score;
 				}
