@@ -1,4 +1,58 @@
+# bansos.dev — robots.txt
+# Updated: 2026-07-01 — GEO optimization: allow AI crawlers
+
+# ===== Universal Crawlers =====
 User-agent: *
 Allow: /
 
+# ===== AI / LLM Crawlers (GEO — allow for discoverability) =====
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Omgili
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+# ===== Sitemap =====
 Sitemap: https://bansos.dev/sitemap.xml
