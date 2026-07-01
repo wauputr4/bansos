@@ -1182,7 +1182,7 @@
 			"Developer Tools"
 		],
 		"featured": false,
-		"status": "active"
+		"status": "expired"
 	},
 	{
 		"id": "neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan",
@@ -1389,7 +1389,7 @@
 		"ctaLink": "https://freemodel.dev/invite/FRE-83bee3ce",
 		"tags": ["AI Credits", "Gratisan", "AI"],
 		"featured": false,
-		"status": "active"
+		"status": "expired"
 	},
 	{
 		"id": "opencode-go-free-5-credit",
@@ -1686,5 +1686,38 @@
 		"status": "active",
 		"provider": "Lovable",
 		"providerWebsiteUrl": "https://lovable.dev"
+	},
+	{
+		"id": "freemodel-invite-referral-10",
+		"title": "FreeModel Invite Referral — $10 Credit per Teman Daftar",
+		"provider": "FreeModel",
+		"providerWebsiteUrl": "https://freemodel.dev",
+		"description": "Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.",
+		"benefits": [
+			"$10 API credit untuk kamu dan $10 untuk teman yang diundang",
+			"Tanpa batas jumlah undangan — invite sebanyak mungkin",
+			"Credit tidak pernah expired selama akun aktif"
+		],
+		"promoCode": "",
+		"validity": {
+			"type": "forever",
+			"description": "Credit tidak pernah expired selama akun aktif"
+		},
+		"requirements": [
+			"Bagikan link referral ke teman (email domain bebas)",
+			"Teman daftar dan verifikasi akun via phone atau Telegram",
+			"Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi"
+		],
+		"tips": "Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.",
+		"source": "https://freemodel.dev/invite/FRE-e95f134d",
+		"publishedAt": "2026-07-01",
+		"contributor": {
+			"name": "wauputra",
+			"url": "https://wau.my.id"
+		},
+		"ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
+		"tags": ["AI Credits", "API", "Free Tier"],
+		"featured": false,
+		"status": "active"
 	}
 ]
