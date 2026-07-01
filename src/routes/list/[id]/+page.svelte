@@ -132,38 +132,102 @@
 	const seoDesc = $derived(item ? detailT('seoDesc', { title: item.title }) : '');
 	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
 
-	// JSON-LD Specific Product / Guide Schema
+	// ===== GEO: JSON-LD structured data — auto-generated from entry data =====
+	// Maps each entry to the most appropriate Schema.org type for AI crawling.
+	// AI engines (ChatGPT, Perplexity, Google AI Overviews) extract structured data
+	// for citations, rich results, and answer generation.
 	const schemaData = $derived(
 		item
-			? {
-					'@context': 'https://schema.org',
-					'@type': 'HowTo',
-					name: detailT('schemaName', { title: item.title }),
-					description: item.description,
-					totalTime: 'PT5M',
-					supply: [
-						{
-							'@type': 'HowToSupply',
-							name: detailT('schemaInternet')
-						},
-						{
-							'@type': 'HowToSupply',
-							name: detailT('schemaDevAccount')
+			? (() => {
+					const base = {
+						'@context': 'https://schema.org',
+						name: detailT('schemaName', { title: item.title }),
+						description: item.description,
+						url: `https://bansos.dev/list/${item.id}/`,
+						provider: {
+							'@type': 'Organization',
+							name: item.provider,
+							url: item.ctaLink
 						}
-					],
-					tool: [
-						{
-							'@type': 'HowToTool',
-							name: detailT('schemaBrowser')
-						}
-					],
-					step: item.requirements.map((req: string, index: number) => ({
-						'@type': 'HowToStep',
-						position: index + 1,
-						name: detailT('schemaStep', { number: index + 1 }),
-						text: req
-					}))
-				}
+					};
+
+					// Determine best schema type from tags
+					const tags = (item.tags || []).map((t: string) => t.toLowerCase());
+					const isAICredit = tags.some(
+						(t: string) => t.includes('ai credit') || t.includes('ai tools')
+					);
+					const isCloud = tags.some(
+						(t: string) => t.includes('cloud') || t.includes('hosting') || t.includes('vps')
+					);
+					const isDomain = tags.some((t: string) => t.includes('domain'));
+					const isAPI = tags.some((t: string) => t.includes('api'));
+					const hasRequirements = item.requirements?.length > 0;
+
+					if (hasRequirements) {
+						// HowTo — for entries with step-by-step claim instructions
+						return {
+							...base,
+							'@type': 'HowTo',
+							totalTime: 'PT5M',
+							supply: [
+								{ '@type': 'HowToSupply', name: detailT('schemaInternet') },
+								{ '@type': 'HowToSupply', name: detailT('schemaDevAccount') }
+							],
+							tool: [{ '@type': 'HowToTool', name: detailT('schemaBrowser') }],
+							step: item.requirements.map((req: string, index: number) => ({
+								'@type': 'HowToStep',
+								position: index + 1,
+								name: detailT('schemaStep', { number: index + 1 }),
+								text: req
+							}))
+						};
+					}
+
+					if (isAICredit || isAPI) {
+						return {
+							...base,
+							'@type': 'SoftwareApplication',
+							applicationCategory: isAICredit ? 'AIApplication' : 'DeveloperApplication',
+							offers: {
+								'@type': 'Offer',
+								price: '0',
+								priceCurrency: 'USD'
+							}
+						};
+					}
+
+					if (isCloud || isDomain) {
+						return {
+							...base,
+							'@type': 'Product',
+							offers: {
+								'@type': 'Offer',
+								price: '0',
+								priceCurrency: 'USD'
+							},
+							brand: {
+								'@type': 'Organization',
+								name: item.provider
+							}
+						};
+					}
+
+					// Fallback: FAQPage with description
+					return {
+						...base,
+						'@type': 'FAQPage',
+						mainEntity: [
+							{
+								'@type': 'Question',
+								name: detailT('schemaName', { title: item.title }),
+								acceptedAnswer: {
+									'@type': 'Answer',
+									text: item.description
+								}
+							}
+						]
+					};
+				})()
 			: null
 	);
 	const schemaJson = $derived(

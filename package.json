@@ -9,9 +9,11 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"postbuild": "node scripts/generate-llmstxt.js",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"add:bansos": "node scripts/add-bansos.mjs",
+		"generate:llms": "node scripts/generate-llmstxt.js",
 		"generate:commit-contributors": "node scripts/generate-commit-contributors.mjs",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
