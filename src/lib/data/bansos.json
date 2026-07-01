@@ -982,7 +982,7 @@
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=txsb",
 		"tags": ["AI Tools", "AI Credits", "API", "Developer Tools", "Free Tier"],
-		"featured": true,
+		"featured": false,
 		"status": "active"
 	},
 	{
