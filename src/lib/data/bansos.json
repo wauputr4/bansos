@@ -302,7 +302,7 @@
 		},
 		"ctaLink": "https://labs.dahono.com",
 		"tags": ["API", "AI Tools", "AI Credits", "No Credit Card"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "Dahono Labs"
 	},
@@ -765,7 +765,7 @@
 		},
 		"ctaLink": "https://cloud.codecrafters.id",
 		"tags": ["AI Tools", "API"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "CodeCrafters"
 	},
@@ -928,7 +928,7 @@
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=qdG1",
 		"tags": ["AI Tools", "AI Credits", "API"],
-		"featured": true,
+		"featured": false,
 		"status": "active",
 		"provider": "AgentRouter"
 	},
@@ -1107,7 +1107,7 @@
 		},
 		"ctaLink": "https://www.atomesus.com/",
 		"tags": ["AI"],
-		"featured": true,
+		"featured": false,
 		"status": "active"
 	},
 	{
