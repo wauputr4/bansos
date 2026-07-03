@@ -1582,7 +1582,8 @@
 		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
 		"tags": ["Hosting", "Diskon", "VPS"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"featuredSince": "2026-07-03"
 	},
 	{
 		"id": "zenhosta-gratis-domain-1-tahun",
@@ -1665,8 +1666,9 @@
 		],
 		"promoCode": "SIMONPRO26",
 		"validity": {
-			"type": "uncertain",
-			"description": "Selama kuota kode promo SIMONPRO26 masih tersedia dari Lovable"
+			"type": "fixed",
+			"date": "2026-07-03",
+			"description": "Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026."
 		},
 		"requirements": [
 			"Daftar atau masuk ke akun Lovable",
@@ -1683,7 +1685,7 @@
 		"ctaLink": "https://lovable.dev/pricing",
 		"tags": ["AI Tools", "Developer Tools", "Free Tier"],
 		"featured": false,
-		"status": "active",
+		"status": "expired",
 		"provider": "Lovable",
 		"providerWebsiteUrl": "https://lovable.dev"
 	},
@@ -1718,7 +1720,8 @@
 		"ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
 		"tags": ["AI Credits", "API", "Free Tier"],
 		"featured": true,
-		"status": "active"
+		"status": "active",
+		"featuredSince": "2026-07-02"
 	},
 	{
 		"id": "idwebhost-claim-domain-gratis-myid-juli2026",
