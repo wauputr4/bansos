@@ -109,6 +109,12 @@
 					const aFeatured = a.item.featured && a.item.status !== 'expired' ? 0 : 1;
 					const bFeatured = b.item.featured && b.item.status !== 'expired' ? 0 : 1;
 					if (aFeatured !== bFeatured) return aFeatured - bFeatured;
+					// Among featured items, sort by featuredSince descending (newest first)
+					if (aFeatured === 0 && bFeatured === 0) {
+						const aSince = a.item.featuredSince || '';
+						const bSince = b.item.featuredSince || '';
+						if (aSince !== bSince) return bSince.localeCompare(aSince);
+					}
 				}
 
 				if (searchQuery.trim() && a.score !== b.score) {

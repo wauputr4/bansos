@@ -26,6 +26,8 @@ export interface BansosItem {
 	ctaLink: string;
 	tags: string[];
 	featured: boolean;
+	featuredSince?: string;
+	featuredUntil?: string;
 	status: 'active' | 'expired' | 'upcoming';
 }
 
@@ -267,8 +269,14 @@ export const latestBansos = (limit = 3, items: BansosItem[] = bansosList) =>
 	sortBansosByNewest(items).slice(0, limit);
 
 export const featuredBansos = (limit = 3, items: BansosItem[] = bansosList) =>
-	sortBansosByNewest(items)
+	items
 		.filter((i) => i.featured && i.status !== 'expired')
+		.sort((a, b) => {
+			const aSince = a.featuredSince || '';
+			const bSince = b.featuredSince || '';
+			if (aSince !== bSince) return bSince.localeCompare(aSince);
+			return 0;
+		})
 		.slice(0, limit);
 
 /**
