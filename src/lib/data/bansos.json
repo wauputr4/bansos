@@ -1795,5 +1795,34 @@
 		"featured": true,
 		"status": "active",
 		"featuredSince": "2026-07-02"
+	},
+	{
+		"id": "conduit-trial-credit-500",
+		"title": "Conduit AI — $500 Trial Credit & Free Model Access",
+		"provider": "Conduit",
+		"providerWebsiteUrl": "https://conduit.ozdoev.net",
+		"description": "Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.",
+		"benefits": [
+			"$500 trial credit untuk coba berbagai model AI",
+			"$0.50 per 1k visible tokens (input + output)",
+			"Akses via Telegram bot — cepat dan mudah"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit."
+		},
+		"requirements": ["Buka Telegram bot Conduit", "Daftar / mulai bot", "Klaim trial credit"],
+		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
+		"source": "https://conduit.ozdoev.net",
+		"publishedAt": "2026-07-03",
+		"contributor": {
+			"name": "wauputra",
+			"url": "https://wau.my.id/"
+		},
+		"ctaLink": "https://t.me/conduitoff_bot?start=ref_950268146",
+		"tags": ["AI Credits", "API", "Free Tier", "AI Tools"],
+		"featured": true,
+		"featuredSince": "2026-07-03",
+		"status": "active"
 	}
 ]
