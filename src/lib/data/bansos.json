@@ -691,7 +691,7 @@
 		"ctaLink": "https://aerolink.lat/",
 		"tags": ["AI Tools", "API", "Cloud Services"],
 		"featured": false,
-		"status": "active",
+		"status": "expired",
 		"provider": "Aerolink"
 	},
 	{
@@ -1858,6 +1858,39 @@
 		"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
 		"featured": true,
 		"featuredSince": "2026-07-03",
+		"status": "active"
+	},
+	{
+		"id": "aerolink-starter-free-trial",
+		"title": "Aerolink Starter Free Trial",
+		"provider": "Aerolink",
+		"description": "Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.",
+		"benefits": [
+			"Free Trial selama 2 minggu",
+			"Kredit penggunaan AI senilai US$140",
+			"Batas penggunaan US$10 setiap 5 jam",
+			"Batas penggunaan US$70 per minggu",
+			"Akses ke berbagai model AI melalui satu platform"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink."
+		},
+		"requirements": [
+			"Daftarkan akun Aerolink baru",
+			"Aktifkan paket Starter Free Trial",
+			"Patuhi syarat dan ketentuan resmi Aerolink"
+		],
+		"tips": "Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.",
+		"source": "https://aerolink.lat/",
+		"publishedAt": "2026-07-05",
+		"contributor": {
+			"name": "Syafi'i Fahreza",
+			"url": "https://bansos.dev"
+		},
+		"ctaLink": "https://aerolink.lat/register?ref=T5-QB9W",
+		"tags": ["AI", "API", "Developer", "Free Trial", "Credits"],
+		"featured": false,
 		"status": "active"
 	}
 ]
