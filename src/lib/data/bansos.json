@@ -1486,18 +1486,18 @@
 			"description": "Promo berlaku sampai 30 Juni 2026, terbatas"
 		},
 		"requirements": [
-			"Buka link promo https://s.id/myid-jagoan",
+			"Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
 			"Pilih domain dengan ekstensi .MY.ID",
 			"Masukkan kode promo FREEMYID1000 saat checkout",
 			"Selesaikan pemesanan"
 		],
-		"source": "https://s.id/myid-jagoan",
+		"source": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
 		"publishedAt": "2026-06-25",
 		"contributor": {
 			"name": "wauputra",
 			"url": "https://wau.my.id/"
 		},
-		"ctaLink": "https://s.id/myid-jagoan",
+		"ctaLink": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
 		"tags": ["Domain", "Diskon"],
 		"featured": true,
 		"status": "active"
