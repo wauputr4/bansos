@@ -1892,5 +1892,37 @@
 		"tags": ["AI", "API", "Developer", "Free Trial", "Credits"],
 		"featured": false,
 		"status": "active"
+	},
+	{
+		"id": "mimo-plan-free-nanaai",
+		"title": "Free Mimo Plan di NanaAI",
+		"provider": "NanaAI",
+		"providerWebsiteUrl": "https://nana.mwcs.dev",
+		"description": "NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M.",
+		"benefits": [
+			"Free akses Mimo v2.5 dan Mimo v2.5 Pro",
+			"Free saldo dan plan untuk referral program",
+			"Limit harian 3M selama 30 hari"
+		],
+		"promoCode": "none",
+		"validity": {
+			"type": "uncertain",
+			"description": "Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang"
+		},
+		"requirements": [
+			"Daftar akun di NanaAI",
+			"Top up minimal $1 sebagai verifikasi user (anti-abuse)"
+		],
+		"tips": "Top up $1 minimal untuk aktivasi, free plan langsung aktif. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan.",
+		"source": "https://nana.mwcs.dev",
+		"publishedAt": "2026-07-06",
+		"contributor": {
+			"name": "Mugi Wiguna",
+			"url": "https://bansos.dev/"
+		},
+		"ctaLink": "https://nana.mwcs.dev/",
+		"tags": ["AI tools", "Dev Tools", "AI Provider"],
+		"featured": false,
+		"status": "active"
 	}
 ]
