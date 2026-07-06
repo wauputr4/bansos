@@ -95,6 +95,40 @@
 		"provider": "IDwebhost"
 	},
 	{
+		"id": "mimo-plan-free-nanaai",
+		"title": "Free Mimo Plan di NanaAI",
+		"provider": "NanaAI",
+		"providerWebsiteUrl": "https://nana.mwcs.dev",
+		"description": "NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!",
+		"benefits": [
+			"Free akses Mimo v2.5 dan Mimo v2.5 Pro",
+			"Model gratis: mimo-v2.5-pro & mimo-v2.5",
+			"Free saldo dan plan untuk referral program",
+			"Limit harian 3M selama 30 hari",
+			"Hasil referral dibagikan gratis di Discord bansos.dev"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang"
+		},
+		"requirements": [
+			"Daftar akun di NanaAI",
+			"Top up minimal $1 sebagai verifikasi user (anti-abuse)",
+			"Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan"
+		],
+		"tips": "Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!",
+		"source": "https://nana.mwcs.dev",
+		"publishedAt": "2026-07-06",
+		"contributor": {
+			"name": "Mugi Wiguna",
+			"url": "https://bansos.dev/"
+		},
+		"ctaLink": "https://nana.mwcs.dev/signup?ref=5JT7QA",
+		"tags": ["AI tools", "Dev Tools", "AI Provider"],
+		"featured": true,
+		"status": "active"
+	},
+	{
 		"id": "tokenrouter-model-gateway",
 		"title": "Free Credits TokenRouter buat Jajan Model AI",
 		"description": "TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.",
@@ -1784,7 +1818,7 @@
 			"Pilih model yang tersedia di tier Free",
 			"Mulai kirim request via API endpoint"
 		],
-		"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Jangan abuse — support gateway AI lokal Indonesia!",
+		"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
 		"source": "https://router.bynara.id/",
 		"publishedAt": "2026-07-03",
 		"contributor": {
@@ -1813,7 +1847,7 @@
 			"description": "Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit."
 		},
 		"requirements": ["Buka Telegram bot Conduit", "Daftar / mulai bot", "Klaim trial credit"],
-		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
+		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
 		"source": "https://conduit.ozdoev.net",
 		"publishedAt": "2026-07-03",
 		"contributor": {
@@ -1847,7 +1881,7 @@
 			"Daftar akun via Discord atau GitHub",
 			"Generate dan langsung coba model yang tersedia"
 		],
-		"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
+		"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
 		"source": "https://ai.livscene.com",
 		"publishedAt": "2026-07-03",
 		"contributor": {
