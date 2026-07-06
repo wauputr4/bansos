@@ -116,7 +116,7 @@
 			"Top up minimal $1 sebagai verifikasi user (anti-abuse)",
 			"Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan"
 		],
-		"tips": "Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!",
+		"tips": "Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!",
 		"source": "https://nana.mwcs.dev",
 		"publishedAt": "2026-07-06",
 		"contributor": {
@@ -1818,7 +1818,7 @@
 			"Pilih model yang tersedia di tier Free",
 			"Mulai kirim request via API endpoint"
 		],
-		"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Jangan abuse — support gateway AI lokal Indonesia!",
+		"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
 		"source": "https://router.bynara.id/",
 		"publishedAt": "2026-07-03",
 		"contributor": {
@@ -1847,7 +1847,7 @@
 			"description": "Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit."
 		},
 		"requirements": ["Buka Telegram bot Conduit", "Daftar / mulai bot", "Klaim trial credit"],
-		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
+		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
 		"source": "https://conduit.ozdoev.net",
 		"publishedAt": "2026-07-03",
 		"contributor": {
@@ -1881,7 +1881,7 @@
 			"Daftar akun via Discord atau GitHub",
 			"Generate dan langsung coba model yang tersedia"
 		],
-		"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #referral-sharing. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
+		"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
 		"source": "https://ai.livscene.com",
 		"publishedAt": "2026-07-03",
 		"contributor": {
