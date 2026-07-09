@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-07-01 | Total: 58 entri (51 aktif, 7 expired)
+> Diperbarui: 2026-07-09 | Total: 65 entri (56 aktif, 9 expired)
 
 ---
 
@@ -29,6 +29,38 @@
 - **Berlaku:** uncertain (Promo dan harga ditampilkan sesuai periode di halaman resmi)
 
 🔗 **Link Detail:** https://bansos.dev/list/namecheap-vps-hosting/
+
+---
+
+### Free Mimo Plan di NanaAI
+
+- **ID:** `mimo-plan-free-nanaai`
+- **Provider:** NanaAI
+- **Website Provider:** https://nana.mwcs.dev
+- **Kategori:** AI tools, Dev Tools, AI Provider
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!
+
+**Benefit:**
+- Free akses Mimo v2.5 dan Mimo v2.5 Pro
+- Model gratis: mimo-v2.5-pro & mimo-v2.5
+- Free saldo dan plan untuk referral program
+- Limit harian 3M selama 30 hari
+- Hasil referral dibagikan gratis di Discord bansos.dev
+
+**Cara Klaim:**
+1. Daftar akun di NanaAI
+2. Top up minimal $1 sebagai verifikasi user (anti-abuse)
+3. Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan
+
+- **CTA Link:** https://nana.mwcs.dev/signup?ref=5JT7QA
+- **Sumber:** https://nana.mwcs.dev
+- **Tips:** Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!
+- **Berlaku:** uncertain (Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang)
+
+🔗 **Link Detail:** https://bansos.dev/list/mimo-plan-free-nanaai/
 
 ---
 
@@ -156,7 +188,6 @@
 - **Provider:** AI Class ASEAN
 - **Kategori:** Course, Diskon
 - **Status:** active
-- **🔥 FEATURED**
 
 **Deskripsi:** Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.
 
@@ -523,35 +554,6 @@
 - **Berlaku:** uncertain (Durasi promo mengikuti postingan Threads dan bisa berubah sewaktu-waktu)
 
 🔗 **Link Detail:** https://bansos.dev/list/notion-ai-unlimited-1-bulan/
-
----
-
-### Aerolink $350+ Free Credits
-
-- **ID:** `aerolink-free-credits`
-- **Provider:** Aerolink
-- **Kategori:** AI Tools, API, Cloud Services
-- **Status:** active
-
-**Deskripsi:** Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.
-
-**Benefit:**
-- $350+ free credits untuk akun baru
-- Satu API key untuk AI agent dan coding assistant
-- Dashboard untuk usage logs, token, latency, cost, balance, dan limits
-- Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001
-- Rolling usage window 5 jam dan mingguan
-
-**Cara Klaim:**
-1. Buat akun Aerolink
-2. Verifikasi email
-3. Generate API key dari dashboard
-4. Cek credit, model route, dan limit di dashboard sebelum digunakan
-
-- **CTA Link:** https://aerolink.lat/
-- **Berlaku:** uncertain (Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink)
-
-🔗 **Link Detail:** https://bansos.dev/list/aerolink-free-credits/
 
 ---
 
@@ -1160,14 +1162,14 @@ Berlaku sampai tanggal 28 Juni 2026
 - Promo terbatas, jangan sampai kehabisan
 
 **Cara Klaim:**
-1. Buka link promo https://s.id/myid-jagoan
+1. Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
 2. Pilih domain dengan ekstensi .MY.ID
 3. Masukkan kode promo FREEMYID1000 saat checkout
 4. Selesaikan pemesanan
 
 - **Kode Promo:** `FREEMYID1000`
-- **CTA Link:** https://s.id/myid-jagoan
-- **Sumber:** https://s.id/myid-jagoan
+- **CTA Link:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
+- **Sumber:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
 - **Berlaku:** fixed — 2026-06-30 (Promo berlaku sampai 30 Juni 2026, terbatas)
 
 🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-domain-myid/
@@ -1348,36 +1350,6 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder
-
-- **ID:** `lovable-free-pro-plan`
-- **Provider:** Lovable
-- **Website Provider:** https://lovable.dev
-- **Kategori:** AI Tools, Developer Tools, Free Tier
-- **Status:** active
-
-**Deskripsi:** Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.
-
-**Benefit:**
-- Akses gratis ke tier Pro Plan
-- 100 kredit per bulan untuk generate dan edit kode
-- Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya
-
-**Cara Klaim:**
-1. Daftar atau masuk ke akun Lovable
-2. Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout
-3. Siapkan Virtual Credit Card (VCC) untuk verifikasi billing
-
-- **Kode Promo:** `SIMONPRO26`
-- **CTA Link:** https://lovable.dev/pricing
-- **Sumber:** https://x.com/simonsquibb/status/2050180383069581420
-- **Tips:** Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.
-- **Berlaku:** uncertain (Selama kuota kode promo SIMONPRO26 masih tersedia dari Lovable)
-
-🔗 **Link Detail:** https://bansos.dev/list/lovable-free-pro-plan/
-
----
-
 ### FreeModel Invite Referral — $10 Credit per Teman Daftar
 
 - **ID:** `freemodel-invite-referral-10`
@@ -1405,6 +1377,190 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** forever (Credit tidak pernah expired selama akun aktif)
 
 🔗 **Link Detail:** https://bansos.dev/list/freemodel-invite-referral-10/
+
+---
+
+### Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!
+
+- **ID:** `idwebhost-claim-domain-gratis-myid-juli2026`
+- **Provider:** IDwebhost
+- **Website Provider:** https://idwebhost.com
+- **Kategori:** Domain, Diskon
+- **Status:** active
+
+**Deskripsi:** Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.
+
+**Benefit:**
+- Domain gratis 1 tahun
+- Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID
+- Cukup pakai kupon saat checkout
+- Kuota terbatas — klaim sebelum habis
+
+**Cara Klaim:**
+1. Punya akun IDwebhost
+2. Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)
+3. Gunakan kupon M2n4tS saat checkout
+
+- **Kode Promo:** `M2n4tS`
+- **CTA Link:** http://idwebhost.com/domain
+- **Sumber:** https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg
+- **Tips:** Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!
+- **Berlaku:** fixed — 2026-07-05 (Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis.)
+
+🔗 **Link Detail:** https://bansos.dev/list/idwebhost-claim-domain-gratis-myid-juli2026/
+
+---
+
+### AI Router by Nara — Model AI Premium Gratis & Pay as You Go
+
+- **ID:** `bynara-ai-router-free-payg`
+- **Provider:** byNara
+- **Website Provider:** https://bynara.id
+- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.
+
+**Benefit:**
+- Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5
+- Token cap 5M/hari pada free tier
+- Rate limit 10 req/menit
+- Pay as you go untuk model premium
+- Dukungan pembayaran IDR dan USD
+- Bandingkan biaya antar model langsung di dashboard
+
+**Cara Klaim:**
+1. Daftar akun di router.bynara.id
+2. Verifikasi akun via Telegram bot byNara
+3. Login ke Telegram channel byNara untuk akses API key
+4. Pilih model yang tersedia di tier Free
+5. Mulai kirim request via API endpoint
+
+- **CTA Link:** https://router.bynara.id/register?ref=3AH29Q72
+- **Sumber:** https://router.bynara.id/
+- **Tips:** Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!
+- **Berlaku:** uncertain (Free tier — selama layanan tersedia)
+
+🔗 **Link Detail:** https://bansos.dev/list/bynara-ai-router-free-payg/
+
+---
+
+### Conduit AI — $500 Trial Credit & Free Model Access
+
+- **ID:** `conduit-trial-credit-500`
+- **Provider:** Conduit
+- **Website Provider:** https://conduit.ozdoev.net
+- **Kategori:** AI Credits, API, Free Tier, AI Tools
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.
+
+**Benefit:**
+- $500 trial credit untuk coba berbagai model AI
+- $0.50 per 1k visible tokens (input + output)
+- Akses via Telegram bot — cepat dan mudah
+
+**Cara Klaim:**
+1. Buka Telegram bot Conduit
+2. Daftar / mulai bot
+3. Klaim trial credit
+
+- **CTA Link:** https://t.me/conduitoff_bot?start=ref_950268146
+- **Sumber:** https://conduit.ozdoev.net
+- **Tips:** Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!
+- **Berlaku:** uncertain (Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit.)
+
+🔗 **Link Detail:** https://bansos.dev/list/conduit-trial-credit-500/
+
+---
+
+### AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1
+
+- **ID:** `ai-livscene-free-models`
+- **Provider:** AI Livscene
+- **Website Provider:** https://ai.livscene.com
+- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Akses 14 model AI premium gratis dengan quota 5.1 di AI Livscene. Daftar pakai Discord atau GitHub, langsung generate tanpa ribet!
+
+**Benefit:**
+- Akses gratis ke 14 model AI premium: Claude Opus 4.6/4.7/4.8, Claude Sonnet 4.6, DeepSeek V4 Pro, Gemini 3.1 Pro, Gemini 3.5 Flash, GLM 5.2, GPT 5.4 Compact, GPT 5.5, Mimo v2.5, Mimo v2.5 Pro, Step 3.7 Flash, Step Router V1
+- Quota 5.1 untuk mencoba semua model
+- Daftar cepat via Discord atau GitHub
+- Generate dan langsung coba tanpa setup rumit
+
+**Cara Klaim:**
+1. Buka ai.livscene.com
+2. Daftar akun via Discord atau GitHub
+3. Generate dan langsung coba model yang tersedia
+
+- **CTA Link:** https://ai.livscene.com/sign-up?aff=m3Vt
+- **Sumber:** https://ai.livscene.com
+- **Tips:** Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!
+- **Berlaku:** uncertain (Quota dan akses free model mengikuti kebijakan AI Livscene)
+
+🔗 **Link Detail:** https://bansos.dev/list/ai-livscene-free-models/
+
+---
+
+### Aerolink Starter Free Trial
+
+- **ID:** `aerolink-starter-free-trial`
+- **Provider:** Aerolink
+- **Kategori:** AI, API, Developer, Free Trial, Credits
+- **Status:** active
+
+**Deskripsi:** Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.
+
+**Benefit:**
+- Free Trial selama 2 minggu
+- Kredit penggunaan AI senilai US$140
+- Batas penggunaan US$10 setiap 5 jam
+- Batas penggunaan US$70 per minggu
+- Akses ke berbagai model AI melalui satu platform
+
+**Cara Klaim:**
+1. Daftarkan akun Aerolink baru
+2. Aktifkan paket Starter Free Trial
+3. Patuhi syarat dan ketentuan resmi Aerolink
+
+- **CTA Link:** https://aerolink.lat/register?ref=T5-QB9W
+- **Sumber:** https://aerolink.lat/
+- **Tips:** Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.
+- **Berlaku:** uncertain (Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink.)
+
+🔗 **Link Detail:** https://bansos.dev/list/aerolink-starter-free-trial/
+
+---
+
+### Program Beasiswa AWS AI Academy 2026
+
+- **ID:** `aws-ai-academy-2026`
+- **Provider:** AWS x Dicoding
+- **Kategori:** AI, Cloud, Machine Learning, Training
+- **Status:** active
+
+**Deskripsi:** Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.
+
+**Benefit:**
+- Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi
+- Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert
+- Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia
+
+**Cara Klaim:**
+1. Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan
+2. Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar
+
+- **CTA Link:** https://aws.dicoding.com/login
+- **Sumber:** https://aws.dicoding.com/login
+- **Tips:** Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.
+- **Berlaku:** fixed — 2026-12-25 (Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026.)
+
+🔗 **Link Detail:** https://bansos.dev/list/aws-ai-academy-2026/
 
 ---
 
@@ -1497,6 +1653,35 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** uncertain (Credit berlaku 30 hari setelah signup)
 
 🔗 **Link Detail:** https://bansos.dev/list/deepseek-free-token/
+
+---
+
+### Aerolink $350+ Free Credits
+
+- **ID:** `aerolink-free-credits`
+- **Provider:** Aerolink
+- **Kategori:** AI Tools, API, Cloud Services
+- **Status:** expired
+
+**Deskripsi:** Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.
+
+**Benefit:**
+- $350+ free credits untuk akun baru
+- Satu API key untuk AI agent dan coding assistant
+- Dashboard untuk usage logs, token, latency, cost, balance, dan limits
+- Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001
+- Rolling usage window 5 jam dan mingguan
+
+**Cara Klaim:**
+1. Buat akun Aerolink
+2. Verifikasi email
+3. Generate API key dari dashboard
+4. Cek credit, model route, dan limit di dashboard sebelum digunakan
+
+- **CTA Link:** https://aerolink.lat/
+- **Berlaku:** uncertain (Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink)
+
+🔗 **Link Detail:** https://bansos.dev/list/aerolink-free-credits/
 
 ---
 
@@ -1621,6 +1806,36 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** uncertain
 
 🔗 **Link Detail:** https://bansos.dev/list/freemodel-pro-plan-bonus-referral-ikan/
+
+---
+
+### Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder
+
+- **ID:** `lovable-free-pro-plan`
+- **Provider:** Lovable
+- **Website Provider:** https://lovable.dev
+- **Kategori:** AI Tools, Developer Tools, Free Tier
+- **Status:** expired
+
+**Deskripsi:** Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.
+
+**Benefit:**
+- Akses gratis ke tier Pro Plan
+- 100 kredit per bulan untuk generate dan edit kode
+- Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya
+
+**Cara Klaim:**
+1. Daftar atau masuk ke akun Lovable
+2. Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout
+3. Siapkan Virtual Credit Card (VCC) untuk verifikasi billing
+
+- **Kode Promo:** `SIMONPRO26`
+- **CTA Link:** https://lovable.dev/pricing
+- **Sumber:** https://x.com/simonsquibb/status/2050180383069581420
+- **Tips:** Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.
+- **Berlaku:** fixed — 2026-07-03 (Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026.)
+
+🔗 **Link Detail:** https://bansos.dev/list/lovable-free-pro-plan/
 
 ---
 
