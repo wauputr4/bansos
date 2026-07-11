@@ -42,8 +42,8 @@ export async function GET({ fetch }) {
 				<span style="font-size: 20px; color: #10b981; font-weight: 700; letter-spacing: 1px; display: flex;">
 					100% GRATISAN · NO CLICKBAIT · NO RIBET
 				</span>
-				<span style="font-size: 20px; color: #9ca3af; font-weight: 600; display: flex;">
-					gitlab.com/wauputr4/bansos
+				<span style="font-size: 18px; color: #9ca3af; font-weight: 600; display: flex;">
+					github.com/wauputr4/bansos · gitlab.com/wauputr4/bansos
 				</span>
 			</div>
 		</div>

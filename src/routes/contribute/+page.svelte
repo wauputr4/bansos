@@ -20,23 +20,45 @@
 			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
 		url: 'https://gitlab.com/wauputr4'
 	};
-	const commitContributors = getCommitContributorStats().sort((a, b) => {
-		if (a.login === 'wauputr4') return -1;
-		if (b.login === 'wauputr4') return 1;
-		return 0;
-	});
+	const githubOwner = {
+		login: 'wauputr4',
+		avatarUrl: 'https://avatars.githubusercontent.com/u/70278563?v=4',
+		url: 'https://github.com/wauputr4'
+	};
+	const commitContributors = getCommitContributorStats()
+		.filter((c) => c.login !== 'github-actions[bot]')
+		.sort((a, b) => {
+			if (a.login === gitlabOwner.login) return -1;
+			if (b.login === gitlabOwner.login) return 1;
+			return 0;
+		});
 
-	let tabs = $derived<{ id: TabId; label: string; icon: string }[]>([
-		{ id: 'form', label: $t('contribute.tabs.form'), icon: 'fa-solid fa-pen-to-square' },
+	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
 		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
-		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal' },
 		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
-		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot' },
-		{ id: 'discord', label: $t('contribute.tabs.discord'), icon: 'fa-brands fa-discord' },
-		{ id: 'telegram', label: $t('contribute.tabs.telegram'), icon: 'fa-brands fa-telegram' }
+		{
+			id: 'form',
+			label: $t('contribute.tabs.form'),
+			icon: 'fa-solid fa-pen-to-square',
+			inactive: true
+		},
+		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal', inactive: true },
+		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot', inactive: true },
+		{
+			id: 'discord',
+			label: $t('contribute.tabs.discord'),
+			icon: 'fa-brands fa-discord',
+			inactive: true
+		},
+		{
+			id: 'telegram',
+			label: $t('contribute.tabs.telegram'),
+			icon: 'fa-brands fa-telegram',
+			inactive: true
+		}
 	]);
 
-	let activeTab = $state<TabId>('form');
+	let activeTab = $state<TabId>('email');
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
@@ -44,7 +66,10 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
+			'# GitLab',
 			'git clone https://gitlab.com/wauputr4/bansos.git',
+			'# GitHub (mirror)',
+			'git clone https://github.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',
@@ -251,6 +276,7 @@ Terima kasih,
 					<button
 						class="tab-btn"
 						class:active={activeTab === tab.id}
+						class:muted-tab={tab.inactive}
 						onclick={() => (activeTab = tab.id)}
 					>
 						<i class={tab.icon}></i>
@@ -491,7 +517,7 @@ Terima kasih,
 							{#each commitContributors as contributor (contributor.login)}
 								<li
 									class="commit-contributor-card"
-									class:author-highlight={contributor.login === 'wauputr4'}
+									class:author-highlight={contributor.login === gitlabOwner.login}
 								>
 									<a
 										href={contributor.login === gitlabOwner.login
@@ -508,7 +534,7 @@ Terima kasih,
 											loading="lazy"
 										/>
 										<span class="login-name">@{contributor.login}</span>
-										{#if contributor.login === 'wauputr4'}
+										{#if contributor.login === gitlabOwner.login}
 											<span class="author-badge" title={$t('contribute.contribAuthorBadge')}>
 												<i class="fa-solid fa-crown"></i>
 												<span class="author-text">{$t('contribute.contribAuthorBadge')}</span>
@@ -637,6 +663,15 @@ Terima kasih,
 		color: var(--color-accent);
 		border-bottom-color: var(--color-accent);
 		background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+	}
+
+	.muted-tab {
+		opacity: 0.55;
+		filter: grayscale(40%);
+	}
+
+	.muted-tab:hover {
+		opacity: 0.85;
 	}
 
 	.tab-content {
@@ -802,11 +837,6 @@ Terima kasih,
 		margin: 0;
 		color: var(--text-secondary);
 		font-size: 0.85rem;
-	}
-
-	.tab-note code {
-		color: var(--color-accent);
-		font-weight: 700;
 	}
 
 	.skill-link {

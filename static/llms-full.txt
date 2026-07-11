@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-07-09 | Total: 65 entri (56 aktif, 9 expired)
+> Diperbarui: 2026-07-11 | Total: 67 entri (58 aktif, 9 expired)
 
 ---
 
@@ -39,9 +39,8 @@
 - **Website Provider:** https://nana.mwcs.dev
 - **Kategori:** AI tools, Dev Tools, AI Provider
 - **Status:** active
-- **🔥 FEATURED**
 
-**Deskripsi:** NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!
+**Deskripsi:** ⚠️ Ada laporan free plan sudah tidak bisa diklaim. NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!
 
 **Benefit:**
 - Free akses Mimo v2.5 dan Mimo v2.5 Pro
@@ -57,7 +56,7 @@
 
 - **CTA Link:** https://nana.mwcs.dev/signup?ref=5JT7QA
 - **Sumber:** https://nana.mwcs.dev
-- **Tips:** Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!
+- **Tips:** ⚠️ LAPORAN: Free plan dilaporkan sudah tidak bisa diklaim. Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!
 - **Berlaku:** uncertain (Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang)
 
 🔗 **Link Detail:** https://bansos.dev/list/mimo-plan-free-nanaai/
@@ -1266,16 +1265,15 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Status:** active
 - **🔥 FEATURED**
 
-**Deskripsi:** Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga untuk berbagai layanan hosting. Berlaku untuk Shared Hosting, Dedicated Hosting, VPS (General, Plus, Ultra), VPS Windows, dan VPS Hosting. Bisa dipakai akun lama juga, tanpa syarat ribet!
+**Deskripsi:** Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!
 
 **Benefit:**
-- Potongan 10% untuk semua layanan hosting
-- Berlaku untuk Shared Hosting, Dedicated Hosting, VPS, VPS Windows, VPS Hosting
+- Potongan 10% untuk Shared Hosting
 - Bisa dipakai untuk akun lama (bukan cuma new user)
 - Tanpa batasan minimum transaksi
 
 **Cara Klaim:**
-1. Pilih produk hosting yang diinginkan (Shared/Dedicated/VPS)
+1. Pilih produk Shared Hosting yang diinginkan
 2. Masukkan kode promo JERITANJELATA saat checkout
 3. Pastikan diskon 10% sudah terapply di total tagihan
 4. Selesaikan pembayaran
@@ -1561,6 +1559,69 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** fixed — 2026-12-25 (Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026.)
 
 🔗 **Link Detail:** https://bansos.dev/list/aws-ai-academy-2026/
+
+---
+
+### AI Hub Free Plan
+
+- **ID:** `ai-hub-free-plan`
+- **Provider:** AI Campus Malaysia
+- **Website Provider:** https://ai-hub.aicampus.my/
+- **Kategori:** AI, API, LLM, Gemini, Claude, Developer, Free Tier
+- **Status:** active
+
+**Deskripsi:** Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.
+
+**Benefit:**
+- 1.000.000 token gratis pada Free Plan (weekly allocation).
+- API access melalui Hub Key.
+- Dapat membuat API Key sendiri.
+- Personal usage dashboard.
+- Informasi penggunaan token secara real-time.
+- Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.
+- Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.
+- Dukungan komunitas melalui Telegram.
+
+**Cara Klaim:**
+1. Mendaftarkan akun AI Hub baru.
+2. Menggunakan paket Free Plan.
+3. Mematuhi Terms of Service AI Hub.
+
+- **CTA Link:** https://ai-hub.aicampus.my/?ref=01b0fc09
+- **Sumber:** https://ai-hub.aicampus.my/
+- **Tips:** Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.
+- **Berlaku:** uncertain (Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub.)
+
+🔗 **Link Detail:** https://bansos.dev/list/ai-hub-free-plan/
+
+---
+
+### Promo Exclusive Jagoan Hosting
+
+- **ID:** `jagoanhosting-promo-vps-25`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** VPS, Diskon, Hosting
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.
+
+**Benefit:**
+- Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting
+- Berlaku untuk semua pengguna (bukan cuma new user)
+
+**Cara Klaim:**
+1. Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)
+2. Masukkan kode promo BANSOSVPS saat checkout
+3. Selesaikan pembayaran
+
+- **Kode Promo:** `BANSOSVPS`
+- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
+- **Sumber:** https://www.jagoanhosting.com
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-vps-25/
 
 ---
 

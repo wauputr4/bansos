@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { t, switchLocale } from '$lib/i18n';
+	import { t, switchLocale, ALL_LANGUAGES, availableCodes, type SupportedLocale } from '$lib/i18n';
 	import { locale } from 'svelte-i18n';
 	let { children } = $props();
 	type ThemeMode = 'dark' | 'light';
@@ -13,6 +13,18 @@
 	let scrollY = $state(0);
 	let lastY = 0;
 	let hideNavbar = $state(false);
+	let langExpanded = $state(false);
+	let hoveredLangCode = $state<string | null>(null);
+
+	const languages = ALL_LANGUAGES.filter((lang) =>
+		availableCodes.includes(lang.code as SupportedLocale)
+	) as { code: SupportedLocale; name: string; hoverName?: string }[];
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && langExpanded) {
+			langExpanded = false;
+		}
+	}
 
 	$effect(() => {
 		if (scrollY > lastY && scrollY > 60) {
@@ -60,7 +72,7 @@
 	<meta name="theme-color" content={theme === 'light' ? '#f8fafc' : '#090a0f'} />
 </svelte:head>
 
-<svelte:window bind:scrollY />
+<svelte:window bind:scrollY onkeydown={handleKeydown} />
 <div class="site-shell">
 	<header class="site-header" class:nav-hidden={hideNavbar}>
 		<nav class="container nav-shell" aria-label={$t('nav.mainAria')}>
@@ -84,6 +96,15 @@
 			</div>
 			<div class="nav-actions">
 				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="icon-btn"
+					aria-label="GitHub Repository"
+				>
+					<i class="fa-brands fa-github"></i>
+				</a>
+				<a
 					href="https://gitlab.com/wauputr4/bansos"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -101,16 +122,50 @@
 					<i class={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true"
 					></i>
 				</button>
-				<button
-					type="button"
-					class="icon-btn lang-btn"
-					onclick={() => switchLocale($locale === 'id' ? 'en' : 'id')}
-					aria-label={$t('lang.switchTo')}
-					title={$t('lang.switchTo')}
-				>
-					<i class="fa-solid fa-language"></i>
-					<span class="lang-label">{$locale === 'id' ? 'ID' : 'EN'}</span>
-				</button>
+				<div class="lang-switcher-wrapper">
+					<button
+						type="button"
+						class="icon-btn"
+						onclick={() => (langExpanded = !langExpanded)}
+						aria-expanded={langExpanded}
+						aria-label={$t('lang.switchTo')}
+						title={$t('lang.switchTo')}
+					>
+						<i class="fa-solid fa-globe"></i>
+					</button>
+					{#if langExpanded}
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<div class="dropdown-backdrop" onclick={() => (langExpanded = false)}></div>
+						<div class="lang-dropdown" role="menu">
+							{#each languages as lang (lang.code)}
+								<button
+									role="menuitem"
+									class="lang-option"
+									class:active={$locale === lang.code}
+									onclick={() => {
+										switchLocale(lang.code as SupportedLocale);
+										langExpanded = false;
+									}}
+									onmouseenter={() => (hoveredLangCode = lang.code)}
+									onmouseleave={() => (hoveredLangCode = null)}
+								>
+									<span class="lang-name-wrapper">
+										<span class="lang-name lang-name-hidden" aria-hidden="true">{lang.name}</span>
+										{#if lang.hoverName}
+											<span class="lang-name lang-name-hidden" aria-hidden="true"
+												>{lang.hoverName}</span
+											>
+										{/if}
+										<span class="lang-name lang-name-visible">
+											{hoveredLangCode === lang.code && lang.hoverName ? lang.hoverName : lang.name}
+										</span>
+									</span>
+								</button>
+							{/each}
+						</div>
+					{/if}
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -144,6 +199,10 @@
 					>{$t('footer.openSource')}</a
 				>
 				<span class="dot">·</span>
+				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
+					>GitHub</a
+				>
+				<span class="dot">·</span>
 				<a
 					href="https://discord.gg/m4WFaQpNGs"
 					target="_blank"
@@ -161,6 +220,15 @@
 					class="social-footer-link"
 				>
 					<i class="fa-brands fa-telegram"></i>
+				</a>
+				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-github"></i>
 				</a>
 				<a
 					href="https://whatsapp.com/channel/0029Vb8ZXgW1Hsq7j1uhRm0G"
@@ -325,15 +393,111 @@
 		border-color: var(--text-secondary);
 	}
 
-	.lang-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.2rem;
+	.lang-switcher-wrapper {
+		position: relative;
 	}
-	.lang-label {
-		font-size: 0.65rem;
-		font-weight: 800;
-		letter-spacing: 0.02em;
+
+	.dropdown-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 40;
+		cursor: default;
+	}
+
+	.lang-dropdown {
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		right: 0;
+		width: max-content;
+		min-width: 140px;
+		max-height: 250px;
+		overflow-y: auto;
+		padding: 0.5rem;
+		z-index: 50;
+		border-radius: 0.75rem;
+		background: linear-gradient(
+				var(--glass-bg, rgba(255, 255, 255, 0.05)),
+				var(--glass-bg, rgba(255, 255, 255, 0.05))
+			)
+			var(--bg-primary);
+		border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		animation: dropdown-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.lang-dropdown::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.lang-dropdown::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.lang-dropdown::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0.2);
+		border-radius: 4px;
+	}
+
+	.lang-option {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 1rem;
+		padding: 0.75rem 1rem;
+		text-align: left;
+		background: transparent;
+		border: none;
+		border-radius: 0.5rem;
+		color: var(--text-secondary);
+		cursor: pointer;
+		font-family: inherit;
+		transition: all 0.2s;
+	}
+
+	.lang-option:hover {
+		background: rgba(255, 255, 255, 0.05);
+		color: var(--text-primary);
+	}
+
+	.lang-option.active {
+		background: rgba(16, 185, 129, 0.15);
+		color: var(--color-success);
+	}
+
+	.lang-name-wrapper {
+		display: grid;
+	}
+
+	.lang-name-wrapper > span {
+		grid-area: 1 / 1;
+	}
+
+	.lang-name-hidden {
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	.lang-name-visible {
+		visibility: visible;
+	}
+
+	.lang-name {
+		font-weight: 600;
+		font-size: 0.85rem;
+	}
+
+	@keyframes dropdown-in {
+		from {
+			opacity: 0;
+			transform: translateY(-8px) scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
 	}
 
 	.site-footer {

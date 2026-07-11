@@ -158,8 +158,4 @@
 		font-size: 0.9rem;
 		line-height: 1.5;
 	}
-
-	.terms-list li strong {
-		color: #ef4444;
-	}
 </style>
