@@ -1591,10 +1591,9 @@
 		"title": "Promo exlusive Diskon VPS, Hosting JagoanHosting",
 		"provider": "Jagoan Hosting",
 		"providerWebsiteUrl": "https://www.jagoanhosting.com",
-		"description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga untuk berbagai layanan hosting. Berlaku untuk Shared Hosting, Dedicated Hosting, VPS (General, Plus, Ultra), VPS Windows, dan VPS Hosting. Bisa dipakai akun lama juga, tanpa syarat ribet!",
+		"description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!",
 		"benefits": [
-			"Potongan 10% untuk semua layanan hosting",
-			"Berlaku untuk Shared Hosting, Dedicated Hosting, VPS, VPS Windows, VPS Hosting",
+			"Potongan 10% untuk Shared Hosting",
 			"Bisa dipakai untuk akun lama (bukan cuma new user)",
 			"Tanpa batasan minimum transaksi"
 		],
@@ -1603,7 +1602,7 @@
 			"type": "forever"
 		},
 		"requirements": [
-			"Pilih produk hosting yang diinginkan (Shared/Dedicated/VPS)",
+			"Pilih produk Shared Hosting yang diinginkan",
 			"Masukkan kode promo JERITANJELATA saat checkout",
 			"Pastikan diskon 10% sudah terapply di total tagihan",
 			"Selesaikan pembayaran"
@@ -1992,6 +1991,36 @@
 		"ctaLink": "https://ai-hub.aicampus.my/?ref=01b0fc09",
 		"tags": ["AI", "API", "LLM", "Gemini", "Claude", "Developer", "Free Tier"],
 		"featured": false,
+		"status": "active"
+	},
+	{
+		"id": "jagoanhosting-promo-vps-25",
+		"title": "Promo Exclusive Jagoan Hosting",
+		"provider": "Jagoan Hosting",
+		"providerWebsiteUrl": "https://www.jagoanhosting.com",
+		"description": "Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.",
+		"benefits": [
+			"Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting",
+			"Berlaku untuk semua pengguna (bukan cuma new user)"
+		],
+		"promoCode": "BANSOSVPS",
+		"validity": {
+			"type": "forever"
+		},
+		"requirements": [
+			"Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)",
+			"Masukkan kode promo BANSOSVPS saat checkout",
+			"Selesaikan pembayaran"
+		],
+		"source": "https://www.jagoanhosting.com",
+		"publishedAt": "2026-07-11",
+		"contributor": {
+			"name": "wauputra",
+			"url": "https://wau.my.id/"
+		},
+		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+		"tags": ["VPS", "Diskon", "Hosting"],
+		"featured": true,
 		"status": "active"
 	}
 ]
