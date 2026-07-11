@@ -1991,7 +1991,7 @@
 		},
 		"ctaLink": "https://ai-hub.aicampus.my/?ref=01b0fc09",
 		"tags": ["AI", "API", "LLM", "Gemini", "Claude", "Developer", "Free Tier"],
-		"featured": true,
+		"featured": false,
 		"status": "active"
 	}
 ]
