@@ -28,11 +28,6 @@
 
 	const repo = 'wauputr4/bansos';
 	const repoUrl = `https://gitlab.com/${repo}`;
-	const githubOwner = {
-		login: 'wauputr4',
-		avatarUrl: 'https://avatars.githubusercontent.com/u/70278563?v=4',
-		url: 'https://github.com/wauputr4'
-	};
 	const gitlabOwner = {
 		login: 'wauputr4',
 		avatarUrl:
