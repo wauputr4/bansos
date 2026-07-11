@@ -597,12 +597,21 @@
 						{detailT('submitNew')}
 					</a>
 					<a
+						href="https://github.com/wauputr4/bansos"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-secondary"
+					>
+						<i class="fa-brands fa-github"></i>
+						{detailT('starGitlab')}
+					</a>
+					<a
 						href="https://gitlab.com/wauputr4/bansos"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="btn-secondary"
 					>
-						<i class="fa-solid fa-star"></i>
+						<i class="fa-brands fa-gitlab"></i>
 						{detailT('starGitlab')}
 					</a>
 				</div>

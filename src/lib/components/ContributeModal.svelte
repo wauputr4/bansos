@@ -50,7 +50,10 @@
 	function generateGitCommand(item: (typeof bansosList)[number]): string {
 		const branchName = `add/${item.id}`;
 		const parts = [
+			'# GitLab',
 			'git clone https://gitlab.com/wauputr4/bansos.git',
+			'# GitHub (mirror)',
+			'git clone https://github.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',

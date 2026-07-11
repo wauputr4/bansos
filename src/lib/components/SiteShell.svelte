@@ -96,6 +96,15 @@
 			</div>
 			<div class="nav-actions">
 				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="icon-btn"
+					aria-label="GitHub Repository"
+				>
+					<i class="fa-brands fa-github"></i>
+				</a>
+				<a
 					href="https://gitlab.com/wauputr4/bansos"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -190,6 +199,10 @@
 					>{$t('footer.openSource')}</a
 				>
 				<span class="dot">·</span>
+				<a href="https://github.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
+					>GitHub</a
+				>
+				<span class="dot">·</span>
 				<a
 					href="https://discord.gg/m4WFaQpNGs"
 					target="_blank"
@@ -207,6 +220,15 @@
 					class="social-footer-link"
 				>
 					<i class="fa-brands fa-telegram"></i>
+				</a>
+				<a
+					href="https://github.com/wauputr4/bansos"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub"
+					class="social-footer-link"
+				>
+					<i class="fa-brands fa-github"></i>
 				</a>
 				<a
 					href="https://whatsapp.com/channel/0029Vb8ZXgW1Hsq7j1uhRm0G"

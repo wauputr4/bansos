@@ -20,6 +20,11 @@
 			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
 		url: 'https://gitlab.com/wauputr4'
 	};
+	const githubOwner = {
+		login: 'wauputr4',
+		avatarUrl: 'https://avatars.githubusercontent.com/u/70278563?v=4',
+		url: 'https://github.com/wauputr4'
+	};
 	const commitContributors = getCommitContributorStats()
 		.filter((c) => c.login !== 'github-actions[bot]')
 		.sort((a, b) => {
@@ -61,7 +66,10 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
+			'# GitLab',
 			'git clone https://gitlab.com/wauputr4/bansos.git',
+			'# GitHub (mirror)',
+			'git clone https://github.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',

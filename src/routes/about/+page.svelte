@@ -196,12 +196,21 @@
 					<p>{$t('about.sponsorCodeDesc')}</p>
 					<div class="support-actions">
 						<a
+							href="https://github.com/wauputr4/bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="contrib-pill github-star-pill"
+						>
+							<i class="fa-brands fa-github"></i>
+							{$t('about.sponsorStarBtn')}
+						</a>
+						<a
 							href="https://gitlab.com/wauputr4/bansos"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="contrib-pill github-star-pill"
 						>
-							<i class="fa-solid fa-star"></i>
+							<i class="fa-brands fa-gitlab"></i>
 							{$t('about.sponsorStarBtn')}
 						</a>
 						<a href={resolve('/contribute')} class="contrib-pill submit-bansos-pill">

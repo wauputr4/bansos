@@ -28,6 +28,11 @@
 
 	const repo = 'wauputr4/bansos';
 	const repoUrl = `https://gitlab.com/${repo}`;
+	const githubOwner = {
+		login: 'wauputr4',
+		avatarUrl: 'https://avatars.githubusercontent.com/u/70278563?v=4',
+		url: 'https://github.com/wauputr4'
+	};
 	const gitlabOwner = {
 		login: 'wauputr4',
 		avatarUrl:
@@ -243,6 +248,15 @@
 			>
 				<i class="fa-brands fa-gitlab icon"></i>
 				<span>{$t('badge.opensource')}</span>
+			</a>
+			<a
+				href="https://github.com/wauputr4/bansos"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="github-badge"
+			>
+				<i class="fa-brands fa-github icon"></i>
+				<span>GitHub</span>
 			</a>
 			<a
 				href="https://discord.gg/m4WFaQpNGs"
