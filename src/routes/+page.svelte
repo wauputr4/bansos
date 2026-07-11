@@ -1,9 +1,15 @@
+<script module lang="ts">
+	let hasAnimated = false;
+</script>
+
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { resolve } from '$app/paths';
 	import BansosHighlights from '$lib/components/BansosHighlights.svelte';
+	import { Tween } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 	import {
 		bansosList,
 		latestBansos,
@@ -50,6 +56,12 @@
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
 	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
+
+	const tweenOptions = { duration: 2000, easing: cubicOut };
+	const animatedTotal = new Tween(totalBansos, tweenOptions);
+	const animatedActive = new Tween(activeBansos, tweenOptions);
+	const animatedUpcoming = new Tween(upcomingBansos, tweenOptions);
+	const animatedExpired = new Tween(expiredBansos, tweenOptions);
 	const commitContributors = getCommitContributorStats().filter(
 		(c) => c.login !== 'github-actions[bot]'
 	);
@@ -82,6 +94,21 @@
 	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
 
 	onMount(() => {
+		if (!hasAnimated) {
+			animatedTotal.set(0, { duration: 0 });
+			animatedActive.set(0, { duration: 0 });
+			animatedUpcoming.set(0, { duration: 0 });
+			animatedExpired.set(0, { duration: 0 });
+
+			setTimeout(() => {
+				animatedTotal.target = totalBansos;
+				animatedActive.target = activeBansos;
+				animatedUpcoming.target = upcomingBansos;
+				animatedExpired.target = expiredBansos;
+				hasAnimated = true;
+			}, 0);
+		}
+
 		const CACHE_KEY = `bansos_home_repo_v1_${repo}`;
 		const cached = localStorage.getItem(CACHE_KEY);
 
@@ -300,19 +327,19 @@
 
 		<div class="stats-strip" aria-label={$t('home.statsAria')}>
 			<div class="stat-item">
-				<span class="stat-value">{totalBansos}</span>
+				<span class="stat-value">{Math.floor(animatedTotal.current)}</span>
 				<span class="stat-label">{$t('home.statTotal')}</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-value">{activeBansos}</span>
+				<span class="stat-value">{Math.floor(animatedActive.current)}</span>
 				<span class="stat-label">{$t('home.statActive')}</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-value">{upcomingBansos}</span>
+				<span class="stat-value">{Math.floor(animatedUpcoming.current)}</span>
 				<span class="stat-label">{$t('home.statUpcoming')}</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-value">{expiredBansos}</span>
+				<span class="stat-value">{Math.floor(animatedExpired.current)}</span>
 				<span class="stat-label">{$t('home.statExpired')}</span>
 			</div>
 		</div>
