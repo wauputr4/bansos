@@ -1855,8 +1855,7 @@
 		},
 		"ctaLink": "https://t.me/conduitoff_bot?start=ref_950268146",
 		"tags": ["AI Credits", "API", "Free Tier", "AI Tools"],
-		"featured": true,
-		"featuredSince": "2026-07-03",
+		"featured": false,
 		"status": "active"
 	},
 	{
