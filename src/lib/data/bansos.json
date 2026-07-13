@@ -1018,7 +1018,7 @@
 		"ctaLink": "https://agentrouter.org/register?aff=txsb",
 		"tags": ["AI Tools", "AI Credits", "API", "Developer Tools", "Free Tier"],
 		"featured": false,
-		"status": "active"
+		"status": "expired"
 	},
 	{
 		"id": "gumloop-free-credits",
@@ -2080,8 +2080,8 @@
 		"source": "https://agentrouter.org/register?aff=txsb",
 		"publishedAt": "2026-07-13",
 		"contributor": {
-			"name": "jovian",
-			"url": "https://bansos.dev/"
+			"name": "Jovian",
+			"url": "https://github.com/vian0001"
 		},
 		"ctaLink": "https://agentrouter.org/register?aff=txsb",
 		"tags": ["AI", "AI Credits", "API", "Developer Tools"],
