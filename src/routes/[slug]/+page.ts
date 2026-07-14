@@ -26,20 +26,20 @@ export function load({ params }: { params: Record<string, string> }) {
 		'schema'
 	];
 	if (reserved.includes(slug)) {
-		error(404, 'Halaman tidak ditemukan');
+		throw error(404, 'Halaman tidak ditemukan');
 	}
 
 	// Check if slug matches a contributor → redirect to canonical contributor page
 	const contributor = getContributorBySlug(slug);
 	if (contributor) {
-		redirect(301, `/contributor/${slug}`);
+		throw redirect(301, `/contributor/${slug}`);
 	}
 
 	// Check if slug matches a bansos item → redirect to detail page
 	const bansosItem = getBansosById(slug);
 	if (bansosItem) {
-		redirect(301, `/list/${slug}`);
+		throw redirect(301, `/list/${slug}`);
 	}
 
-	error(404, 'Halaman tidak ditemukan');
+	throw error(404, 'Halaman tidak ditemukan');
 }

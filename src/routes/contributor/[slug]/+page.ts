@@ -10,7 +10,7 @@ export function load({ params }: { params: Record<string, string> }) {
 	const contributor = getContributorBySlug(params.slug);
 
 	if (!contributor) {
-		error(404, 'Kontributor tidak ditemukan');
+		throw error(404, 'Kontributor tidak ditemukan');
 	}
 
 	// Load the bansos items they contributed to
