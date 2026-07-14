@@ -1,0 +1,27 @@
+{
+    "id": "kimchi-dev-serverless-ai",
+    "title": "Kimchi.dev $50/Bulan Serverless AI Credit",
+    "provider": "Kimchi.dev",
+    "description": "Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.",
+    "benefits": [
+        "$50 Serverless AI credit per bulan",
+        "Tanpa syarat kartu kredit"
+    ],
+    "requirements": [
+        "Daftar akun di Kimchi.dev",
+        "Verifikasi alamat email"
+    ],
+    "validity": {
+        "type": "forever",
+        "description": "Selamanya"
+    },
+    "ctaLink": "https://kimchi.dev",
+    "tags": [
+        "AI Credits",
+        "No Credit Card"
+    ],
+    "status": "active",
+    "featured": false,
+    "publishedAt": "2026-06-12",
+    "contributorSlug": "devers"
+}

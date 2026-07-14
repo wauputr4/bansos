@@ -1,0 +1,971 @@
+{
+    "generatedAt": "2026-07-14",
+    "total": 69,
+    "items": [
+        {
+            "id": "adobe-creative-cloud-pro-trial",
+            "title": "Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month",
+            "provider": "Adobe",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "Free Tier",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-23",
+            "contributorSlug": ""
+        },
+        {
+            "id": "aerolink-free-credits",
+            "title": "Aerolink $350+ Free Credits",
+            "provider": "Aerolink",
+            "status": "expired",
+            "tags": [
+                "AI Tools",
+                "API",
+                "Cloud Services"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-15",
+            "contributorSlug": "aofsnorth"
+        },
+        {
+            "id": "aerolink-starter-free-trial",
+            "title": "Aerolink Starter Free Trial",
+            "provider": "Aerolink",
+            "status": "active",
+            "tags": [
+                "AI",
+                "API",
+                "Developer",
+                "Free Trial",
+                "Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-05",
+            "contributorSlug": "syafii-fahreza"
+        },
+        {
+            "id": "agentrouter-free-150-credit",
+            "title": "AgentRouter Free $150 AI Credit + $25 Daily Reward",
+            "provider": "AgentRouter",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "API",
+                "Developer Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-13",
+            "contributorSlug": "jovian"
+        },
+        {
+            "id": "agentrouter-free-250-ai-credit",
+            "title": "AgentRouter Free $250 AI Credit",
+            "provider": "AgentRouter",
+            "status": "expired",
+            "tags": [
+                "AI Tools",
+                "AI Credits",
+                "API",
+                "Developer Tools",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-20",
+            "contributorSlug": "jovian"
+        },
+        {
+            "id": "agentrouter-free-credits",
+            "title": "Free $200 Credit API LLM Populer",
+            "provider": "AgentRouter",
+            "status": "active",
+            "tags": [
+                "AI Tools",
+                "AI Credits",
+                "API"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-18",
+            "contributorSlug": "hamba-allah"
+        },
+        {
+            "id": "ai-hub-free-plan",
+            "title": "AI Hub Free Plan",
+            "provider": "AI Campus Malaysia",
+            "status": "active",
+            "tags": [
+                "AI",
+                "API",
+                "LLM",
+                "Gemini",
+                "Claude",
+                "Developer",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-11",
+            "contributorSlug": "syafii-fahreza"
+        },
+        {
+            "id": "ai-livscene-free-models",
+            "title": "AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1",
+            "provider": "AI Livscene",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "Free Tier",
+                "AI Tools",
+                "No Credit Card"
+            ],
+            "featured": true,
+            "publishedAt": "2026-07-03",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "aiclass-asean-courses",
+            "title": "Course Gratis AI dari AI Class ASEAN",
+            "provider": "AI Class ASEAN",
+            "status": "active",
+            "tags": [
+                "Course",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "wildan"
+        },
+        {
+            "id": "amd-ai-dev-program",
+            "title": "Program Developer AMD AI",
+            "provider": "AMD",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "Course"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "atomesus-free-1-year-subscription",
+            "title": "FREE 1 Year subscription ATOMESUS",
+            "provider": "ATOMESUS",
+            "status": "active",
+            "tags": [
+                "AI"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-20",
+            "contributorSlug": "alfian57"
+        },
+        {
+            "id": "aws-activate-credits",
+            "title": "Kredit AWS Activate hingga $200.000",
+            "provider": "Amazon Web Services",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "Startup"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "aws-ai-academy-2026",
+            "title": "Program Beasiswa AWS AI Academy 2026",
+            "provider": "AWS x Dicoding",
+            "status": "active",
+            "tags": [
+                "AI",
+                "Cloud",
+                "Machine Learning",
+                "Training"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-06",
+            "contributorSlug": "aditech"
+        },
+        {
+            "id": "bynara-ai-router-free-payg",
+            "title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
+            "provider": "byNara",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "Free Tier",
+                "AI Tools",
+                "No Credit Card"
+            ],
+            "featured": true,
+            "publishedAt": "2026-07-03",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "claim-7m-token-free",
+            "title": "Claim 7M token free",
+            "provider": "Bynara",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "API"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-23",
+            "contributorSlug": "ab-codeworks"
+        },
+        {
+            "id": "codecrafters-free-token",
+            "title": "Gratis 10JT Token AI / Hari",
+            "provider": "CodeCrafters",
+            "status": "active",
+            "tags": [
+                "AI Tools",
+                "API"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-17",
+            "contributorSlug": "rupadana"
+        },
+        {
+            "id": "conduit-trial-credit-500",
+            "title": "Conduit AI — $500 Trial Credit & Free Model Access",
+            "provider": "Conduit",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "Free Tier",
+                "AI Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-03",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "dahono-labs-ai-api",
+            "title": "Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs",
+            "provider": "Dahono Labs",
+            "status": "active",
+            "tags": [
+                "API",
+                "AI Tools",
+                "AI Credits",
+                "No Credit Card"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "dahono-labs"
+        },
+        {
+            "id": "deepseek-free-token",
+            "title": "DeepSeek 5M Token Gratis buat Ngoding AI",
+            "provider": "DeepSeek",
+            "status": "expired",
+            "tags": [
+                "AI Credits",
+                "No Credit Card",
+                "Free Tier"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-12",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "digitalocean-hatch",
+            "title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
+            "provider": "DigitalOcean",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "VPS & Server",
+                "Startup",
+                "AI Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "diskon-free-hosting",
+            "title": "Free HOSTING | diskon.com",
+            "provider": "Diskon",
+            "status": "active",
+            "tags": [
+                "Hosting"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-23",
+            "contributorSlug": "risal"
+        },
+        {
+            "id": "freebuff-ai-builder",
+            "title": "Freebuff — AI Coding Agent & App Builder 100% Gratis",
+            "provider": "Freebuff",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Tools",
+                "Developer Tools",
+                "Free Tier",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-25",
+            "contributorSlug": "mikaelaldy"
+        },
+        {
+            "id": "freemodel-invite-referral-10",
+            "title": "FreeModel Invite Referral — $10 Credit per Teman Daftar",
+            "provider": "FreeModel",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "Free Tier"
+            ],
+            "featured": true,
+            "publishedAt": "2026-07-01",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "freemodel-pro-plan-bonus-referral-ikan",
+            "title": "FreeModel Pro Plan – Bonus $10 Referral",
+            "provider": "FreeModel",
+            "status": "expired",
+            "tags": [
+                "AI Credits",
+                "Gratisan",
+                "AI"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-24",
+            "contributorSlug": "ikan"
+        },
+        {
+            "id": "freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10",
+            "title": "GRATIS Pro Plan – $10/5 Jam + Bonus Referral $10",
+            "provider": "FreeModel",
+            "status": "expired",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "API",
+                "AI Tools",
+                "No Credit Card",
+                "Gratisan",
+                "Developer Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-21",
+            "contributorSlug": "jovian"
+        },
+        {
+            "id": "futureppo-free-credit",
+            "title": "FuturePPO Free Credits",
+            "provider": "FuturePPO",
+            "status": "active",
+            "tags": [
+                "AI",
+                "API",
+                "LLM",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-13",
+            "contributorSlug": "syafii-fahreza"
+        },
+        {
+            "id": "gemini-plus-3bulan-sim",
+            "title": "Gemini Plus 3 Bulan via Bima+",
+            "provider": "Bima3",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "AI Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-17",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "google-ai-pro-4-bulan",
+            "title": "Google AI Pro Gratis 4 Bulan",
+            "provider": "Google",
+            "status": "active",
+            "tags": [
+                "AI Tools",
+                "Cloud Services"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-16",
+            "contributorSlug": "akbar"
+        },
+        {
+            "id": "google-startups-cloud",
+            "title": "Program Google for Startups Cloud",
+            "provider": "Google Cloud",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "AI Credits",
+                "Startup"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "gumloop-free-credits",
+            "title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
+            "provider": "Gumloop",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-20",
+            "contributorSlug": "brian"
+        },
+        {
+            "id": "idwebhost-claim-domain-gratis-myid-juli2026",
+            "title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
+            "provider": "IDwebhost",
+            "status": "active",
+            "tags": [
+                "Domain",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-03",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "idwebhost-domain-gratis-1tahun",
+            "title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
+            "provider": "IDwebhost",
+            "status": "expired",
+            "tags": [
+                "Domain",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "aziz-budi-satrio"
+        },
+        {
+            "id": "inceptionlabs-get-started",
+            "title": "10M Free Token Inception Platform",
+            "provider": "Inception",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-12",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "jagoanhosting-free-domain-webid",
+            "title": "Domain .WEB.ID GRATIS 1 Tahun | Jagoan Hosting",
+            "provider": "Jagoan Hosting",
+            "status": "expired",
+            "tags": [
+                "Domain"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-23",
+            "contributorSlug": "risal"
+        },
+        {
+            "id": "jagoanhosting-promo-domain-myid",
+            "title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
+            "provider": "Jagoan Hosting",
+            "status": "active",
+            "tags": [
+                "Domain",
+                "Diskon"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-25",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "jagoanhosting-promo-exclusive",
+            "title": "Promo Exclusive Diskon Hosting JagoanHosting",
+            "provider": "Jagoan Hosting",
+            "status": "active",
+            "tags": [
+                "Hosting",
+                "Diskon"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-30",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "jagoanhosting-promo-vps-25",
+            "title": "Promo Exclusive Jagoan Hosting 25%",
+            "provider": "Jagoan Hosting",
+            "status": "active",
+            "tags": [
+                "VPS",
+                "Diskon",
+                "Hosting"
+            ],
+            "featured": true,
+            "publishedAt": "2026-07-11",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "kie-ai-api-discount-credit",
+            "title": "Kie.ai Free Credit & API Lebih Murah buat AI Builder",
+            "provider": "Kie.ai",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "AI Tools",
+                "Diskon"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "pena-digital"
+        },
+        {
+            "id": "kimchi-dev-serverless-ai",
+            "title": "Kimchi.dev $50/Bulan Serverless AI Credit",
+            "provider": "Kimchi.dev",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "No Credit Card"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-12",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "lovable-free-pro-plan",
+            "title": "Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder",
+            "provider": "Lovable",
+            "status": "expired",
+            "tags": [
+                "AI Tools",
+                "Developer Tools",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-01",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "merlin-ai-claude-opus-48-diskon-1tahun",
+            "title": "CLAUDE opus 4.8 1tahun 500k",
+            "provider": "Merlin AI",
+            "status": "active",
+            "tags": [
+                "Diskon",
+                "AI"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-25",
+            "contributorSlug": "priyambodo"
+        },
+        {
+            "id": "merlin-ai-free-pro-1-month",
+            "title": "Gratis 1 Bulan Pro Plan Merlin AI",
+            "provider": "Merlin AI",
+            "status": "expired",
+            "tags": [
+                "AI",
+                "Promo",
+                "Credit Card Required",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-21",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "microsoft-founders-hub",
+            "title": "Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)",
+            "provider": "Microsoft",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "Startup"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "mimo-plan-free-nanaai",
+            "title": "Free Mimo Plan di NanaAI",
+            "provider": "NanaAI",
+            "status": "active",
+            "tags": [
+                "AI tools",
+                "Dev Tools",
+                "AI Provider"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-06",
+            "contributorSlug": "mugi-wiguna"
+        },
+        {
+            "id": "mongodb-startups",
+            "title": "Kredit MongoDB Atlas untuk Startup",
+            "provider": "MongoDB",
+            "status": "active",
+            "tags": [
+                "Cloud Services",
+                "Startup"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "namecheap-hosting-trial",
+            "title": "Trial Gratis 30 Hari Hosting Namecheap",
+            "provider": "Namecheap",
+            "status": "active",
+            "tags": [
+                "Hosting",
+                "Free Tier",
+                "VPS & Server"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "namecheap-vps-hosting",
+            "title": "Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan",
+            "provider": "Namecheap",
+            "status": "active",
+            "tags": [
+                "VPS & Server",
+                "Hosting",
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "namecom-domain-app",
+            "title": "Promo Domain .DEV & .APP Gratis dari Name.com",
+            "provider": "Name.com",
+            "status": "expired",
+            "tags": [
+                "Domain",
+                "No Credit Card"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-11",
+            "contributorSlug": "wauputr4"
+        },
+        {
+            "id": "neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan",
+            "title": "Neosantara AI Gateway: Bonus Rp 20.000 + Kredit Rp 10.000/Bulan",
+            "provider": "Neosantara",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "AI Tools",
+                "API",
+                "No Credit Card",
+                "Free Tier",
+                "Gratisan",
+                "Developer Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-22",
+            "contributorSlug": "errickow"
+        },
+        {
+            "id": "noblehost-hosting-gratis",
+            "title": "NobleHost - Web Hosting Gratis",
+            "provider": "NobleHost",
+            "status": "active",
+            "tags": [
+                "Hosting",
+                "Domain",
+                "Cloud Services"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-27",
+            "contributorSlug": "noblehost"
+        },
+        {
+            "id": "notion-ai-unlimited-1-bulan",
+            "title": "Notion AI Unlimited 1 Bulan",
+            "provider": "Notion",
+            "status": "active",
+            "tags": [
+                "AI Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-15",
+            "contributorSlug": "rizkysiregar23"
+        },
+        {
+            "id": "opencode-go-free-5-credit",
+            "title": "Free $5 Credit in Opencode GO - Referral links",
+            "provider": "Opencode Go",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "AI",
+                "API",
+                "Promo"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-24",
+            "contributorSlug": "qrocket-lab"
+        },
+        {
+            "id": "openmodel-deepseek-v4-flash-free",
+            "title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
+            "provider": "OpenModel",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-21",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "openmodel-deepseek-v4-flash-free-access",
+            "title": "FREE AKSES model deepseek-v4-flash - OpenModel.ai",
+            "provider": "OpenModel",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-23",
+            "contributorSlug": "syafrie-yunizar"
+        },
+        {
+            "id": "qoder-qwen-max-free",
+            "title": "200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder",
+            "provider": "Qoder",
+            "status": "active",
+            "tags": [
+                "AI Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-15",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "rumahweb-free-domain-xyz",
+            "title": "Free domain .XYZ",
+            "provider": "Rumahweb",
+            "status": "active",
+            "tags": [
+                "Domain",
+                "Free Tier",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-18",
+            "contributorSlug": "rey"
+        },
+        {
+            "id": "servernusa-free-xiaomi-mimo",
+            "title": "Akses Gratis Model AI Xiaomi Mimo via ServerNusa",
+            "provider": "ServerNusa",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Credits",
+                "Gratisan"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-21",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
+            "title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
+            "provider": "DigitalPlat Foundation",
+            "status": "active",
+            "tags": [
+                "Domain",
+                "API",
+                "Free Tier",
+                "Developer Tools"
+            ],
+            "featured": true,
+            "publishedAt": "2026-06-17",
+            "contributorSlug": "faza-iman-imron"
+        },
+        {
+            "id": "sumopod-domain-rp1",
+            "title": "Promo Domain Rp 1/Tahun dari Sumopod",
+            "provider": "Sumopod",
+            "status": "active",
+            "tags": [
+                "Domain",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-17",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "tokenrouter-minimax-m3-free",
+            "title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
+            "provider": "TokenRouter",
+            "status": "active",
+            "tags": [
+                "AI Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-14",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "tokenrouter-model-gateway",
+            "title": "Free Credits TokenRouter buat Jajan Model AI",
+            "provider": "TokenRouter",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "Diskon"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-11",
+            "contributorSlug": "mikacend"
+        },
+        {
+            "id": "tvstreamindonesia-fifa-2026",
+            "title": "Free stream Fifa World Cup 2026 No Iklan",
+            "provider": "Tvstreamindonesia",
+            "status": "active",
+            "tags": [
+                "Free Tier"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-18",
+            "contributorSlug": ""
+        },
+        {
+            "id": "v0-vercel-ai-credits-up-to-200",
+            "title": "v0 (Vercel) - AI Credits hingga $200",
+            "provider": "v0 (Vercel)",
+            "status": "active",
+            "tags": [
+                "AI",
+                "AI Tools",
+                "Developer Tools",
+                "Free Tier",
+                "No Credit Card"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-27",
+            "contributorSlug": "juan"
+        },
+        {
+            "id": "xai-grok-api-credits",
+            "title": "Kredit Gratis Uji Coba xAI Grok API",
+            "provider": "xAI",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-13",
+            "contributorSlug": "devers"
+        },
+        {
+            "id": "xiaomi-mimo-gratis-2",
+            "title": "Xiaomi Mimo Gratis $2",
+            "provider": "Xiaomi Mimo",
+            "status": "active",
+            "tags": [
+                "AI Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-17",
+            "contributorSlug": "akbar"
+        },
+        {
+            "id": "zcode-glm-52-free",
+            "title": "GLM-5.2 Gratis 5 Hari di ZCode",
+            "provider": "Z.ai",
+            "status": "active",
+            "tags": [
+                "AI Tools",
+                "Developer Tools"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-14",
+            "contributorSlug": "aofsnorth"
+        },
+        {
+            "id": "zenhosta-gratis-domain-1-tahun",
+            "title": "Gratis Domain 1 Tahun Walau Order Hosting 1 Bulan",
+            "provider": "Zenhosta",
+            "status": "active",
+            "tags": [
+                "Hosting",
+                "Domain",
+                "Cloud Services"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-01",
+            "contributorSlug": "ogya-adyatma-putra"
+        },
+        {
+            "id": "zenmux-glm-52-free",
+            "title": "GLM-5.2 Lagi Gratis!",
+            "provider": "Z.ai",
+            "status": "active",
+            "tags": [
+                "AI Credits"
+            ],
+            "featured": false,
+            "publishedAt": "2026-06-19",
+            "contributorSlug": "akbar"
+        },
+        {
+            "id": "zyloo-free-200-credit-post",
+            "title": "Free $200 Credit AI API — Posting tentang Zyloo",
+            "provider": "Zyloo",
+            "status": "active",
+            "tags": [
+                "AI Credits",
+                "API",
+                "AI Tools",
+                "Free Tier",
+                "No Credit Card"
+            ],
+            "featured": false,
+            "publishedAt": "2026-07-01",
+            "contributorSlug": "wauputr4"
+        }
+    ]
+}

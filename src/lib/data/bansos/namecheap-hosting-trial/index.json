@@ -1,0 +1,30 @@
+{
+    "id": "namecheap-hosting-trial",
+    "title": "Trial Gratis 30 Hari Hosting Namecheap",
+    "provider": "Namecheap",
+    "description": "Namecheap memberikan akses trial gratis selama 30 hari untuk layanan Shared Web Hosting, Email Hosting, dan WordPress Hosting.",
+    "benefits": [
+        "Akses gratis selama 30 hari",
+        "Tersedia untuk opsi Shared Web Hosting, Email Hosting, dan WordPress Hosting",
+        "Kapasitas pengujian server secara langsung sebelum pembelian paket penuh"
+    ],
+    "requirements": [
+        "Buat akun di platform Namecheap",
+        "Pilih paket hosting yang diinginkan pada halaman layanan",
+        "Ikuti instruksi pada layar untuk menyelesaikan aktivasi"
+    ],
+    "validity": {
+        "type": "uncertain",
+        "description": "Masa trial berlaku selama 30 hari terhitung sejak aktivasi"
+    },
+    "ctaLink": "https://www.namecheap.com/hosting/",
+    "tags": [
+        "Hosting",
+        "Free Tier",
+        "VPS & Server"
+    ],
+    "status": "active",
+    "featured": false,
+    "publishedAt": "2026-06-13",
+    "contributorSlug": "devers"
+}

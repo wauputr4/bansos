@@ -1,0 +1,29 @@
+{
+    "id": "amd-ai-dev-program",
+    "title": "Program Developer AMD AI",
+    "provider": "AMD",
+    "description": "AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.",
+    "benefits": [
+        "Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI",
+        "Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan",
+        "Akses langsung ke pakar teknis AMD melalui server Discord privat"
+    ],
+    "requirements": [
+        "Buat akun AMD gratis",
+        "Isi dan kirimkan formulir pendaftaran Program AI Developer",
+        "Verifikasi alamat email yang didaftarkan"
+    ],
+    "validity": {
+        "type": "uncertain",
+        "description": "Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform"
+    },
+    "ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
+    "tags": [
+        "AI Credits",
+        "Course"
+    ],
+    "status": "active",
+    "featured": false,
+    "publishedAt": "2026-06-13",
+    "contributorSlug": "devers"
+}

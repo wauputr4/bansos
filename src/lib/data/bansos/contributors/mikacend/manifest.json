@@ -1,0 +1,15 @@
+{
+    "login": "mikacend",
+    "displayName": "!mika",
+    "bio": "",
+    "title": "",
+    "skills": [],
+    "links": {
+        "website": "https://www.mikacend.xyz/"
+    },
+    "contributedBansos": [
+        "tokenrouter-model-gateway"
+    ],
+    "hidden": false,
+    "joinedAt": "2026-07-14"
+}

@@ -1,0 +1,30 @@
+{
+    "id": "openmodel-deepseek-v4-flash-free-access",
+    "title": "FREE AKSES model deepseek-v4-flash - OpenModel.ai",
+    "provider": "OpenModel",
+    "description": "Gratis akses model deepseek-v4-flash di https://openmodel.ai\n\nBerlaku sampai tanggal 28 Juni 2026",
+    "benefits": [
+        "FREE akses model deepseek-v4-flash",
+        "Diskon model lain"
+    ],
+    "requirements": [
+        "Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4",
+        "Buat Apikey",
+        "Arahkan base url : https://api.openmodel.ai/v1",
+        "Gunakan model deepseek-v4-flash"
+    ],
+    "validity": {
+        "type": "fixed",
+        "date": "2026-06-28"
+    },
+    "ctaLink": "https://www.openmodel.ai?ref=7GzdLml4",
+    "tags": [
+        "AI Credits",
+        "API"
+    ],
+    "status": "active",
+    "featured": false,
+    "publishedAt": "2026-06-23",
+    "source": "https://www.openmodel.ai/event",
+    "contributorSlug": "syafrie-yunizar"
+}

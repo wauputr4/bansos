@@ -1,0 +1,27 @@
+{
+    "id": "xiaomi-mimo-gratis-2",
+    "title": "Xiaomi Mimo Gratis $2",
+    "provider": "Xiaomi Mimo",
+    "description": "Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.",
+    "benefits": [
+        "credits $2"
+    ],
+    "requirements": [
+        "Registrasi akun di platform Xiaomi Mimo.",
+        "Buka dashboard console di https://platform.xiaomimimo.com/console/balance.",
+        "Klik tombol \"Enter invite code\" di pojok kiri bawah.",
+        "Masukkan kode referal \"NK2BLA\" untuk mendapatkan saldo $2 gratis."
+    ],
+    "validity": {
+        "type": "uncertain"
+    },
+    "ctaLink": "https://platform.xiaomimimo.com/?ref=NK2BLA",
+    "tags": [
+        "AI Credits"
+    ],
+    "status": "active",
+    "featured": false,
+    "promoCode": "NK2BLA",
+    "publishedAt": "2026-06-17",
+    "contributorSlug": "akbar"
+}

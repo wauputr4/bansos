@@ -1,0 +1,33 @@
+{
+    "id": "v0-vercel-ai-credits-up-to-200",
+    "title": "v0 (Vercel) - AI Credits hingga $200",
+    "provider": "v0 (Vercel)",
+    "description": "Platform AI coding dari Vercel yang memungkinkan pengguna membuat aplikasi dan frontend menggunakan prompt berbasis AI. Pengguna dapat memperoleh AI Credits secara gratis hingga $200 setelah mendaftar tanpa perlu kartu kredit maupun metode pembayaran.",
+    "benefits": [
+        "Mendapat $10 langsung saat pertama kali daftar",
+        "Dapatkan hingga $200 total AI Credits",
+        "Bisa deploy project secara langsung dan gratis",
+        "AI Coding dan UI generation berkualitas tinggi"
+    ],
+    "requirements": [
+        "Daftar akun di v0.dev (mungkin perlu verifikasi nomor telepon)",
+        "$10 pertama otomatis masuk ke akun setelah selesai registrasi"
+    ],
+    "validity": {
+        "type": "uncertain",
+        "description": "Selama kuota tersedia"
+    },
+    "ctaLink": "https://v0.app/ref/8EFMVE",
+    "tags": [
+        "AI",
+        "AI Tools",
+        "Developer Tools",
+        "Free Tier",
+        "No Credit Card"
+    ],
+    "status": "active",
+    "featured": false,
+    "publishedAt": "2026-06-27",
+    "source": "https://community.vercel.com/t/the-new-v0-is-here/32845",
+    "contributorSlug": "juan"
+}

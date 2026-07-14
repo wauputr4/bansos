@@ -1,0 +1,73 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "schema/contributor.schema.json",
+	"title": "Contributor Profile",
+	"description": "Schema for a contributor profile stored in src/lib/data/bansos/contributors/<login>/manifest.json",
+	"type": "object",
+	"properties": {
+		"login": {
+			"type": "string",
+			"description": "Username/login (matching folder name)",
+			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+		},
+		"displayName": {
+			"type": "string",
+			"description": "Nama tampilan (bisa beda dengan login)"
+		},
+		"title": {
+			"type": "string",
+			"description": "Headline profesional (cth: Full Stack Developer)"
+		},
+		"bio": {
+			"type": "string",
+			"description": "Bio singkat"
+		},
+		"avatar": {
+			"type": "string",
+			"description": "Path file avatar relatif (cth: avatar.webp)"
+		},
+		"location": {
+			"type": "string",
+			"description": "Lokasi"
+		},
+		"pronouns": {
+			"type": "string",
+			"description": "Pronouns (opsional)"
+		},
+		"skills": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Daftar skill"
+		},
+		"links": {
+			"type": "object",
+			"properties": {
+				"github": { "type": "string", "format": "uri" },
+				"twitter": { "type": "string", "format": "uri" },
+				"linkedin": { "type": "string", "format": "uri" },
+				"website": { "type": "string", "format": "uri" },
+				"telegram": { "type": "string" },
+				"npm": { "type": "string", "format": "uri" },
+				"youtube": { "type": "string", "format": "uri" }
+			},
+			"additionalProperties": { "type": "string" },
+			"description": "Social/professional links"
+		},
+		"contributedBansos": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Slug bansos yang dikontribusi"
+		},
+		"hidden": {
+			"type": "boolean",
+			"description": "Sembunyikan profil dari publik",
+			"default": false
+		},
+		"joinedAt": {
+			"type": "string",
+			"format": "date",
+			"description": "Tanggal join"
+		}
+	},
+	"required": ["login", "displayName"]
+}

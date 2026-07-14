@@ -1,0 +1,34 @@
+{
+    "id": "agentrouter-free-150-credit",
+    "title": "AgentRouter Free $150 AI Credit + $25 Daily Reward",
+    "provider": "AgentRouter",
+    "description": "AgentRouter memberikan bonus AI Credit sebesar $150 untuk pengguna baru yang mendaftar melalui program yang tersedia. Pengguna juga berkesempatan memperoleh tambahan AI Credit harian sesuai ketentuan program. Credit dapat digunakan untuk mengakses berbagai model AI melalui satu API.",
+    "benefits": [
+        "$150 AI Credit untuk pengguna baru",
+        "Tambahan $25 AI Credit setiap hari",
+        "Akses berbagai model AI populer melalui satu API"
+    ],
+    "requirements": [
+        "Memiliki akun GitHub (disarankan akun lama/old account)",
+        "Mendaftar melalui halaman registrasi AgentRouter",
+        "Login dan klaim bonus sesuai ketentuan yang berlaku"
+    ],
+    "validity": {
+        "type": "uncertain",
+        "description": "Berlaku selama program promosi masih tersedia"
+    },
+    "ctaLink": "https://agentrouter.org/register?aff=txsb",
+    "tags": [
+        "AI",
+        "AI Credits",
+        "API",
+        "Developer Tools"
+    ],
+    "status": "active",
+    "featured": false,
+    "tips": "Gunakan akun GitHub yang aktif dan hindari membuat akun ganda agar tetap sesuai Terms of Service",
+    "publishedAt": "2026-07-13",
+    "source": "https://agentrouter.org/register?aff=txsb",
+    "providerWebsiteUrl": "https://agent-router.org",
+    "contributorSlug": "jovian"
+}

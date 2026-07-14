@@ -1,0 +1,141 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "schema/bansos.schema.json",
+	"title": "Bansos Catalog Item",
+	"description": "Schema for a single bansos/catalog item stored in src/lib/data/bansos/<slug>/index.json",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string",
+			"description": "Unique slug/identifier (matching the folder name)",
+			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+		},
+		"title": {
+			"type": "string",
+			"description": "Judul bansos"
+		},
+		"provider": {
+			"type": "string",
+			"description": "Nama provider"
+		},
+		"providerLogoUrl": {
+			"type": "string",
+			"format": "uri",
+			"description": "URL logo provider"
+		},
+		"providerWebsiteUrl": {
+			"type": "string",
+			"format": "uri",
+			"description": "URL website provider"
+		},
+		"description": {
+			"type": "string",
+			"description": "Deskripsi singkat bansos"
+		},
+		"benefits": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Daftar benefit/keuntungan"
+		},
+		"promoCode": {
+			"type": "string",
+			"description": "Kode promo (jika ada)"
+		},
+		"validity": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["fixed", "uncertain", "forever"]
+				},
+				"date": {
+					"type": "string",
+					"format": "date",
+					"description": "Tanggal berlaku (ISO 8601)"
+				},
+				"description": {
+					"type": "string",
+					"description": "Deskripsi validitas"
+				}
+			},
+			"required": ["type"]
+		},
+		"requirements": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Daftar syarat"
+		},
+		"tips": {
+			"type": "string",
+			"description": "Tips tambahan"
+		},
+		"publishedAt": {
+			"type": "string",
+			"format": "date",
+			"description": "Tanggal publish"
+		},
+		"contributorSlug": {
+			"type": "string",
+			"description": "Slug contributor (refer ke contributors/<slug>/manifest.json)",
+			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+		},
+		"source": {
+			"type": "string",
+			"description": "Source URL/info"
+		},
+		"ctaLink": {
+			"type": "string",
+			"format": "uri",
+			"description": "Link CTA / referral"
+		},
+		"tags": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Tags/kategori"
+		},
+		"featured": {
+			"type": "boolean",
+			"description": "Apakah featured?"
+		},
+		"featuredSince": {
+			"type": "string",
+			"format": "date",
+			"description": "Featured sejak"
+		},
+		"featuredUntil": {
+			"type": "string",
+			"format": "date",
+			"description": "Featured sampai"
+		},
+		"status": {
+			"type": "string",
+			"enum": ["active", "expired", "upcoming"],
+			"description": "Status bansos"
+		},
+		"hidden": {
+			"type": "boolean",
+			"description": "Sembunyikan dari frontend (privacy flag)",
+			"default": false
+		},
+		"customUI": {
+			"type": "boolean",
+			"description": "READ.md fully custom (jangan auto-generate)",
+			"default": false
+		}
+	},
+	"required": ["title", "provider", "description", "ctaLink", "status"],
+	"allOf": [
+		{
+			"if": {
+				"properties": { "validity": { "properties": { "type": { "const": "fixed" } } } }
+			},
+			"then": {
+				"properties": {
+					"validity": {
+						"required": ["date"]
+					}
+				}
+			}
+		}
+	]
+}

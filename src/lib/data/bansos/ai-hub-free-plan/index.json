@@ -1,0 +1,42 @@
+{
+    "id": "ai-hub-free-plan",
+    "title": "AI Hub Free Plan",
+    "provider": "AI Campus Malaysia",
+    "description": "Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.",
+    "benefits": [
+        "1.000.000 token gratis pada Free Plan (weekly allocation).",
+        "API access melalui Hub Key.",
+        "Dapat membuat API Key sendiri.",
+        "Personal usage dashboard.",
+        "Informasi penggunaan token secara real-time.",
+        "Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.",
+        "Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.",
+        "Dukungan komunitas melalui Telegram."
+    ],
+    "requirements": [
+        "Mendaftarkan akun AI Hub baru.",
+        "Menggunakan paket Free Plan.",
+        "Mematuhi Terms of Service AI Hub."
+    ],
+    "validity": {
+        "type": "uncertain",
+        "description": "Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub."
+    },
+    "ctaLink": "https://ai-hub.aicampus.my/?ref=01b0fc09",
+    "tags": [
+        "AI",
+        "API",
+        "LLM",
+        "Gemini",
+        "Claude",
+        "Developer",
+        "Free Tier"
+    ],
+    "status": "active",
+    "featured": false,
+    "tips": "Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.",
+    "publishedAt": "2026-07-11",
+    "source": "https://ai-hub.aicampus.my/",
+    "providerWebsiteUrl": "https://ai-hub.aicampus.my/",
+    "contributorSlug": "syafii-fahreza"
+}
