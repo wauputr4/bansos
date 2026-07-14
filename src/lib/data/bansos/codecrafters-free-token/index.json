@@ -1,28 +1,21 @@
 {
-    "id": "codecrafters-free-token",
-    "title": "Gratis 10JT Token AI / Hari",
-    "provider": "CodeCrafters",
-    "description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
-    "benefits": [
-        "Gratis 10JT Token/Hari",
-        "Mimo 2.5",
-        "Deepseek V4 Flash"
-    ],
-    "requirements": [
-        "Memiliki akun codecrafters",
-        "Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas"
-    ],
-    "validity": {
-        "type": "forever"
-    },
-    "ctaLink": "https://cloud.codecrafters.id",
-    "tags": [
-        "AI Tools",
-        "API"
-    ],
-    "status": "active",
-    "featured": false,
-    "promoCode": "BANSOSDEV",
-    "publishedAt": "2026-06-17",
-    "contributorSlug": "rupadana"
+	"id": "codecrafters-free-token",
+	"title": "Gratis 10JT Token AI / Hari",
+	"provider": "CodeCrafters",
+	"description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
+	"benefits": ["Gratis 10JT Token/Hari", "Mimo 2.5", "Deepseek V4 Flash"],
+	"requirements": [
+		"Memiliki akun codecrafters",
+		"Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas"
+	],
+	"validity": {
+		"type": "forever"
+	},
+	"ctaLink": "https://cloud.codecrafters.id",
+	"tags": ["AI Tools", "API"],
+	"status": "active",
+	"featured": false,
+	"promoCode": "BANSOSDEV",
+	"publishedAt": "2026-06-17",
+	"contributorSlug": "rupadana"
 }

@@ -1,31 +1,27 @@
 {
-    "id": "jagoanhosting-promo-vps-25",
-    "title": "Promo Exclusive Jagoan Hosting 25%",
-    "provider": "Jagoan Hosting",
-    "description": "Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.",
-    "benefits": [
-        "Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting",
-        "Berlaku untuk semua pengguna (bukan cuma new user)"
-    ],
-    "requirements": [
-        "Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)",
-        "Masukkan kode promo BANSOSVPS saat checkout",
-        "Selesaikan pembayaran"
-    ],
-    "validity": {
-        "type": "forever"
-    },
-    "ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
-    "tags": [
-        "VPS",
-        "Diskon",
-        "Hosting"
-    ],
-    "status": "active",
-    "featured": true,
-    "promoCode": "BANSOSVPS",
-    "publishedAt": "2026-07-11",
-    "source": "https://www.jagoanhosting.com",
-    "providerWebsiteUrl": "https://www.jagoanhosting.com",
-    "contributorSlug": "wauputr4"
+	"id": "jagoanhosting-promo-vps-25",
+	"title": "Promo Exclusive Jagoan Hosting 25%",
+	"provider": "Jagoan Hosting",
+	"description": "Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.",
+	"benefits": [
+		"Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting",
+		"Berlaku untuk semua pengguna (bukan cuma new user)"
+	],
+	"requirements": [
+		"Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)",
+		"Masukkan kode promo BANSOSVPS saat checkout",
+		"Selesaikan pembayaran"
+	],
+	"validity": {
+		"type": "forever"
+	},
+	"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+	"tags": ["VPS", "Diskon", "Hosting"],
+	"status": "active",
+	"featured": true,
+	"promoCode": "BANSOSVPS",
+	"publishedAt": "2026-07-11",
+	"source": "https://www.jagoanhosting.com",
+	"providerWebsiteUrl": "https://www.jagoanhosting.com",
+	"contributorSlug": "wauputr4"
 }

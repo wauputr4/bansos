@@ -1,26 +1,18 @@
 {
-    "id": "agentrouter-free-credits",
-    "title": "Free $200 Credit API LLM Populer",
-    "provider": "AgentRouter",
-    "description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
-    "benefits": [
-        "Free Signup Credits"
-    ],
-    "requirements": [
-        "Daftar akun"
-    ],
-    "validity": {
-        "type": "forever"
-    },
-    "ctaLink": "https://agentrouter.org/register?aff=qdG1",
-    "tags": [
-        "AI Tools",
-        "AI Credits",
-        "API"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-18",
-    "source": "https://agentrouter.org/register?aff=qdG1",
-    "contributorSlug": "hamba-allah"
+	"id": "agentrouter-free-credits",
+	"title": "Free $200 Credit API LLM Populer",
+	"provider": "AgentRouter",
+	"description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
+	"benefits": ["Free Signup Credits"],
+	"requirements": ["Daftar akun"],
+	"validity": {
+		"type": "forever"
+	},
+	"ctaLink": "https://agentrouter.org/register?aff=qdG1",
+	"tags": ["AI Tools", "AI Credits", "API"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-18",
+	"source": "https://agentrouter.org/register?aff=qdG1",
+	"contributorSlug": "hamba-allah"
 }

@@ -1,25 +1,19 @@
 {
-    "id": "zenmux-glm-52-free",
-    "title": "GLM-5.2 Lagi Gratis!",
-    "provider": "Z.ai",
-    "description": "salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.",
-    "benefits": [
-        "GLM 5.2 Free sampe limit habis"
-    ],
-    "requirements": [
-        "Daftar via invite link"
-    ],
-    "validity": {
-        "type": "uncertain"
-    },
-    "ctaLink": "https://zenmux.ai/invite/7RR544",
-    "tags": [
-        "AI Credits"
-    ],
-    "status": "active",
-    "featured": false,
-    "promoCode": "7RR544",
-    "publishedAt": "2026-06-19",
-    "source": "https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ",
-    "contributorSlug": "akbar"
+	"id": "zenmux-glm-52-free",
+	"title": "GLM-5.2 Lagi Gratis!",
+	"provider": "Z.ai",
+	"description": "salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.",
+	"benefits": ["GLM 5.2 Free sampe limit habis"],
+	"requirements": ["Daftar via invite link"],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://zenmux.ai/invite/7RR544",
+	"tags": ["AI Credits"],
+	"status": "active",
+	"featured": false,
+	"promoCode": "7RR544",
+	"publishedAt": "2026-06-19",
+	"source": "https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ",
+	"contributorSlug": "akbar"
 }

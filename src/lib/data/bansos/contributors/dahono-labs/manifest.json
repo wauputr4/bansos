@@ -1,15 +1,13 @@
 {
-    "login": "dahono-labs",
-    "displayName": "Dahono Labs",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {
-        "website": "https://labs.dahono.com/"
-    },
-    "contributedBansos": [
-        "dahono-labs-ai-api"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "dahono-labs",
+	"displayName": "Dahono Labs",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"website": "https://labs.dahono.com/"
+	},
+	"contributedBansos": ["dahono-labs-ai-api"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

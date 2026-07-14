@@ -1,15 +1,13 @@
 {
-    "login": "qrocket-lab",
-    "displayName": "QRocket-Lab",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {
-        "github": "https://github.com/Qrocket-lab"
-    },
-    "contributedBansos": [
-        "opencode-go-free-5-credit"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "qrocket-lab",
+	"displayName": "QRocket-Lab",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/Qrocket-lab"
+	},
+	"contributedBansos": ["opencode-go-free-5-credit"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

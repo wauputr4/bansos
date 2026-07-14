@@ -1,15 +1,13 @@
 {
-    "login": "priyambodo",
-    "displayName": "priyambodo",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {
-        "github": "https://github.com/maspriyambodo"
-    },
-    "contributedBansos": [
-        "merlin-ai-claude-opus-48-diskon-1tahun"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "priyambodo",
+	"displayName": "priyambodo",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/maspriyambodo"
+	},
+	"contributedBansos": ["merlin-ai-claude-opus-48-diskon-1tahun"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

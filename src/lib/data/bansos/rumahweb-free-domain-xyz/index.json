@@ -1,31 +1,25 @@
 {
-    "id": "rumahweb-free-domain-xyz",
-    "title": "Free domain .XYZ",
-    "provider": "Rumahweb",
-    "description": "Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.",
-    "benefits": [
-        "Hosting free 1 bulan"
-    ],
-    "requirements": [
-        "Daftar akun terlebih dahulu di website Rumahweb.",
-        "Cek ketersediaan nama domain/subdomain yang diinginkan.",
-        "Berikan rating dan review bintang 5 untuk Rumahweb di Google.",
-        "Ambil screenshot sebagai bukti review yang berhasil dikirim.",
-        "Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.",
-        "Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja)."
-    ],
-    "validity": {
-        "type": "uncertain"
-    },
-    "ctaLink": "https://www.rumahweb.com/domain-gratis/",
-    "tags": [
-        "Domain",
-        "Free Tier",
-        "Diskon"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-18",
-    "source": "https://www.rumahweb.com/domain-gratis",
-    "contributorSlug": "rey"
+	"id": "rumahweb-free-domain-xyz",
+	"title": "Free domain .XYZ",
+	"provider": "Rumahweb",
+	"description": "Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.",
+	"benefits": ["Hosting free 1 bulan"],
+	"requirements": [
+		"Daftar akun terlebih dahulu di website Rumahweb.",
+		"Cek ketersediaan nama domain/subdomain yang diinginkan.",
+		"Berikan rating dan review bintang 5 untuk Rumahweb di Google.",
+		"Ambil screenshot sebagai bukti review yang berhasil dikirim.",
+		"Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.",
+		"Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja)."
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://www.rumahweb.com/domain-gratis/",
+	"tags": ["Domain", "Free Tier", "Diskon"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-18",
+	"source": "https://www.rumahweb.com/domain-gratis",
+	"contributorSlug": "rey"
 }

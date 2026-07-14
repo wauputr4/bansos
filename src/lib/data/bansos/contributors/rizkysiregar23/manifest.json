@@ -1,15 +1,13 @@
 {
-    "login": "rizkysiregar23",
-    "displayName": "rizkysiregar23",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {
-        "website": "https://www.threads.com/@rizkysiregar23"
-    },
-    "contributedBansos": [
-        "notion-ai-unlimited-1-bulan"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "rizkysiregar23",
+	"displayName": "rizkysiregar23",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"website": "https://www.threads.com/@rizkysiregar23"
+	},
+	"contributedBansos": ["notion-ai-unlimited-1-bulan"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

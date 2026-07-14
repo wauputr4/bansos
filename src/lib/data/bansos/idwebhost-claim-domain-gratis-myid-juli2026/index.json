@@ -1,35 +1,32 @@
 {
-    "id": "idwebhost-claim-domain-gratis-myid-juli2026",
-    "title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
-    "provider": "IDwebhost",
-    "description": "Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.",
-    "benefits": [
-        "Domain gratis 1 tahun",
-        "Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID",
-        "Cukup pakai kupon saat checkout",
-        "Kuota terbatas — klaim sebelum habis"
-    ],
-    "requirements": [
-        "Punya akun IDwebhost",
-        "Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)",
-        "Gunakan kupon M2n4tS saat checkout"
-    ],
-    "validity": {
-        "type": "fixed",
-        "date": "2026-07-05",
-        "description": "Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis."
-    },
-    "ctaLink": "http://idwebhost.com/domain",
-    "tags": [
-        "Domain",
-        "Diskon"
-    ],
-    "status": "active",
-    "featured": false,
-    "promoCode": "M2n4tS",
-    "tips": "Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!",
-    "publishedAt": "2026-07-03",
-    "source": "https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg",
-    "providerWebsiteUrl": "https://idwebhost.com",
-    "contributorSlug": "wauputr4"
+	"id": "idwebhost-claim-domain-gratis-myid-juli2026",
+	"title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
+	"provider": "IDwebhost",
+	"description": "Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.",
+	"benefits": [
+		"Domain gratis 1 tahun",
+		"Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID",
+		"Cukup pakai kupon saat checkout",
+		"Kuota terbatas — klaim sebelum habis"
+	],
+	"requirements": [
+		"Punya akun IDwebhost",
+		"Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)",
+		"Gunakan kupon M2n4tS saat checkout"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-07-05",
+		"description": "Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis."
+	},
+	"ctaLink": "http://idwebhost.com/domain",
+	"tags": ["Domain", "Diskon"],
+	"status": "active",
+	"featured": false,
+	"promoCode": "M2n4tS",
+	"tips": "Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!",
+	"publishedAt": "2026-07-03",
+	"source": "https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg",
+	"providerWebsiteUrl": "https://idwebhost.com",
+	"contributorSlug": "wauputr4"
 }

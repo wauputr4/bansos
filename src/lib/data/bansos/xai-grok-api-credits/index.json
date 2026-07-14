@@ -1,27 +1,24 @@
 {
-    "id": "xai-grok-api-credits",
-    "title": "Kredit Gratis Uji Coba xAI Grok API",
-    "provider": "xAI",
-    "description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
-    "benefits": [
-        "Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
-        "Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing"
-    ],
-    "requirements": [
-        "Buat akun di xAI Console dan hasilkan API key",
-        "Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran"
-    },
-    "ctaLink": "https://console.x.ai",
-    "tags": [
-        "AI Credits",
-        "API"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-13",
-    "contributorSlug": "devers"
+	"id": "xai-grok-api-credits",
+	"title": "Kredit Gratis Uji Coba xAI Grok API",
+	"provider": "xAI",
+	"description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
+	"benefits": [
+		"Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
+		"Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing"
+	],
+	"requirements": [
+		"Buat akun di xAI Console dan hasilkan API key",
+		"Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran"
+	},
+	"ctaLink": "https://console.x.ai",
+	"tags": ["AI Credits", "API"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "devers"
 }

@@ -1,29 +1,19 @@
 {
-    "id": "google-ai-pro-4-bulan",
-    "title": "Google AI Pro Gratis 4 Bulan",
-    "provider": "Google",
-    "description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
-    "benefits": [
-        "Antigravity",
-        "Gemini Pro",
-        "Penyimpanan 5TB Google Drive/Gmail"
-    ],
-    "requirements": [
-        "Buat akun",
-        "Klaim program melalui link"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Berlaku selama promosi berlangsung"
-    },
-    "ctaLink": "http://g.co/g1referral/JG620Z3F",
-    "tags": [
-        "AI Tools",
-        "Cloud Services"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-16",
-    "source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
-    "contributorSlug": "akbar"
+	"id": "google-ai-pro-4-bulan",
+	"title": "Google AI Pro Gratis 4 Bulan",
+	"provider": "Google",
+	"description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
+	"benefits": ["Antigravity", "Gemini Pro", "Penyimpanan 5TB Google Drive/Gmail"],
+	"requirements": ["Buat akun", "Klaim program melalui link"],
+	"validity": {
+		"type": "uncertain",
+		"description": "Berlaku selama promosi berlangsung"
+	},
+	"ctaLink": "http://g.co/g1referral/JG620Z3F",
+	"tags": ["AI Tools", "Cloud Services"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-16",
+	"source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
+	"contributorSlug": "akbar"
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { t } from '$lib/i18n';
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import { sortBansosByNewest } from '$lib/data/bansos';
 	import type { BansosItem, Contributor } from '$lib/data/bansos';
@@ -22,13 +21,16 @@
 		website: '🌐',
 		telegram: '✈️',
 		npm: '📦',
-		youtube: '▶️',
+		youtube: '▶️'
 	};
 </script>
 
 <svelte:head>
 	<title>{contributor.displayName} — Kontributor bansos.dev</title>
-	<meta name="description" content="Profil kontributor {contributor.displayName} di bansos.dev — Katalog bansos developer Indonesia" />
+	<meta
+		name="description"
+		content="Profil kontributor {contributor.displayName} di bansos.dev — Katalog bansos developer Indonesia"
+	/>
 	<meta property="og:title" content="{contributor.displayName} — bansos.dev" />
 	<meta property="og:description" content="Profil kontributor bansos.dev" />
 	{#if contributor.avatar}
@@ -41,12 +43,7 @@
 	<div class="profile-header">
 		<div class="avatar-container">
 			{#if contributor.avatar}
-				<img
-					src={contributor.avatar}
-					alt={contributor.displayName}
-					class="avatar"
-					loading="lazy"
-				/>
+				<img src={contributor.avatar} alt={contributor.displayName} class="avatar" loading="lazy" />
 			{:else}
 				<div class="avatar-placeholder">
 					{contributor.displayName.charAt(0).toUpperCase()}
@@ -80,13 +77,8 @@
 		<div class="links-section">
 			<h2>🔗 Tautan</h2>
 			<div class="links-grid">
-				{#each linkEntries as [platform, url]}
-					<a
-						href={url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="link-card"
-					>
+				{#each linkEntries as [platform, url] (platform)}
+					<a href={url} target="_blank" rel="noopener noreferrer" class="link-card">
 						<span class="link-icon">{socialIcon[platform] || '🔗'}</span>
 						<span class="link-label">{platform}</span>
 					</a>
@@ -100,7 +92,7 @@
 		<div class="skills-section">
 			<h2>⚡ Keahlian</h2>
 			<div class="skills-list">
-				{#each contributor.skills as skill}
+				{#each contributor.skills as skill (skill)}
 					<span class="skill-tag">{skill}</span>
 				{/each}
 			</div>
@@ -112,7 +104,7 @@
 		<h2>📦 Bansos Dikontribusi ({bansos.length})</h2>
 		{#if sortedBansos.length > 0}
 			<div class="bansos-grid">
-				{#each sortedBansos as item}
+				{#each sortedBansos as item (item.id)}
 					<BansosCard {item} />
 				{/each}
 			</div>

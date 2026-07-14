@@ -1,33 +1,30 @@
 {
-    "id": "jagoanhosting-promo-exclusive",
-    "title": "Promo Exclusive Diskon Hosting JagoanHosting",
-    "provider": "Jagoan Hosting",
-    "description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!",
-    "benefits": [
-        "Potongan 10% untuk Shared Hosting",
-        "Bisa dipakai untuk akun lama (bukan cuma new user)",
-        "Tanpa batasan minimum transaksi"
-    ],
-    "requirements": [
-        "Pilih produk Shared Hosting yang diinginkan",
-        "Masukkan kode promo JERITANJELATA saat checkout",
-        "Pastikan diskon 10% sudah terapply di total tagihan",
-        "Selesaikan pembayaran"
-    ],
-    "validity": {
-        "type": "forever"
-    },
-    "ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
-    "tags": [
-        "Hosting",
-        "Diskon"
-    ],
-    "status": "active",
-    "featured": true,
-    "promoCode": "JERITANJELATA",
-    "publishedAt": "2026-06-30",
-    "source": "https://www.jagoanhosting.com",
-    "featuredSince": "2026-07-03",
-    "providerWebsiteUrl": "https://www.jagoanhosting.com",
-    "contributorSlug": "wauputr4"
+	"id": "jagoanhosting-promo-exclusive",
+	"title": "Promo Exclusive Diskon Hosting JagoanHosting",
+	"provider": "Jagoan Hosting",
+	"description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!",
+	"benefits": [
+		"Potongan 10% untuk Shared Hosting",
+		"Bisa dipakai untuk akun lama (bukan cuma new user)",
+		"Tanpa batasan minimum transaksi"
+	],
+	"requirements": [
+		"Pilih produk Shared Hosting yang diinginkan",
+		"Masukkan kode promo JERITANJELATA saat checkout",
+		"Pastikan diskon 10% sudah terapply di total tagihan",
+		"Selesaikan pembayaran"
+	],
+	"validity": {
+		"type": "forever"
+	},
+	"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+	"tags": ["Hosting", "Diskon"],
+	"status": "active",
+	"featured": true,
+	"promoCode": "JERITANJELATA",
+	"publishedAt": "2026-06-30",
+	"source": "https://www.jagoanhosting.com",
+	"featuredSince": "2026-07-03",
+	"providerWebsiteUrl": "https://www.jagoanhosting.com",
+	"contributorSlug": "wauputr4"
 }

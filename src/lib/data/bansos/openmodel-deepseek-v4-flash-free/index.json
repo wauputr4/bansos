@@ -1,31 +1,27 @@
 {
-    "id": "openmodel-deepseek-v4-flash-free",
-    "title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
-    "provider": "OpenModel",
-    "description": "OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.",
-    "benefits": [
-        "Akses gratis penuh ke model DeepSeek-V4-Flash",
-        "Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa",
-        "Mudah diuji dan diintegrasikan melalui platform OpenModel",
-        "Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi"
-    ],
-    "requirements": [
-        "Daftar atau masuk ke akun OpenModel kamu",
-        "Buka halaman pricing atau event resmi",
-        "Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel"
-    },
-    "ctaLink": "https://www.openmodel.ai/model-pricing/deepseek-v4-flash",
-    "tags": [
-        "AI",
-        "AI Credits",
-        "Gratisan"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-21",
-    "contributorSlug": "devers"
+	"id": "openmodel-deepseek-v4-flash-free",
+	"title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
+	"provider": "OpenModel",
+	"description": "OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.",
+	"benefits": [
+		"Akses gratis penuh ke model DeepSeek-V4-Flash",
+		"Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa",
+		"Mudah diuji dan diintegrasikan melalui platform OpenModel",
+		"Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi"
+	],
+	"requirements": [
+		"Daftar atau masuk ke akun OpenModel kamu",
+		"Buka halaman pricing atau event resmi",
+		"Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel"
+	},
+	"ctaLink": "https://www.openmodel.ai/model-pricing/deepseek-v4-flash",
+	"tags": ["AI", "AI Credits", "Gratisan"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-21",
+	"contributorSlug": "devers"
 }

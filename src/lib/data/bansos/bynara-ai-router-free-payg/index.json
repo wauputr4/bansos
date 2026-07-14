@@ -1,41 +1,35 @@
 {
-    "id": "bynara-ai-router-free-payg",
-    "title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
-    "provider": "byNara",
-    "description": "Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.",
-    "benefits": [
-        "Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5",
-        "Token cap 5M/hari pada free tier",
-        "Rate limit 10 req/menit",
-        "Pay as you go untuk model premium",
-        "Dukungan pembayaran IDR dan USD",
-        "Bandingkan biaya antar model langsung di dashboard"
-    ],
-    "requirements": [
-        "Daftar akun di router.bynara.id",
-        "Verifikasi akun via Telegram bot byNara",
-        "Login ke Telegram channel byNara untuk akses API key",
-        "Pilih model yang tersedia di tier Free",
-        "Mulai kirim request via API endpoint"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Free tier — selama layanan tersedia"
-    },
-    "ctaLink": "https://router.bynara.id/register?ref=3AH29Q72",
-    "tags": [
-        "AI Credits",
-        "API",
-        "Free Tier",
-        "AI Tools",
-        "No Credit Card"
-    ],
-    "status": "active",
-    "featured": true,
-    "tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
-    "publishedAt": "2026-07-03",
-    "source": "https://router.bynara.id/",
-    "featuredSince": "2026-07-02",
-    "providerWebsiteUrl": "https://bynara.id",
-    "contributorSlug": "wauputr4"
+	"id": "bynara-ai-router-free-payg",
+	"title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
+	"provider": "byNara",
+	"description": "Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.",
+	"benefits": [
+		"Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5",
+		"Token cap 5M/hari pada free tier",
+		"Rate limit 10 req/menit",
+		"Pay as you go untuk model premium",
+		"Dukungan pembayaran IDR dan USD",
+		"Bandingkan biaya antar model langsung di dashboard"
+	],
+	"requirements": [
+		"Daftar akun di router.bynara.id",
+		"Verifikasi akun via Telegram bot byNara",
+		"Login ke Telegram channel byNara untuk akses API key",
+		"Pilih model yang tersedia di tier Free",
+		"Mulai kirim request via API endpoint"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Free tier — selama layanan tersedia"
+	},
+	"ctaLink": "https://router.bynara.id/register?ref=3AH29Q72",
+	"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
+	"status": "active",
+	"featured": true,
+	"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
+	"publishedAt": "2026-07-03",
+	"source": "https://router.bynara.id/",
+	"featuredSince": "2026-07-02",
+	"providerWebsiteUrl": "https://bynara.id",
+	"contributorSlug": "wauputr4"
 }

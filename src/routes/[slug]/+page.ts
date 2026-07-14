@@ -11,9 +11,19 @@ export function load({ params }: { params: Record<string, string> }) {
 
 	// Skip reserved slugs that are handled by explicit routes
 	const reserved = [
-		'list', 'about', 'terms', 'contribute', 'providers',
-		'contributor', 'api', 'og.png', 'sitemap.xml', 'schema',
-		'index.json', 'contributors', 'schema'
+		'list',
+		'about',
+		'terms',
+		'contribute',
+		'providers',
+		'contributor',
+		'api',
+		'og.png',
+		'sitemap.xml',
+		'schema',
+		'index.json',
+		'contributors',
+		'schema'
 	];
 	if (reserved.includes(slug)) {
 		error(404, 'Halaman tidak ditemukan');

@@ -1,31 +1,26 @@
 {
-    "id": "sumopod-domain-rp1",
-    "title": "Promo Domain Rp 1/Tahun dari Sumopod",
-    "provider": "Sumopod",
-    "description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
-    "benefits": [
-        "Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"
-    ],
-    "requirements": [
-        "Buat akun di platform Sumopod",
-        "Pilih menu Domain",
-        "Masukkan nama domain yang diinginkan",
-        "Lanjutkan ke proses checkout"
-    ],
-    "validity": {
-        "type": "fixed",
-        "date": "2026-06-30",
-        "description": "Promo berlaku hingga 30 Juni 2026"
-    },
-    "ctaLink": "https://sumopod.com",
-    "tags": [
-        "Domain",
-        "Diskon"
-    ],
-    "status": "active",
-    "featured": false,
-    "tips": "Provider mungkin mengalami pembatasan (rate-limit) karena tingginya permintaan, harap coba berkala.",
-    "publishedAt": "2026-06-17",
-    "source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
-    "contributorSlug": "devers"
+	"id": "sumopod-domain-rp1",
+	"title": "Promo Domain Rp 1/Tahun dari Sumopod",
+	"provider": "Sumopod",
+	"description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
+	"benefits": ["Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"],
+	"requirements": [
+		"Buat akun di platform Sumopod",
+		"Pilih menu Domain",
+		"Masukkan nama domain yang diinginkan",
+		"Lanjutkan ke proses checkout"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-06-30",
+		"description": "Promo berlaku hingga 30 Juni 2026"
+	},
+	"ctaLink": "https://sumopod.com",
+	"tags": ["Domain", "Diskon"],
+	"status": "active",
+	"featured": false,
+	"tips": "Provider mungkin mengalami pembatasan (rate-limit) karena tingginya permintaan, harap coba berkala.",
+	"publishedAt": "2026-06-17",
+	"source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
+	"contributorSlug": "devers"
 }

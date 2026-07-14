@@ -1,30 +1,26 @@
 {
-    "id": "gumloop-free-credits",
-    "title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
-    "provider": "Gumloop",
-    "description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
-    "benefits": [
-        "5.000 Kredit Rutin Bulanan",
-        "1.600 Bonus Koneksi (Satu Kali)",
-        "Akses ke Berbagai Model AI Populer",
-        "Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
-    ],
-    "requirements": [
-        "Buat akun baru",
-        "Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
-    ],
-    "validity": {
-        "type": "uncertain"
-    },
-    "ctaLink": "https://www.gumloop.com/",
-    "tags": [
-        "AI",
-        "AI Credits",
-        "Gratisan"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-20",
-    "source": "https://www.gumloop.com/pricing",
-    "contributorSlug": "brian"
+	"id": "gumloop-free-credits",
+	"title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
+	"provider": "Gumloop",
+	"description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
+	"benefits": [
+		"5.000 Kredit Rutin Bulanan",
+		"1.600 Bonus Koneksi (Satu Kali)",
+		"Akses ke Berbagai Model AI Populer",
+		"Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
+	],
+	"requirements": [
+		"Buat akun baru",
+		"Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://www.gumloop.com/",
+	"tags": ["AI", "AI Credits", "Gratisan"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-20",
+	"source": "https://www.gumloop.com/pricing",
+	"contributorSlug": "brian"
 }

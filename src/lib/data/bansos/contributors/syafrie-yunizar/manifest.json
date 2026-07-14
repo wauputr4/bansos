@@ -1,15 +1,13 @@
 {
-    "login": "syafrie-yunizar",
-    "displayName": "Syafrie Yunizar",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {
-        "github": "https://github.com/syafrieyunizar"
-    },
-    "contributedBansos": [
-        "openmodel-deepseek-v4-flash-free-access"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "syafrie-yunizar",
+	"displayName": "Syafrie Yunizar",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/syafrieyunizar"
+	},
+	"contributedBansos": ["openmodel-deepseek-v4-flash-free-access"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

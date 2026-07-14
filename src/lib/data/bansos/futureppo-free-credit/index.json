@@ -1,36 +1,31 @@
 {
-    "id": "futureppo-free-credit",
-    "title": "FuturePPO Free Credits",
-    "provider": "FuturePPO",
-    "description": "FuturePPO menyediakan layanan AI API gateway yang memberikan saldo kredit gratis kepada pengguna baru, fitur daily check-in untuk memperoleh kredit tambahan secara acak, serta akses ke berbagai model AI melalui satu API.",
-    "benefits": [
-        "Kredit awal US$20 untuk akun baru",
-        "Daily check-in dengan reward kredit acak",
-        "Akses API Key untuk berbagai model AI premium (GPT-5.5, GPT-5.4, Grok, GLM, Gemini) dalam satu endpoint",
-        "Halaman status model untuk memantau kondisi layanan"
-    ],
-    "requirements": [
-        "Daftar akun FuturePPO baru",
-        "Login untuk menerima kredit awal",
-        "Lakukan daily check-in untuk memperoleh kredit tambahan",
-        "Patuhi Terms of Service FuturePPO"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Berlaku selama program kredit gratis dan daily check-in masih disediakan oleh FuturePPO"
-    },
-    "ctaLink": "https://api.futureppo.top/",
-    "tags": [
-        "AI",
-        "API",
-        "LLM",
-        "Free Tier"
-    ],
-    "status": "active",
-    "featured": false,
-    "tips": "Lakukan daily check-in setiap hari untuk memperoleh tambahan kredit. Gunakan model yang sesuai kebutuhan karena setiap model memiliki biaya token yang berbeda.",
-    "publishedAt": "2026-07-13",
-    "source": "https://api.futureppo.top/",
-    "providerWebsiteUrl": "https://api.futureppo.top",
-    "contributorSlug": "syafii-fahreza"
+	"id": "futureppo-free-credit",
+	"title": "FuturePPO Free Credits",
+	"provider": "FuturePPO",
+	"description": "FuturePPO menyediakan layanan AI API gateway yang memberikan saldo kredit gratis kepada pengguna baru, fitur daily check-in untuk memperoleh kredit tambahan secara acak, serta akses ke berbagai model AI melalui satu API.",
+	"benefits": [
+		"Kredit awal US$20 untuk akun baru",
+		"Daily check-in dengan reward kredit acak",
+		"Akses API Key untuk berbagai model AI premium (GPT-5.5, GPT-5.4, Grok, GLM, Gemini) dalam satu endpoint",
+		"Halaman status model untuk memantau kondisi layanan"
+	],
+	"requirements": [
+		"Daftar akun FuturePPO baru",
+		"Login untuk menerima kredit awal",
+		"Lakukan daily check-in untuk memperoleh kredit tambahan",
+		"Patuhi Terms of Service FuturePPO"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Berlaku selama program kredit gratis dan daily check-in masih disediakan oleh FuturePPO"
+	},
+	"ctaLink": "https://api.futureppo.top/",
+	"tags": ["AI", "API", "LLM", "Free Tier"],
+	"status": "active",
+	"featured": false,
+	"tips": "Lakukan daily check-in setiap hari untuk memperoleh tambahan kredit. Gunakan model yang sesuai kebutuhan karena setiap model memiliki biaya token yang berbeda.",
+	"publishedAt": "2026-07-13",
+	"source": "https://api.futureppo.top/",
+	"providerWebsiteUrl": "https://api.futureppo.top",
+	"contributorSlug": "syafii-fahreza"
 }

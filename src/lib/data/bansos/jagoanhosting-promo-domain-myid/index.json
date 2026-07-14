@@ -1,35 +1,32 @@
 {
-    "id": "jagoanhosting-promo-domain-myid",
-    "title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
-    "provider": "Jagoan Hosting",
-    "description": "Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!",
-    "benefits": [
-        "Domain .MY.ID gratis 1 tahun",
-        "Cocok untuk website pribadi, portofolio, atau blog",
-        "Proses klaim mudah dan cepat",
-        "Promo terbatas, jangan sampai kehabisan"
-    ],
-    "requirements": [
-        "Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-        "Pilih domain dengan ekstensi .MY.ID",
-        "Masukkan kode promo FREEMYID1000 saat checkout",
-        "Selesaikan pemesanan"
-    ],
-    "validity": {
-        "type": "fixed",
-        "date": "2026-06-30",
-        "description": "Promo berlaku sampai 30 Juni 2026, terbatas"
-    },
-    "ctaLink": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-    "tags": [
-        "Domain",
-        "Diskon"
-    ],
-    "status": "active",
-    "featured": true,
-    "promoCode": "FREEMYID1000",
-    "publishedAt": "2026-06-25",
-    "source": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-    "providerWebsiteUrl": "https://www.jagoanhosting.com",
-    "contributorSlug": "wauputr4"
+	"id": "jagoanhosting-promo-domain-myid",
+	"title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
+	"provider": "Jagoan Hosting",
+	"description": "Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!",
+	"benefits": [
+		"Domain .MY.ID gratis 1 tahun",
+		"Cocok untuk website pribadi, portofolio, atau blog",
+		"Proses klaim mudah dan cepat",
+		"Promo terbatas, jangan sampai kehabisan"
+	],
+	"requirements": [
+		"Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+		"Pilih domain dengan ekstensi .MY.ID",
+		"Masukkan kode promo FREEMYID1000 saat checkout",
+		"Selesaikan pemesanan"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-06-30",
+		"description": "Promo berlaku sampai 30 Juni 2026, terbatas"
+	},
+	"ctaLink": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+	"tags": ["Domain", "Diskon"],
+	"status": "active",
+	"featured": true,
+	"promoCode": "FREEMYID1000",
+	"publishedAt": "2026-06-25",
+	"source": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+	"providerWebsiteUrl": "https://www.jagoanhosting.com",
+	"contributorSlug": "wauputr4"
 }

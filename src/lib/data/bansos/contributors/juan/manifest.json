@@ -1,13 +1,11 @@
 {
-    "login": "juan",
-    "displayName": "Juan",
-    "bio": "",
-    "title": "",
-    "skills": [],
-    "links": {},
-    "contributedBansos": [
-        "v0-vercel-ai-credits-up-to-200"
-    ],
-    "hidden": false,
-    "joinedAt": "2026-07-14"
+	"login": "juan",
+	"displayName": "Juan",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {},
+	"contributedBansos": ["v0-vercel-ai-credits-up-to-200"],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
 }

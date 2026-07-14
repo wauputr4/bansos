@@ -205,7 +205,16 @@ export function extractProvider(url: string) {
 		if (parts.length > 2) {
 			const secondToLast = parts[parts.length - 2];
 			const isTwoPartTld = [
-				'co', 'com', 'org', 'net', 'edu', 'gov', 'mil', 'ac', 'go', 'or'
+				'co',
+				'com',
+				'org',
+				'net',
+				'edu',
+				'gov',
+				'mil',
+				'ac',
+				'go',
+				'or'
 			].includes(secondToLast);
 			if (isTwoPartTld) {
 				parts.pop();
@@ -302,14 +311,24 @@ function buildBansosList(): BansosItem[] {
 			ctaLink: (data.ctaLink as string) || '#',
 			tags: (data.tags as string[]) || [],
 			featured: (data.featured as boolean) || false,
-			status: ((data.status as string) as BansosItem['status']) || 'active'
+			status: (data.status as string as BansosItem['status']) || 'active'
 		};
 
 		// Optional fields — read from raw data and assign directly
 		const rawData = data as unknown as Record<string, unknown>;
-		for (const field of ['promoCode', 'tips', 'publishedAt', 'source',
-			'featuredSince', 'featuredUntil', 'providerLogoUrl',
-			'providerWebsiteUrl', 'contributorSlug', 'hidden', 'customUI'] as const) {
+		for (const field of [
+			'promoCode',
+			'tips',
+			'publishedAt',
+			'source',
+			'featuredSince',
+			'featuredUntil',
+			'providerLogoUrl',
+			'providerWebsiteUrl',
+			'contributorSlug',
+			'hidden',
+			'customUI'
+		] as const) {
 			const val = rawData[field];
 			if (val !== undefined && val !== null && val !== '') {
 				const mutableItem = item as unknown as Record<string, unknown>;
@@ -450,7 +469,10 @@ const contributorMap = buildContributorMap();
  * Gets a contributor profile by their login/slug.
  * Hidden contributors are excluded unless `includeHidden` is true.
  */
-export function getContributorBySlug(login: string, includeHidden = false): Contributor | undefined {
+export function getContributorBySlug(
+	login: string,
+	includeHidden = false
+): Contributor | undefined {
 	const contributor = contributorMap.get(login);
 	if (!contributor) return undefined;
 	if (contributor.hidden && !includeHidden) return undefined;

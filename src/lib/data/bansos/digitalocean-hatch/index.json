@@ -1,32 +1,27 @@
 {
-    "id": "digitalocean-hatch",
-    "title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
-    "provider": "DigitalOcean",
-    "description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
-    "benefits": [
-        "Kredit komputasi cloud hingga batas $100.000",
-        "Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan",
-        "Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons"
-    ],
-    "requirements": [
-        "Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)",
-        "Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)",
-        "Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop",
-        "Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean"
-    ],
-    "validity": {
-        "type": "uncertain",
-        "description": "Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program"
-    },
-    "ctaLink": "https://www.digitalocean.com/hatch/",
-    "tags": [
-        "Cloud Services",
-        "VPS & Server",
-        "Startup",
-        "AI Credits"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-13",
-    "contributorSlug": "devers"
+	"id": "digitalocean-hatch",
+	"title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
+	"provider": "DigitalOcean",
+	"description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
+	"benefits": [
+		"Kredit komputasi cloud hingga batas $100.000",
+		"Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan",
+		"Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons"
+	],
+	"requirements": [
+		"Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)",
+		"Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)",
+		"Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop",
+		"Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program"
+	},
+	"ctaLink": "https://www.digitalocean.com/hatch/",
+	"tags": ["Cloud Services", "VPS & Server", "Startup", "AI Credits"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "devers"
 }

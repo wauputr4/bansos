@@ -1,31 +1,22 @@
 {
-    "id": "freebuff-ai-builder",
-    "title": "Freebuff — AI Coding Agent & App Builder 100% Gratis",
-    "provider": "Freebuff",
-    "description": "Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.",
-    "benefits": [
-        "Freebuff CLI: coding agent gratis di terminal",
-        "Freebuff Web: AI app builder dari prompt ke deployed app",
-        "Deploy & host app gratis, 230K+ developer aktif"
-    ],
-    "requirements": [
-        "Node.js 18+ untuk CLI",
-        "Akun gratis untuk Web"
-    ],
-    "validity": {
-        "type": "forever"
-    },
-    "ctaLink": "https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b",
-    "tags": [
-        "AI",
-        "AI Tools",
-        "Developer Tools",
-        "Free Tier",
-        "Gratisan"
-    ],
-    "status": "active",
-    "featured": false,
-    "publishedAt": "2026-06-25",
-    "source": "https://freebuff.com/",
-    "contributorSlug": "mikaelaldy"
+	"id": "freebuff-ai-builder",
+	"title": "Freebuff — AI Coding Agent & App Builder 100% Gratis",
+	"provider": "Freebuff",
+	"description": "Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.",
+	"benefits": [
+		"Freebuff CLI: coding agent gratis di terminal",
+		"Freebuff Web: AI app builder dari prompt ke deployed app",
+		"Deploy & host app gratis, 230K+ developer aktif"
+	],
+	"requirements": ["Node.js 18+ untuk CLI", "Akun gratis untuk Web"],
+	"validity": {
+		"type": "forever"
+	},
+	"ctaLink": "https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b",
+	"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "Gratisan"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-25",
+	"source": "https://freebuff.com/",
+	"contributorSlug": "mikaelaldy"
 }
