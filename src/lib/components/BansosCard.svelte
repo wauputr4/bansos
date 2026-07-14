@@ -105,12 +105,11 @@
 			{/if}
 		{/if}
 	</div>
-	{#if item.contributor}
+	{#if item.contributorSlug}
 		<p class="contributor-label">
 			{$t('common.contributor')}:
-			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-			<a href={item.contributor.url} target="_blank" rel="noopener noreferrer">
-				{item.contributor.name}
+			<a href={resolve(`/contributor/${item.contributorSlug}`)}>
+				{item.contributorSlug}
 			</a>
 		</p>
 	{/if}

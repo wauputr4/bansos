@@ -520,19 +520,17 @@
 								<span class="meta-label"
 									><i class="fa-solid fa-code-branch"></i> {detailT('projectContributor')}</span
 								>
-								{#if item.contributor}
+								{#if item.contributorSlug}
 									<div
 										class="original-contributor"
 										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
 									>
 										{detailT('contributedBy')}
 										<a
-											href={item.contributor.url}
-											target="_blank"
-											rel="noopener noreferrer"
+											href={resolve(`/contributor/${item.contributorSlug}`)}
 											style="color: var(--color-accent); font-weight: 700;"
 										>
-											{item.contributor.name}
+											{item.contributorSlug}
 										</a>
 									</div>
 								{/if}
