@@ -15,7 +15,7 @@
 	}
 
 	onMount(() => {
-		const CACHE_KEY = `bansos_gitlab_v1_${repo}`;
+		const CACHE_KEY = `bansos_github_v1_${repo}`;
 
 		const cached = localStorage.getItem(CACHE_KEY);
 		if (cached) {
@@ -30,16 +30,16 @@
 		}
 
 		Promise.all([
-			fetch(`https://gitlab.com/api/v4/projects/${encodeURIComponent(repo)}`).then((r) =>
+			fetch(`https://api.github.com/repos/${repo}`).then((r) =>
 				r.ok ? r.json() : null
 			)
 		])
 			.then(([repoData]) => {
 				if (repoData) {
-					stars = repoData.star_count;
+					stars = repoData.stargazers_count;
 					forks = repoData.forks_count;
-					if (repoData.tag_list?.[0]) {
-						version = repoData.tag_list[0];
+					if (repoData.topics?.[0]) {
+						version = repoData.topics[0];
 					}
 					localStorage.setItem(CACHE_KEY, JSON.stringify({ stars, forks, version }));
 				}
@@ -49,13 +49,13 @@
 </script>
 
 <a
-	href={`https://gitlab.com/${repo}`}
+	href={`https://github.com/${repo}`}
 	target="_blank"
 	rel="noopener noreferrer"
 	class="repo-link"
-	aria-label="GitLab Repository"
+	aria-label="GitHub Repository"
 >
-	<i class="fa-brands fa-git-alt git-icon"></i>
+	<i class="fa-brands fa-github git-icon"></i>
 	<div class="repo-info">
 		<span class="repo-name">{repo}</span>
 		<ul class="md-source__facts">

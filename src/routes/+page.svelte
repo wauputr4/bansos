@@ -30,8 +30,7 @@
 	const repoUrl = `https://github.com/${repo}`;
 	const gitlabOwner = {
 		login: 'wauputr4',
-		avatarUrl:
-			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
+		avatarUrl: 'https://github.com/wauputr4.png?size=96',
 		url: 'https://github.com/wauputr4',
 	};
 
