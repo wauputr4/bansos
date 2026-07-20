@@ -61,10 +61,10 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			'# GitLab',
-			'git clone https://gitlab.com/wauputr4/bansos.git',
-			'# GitHub (mirror)',
+			'# GitHub',
 			'git clone https://github.com/wauputr4/bansos.git',
+			'# GitLab (mirror)',
+			'git clone https://gitlab.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',
@@ -94,7 +94,7 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`glab mr create --title "feat: add ${item.title}" --description "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --target-branch main --yes`
+			`gh pr create --title "feat: add ${item.title}" --body "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --base main`
 		);
 
 		return parts.join('\n');
