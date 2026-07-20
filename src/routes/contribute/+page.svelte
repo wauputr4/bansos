@@ -29,8 +29,8 @@
 		});
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
-		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
 		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
+		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
 		{
 			id: 'form',
 			label: $t('contribute.tabs.form'),
@@ -53,7 +53,7 @@
 		}
 	]);
 
-	let activeTab = $state<TabId>('email');
+	let activeTab = $state<TabId>('git');
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
