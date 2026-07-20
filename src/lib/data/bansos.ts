@@ -63,6 +63,10 @@ export interface BansosItem {
 	provider: string;
 	providerLogoUrl?: string;
 	providerWebsiteUrl?: string;
+	/** URL gambar preview/thumbnail utama entry bansos */
+	image?: string;
+	/** URL gambar galeri tambahan (multiple images untuk detail page) */
+	images?: string[];
 	description: string;
 	benefits: string[];
 	promoCode?: string;
@@ -325,6 +329,8 @@ function buildBansosList(): BansosItem[] {
 			'featuredUntil',
 			'providerLogoUrl',
 			'providerWebsiteUrl',
+			'image',
+			'images',
 			'contributorSlug',
 			'hidden',
 			'customUI'

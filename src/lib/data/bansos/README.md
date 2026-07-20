@@ -14,7 +14,12 @@ bansos/
 ├── schema/
 │   ├── bansos.schema.json
 │   └── contributor.schema.json
-└── index.json           # Generated index ringan
+├── index.json           # Generated index ringan
+└── static/images/bansos/
+    └── <slug>/          # Gambar entry disimpan di sini
+        ├── main.png     # preview image (field `image` di index.json)
+        ├── screenshot.png # galeri (field `images` array)
+        └── ...
 ```
 
 ## Privacy

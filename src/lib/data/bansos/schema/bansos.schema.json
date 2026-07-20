@@ -23,6 +23,15 @@
 			"format": "uri",
 			"description": "URL logo provider"
 		},
+		"image": {
+			"type": "string",
+			"description": "Path lokal gambar preview/thumbnail utama. Simpan di static/images/bansos/<slug>/ dan tulis path relatif (contoh: /images/bansos/<slug>/main.png)"
+		},
+		"images": {
+			"type": "array",
+			"items": { "type": "string" },
+			"description": "Path lokal gambar galeri tambahan. Simpan di static/images/bansos/<slug>/ dan tulis path relatif"
+		},
 		"providerWebsiteUrl": {
 			"type": "string",
 			"format": "uri",

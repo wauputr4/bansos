@@ -421,6 +421,30 @@
 						</div>
 					{/if}
 
+					{#if item.image}
+						<div class="detail-image-section">
+							<img
+								src={item.image}
+								alt={item.title}
+								class="detail-main-image"
+								loading="lazy"
+							/>
+						</div>
+					{/if}
+
+					{#if item.images && item.images.length > 0}
+						<div class="detail-image-gallery">
+							{#each item.images as img (img)}
+								<img
+									src={img}
+									alt="{item.title} screenshot"
+									class="gallery-image"
+									loading="lazy"
+								/>
+							{/each}
+						</div>
+					{/if}
+
 					<section class="section-block">
 						<h2><i class="fa-solid fa-circle-question"></i> {detailT('aboutTitle')}</h2>
 						<p class="description-text text-pretty">{item.description}</p>
@@ -1210,5 +1234,46 @@
 		padding: 0.5rem 1rem;
 		font-size: 0.82rem;
 		border-radius: 0.5rem;
+	}
+
+	/* ─── Image Section Styles ────────────────────────────────────────── */
+	.detail-image-section {
+		margin: 0;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border: 1px solid var(--border-color);
+		background: var(--bg-secondary);
+	}
+
+	.detail-main-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 28rem;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	.detail-image-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.75rem;
+	}
+
+	@media (max-width: 40rem) {
+		.detail-image-gallery {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.gallery-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 20rem;
+		object-fit: cover;
+		border-radius: 0.6rem;
+		border: 1px solid var(--border-color);
+		background: var(--bg-secondary);
 	}
 </style>
