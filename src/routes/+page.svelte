@@ -27,7 +27,7 @@
 	};
 
 	const repo = 'wauputr4/bansos';
-	const repoUrl = `https://gitlab.com/${repo}`;
+	const repoUrl = `https://github.com/${repo}`;
 	const gitlabOwner = {
 		login: 'wauputr4',
 		avatarUrl:
@@ -236,22 +236,13 @@
 		<div class="badge-container">
 			<span class="version-badge">{__BUILD_DATE__}</span>
 			<a
-				href="https://gitlab.com/wauputr4/bansos"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="github-badge"
-			>
-				<i class="fa-brands fa-gitlab icon"></i>
-				<span>{$t('badge.opensource')}</span>
-			</a>
-			<a
 				href="https://github.com/wauputr4/bansos"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="github-badge"
 			>
 				<i class="fa-brands fa-github icon"></i>
-				<span>GitHub</span>
+				<span>{$t('badge.opensource')}</span>
 			</a>
 			<a
 				href="https://discord.gg/m4WFaQpNGs"
