@@ -16,9 +16,8 @@
 	const contributors: ContributorSummary[] = getContributorStats();
 	const gitlabOwner = {
 		login: 'wauputr4',
-		avatarUrl:
-			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
-		url: 'https://gitlab.com/wauputr4'
+		avatarUrl: 'https://github.com/wauputr4.png?size=96',
+		url: 'https://github.com/wauputr4'
 	};
 	const commitContributors = getCommitContributorStats()
 		.filter((c) => c.login !== 'github-actions[bot]')
@@ -29,8 +28,8 @@
 		});
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
-		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
 		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
+		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
 		{
 			id: 'form',
 			label: $t('contribute.tabs.form'),
@@ -53,7 +52,7 @@
 		}
 	]);
 
-	let activeTab = $state<TabId>('email');
+	let activeTab = $state<TabId>('git');
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
@@ -61,10 +60,10 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			'# GitLab',
-			'git clone https://gitlab.com/wauputr4/bansos.git',
-			'# GitHub (mirror)',
+			'# GitHub',
 			'git clone https://github.com/wauputr4/bansos.git',
+			'# GitLab (mirror)',
+			'git clone https://gitlab.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
 			'',
@@ -94,7 +93,7 @@
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`glab mr create --title "feat: add ${item.title}" --description "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --target-branch main --yes`
+			`gh pr create --title "feat: add ${item.title}" --body "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --base main`
 		);
 
 		return parts.join('\n');
