@@ -2440,5 +2440,41 @@
       "name": "ZulhanF",
       "url": "https://github.com/ZulhanF"
     }
+  },
+  {
+		"id": "rrrapi-free-credit",
+		"title": "RRR API Free $10 Signup + $50 via Telegram — GPT-5.6",
+		"provider": "RRR API",
+		"description": "Unified AI API gateway OpenAI-compatible. Daftar gratis dapat $10 credit, plus klaim tambahan $50 lewat Telegram. Unggulan: model terbaru GPT-5.6 (luna/sol/terra) plus GPT-5.5, GPT-5.4, dan gpt-image-2 — satu API key, cocok coding agent & prototype.",
+		"benefits": [
+			"Free $10 credit langsung setelah signup",
+			"Klaim tambahan $50 credit via Telegram t.me/rrrapibot",
+			"Akses model terbaru GPT-5.6 (gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-terra)",
+			"OpenAI-compatible endpoint"
+		],
+		"validity": {
+			"type": "uncertain",
+			"description": "Free credit & bonus Telegram mengikuti kebijakan RRR API; cek dashboard + Telegram"
+		},
+		"requirements": [
+			"Daftar akun",
+			"Login dashboard",
+			"Cek saldo free $10",
+			"Klaim tambahan $50 via Telegram t.me/rrrapibot"
+		],
+		"publishedAt": "2026-07-21",
+		"contributor": {
+			"name": "ZulhanF",
+			"url": "https://github.com/ZulhanF"
+		},
+		"ctaLink": "https://rrrapi.com/sign-up?aff=AX1H&utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
+		"tags": [
+			"AI",
+			"API",
+			"AI Credits",
+			"Free Tier"
+		],
+		"featured": false,
+		"status": "active"
   }
 ]
