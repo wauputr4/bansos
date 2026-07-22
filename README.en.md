@@ -78,7 +78,7 @@ slugs from colliding with site routes or bansos shortlinks.
 
 ## How to Add Bansos
 
-Currently, active public submissions are via email and Git clone. The form, public CLI, and bot channels are temporarily disabled due to spam.
+Currently, active public submissions are via AI Agent, email, and Git clone. The form, public CLI, and bot channels are temporarily disabled due to spam.
 
 > [!TIP]
 > **Soon: Submission via Discord & Telegram Bot!**
@@ -88,7 +88,19 @@ Currently, active public submissions are via email and Git clone. The form, publ
 > - **[Discord Server](https://discord.gg/m4WFaQpNGs)** for chatting, discussions, and chat submissions (coming soon).
 > - **[Telegram Channel](https://t.me/bansos_dev)** for instant updates on the latest developer promos directly to your phone.
 
-### 1. Option 1: Via Email
+### 1. Option 1: Via AI Agent
+
+Install the [official bansos.dev skills](https://www.skills.sh/wauputr4/skill-bansos) so your agent understands the latest listing structure, contributor profiles, validation, and PR workflow:
+
+```bash
+npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
+```
+
+After installation, provide the source link and ask the agent to use `$bansos-add-entry`. Review the data and diff before opening a pull request.
+
+---
+
+### 2. Option 2: Via Email
 
 This option is perfect for those who want to share information quickly without touching the terminal.
 
@@ -99,7 +111,7 @@ This option is perfect for those who want to share information quickly without t
 
 ---
 
-### 2. Option 2: Via Git Clone (Manual Pull Request)
+### 3. Option 3: Via Git Clone (Manual Pull Request)
 
 This option is for those who want to test the code locally or modify files directly.
 

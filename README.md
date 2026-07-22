@@ -78,7 +78,7 @@ bentrok dengan route situs atau shortlink bansos.
 
 ## Cara Menambah Bansos
 
-Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur form, CLI publik, dan bot dinonaktifkan sementara karena spam.
+Untuk saat ini, submit publik yang aktif adalah via AI Agent, email, dan Git clone. Jalur form, CLI publik, dan bot dinonaktifkan sementara karena spam.
 
 > [!TIP]
 > **Soon: Submisi via Discord & Telegram Bot!**
@@ -88,7 +88,19 @@ Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur f
 > - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
 > - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
 
-### 1. Opsi 1: Lewat Email
+### 1. Opsi 1: Lewat AI Agent
+
+Install [skill resmi bansos.dev](https://www.skills.sh/wauputr4/skill-bansos) agar agent memahami struktur listing, profil contributor, validasi, dan alur PR terbaru:
+
+```bash
+npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
+```
+
+Setelah terpasang, berikan link sumber dan minta agent memakai `$bansos-add-entry`. Review data dan diff sebelum membuka pull request.
+
+---
+
+### 2. Opsi 2: Lewat Email
 
 Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
 
@@ -99,7 +111,7 @@ Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu
 
 ---
 
-### 2. Opsi 2: Lewat Git Clone (Manual Pull Request)
+### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
 
 Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
 

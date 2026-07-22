@@ -4,8 +4,9 @@ Terima kasih sudah jadi bagian dari komunitas **Bansos.dev** 🙌
 
 ## 1) Cara kontribusi utama
 
-Submit publik yang aktif saat ini adalah lewat **Email** atau **Git clone**. Form, npx CLI,
-dan bot dinonaktifkan sementara karena spam. Buka
+Submit publik yang aktif saat ini adalah lewat **AI Agent**, **Email**, atau **Git clone**. Form,
+npx CLI publik, dan bot dinonaktifkan sementara karena spam. Untuk AI Agent, install skill resmi dari
+[skills.sh/wauputr4/skill-bansos](https://www.skills.sh/wauputr4/skill-bansos). Buka
 [bansos.dev/contribute](https://bansos.dev/contribute) untuk template email dan instruksi terbaru.
 
 ## 2) Kontribusi langsung via kode
