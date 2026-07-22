@@ -172,6 +172,8 @@ async function interactiveInput() {
 	// Contributor
 	const existingContribs = getExistingContributors();
 	let contributorSlug = '';
+	let contributorName = '';
+	let contributorUrl = '';
 	if (existingContribs.length > 0) {
 		console.log('\nContributor yang ada:');
 		existingContribs.forEach((c, i) => console.log(`  ${i + 1}. ${c}`));
@@ -181,9 +183,16 @@ async function interactiveInput() {
 			contributorSlug = existingContribs[num - 1];
 		} else if (ans) {
 			contributorSlug = slugify(ans);
+			contributorName = (await ask('Nama tampilan contributor: ')) || ans;
+			contributorUrl = await ask('URL GitHub/website contributor (opsional): ');
 		}
 	} else {
-		contributorSlug = slugify(await ask('Login contributor baru (enter skip): '));
+		const login = await ask('Login contributor baru: ');
+		contributorSlug = slugify(login);
+		if (contributorSlug) {
+			contributorName = (await ask('Nama tampilan contributor: ')) || login;
+			contributorUrl = await ask('URL GitHub/website contributor (opsional): ');
+		}
 	}
 
 	// Featured
@@ -201,6 +210,8 @@ async function interactiveInput() {
 		promoCode,
 		benefits,
 		contributorSlug,
+		contributorName,
+		contributorUrl,
 		featured
 	};
 }
@@ -261,6 +272,13 @@ function validateCliInput(args) {
 	}
 
 	const contributorName = args['contributor-name'] || args.contributor || '';
+	const contributorSlug = slugify(args['contributor-slug'] || contributorName);
+	if (!contributorSlug) {
+		throw new Error('--contributor-slug wajib diisi untuk atribusi contributor');
+	}
+	if (!existsSync(join(CONTRIBUTORS_DIR, contributorSlug, 'manifest.json')) && !contributorName) {
+		throw new Error('--contributor-name wajib untuk submit pertama contributor');
+	}
 	return {
 		title: required(args, 'title'),
 		slug,
@@ -276,7 +294,7 @@ function validateCliInput(args) {
 		publishedAt,
 		tips: args.tips || '',
 		source: args.source || '',
-		contributorSlug: slugify(contributorName),
+		contributorSlug,
 		contributorName,
 		contributorUrl: args['contributor-url'] || '',
 		featured: args.featured === 'true'

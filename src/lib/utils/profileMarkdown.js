@@ -7,6 +7,7 @@ export function renderProfileMarkdown(source) {
 			.replaceAll('&', '&amp;')
 			.replaceAll('<', '&lt;')
 			.replaceAll('>', '&gt;')
+			.replaceAll('"', '&quot;')
 			.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
 			.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
 			.replace(/`([^`]+)`/g, '<code>$1</code>');

@@ -49,18 +49,25 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			'# GitHub',
+			isEnglish ? '# GitHub (recommended)' : '# GitHub (disarankan)',
 			'git clone https://github.com/wauputr4/bansos.git',
-			'# GitLab (mirror)',
-			'git clone https://gitlab.com/wauputr4/bansos.git',
+			isEnglish ? '# Or use the GitLab mirror:' : '# Atau gunakan mirror GitLab:',
+			'# git clone https://gitlab.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
+			`git checkout -b ${branchName}`,
 			'',
+			isEnglish
+				? '# Name and URL are only required for your first submission'
+				: '# Nama dan URL hanya diperlukan saat submit pertama',
 			'npm run add:bansos -- \\',
 			`  --id ${item.id} \\`,
 			`  --title "${item.title}" \\`,
 			`  --provider "${item.provider}" \\`,
 			`  --description "${item.description}" \\`,
+			'  --contributor-slug username-kamu \\',
+			'  --contributor-name "Nama Kamu" \\',
+			'  --contributor-url "https://github.com/username-kamu" \\',
 			`  --benefits "${item.benefits.join('|')}" \\`,
 			`  --validity-type ${item.validity.type} \\`
 		];
@@ -76,7 +83,6 @@
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
 		parts.push(`  --tags "${item.tags.join(',')}"`);
 		parts.push('');
-		parts.push(`git checkout -b ${branchName}`);
 		parts.push('git add .');
 		parts.push(`git commit -m "feat: add ${item.title}"`);
 		parts.push(`git push origin ${branchName}`);

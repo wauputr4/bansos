@@ -3,9 +3,13 @@ import { join } from 'node:path';
 import { renderProfileMarkdown } from '../src/lib/utils/profileMarkdown.js';
 
 const markdownCheck = renderProfileMarkdown(
-	'## Profil\n\n[GitHub](https://github.com/example)\n\n<script>alert(1)</script>'
+	'## Profil\n\n[GitHub](https://github.com/example)\n\n[Unsafe](https://example.com/"onmouseover=alert(1))\n\n<script>alert(1)</script>'
 );
-if (!markdownCheck.includes('<h2>Profil</h2>') || markdownCheck.includes('<script>')) {
+if (
+	!markdownCheck.includes('<h2>Profil</h2>') ||
+	markdownCheck.includes('<script>') ||
+	markdownCheck.includes('href="https://example.com/"onmouseover')
+) {
 	throw new Error('Contributor Markdown renderer failed its safety check');
 }
 

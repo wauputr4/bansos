@@ -176,6 +176,7 @@ This option is for those who want to test the code locally or modify files direc
      --validity-date 2026-06-30 \
      --requirements "Create an account|Claim the program" \
      --cta-link "https://example.com" \
+    --contributor-slug your-username \
      --contributor-name "Your Name" \
      --contributor-url "https://example.com" \
      --tags "Cloud,Freebie"
@@ -185,6 +186,8 @@ This option is for those who want to test the code locally or modify files direc
 
    The `--benefits` and `--requirements` arguments are separated by `|`.
    The `--tags` argument is separated by commas.
+   `--contributor-slug` is required for every submission. `--contributor-name` is required and
+   `--contributor-url` is optional only when that contributor profile does not exist yet.
 
 3. Create a new branch, add commits, push to your fork, and send a merge request to the main repository.
 

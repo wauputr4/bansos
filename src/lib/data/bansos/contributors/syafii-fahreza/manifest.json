@@ -4,9 +4,7 @@
 	"bio": "",
 	"title": "",
 	"skills": [],
-	"links": {
-		"website": "https://bansos.dev"
-	},
+	"links": {},
 	"contributedBansos": ["aerolink-starter-free-trial", "ai-hub-free-plan", "futureppo-free-credit"],
 	"hidden": false,
 	"joinedAt": "2026-07-14"

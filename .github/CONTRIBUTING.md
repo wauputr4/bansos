@@ -37,8 +37,8 @@ Kalau kamu lebih nyaman kirim via PR:
 - `--benefits` dan `--requirements`: dipisah pakai `|`.
 - `--tags`: dipisah dengan koma (`,`).
 - `--status` bisa `active` / `expired`.
-- `npm run add:bansos` menerima `--contributor-name` dan `--contributor-url`, lalu membuat
-  atau memperbarui profil kontributor dan atribusi listing.
+- `npm run add:bansos` mewajibkan `--contributor-slug` untuk atribusi. Saat profil belum ada,
+  tambahkan `--contributor-name`; `--contributor-url` bersifat opsional.
 
 ## Komunikasi
 

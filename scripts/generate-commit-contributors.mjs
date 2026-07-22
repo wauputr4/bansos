@@ -41,6 +41,7 @@ function readJson(filePath, fallback) {
 
 const legacySlugs = new Set(readJson(LEGACY_DATA, []).map((item) => item.id));
 const legacyContributors = readJson(LEGACY_CONTRIBUTORS, {});
+const legacyLatestCommits = getLegacyLatestCommits();
 
 function git(args) {
 	return execFileSync('git', args, {
@@ -131,25 +132,59 @@ function getGitLog(filePath) {
 	}
 }
 
+function commitInfo(output) {
+	if (!output) return null;
+	const [hash, date] = output.split('|');
+	return {
+		hash,
+		date,
+		url: `https://github.com/wauputr4/bansos/commit/${hash}`
+	};
+}
+
+/**
+ * Recover the last semantic edit for each listing from the legacy JSON history.
+ * Comparing parsed items ignores repository-wide formatting-only commits.
+ */
+function getLegacyLatestCommits() {
+	const latest = new Map();
+	const previous = new Map();
+
+	try {
+		const history = git(['log', '--reverse', '--format=%H|%aI', '--', LEGACY_DATA]);
+		for (const entry of history.split('\n').filter(Boolean)) {
+			const [hash, date] = entry.split('|');
+			let items;
+			try {
+				items = JSON.parse(git(['show', `${hash}:${LEGACY_DATA}`]));
+			} catch {
+				continue;
+			}
+
+			for (const item of items) {
+				const serialized = JSON.stringify(item);
+				if (previous.get(item.id) !== serialized) {
+					latest.set(item.id, commitInfo(`${hash}|${date}`));
+					previous.set(item.id, serialized);
+				}
+			}
+		}
+	} catch {
+		return latest;
+	}
+
+	return latest;
+}
+
 function getLatestFolderCommit(slug) {
 	try {
-		const output = git([
-			'log',
-			'-1',
-			'--format=%H|%aI',
-			'--',
-			join(BANSOS_DIR, slug, 'index.json'),
-			join(BANSOS_DIR, slug, 'README.md')
-		]);
-		if (!output) return null;
-		const [hash, date] = output.split('|');
-		return {
-			hash,
-			date,
-			url: `https://github.com/wauputr4/bansos/commit/${hash}`
-		};
+		const paths = [join(BANSOS_DIR, slug, 'index.json'), join(BANSOS_DIR, slug, 'README.md')];
+		const recent = git(['log', '-1', `${HISTORY_START}..HEAD`, '--format=%H|%aI', '--', ...paths]);
+		if (recent) return commitInfo(recent);
+		if (legacySlugs.has(slug)) return legacyLatestCommits.get(slug) || null;
+		return commitInfo(git(['log', '-1', '--format=%H|%aI', '--', ...paths]));
 	} catch {
-		return null;
+		return legacyLatestCommits.get(slug) || null;
 	}
 }
 

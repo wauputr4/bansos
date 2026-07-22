@@ -2,7 +2,7 @@
 	"login": "wauputr4",
 	"displayName": "Wauputra",
 	"title": "Founder bansos.dev | Developer",
-	"bio": "Membangun bansos.dev — open source catalog buat developer Indonesia. Suka ngoprek SvelteKit, TypeScript, dan Cloudflare.",
+	"bio": "Membangun bansos.dev — open source catalog buat developer Indonesia.",
 	"skills": ["SvelteKit", "TypeScript", "Node.js", "Cloudflare", "Open Source"],
 	"links": {
 		"github": "https://github.com/wauputr4",
