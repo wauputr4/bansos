@@ -178,6 +178,14 @@
 							<i class="fa-solid fa-heart"></i> me@wau.my.id
 						</a>
 						<a
+							href="https://github.com/sponsors/wauputr4"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="sponsor-pill"
+						>
+							<i class="fa-brands fa-github"></i> wauputr4
+						</a>
+						<a
 							href="https://github.com/sponsors/Renzie2161"
 							target="_blank"
 							rel="noopener noreferrer"

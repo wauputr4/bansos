@@ -1,2091 +1,2522 @@
 [
-	{
-		"id": "namecom-domain-app",
-		"title": "Promo Domain .DEV & .APP Gratis dari Name.com",
-		"description": "Bansos paling krusial buat kalian yang pengen rilis aplikasi tapi terhalang dana beli domain. Domain .dev dan .app premium langsung gas tanpa biaya, no cap! 🚀",
-		"benefits": [
-			"Domain .dev dan .app gratis tanpa bayar sama sekali",
-			"Tidak perlu kartu kredit (Anti-CC-ribet-club)",
-			"Limit 1 domain per akun (Biar semua kebagian, fr fr)",
-			"Status arsip: promo code DEVWEEK26 sudah tidak bisa digunakan lagi"
-		],
-		"promoCode": "DEVWEEK26",
-		"validity": {
-			"type": "uncertain",
-			"description": "Sudah tidak aktif (promo code tidak bisa digunakan lagi)"
-		},
-		"requirements": [
-			"Punya akun Name.com aktif",
-			"Pilih domain .dev atau .app yang tersedia",
-			"Gunakan promo code pas checkout"
-		],
-		"tips": "Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.",
-		"publishedAt": "2026-06-11",
-		"contributor": {
-			"name": "Wauputra",
-			"url": "https://wau.my.id"
-		},
-		"ctaLink": "https://www.name.com",
-		"tags": ["Domain", "No Credit Card"],
-		"featured": true,
-		"status": "expired",
-		"provider": "Name.com"
-	},
-	{
-		"id": "namecheap-vps-hosting",
-		"title": "Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan",
-		"description": "Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.",
-		"benefits": [
-			"Plan VPS mulai dari Spark sampai Hypernova",
-			"Mulai dari 1 CPU, RAM 1GB, SSD 20GB, bandwidth 1000GB",
-			"Pilihan manajemen server serta root access dan kontrol panel",
-			"Tersedia free trial sebelum upgrade ke berlangganan"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Promo dan harga ditampilkan sesuai periode di halaman resmi"
-		},
-		"requirements": [
-			"Buat/masuk akun Namecheap",
-			"Pilih plan VPS sesuai kebutuhan dan sumber daya yang kamu butuhkan",
-			"Lanjutkan checkout dan pilih durasi billing"
-		],
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id"
-		},
-		"ctaLink": "https://www.namecheap.com/hosting/vps/",
-		"tags": ["VPS & Server", "Hosting", "Free Tier"],
-		"featured": false,
-		"status": "active",
-		"provider": "Namecheap"
-	},
-	{
-		"id": "idwebhost-domain-gratis-1tahun",
-		"title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
-		"description": "Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.",
-		"benefits": [
-			"Domain gratis 1 tahun untuk yang ambil paket sesuai campaign",
-			"Mendukung klaim domain .my.id, .web.id, atau .biz.id",
-			"Kupon `mAts2Mey` jadi jalan masuk utama untuk promo",
-			"Tidak perlu tambahan paket hosting, SSL, maupun email hosting"
-		],
-		"validity": {
-			"type": "fixed",
-			"description": "Promo dan validitas kupon bisa berubah sesuai campaign saat ini",
-			"date": "2026-06-14"
-		},
-		"requirements": [
-			"Punya akun di IDwebhost",
-			"Pilih domain gratis yang diinginkan",
-			"Masukkan kupon `mAts2Mey`",
-			"Saat checkout, jangan centang hosting, SSL, dan email hosting sesuai instruksi"
-		],
-		"tips": "Masukkan domain yang diinginkan dulu, lalu isi kupon dan pastikan item hosting/SSL/email hosting tidak dipilih.",
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "ᴀᴢɪᴢ ʙᴜᴅɪ ꜱᴀᴛʀɪᴏ",
-			"url": "https://lynk.id/azizbudisatrio?utm_source=threads&utm_medium=social&utm_content=link_in_bio"
-		},
-		"ctaLink": "https://idwebhost.com/",
-		"tags": ["Domain", "Diskon"],
-		"featured": false,
-		"status": "expired",
-		"provider": "IDwebhost"
-	},
-	{
-		"id": "mimo-plan-free-nanaai",
-		"title": "Free Mimo Plan di NanaAI",
-		"provider": "NanaAI",
-		"providerWebsiteUrl": "https://nana.mwcs.dev",
-		"description": "⚠️ Ada laporan free plan sudah tidak bisa diklaim. NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!",
-		"benefits": [
-			"Free akses Mimo v2.5 dan Mimo v2.5 Pro",
-			"Model gratis: mimo-v2.5-pro & mimo-v2.5",
-			"Free saldo dan plan untuk referral program",
-			"Limit harian 3M selama 30 hari",
-			"Hasil referral dibagikan gratis di Discord bansos.dev"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang"
-		},
-		"requirements": [
-			"Daftar akun di NanaAI",
-			"Top up minimal $1 sebagai verifikasi user (anti-abuse)",
-			"Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan"
-		],
-		"tips": "⚠️ LAPORAN: Free plan dilaporkan sudah tidak bisa diklaim. Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!",
-		"source": "https://nana.mwcs.dev",
-		"publishedAt": "2026-07-06",
-		"contributor": {
-			"name": "Mugi Wiguna",
-			"url": "https://bansos.dev/"
-		},
-		"ctaLink": "https://nana.mwcs.dev/signup?ref=5JT7QA",
-		"tags": ["AI tools", "Dev Tools", "AI Provider"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "tokenrouter-model-gateway",
-		"title": "Free Credits TokenRouter buat Jajan Model AI",
-		"description": "TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.",
-		"benefits": [
-			"Top up 6, dapat 4 credit gratis (bonus 40% off)",
-			"Mulai top-up dari $1, jadi gak harus all-in kayak founder baru dapet funding",
-			"Maksimal top-up $60.000 dan bonus sampai $40.000 per orang untuk voucher",
-			"Bisa apply $200 developer credits kalau ikut campaign Get 40% Off",
-			"Developer credits berlaku 30 hari setelah disetujui"
-		],
-		"validity": {
-			"type": "fixed",
-			"date": "2026-06-17",
-			"description": "Reviewer menyarankan klaim maksimal 17 Juni 2026"
-		},
-		"requirements": [
-			"Buka campaign rules TokenRouter dan login ke akun kamu",
-			"Top-up minimal $1 untuk mulai klaim bonus",
-			"Klaim sebelum 17 Juni 2026 supaya aman dari batas campaign menurut reviewer yang sudah pakai",
-			"Untuk $200 developer credits, ikut dulu campaign Get 40% Off lalu submit form klaim",
-			"Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan"
-		],
-		"tips": "Kalau modal masih tipis, mulai dari $1 dulu. Kejar sebelum 17 Juni 2026 biar gak mepet dan jangan lupa baca campaign rules.",
-		"publishedAt": "2026-06-11",
-		"contributor": {
-			"name": "!mika",
-			"url": "https://www.mikacend.xyz/"
-		},
-		"ctaLink": "https://www.tokenrouter.com/campaign-rules",
-		"tags": ["AI Credits", "Diskon"],
-		"featured": false,
-		"status": "active",
-		"provider": "TokenRouter"
-	},
-	{
-		"id": "deepseek-free-token",
-		"title": "DeepSeek 5M Token Gratis buat Ngoding AI",
-		"description": "DeepSeek ngasih free tier 5M token pas signup buat developer yang mau cobain model AI tanpa kartu kredit. Cocok buat eksperimen chat, reasoning, dan integrasi API sebelum dompet ikut mikir keras.",
-		"benefits": [
-			"5M token gratis saat signup",
-			"Tidak perlu kartu kredit",
-			"Akses model deepseek-chat dan deepseek-reasoner",
-			"Context sampai 128K dan output sampai 8K",
-			"Base URL kompatibel API: https://api.deepseek.com/v1"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Credit berlaku 30 hari setelah signup"
-		},
-		"requirements": [
-			"Daftar atau login akun DeepSeek",
-			"Generate API key di dashboard DeepSeek",
-			"Gunakan API key dengan base URL https://api.deepseek.com/v1",
-			"Cek lagi ketentuan resmi karena ini data agregator, bukan verifier"
-		],
-		"tips": "Gas buat prototype dulu, tapi jangan taruh API key di frontend. Developer jelata juga wajib punya secret management.",
-		"publishedAt": "2026-06-12",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://deepseek.com"
-		},
-		"ctaLink": "https://platform.deepseek.com/api_keys",
-		"tags": ["AI Credits", "No Credit Card", "Free Tier"],
-		"featured": true,
-		"status": "expired",
-		"provider": "DeepSeek"
-	},
-	{
-		"id": "inceptionlabs-get-started",
-		"title": "10M Free Token Inception Platform",
-		"description": "Buat akun Inception Platform, dapetin bonus 10 juta token gratis buat ngoprek Mercury 2 API tanpa bayar dulu, biar bisa langsung test AI API integration kamu.",
-		"benefits": [
-			"Bonus 10.000.000 token gratis untuk user baru",
-			"API key langsung bisa dipakai setelah daftar",
-			"OpenAI-compatible API endpoint https://api.inceptionlabs.ai/v1",
-			"Model Mercury 2 bisa dipakai dari request chat",
-			"Kompatibel dengan client library populer (AISuite, LiteLLM, LangChain, OpenAI Client, VercelAI)"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Bonus berlaku untuk akun baru saat registrasi (10M token saldo awal)"
-		},
-		"requirements": [
-			"Buat akun Inception Platform",
-			"Buat API key di halaman API Keys",
-			"Gunakan Authorization header dengan INCEPTION_API_KEY",
-			"Akses endpoint https://api.inceptionlabs.ai/v1",
-			"Isi data sesuai kebutuhan API docs",
-			"Tambahkan billing jika butuh lanjut setelah kuota habis"
-		],
-		"publishedAt": "2026-06-12",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://docs.inceptionlabs.ai/get-started/get-started",
-		"tags": ["AI Credits", "API", "Free Tier"],
-		"featured": false,
-		"status": "active",
-		"provider": "Inception"
-	},
-	{
-		"id": "kimchi-dev-serverless-ai",
-		"title": "Kimchi.dev $50/Bulan Serverless AI Credit",
-		"description": "Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.",
-		"benefits": ["$50 Serverless AI credit per bulan", "Tanpa syarat kartu kredit"],
-		"validity": {
-			"type": "forever",
-			"description": "Selamanya"
-		},
-		"requirements": ["Daftar akun di Kimchi.dev", "Verifikasi alamat email"],
-		"publishedAt": "2026-06-12",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://kimchi.dev",
-		"tags": ["AI Credits", "No Credit Card"],
-		"featured": false,
-		"status": "active",
-		"provider": "Kimchi.dev"
-	},
-	{
-		"id": "kie-ai-api-discount-credit",
-		"title": "Kie.ai Free Credit & API Lebih Murah buat AI Builder",
-		"description": "Kie.ai sering ngasih gratisan credit buat developer yang mau ngoprek AI image, video, dan text API. Selain itu pricing API-nya bisa jauh lebih murah dari official, cocok buat eksperimen tanpa bikin dompet langsung tumbang.",
-		"benefits": [
-			"Umumnya ada free credit berkala/bulanan untuk akun aktif",
-			"Promo dan harga API bisa 30–50% lebih murah dari official pada beberapa model",
-			"Beberapa pricing comparison di dashboard menampilkan diskon sampai sekitar 70%",
-			"Menyediakan AI Image API, AI Video API, dan AI Text API dalam satu marketplace",
-			"Cocok buat prototype produk AI sebelum scale ke production"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Selama promo/free credit Kie.ai masih tersedia; cek dashboard setelah daftar"
-		},
-		"requirements": [
-			"Daftar akun Kie.ai lewat link referral",
-			"Login ke dashboard dan cek saldo/credit akun",
-			"Masuk ke API Market atau Pricing untuk cek model dan harga terbaru",
-			"Buat API key kalau mau integrasi ke aplikasi",
-			"Manfaatkan free credit dan bandingkan pricing sebelum top-up"
-		],
-		"tips": "Cek dashboard secara berkala karena free credit dan promo bisa berubah. Jangan expose API key di frontend; pakai env/server-side proxy biar aman.",
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "Pena Digital",
-			"url": "https://penadigital.tech/"
-		},
-		"ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
-		"tags": ["AI Credits", "API", "AI Tools", "Diskon"],
-		"featured": true,
-		"status": "active",
-		"provider": "Kie.ai"
-	},
-	{
-		"id": "aiclass-asean-courses",
-		"title": "Course Gratis AI dari AI Class ASEAN",
-		"description": "Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.",
-		"benefits": [
-			"Kursus gratis lewat program kolaborasi regional",
-			"Sertifikat selesai kursus untuk penguatan portfolio",
-			"Didukung ASEAN Foundation dan Google.org",
-			"Bisa jadi jalan tercepat buat ngembaliin skill AI ke tingkat yang lebih oke"
-		],
-		"validity": "Cek halaman kursus untuk periode dan persyaratan terbaru",
-		"requirements": [
-			"Pakai link referal/undangan dari guru atau mentor yang sudah handle akuisisi peserta",
-			"Selesaikan semua misi dan tugas yang disyaratkan untuk dapat reward",
-			"Kumpulkan bukti progres untuk klaim reward jika disediakan di program",
-			"Bawa tautan referal guru saat daftar jika diminta sistem",
-			"Bisa dapat bonus pulsa 50.000 setelah menyelesaikan semua misi (informasi dari peserta)"
-		],
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "Wildan",
-			"url": "https://kelas.bisnix.com/"
-		},
-		"ctaLink": "https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
-		"tags": ["Course", "Diskon"],
-		"featured": false,
-		"status": "active",
-		"provider": "AI Class ASEAN",
-		"featuredSince": null
-	},
-	{
-		"id": "dahono-labs-ai-api",
-		"title": "Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs",
-		"description": "Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.",
-		"benefits": [
-			"100% OpenAI Compatible API",
-			"Mendukung banyak model flagship (Qwen, DeepSeek, dll)",
-			"Tidak perlu kartu kredit",
-			"Kuota gratis per hari (Tier Free s/d 2 juta TPD)"
-		],
-		"validity": {
-			"type": "forever",
-			"description": "Berlaku untuk semua pengguna yang mendaftar"
-		},
-		"requirements": ["Daftar akun di Dahono Labs Gateway", "Masuk ke Dashboard dan buat API Key"],
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "Dahono Labs",
-			"url": "https://labs.dahono.com/"
-		},
-		"ctaLink": "https://labs.dahono.com",
-		"tags": ["API", "AI Tools", "AI Credits", "No Credit Card"],
-		"featured": false,
-		"status": "active",
-		"provider": "Dahono Labs"
-	},
-	{
-		"id": "aws-activate-credits",
-		"title": "Kredit AWS Activate hingga $200.000",
-		"description": "AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.",
-		"benefits": [
-			"Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)",
-			"Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui"
-		},
-		"requirements": [
-			"Buat AWS Builder ID dan lengkapi profil",
-			"Tautkan akun AWS",
-			"Berikan detail startup untuk konfirmasi kelayakan"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://aws.amazon.com/startups/credits/",
-		"tags": ["Cloud Services", "Startup"],
-		"featured": true,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "Amazon Web Services"
-	},
-	{
-		"id": "google-startups-cloud",
-		"title": "Program Google for Startups Cloud",
-		"description": "Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.",
-		"benefits": [
-			"Kredit hingga $2.000 USD selama setahun untuk startup tahap awal",
-			"Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan",
-			"Akses ke layanan Firebase dan alat AI/ML"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan"
-		},
-		"requirements": [
-			"Daftar langsung melalui program untuk tier dasar",
-			"Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://startup.google.com/cloud/",
-		"tags": ["Cloud Services", "AI Credits", "Startup"],
-		"featured": true,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "Google Cloud"
-	},
-	{
-		"id": "xai-grok-api-credits",
-		"title": "Kredit Gratis Uji Coba xAI Grok API",
-		"description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
-		"benefits": [
-			"Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
-			"Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran"
-		},
-		"requirements": [
-			"Buat akun di xAI Console dan hasilkan API key",
-			"Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://console.x.ai",
-		"tags": ["AI Credits", "API"],
-		"featured": false,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "xAI"
-	},
-	{
-		"id": "amd-ai-dev-program",
-		"title": "Program Developer AMD AI",
-		"description": "AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.",
-		"benefits": [
-			"Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI",
-			"Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan",
-			"Akses langsung ke pakar teknis AMD melalui server Discord privat"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform"
-		},
-		"requirements": [
-			"Buat akun AMD gratis",
-			"Isi dan kirimkan formulir pendaftaran Program AI Developer",
-			"Verifikasi alamat email yang didaftarkan"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
-		"tags": ["AI Credits", "Course"],
-		"featured": false,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "AMD"
-	},
-	{
-		"id": "microsoft-founders-hub",
-		"title": "Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)",
-		"description": "Program Microsoft untuk startup yang memberikan kredit Azure hingga $150.000, ditambah akses infrastruktur pengembangan seperti GitHub Enterprise dan alat produktivitas.",
-		"benefits": [
-			"Kredit Azure didistribusikan bertahap mulai $1.000 hingga batas maksimal $150.000 berdasarkan penggunaan",
-			"Akses gratis hingga 20 lisensi GitHub Enterprise selama satu tahun",
-			"Akses ke Microsoft 365 Business Premium dan LinkedIn Premium",
-			"Kredit Azure OpenAI Service disertakan di dalam bundle program"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kredit berlaku hingga 48 bulan dan dicairkan bertahap sesuai capaian startup"
-		},
-		"requirements": [
-			"Memiliki produk berbasis perangkat lunak",
-			"Mendaftar menggunakan email domain perusahaan dan memiliki website aktif",
-			"Berstatus perusahaan privat dan for-profit yang belum mencapai pendanaan Seri C",
-			"Tidak wajib memiliki dukungan Venture Capital (VC) untuk tahap awal aplikasi"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://startups.microsoft.com/",
-		"tags": ["Cloud Services", "Startup"],
-		"featured": true,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "Microsoft"
-	},
-	{
-		"id": "digitalocean-hatch",
-		"title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
-		"description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
-		"benefits": [
-			"Kredit komputasi cloud hingga batas $100.000",
-			"Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan",
-			"Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program"
-		},
-		"requirements": [
-			"Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)",
-			"Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)",
-			"Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop",
-			"Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://www.digitalocean.com/hatch/",
-		"tags": ["Cloud Services", "VPS & Server", "Startup", "AI Credits"],
-		"featured": false,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "DigitalOcean"
-	},
-	{
-		"id": "mongodb-startups",
-		"title": "Kredit MongoDB Atlas untuk Startup",
-		"description": "Kredit penggunaan layanan database terkelola MongoDB Atlas khusus startup, memfasilitasi kebutuhan pencarian berbasis vektor (vector search) hingga pemrosesan aliran data tingkat lanjut.",
-		"benefits": [
-			"Kredit awal senilai $5.000 untuk MongoDB Atlas, dengan tambahan jumlah yang dapat diakses oleh startup berbasis AI",
-			"Akses pustaka pelatihan eksklusif dengan lebih dari 150 modul praktikum langsung (hands-on labs)",
-			"Satu kredit layanan profesional yang dapat dipakai guna sesi konsultasi percepatan teknis aplikasi"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Kode promo harus diaktifkan dalam 12 bulan, dan kredit valid selama 12 bulan setelah aktivasi dilakukan"
-		},
-		"requirements": [
-			"Mengembangkan produk atau layanan perangkat lunak independen, dan bukan pihak agensi pengembangan (development shop)",
-			"Memiliki situs web perusahaan yang fungsional serta profil LinkedIn aktif",
-			"Belum pernah berpartisipasi atau mengklaim manfaat pada program MongoDB for Startups di periode sebelumnya"
-		],
-		"publishedAt": "2026-06-13",
-		"ctaLink": "https://www.mongodb.com/solutions/startups",
-		"tags": ["Cloud Services", "Startup"],
-		"featured": false,
-		"status": "active",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"provider": "MongoDB"
-	},
-	{
-		"id": "namecheap-hosting-trial",
-		"title": "Trial Gratis 30 Hari Hosting Namecheap",
-		"description": "Namecheap memberikan akses trial gratis selama 30 hari untuk layanan Shared Web Hosting, Email Hosting, dan WordPress Hosting.",
-		"benefits": [
-			"Akses gratis selama 30 hari",
-			"Tersedia untuk opsi Shared Web Hosting, Email Hosting, dan WordPress Hosting",
-			"Kapasitas pengujian server secara langsung sebelum pembelian paket penuh"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Masa trial berlaku selama 30 hari terhitung sejak aktivasi"
-		},
-		"requirements": [
-			"Buat akun di platform Namecheap",
-			"Pilih paket hosting yang diinginkan pada halaman layanan",
-			"Ikuti instruksi pada layar untuk menyelesaikan aktivasi"
-		],
-		"publishedAt": "2026-06-13",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://www.namecheap.com/hosting/",
-		"tags": ["Hosting", "Free Tier", "VPS & Server"],
-		"featured": false,
-		"status": "active",
-		"provider": "Namecheap"
-	},
-	{
-		"id": "tokenrouter-minimax-m3-free",
-		"title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
-		"description": "TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.",
-		"benefits": [
-			"Akses model MiniMax-M3 gratis untuk waktu terbatas",
-			"Biaya input dan output $0.0000 per token"
-		],
-		"validity": {
-			"type": "fixed",
-			"date": "2026-06-17",
-			"description": "Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026"
-		},
-		"requirements": [
-			"Lakukan pendaftaran atau login pada platform TokenRouter",
-			"Integrasikan dan panggil model MiniMax-M3 pada permintaan API"
-		],
-		"publishedAt": "2026-06-14",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://www.tokenrouter.com/",
-		"tags": ["AI Credits"],
-		"featured": false,
-		"status": "active",
-		"provider": "TokenRouter"
-	},
-	{
-		"id": "zcode-glm-52-free",
-		"title": "GLM-5.2 Gratis 5 Hari di ZCode",
-		"description": "ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.",
-		"benefits": [
-			"Gratis 5 hari untuk pengguna baru",
-			"Akses GLM flagship model",
-			"Bisa mencoba GLM-5.2 jika tersedia di akun ZCode",
-			"Cocok untuk coding agent dan long-horizon task",
-			"Kuota 150% di aplikasi untuk pengguna GLM Coding Plan"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Promo tersedia sejak rilis ZCode 3.0.0 dan dapat berubah sewaktu-waktu"
-		},
-		"requirements": [
-			"Download ZCode",
-			"Buat atau login akun Z.ai",
-			"Aktifkan GLM Start Plan",
-			"Pilih model GLM-5.2 jika tersedia",
-			"Gunakan lewat aplikasi ZCode"
-		],
-		"publishedAt": "2026-06-14",
-		"contributor": {
-			"name": "Aofsnorth",
-			"url": "https://github.com/Aofsnorth"
-		},
-		"ctaLink": "https://zcode.z.ai/en",
-		"tags": ["AI Tools", "Developer Tools"],
-		"featured": false,
-		"status": "active",
-		"source": "https://zcode.z.ai/en/changelog",
-		"provider": "Z.ai"
-	},
-	{
-		"id": "qoder-qwen-max-free",
-		"title": "200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder",
-		"source": "https://docs.qoder.com/events/qwen-max-daily-free",
-		"description": "Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.",
-		"benefits": [
-			"200 panggilan model Qwen3.7-Max gratis per hari yang diatur ulang setiap tengah malam",
-			"Berlaku untuk semua tipe akun termasuk Community, Pro Trial, Pro, Pro+, Ultra, dan Teams",
-			"Berlaku untuk integrasi di Qoder Desktop, JetBrains Plugin, CLI, QoderWork, dan QoderWake",
-			"Tarif diskon setengah harga tetap berlaku jika batas kuota 200 panggilan habis (bagi pengguna akun berbayar)"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut"
-		},
-		"requirements": [
-			"Lakukan pembaruan klien atau produk Qoder ke versi paling baru",
-			"Pilih model Qwen3.7-Max di dalam antarmuka sebelum melakukan permintaan",
-			"Klaim hanya berlaku bagi akun pertama yang berhasil login pada satu perangkat/komputer selama kampanye berjalan"
-		],
-		"publishedAt": "2026-06-15",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://qoder.com/",
-		"tags": ["AI Credits"],
-		"featured": false,
-		"status": "active",
-		"provider": "Qoder"
-	},
-	{
-		"id": "notion-ai-unlimited-1-bulan",
-		"title": "Notion AI Unlimited 1 Bulan",
-		"description": "Postingan Threads ini membagikan akses Notion AI unlimited selama 1 bulan, dengan model yang disebut Opus 4.8, ChatGPT 5.5, Gemini, dan Grok.",
-		"benefits": [
-			"Akses unlimited selama 1 bulan",
-			"Model yang disebut: Opus 4.8, ChatGPT 5.5, Gemini, dan Grok",
-			"Login langsung ke Notion"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Durasi promo mengikuti postingan Threads dan bisa berubah sewaktu-waktu"
-		},
-		"requirements": [
-			"Masuk ke akun Notion",
-			"Ikuti instruksi pada postingan Threads",
-			"Cek apakah campaign masih aktif"
-		],
-		"tips": "Nama model (Opus 4.8, ChatGPT 5.5) berasal dari klaim postingan Threads sumber, bukan daftar resmi Notion. Klaim ini belum diverifikasi independen.",
-		"publishedAt": "2026-06-15",
-		"source": "https://www.threads.com/@rizkysiregar23/post/DZl98mYk3j3",
-		"contributor": {
-			"name": "rizkysiregar23",
-			"url": "https://www.threads.com/@rizkysiregar23"
-		},
-		"ctaLink": "https://www.notion.so/",
-		"tags": ["AI Tools"],
-		"featured": false,
-		"status": "active",
-		"provider": "Notion"
-	},
-	{
-		"id": "aerolink-free-credits",
-		"title": "Aerolink $350+ Free Credits",
-		"description": "Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.",
-		"benefits": [
-			"$350+ free credits untuk akun baru",
-			"Satu API key untuk AI agent dan coding assistant",
-			"Dashboard untuk usage logs, token, latency, cost, balance, dan limits",
-			"Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001",
-			"Rolling usage window 5 jam dan mingguan"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink"
-		},
-		"requirements": [
-			"Buat akun Aerolink",
-			"Verifikasi email",
-			"Generate API key dari dashboard",
-			"Cek credit, model route, dan limit di dashboard sebelum digunakan"
-		],
-		"publishedAt": "2026-06-15",
-		"contributor": {
-			"name": "Aofsnorth",
-			"url": "https://github.com/Aofsnorth"
-		},
-		"ctaLink": "https://aerolink.lat/",
-		"tags": ["AI Tools", "API", "Cloud Services"],
-		"featured": false,
-		"status": "expired",
-		"provider": "Aerolink"
-	},
-	{
-		"id": "google-ai-pro-4-bulan",
-		"title": "Google AI Pro Gratis 4 Bulan",
-		"description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
-		"benefits": ["Antigravity", "Gemini Pro", "Penyimpanan 5TB Google Drive/Gmail"],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama promosi berlangsung"
-		},
-		"requirements": ["Buat akun", "Klaim program melalui link"],
-		"publishedAt": "2026-06-16",
-		"contributor": {
-			"name": "Akbar",
-			"url": "https://www.threads.com/@akbrzz"
-		},
-		"source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
-		"ctaLink": "http://g.co/g1referral/JG620Z3F",
-		"tags": ["AI Tools", "Cloud Services"],
-		"featured": false,
-		"status": "active",
-		"provider": "Google"
-	},
-	{
-		"id": "gemini-plus-3bulan-sim",
-		"title": "Gemini Plus 3 Bulan via Bima+",
-		"description": "Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.",
-		"benefits": [
-			"Kuota Gemini Plus selama 3 bulan",
-			"Aktif untuk pengguna nomor 3",
-			"Bisa klaim langsung dari aplikasi Bima"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Buka aplikasi Bima+ (Bima 3)",
-			"Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari",
-			"Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS",
-			"Ikuti petunjuk aktivasi pada link tersebut"
-		],
-		"publishedAt": "2026-06-17",
-		"source": "https://tri.co.id/google-gemini",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id"
-		},
-		"ctaLink": "https://bima.tri.co.id",
-		"tags": ["AI Credits", "AI Tools"],
-		"featured": false,
-		"status": "active",
-		"provider": "Bima3"
-	},
-	{
-		"id": "codecrafters-free-token",
-		"title": "Gratis 10JT Token AI / Hari",
-		"description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
-		"benefits": ["Gratis 10JT Token/Hari", "Mimo 2.5", "Deepseek V4 Flash"],
-		"promoCode": "BANSOSDEV",
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": [
-			"Memiliki akun codecrafters",
-			"Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas"
-		],
-		"publishedAt": "2026-06-17",
-		"contributor": {
-			"name": "Rupadana",
-			"url": "https://github.com/rupadana"
-		},
-		"ctaLink": "https://cloud.codecrafters.id",
-		"tags": ["AI Tools", "API"],
-		"featured": false,
-		"status": "active",
-		"provider": "CodeCrafters"
-	},
-	{
-		"id": "xiaomi-mimo-gratis-2",
-		"title": "Xiaomi Mimo Gratis $2",
-		"description": "Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.",
-		"benefits": ["credits $2"],
-		"promoCode": "NK2BLA",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Registrasi akun di platform Xiaomi Mimo.",
-			"Buka dashboard console di https://platform.xiaomimimo.com/console/balance.",
-			"Klik tombol \"Enter invite code\" di pojok kiri bawah.",
-			"Masukkan kode referal \"NK2BLA\" untuk mendapatkan saldo $2 gratis."
-		],
-		"publishedAt": "2026-06-17",
-		"contributor": {
-			"name": "Akbar",
-			"url": "https://github.com/muhakbarcom"
-		},
-		"ctaLink": "https://platform.xiaomimimo.com/?ref=NK2BLA",
-		"tags": ["AI Credits"],
-		"featured": false,
-		"status": "active",
-		"provider": "Xiaomi Mimo"
-	},
-	{
-		"id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
-		"title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
-		"description": "Layanan subdomain gratis permanen dari DigitalPlat Foundation untuk pelajar dan open-source developer. Mendukung kustomisasi DNS management via Cloudflare atau DNS hosting lainnya. Kebijakan satu akun per orang dengan limit awal 1 subdomain (bisa bertambah dengan memberi Star ke repo GitHub mereka).",
-		"benefits": [
-			"Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
-			"Bebas dihubungkan ke DNS pihak ketiga (bisa pake Cloudflare, AWS, dll.)",
-			"Full control atas DNS management",
-			"Tanpa biaya tersembunyi (kecuali biaya opsional verifikasi KYC jika terdeteksi sistem anti-abuse)"
-		],
-		"validity": {
-			"type": "forever",
-			"description": "Gratis seterusnya selama project DigitalPlat Foundation jalan."
-		},
-		"requirements": [
-			"Siapkan akun DNS Hosting (direkomendasikan menggunakan Cloudflare).",
-			"Lakukan registrasi di dashboard DigitalPlat dengan identitas asli (Nama, email, & telepon aktif).",
-			"(Opsional) Berikan Star pada repository GitHub https://github.com/DigitalPlatDev/FreeDomain untuk klaim tambahan slot subdomain.",
-			"Daftarkan subdomain pilihan Anda (pilihan: qzz.io, dpdns.org, us.kg, xx.kg).",
-			"Delegasikan nameserver subdomain ke DNS Hosting pihak ketiga untuk mulai mengelola DNS.",
-			"Patuhi Acceptable Use Policy (dilarang phishing/malware/penipuan) agar domain tidak di-banned."
-		],
-		"publishedAt": "2026-06-17",
-		"contributor": {
-			"name": "Faza Iman Imron",
-			"url": "https://github.com/fazaimron27"
-		},
-		"ctaLink": "https://dash.domain.digitalplat.org",
-		"tags": ["Domain", "API", "Free Tier", "Developer Tools"],
-		"featured": true,
-		"status": "active",
-		"provider": "DigitalPlat Foundation"
-	},
-	{
-		"id": "sumopod-domain-rp1",
-		"title": "Promo Domain Rp 1/Tahun dari Sumopod",
-		"source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
-		"description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
-		"benefits": ["Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"],
-		"validity": {
-			"type": "fixed",
-			"date": "2026-06-30",
-			"description": "Promo berlaku hingga 30 Juni 2026"
-		},
-		"requirements": [
-			"Buat akun di platform Sumopod",
-			"Pilih menu Domain",
-			"Masukkan nama domain yang diinginkan",
-			"Lanjutkan ke proses checkout"
-		],
-		"tips": "Provider mungkin mengalami pembatasan (rate-limit) karena tingginya permintaan, harap coba berkala.",
-		"publishedAt": "2026-06-17",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://sumopod.com",
-		"tags": ["Domain", "Diskon"],
-		"featured": false,
-		"status": "active",
-		"provider": "Sumopod"
-	},
-	{
-		"id": "tvstreamindonesia-fifa-2026",
-		"title": "Free stream Fifa World Cup 2026 No Iklan",
-		"description": "Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.",
-		"benefits": [
-			"Streaming FIFA World Cup 2026 Gratis Saluran RTB GO",
-			"Tanpa Iklan Mengganggu",
-			"Kualitas HD Stabil",
-			"Support Android, iPhone & PC"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Buka website tvstreamindonesia.my.id",
-			"Cari Saluran RTB GO untuk nonton FIFA world cup 2026",
-			"Klik channel atau tombol Play Streaming"
-		],
-		"publishedAt": "2026-06-18",
-		"source": "https://t.me/tvstreamindonesia",
-		"ctaLink": "https://tvstreamindonesia.my.id",
-		"tags": ["Free Tier"],
-		"featured": false,
-		"status": "active",
-		"provider": "Tvstreamindonesia"
-	},
-	{
-		"id": "rumahweb-free-domain-xyz",
-		"title": "Free domain .XYZ",
-		"description": "Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.",
-		"benefits": ["Hosting free 1 bulan"],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Daftar akun terlebih dahulu di website Rumahweb.",
-			"Cek ketersediaan nama domain/subdomain yang diinginkan.",
-			"Berikan rating dan review bintang 5 untuk Rumahweb di Google.",
-			"Ambil screenshot sebagai bukti review yang berhasil dikirim.",
-			"Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.",
-			"Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja)."
-		],
-		"publishedAt": "2026-06-18",
-		"source": "https://www.rumahweb.com/domain-gratis",
-		"contributor": {
-			"name": "Rey",
-			"url": "https://github.com/inirey"
-		},
-		"ctaLink": "https://www.rumahweb.com/domain-gratis/",
-		"tags": ["Domain", "Free Tier", "Diskon"],
-		"featured": false,
-		"status": "active",
-		"provider": "Rumahweb"
-	},
-	{
-		"id": "agentrouter-free-credits",
-		"title": "Free $200 Credit API LLM Populer",
-		"description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
-		"benefits": ["Free Signup Credits"],
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": ["Daftar akun"],
-		"publishedAt": "2026-06-18",
-		"source": "https://agentrouter.org/register?aff=qdG1",
-		"contributor": {
-			"name": "Hamba Allah",
-			"url": "https://github.com/adefebrian"
-		},
-		"ctaLink": "https://agentrouter.org/register?aff=qdG1",
-		"tags": ["AI Tools", "AI Credits", "API"],
-		"featured": false,
-		"status": "active",
-		"provider": "AgentRouter"
-	},
-	{
-		"id": "zenmux-glm-52-free",
-		"title": "GLM-5.2 Lagi Gratis!",
-		"description": "salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.",
-		"benefits": ["GLM 5.2 Free sampe limit habis"],
-		"promoCode": "7RR544",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": ["Daftar via invite link"],
-		"publishedAt": "2026-06-19",
-		"source": "https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ",
-		"contributor": {
-			"name": "Akbar",
-			"url": "https://github.com/muhakbarcom"
-		},
-		"ctaLink": "https://zenmux.ai/invite/7RR544",
-		"tags": ["AI Credits"],
-		"featured": false,
-		"status": "active",
-		"provider": "Z.ai"
-	},
-	{
-		"id": "agentrouter-free-250-ai-credit",
-		"title": "AgentRouter Free $250 AI Credit",
-		"provider": "AgentRouter",
-		"description": "AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.",
-		"benefits": [
-			"Mendapatkan $250 AI credit untuk pengguna baru",
-			"Tambahan credit",
-			"Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2",
-			"Satu API, banyak AI"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Daftar menggunakan akun GitHub lama/old account",
-			"Registrasi melalui link referral yang tersedia",
-			"Login dan cek saldo credit di dashboard AgentRouter",
-			"Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter"
-		],
-		"publishedAt": "2026-06-20",
-		"source": "https://agentrouter.org/register?aff=txsb",
-		"contributor": {
-			"name": "Jovian",
-			"url": "https://github.com/vian0001"
-		},
-		"ctaLink": "https://agentrouter.org/register?aff=txsb",
-		"tags": ["AI Tools", "AI Credits", "API", "Developer Tools", "Free Tier"],
-		"featured": false,
-		"status": "expired"
-	},
-	{
-		"id": "gumloop-free-credits",
-		"title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
-		"provider": "Gumloop",
-		"description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
-		"benefits": [
-			"5.000 Kredit Rutin Bulanan",
-			"1.600 Bonus Koneksi (Satu Kali)",
-			"Akses ke Berbagai Model AI Populer",
-			"Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Buat akun baru",
-			"Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
-		],
-		"instructions": [
-			"Daftar untuk membuat akun gratis di platform Gumloop.",
-			"Terima 5.000 kredit bulanan dasar Anda secara otomatis.",
-			"Hubungkan aplikasi produktivitas eksternal (seperti Google Docs) di dalam dasbor Anda untuk membuka tambahan 1.600 kredit bonus.",
-			"Pilih dari model AI yang tersedia dan mulai gunakan."
-		],
-		"publishedAt": "2026-06-20",
-		"source": "https://www.gumloop.com/pricing",
-		"contributor": {
-			"name": "Brian",
-			"url": "https://github.com/adefebrian"
-		},
-		"ctaLink": "https://www.gumloop.com/",
-		"tags": ["AI", "AI Credits", "Gratisan"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "openmodel-deepseek-v4-flash-free",
-		"title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
-		"provider": "OpenModel",
-		"description": "OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.",
-		"benefits": [
-			"Akses gratis penuh ke model DeepSeek-V4-Flash",
-			"Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa",
-			"Mudah diuji dan diintegrasikan melalui platform OpenModel",
-			"Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel"
-		},
-		"requirements": [
-			"Daftar atau masuk ke akun OpenModel kamu",
-			"Buka halaman pricing atau event resmi",
-			"Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya"
-		],
-		"publishedAt": "2026-06-21",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://www.openmodel.ai/model-pricing/deepseek-v4-flash",
-		"tags": ["AI", "AI Credits", "Gratisan"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "servernusa-free-xiaomi-mimo",
-		"title": "Akses Gratis Model AI Xiaomi Mimo via ServerNusa",
-		"provider": "ServerNusa",
-		"description": "ServerNusa menyediakan akses gratis untuk menggunakan model AI Xiaomi Mimo. Layanan ini memungkinkan para pengembang dan antusias AI untuk mencoba, mengeksplorasi, dan mengintegrasikan model AI dari Xiaomi tanpa biaya langsung melalui infrastruktur ServerNusa.",
-		"benefits": [
-			"Akses Gratis ke Model AI Xiaomi Mimo",
-			"Tidak perlu mengatur infrastruktur atau server lokal",
-			"Proses integrasi yang mudah melalui platform ServerNusa"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Kunjungi halaman resmi model AI ServerNusa di tautan yang disediakan.",
-			"Daftar untuk membuat akun baru atau masuk jika Anda sudah memiliki akun.",
-			"Arahkan ke dasbor model AI dan cari model 'Xiaomi Mimo' dari daftar yang tersedia.",
-			"Dapatkan kredensial atau akses API Anda untuk mulai menggunakan model tersebut dalam proyek Anda."
-		],
-		"tips": "Selalu simpan kredensial API Anda dengan aman dan jangan mengeksposnya di repositori publik.",
-		"publishedAt": "2026-06-21",
-		"source": "https://www.threads.com/@panggilajadwiya/post/DZ0JwFTks3y",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://servernusa.com/ai/models",
-		"tags": ["AI", "AI Credits", "Gratisan"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "atomesus-free-1-year-subscription",
-		"title": "FREE 1 Year subscription ATOMESUS",
-		"provider": "ATOMESUS",
-		"description": "Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).",
-		"benefits": [
-			"Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).",
-			"Memiliki kemampuan untuk membuat gambar (generate images)."
-		],
-		"promoCode": "ATOMESUS",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Buat akun di platform atau aplikasi Atomesus.",
-			"Arahkan atau navigasikan ke menu Apply Referral Code.",
-			"Ketik dan masukkan kode kupon/redeem ini: ATOMESUS."
-		],
-		"publishedAt": "2026-06-20",
-		"source": "https://www.threads.com/@atomesus/post/DZzXJySAc_g",
-		"contributor": {
-			"name": "Alfian57",
-			"url": "https://github.com/Alfian57"
-		},
-		"ctaLink": "https://www.atomesus.com/",
-		"tags": ["AI"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "merlin-ai-free-pro-1-month",
-		"title": "Gratis 1 Bulan Pro Plan Merlin AI",
-		"provider": "Merlin AI",
-		"description": "Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
-		"benefits": [
-			"Akses gratis Pro Plan selama 1 bulan",
-			"Menikmati fitur premium secara gratisan di bulan pertama"
-		],
-		"promoCode": "BCFREE",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.",
-			"Pilih paket langganan Pro Plan untuk durasi 1 bulan.",
-			"Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.",
-			"Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis."
-		],
-		"tips": "Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.",
-		"publishedAt": "2026-06-21",
-		"source": "https://www.getmerlin.in/",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://www.getmerlin.in/",
-		"tags": ["AI", "Promo", "Credit Card Required", "Gratisan"],
-		"featured": false,
-		"status": "expired"
-	},
-	{
-		"id": "freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10",
-		"title": "GRATIS Pro Plan – $10/5 Jam + Bonus Referral $10",
-		"provider": "FreeModel",
-		"description": "FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.",
-		"benefits": [
-			"Akses FreeModel Pro selama 1 bulan",
-			"Usage limit $10 setiap 5 jam",
-			"Usage limit sekitar $70 per minggu",
-			"Bonus tambahan $10 jika daftar menggunakan referral.",
-			"Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.",
-			"Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4",
-			"Bisa dipasang di 9ROUTER"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "disarankan punya TELEGRAM"
-		},
-		"requirements": [
-			"Daftar akun FreeModel.dev.",
-			"Gunakan link referral saat signup agar bonus $10 masuk.",
-			"Verify pakai Telegram, nomor China, top up (pilih salah satu)",
-			"cuma kirim start di Telegram untuk verifikasinya"
-		],
-		"publishedAt": "2026-06-21",
-		"source": "https://freemodel.dev/invite/FRE-679677b5",
-		"contributor": {
-			"name": "Jovian",
-			"url": "https://github.com/vian0001"
-		},
-		"ctaLink": "https://freemodel.dev/invite/FRE-679677b5",
-		"tags": [
-			"AI",
-			"AI Credits",
-			"API",
-			"AI Tools",
-			"No Credit Card",
-			"Gratisan",
-			"Developer Tools"
-		],
-		"featured": false,
-		"status": "expired"
-	},
-	{
-		"id": "neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan",
-		"title": "Neosantara AI Gateway: Bonus Rp 20.000 + Kredit Rp 10.000/Bulan",
-		"provider": "Neosantara",
-		"description": "Gateway API AI terpadu untuk developer Indonesia yang menyatukan 40+ model AI terbaik dunia (seperti Claude, Gemini, GPT, hingga Llama) dalam satu endpoint kompatibel SDK OpenAI & Anthropic.",
-		"benefits": [
-			"Welcome bonus Rp 20.000 gratis saat pendaftaran",
-			"Reset kredit gratis Rp 10.000 setiap bulan"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Daftar akun di Neosantara",
-			"Buat API Key pertama Anda di dashboard untuk mulai menggunakan di https://app.neosantara.xyz/api-keys"
-		],
-		"publishedAt": "2026-06-22",
-		"contributor": {
-			"name": "ErRickow",
-			"url": "https://github.com/errickow"
-		},
-		"ctaLink": "https://app.neosantara.xyz/signup",
-		"tags": [
-			"AI",
-			"AI Credits",
-			"AI Tools",
-			"API",
-			"No Credit Card",
-			"Free Tier",
-			"Gratisan",
-			"Developer Tools"
-		],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "openmodel-deepseek-v4-flash-free-access",
-		"title": "FREE AKSES model deepseek-v4-flash - OpenModel.ai",
-		"provider": "OpenModel",
-		"description": "Gratis akses model deepseek-v4-flash di https://openmodel.ai\n\nBerlaku sampai tanggal 28 Juni 2026",
-		"benefits": ["FREE akses model deepseek-v4-flash", "Diskon model lain"],
-		"validity": {
-			"type": "fixed",
-			"date": "2026-06-28"
-		},
-		"requirements": [
-			"Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4",
-			"Buat Apikey",
-			"Arahkan base url : https://api.openmodel.ai/v1",
-			"Gunakan model deepseek-v4-flash"
-		],
-		"publishedAt": "2026-06-23",
-		"source": "https://www.openmodel.ai/event",
-		"contributor": {
-			"name": "Syafrie Yunizar",
-			"url": "https://github.com/syafrieyunizar"
-		},
-		"ctaLink": "https://www.openmodel.ai?ref=7GzdLml4",
-		"tags": ["AI Credits", "API"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "jagoanhosting-free-domain-webid",
-		"title": "Domain .WEB.ID GRATIS 1 Tahun | Jagoan Hosting",
-		"provider": "Jagoan Hosting",
-		"description": "Ingin memiliki website pribadi, portofolio, blog, atau bisnis online tanpa biaya domain?",
-		"benefits": [
-			"Domain .WEB.ID GRATIS 1 Tahun",
-			"Cocok untuk website pribadi maupun bisnis",
-			"Proses aktivasi cepat dan mudah",
-			"Bisa langsung digunakan untuk website, landing page, toko online, maupun email bisnis"
-		],
-		"promoCode": "FREEWEBID100",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Masukkan nama domain yang diinginkan dengan ekstensi .WEB.ID.",
-			"Pilih masa aktif 1 Tahun.",
-			"Masukkan kode promo",
-			"Pastikan muncul keterangan 'Kode Promo Terpasang'.",
-			"Total tagihan akan otomatis menjadi Rp0.",
-			"Klik Bayar Sekarang untuk menyelesaikan proses pemesanan."
-		],
-		"publishedAt": "2026-06-23",
-		"source": "https://www.jagoanhosting.com",
-		"contributor": {
-			"name": "Risal",
-			"url": "https://github.com/risal1107"
-		},
-		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8072",
-		"tags": ["Domain"],
-		"featured": false,
-		"status": "expired"
-	},
-	{
-		"id": "adobe-creative-cloud-pro-trial",
-		"title": "Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month",
-		"provider": "Adobe",
-		"description": "Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly",
-		"benefits": ["Adobe Creative Cloud Pro"],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": ["Pembayaran Menggunakan DANA/CC"],
-		"publishedAt": "2026-06-23",
-		"ctaLink": "https://s.ricoaditya.com/adobe-creative-cloud-pro",
-		"tags": ["Cloud Services", "Free Tier", "Gratisan"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "diskon-free-hosting",
-		"title": "Free HOSTING | diskon.com",
-		"provider": "Diskon",
-		"description": "Hosting gratis Diskon.com adalah layanan hosting tanpa biaya yang memungkinkan siapa pun membuat website dan mengelola hosting dengan mudah. Hosting gratis Diskon.com cocok untuk siapa saja, bahkan buat yang ingin belajar membangun website.",
-		"benefits": [
-			"Nikmati hosting gratis selamanya tanpa kewajiban upgrade.",
-			"Control panel hosting yang mudah digunakan, cocok untuk yang baru pertama kali bikin website.",
-			"Tidak perlu verifikasi ribet. Hosting gratis langsung siap dipakai.",
-			"Saat website kamu sudah gede, bisa upgrade ke hosting berbayar dengan fitur lebih lengkap."
-		],
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": [
-			"Daftar Akun Pakai Email atau Google",
-			"Verifikasi Akun Kamu",
-			"Tinggal Klik, Langsung Online!"
-		],
-		"publishedAt": "2026-06-23",
-		"source": "https://diskon.com",
-		"contributor": {
-			"name": "Risal",
-			"url": "https://github.com/risal1107"
-		},
-		"ctaLink": "https://diskon.com/?go=risal.full.diskon.cloud399029",
-		"tags": ["Hosting"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "claim-7m-token-free",
-		"title": "Claim 7M token free",
-		"provider": "Bynara",
-		"description": "Setiap akun mendapatkan kredit gratis hingga sekitar 7 juta per hari dan kuotanya diperbarui secara berkala, jadi cukup menarik untuk eksperimen, coding agent, maupun testing berbagai model.",
-		"benefits": [
-			"claude-sonnet-4.5",
-			"mistral-large",
-			"mistral-medium-3-5",
-			"claude-haiku-4.5",
-			"deepseek-3.2",
-			"glm-5"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Registrasi akun di Nararouter melalui link tersedia",
-			"Verifikasi email dan login ke dashboard",
-			"Akses AI Models dan mulai gunakan 7M token gratis per hari"
-		],
-		"publishedAt": "2026-06-23",
-		"source": "https://router.bynara.id/register?ref=CJWVMGPR",
-		"contributor": {
-			"name": "AB Codeworks",
-			"url": "https://github.com/abcodeworks"
-		},
-		"ctaLink": "https://router.bynara.id/register?ref=CJWVMGPR",
-		"tags": ["AI", "AI Credits", "API"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "freemodel-pro-plan-bonus-referral-ikan",
-		"title": "FreeModel Pro Plan – Bonus $10 Referral",
-		"provider": "FreeModel",
-		"description": "FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.",
-		"benefits": [
-			"Akses FreeModel Pro selama 1 bulan",
-			"Usage limit $10 setiap 5 jam",
-			"Usage limit sekitar $70 per minggu",
-			"Bonus tambahan $10 jika daftar menggunakan referral.",
-			"Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.",
-			"Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4",
-			"Bisa dipasang di 9ROUTER"
-		],
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": [
-			"Daftar akun FreeModel.dev",
-			"Gunakan link referral saat signup agar bonus $10 masuk.",
-			"Verify pakai Telegram",
-			"Start di Telegram untuk verifikasi"
-		],
-		"publishedAt": "2026-06-24",
-		"contributor": {
-			"name": "Ikan",
-			"url": "https://github.com/Aldii24"
-		},
-		"ctaLink": "https://freemodel.dev/invite/FRE-83bee3ce",
-		"tags": ["AI Credits", "Gratisan", "AI"],
-		"featured": false,
-		"status": "expired"
-	},
-	{
-		"id": "opencode-go-free-5-credit",
-		"title": "Free $5 Credit in Opencode GO - Referral links",
-		"provider": "Opencode Go",
-		"description": "Subscribe ke opencode go ai untuk mendapatkan free $5 melalui akun kamu",
-		"benefits": ["Free $5 Credit"],
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": ["Subscribe Opencode AI"],
-		"publishedAt": "2026-06-24",
-		"contributor": {
-			"name": "QRocket-Lab",
-			"url": "https://github.com/Qrocket-lab"
-		},
-		"ctaLink": "https://opencode.ai/go?ref=YCFKG306YB",
-		"tags": ["AI Credits", "AI", "API", "Promo"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "merlin-ai-claude-opus-48-diskon-1tahun",
-		"title": "CLAUDE opus 4.8 1tahun 500k",
-		"provider": "Merlin AI",
-		"description": "Merlin AI menawarkan diskon untuk paket Pro Plan selama 1 tahun. Promo ini dipastikan tetap tersedia, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
-		"benefits": ["Pro Subscription 1 Tahun", "Teams"],
-		"promoCode": "HY2",
-		"validity": {
-			"type": "uncertain"
-		},
-		"requirements": ["Berlangganan dengan code promo"],
-		"publishedAt": "2026-06-25",
-		"contributor": {
-			"name": "priyambodo",
-			"url": "https://github.com/maspriyambodo"
-		},
-		"ctaLink": "https://www.getmerlin.in/chat?ref=nwe2zwf",
-		"tags": ["Diskon", "AI"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "jagoanhosting-promo-domain-myid",
-		"title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
-		"provider": "Jagoan Hosting",
-		"providerWebsiteUrl": "https://www.jagoanhosting.com",
-		"description": "Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!",
-		"benefits": [
-			"Domain .MY.ID gratis 1 tahun",
-			"Cocok untuk website pribadi, portofolio, atau blog",
-			"Proses klaim mudah dan cepat",
-			"Promo terbatas, jangan sampai kehabisan"
-		],
-		"promoCode": "FREEMYID1000",
-		"validity": {
-			"type": "fixed",
-			"date": "2026-06-30",
-			"description": "Promo berlaku sampai 30 Juni 2026, terbatas"
-		},
-		"requirements": [
-			"Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-			"Pilih domain dengan ekstensi .MY.ID",
-			"Masukkan kode promo FREEMYID1000 saat checkout",
-			"Selesaikan pemesanan"
-		],
-		"source": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-		"publishedAt": "2026-06-25",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
-		"tags": ["Domain", "Diskon"],
-		"featured": true,
-		"status": "active"
-	},
-	{
-		"id": "freebuff-ai-builder",
-		"title": "Freebuff — AI Coding Agent & App Builder 100% Gratis",
-		"provider": "Freebuff",
-		"description": "Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.",
-		"benefits": [
-			"Freebuff CLI: coding agent gratis di terminal",
-			"Freebuff Web: AI app builder dari prompt ke deployed app",
-			"Deploy & host app gratis, 230K+ developer aktif"
-		],
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": ["Node.js 18+ untuk CLI", "Akun gratis untuk Web"],
-		"publishedAt": "2026-06-25",
-		"source": "https://freebuff.com/",
-		"contributor": {
-			"name": "Mika",
-			"url": "https://github.com/mikaelaldy"
-		},
-		"ctaLink": "https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b",
-		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "Gratisan"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "noblehost-hosting-gratis",
-		"title": "NobleHost - Web Hosting Gratis",
-		"provider": "NobleHost",
-		"description": "NobleHost adalah platform hosting gratis dengan fitur lengkap untuk developer, mahasiswa, dan siapa aja yang butuh hosting website tanpa keluar duit. NobleHost cocok buat portfolio, tugas kuliah, side project, atau blog.",
-		"benefits": [
-			"Hosting gratis selamanya",
-			"Subdomain dan custom domain + Auto SSL",
-			"Panel dashboard mudah dengan fitur lengkap"
-		],
-		"promoCode": "",
-		"validity": {
-			"type": "forever",
-			"description": "Selama layanan aktif"
-		},
-		"requirements": ["Daftar akun", "Verifikasi email", "Setuju dengan kebijakan penggunaan"],
-		"tips": "Tinggal Klik buat website pertama kamu, pilih domain, dan langsung live di internet",
-		"source": "https://noblehost.xyz",
-		"publishedAt": "2026-06-27",
-		"contributor": {
-			"name": "NobleHost",
-			"url": "https://noblehost.xyz/"
-		},
-		"ctaLink": "https://noblehost.xyz/",
-		"tags": ["Hosting", "Domain", "Cloud Services"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "v0-vercel-ai-credits-up-to-200",
-		"title": "v0 (Vercel) - AI Credits hingga $200",
-		"provider": "v0 (Vercel)",
-		"description": "Platform AI coding dari Vercel yang memungkinkan pengguna membuat aplikasi dan frontend menggunakan prompt berbasis AI. Pengguna dapat memperoleh AI Credits secara gratis hingga $200 setelah mendaftar tanpa perlu kartu kredit maupun metode pembayaran.",
-		"benefits": [
-			"Mendapat $10 langsung saat pertama kali daftar",
-			"Dapatkan hingga $200 total AI Credits",
-			"Bisa deploy project secara langsung dan gratis",
-			"AI Coding dan UI generation berkualitas tinggi"
-		],
-		"promoCode": "",
-		"validity": {
-			"type": "uncertain",
-			"description": "Selama kuota tersedia"
-		},
-		"requirements": [
-			"Daftar akun di v0.dev (mungkin perlu verifikasi nomor telepon)",
-			"$10 pertama otomatis masuk ke akun setelah selesai registrasi"
-		],
-		"source": "https://community.vercel.com/t/the-new-v0-is-here/32845",
-		"publishedAt": "2026-06-27",
-		"contributor": {
-			"name": "Juan",
-			"url": ""
-		},
-		"ctaLink": "https://v0.app/ref/8EFMVE",
-		"tags": ["AI", "AI Tools", "Developer Tools", "Free Tier", "No Credit Card"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "jagoanhosting-promo-exclusive",
-		"title": "Promo Exclusive Diskon Hosting JagoanHosting",
-		"provider": "Jagoan Hosting",
-		"providerWebsiteUrl": "https://www.jagoanhosting.com",
-		"description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!",
-		"benefits": [
-			"Potongan 10% untuk Shared Hosting",
-			"Bisa dipakai untuk akun lama (bukan cuma new user)",
-			"Tanpa batasan minimum transaksi"
-		],
-		"promoCode": "JERITANJELATA",
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": [
-			"Pilih produk Shared Hosting yang diinginkan",
-			"Masukkan kode promo JERITANJELATA saat checkout",
-			"Pastikan diskon 10% sudah terapply di total tagihan",
-			"Selesaikan pembayaran"
-		],
-		"source": "https://www.jagoanhosting.com",
-		"publishedAt": "2026-06-30",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
-		"tags": ["Hosting", "Diskon"],
-		"featured": true,
-		"status": "active",
-		"featuredSince": "2026-07-03"
-	},
-	{
-		"id": "zenhosta-gratis-domain-1-tahun",
-		"title": "Gratis Domain 1 Tahun Walau Order Hosting 1 Bulan",
-		"provider": "Zenhosta",
-		"description": "Zenhosta memberikan gratis domain selama 1 tahun untuk pengguna yang melakukan order hosting, bahkan cukup dengan memilih paket hosting bulanan.",
-		"benefits": [
-			"Gratis domain selama 1 tahun",
-			"Bisa didapatkan hanya dengan order hosting 1 bulan",
-			"Pilihan domain gratis tersedia untuk ekstensi .my.id, .web.id, dan .biz.id"
-		],
-		"promoCode": "",
-		"validity": {
-			"type": "fixed",
-			"date": "2026-12-31",
-			"description": "Promo berlaku sampai 31 Desember 2026."
-		},
-		"requirements": [
-			"Masuk ke halaman https://zenhosta.com/hosting",
-			"Pilih paket hosting, bisa menggunakan paket paling murah.",
-			"Pilih opsi \"Gratis Domain\".",
-			"Pilih domain gratis yang tersedia, yaitu .my.id, .web.id, atau .biz.id.",
-			"Selesaikan pembayaran, lalu pengguna akan mendapatkan hosting + free domain selama 1 tahun."
-		],
-		"tips": "Pastikan memilih opsi \"Gratis Domain\" saat proses order dan memilih ekstensi domain yang termasuk promo, yaitu .my.id, .web.id, atau .biz.id.",
-		"source": "https://zenhosta.com/hosting",
-		"publishedAt": "2026-07-01",
-		"contributor": {
-			"name": "Ogya Adyatma Putra",
-			"url": "https://www.linkedin.com/in/ogya-adyatma-putra/"
-		},
-		"ctaLink": "https://zenhosta.com/member/aff.php?aff=20",
-		"tags": ["Hosting", "Domain", "Cloud Services"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "zyloo-free-200-credit-post",
-		"title": "Free $200 Credit AI API — Posting tentang Zyloo",
-		"provider": "Zyloo",
-		"description": "Dapatkan $200 free credit AI API dengan membuat postingan, video, atau artikel tentang Zyloo di platform publik. Berlaku untuk Instagram, TikTok, YouTube, X, LinkedIn, Facebook, blog, dan platform lainnya. Credit bisa dipakai untuk mengakses berbagai model AI premium seperti Claude Opus 4, GPT, Gemini, Grok, dan lainnya via satu API key OpenAI-compatible.",
-		"benefits": [
-			"$200 free credit per postingan yang disetujui",
-			"Bisa di-stack (makin banyak post, makin banyak credit)",
-			"Akses ke berbagai model AI premium via 1 API key",
-			"OpenAI-compatible endpoint — gak perlu rewrite code",
-			"+ $25 welcome credit gratis saat daftar (no CC)"
-		],
-		"promoCode": "",
-		"validity": {
-			"type": "uncertain",
-			"description": "Selama program berlangsung — review 1-2 hari kerja per submission"
-		},
-		"requirements": [
-			"Buat postingan, video, story, atau artikel tentang Zyloo di platform publik",
-			"Submit link publik ke form yang disediakan",
-			"Tunggu review 1-2 hari kerja",
-			"Kalau disetujui, $200 langsung masuk ke balance"
-		],
-		"tips": "Postingan original dan genuine lebih mungkin disetujui. Bisa posting di multiple platform untuk credit berlapis.",
-		"source": "https://zyloo.io",
-		"publishedAt": "2026-07-01",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://zyloo.io/models/claude-opus-4-7",
-		"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "No Credit Card"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "lovable-free-pro-plan",
-		"title": "Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder",
-		"description": "Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.",
-		"benefits": [
-			"Akses gratis ke tier Pro Plan",
-			"100 kredit per bulan untuk generate dan edit kode",
-			"Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya"
-		],
-		"promoCode": "SIMONPRO26",
-		"validity": {
-			"type": "fixed",
-			"date": "2026-07-03",
-			"description": "Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026."
-		},
-		"requirements": [
-			"Daftar atau masuk ke akun Lovable",
-			"Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout",
-			"Siapkan Virtual Credit Card (VCC) untuk verifikasi billing"
-		],
-		"tips": "Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.",
-		"source": "https://x.com/simonsquibb/status/2050180383069581420",
-		"publishedAt": "2026-07-01",
-		"contributor": {
-			"name": "DevERS",
-			"url": "https://renzlab.my.id"
-		},
-		"ctaLink": "https://lovable.dev/pricing",
-		"tags": ["AI Tools", "Developer Tools", "Free Tier"],
-		"featured": false,
-		"status": "expired",
-		"provider": "Lovable",
-		"providerWebsiteUrl": "https://lovable.dev"
-	},
-	{
-		"id": "freemodel-invite-referral-10",
-		"title": "FreeModel Invite Referral — $10 Credit per Teman Daftar",
-		"provider": "FreeModel",
-		"providerWebsiteUrl": "https://freemodel.dev",
-		"description": "Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.",
-		"benefits": [
-			"$10 API credit untuk kamu dan $10 untuk teman yang diundang",
-			"Tanpa batas jumlah undangan — invite sebanyak mungkin",
-			"Credit tidak pernah expired selama akun aktif"
-		],
-		"promoCode": "",
-		"validity": {
-			"type": "forever",
-			"description": "Credit tidak pernah expired selama akun aktif"
-		},
-		"requirements": [
-			"Bagikan link referral ke teman (email domain bebas)",
-			"Teman daftar dan verifikasi akun via phone atau Telegram",
-			"Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi"
-		],
-		"tips": "Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.",
-		"source": "https://freemodel.dev/invite/FRE-e95f134d",
-		"publishedAt": "2026-07-01",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id"
-		},
-		"ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
-		"tags": ["AI Credits", "API", "Free Tier"],
-		"featured": true,
-		"status": "active",
-		"featuredSince": "2026-07-02"
-	},
-	{
-		"id": "idwebhost-claim-domain-gratis-myid-juli2026",
-		"title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
-		"provider": "IDwebhost",
-		"providerWebsiteUrl": "https://idwebhost.com",
-		"description": "Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.",
-		"benefits": [
-			"Domain gratis 1 tahun",
-			"Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID",
-			"Cukup pakai kupon saat checkout",
-			"Kuota terbatas — klaim sebelum habis"
-		],
-		"promoCode": "M2n4tS",
-		"validity": {
-			"type": "fixed",
-			"date": "2026-07-05",
-			"description": "Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis."
-		},
-		"requirements": [
-			"Punya akun IDwebhost",
-			"Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)",
-			"Gunakan kupon M2n4tS saat checkout"
-		],
-		"tips": "Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!",
-		"source": "https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg",
-		"publishedAt": "2026-07-03",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "http://idwebhost.com/domain",
-		"tags": ["Domain", "Diskon"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "bynara-ai-router-free-payg",
-		"title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
-		"provider": "byNara",
-		"providerWebsiteUrl": "https://bynara.id",
-		"description": "Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.",
-		"benefits": [
-			"Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5",
-			"Token cap 5M/hari pada free tier",
-			"Rate limit 10 req/menit",
-			"Pay as you go untuk model premium",
-			"Dukungan pembayaran IDR dan USD",
-			"Bandingkan biaya antar model langsung di dashboard"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Free tier — selama layanan tersedia"
-		},
-		"requirements": [
-			"Daftar akun di router.bynara.id",
-			"Verifikasi akun via Telegram bot byNara",
-			"Login ke Telegram channel byNara untuk akses API key",
-			"Pilih model yang tersedia di tier Free",
-			"Mulai kirim request via API endpoint"
-		],
-		"tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
-		"source": "https://router.bynara.id/",
-		"publishedAt": "2026-07-03",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://router.bynara.id/register?ref=3AH29Q72",
-		"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
-		"featured": true,
-		"status": "active",
-		"featuredSince": "2026-07-02"
-	},
-	{
-		"id": "conduit-trial-credit-500",
-		"title": "Conduit AI — $500 Trial Credit & Free Model Access",
-		"provider": "Conduit",
-		"providerWebsiteUrl": "https://conduit.ozdoev.net",
-		"description": "Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.",
-		"benefits": [
-			"$500 trial credit untuk coba berbagai model AI",
-			"$0.50 per 1k visible tokens (input + output)",
-			"Akses via Telegram bot — cepat dan mudah"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit."
-		},
-		"requirements": ["Buka Telegram bot Conduit", "Daftar / mulai bot", "Klaim trial credit"],
-		"tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
-		"source": "https://conduit.ozdoev.net",
-		"publishedAt": "2026-07-03",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://t.me/conduitoff_bot?start=ref_950268146",
-		"tags": ["AI Credits", "API", "Free Tier", "AI Tools"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "ai-livscene-free-models",
-		"title": "AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1",
-		"provider": "AI Livscene",
-		"providerWebsiteUrl": "https://ai.livscene.com",
-		"description": "Akses 14 model AI premium gratis dengan quota 5.1 di AI Livscene. Daftar pakai Discord atau GitHub, langsung generate tanpa ribet!",
-		"benefits": [
-			"Akses gratis ke 14 model AI premium: Claude Opus 4.6/4.7/4.8, Claude Sonnet 4.6, DeepSeek V4 Pro, Gemini 3.1 Pro, Gemini 3.5 Flash, GLM 5.2, GPT 5.4 Compact, GPT 5.5, Mimo v2.5, Mimo v2.5 Pro, Step 3.7 Flash, Step Router V1",
-			"Quota 5.1 untuk mencoba semua model",
-			"Daftar cepat via Discord atau GitHub",
-			"Generate dan langsung coba tanpa setup rumit"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Quota dan akses free model mengikuti kebijakan AI Livscene"
-		},
-		"requirements": [
-			"Buka ai.livscene.com",
-			"Daftar akun via Discord atau GitHub",
-			"Generate dan langsung coba model yang tersedia"
-		],
-		"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
-		"source": "https://ai.livscene.com",
-		"publishedAt": "2026-07-03",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://ai.livscene.com/sign-up?aff=m3Vt",
-		"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
-		"featured": true,
-		"featuredSince": "2026-07-03",
-		"status": "active"
-	},
-	{
-		"id": "aerolink-starter-free-trial",
-		"title": "Aerolink Starter Free Trial",
-		"provider": "Aerolink",
-		"description": "Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.",
-		"benefits": [
-			"Free Trial selama 2 minggu",
-			"Kredit penggunaan AI senilai US$140",
-			"Batas penggunaan US$10 setiap 5 jam",
-			"Batas penggunaan US$70 per minggu",
-			"Akses ke berbagai model AI melalui satu platform"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink."
-		},
-		"requirements": [
-			"Daftarkan akun Aerolink baru",
-			"Aktifkan paket Starter Free Trial",
-			"Patuhi syarat dan ketentuan resmi Aerolink"
-		],
-		"tips": "Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.",
-		"source": "https://aerolink.lat/",
-		"publishedAt": "2026-07-05",
-		"contributor": {
-			"name": "Syafi'i Fahreza",
-			"url": "https://bansos.dev"
-		},
-		"ctaLink": "https://aerolink.lat/register?ref=T5-QB9W",
-		"tags": ["AI", "API", "Developer", "Free Trial", "Credits"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "aws-ai-academy-2026",
-		"title": "Program Beasiswa AWS AI Academy 2026",
-		"provider": "AWS x Dicoding",
-		"description": "Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.",
-		"benefits": [
-			"Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi",
-			"Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert",
-			"Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia"
-		],
-		"validity": {
-			"type": "fixed",
-			"date": "2026-12-25",
-			"description": "Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026."
-		},
-		"requirements": [
-			"Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan",
-			"Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar"
-		],
-		"tips": "Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.",
-		"source": "https://aws.dicoding.com/login",
-		"publishedAt": "2026-07-06",
-		"contributor": {
-			"name": "ADITECH",
-			"url": "https://bansos.dev/"
-		},
-		"ctaLink": "https://aws.dicoding.com/login",
-		"tags": ["AI", "Cloud", "Machine Learning", "Training"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "ai-hub-free-plan",
-		"title": "AI Hub Free Plan",
-		"provider": "AI Campus Malaysia",
-		"providerWebsiteUrl": "https://ai-hub.aicampus.my/",
-		"description": "Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.",
-		"benefits": [
-			"1.000.000 token gratis pada Free Plan (weekly allocation).",
-			"API access melalui Hub Key.",
-			"Dapat membuat API Key sendiri.",
-			"Personal usage dashboard.",
-			"Informasi penggunaan token secara real-time.",
-			"Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.",
-			"Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.",
-			"Dukungan komunitas melalui Telegram."
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub."
-		},
-		"requirements": [
-			"Mendaftarkan akun AI Hub baru.",
-			"Menggunakan paket Free Plan.",
-			"Mematuhi Terms of Service AI Hub."
-		],
-		"tips": "Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.",
-		"source": "https://ai-hub.aicampus.my/",
-		"publishedAt": "2026-07-11",
-		"contributor": {
-			"name": "Syafi'i Fahreza"
-		},
-		"ctaLink": "https://ai-hub.aicampus.my/?ref=01b0fc09",
-		"tags": ["AI", "API", "LLM", "Gemini", "Claude", "Developer", "Free Tier"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "jagoanhosting-promo-vps-25",
-		"title": "Promo Exclusive Jagoan Hosting 25%",
-		"provider": "Jagoan Hosting",
-		"providerWebsiteUrl": "https://www.jagoanhosting.com",
-		"description": "Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.",
-		"benefits": [
-			"Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting",
-			"Berlaku untuk semua pengguna (bukan cuma new user)"
-		],
-		"promoCode": "BANSOSVPS",
-		"validity": {
-			"type": "forever"
-		},
-		"requirements": [
-			"Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)",
-			"Masukkan kode promo BANSOSVPS saat checkout",
-			"Selesaikan pembayaran"
-		],
-		"source": "https://www.jagoanhosting.com",
-		"publishedAt": "2026-07-11",
-		"contributor": {
-			"name": "wauputra",
-			"url": "https://wau.my.id/"
-		},
-		"ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
-		"tags": ["VPS", "Diskon", "Hosting"],
-		"featured": true,
-		"status": "active"
-	},
-	{
-		"id": "futureppo-free-credit",
-		"title": "FuturePPO Free Credits",
-		"provider": "FuturePPO",
-		"providerWebsiteUrl": "https://api.futureppo.top",
-		"description": "FuturePPO menyediakan layanan AI API gateway yang memberikan saldo kredit gratis kepada pengguna baru, fitur daily check-in untuk memperoleh kredit tambahan secara acak, serta akses ke berbagai model AI melalui satu API.",
-		"benefits": [
-			"Kredit awal US$20 untuk akun baru",
-			"Daily check-in dengan reward kredit acak",
-			"Akses API Key untuk berbagai model AI premium (GPT-5.5, GPT-5.4, Grok, GLM, Gemini) dalam satu endpoint",
-			"Halaman status model untuk memantau kondisi layanan"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama program kredit gratis dan daily check-in masih disediakan oleh FuturePPO"
-		},
-		"requirements": [
-			"Daftar akun FuturePPO baru",
-			"Login untuk menerima kredit awal",
-			"Lakukan daily check-in untuk memperoleh kredit tambahan",
-			"Patuhi Terms of Service FuturePPO"
-		],
-		"tips": "Lakukan daily check-in setiap hari untuk memperoleh tambahan kredit. Gunakan model yang sesuai kebutuhan karena setiap model memiliki biaya token yang berbeda.",
-		"source": "https://api.futureppo.top/",
-		"publishedAt": "2026-07-13",
-		"contributor": {
-			"name": "Syafi'i Fahreza",
-			"url": "https://bansos.dev/"
-		},
-		"ctaLink": "https://api.futureppo.top/",
-		"tags": ["AI", "API", "LLM", "Free Tier"],
-		"featured": false,
-		"status": "active"
-	},
-	{
-		"id": "agentrouter-free-150-credit",
-		"title": "AgentRouter Free $150 AI Credit + $25 Daily Reward",
-		"provider": "AgentRouter",
-		"providerWebsiteUrl": "https://agent-router.org",
-		"description": "AgentRouter memberikan bonus AI Credit sebesar $150 untuk pengguna baru yang mendaftar melalui program yang tersedia. Pengguna juga berkesempatan memperoleh tambahan AI Credit harian sesuai ketentuan program. Credit dapat digunakan untuk mengakses berbagai model AI melalui satu API.",
-		"benefits": [
-			"$150 AI Credit untuk pengguna baru",
-			"Tambahan $25 AI Credit setiap hari",
-			"Akses berbagai model AI populer melalui satu API"
-		],
-		"validity": {
-			"type": "uncertain",
-			"description": "Berlaku selama program promosi masih tersedia"
-		},
-		"requirements": [
-			"Memiliki akun GitHub (disarankan akun lama/old account)",
-			"Mendaftar melalui halaman registrasi AgentRouter",
-			"Login dan klaim bonus sesuai ketentuan yang berlaku"
-		],
-		"tips": "Gunakan akun GitHub yang aktif dan hindari membuat akun ganda agar tetap sesuai Terms of Service",
-		"source": "https://agentrouter.org/register?aff=txsb",
-		"publishedAt": "2026-07-13",
-		"contributor": {
-			"name": "Jovian",
-			"url": "https://github.com/vian0001"
-		},
-		"ctaLink": "https://agentrouter.org/register?aff=txsb",
-		"tags": ["AI", "AI Credits", "API", "Developer Tools"],
-		"featured": false,
-		"status": "active"
-	}
+  {
+    "id": "namecom-domain-app",
+    "title": "Promo Domain .DEV & .APP Gratis dari Name.com",
+    "description": "Bansos paling krusial buat kalian yang pengen rilis aplikasi tapi terhalang dana beli domain. Domain .dev dan .app premium langsung gas tanpa biaya, no cap! 🚀",
+    "benefits": [
+      "Domain .dev dan .app gratis tanpa bayar sama sekali",
+      "Tidak perlu kartu kredit (Anti-CC-ribet-club)",
+      "Limit 1 domain per akun (Biar semua kebagian, fr fr)",
+      "Status arsip: promo code DEVWEEK26 sudah tidak bisa digunakan lagi"
+    ],
+    "promoCode": "DEVWEEK26",
+    "validity": {
+      "type": "uncertain",
+      "description": "Sudah tidak aktif (promo code tidak bisa digunakan lagi)"
+    },
+    "requirements": [
+      "Punya akun Name.com aktif",
+      "Pilih domain .dev atau .app yang tersedia",
+      "Gunakan promo code pas checkout"
+    ],
+    "tips": "Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.",
+    "publishedAt": "2026-06-11",
+    "contributor": {
+      "name": "Wauputra",
+      "url": "https://wau.my.id"
+    },
+    "ctaLink": "https://www.name.com",
+    "tags": [
+      "Domain",
+      "No Credit Card"
+    ],
+    "featured": true,
+    "status": "expired",
+    "provider": "Name.com"
+  },
+  {
+    "id": "namecheap-vps-hosting",
+    "title": "Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan",
+    "description": "Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.",
+    "benefits": [
+      "Plan VPS mulai dari Spark sampai Hypernova",
+      "Mulai dari 1 CPU, RAM 1GB, SSD 20GB, bandwidth 1000GB",
+      "Pilihan manajemen server serta root access dan kontrol panel",
+      "Tersedia free trial sebelum upgrade ke berlangganan"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Promo dan harga ditampilkan sesuai periode di halaman resmi"
+    },
+    "requirements": [
+      "Buat/masuk akun Namecheap",
+      "Pilih plan VPS sesuai kebutuhan dan sumber daya yang kamu butuhkan",
+      "Lanjutkan checkout dan pilih durasi billing"
+    ],
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id"
+    },
+    "ctaLink": "https://www.namecheap.com/hosting/vps/",
+    "tags": [
+      "VPS & Server",
+      "Hosting",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Namecheap"
+  },
+  {
+    "id": "idwebhost-domain-gratis-1tahun",
+    "title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
+    "description": "Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.",
+    "benefits": [
+      "Domain gratis 1 tahun untuk yang ambil paket sesuai campaign",
+      "Mendukung klaim domain .my.id, .web.id, atau .biz.id",
+      "Kupon `mAts2Mey` jadi jalan masuk utama untuk promo",
+      "Tidak perlu tambahan paket hosting, SSL, maupun email hosting"
+    ],
+    "validity": {
+      "type": "fixed",
+      "description": "Promo dan validitas kupon bisa berubah sesuai campaign saat ini",
+      "date": "2026-06-14"
+    },
+    "requirements": [
+      "Punya akun di IDwebhost",
+      "Pilih domain gratis yang diinginkan",
+      "Masukkan kupon `mAts2Mey`",
+      "Saat checkout, jangan centang hosting, SSL, dan email hosting sesuai instruksi"
+    ],
+    "tips": "Masukkan domain yang diinginkan dulu, lalu isi kupon dan pastikan item hosting/SSL/email hosting tidak dipilih.",
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "ᴀᴢɪᴢ ʙᴜᴅɪ ꜱᴀᴛʀɪᴏ",
+      "url": "https://lynk.id/azizbudisatrio?utm_source=threads&utm_medium=social&utm_content=link_in_bio"
+    },
+    "ctaLink": "https://idwebhost.com/",
+    "tags": [
+      "Domain",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "expired",
+    "provider": "IDwebhost"
+  },
+  {
+    "id": "mimo-plan-free-nanaai",
+    "title": "Free Mimo Plan di NanaAI",
+    "provider": "NanaAI",
+    "providerWebsiteUrl": "https://nana.mwcs.dev",
+    "description": "⚠️ Ada laporan free plan sudah tidak bisa diklaim. NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!",
+    "benefits": [
+      "Free akses Mimo v2.5 dan Mimo v2.5 Pro",
+      "Model gratis: mimo-v2.5-pro & mimo-v2.5",
+      "Free saldo dan plan untuk referral program",
+      "Limit harian 3M selama 30 hari",
+      "Hasil referral dibagikan gratis di Discord bansos.dev"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang"
+    },
+    "requirements": [
+      "Daftar akun di NanaAI",
+      "Top up minimal $1 sebagai verifikasi user (anti-abuse)",
+      "Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan"
+    ],
+    "tips": "⚠️ LAPORAN: Free plan dilaporkan sudah tidak bisa diklaim. Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!",
+    "source": "https://nana.mwcs.dev",
+    "publishedAt": "2026-07-06",
+    "contributor": {
+      "name": "Mugi Wiguna",
+      "url": "https://bansos.dev/"
+    },
+    "ctaLink": "https://nana.mwcs.dev/signup?ref=5JT7QA",
+    "tags": [
+      "AI tools",
+      "Dev Tools",
+      "AI Provider"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "tokenrouter-model-gateway",
+    "title": "Free Credits TokenRouter buat Jajan Model AI",
+    "description": "TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.",
+    "benefits": [
+      "Top up 6, dapat 4 credit gratis (bonus 40% off)",
+      "Mulai top-up dari $1, jadi gak harus all-in kayak founder baru dapet funding",
+      "Maksimal top-up $60.000 dan bonus sampai $40.000 per orang untuk voucher",
+      "Bisa apply $200 developer credits kalau ikut campaign Get 40% Off",
+      "Developer credits berlaku 30 hari setelah disetujui"
+    ],
+    "validity": {
+      "type": "fixed",
+      "date": "2026-06-17",
+      "description": "Reviewer menyarankan klaim maksimal 17 Juni 2026"
+    },
+    "requirements": [
+      "Buka campaign rules TokenRouter dan login ke akun kamu",
+      "Top-up minimal $1 untuk mulai klaim bonus",
+      "Klaim sebelum 17 Juni 2026 supaya aman dari batas campaign menurut reviewer yang sudah pakai",
+      "Untuk $200 developer credits, ikut dulu campaign Get 40% Off lalu submit form klaim",
+      "Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan"
+    ],
+    "tips": "Kalau modal masih tipis, mulai dari $1 dulu. Kejar sebelum 17 Juni 2026 biar gak mepet dan jangan lupa baca campaign rules.",
+    "publishedAt": "2026-06-11",
+    "contributor": {
+      "name": "!mika",
+      "url": "https://www.mikacend.xyz/"
+    },
+    "ctaLink": "https://www.tokenrouter.com/campaign-rules",
+    "tags": [
+      "AI Credits",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "TokenRouter"
+  },
+  {
+    "id": "deepseek-free-token",
+    "title": "DeepSeek 5M Token Gratis buat Ngoding AI",
+    "description": "DeepSeek ngasih free tier 5M token pas signup buat developer yang mau cobain model AI tanpa kartu kredit. Cocok buat eksperimen chat, reasoning, dan integrasi API sebelum dompet ikut mikir keras.",
+    "benefits": [
+      "5M token gratis saat signup",
+      "Tidak perlu kartu kredit",
+      "Akses model deepseek-chat dan deepseek-reasoner",
+      "Context sampai 128K dan output sampai 8K",
+      "Base URL kompatibel API: https://api.deepseek.com/v1"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Credit berlaku 30 hari setelah signup"
+    },
+    "requirements": [
+      "Daftar atau login akun DeepSeek",
+      "Generate API key di dashboard DeepSeek",
+      "Gunakan API key dengan base URL https://api.deepseek.com/v1",
+      "Cek lagi ketentuan resmi karena ini data agregator, bukan verifier"
+    ],
+    "tips": "Gas buat prototype dulu, tapi jangan taruh API key di frontend. Developer jelata juga wajib punya secret management.",
+    "publishedAt": "2026-06-12",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://deepseek.com"
+    },
+    "ctaLink": "https://platform.deepseek.com/api_keys",
+    "tags": [
+      "AI Credits",
+      "No Credit Card",
+      "Free Tier"
+    ],
+    "featured": true,
+    "status": "expired",
+    "provider": "DeepSeek"
+  },
+  {
+    "id": "inceptionlabs-get-started",
+    "title": "10M Free Token Inception Platform",
+    "description": "Buat akun Inception Platform, dapetin bonus 10 juta token gratis buat ngoprek Mercury 2 API tanpa bayar dulu, biar bisa langsung test AI API integration kamu.",
+    "benefits": [
+      "Bonus 10.000.000 token gratis untuk user baru",
+      "API key langsung bisa dipakai setelah daftar",
+      "OpenAI-compatible API endpoint https://api.inceptionlabs.ai/v1",
+      "Model Mercury 2 bisa dipakai dari request chat",
+      "Kompatibel dengan client library populer (AISuite, LiteLLM, LangChain, OpenAI Client, VercelAI)"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Bonus berlaku untuk akun baru saat registrasi (10M token saldo awal)"
+    },
+    "requirements": [
+      "Buat akun Inception Platform",
+      "Buat API key di halaman API Keys",
+      "Gunakan Authorization header dengan INCEPTION_API_KEY",
+      "Akses endpoint https://api.inceptionlabs.ai/v1",
+      "Isi data sesuai kebutuhan API docs",
+      "Tambahkan billing jika butuh lanjut setelah kuota habis"
+    ],
+    "publishedAt": "2026-06-12",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://docs.inceptionlabs.ai/get-started/get-started",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Inception"
+  },
+  {
+    "id": "kimchi-dev-serverless-ai",
+    "title": "Kimchi.dev $50/Bulan Serverless AI Credit",
+    "description": "Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.",
+    "benefits": [
+      "$50 Serverless AI credit per bulan",
+      "Tanpa syarat kartu kredit"
+    ],
+    "validity": {
+      "type": "forever",
+      "description": "Selamanya"
+    },
+    "requirements": [
+      "Daftar akun di Kimchi.dev",
+      "Verifikasi alamat email"
+    ],
+    "publishedAt": "2026-06-12",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://kimchi.dev",
+    "tags": [
+      "AI Credits",
+      "No Credit Card"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Kimchi.dev"
+  },
+  {
+    "id": "kie-ai-api-discount-credit",
+    "title": "Kie.ai Free Credit & API Lebih Murah buat AI Builder",
+    "description": "Kie.ai sering ngasih gratisan credit buat developer yang mau ngoprek AI image, video, dan text API. Selain itu pricing API-nya bisa jauh lebih murah dari official, cocok buat eksperimen tanpa bikin dompet langsung tumbang.",
+    "benefits": [
+      "Umumnya ada free credit berkala/bulanan untuk akun aktif",
+      "Promo dan harga API bisa 30–50% lebih murah dari official pada beberapa model",
+      "Beberapa pricing comparison di dashboard menampilkan diskon sampai sekitar 70%",
+      "Menyediakan AI Image API, AI Video API, dan AI Text API dalam satu marketplace",
+      "Cocok buat prototype produk AI sebelum scale ke production"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Selama promo/free credit Kie.ai masih tersedia; cek dashboard setelah daftar"
+    },
+    "requirements": [
+      "Daftar akun Kie.ai lewat link referral",
+      "Login ke dashboard dan cek saldo/credit akun",
+      "Masuk ke API Market atau Pricing untuk cek model dan harga terbaru",
+      "Buat API key kalau mau integrasi ke aplikasi",
+      "Manfaatkan free credit dan bandingkan pricing sebelum top-up"
+    ],
+    "tips": "Cek dashboard secara berkala karena free credit dan promo bisa berubah. Jangan expose API key di frontend; pakai env/server-side proxy biar aman.",
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "Pena Digital",
+      "url": "https://penadigital.tech/"
+    },
+    "ctaLink": "https://kie.ai?ref=2d0ecbdedae3034bdaee48fc726309be",
+    "tags": [
+      "AI Credits",
+      "API",
+      "AI Tools",
+      "Diskon"
+    ],
+    "featured": true,
+    "status": "active",
+    "provider": "Kie.ai"
+  },
+  {
+    "id": "aiclass-asean-courses",
+    "title": "Course Gratis AI dari AI Class ASEAN",
+    "description": "Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.",
+    "benefits": [
+      "Kursus gratis lewat program kolaborasi regional",
+      "Sertifikat selesai kursus untuk penguatan portfolio",
+      "Didukung ASEAN Foundation dan Google.org",
+      "Bisa jadi jalan tercepat buat ngembaliin skill AI ke tingkat yang lebih oke"
+    ],
+    "validity": "Cek halaman kursus untuk periode dan persyaratan terbaru",
+    "requirements": [
+      "Pakai link referal/undangan dari guru atau mentor yang sudah handle akuisisi peserta",
+      "Selesaikan semua misi dan tugas yang disyaratkan untuk dapat reward",
+      "Kumpulkan bukti progres untuk klaim reward jika disediakan di program",
+      "Bawa tautan referal guru saat daftar jika diminta sistem",
+      "Bisa dapat bonus pulsa 50.000 setelah menyelesaikan semua misi (informasi dari peserta)"
+    ],
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "Wildan",
+      "url": "https://kelas.bisnix.com/"
+    },
+    "ctaLink": "https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
+    "tags": [
+      "Course",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "AI Class ASEAN",
+    "featuredSince": null
+  },
+  {
+    "id": "dahono-labs-ai-api",
+    "title": "Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs",
+    "description": "Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.",
+    "benefits": [
+      "100% OpenAI Compatible API",
+      "Mendukung banyak model flagship (Qwen, DeepSeek, dll)",
+      "Tidak perlu kartu kredit",
+      "Kuota gratis per hari (Tier Free s/d 2 juta TPD)"
+    ],
+    "validity": {
+      "type": "forever",
+      "description": "Berlaku untuk semua pengguna yang mendaftar"
+    },
+    "requirements": [
+      "Daftar akun di Dahono Labs Gateway",
+      "Masuk ke Dashboard dan buat API Key"
+    ],
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "Dahono Labs",
+      "url": "https://labs.dahono.com/"
+    },
+    "ctaLink": "https://labs.dahono.com",
+    "tags": [
+      "API",
+      "AI Tools",
+      "AI Credits",
+      "No Credit Card"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Dahono Labs"
+  },
+  {
+    "id": "aws-activate-credits",
+    "title": "Kredit AWS Activate hingga $200.000",
+    "description": "AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.",
+    "benefits": [
+      "Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)",
+      "Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui"
+    },
+    "requirements": [
+      "Buat AWS Builder ID dan lengkapi profil",
+      "Tautkan akun AWS",
+      "Berikan detail startup untuk konfirmasi kelayakan"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://aws.amazon.com/startups/credits/",
+    "tags": [
+      "Cloud Services",
+      "Startup"
+    ],
+    "featured": true,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "Amazon Web Services"
+  },
+  {
+    "id": "google-startups-cloud",
+    "title": "Program Google for Startups Cloud",
+    "description": "Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.",
+    "benefits": [
+      "Kredit hingga $2.000 USD selama setahun untuk startup tahap awal",
+      "Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan",
+      "Akses ke layanan Firebase dan alat AI/ML"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan"
+    },
+    "requirements": [
+      "Daftar langsung melalui program untuk tier dasar",
+      "Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://startup.google.com/cloud/",
+    "tags": [
+      "Cloud Services",
+      "AI Credits",
+      "Startup"
+    ],
+    "featured": true,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "Google Cloud"
+  },
+  {
+    "id": "xai-grok-api-credits",
+    "title": "Kredit Gratis Uji Coba xAI Grok API",
+    "description": "xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.",
+    "benefits": [
+      "Kredit promosi awal sebesar $25 langsung setelah pendaftaran",
+      "Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran"
+    },
+    "requirements": [
+      "Buat akun di xAI Console dan hasilkan API key",
+      "Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://console.x.ai",
+    "tags": [
+      "AI Credits",
+      "API"
+    ],
+    "featured": false,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "xAI"
+  },
+  {
+    "id": "amd-ai-dev-program",
+    "title": "Program Developer AMD AI",
+    "description": "AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.",
+    "benefits": [
+      "Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI",
+      "Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan",
+      "Akses langsung ke pakar teknis AMD melalui server Discord privat"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform"
+    },
+    "requirements": [
+      "Buat akun AMD gratis",
+      "Isi dan kirimkan formulir pendaftaran Program AI Developer",
+      "Verifikasi alamat email yang didaftarkan"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://www.amd.com/en/developer/ai-dev-program.html",
+    "tags": [
+      "AI Credits",
+      "Course"
+    ],
+    "featured": false,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "AMD"
+  },
+  {
+    "id": "microsoft-founders-hub",
+    "title": "Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)",
+    "description": "Program Microsoft untuk startup yang memberikan kredit Azure hingga $150.000, ditambah akses infrastruktur pengembangan seperti GitHub Enterprise dan alat produktivitas.",
+    "benefits": [
+      "Kredit Azure didistribusikan bertahap mulai $1.000 hingga batas maksimal $150.000 berdasarkan penggunaan",
+      "Akses gratis hingga 20 lisensi GitHub Enterprise selama satu tahun",
+      "Akses ke Microsoft 365 Business Premium dan LinkedIn Premium",
+      "Kredit Azure OpenAI Service disertakan di dalam bundle program"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit berlaku hingga 48 bulan dan dicairkan bertahap sesuai capaian startup"
+    },
+    "requirements": [
+      "Memiliki produk berbasis perangkat lunak",
+      "Mendaftar menggunakan email domain perusahaan dan memiliki website aktif",
+      "Berstatus perusahaan privat dan for-profit yang belum mencapai pendanaan Seri C",
+      "Tidak wajib memiliki dukungan Venture Capital (VC) untuk tahap awal aplikasi"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://startups.microsoft.com/",
+    "tags": [
+      "Cloud Services",
+      "Startup"
+    ],
+    "featured": true,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "Microsoft"
+  },
+  {
+    "id": "digitalocean-hatch",
+    "title": "DigitalOcean Hatch (Kredit Cloud hingga $100.000)",
+    "description": "Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.",
+    "benefits": [
+      "Kredit komputasi cloud hingga batas $100.000",
+      "Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan",
+      "Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program"
+    },
+    "requirements": [
+      "Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)",
+      "Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)",
+      "Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop",
+      "Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://www.digitalocean.com/hatch/",
+    "tags": [
+      "Cloud Services",
+      "VPS & Server",
+      "Startup",
+      "AI Credits"
+    ],
+    "featured": false,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "DigitalOcean"
+  },
+  {
+    "id": "mongodb-startups",
+    "title": "Kredit MongoDB Atlas untuk Startup",
+    "description": "Kredit penggunaan layanan database terkelola MongoDB Atlas khusus startup, memfasilitasi kebutuhan pencarian berbasis vektor (vector search) hingga pemrosesan aliran data tingkat lanjut.",
+    "benefits": [
+      "Kredit awal senilai $5.000 untuk MongoDB Atlas, dengan tambahan jumlah yang dapat diakses oleh startup berbasis AI",
+      "Akses pustaka pelatihan eksklusif dengan lebih dari 150 modul praktikum langsung (hands-on labs)",
+      "Satu kredit layanan profesional yang dapat dipakai guna sesi konsultasi percepatan teknis aplikasi"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kode promo harus diaktifkan dalam 12 bulan, dan kredit valid selama 12 bulan setelah aktivasi dilakukan"
+    },
+    "requirements": [
+      "Mengembangkan produk atau layanan perangkat lunak independen, dan bukan pihak agensi pengembangan (development shop)",
+      "Memiliki situs web perusahaan yang fungsional serta profil LinkedIn aktif",
+      "Belum pernah berpartisipasi atau mengklaim manfaat pada program MongoDB for Startups di periode sebelumnya"
+    ],
+    "publishedAt": "2026-06-13",
+    "ctaLink": "https://www.mongodb.com/solutions/startups",
+    "tags": [
+      "Cloud Services",
+      "Startup"
+    ],
+    "featured": false,
+    "status": "active",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "provider": "MongoDB"
+  },
+  {
+    "id": "namecheap-hosting-trial",
+    "title": "Trial Gratis 30 Hari Hosting Namecheap",
+    "description": "Namecheap memberikan akses trial gratis selama 30 hari untuk layanan Shared Web Hosting, Email Hosting, dan WordPress Hosting.",
+    "benefits": [
+      "Akses gratis selama 30 hari",
+      "Tersedia untuk opsi Shared Web Hosting, Email Hosting, dan WordPress Hosting",
+      "Kapasitas pengujian server secara langsung sebelum pembelian paket penuh"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Masa trial berlaku selama 30 hari terhitung sejak aktivasi"
+    },
+    "requirements": [
+      "Buat akun di platform Namecheap",
+      "Pilih paket hosting yang diinginkan pada halaman layanan",
+      "Ikuti instruksi pada layar untuk menyelesaikan aktivasi"
+    ],
+    "publishedAt": "2026-06-13",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://www.namecheap.com/hosting/",
+    "tags": [
+      "Hosting",
+      "Free Tier",
+      "VPS & Server"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Namecheap"
+  },
+  {
+    "id": "tokenrouter-minimax-m3-free",
+    "title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
+    "description": "TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.",
+    "benefits": [
+      "Akses model MiniMax-M3 gratis untuk waktu terbatas",
+      "Biaya input dan output $0.0000 per token"
+    ],
+    "validity": {
+      "type": "fixed",
+      "date": "2026-06-17",
+      "description": "Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026"
+    },
+    "requirements": [
+      "Lakukan pendaftaran atau login pada platform TokenRouter",
+      "Integrasikan dan panggil model MiniMax-M3 pada permintaan API"
+    ],
+    "publishedAt": "2026-06-14",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://www.tokenrouter.com/",
+    "tags": [
+      "AI Credits"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "TokenRouter"
+  },
+  {
+    "id": "zcode-glm-52-free",
+    "title": "GLM-5.2 Gratis 5 Hari di ZCode",
+    "description": "ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.",
+    "benefits": [
+      "Gratis 5 hari untuk pengguna baru",
+      "Akses GLM flagship model",
+      "Bisa mencoba GLM-5.2 jika tersedia di akun ZCode",
+      "Cocok untuk coding agent dan long-horizon task",
+      "Kuota 150% di aplikasi untuk pengguna GLM Coding Plan"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Promo tersedia sejak rilis ZCode 3.0.0 dan dapat berubah sewaktu-waktu"
+    },
+    "requirements": [
+      "Download ZCode",
+      "Buat atau login akun Z.ai",
+      "Aktifkan GLM Start Plan",
+      "Pilih model GLM-5.2 jika tersedia",
+      "Gunakan lewat aplikasi ZCode"
+    ],
+    "publishedAt": "2026-06-14",
+    "contributor": {
+      "name": "Aofsnorth",
+      "url": "https://github.com/Aofsnorth"
+    },
+    "ctaLink": "https://zcode.z.ai/en",
+    "tags": [
+      "AI Tools",
+      "Developer Tools"
+    ],
+    "featured": false,
+    "status": "active",
+    "source": "https://zcode.z.ai/en/changelog",
+    "provider": "Z.ai"
+  },
+  {
+    "id": "qoder-qwen-max-free",
+    "title": "200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder",
+    "source": "https://docs.qoder.com/events/qwen-max-daily-free",
+    "description": "Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.",
+    "benefits": [
+      "200 panggilan model Qwen3.7-Max gratis per hari yang diatur ulang setiap tengah malam",
+      "Berlaku untuk semua tipe akun termasuk Community, Pro Trial, Pro, Pro+, Ultra, dan Teams",
+      "Berlaku untuk integrasi di Qoder Desktop, JetBrains Plugin, CLI, QoderWork, dan QoderWake",
+      "Tarif diskon setengah harga tetap berlaku jika batas kuota 200 panggilan habis (bagi pengguna akun berbayar)"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut"
+    },
+    "requirements": [
+      "Lakukan pembaruan klien atau produk Qoder ke versi paling baru",
+      "Pilih model Qwen3.7-Max di dalam antarmuka sebelum melakukan permintaan",
+      "Klaim hanya berlaku bagi akun pertama yang berhasil login pada satu perangkat/komputer selama kampanye berjalan"
+    ],
+    "publishedAt": "2026-06-15",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://qoder.com/",
+    "tags": [
+      "AI Credits"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Qoder"
+  },
+  {
+    "id": "notion-ai-unlimited-1-bulan",
+    "title": "Notion AI Unlimited 1 Bulan",
+    "description": "Postingan Threads ini membagikan akses Notion AI unlimited selama 1 bulan, dengan model yang disebut Opus 4.8, ChatGPT 5.5, Gemini, dan Grok.",
+    "benefits": [
+      "Akses unlimited selama 1 bulan",
+      "Model yang disebut: Opus 4.8, ChatGPT 5.5, Gemini, dan Grok",
+      "Login langsung ke Notion"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Durasi promo mengikuti postingan Threads dan bisa berubah sewaktu-waktu"
+    },
+    "requirements": [
+      "Masuk ke akun Notion",
+      "Ikuti instruksi pada postingan Threads",
+      "Cek apakah campaign masih aktif"
+    ],
+    "tips": "Nama model (Opus 4.8, ChatGPT 5.5) berasal dari klaim postingan Threads sumber, bukan daftar resmi Notion. Klaim ini belum diverifikasi independen.",
+    "publishedAt": "2026-06-15",
+    "source": "https://www.threads.com/@rizkysiregar23/post/DZl98mYk3j3",
+    "contributor": {
+      "name": "rizkysiregar23",
+      "url": "https://www.threads.com/@rizkysiregar23"
+    },
+    "ctaLink": "https://www.notion.so/",
+    "tags": [
+      "AI Tools"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Notion"
+  },
+  {
+    "id": "aerolink-free-credits",
+    "title": "Aerolink $350+ Free Credits",
+    "description": "Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.",
+    "benefits": [
+      "$350+ free credits untuk akun baru",
+      "Satu API key untuk AI agent dan coding assistant",
+      "Dashboard untuk usage logs, token, latency, cost, balance, dan limits",
+      "Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001",
+      "Rolling usage window 5 jam dan mingguan"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink"
+    },
+    "requirements": [
+      "Buat akun Aerolink",
+      "Verifikasi email",
+      "Generate API key dari dashboard",
+      "Cek credit, model route, dan limit di dashboard sebelum digunakan"
+    ],
+    "publishedAt": "2026-06-15",
+    "contributor": {
+      "name": "Aofsnorth",
+      "url": "https://github.com/Aofsnorth"
+    },
+    "ctaLink": "https://aerolink.lat/",
+    "tags": [
+      "AI Tools",
+      "API",
+      "Cloud Services"
+    ],
+    "featured": false,
+    "status": "expired",
+    "provider": "Aerolink"
+  },
+  {
+    "id": "google-ai-pro-4-bulan",
+    "title": "Google AI Pro Gratis 4 Bulan",
+    "description": "Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).",
+    "benefits": [
+      "Antigravity",
+      "Gemini Pro",
+      "Penyimpanan 5TB Google Drive/Gmail"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama promosi berlangsung"
+    },
+    "requirements": [
+      "Buat akun",
+      "Klaim program melalui link"
+    ],
+    "publishedAt": "2026-06-16",
+    "contributor": {
+      "name": "Akbar",
+      "url": "https://www.threads.com/@akbrzz"
+    },
+    "source": "https://www.threads.com/@akbrzz/post/DZpViYIFP0M",
+    "ctaLink": "http://g.co/g1referral/JG620Z3F",
+    "tags": [
+      "AI Tools",
+      "Cloud Services"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Google"
+  },
+  {
+    "id": "gemini-plus-3bulan-sim",
+    "title": "Gemini Plus 3 Bulan via Bima+",
+    "description": "Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.",
+    "benefits": [
+      "Kuota Gemini Plus selama 3 bulan",
+      "Aktif untuk pengguna nomor 3",
+      "Bisa klaim langsung dari aplikasi Bima"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Buka aplikasi Bima+ (Bima 3)",
+      "Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari",
+      "Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS",
+      "Ikuti petunjuk aktivasi pada link tersebut"
+    ],
+    "publishedAt": "2026-06-17",
+    "source": "https://tri.co.id/google-gemini",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id"
+    },
+    "ctaLink": "https://bima.tri.co.id",
+    "tags": [
+      "AI Credits",
+      "AI Tools"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Bima3"
+  },
+  {
+    "id": "codecrafters-free-token",
+    "title": "Gratis 10JT Token AI / Hari",
+    "description": "Gratis 10 Juta token / Hari untuk teman-teman developer",
+    "benefits": [
+      "Gratis 10JT Token/Hari",
+      "Mimo 2.5",
+      "Deepseek V4 Flash"
+    ],
+    "promoCode": "BANSOSDEV",
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Memiliki akun codecrafters",
+      "Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas"
+    ],
+    "publishedAt": "2026-06-17",
+    "contributor": {
+      "name": "Rupadana",
+      "url": "https://github.com/rupadana"
+    },
+    "ctaLink": "https://cloud.codecrafters.id",
+    "tags": [
+      "AI Tools",
+      "API"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "CodeCrafters"
+  },
+  {
+    "id": "xiaomi-mimo-gratis-2",
+    "title": "Xiaomi Mimo Gratis $2",
+    "description": "Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.",
+    "benefits": [
+      "credits $2"
+    ],
+    "promoCode": "NK2BLA",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Registrasi akun di platform Xiaomi Mimo.",
+      "Buka dashboard console di https://platform.xiaomimimo.com/console/balance.",
+      "Klik tombol \"Enter invite code\" di pojok kiri bawah.",
+      "Masukkan kode referal \"NK2BLA\" untuk mendapatkan saldo $2 gratis."
+    ],
+    "publishedAt": "2026-06-17",
+    "contributor": {
+      "name": "Akbar",
+      "url": "https://github.com/muhakbarcom"
+    },
+    "ctaLink": "https://platform.xiaomimimo.com/?ref=NK2BLA",
+    "tags": [
+      "AI Credits"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Xiaomi Mimo"
+  },
+  {
+    "id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
+    "title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
+    "description": "Layanan subdomain gratis permanen dari DigitalPlat Foundation untuk pelajar dan open-source developer. Mendukung kustomisasi DNS management via Cloudflare atau DNS hosting lainnya. Kebijakan satu akun per orang dengan limit awal 1 subdomain (bisa bertambah dengan memberi Star ke repo GitHub mereka).",
+    "benefits": [
+      "Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
+      "Bebas dihubungkan ke DNS pihak ketiga (bisa pake Cloudflare, AWS, dll.)",
+      "Full control atas DNS management",
+      "Tanpa biaya tersembunyi (kecuali biaya opsional verifikasi KYC jika terdeteksi sistem anti-abuse)"
+    ],
+    "validity": {
+      "type": "forever",
+      "description": "Gratis seterusnya selama project DigitalPlat Foundation jalan."
+    },
+    "requirements": [
+      "Siapkan akun DNS Hosting (direkomendasikan menggunakan Cloudflare).",
+      "Lakukan registrasi di dashboard DigitalPlat dengan identitas asli (Nama, email, & telepon aktif).",
+      "(Opsional) Berikan Star pada repository GitHub https://github.com/DigitalPlatDev/FreeDomain untuk klaim tambahan slot subdomain.",
+      "Daftarkan subdomain pilihan Anda (pilihan: qzz.io, dpdns.org, us.kg, xx.kg).",
+      "Delegasikan nameserver subdomain ke DNS Hosting pihak ketiga untuk mulai mengelola DNS.",
+      "Patuhi Acceptable Use Policy (dilarang phishing/malware/penipuan) agar domain tidak di-banned."
+    ],
+    "publishedAt": "2026-06-17",
+    "contributor": {
+      "name": "Faza Iman Imron",
+      "url": "https://github.com/fazaimron27"
+    },
+    "ctaLink": "https://dash.domain.digitalplat.org",
+    "tags": [
+      "Domain",
+      "API",
+      "Free Tier",
+      "Developer Tools"
+    ],
+    "featured": true,
+    "status": "active",
+    "provider": "DigitalPlat Foundation"
+  },
+  {
+    "id": "sumopod-domain-rp1",
+    "title": "Promo Domain Rp 1/Tahun dari Sumopod",
+    "source": "https://www.threads.com/@sumopodcloud/post/DZrwPnJlOiD",
+    "description": "Sumopod sedang mengadakan promo pendaftaran domain baru hanya dengan harga Rp 1 untuk tahun pertama.",
+    "benefits": [
+      "Harga domain hanya Rp 1 untuk pendaftaran tahun pertama"
+    ],
+    "validity": {
+      "type": "fixed",
+      "date": "2026-06-30",
+      "description": "Promo berlaku hingga 30 Juni 2026"
+    },
+    "requirements": [
+      "Buat akun di platform Sumopod",
+      "Pilih menu Domain",
+      "Masukkan nama domain yang diinginkan",
+      "Lanjutkan ke proses checkout"
+    ],
+    "tips": "Provider mungkin mengalami pembatasan (rate-limit) karena tingginya permintaan, harap coba berkala.",
+    "publishedAt": "2026-06-17",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://sumopod.com",
+    "tags": [
+      "Domain",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Sumopod"
+  },
+  {
+    "id": "tvstreamindonesia-fifa-2026",
+    "title": "Free stream Fifa World Cup 2026 No Iklan",
+    "description": "Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.",
+    "benefits": [
+      "Streaming FIFA World Cup 2026 Gratis Saluran RTB GO",
+      "Tanpa Iklan Mengganggu",
+      "Kualitas HD Stabil",
+      "Support Android, iPhone & PC"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Buka website tvstreamindonesia.my.id",
+      "Cari Saluran RTB GO untuk nonton FIFA world cup 2026",
+      "Klik channel atau tombol Play Streaming"
+    ],
+    "publishedAt": "2026-06-18",
+    "source": "https://t.me/tvstreamindonesia",
+    "ctaLink": "https://tvstreamindonesia.my.id",
+    "tags": [
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Tvstreamindonesia"
+  },
+  {
+    "id": "rumahweb-free-domain-xyz",
+    "title": "Free domain .XYZ",
+    "description": "Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.",
+    "benefits": [
+      "Hosting free 1 bulan"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Daftar akun terlebih dahulu di website Rumahweb.",
+      "Cek ketersediaan nama domain/subdomain yang diinginkan.",
+      "Berikan rating dan review bintang 5 untuk Rumahweb di Google.",
+      "Ambil screenshot sebagai bukti review yang berhasil dikirim.",
+      "Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.",
+      "Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja)."
+    ],
+    "publishedAt": "2026-06-18",
+    "source": "https://www.rumahweb.com/domain-gratis",
+    "contributor": {
+      "name": "Rey",
+      "url": "https://github.com/inirey"
+    },
+    "ctaLink": "https://www.rumahweb.com/domain-gratis/",
+    "tags": [
+      "Domain",
+      "Free Tier",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Rumahweb"
+  },
+  {
+    "id": "agentrouter-free-credits",
+    "title": "Free $200 Credit API LLM Populer",
+    "description": "Langsung dapat $200 setelah mendaftar.\n\nTersedia 10 model LLM yang bisa digunakan melalui API key.",
+    "benefits": [
+      "Free Signup Credits"
+    ],
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Daftar akun"
+    ],
+    "publishedAt": "2026-06-18",
+    "source": "https://agentrouter.org/register?aff=qdG1",
+    "contributor": {
+      "name": "Hamba Allah",
+      "url": "https://github.com/adefebrian"
+    },
+    "ctaLink": "https://agentrouter.org/register?aff=qdG1",
+    "tags": [
+      "AI Tools",
+      "AI Credits",
+      "API"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "AgentRouter"
+  },
+  {
+    "id": "zenmux-glm-52-free",
+    "title": "GLM-5.2 Lagi Gratis!",
+    "description": "salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.",
+    "benefits": [
+      "GLM 5.2 Free sampe limit habis"
+    ],
+    "promoCode": "7RR544",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Daftar via invite link"
+    ],
+    "publishedAt": "2026-06-19",
+    "source": "https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ",
+    "contributor": {
+      "name": "Akbar",
+      "url": "https://github.com/muhakbarcom"
+    },
+    "ctaLink": "https://zenmux.ai/invite/7RR544",
+    "tags": [
+      "AI Credits"
+    ],
+    "featured": false,
+    "status": "active",
+    "provider": "Z.ai"
+  },
+  {
+    "id": "agentrouter-free-250-ai-credit",
+    "title": "AgentRouter Free $250 AI Credit",
+    "provider": "AgentRouter",
+    "description": "AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.",
+    "benefits": [
+      "Mendapatkan $250 AI credit untuk pengguna baru",
+      "Tambahan credit",
+      "Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2",
+      "Satu API, banyak AI"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Daftar menggunakan akun GitHub lama/old account",
+      "Registrasi melalui link referral yang tersedia",
+      "Login dan cek saldo credit di dashboard AgentRouter",
+      "Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter"
+    ],
+    "publishedAt": "2026-06-20",
+    "source": "https://agentrouter.org/register?aff=txsb",
+    "contributor": {
+      "name": "Jovian",
+      "url": "https://github.com/vian0001"
+    },
+    "ctaLink": "https://agentrouter.org/register?aff=txsb",
+    "tags": [
+      "AI Tools",
+      "AI Credits",
+      "API",
+      "Developer Tools",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "expired"
+  },
+  {
+    "id": "gumloop-free-credits",
+    "title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
+    "provider": "Gumloop",
+    "description": "Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.",
+    "benefits": [
+      "5.000 Kredit Rutin Bulanan",
+      "1.600 Bonus Koneksi (Satu Kali)",
+      "Akses ke Berbagai Model AI Populer",
+      "Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Buat akun baru",
+      "Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)"
+    ],
+    "instructions": [
+      "Daftar untuk membuat akun gratis di platform Gumloop.",
+      "Terima 5.000 kredit bulanan dasar Anda secara otomatis.",
+      "Hubungkan aplikasi produktivitas eksternal (seperti Google Docs) di dalam dasbor Anda untuk membuka tambahan 1.600 kredit bonus.",
+      "Pilih dari model AI yang tersedia dan mulai gunakan."
+    ],
+    "publishedAt": "2026-06-20",
+    "source": "https://www.gumloop.com/pricing",
+    "contributor": {
+      "name": "Brian",
+      "url": "https://github.com/adefebrian"
+    },
+    "ctaLink": "https://www.gumloop.com/",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "openmodel-deepseek-v4-flash-free",
+    "title": "Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel",
+    "provider": "OpenModel",
+    "description": "OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.",
+    "benefits": [
+      "Akses gratis penuh ke model DeepSeek-V4-Flash",
+      "Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa",
+      "Mudah diuji dan diintegrasikan melalui platform OpenModel",
+      "Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel"
+    },
+    "requirements": [
+      "Daftar atau masuk ke akun OpenModel kamu",
+      "Buka halaman pricing atau event resmi",
+      "Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya"
+    ],
+    "publishedAt": "2026-06-21",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://www.openmodel.ai/model-pricing/deepseek-v4-flash",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "servernusa-free-xiaomi-mimo",
+    "title": "Akses Gratis Model AI Xiaomi Mimo via ServerNusa",
+    "provider": "ServerNusa",
+    "description": "ServerNusa menyediakan akses gratis untuk menggunakan model AI Xiaomi Mimo. Layanan ini memungkinkan para pengembang dan antusias AI untuk mencoba, mengeksplorasi, dan mengintegrasikan model AI dari Xiaomi tanpa biaya langsung melalui infrastruktur ServerNusa.",
+    "benefits": [
+      "Akses Gratis ke Model AI Xiaomi Mimo",
+      "Tidak perlu mengatur infrastruktur atau server lokal",
+      "Proses integrasi yang mudah melalui platform ServerNusa"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Kunjungi halaman resmi model AI ServerNusa di tautan yang disediakan.",
+      "Daftar untuk membuat akun baru atau masuk jika Anda sudah memiliki akun.",
+      "Arahkan ke dasbor model AI dan cari model 'Xiaomi Mimo' dari daftar yang tersedia.",
+      "Dapatkan kredensial atau akses API Anda untuk mulai menggunakan model tersebut dalam proyek Anda."
+    ],
+    "tips": "Selalu simpan kredensial API Anda dengan aman dan jangan mengeksposnya di repositori publik.",
+    "publishedAt": "2026-06-21",
+    "source": "https://www.threads.com/@panggilajadwiya/post/DZ0JwFTks3y",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://servernusa.com/ai/models",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "atomesus-free-1-year-subscription",
+    "title": "FREE 1 Year subscription ATOMESUS",
+    "provider": "ATOMESUS",
+    "description": "Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).",
+    "benefits": [
+      "Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).",
+      "Memiliki kemampuan untuk membuat gambar (generate images)."
+    ],
+    "promoCode": "ATOMESUS",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Buat akun di platform atau aplikasi Atomesus.",
+      "Arahkan atau navigasikan ke menu Apply Referral Code.",
+      "Ketik dan masukkan kode kupon/redeem ini: ATOMESUS."
+    ],
+    "publishedAt": "2026-06-20",
+    "source": "https://www.threads.com/@atomesus/post/DZzXJySAc_g",
+    "contributor": {
+      "name": "Alfian57",
+      "url": "https://github.com/Alfian57"
+    },
+    "ctaLink": "https://www.atomesus.com/",
+    "tags": [
+      "AI"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "merlin-ai-free-pro-1-month",
+    "title": "Gratis 1 Bulan Pro Plan Merlin AI",
+    "provider": "Merlin AI",
+    "description": "Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
+    "benefits": [
+      "Akses gratis Pro Plan selama 1 bulan",
+      "Menikmati fitur premium secara gratisan di bulan pertama"
+    ],
+    "promoCode": "BCFREE",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.",
+      "Pilih paket langganan Pro Plan untuk durasi 1 bulan.",
+      "Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.",
+      "Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis."
+    ],
+    "tips": "Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.",
+    "publishedAt": "2026-06-21",
+    "source": "https://www.getmerlin.in/",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://www.getmerlin.in/",
+    "tags": [
+      "AI",
+      "Promo",
+      "Credit Card Required",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "expired"
+  },
+  {
+    "id": "freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10",
+    "title": "GRATIS Pro Plan – $10/5 Jam + Bonus Referral $10",
+    "provider": "FreeModel",
+    "description": "FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.",
+    "benefits": [
+      "Akses FreeModel Pro selama 1 bulan",
+      "Usage limit $10 setiap 5 jam",
+      "Usage limit sekitar $70 per minggu",
+      "Bonus tambahan $10 jika daftar menggunakan referral.",
+      "Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.",
+      "Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4",
+      "Bisa dipasang di 9ROUTER"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "disarankan punya TELEGRAM"
+    },
+    "requirements": [
+      "Daftar akun FreeModel.dev.",
+      "Gunakan link referral saat signup agar bonus $10 masuk.",
+      "Verify pakai Telegram, nomor China, top up (pilih salah satu)",
+      "cuma kirim start di Telegram untuk verifikasinya"
+    ],
+    "publishedAt": "2026-06-21",
+    "source": "https://freemodel.dev/invite/FRE-679677b5",
+    "contributor": {
+      "name": "Jovian",
+      "url": "https://github.com/vian0001"
+    },
+    "ctaLink": "https://freemodel.dev/invite/FRE-679677b5",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "API",
+      "AI Tools",
+      "No Credit Card",
+      "Gratisan",
+      "Developer Tools"
+    ],
+    "featured": false,
+    "status": "expired"
+  },
+  {
+    "id": "neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan",
+    "title": "Neosantara AI Gateway: Bonus Rp 20.000 + Kredit Rp 10.000/Bulan",
+    "provider": "Neosantara",
+    "description": "Gateway API AI terpadu untuk developer Indonesia yang menyatukan 40+ model AI terbaik dunia (seperti Claude, Gemini, GPT, hingga Llama) dalam satu endpoint kompatibel SDK OpenAI & Anthropic.",
+    "benefits": [
+      "Welcome bonus Rp 20.000 gratis saat pendaftaran",
+      "Reset kredit gratis Rp 10.000 setiap bulan"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Daftar akun di Neosantara",
+      "Buat API Key pertama Anda di dashboard untuk mulai menggunakan di https://app.neosantara.xyz/api-keys"
+    ],
+    "publishedAt": "2026-06-22",
+    "contributor": {
+      "name": "ErRickow",
+      "url": "https://github.com/errickow"
+    },
+    "ctaLink": "https://app.neosantara.xyz/signup",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "AI Tools",
+      "API",
+      "No Credit Card",
+      "Free Tier",
+      "Gratisan",
+      "Developer Tools"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "openmodel-deepseek-v4-flash-free-access",
+    "title": "FREE AKSES model deepseek-v4-flash - OpenModel.ai",
+    "provider": "OpenModel",
+    "description": "Gratis akses model deepseek-v4-flash di https://openmodel.ai\n\nBerlaku sampai tanggal 28 Juni 2026",
+    "benefits": [
+      "FREE akses model deepseek-v4-flash",
+      "Diskon model lain"
+    ],
+    "validity": {
+      "type": "fixed",
+      "date": "2026-06-28"
+    },
+    "requirements": [
+      "Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4",
+      "Buat Apikey",
+      "Arahkan base url : https://api.openmodel.ai/v1",
+      "Gunakan model deepseek-v4-flash"
+    ],
+    "publishedAt": "2026-06-23",
+    "source": "https://www.openmodel.ai/event",
+    "contributor": {
+      "name": "Syafrie Yunizar",
+      "url": "https://github.com/syafrieyunizar"
+    },
+    "ctaLink": "https://www.openmodel.ai?ref=7GzdLml4",
+    "tags": [
+      "AI Credits",
+      "API"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "jagoanhosting-free-domain-webid",
+    "title": "Domain .WEB.ID GRATIS 1 Tahun | Jagoan Hosting",
+    "provider": "Jagoan Hosting",
+    "description": "Ingin memiliki website pribadi, portofolio, blog, atau bisnis online tanpa biaya domain?",
+    "benefits": [
+      "Domain .WEB.ID GRATIS 1 Tahun",
+      "Cocok untuk website pribadi maupun bisnis",
+      "Proses aktivasi cepat dan mudah",
+      "Bisa langsung digunakan untuk website, landing page, toko online, maupun email bisnis"
+    ],
+    "promoCode": "FREEWEBID100",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Masukkan nama domain yang diinginkan dengan ekstensi .WEB.ID.",
+      "Pilih masa aktif 1 Tahun.",
+      "Masukkan kode promo",
+      "Pastikan muncul keterangan 'Kode Promo Terpasang'.",
+      "Total tagihan akan otomatis menjadi Rp0.",
+      "Klik Bayar Sekarang untuk menyelesaikan proses pemesanan."
+    ],
+    "publishedAt": "2026-06-23",
+    "source": "https://www.jagoanhosting.com",
+    "contributor": {
+      "name": "Risal",
+      "url": "https://github.com/risal1107"
+    },
+    "ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8072",
+    "tags": [
+      "Domain"
+    ],
+    "featured": false,
+    "status": "expired"
+  },
+  {
+    "id": "adobe-creative-cloud-pro-trial",
+    "title": "Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month",
+    "provider": "Adobe",
+    "description": "Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly",
+    "benefits": [
+      "Adobe Creative Cloud Pro"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Pembayaran Menggunakan DANA/CC"
+    ],
+    "publishedAt": "2026-06-23",
+    "ctaLink": "https://s.ricoaditya.com/adobe-creative-cloud-pro",
+    "tags": [
+      "Cloud Services",
+      "Free Tier",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "diskon-free-hosting",
+    "title": "Free HOSTING | diskon.com",
+    "provider": "Diskon",
+    "description": "Hosting gratis Diskon.com adalah layanan hosting tanpa biaya yang memungkinkan siapa pun membuat website dan mengelola hosting dengan mudah. Hosting gratis Diskon.com cocok untuk siapa saja, bahkan buat yang ingin belajar membangun website.",
+    "benefits": [
+      "Nikmati hosting gratis selamanya tanpa kewajiban upgrade.",
+      "Control panel hosting yang mudah digunakan, cocok untuk yang baru pertama kali bikin website.",
+      "Tidak perlu verifikasi ribet. Hosting gratis langsung siap dipakai.",
+      "Saat website kamu sudah gede, bisa upgrade ke hosting berbayar dengan fitur lebih lengkap."
+    ],
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Daftar Akun Pakai Email atau Google",
+      "Verifikasi Akun Kamu",
+      "Tinggal Klik, Langsung Online!"
+    ],
+    "publishedAt": "2026-06-23",
+    "source": "https://diskon.com",
+    "contributor": {
+      "name": "Risal",
+      "url": "https://github.com/risal1107"
+    },
+    "ctaLink": "https://diskon.com/?go=risal.full.diskon.cloud399029",
+    "tags": [
+      "Hosting"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "claim-7m-token-free",
+    "title": "Claim 7M token free",
+    "provider": "Bynara",
+    "description": "Setiap akun mendapatkan kredit gratis hingga sekitar 7 juta per hari dan kuotanya diperbarui secara berkala, jadi cukup menarik untuk eksperimen, coding agent, maupun testing berbagai model.",
+    "benefits": [
+      "claude-sonnet-4.5",
+      "mistral-large",
+      "mistral-medium-3-5",
+      "claude-haiku-4.5",
+      "deepseek-3.2",
+      "glm-5"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Registrasi akun di Nararouter melalui link tersedia",
+      "Verifikasi email dan login ke dashboard",
+      "Akses AI Models dan mulai gunakan 7M token gratis per hari"
+    ],
+    "publishedAt": "2026-06-23",
+    "source": "https://router.bynara.id/register?ref=CJWVMGPR",
+    "contributor": {
+      "name": "AB Codeworks",
+      "url": "https://github.com/abcodeworks"
+    },
+    "ctaLink": "https://router.bynara.id/register?ref=CJWVMGPR",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "API"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "freemodel-pro-plan-bonus-referral-ikan",
+    "title": "FreeModel Pro Plan – Bonus $10 Referral",
+    "provider": "FreeModel",
+    "description": "FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.",
+    "benefits": [
+      "Akses FreeModel Pro selama 1 bulan",
+      "Usage limit $10 setiap 5 jam",
+      "Usage limit sekitar $70 per minggu",
+      "Bonus tambahan $10 jika daftar menggunakan referral.",
+      "Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.",
+      "Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4",
+      "Bisa dipasang di 9ROUTER"
+    ],
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Daftar akun FreeModel.dev",
+      "Gunakan link referral saat signup agar bonus $10 masuk.",
+      "Verify pakai Telegram",
+      "Start di Telegram untuk verifikasi"
+    ],
+    "publishedAt": "2026-06-24",
+    "contributor": {
+      "name": "Ikan",
+      "url": "https://github.com/Aldii24"
+    },
+    "ctaLink": "https://freemodel.dev/invite/FRE-83bee3ce",
+    "tags": [
+      "AI Credits",
+      "Gratisan",
+      "AI"
+    ],
+    "featured": false,
+    "status": "expired"
+  },
+  {
+    "id": "opencode-go-free-5-credit",
+    "title": "Free $5 Credit in Opencode GO - Referral links",
+    "provider": "Opencode Go",
+    "description": "Subscribe ke opencode go ai untuk mendapatkan free $5 melalui akun kamu",
+    "benefits": [
+      "Free $5 Credit"
+    ],
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Subscribe Opencode AI"
+    ],
+    "publishedAt": "2026-06-24",
+    "contributor": {
+      "name": "QRocket-Lab",
+      "url": "https://github.com/Qrocket-lab"
+    },
+    "ctaLink": "https://opencode.ai/go?ref=YCFKG306YB",
+    "tags": [
+      "AI Credits",
+      "AI",
+      "API",
+      "Promo"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "merlin-ai-claude-opus-48-diskon-1tahun",
+    "title": "CLAUDE opus 4.8 1tahun 500k",
+    "provider": "Merlin AI",
+    "description": "Merlin AI menawarkan diskon untuk paket Pro Plan selama 1 tahun. Promo ini dipastikan tetap tersedia, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.",
+    "benefits": [
+      "Pro Subscription 1 Tahun",
+      "Teams"
+    ],
+    "promoCode": "HY2",
+    "validity": {
+      "type": "uncertain"
+    },
+    "requirements": [
+      "Berlangganan dengan code promo"
+    ],
+    "publishedAt": "2026-06-25",
+    "contributor": {
+      "name": "priyambodo",
+      "url": "https://github.com/maspriyambodo"
+    },
+    "ctaLink": "https://www.getmerlin.in/chat?ref=nwe2zwf",
+    "tags": [
+      "Diskon",
+      "AI"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "jagoanhosting-promo-domain-myid",
+    "title": "Promo Domain .MY.ID Gratis dari Jagoan Hosting",
+    "provider": "Jagoan Hosting",
+    "providerWebsiteUrl": "https://www.jagoanhosting.com",
+    "description": "Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!",
+    "benefits": [
+      "Domain .MY.ID gratis 1 tahun",
+      "Cocok untuk website pribadi, portofolio, atau blog",
+      "Proses klaim mudah dan cepat",
+      "Promo terbatas, jangan sampai kehabisan"
+    ],
+    "promoCode": "FREEMYID1000",
+    "validity": {
+      "type": "fixed",
+      "date": "2026-06-30",
+      "description": "Promo berlaku sampai 30 Juni 2026, terbatas"
+    },
+    "requirements": [
+      "Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+      "Pilih domain dengan ekstensi .MY.ID",
+      "Masukkan kode promo FREEMYID1000 saat checkout",
+      "Selesaikan pemesanan"
+    ],
+    "source": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+    "publishedAt": "2026-06-25",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id",
+    "tags": [
+      "Domain",
+      "Diskon"
+    ],
+    "featured": true,
+    "status": "active"
+  },
+  {
+    "id": "freebuff-ai-builder",
+    "title": "Freebuff — AI Coding Agent & App Builder 100% Gratis",
+    "provider": "Freebuff",
+    "description": "Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.",
+    "benefits": [
+      "Freebuff CLI: coding agent gratis di terminal",
+      "Freebuff Web: AI app builder dari prompt ke deployed app",
+      "Deploy & host app gratis, 230K+ developer aktif"
+    ],
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Node.js 18+ untuk CLI",
+      "Akun gratis untuk Web"
+    ],
+    "publishedAt": "2026-06-25",
+    "source": "https://freebuff.com/",
+    "contributor": {
+      "name": "Mika",
+      "url": "https://github.com/mikaelaldy"
+    },
+    "ctaLink": "https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b",
+    "tags": [
+      "AI",
+      "AI Tools",
+      "Developer Tools",
+      "Free Tier",
+      "Gratisan"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "noblehost-hosting-gratis",
+    "title": "NobleHost - Web Hosting Gratis",
+    "provider": "NobleHost",
+    "description": "NobleHost adalah platform hosting gratis dengan fitur lengkap untuk developer, mahasiswa, dan siapa aja yang butuh hosting website tanpa keluar duit. NobleHost cocok buat portfolio, tugas kuliah, side project, atau blog.",
+    "benefits": [
+      "Hosting gratis selamanya",
+      "Subdomain dan custom domain + Auto SSL",
+      "Panel dashboard mudah dengan fitur lengkap"
+    ],
+    "promoCode": "",
+    "validity": {
+      "type": "forever",
+      "description": "Selama layanan aktif"
+    },
+    "requirements": [
+      "Daftar akun",
+      "Verifikasi email",
+      "Setuju dengan kebijakan penggunaan"
+    ],
+    "tips": "Tinggal Klik buat website pertama kamu, pilih domain, dan langsung live di internet",
+    "source": "https://noblehost.xyz",
+    "publishedAt": "2026-06-27",
+    "contributor": {
+      "name": "NobleHost",
+      "url": "https://noblehost.xyz/"
+    },
+    "ctaLink": "https://noblehost.xyz/",
+    "tags": [
+      "Hosting",
+      "Domain",
+      "Cloud Services"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "v0-vercel-ai-credits-up-to-200",
+    "title": "v0 (Vercel) - AI Credits hingga $200",
+    "provider": "v0 (Vercel)",
+    "description": "Platform AI coding dari Vercel yang memungkinkan pengguna membuat aplikasi dan frontend menggunakan prompt berbasis AI. Pengguna dapat memperoleh AI Credits secara gratis hingga $200 setelah mendaftar tanpa perlu kartu kredit maupun metode pembayaran.",
+    "benefits": [
+      "Mendapat $10 langsung saat pertama kali daftar",
+      "Dapatkan hingga $200 total AI Credits",
+      "Bisa deploy project secara langsung dan gratis",
+      "AI Coding dan UI generation berkualitas tinggi"
+    ],
+    "promoCode": "",
+    "validity": {
+      "type": "uncertain",
+      "description": "Selama kuota tersedia"
+    },
+    "requirements": [
+      "Daftar akun di v0.dev (mungkin perlu verifikasi nomor telepon)",
+      "$10 pertama otomatis masuk ke akun setelah selesai registrasi"
+    ],
+    "source": "https://community.vercel.com/t/the-new-v0-is-here/32845",
+    "publishedAt": "2026-06-27",
+    "contributor": {
+      "name": "Juan",
+      "url": ""
+    },
+    "ctaLink": "https://v0.app/ref/8EFMVE",
+    "tags": [
+      "AI",
+      "AI Tools",
+      "Developer Tools",
+      "Free Tier",
+      "No Credit Card"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "jagoanhosting-promo-exclusive",
+    "title": "Promo Exclusive Diskon Hosting JagoanHosting",
+    "provider": "Jagoan Hosting",
+    "providerWebsiteUrl": "https://www.jagoanhosting.com",
+    "description": "Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!",
+    "benefits": [
+      "Potongan 10% untuk Shared Hosting",
+      "Bisa dipakai untuk akun lama (bukan cuma new user)",
+      "Tanpa batasan minimum transaksi"
+    ],
+    "promoCode": "JERITANJELATA",
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Pilih produk Shared Hosting yang diinginkan",
+      "Masukkan kode promo JERITANJELATA saat checkout",
+      "Pastikan diskon 10% sudah terapply di total tagihan",
+      "Selesaikan pembayaran"
+    ],
+    "source": "https://www.jagoanhosting.com",
+    "publishedAt": "2026-06-30",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+    "tags": [
+      "Hosting",
+      "Diskon"
+    ],
+    "featured": true,
+    "status": "active",
+    "featuredSince": "2026-07-03"
+  },
+  {
+    "id": "zenhosta-gratis-domain-1-tahun",
+    "title": "Gratis Domain 1 Tahun Walau Order Hosting 1 Bulan",
+    "provider": "Zenhosta",
+    "description": "Zenhosta memberikan gratis domain selama 1 tahun untuk pengguna yang melakukan order hosting, bahkan cukup dengan memilih paket hosting bulanan.",
+    "benefits": [
+      "Gratis domain selama 1 tahun",
+      "Bisa didapatkan hanya dengan order hosting 1 bulan",
+      "Pilihan domain gratis tersedia untuk ekstensi .my.id, .web.id, dan .biz.id"
+    ],
+    "promoCode": "",
+    "validity": {
+      "type": "fixed",
+      "date": "2026-12-31",
+      "description": "Promo berlaku sampai 31 Desember 2026."
+    },
+    "requirements": [
+      "Masuk ke halaman https://zenhosta.com/hosting",
+      "Pilih paket hosting, bisa menggunakan paket paling murah.",
+      "Pilih opsi \"Gratis Domain\".",
+      "Pilih domain gratis yang tersedia, yaitu .my.id, .web.id, atau .biz.id.",
+      "Selesaikan pembayaran, lalu pengguna akan mendapatkan hosting + free domain selama 1 tahun."
+    ],
+    "tips": "Pastikan memilih opsi \"Gratis Domain\" saat proses order dan memilih ekstensi domain yang termasuk promo, yaitu .my.id, .web.id, atau .biz.id.",
+    "source": "https://zenhosta.com/hosting",
+    "publishedAt": "2026-07-01",
+    "contributor": {
+      "name": "Ogya Adyatma Putra",
+      "url": "https://www.linkedin.com/in/ogya-adyatma-putra/"
+    },
+    "ctaLink": "https://zenhosta.com/member/aff.php?aff=20",
+    "tags": [
+      "Hosting",
+      "Domain",
+      "Cloud Services"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "zyloo-free-200-credit-post",
+    "title": "Free $200 Credit AI API — Posting tentang Zyloo",
+    "provider": "Zyloo",
+    "description": "Dapatkan $200 free credit AI API dengan membuat postingan, video, atau artikel tentang Zyloo di platform publik. Berlaku untuk Instagram, TikTok, YouTube, X, LinkedIn, Facebook, blog, dan platform lainnya. Credit bisa dipakai untuk mengakses berbagai model AI premium seperti Claude Opus 4, GPT, Gemini, Grok, dan lainnya via satu API key OpenAI-compatible.",
+    "benefits": [
+      "$200 free credit per postingan yang disetujui",
+      "Bisa di-stack (makin banyak post, makin banyak credit)",
+      "Akses ke berbagai model AI premium via 1 API key",
+      "OpenAI-compatible endpoint — gak perlu rewrite code",
+      "+ $25 welcome credit gratis saat daftar (no CC)"
+    ],
+    "promoCode": "",
+    "validity": {
+      "type": "uncertain",
+      "description": "Selama program berlangsung — review 1-2 hari kerja per submission"
+    },
+    "requirements": [
+      "Buat postingan, video, story, atau artikel tentang Zyloo di platform publik",
+      "Submit link publik ke form yang disediakan",
+      "Tunggu review 1-2 hari kerja",
+      "Kalau disetujui, $200 langsung masuk ke balance"
+    ],
+    "tips": "Postingan original dan genuine lebih mungkin disetujui. Bisa posting di multiple platform untuk credit berlapis.",
+    "source": "https://zyloo.io",
+    "publishedAt": "2026-07-01",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://zyloo.io/models/claude-opus-4-7",
+    "tags": [
+      "AI Credits",
+      "API",
+      "AI Tools",
+      "Free Tier",
+      "No Credit Card"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "lovable-free-pro-plan",
+    "title": "Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder",
+    "description": "Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.",
+    "benefits": [
+      "Akses gratis ke tier Pro Plan",
+      "100 kredit per bulan untuk generate dan edit kode",
+      "Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya"
+    ],
+    "promoCode": "SIMONPRO26",
+    "validity": {
+      "type": "fixed",
+      "date": "2026-07-03",
+      "description": "Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026."
+    },
+    "requirements": [
+      "Daftar atau masuk ke akun Lovable",
+      "Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout",
+      "Siapkan Virtual Credit Card (VCC) untuk verifikasi billing"
+    ],
+    "tips": "Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.",
+    "source": "https://x.com/simonsquibb/status/2050180383069581420",
+    "publishedAt": "2026-07-01",
+    "contributor": {
+      "name": "DevERS",
+      "url": "https://renzlab.my.id"
+    },
+    "ctaLink": "https://lovable.dev/pricing",
+    "tags": [
+      "AI Tools",
+      "Developer Tools",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "expired",
+    "provider": "Lovable",
+    "providerWebsiteUrl": "https://lovable.dev"
+  },
+  {
+    "id": "freemodel-invite-referral-10",
+    "title": "FreeModel Invite Referral — $10 Credit per Teman Daftar",
+    "provider": "FreeModel",
+    "providerWebsiteUrl": "https://freemodel.dev",
+    "description": "Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.",
+    "benefits": [
+      "$10 API credit untuk kamu dan $10 untuk teman yang diundang",
+      "Tanpa batas jumlah undangan — invite sebanyak mungkin",
+      "Credit tidak pernah expired selama akun aktif"
+    ],
+    "promoCode": "",
+    "validity": {
+      "type": "forever",
+      "description": "Credit tidak pernah expired selama akun aktif"
+    },
+    "requirements": [
+      "Bagikan link referral ke teman (email domain bebas)",
+      "Teman daftar dan verifikasi akun via phone atau Telegram",
+      "Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi"
+    ],
+    "tips": "Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.",
+    "source": "https://freemodel.dev/invite/FRE-e95f134d",
+    "publishedAt": "2026-07-01",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id"
+    },
+    "ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier"
+    ],
+    "featured": true,
+    "status": "active",
+    "featuredSince": "2026-07-02"
+  },
+  {
+    "id": "idwebhost-claim-domain-gratis-myid-juli2026",
+    "title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
+    "provider": "IDwebhost",
+    "providerWebsiteUrl": "https://idwebhost.com",
+    "description": "Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.",
+    "benefits": [
+      "Domain gratis 1 tahun",
+      "Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID",
+      "Cukup pakai kupon saat checkout",
+      "Kuota terbatas — klaim sebelum habis"
+    ],
+    "promoCode": "M2n4tS",
+    "validity": {
+      "type": "fixed",
+      "date": "2026-07-05",
+      "description": "Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis."
+    },
+    "requirements": [
+      "Punya akun IDwebhost",
+      "Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)",
+      "Gunakan kupon M2n4tS saat checkout"
+    ],
+    "tips": "Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!",
+    "source": "https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg",
+    "publishedAt": "2026-07-03",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "http://idwebhost.com/domain",
+    "tags": [
+      "Domain",
+      "Diskon"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "bynara-ai-router-free-payg",
+    "title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
+    "provider": "byNara",
+    "providerWebsiteUrl": "https://bynara.id",
+    "description": "Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.",
+    "benefits": [
+      "Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5",
+      "Token cap 5M/hari pada free tier",
+      "Rate limit 10 req/menit",
+      "Pay as you go untuk model premium",
+      "Dukungan pembayaran IDR dan USD",
+      "Bandingkan biaya antar model langsung di dashboard"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Free tier — selama layanan tersedia"
+    },
+    "requirements": [
+      "Daftar akun di router.bynara.id",
+      "Verifikasi akun via Telegram bot byNara",
+      "Login ke Telegram channel byNara untuk akses API key",
+      "Pilih model yang tersedia di tier Free",
+      "Mulai kirim request via API endpoint"
+    ],
+    "tips": "Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!",
+    "source": "https://router.bynara.id/",
+    "publishedAt": "2026-07-03",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://router.bynara.id/register?ref=3AH29Q72",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier",
+      "AI Tools",
+      "No Credit Card"
+    ],
+    "featured": true,
+    "status": "active",
+    "featuredSince": "2026-07-02"
+  },
+  {
+    "id": "conduit-trial-credit-500",
+    "title": "Conduit AI — $500 Trial Credit & Free Model Access",
+    "provider": "Conduit",
+    "providerWebsiteUrl": "https://conduit.ozdoev.net",
+    "description": "Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.",
+    "benefits": [
+      "$500 trial credit untuk coba berbagai model AI",
+      "$0.50 per 1k visible tokens (input + output)",
+      "Akses via Telegram bot — cepat dan mudah"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit."
+    },
+    "requirements": [
+      "Buka Telegram bot Conduit",
+      "Daftar / mulai bot",
+      "Klaim trial credit"
+    ],
+    "tips": "Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!",
+    "source": "https://conduit.ozdoev.net",
+    "publishedAt": "2026-07-03",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://t.me/conduitoff_bot?start=ref_950268146",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier",
+      "AI Tools"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "ai-livscene-free-models",
+    "title": "AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1",
+    "provider": "AI Livscene",
+    "providerWebsiteUrl": "https://ai.livscene.com",
+    "description": "Akses 14 model AI premium gratis dengan quota 5.1 di AI Livscene. Daftar pakai Discord atau GitHub, langsung generate tanpa ribet!",
+    "benefits": [
+      "Akses gratis ke 14 model AI premium: Claude Opus 4.6/4.7/4.8, Claude Sonnet 4.6, DeepSeek V4 Pro, Gemini 3.1 Pro, Gemini 3.5 Flash, GLM 5.2, GPT 5.4 Compact, GPT 5.5, Mimo v2.5, Mimo v2.5 Pro, Step 3.7 Flash, Step Router V1",
+      "Quota 5.1 untuk mencoba semua model",
+      "Daftar cepat via Discord atau GitHub",
+      "Generate dan langsung coba tanpa setup rumit"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Quota dan akses free model mengikuti kebijakan AI Livscene"
+    },
+    "requirements": [
+      "Buka ai.livscene.com",
+      "Daftar akun via Discord atau GitHub",
+      "Generate dan langsung coba model yang tersedia"
+    ],
+    "tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
+    "source": "https://ai.livscene.com",
+    "publishedAt": "2026-07-03",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://ai.livscene.com/sign-up?aff=m3Vt",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier",
+      "AI Tools",
+      "No Credit Card"
+    ],
+    "featured": true,
+    "featuredSince": "2026-07-03",
+    "status": "active"
+  },
+  {
+    "id": "aerolink-starter-free-trial",
+    "title": "Aerolink Starter Free Trial",
+    "provider": "Aerolink",
+    "description": "Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.",
+    "benefits": [
+      "Free Trial selama 2 minggu",
+      "Kredit penggunaan AI senilai US$140",
+      "Batas penggunaan US$10 setiap 5 jam",
+      "Batas penggunaan US$70 per minggu",
+      "Akses ke berbagai model AI melalui satu platform"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink."
+    },
+    "requirements": [
+      "Daftarkan akun Aerolink baru",
+      "Aktifkan paket Starter Free Trial",
+      "Patuhi syarat dan ketentuan resmi Aerolink"
+    ],
+    "tips": "Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.",
+    "source": "https://aerolink.lat/",
+    "publishedAt": "2026-07-05",
+    "contributor": {
+      "name": "Syafi'i Fahreza",
+      "url": "https://bansos.dev"
+    },
+    "ctaLink": "https://aerolink.lat/register?ref=T5-QB9W",
+    "tags": [
+      "AI",
+      "API",
+      "Developer",
+      "Free Trial",
+      "Credits"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "aws-ai-academy-2026",
+    "title": "Program Beasiswa AWS AI Academy 2026",
+    "provider": "AWS x Dicoding",
+    "description": "Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.",
+    "benefits": [
+      "Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi",
+      "Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert",
+      "Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia"
+    ],
+    "validity": {
+      "type": "fixed",
+      "date": "2026-12-25",
+      "description": "Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026."
+    },
+    "requirements": [
+      "Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan",
+      "Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar"
+    ],
+    "tips": "Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.",
+    "source": "https://aws.dicoding.com/login",
+    "publishedAt": "2026-07-06",
+    "contributor": {
+      "name": "ADITECH",
+      "url": "https://bansos.dev/"
+    },
+    "ctaLink": "https://aws.dicoding.com/login",
+    "tags": [
+      "AI",
+      "Cloud",
+      "Machine Learning",
+      "Training"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "ai-hub-free-plan",
+    "title": "AI Hub Free Plan",
+    "provider": "AI Campus Malaysia",
+    "providerWebsiteUrl": "https://ai-hub.aicampus.my/",
+    "description": "Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.",
+    "benefits": [
+      "1.000.000 token gratis pada Free Plan (weekly allocation).",
+      "API access melalui Hub Key.",
+      "Dapat membuat API Key sendiri.",
+      "Personal usage dashboard.",
+      "Informasi penggunaan token secara real-time.",
+      "Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.",
+      "Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.",
+      "Dukungan komunitas melalui Telegram."
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub."
+    },
+    "requirements": [
+      "Mendaftarkan akun AI Hub baru.",
+      "Menggunakan paket Free Plan.",
+      "Mematuhi Terms of Service AI Hub."
+    ],
+    "tips": "Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.",
+    "source": "https://ai-hub.aicampus.my/",
+    "publishedAt": "2026-07-11",
+    "contributor": {
+      "name": "Syafi'i Fahreza"
+    },
+    "ctaLink": "https://ai-hub.aicampus.my/?ref=01b0fc09",
+    "tags": [
+      "AI",
+      "API",
+      "LLM",
+      "Gemini",
+      "Claude",
+      "Developer",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "jagoanhosting-promo-vps-25",
+    "title": "Promo Exclusive Jagoan Hosting 25%",
+    "provider": "Jagoan Hosting",
+    "providerWebsiteUrl": "https://www.jagoanhosting.com",
+    "description": "Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.",
+    "benefits": [
+      "Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting",
+      "Berlaku untuk semua pengguna (bukan cuma new user)"
+    ],
+    "promoCode": "BANSOSVPS",
+    "validity": {
+      "type": "forever"
+    },
+    "requirements": [
+      "Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)",
+      "Masukkan kode promo BANSOSVPS saat checkout",
+      "Selesaikan pembayaran"
+    ],
+    "source": "https://www.jagoanhosting.com",
+    "publishedAt": "2026-07-11",
+    "contributor": {
+      "name": "wauputra",
+      "url": "https://wau.my.id/"
+    },
+    "ctaLink": "https://member.jagoanhosting.com/aff.php?aff=8078",
+    "tags": [
+      "VPS",
+      "Diskon",
+      "Hosting"
+    ],
+    "featured": true,
+    "status": "active"
+  },
+  {
+    "id": "futureppo-free-credit",
+    "title": "FuturePPO Free Credits",
+    "provider": "FuturePPO",
+    "providerWebsiteUrl": "https://api.futureppo.top",
+    "description": "FuturePPO menyediakan layanan AI API gateway yang memberikan saldo kredit gratis kepada pengguna baru, fitur daily check-in untuk memperoleh kredit tambahan secara acak, serta akses ke berbagai model AI melalui satu API.",
+    "benefits": [
+      "Kredit awal US$20 untuk akun baru",
+      "Daily check-in dengan reward kredit acak",
+      "Akses API Key untuk berbagai model AI premium (GPT-5.5, GPT-5.4, Grok, GLM, Gemini) dalam satu endpoint",
+      "Halaman status model untuk memantau kondisi layanan"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama program kredit gratis dan daily check-in masih disediakan oleh FuturePPO"
+    },
+    "requirements": [
+      "Daftar akun FuturePPO baru",
+      "Login untuk menerima kredit awal",
+      "Lakukan daily check-in untuk memperoleh kredit tambahan",
+      "Patuhi Terms of Service FuturePPO"
+    ],
+    "tips": "Lakukan daily check-in setiap hari untuk memperoleh tambahan kredit. Gunakan model yang sesuai kebutuhan karena setiap model memiliki biaya token yang berbeda.",
+    "source": "https://api.futureppo.top/",
+    "publishedAt": "2026-07-13",
+    "contributor": {
+      "name": "Syafi'i Fahreza",
+      "url": "https://bansos.dev/"
+    },
+    "ctaLink": "https://api.futureppo.top/",
+    "tags": [
+      "AI",
+      "API",
+      "LLM",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "agentrouter-free-150-credit",
+    "title": "AgentRouter Free $150 AI Credit + $25 Daily Reward",
+    "provider": "AgentRouter",
+    "providerWebsiteUrl": "https://agent-router.org",
+    "description": "AgentRouter memberikan bonus AI Credit sebesar $150 untuk pengguna baru yang mendaftar melalui program yang tersedia. Pengguna juga berkesempatan memperoleh tambahan AI Credit harian sesuai ketentuan program. Credit dapat digunakan untuk mengakses berbagai model AI melalui satu API.",
+    "benefits": [
+      "$150 AI Credit untuk pengguna baru",
+      "Tambahan $25 AI Credit setiap hari",
+      "Akses berbagai model AI populer melalui satu API"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Berlaku selama program promosi masih tersedia"
+    },
+    "requirements": [
+      "Memiliki akun GitHub (disarankan akun lama/old account)",
+      "Mendaftar melalui halaman registrasi AgentRouter",
+      "Login dan klaim bonus sesuai ketentuan yang berlaku"
+    ],
+    "tips": "Gunakan akun GitHub yang aktif dan hindari membuat akun ganda agar tetap sesuai Terms of Service",
+    "source": "https://agentrouter.org/register?aff=txsb",
+    "publishedAt": "2026-07-13",
+    "contributor": {
+      "name": "Jovian",
+      "url": "https://github.com/vian0001"
+    },
+    "ctaLink": "https://agentrouter.org/register?aff=txsb",
+    "tags": [
+      "AI",
+      "AI Credits",
+      "API",
+      "Developer Tools"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "tokengo-inference-api",
+    "title": "TokenGO API Inference Free $10 (5M Token)",
+    "provider": "TokenGO",
+    "description": "API inference self-operated buat open-weight LLM (DeepSeek V4, GLM 5.2, Qwen3.5) dan model video. OpenAI-compatible, tinggal ganti base URL. Daftar langsung dapat kredit gratis $10 setara 5M token — cukup buat nyoba semua model tanpa kartu kredit.",
+    "benefits": [
+      "Gratis $10 kredit setara 5M token langsung setelah daftar dengan link refferal",
+      "OpenAI-compatible",
+      "Model open-weight: DeepSeek V4, GLM 5.2, Qwen3.5, konteks sampai 203K",
+      "Pay-as-you-go mulai $0.10/Juta token input"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Kredit gratis $10 berlaku sesuai ketentuan TokenGO; harga dan model mengikuti halaman pricing resmi"
+    },
+    "requirements": [
+      "Daftar akun baru",
+      "Login dan dapatkan bonus 10$",
+      "Buat API Key per key, pakai base URL OpenAI-compatible di app kamu"
+    ],
+    "publishedAt": "2026-07-15",
+    "ctaLink": "https://dashboard.tokengo.com/sign-up?aff=7ZOW&utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
+    "tags": [
+      "AI API",
+      "LLM",
+      "Free Tier"
+    ],
+    "featured": false,
+    "status": "active",
+    "contributor": {
+      "name": "ZulhanF",
+      "url": "https://github.com/ZulhanF"
+    }
+  },
+  {
+    "id": "ai-router-registration-and-daily-checkin-rewards",
+    "title": "AI-ROUTER — Bonus Pendaftaran & Check-in untuk API AI",
+    "provider": "AI-ROUTER",
+    "providerWebsiteUrl": "https://ai-router.dev/id",
+    "description": "AI-ROUTER menyediakan API model AI yang kompatibel dengan OpenAI. Untuk akun baru yang memenuhi syarat, aturan publik mencantumkan bonus tersedia 5U dan bonus beku 15U yang dilepas bertahap berdasarkan penggunaan API aktual. Tersedia juga reward check-in harian berbasis penggunaan.",
+    "benefits": [
+      "5U bonus tersedia untuk akun baru yang memenuhi syarat setelah pendaftaran",
+      "15U bonus beku tambahan yang dilepas bertahap seiring penggunaan API aktual",
+      "Check-in harian: $1 + 2% dari total penggunaan hari sebelumnya, maksimum $10 per check-in",
+      "Endpoint API kompatibel dengan OpenAI"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Benefit, kelayakan akun, dan jumlah yang tersedia mengikuti aturan penghargaan resmi serta evaluasi risiko akun."
+    },
+    "requirements": [
+      "Daftar akun AI-ROUTER",
+      "Login ke dashboard; bonus pendaftaran berlaku untuk akun baru yang memenuhi syarat",
+      "Buat API Key dan gunakan API untuk melepas bonus beku secara bertahap",
+      "Gunakan fitur check-in di dashboard untuk melihat reward yang tersedia"
+    ],
+    "tips": "Cek saldo dan status reward di dashboard sebelum memakai API; jangan membuat akun ganda atau mencoba melewati ketentuan layanan.",
+    "source": "https://ai-router.dev/id/docs/billing-quota/rewards-and-affiliate-commissions/",
+    "publishedAt": "2026-07-21",
+    "contributor": {
+      "name": "AI-ROUTER",
+      "url": "https://ai-router.dev/id"
+    },
+    "ctaLink": "https://ai-router.dev/id",
+    "tags": [
+      "AI Credits",
+      "API",
+      "Free Tier",
+      "Developer Tools"
+    ],
+    "featured": false,
+    "status": "active"
+  },
+  {
+    "id": "tencent-cloud-free-tier",
+    "title": "Tencent Cloud Free Tier (Trial Gratis 30+ Produk)",
+    "provider": "Tencent Cloud",
+    "description": "Tencent Cloud menyediakan free trial untuk lebih dari 30 produk cloud, termasuk komputasi, storage, jaringan, komunikasi real-time, dan layanan AI.",
+    "benefits": [
+      "Lighthouse 2C2G gratis selama 3 bulan",
+      "Cloud Virtual Machine 2C4G gratis selama 3 bulan",
+      "Cloud Object Storage 50GB gratis selama 6 bulan",
+      "TRTC 10.000 menit gratis setiap bulan",
+      "EdgeOne gratis selama 14 hari",
+      "Tencent Hunyuan 3D 200 kredit gratis selama 1 tahun"
+    ],
+    "validity": {
+      "type": "uncertain",
+      "description": "Durasi dan kuota berbeda untuk setiap produk. Trial hanya tersedia bagi pengguna baru produk terkait dan mengikuti aturan resmi Tencent Cloud."
+    },
+    "requirements": [
+      "Buat atau masuk ke akun Tencent Cloud",
+      "Selesaikan verifikasi akun",
+      "Belum pernah menggunakan atau mencoba produk Tencent Cloud terkait",
+      "Periksa konfigurasi trial dan aturan produk sebelum mengaktifkan"
+    ],
+    "publishedAt": "2026-07-22",
+    "source": "https://www.tencentcloud.com/act/pro/FreeTier",
+    "contributor": {
+      "name": "superftch",
+      "url": "https://github.com/superftch"
+    },
+    "ctaLink": "https://www.tencentcloud.com/act/pro/FreeTier",
+    "tags": [
+      "Cloud Services",
+      "Free Tier",
+      "VPS & Server",
+      "Hosting"
+    ],
+    "featured": false,
+    "status": "active"
+  }
 ]

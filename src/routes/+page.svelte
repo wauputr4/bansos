@@ -27,12 +27,11 @@
 	};
 
 	const repo = 'wauputr4/bansos';
-	const repoUrl = `https://gitlab.com/${repo}`;
+	const repoUrl = `https://github.com/${repo}`;
 	const gitlabOwner = {
 		login: 'wauputr4',
-		avatarUrl:
-			'https://secure.gravatar.com/avatar/75568dc4829eea5b99d420799b54b4f848f5f6ebc02470e22ad138e0f1083832?s=80&d=identicon',
-		url: 'https://gitlab.com/wauputr4'
+		avatarUrl: 'https://github.com/wauputr4.png?size=96',
+		url: 'https://github.com/wauputr4',
 	};
 
 	const siteUrl = 'https://bansos.dev/';
@@ -236,22 +235,13 @@
 		<div class="badge-container">
 			<span class="version-badge">{__BUILD_DATE__}</span>
 			<a
-				href="https://gitlab.com/wauputr4/bansos"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="github-badge"
-			>
-				<i class="fa-brands fa-gitlab icon"></i>
-				<span>{$t('badge.opensource')}</span>
-			</a>
-			<a
 				href="https://github.com/wauputr4/bansos"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="github-badge"
 			>
 				<i class="fa-brands fa-github icon"></i>
-				<span>GitHub</span>
+				<span>{$t('badge.opensource')}</span>
 			</a>
 			<a
 				href="https://discord.gg/m4WFaQpNGs"
