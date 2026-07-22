@@ -19,7 +19,7 @@
 
 **bansos.dev** is an open-source catalog of giveaways, freebies, and the most legit coding tool discounts specifically for Indonesian broke developers. Made so our portfolios stay lit even when our wallets are dying. Looking for free domains, hosting free-tier, cloud credits, API credits, free databases, or startup credits? This is the gathering place! 100% Free, No Clickbait, No Hassle. fr fr 🚀
 
-This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or merge request.
+This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or pull request.
 
 ## Quick Keywords
 
@@ -39,7 +39,7 @@ This site is built as a static SvelteKit site that is super SEO-friendly, data-d
 
 ## Deploy and Hosting
 
-This site is deployed and hosted using **Cloudflare Pages** with the `@sveltejs/adapter-cloudflare` adapter. Every time there is a merge request or push to the `main` branch, Cloudflare automatically triggers a build and distributes the super-fast static site along with all pre-rendered dynamic OG images.
+This site is deployed and hosted using **Cloudflare Pages** with the `@sveltejs/adapter-cloudflare` adapter. Every time there is a pull request or push to the `main` branch, Cloudflare automatically triggers a build and distributes the super-fast static site along with all pre-rendered dynamic OG images.
 
 ## Running the project
 
@@ -115,10 +115,10 @@ This option is perfect for those who want to share information quickly without t
 
 This option is for those who want to test the code locally or modify files directly.
 
-1. Clone this repository to your computer:
+1. Fork and clone this repository using GitHub CLI:
 
    ```bash
-   git clone https://github.com/wauputr4/bansos.git
+   gh repo fork wauputr4/bansos --clone
    cd bansos
    npm install
    ```
@@ -165,7 +165,7 @@ A good listing should include:
 ## Contribution
 
 - Send data via email to [submit@bansos.dev](mailto:submit@bansos.dev).
-- If more comfortable, add via branch and manual merge request.
+- If more comfortable, add via branch and manual pull request.
 - Read the full contribution guide in [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Community Code of Conduct

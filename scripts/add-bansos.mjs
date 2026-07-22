@@ -427,7 +427,7 @@ async function main() {
 			status,
 			tags,
 			featured: !!featured,
-			publishedAt: input.publishedAt,
+			publishedAt: indexData.publishedAt,
 			contributorSlug: contributorSlug || ''
 		});
 		catalogIndex.items.sort((a, b) => a.id.localeCompare(b.id));

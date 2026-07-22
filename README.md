@@ -19,7 +19,7 @@
 
 **bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau merge request.
+Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau pull request.
 
 ## Keyword cepat
 
@@ -39,7 +39,7 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 
 ## Deploy dan Hosting
 
-Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada merge request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
+Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada pull request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
 ## Menjalankan proyek
 
@@ -115,9 +115,9 @@ Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu
 
 Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
 
-1. Clone repositori ini ke komputermu:
+1. Fork dan clone repositori ini ke komputermu memakai GitHub CLI:
    ```bash
-   git clone https://github.com/wauputr4/bansos.git
+   gh repo fork wauputr4/bansos --clone
    cd bansos
    npm install
    ```
@@ -163,7 +163,7 @@ Listing yang baik sebaiknya menyertakan:
 ## Kontribusi
 
 - Kirim data lewat email ke [submit@bansos.dev](mailto:submit@bansos.dev).
-- Jika lebih nyaman, tambahkan melalui branch dan merge request manual.
+- Jika lebih nyaman, tambahkan melalui branch dan pull request manual.
 - Baca panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Kode etik komunitas

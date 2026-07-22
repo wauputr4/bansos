@@ -50,10 +50,8 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			isEnglish ? '# GitHub (recommended)' : '# GitHub (disarankan)',
-			'git clone https://github.com/wauputr4/bansos.git',
-			isEnglish ? '# Or use the GitLab mirror:' : '# Atau gunakan mirror GitLab:',
-			'# git clone https://gitlab.com/wauputr4/bansos.git',
+			isEnglish ? '# Fork and clone your GitHub repository' : '# Fork dan clone repo GitHub kamu',
+			'gh repo fork wauputr4/bansos --clone',
 			'cd bansos',
 			'npm install',
 			`git checkout -b ${branchName}`,
