@@ -12,12 +12,34 @@
  */
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, writeFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const BANSOS_DIR = 'src/lib/data/bansos';
 const GLOBAL_OUTPUT = join(BANSOS_DIR, 'commit-contributors.json');
 const CONTRIBUTOR_FILE = '.contributors.json';
+const LEGACY_DATA = 'src/lib/data/bansos.json';
+const LEGACY_CONTRIBUTORS = 'src/lib/data/commit-contributors.json';
+const HISTORY_START = git([
+	'log',
+	'-S',
+	"const BANSOS_DIR = 'src/lib/data/bansos';",
+	'-1',
+	'--format=%H',
+	'--',
+	'scripts/generate-commit-contributors.mjs'
+]);
+
+function readJson(filePath, fallback) {
+	try {
+		return JSON.parse(readFileSync(filePath, 'utf8'));
+	} catch {
+		return fallback;
+	}
+}
+
+const legacySlugs = new Set(readJson(LEGACY_DATA, []).map((item) => item.id));
+const legacyContributors = readJson(LEGACY_CONTRIBUTORS, {});
 
 function git(args) {
 	return execFileSync('git', args, {
@@ -85,7 +107,15 @@ function getBansosSlugs() {
  */
 function getGitLog(filePath) {
 	try {
-		const log = git(['log', '--format=%H|%an|%ae|%aI', '--reverse', '--follow', '--', filePath]);
+		const log = git([
+			'log',
+			`${HISTORY_START}..HEAD`,
+			'--format=%H|%an|%ae|%aI',
+			'--reverse',
+			'--follow',
+			'--',
+			filePath
+		]);
 		if (!log) return [];
 
 		return log
@@ -97,6 +127,15 @@ function getGitLog(filePath) {
 			});
 	} catch {
 		return [];
+	}
+}
+
+function existedBefore(commit, filePath) {
+	try {
+		git(['cat-file', '-e', `${commit}^:${filePath}`]);
+		return true;
+	} catch {
+		return false;
 	}
 }
 
@@ -145,12 +184,21 @@ function generateForFolder(slug) {
 	const gitLog = getGitLog(indexPath);
 	const contributorMap = new Map();
 
+	for (const contributor of legacyContributors[slug] || []) {
+		contributorMap.set(contributor.login.toLowerCase(), { ...contributor, lastCommitAt: '' });
+	}
+
+	// Folder legacy yang baru dibuat setelah cutoff adalah hasil sync migrasi, bukan edit asli.
+	if (legacySlugs.has(slug) && gitLog[0] && !existedBefore(gitLog[0].hash, indexPath)) {
+		gitLog.shift();
+	}
+
 	for (const entry of gitLog) {
-		const key = entry.authorName.toLowerCase() + '|' + entry.authorEmail.toLowerCase();
+		const contributor = parseContributor(entry.authorName, entry.authorEmail);
+		const key = contributor.login.toLowerCase();
 		if (!contributorMap.has(key)) {
-			const contrib = parseContributor(entry.authorName, entry.authorEmail);
-			contrib.lastCommitAt = entry.date;
-			contributorMap.set(key, contrib);
+			contributor.lastCommitAt = entry.date;
+			contributorMap.set(key, contributor);
 		} else {
 			// Update lastCommitAt if newer
 			const existing = contributorMap.get(key);

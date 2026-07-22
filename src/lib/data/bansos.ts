@@ -111,9 +111,12 @@ export interface Contributor {
 }
 
 export interface ContributorSummary {
+	login: string;
 	name: string;
-	url: string;
+	avatar?: string;
+	hasGithub: boolean;
 	count: number;
+	editCount: number;
 }
 
 export interface ProviderSummary {
@@ -498,24 +501,46 @@ export function getAllContributors(includeHidden = false): Contributor[] {
 	return Array.from(contributorMap.values()).filter((c) => includeHidden || !c.hidden);
 }
 
+function githubLogin(contributor: Contributor): string | undefined {
+	return contributor.links.github?.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1].toLowerCase();
+}
+
+export function getContributorProfileSlugForGitLogin(login: string): string | undefined {
+	const normalized = login.toLowerCase();
+	return getAllContributors().find(
+		(contributor) =>
+			contributor.login.toLowerCase() === normalized || githubLogin(contributor) === normalized
+	)?.login;
+}
+
 /**
  * Calculates aggregated contributor statistics from the contributor manifests.
  */
 export function getContributorStats(): ContributorSummary[] {
 	const stats = new Map<string, ContributorSummary>();
+	const commitStats = getCommitContributorStats();
 
 	for (const contributor of getAllContributors()) {
 		const count = contributor.contributedBansos.filter((id) => getBansosById(id)).length;
 		if (count === 0) continue;
 		const login = contributor.login;
+		const github = githubLogin(contributor);
+		const editCount = commitStats.find(
+			(entry) => entry.login.toLowerCase() === (github || login.toLowerCase())
+		)?.count;
 		stats.set(login, {
+			login,
 			name: contributor.displayName,
-			url: contributor.links.github || contributor.links.website || `/contributor/${login}`,
-			count
+			avatar:
+				contributor.avatar || (github ? `https://github.com/${github}.png?size=96` : undefined),
+			hasGithub: Boolean(github),
+			count,
+			editCount: editCount || 0
 		});
 	}
 
 	return Array.from(stats.values()).sort((a, b) => {
+		if (a.hasGithub !== b.hasGithub) return a.hasGithub ? -1 : 1;
 		if (b.count !== a.count) return b.count - a.count;
 		return a.name.localeCompare(b.name);
 	});
@@ -655,7 +680,9 @@ const commitContributorsData: CommitContributorsIndex =
  * Get commit contributors for a specific bansos item (from git history).
  */
 export function getCommitContributorsForItem(id: string): CommitContributorEntry[] {
-	return commitContributorsData[id] || [];
+	return (commitContributorsData[id] || []).filter(
+		(contributor) => !contributor.login.endsWith('[bot]')
+	);
 }
 
 /**
@@ -666,6 +693,7 @@ export function getCommitContributorStats(): (CommitContributorEntry & { count: 
 
 	for (const contributors of Object.values(commitContributorsData)) {
 		for (const contributor of contributors) {
+			if (contributor.login.endsWith('[bot]')) continue;
 			const current = map.get(contributor.login);
 			if (current) {
 				current.count += 1;

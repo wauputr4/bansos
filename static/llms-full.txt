@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-07-22 | Total: 72 entri (62 aktif, 10 expired)
+> Diperbarui: 2026-07-22 | Total: 72 entri (61 aktif, 11 expired)
 
 ---
 
@@ -1524,34 +1524,6 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### Free stream Fifa World Cup 2026 No Iklan
-
-- **ID:** `tvstreamindonesia-fifa-2026`
-- **Provider:** Tvstreamindonesia
-- **Kategori:** Free Tier
-- **Status:** active
-
-**Deskripsi:** Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.
-
-**Benefit:**
-- Streaming FIFA World Cup 2026 Gratis Saluran RTB GO
-- Tanpa Iklan Mengganggu
-- Kualitas HD Stabil
-- Support Android, iPhone & PC
-
-**Cara Klaim:**
-1. Buka website tvstreamindonesia.my.id
-2. Cari Saluran RTB GO untuk nonton FIFA world cup 2026
-3. Klik channel atau tombol Play Streaming
-
-- **CTA Link:** https://tvstreamindonesia.my.id
-- **Sumber:** https://t.me/tvstreamindonesia
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/tvstreamindonesia-fifa-2026/
-
----
-
 ### v0 (Vercel) - AI Credits hingga $200
 
 - **ID:** `v0-vercel-ai-credits-up-to-200`
@@ -2046,6 +2018,34 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** uncertain (Sudah tidak aktif (promo code tidak bisa digunakan lagi))
 
 🔗 **Link Detail:** https://bansos.dev/list/namecom-domain-app/
+
+---
+
+### Free stream Fifa World Cup 2026 No Iklan
+
+- **ID:** `tvstreamindonesia-fifa-2026`
+- **Provider:** Tvstreamindonesia
+- **Kategori:** Free Tier
+- **Status:** expired
+
+**Deskripsi:** Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.
+
+**Benefit:**
+- Streaming FIFA World Cup 2026 Gratis Saluran RTB GO
+- Tanpa Iklan Mengganggu
+- Kualitas HD Stabil
+- Support Android, iPhone & PC
+
+**Cara Klaim:**
+1. Buka website tvstreamindonesia.my.id
+2. Cari Saluran RTB GO untuk nonton FIFA world cup 2026
+3. Klik channel atau tombol Play Streaming
+
+- **CTA Link:** https://tvstreamindonesia.my.id
+- **Sumber:** https://t.me/tvstreamindonesia
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/tvstreamindonesia-fifa-2026/
 
 ---
 

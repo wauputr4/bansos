@@ -1,10 +1,10 @@
-# ✅ Free stream Fifa World Cup 2026 No Iklan
+# ❌ Free stream Fifa World Cup 2026 No Iklan
 
 **Provider:** Tvstreamindonesia
 
 Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan mengganggu dan dapat diakses dari berbagai perangkat seperti smartphone, tablet, dan PC.
 
-> **Status:** Aktif
+> **Status:** Expired
 
 ## Keuntungan
 
@@ -22,6 +22,8 @@ Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan menggan
 ---
 
 [🔗 Klaim Bansos Ini](https://tvstreamindonesia.my.id)
+
+Kontributor: [Taslim](https://bansos.dev/contributor/bang-joe/)
 
 
 🏷️ Tags: Free Tier

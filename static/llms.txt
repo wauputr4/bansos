@@ -6,9 +6,9 @@
 
 ## Statistik (2026-07-22)
 - **Total entri:** 72
-- **Aktif:** 62
-- **Expired:** 10
-- **Kontributor:** 34
+- **Aktif:** 61
+- **Expired:** 11
+- **Kontributor:** 36
 
 ## Kategori Populer
 - AI Credits: 33 entri

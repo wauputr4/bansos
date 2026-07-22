@@ -9,6 +9,7 @@
 	import { t } from '$lib/i18n';
 	import {
 		getCommitContributorsForItem,
+		getContributorProfileSlugForGitLogin,
 		getItemSource,
 		getProviderBySlug,
 		recommendedBansosFor,
@@ -549,12 +550,16 @@
 									</div>
 								{/if}
 								{#if commitContributors.length > 0}
+									<div
+										style="margin-bottom: 0.35rem; font-size: 0.85rem; color: var(--text-secondary);"
+									>
+										{detailT('editedBy')}
+									</div>
 									<div class="commit-list">
 										{#each commitContributors as contributor (contributor.login)}
+											{@const profileSlug = getContributorProfileSlugForGitLogin(contributor.login)}
 											<a
-												href={contributor.commitUrl}
-												target="_blank"
-												rel="noopener noreferrer"
+												href={resolve(`/contributor/${profileSlug || contributor.login}`)}
 												class="commit-person"
 												title={detailT('commitBy', { login: contributor.login })}
 											>

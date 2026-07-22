@@ -10,7 +10,7 @@
 			"tags": ["Cloud Services", "Free Tier", "Gratisan"],
 			"featured": false,
 			"publishedAt": "2026-06-23",
-			"contributorSlug": ""
+			"contributorSlug": "ricatix"
 		},
 		{
 			"id": "aerolink-free-credits",
@@ -663,11 +663,11 @@
 			"id": "tvstreamindonesia-fifa-2026",
 			"title": "Free stream Fifa World Cup 2026 No Iklan",
 			"provider": "Tvstreamindonesia",
-			"status": "active",
+			"status": "expired",
 			"tags": ["Free Tier"],
 			"featured": false,
 			"publishedAt": "2026-06-18",
-			"contributorSlug": ""
+			"contributorSlug": "bang-joe"
 		},
 		{
 			"id": "v0-vercel-ai-credits-up-to-200",

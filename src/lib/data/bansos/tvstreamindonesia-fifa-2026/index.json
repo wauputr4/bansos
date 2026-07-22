@@ -19,8 +19,9 @@
 	},
 	"ctaLink": "https://tvstreamindonesia.my.id",
 	"tags": ["Free Tier"],
-	"status": "active",
+	"status": "expired",
 	"featured": false,
 	"publishedAt": "2026-06-18",
-	"source": "https://t.me/tvstreamindonesia"
+	"source": "https://t.me/tvstreamindonesia",
+	"contributorSlug": "bang-joe"
 }

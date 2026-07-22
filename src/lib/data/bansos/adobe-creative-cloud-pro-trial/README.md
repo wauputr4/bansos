@@ -18,6 +18,8 @@ Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly
 
 [🔗 Klaim Bansos Ini](https://s.ricoaditya.com/adobe-creative-cloud-pro)
 
+Kontributor: [Rico Aditya](https://bansos.dev/contributor/ricatix/)
+
 
 🏷️ Tags: Cloud Services · Free Tier · Gratisan
 
