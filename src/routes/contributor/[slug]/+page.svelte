@@ -22,6 +22,7 @@
 		contributor.markdown ? renderProfileMarkdown(contributor.markdown) : ''
 	);
 	const canonicalUrl = $derived(`https://bansos.dev/${contributor.login}/`);
+	const ogImageUrl = $derived(`${canonicalUrl}og.png`);
 	const description = $derived(
 		contributor.bio ||
 			`${contributor.displayName} telah membagikan ${bansos.length} program untuk komunitas developer di bansos.dev.`
@@ -64,13 +65,16 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonicalUrl} />
 	<meta property="og:site_name" content="bansos.dev" />
-	<meta name="twitter:card" content={contributor.avatar ? 'summary_large_image' : 'summary'} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Profil @{contributor.login} di bansos.dev" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="{contributor.displayName} — bansos.dev" />
 	<meta name="twitter:description" content={description} />
-	{#if contributor.avatar}
-		<meta property="og:image" content={contributor.avatar} />
-		<meta name="twitter:image" content={contributor.avatar} />
-	{/if}
+	<meta name="twitter:image" content={ogImageUrl} />
+	<meta name="twitter:image:alt" content="Profil @{contributor.login} di bansos.dev" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html '<script type="application/ld+json">' + personSchema + '</' + 'script>'}
 </svelte:head>

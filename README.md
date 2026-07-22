@@ -1,6 +1,5 @@
 # bansos.dev
 
-[![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
 [![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
@@ -20,7 +19,7 @@
 
 **bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau merge request.
+Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau pull request.
 
 ## Keyword cepat
 
@@ -40,7 +39,7 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 
 ## Deploy dan Hosting
 
-Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada merge request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
+Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada pull request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
 
 ## Menjalankan proyek
 
@@ -67,7 +66,7 @@ src/lib/components/            # komponen UI reusable
 src/routes/list/               # halaman list dan detail bansos
 src/routes/contribute/         # panduan kontribusi publik
 scripts/add-bansos.mjs         # script lokal tambah data
-packages/bansosdev-cli/        # CLI bansosdev (disabled untuk submit publik)
+packages/bansosdev-cli/        # CLI lama (submit publik dinonaktifkan)
 ```
 
 Setiap listing wajib memiliki `contributorSlug` yang terhubung dua arah dengan manifest profil.
@@ -79,7 +78,7 @@ bentrok dengan route situs atau shortlink bansos.
 
 ## Cara Menambah Bansos
 
-Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur form, npx CLI, dan bot dinonaktifkan sementara karena spam.
+Untuk saat ini, submit publik yang aktif adalah via AI Agent, email, dan Git clone. Jalur form, CLI publik, dan bot dinonaktifkan sementara karena spam.
 
 > [!TIP]
 > **Soon: Submisi via Discord & Telegram Bot!**
@@ -89,7 +88,19 @@ Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur f
 > - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
 > - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
 
-### 1. Opsi 1: Lewat Email
+### 1. Opsi 1: Lewat AI Agent
+
+Install [skill resmi bansos.dev](https://www.skills.sh/wauputr4/skill-bansos) agar agent memahami struktur listing, profil contributor, validasi, dan alur PR terbaru:
+
+```bash
+npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
+```
+
+Setelah terpasang, berikan link sumber dan minta agent memakai `$bansos-add-entry`. Review data dan diff sebelum membuka pull request.
+
+---
+
+### 2. Opsi 2: Lewat Email
 
 Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
 
@@ -100,64 +111,13 @@ Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu
 
 ---
 
-### 2. Opsi 2: Lewat Command Line (npx CLI) - Dinonaktifkan
-
-Submit publik via `npx bansosdev add` sedang dinonaktifkan sementara karena spam. Dokumentasi CLI tetap disimpan untuk maintainer dan pengujian lokal, tetapi jangan dipakai untuk submit publik saat ini.
-
-```bash
-npx bansosdev add
-```
-
-CLI akan menuntunmu mengisi field demi field untuk menyiapkan data lokal.
-
-_Kamu juga bisa mengirimkan data langsung menggunakan argumen CLI:_
-
-```bash
-npx bansosdev add \
-  --id contoh-bansos \
-  --title "Contoh Bansos Developer" \
-  --provider "Example Provider" \
-  --description "Deskripsi singkat bansos." \
-  --benefits "Benefit satu|Benefit dua" \
-  --validity-type fixed \
-  --validity-date 2026-06-30 \
-  --validity-desc "Berlaku khusus pelajar" \
-  --published-at 2026-06-13 \
-  --requirements "Buat akun|Klaim program" \
-  --cta-link "https://example.com" \
-  --contributor-name "Nama Kamu" \
-  --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan"
-```
-
-### Parameter validity
-
-- `--validity-type` wajib: pilih `fixed`, `uncertain`, atau `forever`.
-- `--validity-date` wajib jika `--validity-type fixed`, memakai format `YYYY-MM-DD` (Berfungsi sebagai Tanggal Berakhir).
-- `--validity-desc` opsional untuk catatan masa berlaku, kuota, atau syarat khusus.
-- `--published-at` opsional untuk tanggal mulai berlaku (start date) dalam format `YYYY-MM-DD`. Default adalah hari ini.
-- `--source` opsional untuk sumber verifikasi; bisa berupa URL atau teks biasa.
-
-> **Catatan Otomatisasi:**
->
-> - Parameter `provider` akan diekstrak secara otomatis dari domain `cta-link`.
-> - Parameter `status` akan dihitung otomatis (`active`, `upcoming`, atau `expired`) berdasarkan tanggal `published-at` dan `validity-date`.
-
-### Cek payload JSON
-
-```bash
-npx bansosdev add ... --mode json
-```
-
----
-
-### 3. Opsi 3: Lewat Git Clone (Manual Merge Request)
+### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
 
 Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
 
-1. Clone repositori ini ke komputermu:
+1. Fork dan clone repositori ini ke komputermu memakai GitHub CLI:
    ```bash
-   git clone https://github.com/wauputr4/bansos.git
+   gh repo fork wauputr4/bansos --clone
    cd bansos
    npm install
    ```
@@ -187,21 +147,7 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
    `--contributor-slug` wajib pada setiap submit. `--contributor-name` wajib dan
    `--contributor-url` opsional hanya jika profil contributor tersebut belum ada.
 
-3. Buat branch baru, tambahkan commit, push ke fork, dan kirim merge request ke repositori utama.
-
----
-
-### Maintainer mode (Khusus Admin / Maintainer)
-
-Mode direct untuk submit otomatis sedang dinonaktifkan. Untuk perubahan maintainer, gunakan Git clone, commit manual, dan merge request ke `main`.
-
-```bash
-npx bansosdev add ... --mode json
-```
-
-Perintah di atas hanya untuk mengecek payload JSON secara lokal.
-
-Detail lengkap CLI lihat [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
+3. Buat branch baru, tambahkan commit, push ke fork, dan kirim pull request ke repositori utama.
 
 ## Panduan kualitas listing
 
@@ -217,7 +163,7 @@ Listing yang baik sebaiknya menyertakan:
 ## Kontribusi
 
 - Kirim data lewat email ke [submit@bansos.dev](mailto:submit@bansos.dev).
-- Jika lebih nyaman, tambahkan melalui branch dan merge request manual.
+- Jika lebih nyaman, tambahkan melalui branch dan pull request manual.
 - Baca panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Kode etik komunitas

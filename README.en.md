@@ -1,6 +1,5 @@
 # bansos.dev
 
-[![npm bansosdev](https://img.shields.io/npm/v/bansosdev?label=bansosdev&color=10b981)](https://www.npmjs.com/package/bansosdev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-ff3e00)](https://kit.svelte.dev/)
 [![Deploy: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://bansos.dev/)
@@ -20,7 +19,7 @@
 
 **bansos.dev** is an open-source catalog of giveaways, freebies, and the most legit coding tool discounts specifically for Indonesian broke developers. Made so our portfolios stay lit even when our wallets are dying. Looking for free domains, hosting free-tier, cloud credits, API credits, free databases, or startup credits? This is the gathering place! 100% Free, No Clickbait, No Hassle. fr fr 🚀
 
-This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or merge request.
+This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or pull request.
 
 ## Quick Keywords
 
@@ -40,7 +39,7 @@ This site is built as a static SvelteKit site that is super SEO-friendly, data-d
 
 ## Deploy and Hosting
 
-This site is deployed and hosted using **Cloudflare Pages** with the `@sveltejs/adapter-cloudflare` adapter. Every time there is a merge request or push to the `main` branch, Cloudflare automatically triggers a build and distributes the super-fast static site along with all pre-rendered dynamic OG images.
+This site is deployed and hosted using **Cloudflare Pages** with the `@sveltejs/adapter-cloudflare` adapter. Every time there is a pull request or push to the `main` branch, Cloudflare automatically triggers a build and distributes the super-fast static site along with all pre-rendered dynamic OG images.
 
 ## Running the project
 
@@ -67,7 +66,7 @@ src/lib/components/            # reusable UI components
 src/routes/list/               # list and bansos detail pages
 src/routes/contribute/         # public contribution guide
 scripts/add-bansos.mjs         # local script to add data
-packages/bansosdev-cli/        # bansosdev CLI (disabled for public submissions)
+packages/bansosdev-cli/        # Legacy CLI (public submissions disabled)
 ```
 
 Every listing must have a `contributorSlug` linked bidirectionally to its profile manifest. Avatars
@@ -79,7 +78,7 @@ slugs from colliding with site routes or bansos shortlinks.
 
 ## How to Add Bansos
 
-Currently, active public submissions are via email and Git clone. The form, npx CLI, and bot channels are temporarily disabled due to spam.
+Currently, active public submissions are via AI Agent, email, and Git clone. The form, public CLI, and bot channels are temporarily disabled due to spam.
 
 > [!TIP]
 > **Soon: Submission via Discord & Telegram Bot!**
@@ -89,7 +88,19 @@ Currently, active public submissions are via email and Git clone. The form, npx 
 > - **[Discord Server](https://discord.gg/m4WFaQpNGs)** for chatting, discussions, and chat submissions (coming soon).
 > - **[Telegram Channel](https://t.me/bansos_dev)** for instant updates on the latest developer promos directly to your phone.
 
-### 1. Option 1: Via Email
+### 1. Option 1: Via AI Agent
+
+Install the [official bansos.dev skills](https://www.skills.sh/wauputr4/skill-bansos) so your agent understands the latest listing structure, contributor profiles, validation, and PR workflow:
+
+```bash
+npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
+```
+
+After installation, provide the source link and ask the agent to use `$bansos-add-entry`. Review the data and diff before opening a pull request.
+
+---
+
+### 2. Option 2: Via Email
 
 This option is perfect for those who want to share information quickly without touching the terminal.
 
@@ -100,65 +111,14 @@ This option is perfect for those who want to share information quickly without t
 
 ---
 
-### 2. Option 2: Via Command Line (npx CLI) - Disabled
-
-Public submissions via `npx bansosdev add` are temporarily disabled due to spam. The CLI documentation is kept for maintainers and local testing, but please do not use it for public submissions at this time.
-
-```bash
-npx bansosdev add
-```
-
-The CLI will guide you field by field to prepare local data.
-
-_You can also send data directly using CLI arguments:_
-
-```bash
-npx bansosdev add \
-  --id example-bansos \
-  --title "Example Developer Bansos" \
-  --provider "Example Provider" \
-  --description "Short description of the bansos." \
-  --benefits "Benefit one|Benefit two" \
-  --validity-type fixed \
-  --validity-date 2026-06-30 \
-  --validity-desc "Valid specifically for students" \
-  --published-at 2026-06-13 \
-  --requirements "Create an account|Claim the program" \
-  --cta-link "https://example.com" \
-  --contributor-name "Your Name" \
-  --contributor-url "https://example.com" \
-  --tags "Cloud,Freebie"
-```
-
-### Validity parameters
-
-- `--validity-type` required: choose `fixed`, `uncertain`, or `forever`.
-- `--validity-date` required if `--validity-type fixed`, using `YYYY-MM-DD` format (Functions as Expiry Date).
-- `--validity-desc` optional for validity notes, quotas, or special conditions.
-- `--published-at` optional for the start date in `YYYY-MM-DD` format. Defaults to today.
-- `--source` optional for verification source; can be a URL or plain text.
-
-> **Automation Notes:**
->
-> - The `provider` parameter will be extracted automatically from the `cta-link` domain.
-> - The `status` parameter will be calculated automatically (`active`, `upcoming`, or `expired`) based on the `published-at` and `validity-date`.
-
-### Check JSON payload
-
-```bash
-npx bansosdev add ... --mode json
-```
-
----
-
-### 3. Option 3: Via Git Clone (Manual Merge Request)
+### 3. Option 3: Via Git Clone (Manual Pull Request)
 
 This option is for those who want to test the code locally or modify files directly.
 
-1. Clone this repository to your computer:
+1. Fork and clone this repository using GitHub CLI:
 
    ```bash
-   git clone https://github.com/wauputr4/bansos.git
+   gh repo fork wauputr4/bansos --clone
    cd bansos
    npm install
    ```
@@ -189,21 +149,7 @@ This option is for those who want to test the code locally or modify files direc
    `--contributor-slug` is required for every submission. `--contributor-name` is required and
    `--contributor-url` is optional only when that contributor profile does not exist yet.
 
-3. Create a new branch, add commits, push to your fork, and send a merge request to the main repository.
-
----
-
-### Maintainer mode (Admins / Maintainers Only)
-
-The direct mode for automatic submissions is disabled. For maintainer changes, use Git clone, manual commit, and a merge request to `main`.
-
-```bash
-npx bansosdev add ... --mode json
-```
-
-The command above is only for checking the JSON payload locally.
-
-For complete CLI details, see [docs/bansosdev-cli.md](docs/bansosdev-cli.md).
+3. Create a new branch, add commits, push to your fork, and send a pull request to the main repository.
 
 ## Listing Quality Guidelines
 
@@ -219,7 +165,7 @@ A good listing should include:
 ## Contribution
 
 - Send data via email to [submit@bansos.dev](mailto:submit@bansos.dev).
-- If more comfortable, add via branch and manual merge request.
+- If more comfortable, add via branch and manual pull request.
 - Read the full contribution guide in [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Community Code of Conduct

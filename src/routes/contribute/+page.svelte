@@ -17,6 +17,7 @@
 	const contributors: ContributorSummary[] = getContributorStats();
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
+		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot' },
 		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
 		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
 		{
@@ -26,7 +27,6 @@
 			inactive: true
 		},
 		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal', inactive: true },
-		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot', inactive: true },
 		{
 			id: 'discord',
 			label: $t('contribute.tabs.discord'),
@@ -41,7 +41,8 @@
 		}
 	]);
 
-	let activeTab = $state<TabId>('git');
+	let activeTab = $state<TabId>('ai');
+	const aiInstallCommand = "npx skills add wauputr4/skill-bansos --skill '*' --agent '*'";
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
@@ -49,10 +50,8 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			isEnglish ? '# GitHub (recommended)' : '# GitHub (disarankan)',
-			'git clone https://github.com/wauputr4/bansos.git',
-			isEnglish ? '# Or use the GitLab mirror:' : '# Atau gunakan mirror GitLab:',
-			'# git clone https://gitlab.com/wauputr4/bansos.git',
+			isEnglish ? '# Fork and clone your GitHub repository' : '# Fork dan clone repo GitHub kamu',
+			'gh repo fork wauputr4/bansos --clone',
 			'cd bansos',
 			'npm install',
 			`git checkout -b ${branchName}`,
@@ -365,18 +364,37 @@ Terima kasih,
 					<div class="tab-panel">
 						<div class="tab-description">
 							<h2>{$t('contribute.aiTitle')}</h2>
-							<div class="disabled-notice">
-								<i class="fa-solid fa-triangle-exclamation"></i>
-								<div>
-									<p>
-										{$t('contribute.aiDisabled')}
-									</p>
-									<p class="warning-extra">
-										{$t('contribute.aiWarning')}
-									</p>
-								</div>
-							</div>
+							<p>{$t('contribute.aiDesc')}</p>
 						</div>
+						<div class="command-block-wrapper">
+							<div class="command-head">
+								<span>{$t('contribute.aiInstallHead')}</span>
+								<button
+									type="button"
+									class="copy-btn"
+									class:copied={copiedId === 'ai-install'}
+									onclick={() => copyToClipboard(aiInstallCommand, 'ai-install')}
+								>
+									<i class="fa-solid fa-{copiedId === 'ai-install' ? 'check' : 'clipboard'}"></i>
+									{copiedId === 'ai-install'
+										? $t('contribute.gitCopied')
+										: $t('contribute.gitCopy')}
+								</button>
+							</div>
+							<pre class="command-block"><code>{aiInstallCommand}</code></pre>
+						</div>
+						<div class="tab-note">
+							<p><i class="fa-solid fa-circle-info"></i> {$t('contribute.aiPrompt')}</p>
+						</div>
+						<a
+							class="skill-link"
+							href="https://www.skills.sh/wauputr4/skill-bansos"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							{$t('contribute.aiOpenSkill')}
+						</a>
 					</div>
 				{:else if activeTab === 'email'}
 					<div class="tab-panel">
