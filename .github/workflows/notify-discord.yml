@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'src/lib/data/bansos.json'
+      - 'src/lib/data/bansos/*/index.json'
 
 permissions:
   contents: read

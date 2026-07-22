@@ -7,3 +7,10 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Generated catalog artifacts
+src/lib/data/bansos.json
+src/lib/data/bansos/index.json
+src/lib/data/bansos/**/README.md
+src/lib/data/bansos/**/.contributors.json
+src/lib/data/bansos/commit-contributors.json

@@ -12,6 +12,7 @@ src/lib/data/
 """
 
 import json
+import hashlib
 import os
 import re
 import shutil
@@ -52,7 +53,7 @@ def make_contributor_slug(name, url, commit_contributors):
     # Fallback: slugify the name
     slug = slugify(name)
     if not slug:
-        hash_id = abs(hash(name + url)) % 10000
+        hash_id = hashlib.sha256((name + url).encode('utf-8')).hexdigest()[:8]
         slug = f"contributor-{hash_id}"
     return slug
 
@@ -173,21 +174,26 @@ def migrate():
     print()
 
     # Read old data
-    with open(OLD_BANSOS_JSON, 'r') as f:
+    with open(OLD_BANSOS_JSON, 'r', encoding='utf-8') as f:
         bansos_list = json.load(f)
 
-    with open(OLD_COMMIT_CONTRIBUTORS, 'r') as f:
+    with open(OLD_COMMIT_CONTRIBUTORS, 'r', encoding='utf-8') as f:
         commit_contributors = json.load(f)
 
     print(f"📦 Total bansos entries: {len(bansos_list)}")
     print(f"👥 Commit contributors mapping entries: {len(commit_contributors)}")
     print()
 
-    # Clean old folder structure
+    # Remove only catalog folders no longer present in the legacy source.
+    source_slugs = {item.get('id') for item in bansos_list if item.get('id')}
     if os.path.exists(BANSOS_DIR):
         for entry in os.listdir(BANSOS_DIR):
             entry_path = os.path.join(BANSOS_DIR, entry)
-            if entry.startswith('__') or entry == 'schema' or entry == 'README.md':
+            if (
+                entry.startswith('__')
+                or entry in ('schema', 'contributors', 'README.md')
+                or entry in source_slugs
+            ):
                 continue
             if os.path.isdir(entry_path):
                 print(f"  🗑️  Clean old: {entry}")
@@ -212,16 +218,22 @@ def migrate():
         # Create folder
         item_dir = os.path.join(BANSOS_DIR, slug)
         os.makedirs(item_dir, exist_ok=True)
+        existing_index_path = os.path.join(item_dir, 'index.json')
+        existing_index = {}
+        if os.path.exists(existing_index_path):
+            with open(existing_index_path, 'r', encoding='utf-8') as f:
+                existing_index = json.load(f)
 
         # Convert contributor inline → contributorSlug
         contributor = item.pop('contributor', None)
-        contributor_slug = None
+        contributor_slug = existing_index.get('contributorSlug')
         if contributor and contributor.get('name'):
-            contributor_slug = make_contributor_slug(
-                contributor['name'],
-                contributor.get('url', ''),
-                commit_contributors
-            )
+            if not contributor_slug:
+                contributor_slug = make_contributor_slug(
+                    contributor['name'],
+                    contributor.get('url', ''),
+                    commit_contributors
+                )
             # Track contributor
             if contributor_slug not in contributor_map:
                 contributor_map[contributor_slug] = {
@@ -267,7 +279,7 @@ def migrate():
             index_data['contributorSlug'] = contributor_slug
 
         # Write index.json
-        with open(os.path.join(item_dir, 'index.json'), 'w') as f:
+        with open(os.path.join(item_dir, 'index.json'), 'w', encoding='utf-8') as f:
             json.dump(index_data, f, indent=4, ensure_ascii=False)
         print(f"  ✅ {slug}/index.json")
 
@@ -333,10 +345,35 @@ def migrate():
         if avatar_path:
             manifest['avatar'] = avatar_path
 
-        with open(os.path.join(contrib_dir, 'manifest.json'), 'w') as f:
+        manifest_path = os.path.join(contrib_dir, 'manifest.json')
+        if os.path.exists(manifest_path):
+            with open(manifest_path, 'r', encoding='utf-8') as f:
+                existing_manifest = json.load(f)
+            manifest = {
+                **manifest,
+                **existing_manifest,
+                'contributedBansos': sorted(set(
+                    existing_manifest.get('contributedBansos', []) + manifest['contributedBansos']
+                ))
+            }
+
+        with open(manifest_path, 'w', encoding='utf-8') as f:
             json.dump(manifest, f, indent=4, ensure_ascii=False)
 
         print(f"  👤 {login}/manifest.json ({len(info['bansos_slugs'])} bansos)")
+
+    # Remove references to catalog entries that no longer exist, while keeping profiles.
+    for entry in os.listdir(CONTRIBUTORS_DIR):
+        manifest_path = os.path.join(CONTRIBUTORS_DIR, entry, 'manifest.json')
+        if not os.path.isfile(manifest_path):
+            continue
+        with open(manifest_path, 'r', encoding='utf-8') as f:
+            manifest = json.load(f)
+        contributed = [slug for slug in manifest.get('contributedBansos', []) if slug in source_slugs]
+        if contributed != manifest.get('contributedBansos', []):
+            manifest['contributedBansos'] = contributed
+            with open(manifest_path, 'w', encoding='utf-8') as f:
+                json.dump(manifest, f, indent=4, ensure_ascii=False)
 
     print()
     print("📊 Generating lightweight index.json...")
@@ -351,7 +388,7 @@ def migrate():
         # Get status and tags from the already-created index
         index_path = os.path.join(BANSOS_DIR, slug, 'index.json')
         if os.path.exists(index_path):
-            with open(index_path, 'r') as f:
+            with open(index_path, 'r', encoding='utf-8') as f:
                 current = json.load(f)
             index_list.append({
                 'id': slug,
@@ -365,7 +402,7 @@ def migrate():
             })
 
     index_path = os.path.join(BANSOS_DIR, 'index.json')
-    with open(index_path, 'w') as f:
+    with open(index_path, 'w', encoding='utf-8') as f:
         json.dump({
             'generatedAt': str(date.today()),
             'total': len(index_list),

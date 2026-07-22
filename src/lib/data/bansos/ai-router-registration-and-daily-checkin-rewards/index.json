@@ -1,0 +1,31 @@
+{
+	"id": "ai-router-registration-and-daily-checkin-rewards",
+	"title": "AI-ROUTER — Bonus Pendaftaran & Check-in untuk API AI",
+	"provider": "AI-ROUTER",
+	"providerWebsiteUrl": "https://ai-router.dev/id",
+	"description": "AI-ROUTER menyediakan API model AI yang kompatibel dengan OpenAI. Untuk akun baru yang memenuhi syarat, aturan publik mencantumkan bonus tersedia 5U dan bonus beku 15U yang dilepas bertahap berdasarkan penggunaan API aktual. Tersedia juga reward check-in harian berbasis penggunaan.",
+	"benefits": [
+		"5U bonus tersedia untuk akun baru yang memenuhi syarat setelah pendaftaran",
+		"15U bonus beku tambahan yang dilepas bertahap seiring penggunaan API aktual",
+		"Check-in harian: $1 + 2% dari total penggunaan hari sebelumnya, maksimum $10 per check-in",
+		"Endpoint API kompatibel dengan OpenAI"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Benefit, kelayakan akun, dan jumlah yang tersedia mengikuti aturan penghargaan resmi serta evaluasi risiko akun."
+	},
+	"requirements": [
+		"Daftar akun AI-ROUTER",
+		"Login ke dashboard; bonus pendaftaran berlaku untuk akun baru yang memenuhi syarat",
+		"Buat API Key dan gunakan API untuk melepas bonus beku secara bertahap",
+		"Gunakan fitur check-in di dashboard untuk melihat reward yang tersedia"
+	],
+	"tips": "Cek saldo dan status reward di dashboard sebelum memakai API; jangan membuat akun ganda atau mencoba melewati ketentuan layanan.",
+	"source": "https://ai-router.dev/id/docs/billing-quota/rewards-and-affiliate-commissions/",
+	"publishedAt": "2026-07-21",
+	"ctaLink": "https://ai-router.dev/id",
+	"tags": ["AI Credits", "API", "Free Tier", "Developer Tools"],
+	"featured": false,
+	"status": "active",
+	"contributorSlug": "ai-router"
+}

@@ -1,96 +1,770 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-07-11 | Total: 67 entri (58 aktif, 9 expired)
+> Diperbarui: 2026-07-22 | Total: 72 entri (62 aktif, 10 expired)
 
 ---
 
 ## ✅ Entri Aktif
 
-### Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan
+### Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month
 
-- **ID:** `namecheap-vps-hosting`
-- **Provider:** Namecheap
-- **Kategori:** VPS & Server, Hosting, Free Tier
+- **ID:** `adobe-creative-cloud-pro-trial`
+- **Provider:** Adobe
+- **Kategori:** Cloud Services, Free Tier, Gratisan
 - **Status:** active
 
-**Deskripsi:** Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.
+**Deskripsi:** Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly
 
 **Benefit:**
-- Plan VPS mulai dari Spark sampai Hypernova
-- Mulai dari 1 CPU, RAM 1GB, SSD 20GB, bandwidth 1000GB
-- Pilihan manajemen server serta root access dan kontrol panel
-- Tersedia free trial sebelum upgrade ke berlangganan
+- Adobe Creative Cloud Pro
 
 **Cara Klaim:**
-1. Buat/masuk akun Namecheap
-2. Pilih plan VPS sesuai kebutuhan dan sumber daya yang kamu butuhkan
-3. Lanjutkan checkout dan pilih durasi billing
+1. Pembayaran Menggunakan DANA/CC
 
-- **CTA Link:** https://www.namecheap.com/hosting/vps/
-- **Berlaku:** uncertain (Promo dan harga ditampilkan sesuai periode di halaman resmi)
+- **CTA Link:** https://s.ricoaditya.com/adobe-creative-cloud-pro
+- **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/namecheap-vps-hosting/
+🔗 **Link Detail:** https://bansos.dev/list/adobe-creative-cloud-pro-trial/
 
 ---
 
-### Free Mimo Plan di NanaAI
+### Aerolink Starter Free Trial
 
-- **ID:** `mimo-plan-free-nanaai`
-- **Provider:** NanaAI
-- **Website Provider:** https://nana.mwcs.dev
-- **Kategori:** AI tools, Dev Tools, AI Provider
+- **ID:** `aerolink-starter-free-trial`
+- **Provider:** Aerolink
+- **Kategori:** AI, API, Developer, Free Trial, Credits
 - **Status:** active
 
-**Deskripsi:** ⚠️ Ada laporan free plan sudah tidak bisa diklaim. NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!
+**Deskripsi:** Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.
 
 **Benefit:**
-- Free akses Mimo v2.5 dan Mimo v2.5 Pro
-- Model gratis: mimo-v2.5-pro & mimo-v2.5
-- Free saldo dan plan untuk referral program
-- Limit harian 3M selama 30 hari
-- Hasil referral dibagikan gratis di Discord bansos.dev
+- Free Trial selama 2 minggu
+- Kredit penggunaan AI senilai US$140
+- Batas penggunaan US$10 setiap 5 jam
+- Batas penggunaan US$70 per minggu
+- Akses ke berbagai model AI melalui satu platform
 
 **Cara Klaim:**
-1. Daftar akun di NanaAI
-2. Top up minimal $1 sebagai verifikasi user (anti-abuse)
-3. Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan
+1. Daftarkan akun Aerolink baru
+2. Aktifkan paket Starter Free Trial
+3. Patuhi syarat dan ketentuan resmi Aerolink
 
-- **CTA Link:** https://nana.mwcs.dev/signup?ref=5JT7QA
-- **Sumber:** https://nana.mwcs.dev
-- **Tips:** ⚠️ LAPORAN: Free plan dilaporkan sudah tidak bisa diklaim. Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!
-- **Berlaku:** uncertain (Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang)
+- **CTA Link:** https://aerolink.lat/register?ref=T5-QB9W
+- **Sumber:** https://aerolink.lat/
+- **Tips:** Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.
+- **Berlaku:** uncertain (Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink.)
 
-🔗 **Link Detail:** https://bansos.dev/list/mimo-plan-free-nanaai/
+🔗 **Link Detail:** https://bansos.dev/list/aerolink-starter-free-trial/
 
 ---
 
-### Free Credits TokenRouter buat Jajan Model AI
+### AgentRouter Free $150 AI Credit + $25 Daily Reward
 
-- **ID:** `tokenrouter-model-gateway`
-- **Provider:** TokenRouter
-- **Kategori:** AI Credits, Diskon
+- **ID:** `agentrouter-free-150-credit`
+- **Provider:** AgentRouter
+- **Website Provider:** https://agent-router.org
+- **Kategori:** AI, AI Credits, API, Developer Tools
 - **Status:** active
 
-**Deskripsi:** TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.
+**Deskripsi:** AgentRouter memberikan bonus AI Credit sebesar $150 untuk pengguna baru yang mendaftar melalui program yang tersedia. Pengguna juga berkesempatan memperoleh tambahan AI Credit harian sesuai ketentuan program. Credit dapat digunakan untuk mengakses berbagai model AI melalui satu API.
 
 **Benefit:**
-- Top up 6, dapat 4 credit gratis (bonus 40% off)
-- Mulai top-up dari $1, jadi gak harus all-in kayak founder baru dapet funding
-- Maksimal top-up $60.000 dan bonus sampai $40.000 per orang untuk voucher
-- Bisa apply $200 developer credits kalau ikut campaign Get 40% Off
-- Developer credits berlaku 30 hari setelah disetujui
+- $150 AI Credit untuk pengguna baru
+- Tambahan $25 AI Credit setiap hari
+- Akses berbagai model AI populer melalui satu API
 
 **Cara Klaim:**
-1. Buka campaign rules TokenRouter dan login ke akun kamu
-2. Top-up minimal $1 untuk mulai klaim bonus
-3. Klaim sebelum 17 Juni 2026 supaya aman dari batas campaign menurut reviewer yang sudah pakai
-4. Untuk $200 developer credits, ikut dulu campaign Get 40% Off lalu submit form klaim
-5. Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan
+1. Memiliki akun GitHub (disarankan akun lama/old account)
+2. Mendaftar melalui halaman registrasi AgentRouter
+3. Login dan klaim bonus sesuai ketentuan yang berlaku
 
-- **CTA Link:** https://www.tokenrouter.com/campaign-rules
-- **Tips:** Kalau modal masih tipis, mulai dari $1 dulu. Kejar sebelum 17 Juni 2026 biar gak mepet dan jangan lupa baca campaign rules.
-- **Berlaku:** fixed — 2026-06-17 (Reviewer menyarankan klaim maksimal 17 Juni 2026)
+- **CTA Link:** https://agentrouter.org/register?aff=txsb
+- **Sumber:** https://agentrouter.org/register?aff=txsb
+- **Tips:** Gunakan akun GitHub yang aktif dan hindari membuat akun ganda agar tetap sesuai Terms of Service
+- **Berlaku:** uncertain (Berlaku selama program promosi masih tersedia)
 
-🔗 **Link Detail:** https://bansos.dev/list/tokenrouter-model-gateway/
+🔗 **Link Detail:** https://bansos.dev/list/agentrouter-free-150-credit/
+
+---
+
+### Free $200 Credit API LLM Populer
+
+- **ID:** `agentrouter-free-credits`
+- **Provider:** AgentRouter
+- **Kategori:** AI Tools, AI Credits, API
+- **Status:** active
+
+**Deskripsi:** Langsung dapat $200 setelah mendaftar.
+
+Tersedia 10 model LLM yang bisa digunakan melalui API key.
+
+**Benefit:**
+- Free Signup Credits
+
+**Cara Klaim:**
+1. Daftar akun
+
+- **CTA Link:** https://agentrouter.org/register?aff=qdG1
+- **Sumber:** https://agentrouter.org/register?aff=qdG1
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/agentrouter-free-credits/
+
+---
+
+### AI Hub Free Plan
+
+- **ID:** `ai-hub-free-plan`
+- **Provider:** AI Campus Malaysia
+- **Website Provider:** https://ai-hub.aicampus.my/
+- **Kategori:** AI, API, LLM, Gemini, Claude, Developer, Free Tier
+- **Status:** active
+
+**Deskripsi:** Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.
+
+**Benefit:**
+- 1.000.000 token gratis pada Free Plan (weekly allocation).
+- API access melalui Hub Key.
+- Dapat membuat API Key sendiri.
+- Personal usage dashboard.
+- Informasi penggunaan token secara real-time.
+- Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.
+- Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.
+- Dukungan komunitas melalui Telegram.
+
+**Cara Klaim:**
+1. Mendaftarkan akun AI Hub baru.
+2. Menggunakan paket Free Plan.
+3. Mematuhi Terms of Service AI Hub.
+
+- **CTA Link:** https://ai-hub.aicampus.my/?ref=01b0fc09
+- **Sumber:** https://ai-hub.aicampus.my/
+- **Tips:** Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.
+- **Berlaku:** uncertain (Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub.)
+
+🔗 **Link Detail:** https://bansos.dev/list/ai-hub-free-plan/
+
+---
+
+### AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1
+
+- **ID:** `ai-livscene-free-models`
+- **Provider:** AI Livscene
+- **Website Provider:** https://ai.livscene.com
+- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Akses 14 model AI premium gratis dengan quota 5.1 di AI Livscene. Daftar pakai Discord atau GitHub, langsung generate tanpa ribet!
+
+**Benefit:**
+- Akses gratis ke 14 model AI premium: Claude Opus 4.6/4.7/4.8, Claude Sonnet 4.6, DeepSeek V4 Pro, Gemini 3.1 Pro, Gemini 3.5 Flash, GLM 5.2, GPT 5.4 Compact, GPT 5.5, Mimo v2.5, Mimo v2.5 Pro, Step 3.7 Flash, Step Router V1
+- Quota 5.1 untuk mencoba semua model
+- Daftar cepat via Discord atau GitHub
+- Generate dan langsung coba tanpa setup rumit
+
+**Cara Klaim:**
+1. Buka ai.livscene.com
+2. Daftar akun via Discord atau GitHub
+3. Generate dan langsung coba model yang tersedia
+
+- **CTA Link:** https://ai.livscene.com/sign-up?aff=m3Vt
+- **Sumber:** https://ai.livscene.com
+- **Tips:** Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!
+- **Berlaku:** uncertain (Quota dan akses free model mengikuti kebijakan AI Livscene)
+
+🔗 **Link Detail:** https://bansos.dev/list/ai-livscene-free-models/
+
+---
+
+### AI-ROUTER — Bonus Pendaftaran & Check-in untuk API AI
+
+- **ID:** `ai-router-registration-and-daily-checkin-rewards`
+- **Provider:** AI-ROUTER
+- **Website Provider:** https://ai-router.dev/id
+- **Kategori:** AI Credits, API, Free Tier, Developer Tools
+- **Status:** active
+
+**Deskripsi:** AI-ROUTER menyediakan API model AI yang kompatibel dengan OpenAI. Untuk akun baru yang memenuhi syarat, aturan publik mencantumkan bonus tersedia 5U dan bonus beku 15U yang dilepas bertahap berdasarkan penggunaan API aktual. Tersedia juga reward check-in harian berbasis penggunaan.
+
+**Benefit:**
+- 5U bonus tersedia untuk akun baru yang memenuhi syarat setelah pendaftaran
+- 15U bonus beku tambahan yang dilepas bertahap seiring penggunaan API aktual
+- Check-in harian: $1 + 2% dari total penggunaan hari sebelumnya, maksimum $10 per check-in
+- Endpoint API kompatibel dengan OpenAI
+
+**Cara Klaim:**
+1. Daftar akun AI-ROUTER
+2. Login ke dashboard; bonus pendaftaran berlaku untuk akun baru yang memenuhi syarat
+3. Buat API Key dan gunakan API untuk melepas bonus beku secara bertahap
+4. Gunakan fitur check-in di dashboard untuk melihat reward yang tersedia
+
+- **CTA Link:** https://ai-router.dev/id
+- **Sumber:** https://ai-router.dev/id/docs/billing-quota/rewards-and-affiliate-commissions/
+- **Tips:** Cek saldo dan status reward di dashboard sebelum memakai API; jangan membuat akun ganda atau mencoba melewati ketentuan layanan.
+- **Berlaku:** uncertain (Benefit, kelayakan akun, dan jumlah yang tersedia mengikuti aturan penghargaan resmi serta evaluasi risiko akun.)
+
+🔗 **Link Detail:** https://bansos.dev/list/ai-router-registration-and-daily-checkin-rewards/
+
+---
+
+### Course Gratis AI dari AI Class ASEAN
+
+- **ID:** `aiclass-asean-courses`
+- **Provider:** AI Class ASEAN
+- **Kategori:** Course, Diskon
+- **Status:** active
+
+**Deskripsi:** Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.
+
+**Benefit:**
+- Kursus gratis lewat program kolaborasi regional
+- Sertifikat selesai kursus untuk penguatan portfolio
+- Didukung ASEAN Foundation dan Google.org
+- Bisa jadi jalan tercepat buat ngembaliin skill AI ke tingkat yang lebih oke
+
+**Cara Klaim:**
+1. Pakai link referal/undangan dari guru atau mentor yang sudah handle akuisisi peserta
+2. Selesaikan semua misi dan tugas yang disyaratkan untuk dapat reward
+3. Kumpulkan bukti progres untuk klaim reward jika disediakan di program
+4. Bawa tautan referal guru saat daftar jika diminta sistem
+5. Bisa dapat bonus pulsa 50.000 setelah menyelesaikan semua misi (informasi dari peserta)
+
+- **CTA Link:** https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos
+- **Berlaku:** uncertain (Cek halaman kursus untuk periode dan persyaratan terbaru)
+
+🔗 **Link Detail:** https://bansos.dev/list/aiclass-asean-courses/
+
+---
+
+### Program Developer AMD AI
+
+- **ID:** `amd-ai-dev-program`
+- **Provider:** AMD
+- **Kategori:** AI Credits, Course
+- **Status:** active
+
+**Deskripsi:** AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.
+
+**Benefit:**
+- Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI
+- Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan
+- Akses langsung ke pakar teknis AMD melalui server Discord privat
+
+**Cara Klaim:**
+1. Buat akun AMD gratis
+2. Isi dan kirimkan formulir pendaftaran Program AI Developer
+3. Verifikasi alamat email yang didaftarkan
+
+- **CTA Link:** https://www.amd.com/en/developer/ai-dev-program.html
+- **Berlaku:** uncertain (Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform)
+
+🔗 **Link Detail:** https://bansos.dev/list/amd-ai-dev-program/
+
+---
+
+### FREE 1 Year subscription ATOMESUS
+
+- **ID:** `atomesus-free-1-year-subscription`
+- **Provider:** ATOMESUS
+- **Kategori:** AI
+- **Status:** active
+
+**Deskripsi:** Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).
+
+**Benefit:**
+- Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).
+- Memiliki kemampuan untuk membuat gambar (generate images).
+
+**Cara Klaim:**
+1. Buat akun di platform atau aplikasi Atomesus.
+2. Arahkan atau navigasikan ke menu Apply Referral Code.
+3. Ketik dan masukkan kode kupon/redeem ini: ATOMESUS.
+
+- **Kode Promo:** `ATOMESUS`
+- **CTA Link:** https://www.atomesus.com/
+- **Sumber:** https://www.threads.com/@atomesus/post/DZzXJySAc_g
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/atomesus-free-1-year-subscription/
+
+---
+
+### Kredit AWS Activate hingga $200.000
+
+- **ID:** `aws-activate-credits`
+- **Provider:** Amazon Web Services
+- **Kategori:** Cloud Services, Startup
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.
+
+**Benefit:**
+- Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)
+- Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC
+
+**Cara Klaim:**
+1. Buat AWS Builder ID dan lengkapi profil
+2. Tautkan akun AWS
+3. Berikan detail startup untuk konfirmasi kelayakan
+
+- **CTA Link:** https://aws.amazon.com/startups/credits/
+- **Berlaku:** uncertain (Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui)
+
+🔗 **Link Detail:** https://bansos.dev/list/aws-activate-credits/
+
+---
+
+### Program Beasiswa AWS AI Academy 2026
+
+- **ID:** `aws-ai-academy-2026`
+- **Provider:** AWS x Dicoding
+- **Kategori:** AI, Cloud, Machine Learning, Training
+- **Status:** active
+
+**Deskripsi:** Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.
+
+**Benefit:**
+- Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi
+- Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert
+- Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia
+
+**Cara Klaim:**
+1. Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan
+2. Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar
+
+- **CTA Link:** https://aws.dicoding.com/login
+- **Sumber:** https://aws.dicoding.com/login
+- **Tips:** Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.
+- **Berlaku:** fixed — 2026-12-25 (Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026.)
+
+🔗 **Link Detail:** https://bansos.dev/list/aws-ai-academy-2026/
+
+---
+
+### AI Router by Nara — Model AI Premium Gratis & Pay as You Go
+
+- **ID:** `bynara-ai-router-free-payg`
+- **Provider:** byNara
+- **Website Provider:** https://bynara.id
+- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.
+
+**Benefit:**
+- Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5
+- Token cap 5M/hari pada free tier
+- Rate limit 10 req/menit
+- Pay as you go untuk model premium
+- Dukungan pembayaran IDR dan USD
+- Bandingkan biaya antar model langsung di dashboard
+
+**Cara Klaim:**
+1. Daftar akun di router.bynara.id
+2. Verifikasi akun via Telegram bot byNara
+3. Login ke Telegram channel byNara untuk akses API key
+4. Pilih model yang tersedia di tier Free
+5. Mulai kirim request via API endpoint
+
+- **CTA Link:** https://router.bynara.id/register?ref=3AH29Q72
+- **Sumber:** https://router.bynara.id/
+- **Tips:** Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!
+- **Berlaku:** uncertain (Free tier — selama layanan tersedia)
+
+🔗 **Link Detail:** https://bansos.dev/list/bynara-ai-router-free-payg/
+
+---
+
+### Claim 7M token free
+
+- **ID:** `claim-7m-token-free`
+- **Provider:** Bynara
+- **Kategori:** AI, AI Credits, API
+- **Status:** active
+
+**Deskripsi:** Setiap akun mendapatkan kredit gratis hingga sekitar 7 juta per hari dan kuotanya diperbarui secara berkala, jadi cukup menarik untuk eksperimen, coding agent, maupun testing berbagai model.
+
+**Benefit:**
+- claude-sonnet-4.5
+- mistral-large
+- mistral-medium-3-5
+- claude-haiku-4.5
+- deepseek-3.2
+- glm-5
+
+**Cara Klaim:**
+1. Registrasi akun di Nararouter melalui link tersedia
+2. Verifikasi email dan login ke dashboard
+3. Akses AI Models dan mulai gunakan 7M token gratis per hari
+
+- **CTA Link:** https://router.bynara.id/register?ref=CJWVMGPR
+- **Sumber:** https://router.bynara.id/register?ref=CJWVMGPR
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/claim-7m-token-free/
+
+---
+
+### Gratis 10JT Token AI / Hari
+
+- **ID:** `codecrafters-free-token`
+- **Provider:** CodeCrafters
+- **Kategori:** AI Tools, API
+- **Status:** active
+
+**Deskripsi:** Gratis 10 Juta token / Hari untuk teman-teman developer
+
+**Benefit:**
+- Gratis 10JT Token/Hari
+- Mimo 2.5
+- Deepseek V4 Flash
+
+**Cara Klaim:**
+1. Memiliki akun codecrafters
+2. Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas
+
+- **Kode Promo:** `BANSOSDEV`
+- **CTA Link:** https://cloud.codecrafters.id
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/codecrafters-free-token/
+
+---
+
+### Conduit AI — $500 Trial Credit & Free Model Access
+
+- **ID:** `conduit-trial-credit-500`
+- **Provider:** Conduit
+- **Website Provider:** https://conduit.ozdoev.net
+- **Kategori:** AI Credits, API, Free Tier, AI Tools
+- **Status:** active
+
+**Deskripsi:** Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.
+
+**Benefit:**
+- $500 trial credit untuk coba berbagai model AI
+- $0.50 per 1k visible tokens (input + output)
+- Akses via Telegram bot — cepat dan mudah
+
+**Cara Klaim:**
+1. Buka Telegram bot Conduit
+2. Daftar / mulai bot
+3. Klaim trial credit
+
+- **CTA Link:** https://t.me/conduitoff_bot?start=ref_950268146
+- **Sumber:** https://conduit.ozdoev.net
+- **Tips:** Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!
+- **Berlaku:** uncertain (Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit.)
+
+🔗 **Link Detail:** https://bansos.dev/list/conduit-trial-credit-500/
+
+---
+
+### Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs
+
+- **ID:** `dahono-labs-ai-api`
+- **Provider:** Dahono Labs
+- **Kategori:** API, AI Tools, AI Credits, No Credit Card
+- **Status:** active
+
+**Deskripsi:** Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.
+
+**Benefit:**
+- 100% OpenAI Compatible API
+- Mendukung banyak model flagship (Qwen, DeepSeek, dll)
+- Tidak perlu kartu kredit
+- Kuota gratis per hari (Tier Free s/d 2 juta TPD)
+
+**Cara Klaim:**
+1. Daftar akun di Dahono Labs Gateway
+2. Masuk ke Dashboard dan buat API Key
+
+- **CTA Link:** https://labs.dahono.com
+- **Berlaku:** forever (Berlaku untuk semua pengguna yang mendaftar)
+
+🔗 **Link Detail:** https://bansos.dev/list/dahono-labs-ai-api/
+
+---
+
+### DigitalOcean Hatch (Kredit Cloud hingga $100.000)
+
+- **ID:** `digitalocean-hatch`
+- **Provider:** DigitalOcean
+- **Kategori:** Cloud Services, VPS & Server, Startup, AI Credits
+- **Status:** active
+
+**Deskripsi:** Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.
+
+**Benefit:**
+- Kredit komputasi cloud hingga batas $100.000
+- Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan
+- Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons
+
+**Cara Klaim:**
+1. Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)
+2. Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)
+3. Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop
+4. Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean
+
+- **CTA Link:** https://www.digitalocean.com/hatch/
+- **Berlaku:** uncertain (Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program)
+
+🔗 **Link Detail:** https://bansos.dev/list/digitalocean-hatch/
+
+---
+
+### Free HOSTING | diskon.com
+
+- **ID:** `diskon-free-hosting`
+- **Provider:** Diskon
+- **Kategori:** Hosting
+- **Status:** active
+
+**Deskripsi:** Hosting gratis Diskon.com adalah layanan hosting tanpa biaya yang memungkinkan siapa pun membuat website dan mengelola hosting dengan mudah. Hosting gratis Diskon.com cocok untuk siapa saja, bahkan buat yang ingin belajar membangun website.
+
+**Benefit:**
+- Nikmati hosting gratis selamanya tanpa kewajiban upgrade.
+- Control panel hosting yang mudah digunakan, cocok untuk yang baru pertama kali bikin website.
+- Tidak perlu verifikasi ribet. Hosting gratis langsung siap dipakai.
+- Saat website kamu sudah gede, bisa upgrade ke hosting berbayar dengan fitur lebih lengkap.
+
+**Cara Klaim:**
+1. Daftar Akun Pakai Email atau Google
+2. Verifikasi Akun Kamu
+3. Tinggal Klik, Langsung Online!
+
+- **CTA Link:** https://diskon.com/?go=risal.full.diskon.cloud399029
+- **Sumber:** https://diskon.com
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/diskon-free-hosting/
+
+---
+
+### Freebuff — AI Coding Agent & App Builder 100% Gratis
+
+- **ID:** `freebuff-ai-builder`
+- **Provider:** Freebuff
+- **Kategori:** AI, AI Tools, Developer Tools, Free Tier, Gratisan
+- **Status:** active
+
+**Deskripsi:** Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.
+
+**Benefit:**
+- Freebuff CLI: coding agent gratis di terminal
+- Freebuff Web: AI app builder dari prompt ke deployed app
+- Deploy & host app gratis, 230K+ developer aktif
+
+**Cara Klaim:**
+1. Node.js 18+ untuk CLI
+2. Akun gratis untuk Web
+
+- **CTA Link:** https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b
+- **Sumber:** https://freebuff.com/
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/freebuff-ai-builder/
+
+---
+
+### FreeModel Invite Referral — $10 Credit per Teman Daftar
+
+- **ID:** `freemodel-invite-referral-10`
+- **Provider:** FreeModel
+- **Website Provider:** https://freemodel.dev
+- **Kategori:** AI Credits, API, Free Tier
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.
+
+**Benefit:**
+- $10 API credit untuk kamu dan $10 untuk teman yang diundang
+- Tanpa batas jumlah undangan — invite sebanyak mungkin
+- Credit tidak pernah expired selama akun aktif
+
+**Cara Klaim:**
+1. Bagikan link referral ke teman (email domain bebas)
+2. Teman daftar dan verifikasi akun via phone atau Telegram
+3. Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi
+
+- **CTA Link:** https://freemodel.dev/invite/FRE-e95f134d
+- **Sumber:** https://freemodel.dev/invite/FRE-e95f134d
+- **Tips:** Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.
+- **Berlaku:** forever (Credit tidak pernah expired selama akun aktif)
+
+🔗 **Link Detail:** https://bansos.dev/list/freemodel-invite-referral-10/
+
+---
+
+### FuturePPO Free Credits
+
+- **ID:** `futureppo-free-credit`
+- **Provider:** FuturePPO
+- **Website Provider:** https://api.futureppo.top
+- **Kategori:** AI, API, LLM, Free Tier
+- **Status:** active
+
+**Deskripsi:** FuturePPO menyediakan layanan AI API gateway yang memberikan saldo kredit gratis kepada pengguna baru, fitur daily check-in untuk memperoleh kredit tambahan secara acak, serta akses ke berbagai model AI melalui satu API.
+
+**Benefit:**
+- Kredit awal US$20 untuk akun baru
+- Daily check-in dengan reward kredit acak
+- Akses API Key untuk berbagai model AI premium (GPT-5.5, GPT-5.4, Grok, GLM, Gemini) dalam satu endpoint
+- Halaman status model untuk memantau kondisi layanan
+
+**Cara Klaim:**
+1. Daftar akun FuturePPO baru
+2. Login untuk menerima kredit awal
+3. Lakukan daily check-in untuk memperoleh kredit tambahan
+4. Patuhi Terms of Service FuturePPO
+
+- **CTA Link:** https://api.futureppo.top/
+- **Sumber:** https://api.futureppo.top/
+- **Tips:** Lakukan daily check-in setiap hari untuk memperoleh tambahan kredit. Gunakan model yang sesuai kebutuhan karena setiap model memiliki biaya token yang berbeda.
+- **Berlaku:** uncertain (Berlaku selama program kredit gratis dan daily check-in masih disediakan oleh FuturePPO)
+
+🔗 **Link Detail:** https://bansos.dev/list/futureppo-free-credit/
+
+---
+
+### Gemini Plus 3 Bulan via Bima+
+
+- **ID:** `gemini-plus-3bulan-sim`
+- **Provider:** Bima3
+- **Kategori:** AI Credits, AI Tools
+- **Status:** active
+
+**Deskripsi:** Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.
+
+**Benefit:**
+- Kuota Gemini Plus selama 3 bulan
+- Aktif untuk pengguna nomor 3
+- Bisa klaim langsung dari aplikasi Bima
+
+**Cara Klaim:**
+1. Buka aplikasi Bima+ (Bima 3)
+2. Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari
+3. Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS
+4. Ikuti petunjuk aktivasi pada link tersebut
+
+- **CTA Link:** https://bima.tri.co.id
+- **Sumber:** https://tri.co.id/google-gemini
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/gemini-plus-3bulan-sim/
+
+---
+
+### Google AI Pro Gratis 4 Bulan
+
+- **ID:** `google-ai-pro-4-bulan`
+- **Provider:** Google
+- **Kategori:** AI Tools, Cloud Services
+- **Status:** active
+
+**Deskripsi:** Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).
+
+**Benefit:**
+- Antigravity
+- Gemini Pro
+- Penyimpanan 5TB Google Drive/Gmail
+
+**Cara Klaim:**
+1. Buat akun
+2. Klaim program melalui link
+
+- **CTA Link:** http://g.co/g1referral/JG620Z3F
+- **Sumber:** https://www.threads.com/@akbrzz/post/DZpViYIFP0M
+- **Berlaku:** uncertain (Berlaku selama promosi berlangsung)
+
+🔗 **Link Detail:** https://bansos.dev/list/google-ai-pro-4-bulan/
+
+---
+
+### Program Google for Startups Cloud
+
+- **ID:** `google-startups-cloud`
+- **Provider:** Google Cloud
+- **Kategori:** Cloud Services, AI Credits, Startup
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.
+
+**Benefit:**
+- Kredit hingga $2.000 USD selama setahun untuk startup tahap awal
+- Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan
+- Akses ke layanan Firebase dan alat AI/ML
+
+**Cara Klaim:**
+1. Daftar langsung melalui program untuk tier dasar
+2. Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi
+
+- **CTA Link:** https://startup.google.com/cloud/
+- **Berlaku:** uncertain (Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan)
+
+🔗 **Link Detail:** https://bansos.dev/list/google-startups-cloud/
+
+---
+
+### Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)
+
+- **ID:** `gumloop-free-credits`
+- **Provider:** Gumloop
+- **Kategori:** AI, AI Credits, Gratisan
+- **Status:** active
+
+**Deskripsi:** Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.
+
+**Benefit:**
+- 5.000 Kredit Rutin Bulanan
+- 1.600 Bonus Koneksi (Satu Kali)
+- Akses ke Berbagai Model AI Populer
+- Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)
+
+**Cara Klaim:**
+1. Buat akun baru
+2. Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)
+
+- **CTA Link:** https://www.gumloop.com/
+- **Sumber:** https://www.gumloop.com/pricing
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/gumloop-free-credits/
+
+---
+
+### Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!
+
+- **ID:** `idwebhost-claim-domain-gratis-myid-juli2026`
+- **Provider:** IDwebhost
+- **Website Provider:** https://idwebhost.com
+- **Kategori:** Domain, Diskon
+- **Status:** active
+
+**Deskripsi:** Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.
+
+**Benefit:**
+- Domain gratis 1 tahun
+- Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID
+- Cukup pakai kupon saat checkout
+- Kuota terbatas — klaim sebelum habis
+
+**Cara Klaim:**
+1. Punya akun IDwebhost
+2. Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)
+3. Gunakan kupon M2n4tS saat checkout
+
+- **Kode Promo:** `M2n4tS`
+- **CTA Link:** http://idwebhost.com/domain
+- **Sumber:** https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg
+- **Tips:** Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!
+- **Berlaku:** fixed — 2026-07-05 (Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis.)
+
+🔗 **Link Detail:** https://bansos.dev/list/idwebhost-claim-domain-gratis-myid-juli2026/
 
 ---
 
@@ -125,27 +799,95 @@
 
 ---
 
-### Kimchi.dev $50/Bulan Serverless AI Credit
+### Promo Domain .MY.ID Gratis dari Jagoan Hosting
 
-- **ID:** `kimchi-dev-serverless-ai`
-- **Provider:** Kimchi.dev
-- **Kategori:** AI Credits, No Credit Card
+- **ID:** `jagoanhosting-promo-domain-myid`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** Domain, Diskon
 - **Status:** active
+- **🔥 FEATURED**
 
-**Deskripsi:** Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.
+**Deskripsi:** Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!
 
 **Benefit:**
-- $50 Serverless AI credit per bulan
-- Tanpa syarat kartu kredit
+- Domain .MY.ID gratis 1 tahun
+- Cocok untuk website pribadi, portofolio, atau blog
+- Proses klaim mudah dan cepat
+- Promo terbatas, jangan sampai kehabisan
 
 **Cara Klaim:**
-1. Daftar akun di Kimchi.dev
-2. Verifikasi alamat email
+1. Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
+2. Pilih domain dengan ekstensi .MY.ID
+3. Masukkan kode promo FREEMYID1000 saat checkout
+4. Selesaikan pemesanan
 
-- **CTA Link:** https://kimchi.dev
-- **Berlaku:** forever (Selamanya)
+- **Kode Promo:** `FREEMYID1000`
+- **CTA Link:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
+- **Sumber:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
+- **Berlaku:** fixed — 2026-06-30 (Promo berlaku sampai 30 Juni 2026, terbatas)
 
-🔗 **Link Detail:** https://bansos.dev/list/kimchi-dev-serverless-ai/
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-domain-myid/
+
+---
+
+### Promo Exclusive Diskon Hosting JagoanHosting
+
+- **ID:** `jagoanhosting-promo-exclusive`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** Hosting, Diskon
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!
+
+**Benefit:**
+- Potongan 10% untuk Shared Hosting
+- Bisa dipakai untuk akun lama (bukan cuma new user)
+- Tanpa batasan minimum transaksi
+
+**Cara Klaim:**
+1. Pilih produk Shared Hosting yang diinginkan
+2. Masukkan kode promo JERITANJELATA saat checkout
+3. Pastikan diskon 10% sudah terapply di total tagihan
+4. Selesaikan pembayaran
+
+- **Kode Promo:** `JERITANJELATA`
+- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
+- **Sumber:** https://www.jagoanhosting.com
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-exclusive/
+
+---
+
+### Promo Exclusive Jagoan Hosting 25%
+
+- **ID:** `jagoanhosting-promo-vps-25`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** VPS, Diskon, Hosting
+- **Status:** active
+- **🔥 FEATURED**
+
+**Deskripsi:** Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.
+
+**Benefit:**
+- Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting
+- Berlaku untuk semua pengguna (bukan cuma new user)
+
+**Cara Klaim:**
+1. Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)
+2. Masukkan kode promo BANSOSVPS saat checkout
+3. Selesaikan pembayaran
+
+- **Kode Promo:** `BANSOSVPS`
+- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
+- **Sumber:** https://www.jagoanhosting.com
+- **Berlaku:** forever
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-vps-25/
 
 ---
 
@@ -181,159 +923,51 @@
 
 ---
 
-### Course Gratis AI dari AI Class ASEAN
+### Kimchi.dev $50/Bulan Serverless AI Credit
 
-- **ID:** `aiclass-asean-courses`
-- **Provider:** AI Class ASEAN
-- **Kategori:** Course, Diskon
+- **ID:** `kimchi-dev-serverless-ai`
+- **Provider:** Kimchi.dev
+- **Kategori:** AI Credits, No Credit Card
 - **Status:** active
 
-**Deskripsi:** Program kursus gratis kolaborasi AI Class ASEAN sama ASEAN Foundation, didukung Google.org, yang bisa kamu ikuti sambil dapet sertifikat resmi setelah lulus dan submit tugas dengan rapi.
+**Deskripsi:** Dapatkan saldo Serverless AI sebesar $50 setiap bulan dari Kimchi.dev secara gratis tanpa syarat kartu kredit. Cocok bagi developer yang ingin bereksperimen dan membangun aplikasi AI.
 
 **Benefit:**
-- Kursus gratis lewat program kolaborasi regional
-- Sertifikat selesai kursus untuk penguatan portfolio
-- Didukung ASEAN Foundation dan Google.org
-- Bisa jadi jalan tercepat buat ngembaliin skill AI ke tingkat yang lebih oke
+- $50 Serverless AI credit per bulan
+- Tanpa syarat kartu kredit
 
 **Cara Klaim:**
-1. Pakai link referal/undangan dari guru atau mentor yang sudah handle akuisisi peserta
-2. Selesaikan semua misi dan tugas yang disyaratkan untuk dapat reward
-3. Kumpulkan bukti progres untuk klaim reward jika disediakan di program
-4. Bawa tautan referal guru saat daftar jika diminta sistem
-5. Bisa dapat bonus pulsa 50.000 setelah menyelesaikan semua misi (informasi dari peserta)
+1. Daftar akun di Kimchi.dev
+2. Verifikasi alamat email
 
-- **CTA Link:** https://www.aiclassasean.org/courses?utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos
+- **CTA Link:** https://kimchi.dev
+- **Berlaku:** forever (Selamanya)
 
-🔗 **Link Detail:** https://bansos.dev/list/aiclass-asean-courses/
+🔗 **Link Detail:** https://bansos.dev/list/kimchi-dev-serverless-ai/
 
 ---
 
-### Akses API AI (OpenAI Compatible) Gratis dari Dahono Labs
+### CLAUDE opus 4.8 1tahun 500k
 
-- **ID:** `dahono-labs-ai-api`
-- **Provider:** Dahono Labs
-- **Kategori:** API, AI Tools, AI Credits, No Credit Card
+- **ID:** `merlin-ai-claude-opus-48-diskon-1tahun`
+- **Provider:** Merlin AI
+- **Kategori:** Diskon, AI
 - **Status:** active
 
-**Deskripsi:** Dapatkan akses API AI yang 100% kompatibel dengan OpenAI (mendukung Qwen, DeepSeek, Claude, dll) secara gratis untuk developer. Cocok untuk testing dan rilis aplikasi AI tanpa mikir budget API.
+**Deskripsi:** Merlin AI menawarkan diskon untuk paket Pro Plan selama 1 tahun. Promo ini dipastikan tetap tersedia, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.
 
 **Benefit:**
-- 100% OpenAI Compatible API
-- Mendukung banyak model flagship (Qwen, DeepSeek, dll)
-- Tidak perlu kartu kredit
-- Kuota gratis per hari (Tier Free s/d 2 juta TPD)
+- Pro Subscription 1 Tahun
+- Teams
 
 **Cara Klaim:**
-1. Daftar akun di Dahono Labs Gateway
-2. Masuk ke Dashboard dan buat API Key
+1. Berlangganan dengan code promo
 
-- **CTA Link:** https://labs.dahono.com
-- **Berlaku:** forever (Berlaku untuk semua pengguna yang mendaftar)
+- **Kode Promo:** `HY2`
+- **CTA Link:** https://www.getmerlin.in/chat?ref=nwe2zwf
+- **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/dahono-labs-ai-api/
-
----
-
-### Kredit AWS Activate hingga $200.000
-
-- **ID:** `aws-activate-credits`
-- **Provider:** Amazon Web Services
-- **Kategori:** Cloud Services, Startup
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.
-
-**Benefit:**
-- Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)
-- Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC
-
-**Cara Klaim:**
-1. Buat AWS Builder ID dan lengkapi profil
-2. Tautkan akun AWS
-3. Berikan detail startup untuk konfirmasi kelayakan
-
-- **CTA Link:** https://aws.amazon.com/startups/credits/
-- **Berlaku:** uncertain (Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui)
-
-🔗 **Link Detail:** https://bansos.dev/list/aws-activate-credits/
-
----
-
-### Program Google for Startups Cloud
-
-- **ID:** `google-startups-cloud`
-- **Provider:** Google Cloud
-- **Kategori:** Cloud Services, AI Credits, Startup
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.
-
-**Benefit:**
-- Kredit hingga $2.000 USD selama setahun untuk startup tahap awal
-- Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan
-- Akses ke layanan Firebase dan alat AI/ML
-
-**Cara Klaim:**
-1. Daftar langsung melalui program untuk tier dasar
-2. Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi
-
-- **CTA Link:** https://startup.google.com/cloud/
-- **Berlaku:** uncertain (Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan)
-
-🔗 **Link Detail:** https://bansos.dev/list/google-startups-cloud/
-
----
-
-### Kredit Gratis Uji Coba xAI Grok API
-
-- **ID:** `xai-grok-api-credits`
-- **Provider:** xAI
-- **Kategori:** AI Credits, API
-- **Status:** active
-
-**Deskripsi:** xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.
-
-**Benefit:**
-- Kredit promosi awal sebesar $25 langsung setelah pendaftaran
-- Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing
-
-**Cara Klaim:**
-1. Buat akun di xAI Console dan hasilkan API key
-2. Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan
-
-- **CTA Link:** https://console.x.ai
-- **Berlaku:** uncertain (Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran)
-
-🔗 **Link Detail:** https://bansos.dev/list/xai-grok-api-credits/
-
----
-
-### Program Developer AMD AI
-
-- **ID:** `amd-ai-dev-program`
-- **Provider:** AMD
-- **Kategori:** AI Credits, Course
-- **Status:** active
-
-**Deskripsi:** AMD menyediakan sumber daya bagi developer AI, mencakup kredit komputasi cloud secara cuma-cuma dan akses ke platform pelatihan premium.
-
-**Benefit:**
-- Kredit cloud gratis untuk AMD Developer Cloud atau platform Fireworks AI
-- Akses gratis keanggotaan DeepLearning.AI Pro selama 1 bulan
-- Akses langsung ke pakar teknis AMD melalui server Discord privat
-
-**Cara Klaim:**
-1. Buat akun AMD gratis
-2. Isi dan kirimkan formulir pendaftaran Program AI Developer
-3. Verifikasi alamat email yang didaftarkan
-
-- **CTA Link:** https://www.amd.com/en/developer/ai-dev-program.html
-- **Berlaku:** uncertain (Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform)
-
-🔗 **Link Detail:** https://bansos.dev/list/amd-ai-dev-program/
+🔗 **Link Detail:** https://bansos.dev/list/merlin-ai-claude-opus-48-diskon-1tahun/
 
 ---
 
@@ -366,30 +1000,34 @@
 
 ---
 
-### DigitalOcean Hatch (Kredit Cloud hingga $100.000)
+### Free Mimo Plan di NanaAI
 
-- **ID:** `digitalocean-hatch`
-- **Provider:** DigitalOcean
-- **Kategori:** Cloud Services, VPS & Server, Startup, AI Credits
+- **ID:** `mimo-plan-free-nanaai`
+- **Provider:** NanaAI
+- **Website Provider:** https://nana.mwcs.dev
+- **Kategori:** AI tools, Dev Tools, AI Provider
 - **Status:** active
 
-**Deskripsi:** Dukungan infrastruktur bagi startup tahap awal dari DigitalOcean yang menyertakan kredit komputasi awan serta akses penggunaan GPU untuk model AI.
+**Deskripsi:** ⚠️ Ada laporan free plan sudah tidak bisa diklaim. NanaAI adalah platform API key AI yang menyediakan free plan Mimo v2.5 dan Mimo v2.5 Pro. Cukup top up minimal $1 sebagai verifikasi user untuk hindari abuse, free plan langsung aktif selama 30 hari dengan limit harian 3M. Jangan abuse — akun akan dibanned jika ketahuan abuse!
 
 **Benefit:**
-- Kredit komputasi cloud hingga batas $100.000
-- Penggunaan instans GPU gratis hingga 3 bulan atau tarif diskon Droplet GPU senilai $1,90/jam selama 12 bulan
-- Akses dukungan Standard-tier berbayar secara gratis selama 15 bulan dengan prioritas respons
+- Free akses Mimo v2.5 dan Mimo v2.5 Pro
+- Model gratis: mimo-v2.5-pro & mimo-v2.5
+- Free saldo dan plan untuk referral program
+- Limit harian 3M selama 30 hari
+- Hasil referral dibagikan gratis di Discord bansos.dev
 
 **Cara Klaim:**
-1. Usia perusahaan harus di bawah 2 tahun dengan total pendanaan terkumpul di bawah $10 juta (Seri A atau lebih rendah)
-2. Wajib berafiliasi dengan akselerator/VC mitra resmi atau berstatus sebagai startup berfokus AI (AI-native)
-3. Pendaftar adalah entitas produk, bukan agensi konsultan maupun development shop
-4. Memiliki kartu kredit yang valid terdaftar di akun tim DigitalOcean
+1. Daftar akun di NanaAI
+2. Top up minimal $1 sebagai verifikasi user (anti-abuse)
+3. Jangan abuse — akun akan dibanned jika ketahuan menyalahgunakan
 
-- **CTA Link:** https://www.digitalocean.com/hatch/
-- **Berlaku:** uncertain (Kredit komputasi hangus secara otomatis 12 bulan sejak penerimaan program)
+- **CTA Link:** https://nana.mwcs.dev/signup?ref=5JT7QA
+- **Sumber:** https://nana.mwcs.dev
+- **Tips:** ⚠️ LAPORAN: Free plan dilaporkan sudah tidak bisa diklaim. Top up $1 minimal untuk aktivasi, free plan langsung aktif. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Manfaatkan program referral untuk saldo tambahan dan perpanjangan plan. JANGAN abuse — akun akan dibanned!
+- **Berlaku:** uncertain (Free plan aktif selama 30 hari setelah top up, ada kemungkinan diperpanjang otomatis tanpa perlu top up ulang)
 
-🔗 **Link Detail:** https://bansos.dev/list/digitalocean-hatch/
+🔗 **Link Detail:** https://bansos.dev/list/mimo-plan-free-nanaai/
 
 ---
 
@@ -445,86 +1083,82 @@
 
 ---
 
-### Akses API Model MiniMax-M3 Gratis di TokenRouter
+### Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan
 
-- **ID:** `tokenrouter-minimax-m3-free`
-- **Provider:** TokenRouter
-- **Kategori:** AI Credits
+- **ID:** `namecheap-vps-hosting`
+- **Provider:** Namecheap
+- **Kategori:** VPS & Server, Hosting, Free Tier
 - **Status:** active
 
-**Deskripsi:** TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.
+**Deskripsi:** Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.
 
 **Benefit:**
-- Akses model MiniMax-M3 gratis untuk waktu terbatas
-- Biaya input dan output $0.0000 per token
+- Plan VPS mulai dari Spark sampai Hypernova
+- Mulai dari 1 CPU, RAM 1GB, SSD 20GB, bandwidth 1000GB
+- Pilihan manajemen server serta root access dan kontrol panel
+- Tersedia free trial sebelum upgrade ke berlangganan
 
 **Cara Klaim:**
-1. Lakukan pendaftaran atau login pada platform TokenRouter
-2. Integrasikan dan panggil model MiniMax-M3 pada permintaan API
+1. Buat/masuk akun Namecheap
+2. Pilih plan VPS sesuai kebutuhan dan sumber daya yang kamu butuhkan
+3. Lanjutkan checkout dan pilih durasi billing
 
-- **CTA Link:** https://www.tokenrouter.com/
-- **Berlaku:** fixed — 2026-06-17 (Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026)
+- **CTA Link:** https://www.namecheap.com/hosting/vps/
+- **Berlaku:** uncertain (Promo dan harga ditampilkan sesuai periode di halaman resmi)
 
-🔗 **Link Detail:** https://bansos.dev/list/tokenrouter-minimax-m3-free/
+🔗 **Link Detail:** https://bansos.dev/list/namecheap-vps-hosting/
 
 ---
 
-### GLM-5.2 Gratis 5 Hari di ZCode
+### Neosantara AI Gateway: Bonus Rp 20.000 + Kredit Rp 10.000/Bulan
 
-- **ID:** `zcode-glm-52-free`
-- **Provider:** Z.ai
-- **Kategori:** AI Tools, Developer Tools
+- **ID:** `neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan`
+- **Provider:** Neosantara
+- **Kategori:** AI, AI Credits, AI Tools, API, No Credit Card, Free Tier, Gratisan, Developer Tools
 - **Status:** active
 
-**Deskripsi:** ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.
+**Deskripsi:** Gateway API AI terpadu untuk developer Indonesia yang menyatukan 40+ model AI terbaik dunia (seperti Claude, Gemini, GPT, hingga Llama) dalam satu endpoint kompatibel SDK OpenAI & Anthropic.
 
 **Benefit:**
-- Gratis 5 hari untuk pengguna baru
-- Akses GLM flagship model
-- Bisa mencoba GLM-5.2 jika tersedia di akun ZCode
-- Cocok untuk coding agent dan long-horizon task
-- Kuota 150% di aplikasi untuk pengguna GLM Coding Plan
+- Welcome bonus Rp 20.000 gratis saat pendaftaran
+- Reset kredit gratis Rp 10.000 setiap bulan
 
 **Cara Klaim:**
-1. Download ZCode
-2. Buat atau login akun Z.ai
-3. Aktifkan GLM Start Plan
-4. Pilih model GLM-5.2 jika tersedia
-5. Gunakan lewat aplikasi ZCode
+1. Daftar akun di Neosantara
+2. Buat API Key pertama Anda di dashboard untuk mulai menggunakan di https://app.neosantara.xyz/api-keys
 
-- **CTA Link:** https://zcode.z.ai/en
-- **Sumber:** https://zcode.z.ai/en/changelog
-- **Berlaku:** uncertain (Promo tersedia sejak rilis ZCode 3.0.0 dan dapat berubah sewaktu-waktu)
+- **CTA Link:** https://app.neosantara.xyz/signup
+- **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/zcode-glm-52-free/
+🔗 **Link Detail:** https://bansos.dev/list/neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan/
 
 ---
 
-### 200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder
+### NobleHost - Web Hosting Gratis
 
-- **ID:** `qoder-qwen-max-free`
-- **Provider:** Qoder
-- **Kategori:** AI Credits
+- **ID:** `noblehost-hosting-gratis`
+- **Provider:** NobleHost
+- **Kategori:** Hosting, Domain, Cloud Services
 - **Status:** active
 
-**Deskripsi:** Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.
+**Deskripsi:** NobleHost adalah platform hosting gratis dengan fitur lengkap untuk developer, mahasiswa, dan siapa aja yang butuh hosting website tanpa keluar duit. NobleHost cocok buat portfolio, tugas kuliah, side project, atau blog.
 
 **Benefit:**
-- 200 panggilan model Qwen3.7-Max gratis per hari yang diatur ulang setiap tengah malam
-- Berlaku untuk semua tipe akun termasuk Community, Pro Trial, Pro, Pro+, Ultra, dan Teams
-- Berlaku untuk integrasi di Qoder Desktop, JetBrains Plugin, CLI, QoderWork, dan QoderWake
-- Tarif diskon setengah harga tetap berlaku jika batas kuota 200 panggilan habis (bagi pengguna akun berbayar)
+- Hosting gratis selamanya
+- Subdomain dan custom domain + Auto SSL
+- Panel dashboard mudah dengan fitur lengkap
 
 **Cara Klaim:**
-1. Lakukan pembaruan klien atau produk Qoder ke versi paling baru
-2. Pilih model Qwen3.7-Max di dalam antarmuka sebelum melakukan permintaan
-3. Klaim hanya berlaku bagi akun pertama yang berhasil login pada satu perangkat/komputer selama kampanye berjalan
+1. Daftar akun
+2. Verifikasi email
+3. Setuju dengan kebijakan penggunaan
 
-- **CTA Link:** https://qoder.com/
-- **Sumber:** https://docs.qoder.com/events/qwen-max-daily-free
-- **Berlaku:** uncertain (tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut)
+- **CTA Link:** https://noblehost.xyz/
+- **Sumber:** https://noblehost.xyz
+- **Tips:** Tinggal Klik buat website pertama kamu, pilih domain, dan langsung live di internet
+- **Berlaku:** forever (Selama layanan aktif)
 
-🔗 **Link Detail:** https://bansos.dev/list/qoder-qwen-max-free/
+🔗 **Link Detail:** https://bansos.dev/list/noblehost-hosting-gratis/
 
 ---
 
@@ -556,109 +1190,166 @@
 
 ---
 
-### Google AI Pro Gratis 4 Bulan
+### Free $5 Credit in Opencode GO - Referral links
 
-- **ID:** `google-ai-pro-4-bulan`
-- **Provider:** Google
-- **Kategori:** AI Tools, Cloud Services
+- **ID:** `opencode-go-free-5-credit`
+- **Provider:** Opencode Go
+- **Kategori:** AI Credits, AI, API, Promo
 - **Status:** active
 
-**Deskripsi:** Dapatkan akses gratis Google AI Pro selama 4 bulan dengan berbagai keuntungan eksklusif via referral (kuota referral bisa terbatas, cek di source).
+**Deskripsi:** Subscribe ke opencode go ai untuk mendapatkan free $5 melalui akun kamu
 
 **Benefit:**
-- Antigravity
-- Gemini Pro
-- Penyimpanan 5TB Google Drive/Gmail
+- Free $5 Credit
 
 **Cara Klaim:**
-1. Buat akun
-2. Klaim program melalui link
+1. Subscribe Opencode AI
 
-- **CTA Link:** http://g.co/g1referral/JG620Z3F
-- **Sumber:** https://www.threads.com/@akbrzz/post/DZpViYIFP0M
-- **Berlaku:** uncertain (Berlaku selama promosi berlangsung)
-
-🔗 **Link Detail:** https://bansos.dev/list/google-ai-pro-4-bulan/
-
----
-
-### Gemini Plus 3 Bulan via Bima+
-
-- **ID:** `gemini-plus-3bulan-sim`
-- **Provider:** Bima3
-- **Kategori:** AI Credits, AI Tools
-- **Status:** active
-
-**Deskripsi:** Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.
-
-**Benefit:**
-- Kuota Gemini Plus selama 3 bulan
-- Aktif untuk pengguna nomor 3
-- Bisa klaim langsung dari aplikasi Bima
-
-**Cara Klaim:**
-1. Buka aplikasi Bima+ (Bima 3)
-2. Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari
-3. Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS
-4. Ikuti petunjuk aktivasi pada link tersebut
-
-- **CTA Link:** https://bima.tri.co.id
-- **Sumber:** https://tri.co.id/google-gemini
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/gemini-plus-3bulan-sim/
-
----
-
-### Gratis 10JT Token AI / Hari
-
-- **ID:** `codecrafters-free-token`
-- **Provider:** CodeCrafters
-- **Kategori:** AI Tools, API
-- **Status:** active
-
-**Deskripsi:** Gratis 10 Juta token / Hari untuk teman-teman developer
-
-**Benefit:**
-- Gratis 10JT Token/Hari
-- Mimo 2.5
-- Deepseek V4 Flash
-
-**Cara Klaim:**
-1. Memiliki akun codecrafters
-2. Saldo Credit LLM 10K - Bisa mereferensikan 2 orang teman untuk mendapatkan credit / top up / gunakan voucher di atas
-
-- **Kode Promo:** `BANSOSDEV`
-- **CTA Link:** https://cloud.codecrafters.id
+- **CTA Link:** https://opencode.ai/go?ref=YCFKG306YB
 - **Berlaku:** forever
 
-🔗 **Link Detail:** https://bansos.dev/list/codecrafters-free-token/
+🔗 **Link Detail:** https://bansos.dev/list/opencode-go-free-5-credit/
 
 ---
 
-### Xiaomi Mimo Gratis $2
+### Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel
 
-- **ID:** `xiaomi-mimo-gratis-2`
-- **Provider:** Xiaomi Mimo
+- **ID:** `openmodel-deepseek-v4-flash-free`
+- **Provider:** OpenModel
+- **Kategori:** AI, AI Credits, Gratisan
+- **Status:** active
+
+**Deskripsi:** OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.
+
+**Benefit:**
+- Akses gratis penuh ke model DeepSeek-V4-Flash
+- Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa
+- Mudah diuji dan diintegrasikan melalui platform OpenModel
+- Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi
+
+**Cara Klaim:**
+1. Daftar atau masuk ke akun OpenModel kamu
+2. Buka halaman pricing atau event resmi
+3. Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya
+
+- **CTA Link:** https://www.openmodel.ai/model-pricing/deepseek-v4-flash
+- **Berlaku:** uncertain (Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel)
+
+🔗 **Link Detail:** https://bansos.dev/list/openmodel-deepseek-v4-flash-free/
+
+---
+
+### FREE AKSES model deepseek-v4-flash - OpenModel.ai
+
+- **ID:** `openmodel-deepseek-v4-flash-free-access`
+- **Provider:** OpenModel
+- **Kategori:** AI Credits, API
+- **Status:** active
+
+**Deskripsi:** Gratis akses model deepseek-v4-flash di https://openmodel.ai
+
+Berlaku sampai tanggal 28 Juni 2026
+
+**Benefit:**
+- FREE akses model deepseek-v4-flash
+- Diskon model lain
+
+**Cara Klaim:**
+1. Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4
+2. Buat Apikey
+3. Arahkan base url : https://api.openmodel.ai/v1
+4. Gunakan model deepseek-v4-flash
+
+- **CTA Link:** https://www.openmodel.ai?ref=7GzdLml4
+- **Sumber:** https://www.openmodel.ai/event
+- **Berlaku:** fixed — 2026-06-28
+
+🔗 **Link Detail:** https://bansos.dev/list/openmodel-deepseek-v4-flash-free-access/
+
+---
+
+### 200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder
+
+- **ID:** `qoder-qwen-max-free`
+- **Provider:** Qoder
 - **Kategori:** AI Credits
 - **Status:** active
 
-**Deskripsi:** Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.
+**Deskripsi:** Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.
 
 **Benefit:**
-- credits $2
+- 200 panggilan model Qwen3.7-Max gratis per hari yang diatur ulang setiap tengah malam
+- Berlaku untuk semua tipe akun termasuk Community, Pro Trial, Pro, Pro+, Ultra, dan Teams
+- Berlaku untuk integrasi di Qoder Desktop, JetBrains Plugin, CLI, QoderWork, dan QoderWake
+- Tarif diskon setengah harga tetap berlaku jika batas kuota 200 panggilan habis (bagi pengguna akun berbayar)
 
 **Cara Klaim:**
-1. Registrasi akun di platform Xiaomi Mimo.
-2. Buka dashboard console di https://platform.xiaomimimo.com/console/balance.
-3. Klik tombol "Enter invite code" di pojok kiri bawah.
-4. Masukkan kode referal "NK2BLA" untuk mendapatkan saldo $2 gratis.
+1. Lakukan pembaruan klien atau produk Qoder ke versi paling baru
+2. Pilih model Qwen3.7-Max di dalam antarmuka sebelum melakukan permintaan
+3. Klaim hanya berlaku bagi akun pertama yang berhasil login pada satu perangkat/komputer selama kampanye berjalan
 
-- **Kode Promo:** `NK2BLA`
-- **CTA Link:** https://platform.xiaomimimo.com/?ref=NK2BLA
+- **CTA Link:** https://qoder.com/
+- **Sumber:** https://docs.qoder.com/events/qwen-max-daily-free
+- **Berlaku:** uncertain (tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut)
+
+🔗 **Link Detail:** https://bansos.dev/list/qoder-qwen-max-free/
+
+---
+
+### Free domain .XYZ
+
+- **ID:** `rumahweb-free-domain-xyz`
+- **Provider:** Rumahweb
+- **Kategori:** Domain, Free Tier, Diskon
+- **Status:** active
+
+**Deskripsi:** Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.
+
+**Benefit:**
+- Hosting free 1 bulan
+
+**Cara Klaim:**
+1. Daftar akun terlebih dahulu di website Rumahweb.
+2. Cek ketersediaan nama domain/subdomain yang diinginkan.
+3. Berikan rating dan review bintang 5 untuk Rumahweb di Google.
+4. Ambil screenshot sebagai bukti review yang berhasil dikirim.
+5. Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.
+6. Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja).
+
+- **CTA Link:** https://www.rumahweb.com/domain-gratis/
+- **Sumber:** https://www.rumahweb.com/domain-gratis
 - **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/xiaomi-mimo-gratis-2/
+🔗 **Link Detail:** https://bansos.dev/list/rumahweb-free-domain-xyz/
+
+---
+
+### Akses Gratis Model AI Xiaomi Mimo via ServerNusa
+
+- **ID:** `servernusa-free-xiaomi-mimo`
+- **Provider:** ServerNusa
+- **Kategori:** AI, AI Credits, Gratisan
+- **Status:** active
+
+**Deskripsi:** ServerNusa menyediakan akses gratis untuk menggunakan model AI Xiaomi Mimo. Layanan ini memungkinkan para pengembang dan antusias AI untuk mencoba, mengeksplorasi, dan mengintegrasikan model AI dari Xiaomi tanpa biaya langsung melalui infrastruktur ServerNusa.
+
+**Benefit:**
+- Akses Gratis ke Model AI Xiaomi Mimo
+- Tidak perlu mengatur infrastruktur atau server lokal
+- Proses integrasi yang mudah melalui platform ServerNusa
+
+**Cara Klaim:**
+1. Kunjungi halaman resmi model AI ServerNusa di tautan yang disediakan.
+2. Daftar untuk membuat akun baru atau masuk jika Anda sudah memiliki akun.
+3. Arahkan ke dasbor model AI dan cari model 'Xiaomi Mimo' dari daftar yang tersedia.
+4. Dapatkan kredensial atau akses API Anda untuk mulai menggunakan model tersebut dalam proyek Anda.
+
+- **CTA Link:** https://servernusa.com/ai/models
+- **Sumber:** https://www.threads.com/@panggilajadwiya/post/DZ0JwFTks3y
+- **Tips:** Selalu simpan kredensial API Anda dengan aman dan jangan mengeksposnya di repositori publik.
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/servernusa-free-xiaomi-mimo/
 
 ---
 
@@ -720,6 +1411,119 @@
 
 ---
 
+### Tencent Cloud Free Tier (Trial Gratis 30+ Produk)
+
+- **ID:** `tencent-cloud-free-tier`
+- **Provider:** Tencent Cloud
+- **Kategori:** Cloud Services, Free Tier, VPS & Server, Hosting
+- **Status:** active
+
+**Deskripsi:** Tencent Cloud menyediakan free trial untuk lebih dari 30 produk cloud, termasuk komputasi, storage, jaringan, komunikasi real-time, dan layanan AI.
+
+**Benefit:**
+- Lighthouse 2C2G gratis selama 3 bulan
+- Cloud Virtual Machine 2C4G gratis selama 3 bulan
+- Cloud Object Storage 50GB gratis selama 6 bulan
+- TRTC 10.000 menit gratis setiap bulan
+- EdgeOne gratis selama 14 hari
+- Tencent Hunyuan 3D 200 kredit gratis selama 1 tahun
+
+**Cara Klaim:**
+1. Buat atau masuk ke akun Tencent Cloud
+2. Selesaikan verifikasi akun
+3. Belum pernah menggunakan atau mencoba produk Tencent Cloud terkait
+4. Periksa konfigurasi trial dan aturan produk sebelum mengaktifkan
+
+- **CTA Link:** https://www.tencentcloud.com/act/pro/FreeTier
+- **Sumber:** https://www.tencentcloud.com/act/pro/FreeTier
+- **Berlaku:** uncertain (Durasi dan kuota berbeda untuk setiap produk. Trial hanya tersedia bagi pengguna baru produk terkait dan mengikuti aturan resmi Tencent Cloud.)
+
+🔗 **Link Detail:** https://bansos.dev/list/tencent-cloud-free-tier/
+
+---
+
+### TokenGO API Inference Free $10 (5M Token)
+
+- **ID:** `tokengo-inference-api`
+- **Provider:** TokenGO
+- **Kategori:** AI API, LLM, Free Tier
+- **Status:** active
+
+**Deskripsi:** API inference self-operated buat open-weight LLM (DeepSeek V4, GLM 5.2, Qwen3.5) dan model video. OpenAI-compatible, tinggal ganti base URL. Daftar langsung dapat kredit gratis $10 setara 5M token — cukup buat nyoba semua model tanpa kartu kredit.
+
+**Benefit:**
+- Gratis $10 kredit setara 5M token langsung setelah daftar dengan link refferal
+- OpenAI-compatible
+- Model open-weight: DeepSeek V4, GLM 5.2, Qwen3.5, konteks sampai 203K
+- Pay-as-you-go mulai $0.10/Juta token input
+
+**Cara Klaim:**
+1. Daftar akun baru
+2. Login dan dapatkan bonus 10$
+3. Buat API Key per key, pakai base URL OpenAI-compatible di app kamu
+
+- **CTA Link:** https://dashboard.tokengo.com/sign-up?aff=7ZOW&utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos
+- **Berlaku:** uncertain (Kredit gratis $10 berlaku sesuai ketentuan TokenGO; harga dan model mengikuti halaman pricing resmi)
+
+🔗 **Link Detail:** https://bansos.dev/list/tokengo-inference-api/
+
+---
+
+### Akses API Model MiniMax-M3 Gratis di TokenRouter
+
+- **ID:** `tokenrouter-minimax-m3-free`
+- **Provider:** TokenRouter
+- **Kategori:** AI Credits
+- **Status:** active
+
+**Deskripsi:** TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.
+
+**Benefit:**
+- Akses model MiniMax-M3 gratis untuk waktu terbatas
+- Biaya input dan output $0.0000 per token
+
+**Cara Klaim:**
+1. Lakukan pendaftaran atau login pada platform TokenRouter
+2. Integrasikan dan panggil model MiniMax-M3 pada permintaan API
+
+- **CTA Link:** https://www.tokenrouter.com/
+- **Berlaku:** fixed — 2026-06-17 (Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026)
+
+🔗 **Link Detail:** https://bansos.dev/list/tokenrouter-minimax-m3-free/
+
+---
+
+### Free Credits TokenRouter buat Jajan Model AI
+
+- **ID:** `tokenrouter-model-gateway`
+- **Provider:** TokenRouter
+- **Kategori:** AI Credits, Diskon
+- **Status:** active
+
+**Deskripsi:** TokenRouter lagi bagi-bagi bonus credit buat developer yang butuh akses model AI tanpa dompet langsung menangis. Bisa top-up bonus 40% atau apply developer credits kalau eligible.
+
+**Benefit:**
+- Top up 6, dapat 4 credit gratis (bonus 40% off)
+- Mulai top-up dari $1, jadi gak harus all-in kayak founder baru dapet funding
+- Maksimal top-up $60.000 dan bonus sampai $40.000 per orang untuk voucher
+- Bisa apply $200 developer credits kalau ikut campaign Get 40% Off
+- Developer credits berlaku 30 hari setelah disetujui
+
+**Cara Klaim:**
+1. Buka campaign rules TokenRouter dan login ke akun kamu
+2. Top-up minimal $1 untuk mulai klaim bonus
+3. Klaim sebelum 17 Juni 2026 supaya aman dari batas campaign menurut reviewer yang sudah pakai
+4. Untuk $200 developer credits, ikut dulu campaign Get 40% Off lalu submit form klaim
+5. Pastikan kamu cek rules resmi karena approval dan voucher bisa punya ketentuan tambahan
+
+- **CTA Link:** https://www.tokenrouter.com/campaign-rules
+- **Tips:** Kalau modal masih tipis, mulai dari $1 dulu. Kejar sebelum 17 Juni 2026 biar gak mepet dan jangan lupa baca campaign rules.
+- **Berlaku:** fixed — 2026-06-17 (Reviewer menyarankan klaim maksimal 17 Juni 2026)
+
+🔗 **Link Detail:** https://bansos.dev/list/tokenrouter-model-gateway/
+
+---
+
 ### Free stream Fifa World Cup 2026 No Iklan
 
 - **ID:** `tvstreamindonesia-fifa-2026`
@@ -745,487 +1549,6 @@
 - **Berlaku:** uncertain
 
 🔗 **Link Detail:** https://bansos.dev/list/tvstreamindonesia-fifa-2026/
-
----
-
-### Free domain .XYZ
-
-- **ID:** `rumahweb-free-domain-xyz`
-- **Provider:** Rumahweb
-- **Kategori:** Domain, Free Tier, Diskon
-- **Status:** active
-
-**Deskripsi:** Dapatkan domain gratis .XYZ dan hosting free selama 1 bulan dari Rumahweb dengan memberikan review bintang 5 di Google. Kuota maksimal 6 domain per hari dan permohonan akan diproses pada hari kerja.
-
-**Benefit:**
-- Hosting free 1 bulan
-
-**Cara Klaim:**
-1. Daftar akun terlebih dahulu di website Rumahweb.
-2. Cek ketersediaan nama domain/subdomain yang diinginkan.
-3. Berikan rating dan review bintang 5 untuk Rumahweb di Google.
-4. Ambil screenshot sebagai bukti review yang berhasil dikirim.
-5. Upload screenshot tersebut melalui formulir promosi domain .XYZ yang disediakan.
-6. Tunggu proses verifikasi dan aktivasi (biasanya diproses 30-60 menit sesuai antrean, atau maksimal 1-2 hari kerja).
-
-- **CTA Link:** https://www.rumahweb.com/domain-gratis/
-- **Sumber:** https://www.rumahweb.com/domain-gratis
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/rumahweb-free-domain-xyz/
-
----
-
-### Free $200 Credit API LLM Populer
-
-- **ID:** `agentrouter-free-credits`
-- **Provider:** AgentRouter
-- **Kategori:** AI Tools, AI Credits, API
-- **Status:** active
-
-**Deskripsi:** Langsung dapat $200 setelah mendaftar.
-
-Tersedia 10 model LLM yang bisa digunakan melalui API key.
-
-**Benefit:**
-- Free Signup Credits
-
-**Cara Klaim:**
-1. Daftar akun
-
-- **CTA Link:** https://agentrouter.org/register?aff=qdG1
-- **Sumber:** https://agentrouter.org/register?aff=qdG1
-- **Berlaku:** forever
-
-🔗 **Link Detail:** https://bansos.dev/list/agentrouter-free-credits/
-
----
-
-### GLM-5.2 Lagi Gratis!
-
-- **ID:** `zenmux-glm-52-free`
-- **Provider:** Z.ai
-- **Kategori:** AI Credits
-- **Status:** active
-
-**Deskripsi:** salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.
-
-**Benefit:**
-- GLM 5.2 Free sampe limit habis
-
-**Cara Klaim:**
-1. Daftar via invite link
-
-- **Kode Promo:** `7RR544`
-- **CTA Link:** https://zenmux.ai/invite/7RR544
-- **Sumber:** https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/zenmux-glm-52-free/
-
----
-
-### AgentRouter Free $250 AI Credit
-
-- **ID:** `agentrouter-free-250-ai-credit`
-- **Provider:** AgentRouter
-- **Kategori:** AI Tools, AI Credits, API, Developer Tools, Free Tier
-- **Status:** active
-
-**Deskripsi:** AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.
-
-**Benefit:**
-- Mendapatkan $250 AI credit untuk pengguna baru
-- Tambahan credit
-- Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2
-- Satu API, banyak AI
-
-**Cara Klaim:**
-1. Daftar menggunakan akun GitHub lama/old account
-2. Registrasi melalui link referral yang tersedia
-3. Login dan cek saldo credit di dashboard AgentRouter
-4. Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter
-
-- **CTA Link:** https://agentrouter.org/register?aff=txsb
-- **Sumber:** https://agentrouter.org/register?aff=txsb
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/agentrouter-free-250-ai-credit/
-
----
-
-### Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)
-
-- **ID:** `gumloop-free-credits`
-- **Provider:** Gumloop
-- **Kategori:** AI, AI Credits, Gratisan
-- **Status:** active
-
-**Deskripsi:** Gumloop menawarkan hingga 6.600 kredit agen AI gratis untuk pengguna baru. Daftar untuk menerima 5.000 kredit rutin setiap bulan, ditambah bonus tambahan satu kali sebesar 1.600 kredit di bulan pertama Anda dengan menghubungkan aplikasi pihak ketiga seperti Google Docs. Gunakan kredit ini untuk mengakses dan menjalankan berbagai model AI populer dengan mudah.
-
-**Benefit:**
-- 5.000 Kredit Rutin Bulanan
-- 1.600 Bonus Koneksi (Satu Kali)
-- Akses ke Berbagai Model AI Populer
-- Integrasi Mudah dengan Aplikasi Pihak Ketiga (mis. Google Docs)
-
-**Cara Klaim:**
-1. Buat akun baru
-2. Hubungkan aplikasi eksternal (untuk mendapatkan kredit bonus)
-
-- **CTA Link:** https://www.gumloop.com/
-- **Sumber:** https://www.gumloop.com/pricing
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/gumloop-free-credits/
-
----
-
-### Akses Gratis Model AI DeepSeek-V4-Flash di OpenModel
-
-- **ID:** `openmodel-deepseek-v4-flash-free`
-- **Provider:** OpenModel
-- **Kategori:** AI, AI Credits, Gratisan
-- **Status:** active
-
-**Deskripsi:** OpenModel sedang mengadakan event yang memberikan akses gratis untuk model AI terbaru, DeepSeek-V4-Flash. Sangat cocok bagi developer yang ingin mencoba dan mengintegrasikan model bahasa canggih berkecepatan tinggi tanpa biaya.
-
-**Benefit:**
-- Akses gratis penuh ke model DeepSeek-V4-Flash
-- Performa AI yang cepat untuk berbagai tugas pemrosesan bahasa
-- Mudah diuji dan diintegrasikan melalui platform OpenModel
-- Sangat cocok untuk riset, eksperimen, maupun pengembangan aplikasi
-
-**Cara Klaim:**
-1. Daftar atau masuk ke akun OpenModel kamu
-2. Buka halaman pricing atau event resmi
-3. Pilih model DeepSeek-V4-Flash dan mulai gunakan akses gratisnya
-
-- **CTA Link:** https://www.openmodel.ai/model-pricing/deepseek-v4-flash
-- **Berlaku:** uncertain (Berlaku selama periode event promosi berlangsung di situs web resmi OpenModel)
-
-🔗 **Link Detail:** https://bansos.dev/list/openmodel-deepseek-v4-flash-free/
-
----
-
-### Akses Gratis Model AI Xiaomi Mimo via ServerNusa
-
-- **ID:** `servernusa-free-xiaomi-mimo`
-- **Provider:** ServerNusa
-- **Kategori:** AI, AI Credits, Gratisan
-- **Status:** active
-
-**Deskripsi:** ServerNusa menyediakan akses gratis untuk menggunakan model AI Xiaomi Mimo. Layanan ini memungkinkan para pengembang dan antusias AI untuk mencoba, mengeksplorasi, dan mengintegrasikan model AI dari Xiaomi tanpa biaya langsung melalui infrastruktur ServerNusa.
-
-**Benefit:**
-- Akses Gratis ke Model AI Xiaomi Mimo
-- Tidak perlu mengatur infrastruktur atau server lokal
-- Proses integrasi yang mudah melalui platform ServerNusa
-
-**Cara Klaim:**
-1. Kunjungi halaman resmi model AI ServerNusa di tautan yang disediakan.
-2. Daftar untuk membuat akun baru atau masuk jika Anda sudah memiliki akun.
-3. Arahkan ke dasbor model AI dan cari model 'Xiaomi Mimo' dari daftar yang tersedia.
-4. Dapatkan kredensial atau akses API Anda untuk mulai menggunakan model tersebut dalam proyek Anda.
-
-- **CTA Link:** https://servernusa.com/ai/models
-- **Sumber:** https://www.threads.com/@panggilajadwiya/post/DZ0JwFTks3y
-- **Tips:** Selalu simpan kredensial API Anda dengan aman dan jangan mengeksposnya di repositori publik.
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/servernusa-free-xiaomi-mimo/
-
----
-
-### FREE 1 Year subscription ATOMESUS
-
-- **ID:** `atomesus-free-1-year-subscription`
-- **Provider:** ATOMESUS
-- **Kategori:** AI
-- **Status:** active
-
-**Deskripsi:** Bansos dari platform penyedia layanan AI bernama Atomesus. Mereka sedang membagikan akses langganan AI premium secara cuma-cuma selama satu tahun penuh kepada penggunanya melalui penggunaan kode penukaran khusus (redeem code).
-
-**Benefit:**
-- Mendapatkan langganan Atomesus gratis selama 1 tahun penuh (Prime Plan).
-- Memiliki kemampuan untuk membuat gambar (generate images).
-
-**Cara Klaim:**
-1. Buat akun di platform atau aplikasi Atomesus.
-2. Arahkan atau navigasikan ke menu Apply Referral Code.
-3. Ketik dan masukkan kode kupon/redeem ini: ATOMESUS.
-
-- **Kode Promo:** `ATOMESUS`
-- **CTA Link:** https://www.atomesus.com/
-- **Sumber:** https://www.threads.com/@atomesus/post/DZzXJySAc_g
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/atomesus-free-1-year-subscription/
-
----
-
-### Neosantara AI Gateway: Bonus Rp 20.000 + Kredit Rp 10.000/Bulan
-
-- **ID:** `neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan`
-- **Provider:** Neosantara
-- **Kategori:** AI, AI Credits, AI Tools, API, No Credit Card, Free Tier, Gratisan, Developer Tools
-- **Status:** active
-
-**Deskripsi:** Gateway API AI terpadu untuk developer Indonesia yang menyatukan 40+ model AI terbaik dunia (seperti Claude, Gemini, GPT, hingga Llama) dalam satu endpoint kompatibel SDK OpenAI & Anthropic.
-
-**Benefit:**
-- Welcome bonus Rp 20.000 gratis saat pendaftaran
-- Reset kredit gratis Rp 10.000 setiap bulan
-
-**Cara Klaim:**
-1. Daftar akun di Neosantara
-2. Buat API Key pertama Anda di dashboard untuk mulai menggunakan di https://app.neosantara.xyz/api-keys
-
-- **CTA Link:** https://app.neosantara.xyz/signup
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/neosantara-ai-gateway-bonus-rp-20000-kredit-rp-10000-bulan/
-
----
-
-### FREE AKSES model deepseek-v4-flash - OpenModel.ai
-
-- **ID:** `openmodel-deepseek-v4-flash-free-access`
-- **Provider:** OpenModel
-- **Kategori:** AI Credits, API
-- **Status:** active
-
-**Deskripsi:** Gratis akses model deepseek-v4-flash di https://openmodel.ai
-
-Berlaku sampai tanggal 28 Juni 2026
-
-**Benefit:**
-- FREE akses model deepseek-v4-flash
-- Diskon model lain
-
-**Cara Klaim:**
-1. Daftar Akun disini https://www.openmodel.ai?ref=7GzdLml4
-2. Buat Apikey
-3. Arahkan base url : https://api.openmodel.ai/v1
-4. Gunakan model deepseek-v4-flash
-
-- **CTA Link:** https://www.openmodel.ai?ref=7GzdLml4
-- **Sumber:** https://www.openmodel.ai/event
-- **Berlaku:** fixed — 2026-06-28
-
-🔗 **Link Detail:** https://bansos.dev/list/openmodel-deepseek-v4-flash-free-access/
-
----
-
-### Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month
-
-- **ID:** `adobe-creative-cloud-pro-trial`
-- **Provider:** Adobe
-- **Kategori:** Cloud Services, Free Tier, Gratisan
-- **Status:** active
-
-**Deskripsi:** Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly
-
-**Benefit:**
-- Adobe Creative Cloud Pro
-
-**Cara Klaim:**
-1. Pembayaran Menggunakan DANA/CC
-
-- **CTA Link:** https://s.ricoaditya.com/adobe-creative-cloud-pro
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/adobe-creative-cloud-pro-trial/
-
----
-
-### Free HOSTING | diskon.com
-
-- **ID:** `diskon-free-hosting`
-- **Provider:** Diskon
-- **Kategori:** Hosting
-- **Status:** active
-
-**Deskripsi:** Hosting gratis Diskon.com adalah layanan hosting tanpa biaya yang memungkinkan siapa pun membuat website dan mengelola hosting dengan mudah. Hosting gratis Diskon.com cocok untuk siapa saja, bahkan buat yang ingin belajar membangun website.
-
-**Benefit:**
-- Nikmati hosting gratis selamanya tanpa kewajiban upgrade.
-- Control panel hosting yang mudah digunakan, cocok untuk yang baru pertama kali bikin website.
-- Tidak perlu verifikasi ribet. Hosting gratis langsung siap dipakai.
-- Saat website kamu sudah gede, bisa upgrade ke hosting berbayar dengan fitur lebih lengkap.
-
-**Cara Klaim:**
-1. Daftar Akun Pakai Email atau Google
-2. Verifikasi Akun Kamu
-3. Tinggal Klik, Langsung Online!
-
-- **CTA Link:** https://diskon.com/?go=risal.full.diskon.cloud399029
-- **Sumber:** https://diskon.com
-- **Berlaku:** forever
-
-🔗 **Link Detail:** https://bansos.dev/list/diskon-free-hosting/
-
----
-
-### Claim 7M token free
-
-- **ID:** `claim-7m-token-free`
-- **Provider:** Bynara
-- **Kategori:** AI, AI Credits, API
-- **Status:** active
-
-**Deskripsi:** Setiap akun mendapatkan kredit gratis hingga sekitar 7 juta per hari dan kuotanya diperbarui secara berkala, jadi cukup menarik untuk eksperimen, coding agent, maupun testing berbagai model.
-
-**Benefit:**
-- claude-sonnet-4.5
-- mistral-large
-- mistral-medium-3-5
-- claude-haiku-4.5
-- deepseek-3.2
-- glm-5
-
-**Cara Klaim:**
-1. Registrasi akun di Nararouter melalui link tersedia
-2. Verifikasi email dan login ke dashboard
-3. Akses AI Models dan mulai gunakan 7M token gratis per hari
-
-- **CTA Link:** https://router.bynara.id/register?ref=CJWVMGPR
-- **Sumber:** https://router.bynara.id/register?ref=CJWVMGPR
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/claim-7m-token-free/
-
----
-
-### Free $5 Credit in Opencode GO - Referral links
-
-- **ID:** `opencode-go-free-5-credit`
-- **Provider:** Opencode Go
-- **Kategori:** AI Credits, AI, API, Promo
-- **Status:** active
-
-**Deskripsi:** Subscribe ke opencode go ai untuk mendapatkan free $5 melalui akun kamu
-
-**Benefit:**
-- Free $5 Credit
-
-**Cara Klaim:**
-1. Subscribe Opencode AI
-
-- **CTA Link:** https://opencode.ai/go?ref=YCFKG306YB
-- **Berlaku:** forever
-
-🔗 **Link Detail:** https://bansos.dev/list/opencode-go-free-5-credit/
-
----
-
-### CLAUDE opus 4.8 1tahun 500k
-
-- **ID:** `merlin-ai-claude-opus-48-diskon-1tahun`
-- **Provider:** Merlin AI
-- **Kategori:** Diskon, AI
-- **Status:** active
-
-**Deskripsi:** Merlin AI menawarkan diskon untuk paket Pro Plan selama 1 tahun. Promo ini dipastikan tetap tersedia, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.
-
-**Benefit:**
-- Pro Subscription 1 Tahun
-- Teams
-
-**Cara Klaim:**
-1. Berlangganan dengan code promo
-
-- **Kode Promo:** `HY2`
-- **CTA Link:** https://www.getmerlin.in/chat?ref=nwe2zwf
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/merlin-ai-claude-opus-48-diskon-1tahun/
-
----
-
-### Promo Domain .MY.ID Gratis dari Jagoan Hosting
-
-- **ID:** `jagoanhosting-promo-domain-myid`
-- **Provider:** Jagoan Hosting
-- **Website Provider:** https://www.jagoanhosting.com
-- **Kategori:** Domain, Diskon
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Domain .MY.ID gratis pakai kode promo FREEMYID1000 dari Jagoan Hosting. Cocok buat kamu yang pengen punya domain personal Indonesia tanpa biaya, periodenya terbatas!
-
-**Benefit:**
-- Domain .MY.ID gratis 1 tahun
-- Cocok untuk website pribadi, portofolio, atau blog
-- Proses klaim mudah dan cepat
-- Promo terbatas, jangan sampai kehabisan
-
-**Cara Klaim:**
-1. Buka link promo https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
-2. Pilih domain dengan ekstensi .MY.ID
-3. Masukkan kode promo FREEMYID1000 saat checkout
-4. Selesaikan pemesanan
-
-- **Kode Promo:** `FREEMYID1000`
-- **CTA Link:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
-- **Sumber:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.my.id
-- **Berlaku:** fixed — 2026-06-30 (Promo berlaku sampai 30 Juni 2026, terbatas)
-
-🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-domain-myid/
-
----
-
-### Freebuff — AI Coding Agent & App Builder 100% Gratis
-
-- **ID:** `freebuff-ai-builder`
-- **Provider:** Freebuff
-- **Kategori:** AI, AI Tools, Developer Tools, Free Tier, Gratisan
-- **Status:** active
-
-**Deskripsi:** Platform AI coding agent 100% gratis. CLI untuk coding dari terminal (pengganti Claude Code, Codex, Cursor) dan Web untuk build full-stack app dari prompt (pengganti Lovable, Bolt). Tanpa API key, tanpa kartu kredit.
-
-**Benefit:**
-- Freebuff CLI: coding agent gratis di terminal
-- Freebuff Web: AI app builder dari prompt ke deployed app
-- Deploy & host app gratis, 230K+ developer aktif
-
-**Cara Klaim:**
-1. Node.js 18+ untuk CLI
-2. Akun gratis untuk Web
-
-- **CTA Link:** https://freebuff.com/web/?ref=ref-d93c889e-b603-4677-b2ab-cba5db701e9b
-- **Sumber:** https://freebuff.com/
-- **Berlaku:** forever
-
-🔗 **Link Detail:** https://bansos.dev/list/freebuff-ai-builder/
-
----
-
-### NobleHost - Web Hosting Gratis
-
-- **ID:** `noblehost-hosting-gratis`
-- **Provider:** NobleHost
-- **Kategori:** Hosting, Domain, Cloud Services
-- **Status:** active
-
-**Deskripsi:** NobleHost adalah platform hosting gratis dengan fitur lengkap untuk developer, mahasiswa, dan siapa aja yang butuh hosting website tanpa keluar duit. NobleHost cocok buat portfolio, tugas kuliah, side project, atau blog.
-
-**Benefit:**
-- Hosting gratis selamanya
-- Subdomain dan custom domain + Auto SSL
-- Panel dashboard mudah dengan fitur lengkap
-
-**Cara Klaim:**
-1. Daftar akun
-2. Verifikasi email
-3. Setuju dengan kebijakan penggunaan
-
-- **CTA Link:** https://noblehost.xyz/
-- **Sumber:** https://noblehost.xyz
-- **Tips:** Tinggal Klik buat website pertama kamu, pilih domain, dan langsung live di internet
-- **Berlaku:** forever (Selama layanan aktif)
-
-🔗 **Link Detail:** https://bansos.dev/list/noblehost-hosting-gratis/
 
 ---
 
@@ -1256,34 +1579,84 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### Promo exlusive Diskon VPS, Hosting JagoanHosting
+### Kredit Gratis Uji Coba xAI Grok API
 
-- **ID:** `jagoanhosting-promo-exclusive`
-- **Provider:** Jagoan Hosting
-- **Website Provider:** https://www.jagoanhosting.com
-- **Kategori:** Hosting, Diskon, VPS
+- **ID:** `xai-grok-api-credits`
+- **Provider:** xAI
+- **Kategori:** AI Credits, API
 - **Status:** active
-- **🔥 FEATURED**
 
-**Deskripsi:** Spesial dari Jagoan Hosting! Pakai kode promo JERITANJELATA dan nikmati potongan harga 10% khusus Shared Hosting. Berlaku untuk akun lama juga, tanpa syarat ribet!
+**Deskripsi:** xAI menyediakan kredit promosi bagi developer baru yang ingin menguji Grok API. Terdapat juga opsi kredit bulanan tambahan melalui keikutsertaan dalam program berbagi data.
 
 **Benefit:**
-- Potongan 10% untuk Shared Hosting
-- Bisa dipakai untuk akun lama (bukan cuma new user)
-- Tanpa batasan minimum transaksi
+- Kredit promosi awal sebesar $25 langsung setelah pendaftaran
+- Kredit tambahan hingga $150 per bulan dengan mengikuti program data sharing
 
 **Cara Klaim:**
-1. Pilih produk Shared Hosting yang diinginkan
-2. Masukkan kode promo JERITANJELATA saat checkout
-3. Pastikan diskon 10% sudah terapply di total tagihan
-4. Selesaikan pembayaran
+1. Buat akun di xAI Console dan hasilkan API key
+2. Aktifkan opsi berbagi data di pengaturan akun untuk mendapatkan kredit tambahan $150 per bulan
 
-- **Kode Promo:** `JERITANJELATA`
-- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
-- **Sumber:** https://www.jagoanhosting.com
-- **Berlaku:** forever
+- **CTA Link:** https://console.x.ai
+- **Berlaku:** uncertain (Kredit awal $25 kedaluwarsa 30 hari setelah pendaftaran)
 
-🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-exclusive/
+🔗 **Link Detail:** https://bansos.dev/list/xai-grok-api-credits/
+
+---
+
+### Xiaomi Mimo Gratis $2
+
+- **ID:** `xiaomi-mimo-gratis-2`
+- **Provider:** Xiaomi Mimo
+- **Kategori:** AI Credits
+- **Status:** active
+
+**Deskripsi:** Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.
+
+**Benefit:**
+- credits $2
+
+**Cara Klaim:**
+1. Registrasi akun di platform Xiaomi Mimo.
+2. Buka dashboard console di https://platform.xiaomimimo.com/console/balance.
+3. Klik tombol "Enter invite code" di pojok kiri bawah.
+4. Masukkan kode referal "NK2BLA" untuk mendapatkan saldo $2 gratis.
+
+- **Kode Promo:** `NK2BLA`
+- **CTA Link:** https://platform.xiaomimimo.com/?ref=NK2BLA
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/xiaomi-mimo-gratis-2/
+
+---
+
+### GLM-5.2 Gratis 5 Hari di ZCode
+
+- **ID:** `zcode-glm-52-free`
+- **Provider:** Z.ai
+- **Kategori:** AI Tools, Developer Tools
+- **Status:** active
+
+**Deskripsi:** ZCode menyediakan GLM Start Plan untuk pengguna baru, berisi akses 5 hari berturut-turut ke model flagship GLM. Cocok untuk mencoba GLM-5.2 untuk coding agent, debugging, refactor, dan pengerjaan proyek besar.
+
+**Benefit:**
+- Gratis 5 hari untuk pengguna baru
+- Akses GLM flagship model
+- Bisa mencoba GLM-5.2 jika tersedia di akun ZCode
+- Cocok untuk coding agent dan long-horizon task
+- Kuota 150% di aplikasi untuk pengguna GLM Coding Plan
+
+**Cara Klaim:**
+1. Download ZCode
+2. Buat atau login akun Z.ai
+3. Aktifkan GLM Start Plan
+4. Pilih model GLM-5.2 jika tersedia
+5. Gunakan lewat aplikasi ZCode
+
+- **CTA Link:** https://zcode.z.ai/en
+- **Sumber:** https://zcode.z.ai/en/changelog
+- **Berlaku:** uncertain (Promo tersedia sejak rilis ZCode 3.0.0 dan dapat berubah sewaktu-waktu)
+
+🔗 **Link Detail:** https://bansos.dev/list/zcode-glm-52-free/
 
 ---
 
@@ -1314,6 +1687,30 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** fixed — 2026-12-31 (Promo berlaku sampai 31 Desember 2026.)
 
 🔗 **Link Detail:** https://bansos.dev/list/zenhosta-gratis-domain-1-tahun/
+
+---
+
+### GLM-5.2 Lagi Gratis!
+
+- **ID:** `zenmux-glm-52-free`
+- **Provider:** Z.ai
+- **Kategori:** AI Credits
+- **Status:** active
+
+**Deskripsi:** salah satu model yang pernah nempatin ranking no 2 dunia ngimbangin opus dan dibawah fable5 sekarang lagi gratis di zenmux.ai.
+
+**Benefit:**
+- GLM 5.2 Free sampe limit habis
+
+**Cara Klaim:**
+1. Daftar via invite link
+
+- **Kode Promo:** `7RR544`
+- **CTA Link:** https://zenmux.ai/invite/7RR544
+- **Sumber:** https://www.threads.com/@akbrzz/post/DZresKEFMgY?xmt=AQG0Ud7rqWkB-PqgtBJK9c1enjrbQiUEyNk9foDgJo_1oQ
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/zenmux-glm-52-free/
 
 ---
 
@@ -1348,341 +1745,63 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### FreeModel Invite Referral — $10 Credit per Teman Daftar
-
-- **ID:** `freemodel-invite-referral-10`
-- **Provider:** FreeModel
-- **Website Provider:** https://freemodel.dev
-- **Kategori:** AI Credits, API, Free Tier
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.
-
-**Benefit:**
-- $10 API credit untuk kamu dan $10 untuk teman yang diundang
-- Tanpa batas jumlah undangan — invite sebanyak mungkin
-- Credit tidak pernah expired selama akun aktif
-
-**Cara Klaim:**
-1. Bagikan link referral ke teman (email domain bebas)
-2. Teman daftar dan verifikasi akun via phone atau Telegram
-3. Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi
-
-- **CTA Link:** https://freemodel.dev/invite/FRE-e95f134d
-- **Sumber:** https://freemodel.dev/invite/FRE-e95f134d
-- **Tips:** Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.
-- **Berlaku:** forever (Credit tidak pernah expired selama akun aktif)
-
-🔗 **Link Detail:** https://bansos.dev/list/freemodel-invite-referral-10/
-
----
-
-### Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!
-
-- **ID:** `idwebhost-claim-domain-gratis-myid-juli2026`
-- **Provider:** IDwebhost
-- **Website Provider:** https://idwebhost.com
-- **Kategori:** Domain, Diskon
-- **Status:** active
-
-**Deskripsi:** Klaim domain gratis 1 tahun pakai kupon spesial dari IDwebhost! Periode terbatas 3-5 Juli 2026.
-
-**Benefit:**
-- Domain gratis 1 tahun
-- Pilihan ekstensi .MY.ID, .WEB.ID, atau .BIZ.ID
-- Cukup pakai kupon saat checkout
-- Kuota terbatas — klaim sebelum habis
-
-**Cara Klaim:**
-1. Punya akun IDwebhost
-2. Masukkan domain yang diinginkan (.MY.ID / .WEB.ID / .BIZ.ID)
-3. Gunakan kupon M2n4tS saat checkout
-
-- **Kode Promo:** `M2n4tS`
-- **CTA Link:** http://idwebhost.com/domain
-- **Sumber:** https://www.threads.com/@idwebhostcom/post/DaUTckrkiOY?xmt=AQG0q8Rwv4xykhgBPhBg-BN0Vbfj5TMGrVeas1tDBiiOXg
-- **Tips:** Kalau kode kupon sudah nggak bisa digunakan, berarti kuota domain gratis periode ini sudah habis. Jangan ditunda!
-- **Berlaku:** fixed — 2026-07-05 (Periode promo 3-5 Juli 2026. Kuota terbatas — kalau kode kupon sudah tidak bisa digunakan, berarti kuota habis.)
-
-🔗 **Link Detail:** https://bansos.dev/list/idwebhost-claim-domain-gratis-myid-juli2026/
-
----
-
-### AI Router by Nara — Model AI Premium Gratis & Pay as You Go
-
-- **ID:** `bynara-ai-router-free-payg`
-- **Provider:** byNara
-- **Website Provider:** https://bynara.id
-- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Router AI lokal Indonesia dengan akses gratis ke model AI premium ditambah opsi pay as you go. Support IDR/USD — transparan, tanpa ribet.
-
-**Benefit:**
-- Akses gratis 4 model AI dasar: Mistral Large, Mistral Medium 3.5, Claude Sonnet 4.5, Claude Haiku 4.5
-- Token cap 5M/hari pada free tier
-- Rate limit 10 req/menit
-- Pay as you go untuk model premium
-- Dukungan pembayaran IDR dan USD
-- Bandingkan biaya antar model langsung di dashboard
-
-**Cara Klaim:**
-1. Daftar akun di router.bynara.id
-2. Verifikasi akun via Telegram bot byNara
-3. Login ke Telegram channel byNara untuk akses API key
-4. Pilih model yang tersedia di tier Free
-5. Mulai kirim request via API endpoint
-
-- **CTA Link:** https://router.bynara.id/register?ref=3AH29Q72
-- **Sumber:** https://router.bynara.id/
-- **Tips:** Rekomendasi: top up murah banget, cocok buat akses AI premium dengan biaya minimal. Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Jangan abuse — support gateway AI lokal Indonesia!
-- **Berlaku:** uncertain (Free tier — selama layanan tersedia)
-
-🔗 **Link Detail:** https://bansos.dev/list/bynara-ai-router-free-payg/
-
----
-
-### Conduit AI — $500 Trial Credit & Free Model Access
-
-- **ID:** `conduit-trial-credit-500`
-- **Provider:** Conduit
-- **Website Provider:** https://conduit.ozdoev.net
-- **Kategori:** AI Credits, API, Free Tier, AI Tools
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Gateway AI dengan $500 trial credit plus akses model gratis via Telegram bot. Support berbagai model premium.
-
-**Benefit:**
-- $500 trial credit untuk coba berbagai model AI
-- $0.50 per 1k visible tokens (input + output)
-- Akses via Telegram bot — cepat dan mudah
-
-**Cara Klaim:**
-1. Buka Telegram bot Conduit
-2. Daftar / mulai bot
-3. Klaim trial credit
-
-- **CTA Link:** https://t.me/conduitoff_bot?start=ref_950268146
-- **Sumber:** https://conduit.ozdoev.net
-- **Tips:** Referral dan trial credit dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Catatan: Free plan access saat ini temporarily limited, tapi gak ada salahnya coba dulu!
-- **Berlaku:** uncertain (Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit.)
-
-🔗 **Link Detail:** https://bansos.dev/list/conduit-trial-credit-500/
-
----
-
-### AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1
-
-- **ID:** `ai-livscene-free-models`
-- **Provider:** AI Livscene
-- **Website Provider:** https://ai.livscene.com
-- **Kategori:** AI Credits, API, Free Tier, AI Tools, No Credit Card
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Akses 14 model AI premium gratis dengan quota 5.1 di AI Livscene. Daftar pakai Discord atau GitHub, langsung generate tanpa ribet!
-
-**Benefit:**
-- Akses gratis ke 14 model AI premium: Claude Opus 4.6/4.7/4.8, Claude Sonnet 4.6, DeepSeek V4 Pro, Gemini 3.1 Pro, Gemini 3.5 Flash, GLM 5.2, GPT 5.4 Compact, GPT 5.5, Mimo v2.5, Mimo v2.5 Pro, Step 3.7 Flash, Step Router V1
-- Quota 5.1 untuk mencoba semua model
-- Daftar cepat via Discord atau GitHub
-- Generate dan langsung coba tanpa setup rumit
-
-**Cara Klaim:**
-1. Buka ai.livscene.com
-2. Daftar akun via Discord atau GitHub
-3. Generate dan langsung coba model yang tersedia
-
-- **CTA Link:** https://ai.livscene.com/sign-up?aff=m3Vt
-- **Sumber:** https://ai.livscene.com
-- **Tips:** Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!
-- **Berlaku:** uncertain (Quota dan akses free model mengikuti kebijakan AI Livscene)
-
-🔗 **Link Detail:** https://bansos.dev/list/ai-livscene-free-models/
-
----
-
-### Aerolink Starter Free Trial
-
-- **ID:** `aerolink-starter-free-trial`
-- **Provider:** Aerolink
-- **Kategori:** AI, API, Developer, Free Trial, Credits
-- **Status:** active
-
-**Deskripsi:** Dapatkan akses gratis ke berbagai model AI melalui satu API gateway — cukup daftar dan nikmati kredit free trial US$140 tanpa biaya awal.
-
-**Benefit:**
-- Free Trial selama 2 minggu
-- Kredit penggunaan AI senilai US$140
-- Batas penggunaan US$10 setiap 5 jam
-- Batas penggunaan US$70 per minggu
-- Akses ke berbagai model AI melalui satu platform
-
-**Cara Klaim:**
-1. Daftarkan akun Aerolink baru
-2. Aktifkan paket Starter Free Trial
-3. Patuhi syarat dan ketentuan resmi Aerolink
-
-- **CTA Link:** https://aerolink.lat/register?ref=T5-QB9W
-- **Sumber:** https://aerolink.lat/
-- **Tips:** Gunakan akun yang belum pernah terdaftar agar memenuhi syarat sebagai pengguna baru.
-- **Berlaku:** uncertain (Berlaku selama program Starter Free Trial masih disediakan oleh Aerolink.)
-
-🔗 **Link Detail:** https://bansos.dev/list/aerolink-starter-free-trial/
-
----
-
-### Program Beasiswa AWS AI Academy 2026
-
-- **ID:** `aws-ai-academy-2026`
-- **Provider:** AWS x Dicoding
-- **Kategori:** AI, Cloud, Machine Learning, Training
-- **Status:** active
-
-**Deskripsi:** Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.
-
-**Benefit:**
-- Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi
-- Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert
-- Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia
-
-**Cara Klaim:**
-1. Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan
-2. Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar
-
-- **CTA Link:** https://aws.dicoding.com/login
-- **Sumber:** https://aws.dicoding.com/login
-- **Tips:** Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.
-- **Berlaku:** fixed — 2026-12-25 (Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026.)
-
-🔗 **Link Detail:** https://bansos.dev/list/aws-ai-academy-2026/
-
----
-
-### AI Hub Free Plan
-
-- **ID:** `ai-hub-free-plan`
-- **Provider:** AI Campus Malaysia
-- **Website Provider:** https://ai-hub.aicampus.my/
-- **Kategori:** AI, API, LLM, Gemini, Claude, Developer, Free Tier
-- **Status:** active
-
-**Deskripsi:** Dapatkan 1.000.000 token AI gratis setiap minggu dari AI Hub Malaysia.
-
-**Benefit:**
-- 1.000.000 token gratis pada Free Plan (weekly allocation).
-- API access melalui Hub Key.
-- Dapat membuat API Key sendiri.
-- Personal usage dashboard.
-- Informasi penggunaan token secara real-time.
-- Akses ke model AI: glm-4.5 (ZAI), claude-cli-haiku-4-5, ag/gemini-3.5-flash-low.
-- Free Models yang menggunakan shared pool sehingga tidak mengurangi token pribadi.
-- Dukungan komunitas melalui Telegram.
-
-**Cara Klaim:**
-1. Mendaftarkan akun AI Hub baru.
-2. Menggunakan paket Free Plan.
-3. Mematuhi Terms of Service AI Hub.
-
-- **CTA Link:** https://ai-hub.aicampus.my/?ref=01b0fc09
-- **Sumber:** https://ai-hub.aicampus.my/
-- **Tips:** Gunakan model ag/gemini-3.5-flash-low dan claude-cli-haiku-4-5 terlebih dahulu karena keduanya menggunakan shared pool sehingga tidak mengurangi saldo token pribadi.
-- **Berlaku:** uncertain (Berlaku selama Free Plan masih tersedia. Token Free Plan mengikuti kebijakan masa aktif yang ditentukan AI Hub.)
-
-🔗 **Link Detail:** https://bansos.dev/list/ai-hub-free-plan/
-
----
-
-### Promo Exclusive Jagoan Hosting
-
-- **ID:** `jagoanhosting-promo-vps-25`
-- **Provider:** Jagoan Hosting
-- **Website Provider:** https://www.jagoanhosting.com
-- **Kategori:** VPS, Diskon, Hosting
-- **Status:** active
-- **🔥 FEATURED**
-
-**Deskripsi:** Dapatkan diskon 25% khusus pembelian VPS di Jagoan Hosting.
-
-**Benefit:**
-- Diskon 25% untuk VPS General, VPS Ultra, VPS Plus, dan VPS Hosting
-- Berlaku untuk semua pengguna (bukan cuma new user)
-
-**Cara Klaim:**
-1. Pilih produk VPS yang diinginkan (General/Ultra/Plus/Hosting)
-2. Masukkan kode promo BANSOSVPS saat checkout
-3. Selesaikan pembayaran
-
-- **Kode Promo:** `BANSOSVPS`
-- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
-- **Sumber:** https://www.jagoanhosting.com
-- **Berlaku:** forever
-
-🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-promo-vps-25/
-
----
-
 ## ❌ Entri Expired
 
-### Promo Domain .DEV & .APP Gratis dari Name.com
+### Aerolink $350+ Free Credits
 
-- **ID:** `namecom-domain-app`
-- **Provider:** Name.com
-- **Kategori:** Domain, No Credit Card
+- **ID:** `aerolink-free-credits`
+- **Provider:** Aerolink
+- **Kategori:** AI Tools, API, Cloud Services
 - **Status:** expired
-- **🔥 FEATURED**
 
-**Deskripsi:** Bansos paling krusial buat kalian yang pengen rilis aplikasi tapi terhalang dana beli domain. Domain .dev dan .app premium langsung gas tanpa biaya, no cap! 🚀
+**Deskripsi:** Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.
 
 **Benefit:**
-- Domain .dev dan .app gratis tanpa bayar sama sekali
-- Tidak perlu kartu kredit (Anti-CC-ribet-club)
-- Limit 1 domain per akun (Biar semua kebagian, fr fr)
-- Status arsip: promo code DEVWEEK26 sudah tidak bisa digunakan lagi
+- $350+ free credits untuk akun baru
+- Satu API key untuk AI agent dan coding assistant
+- Dashboard untuk usage logs, token, latency, cost, balance, dan limits
+- Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001
+- Rolling usage window 5 jam dan mingguan
 
 **Cara Klaim:**
-1. Punya akun Name.com aktif
-2. Pilih domain .dev atau .app yang tersedia
-3. Gunakan promo code pas checkout
+1. Buat akun Aerolink
+2. Verifikasi email
+3. Generate API key dari dashboard
+4. Cek credit, model route, dan limit di dashboard sebelum digunakan
 
-- **Kode Promo:** `DEVWEEK26`
-- **CTA Link:** https://www.name.com
-- **Tips:** Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.
-- **Berlaku:** uncertain (Sudah tidak aktif (promo code tidak bisa digunakan lagi))
+- **CTA Link:** https://aerolink.lat/
+- **Berlaku:** uncertain (Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink)
 
-🔗 **Link Detail:** https://bansos.dev/list/namecom-domain-app/
+🔗 **Link Detail:** https://bansos.dev/list/aerolink-free-credits/
 
 ---
 
-### Domain Gratis 1 Tahun di IDwebhost (pakai kupon)
+### AgentRouter Free $250 AI Credit
 
-- **ID:** `idwebhost-domain-gratis-1tahun`
-- **Provider:** IDwebhost
-- **Kategori:** Domain, Diskon
+- **ID:** `agentrouter-free-250-ai-credit`
+- **Provider:** AgentRouter
+- **Kategori:** AI Tools, AI Credits, API, Developer Tools, Free Tier
 - **Status:** expired
 
-**Deskripsi:** Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.
+**Deskripsi:** AgentRouter memberikan bonus credit AI senilai $250 dan masih bisa bertambah untuk pengguna baru yang mendaftar melalui link referral. Credit dapat digunakan untuk mencoba berbagai model AI populer melalui layanan AgentRouter.
 
 **Benefit:**
-- Domain gratis 1 tahun untuk yang ambil paket sesuai campaign
-- Mendukung klaim domain .my.id, .web.id, atau .biz.id
-- Kupon `mAts2Mey` jadi jalan masuk utama untuk promo
-- Tidak perlu tambahan paket hosting, SSL, maupun email hosting
+- Mendapatkan $250 AI credit untuk pengguna baru
+- Tambahan credit
+- Mendukung berbagai model AI populer seperti Claude (4-8,4-7,4-6), GPT(5-4,5-5), DeepSeek(pro, non pro), dan GLM 5.2
+- Satu API, banyak AI
 
 **Cara Klaim:**
-1. Punya akun di IDwebhost
-2. Pilih domain gratis yang diinginkan
-3. Masukkan kupon `mAts2Mey`
-4. Saat checkout, jangan centang hosting, SSL, dan email hosting sesuai instruksi
+1. Daftar menggunakan akun GitHub lama/old account
+2. Registrasi melalui link referral yang tersedia
+3. Login dan cek saldo credit di dashboard AgentRouter
+4. Bonus mengikuti ketentuan dan ketersediaan dari AgentRouter
 
-- **CTA Link:** https://idwebhost.com/
-- **Tips:** Masukkan domain yang diinginkan dulu, lalu isi kupon dan pastikan item hosting/SSL/email hosting tidak dipilih.
-- **Berlaku:** fixed — 2026-06-14 (Promo dan validitas kupon bisa berubah sesuai campaign saat ini)
+- **CTA Link:** https://agentrouter.org/register?aff=txsb
+- **Sumber:** https://agentrouter.org/register?aff=txsb
+- **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/idwebhost-domain-gratis-1tahun/
+🔗 **Link Detail:** https://bansos.dev/list/agentrouter-free-250-ai-credit/
 
 ---
 
@@ -1717,61 +1836,34 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### Aerolink $350+ Free Credits
+### FreeModel Pro Plan – Bonus $10 Referral
 
-- **ID:** `aerolink-free-credits`
-- **Provider:** Aerolink
-- **Kategori:** AI Tools, API, Cloud Services
+- **ID:** `freemodel-pro-plan-bonus-referral-ikan`
+- **Provider:** FreeModel
+- **Kategori:** AI Credits, Gratisan, AI
 - **Status:** expired
 
-**Deskripsi:** Aerolink adalah unified API gateway untuk AI agent. Akun baru diklaim mendapat $350+ free credits/starter allowance untuk mencoba akses model route lewat satu API key.
+**Deskripsi:** FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.
 
 **Benefit:**
-- $350+ free credits untuk akun baru
-- Satu API key untuk AI agent dan coding assistant
-- Dashboard untuk usage logs, token, latency, cost, balance, dan limits
-- Mendukung 6 model routes: claude-opus-4-8, claude-opus-4-7, claude-fable-5, claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4-5-20251001
-- Rolling usage window 5 jam dan mingguan
+- Akses FreeModel Pro selama 1 bulan
+- Usage limit $10 setiap 5 jam
+- Usage limit sekitar $70 per minggu
+- Bonus tambahan $10 jika daftar menggunakan referral.
+- Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.
+- Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4
+- Bisa dipasang di 9ROUTER
 
 **Cara Klaim:**
-1. Buat akun Aerolink
-2. Verifikasi email
-3. Generate API key dari dashboard
-4. Cek credit, model route, dan limit di dashboard sebelum digunakan
+1. Daftar akun FreeModel.dev
+2. Gunakan link referral saat signup agar bonus $10 masuk.
+3. Verify pakai Telegram
+4. Start di Telegram untuk verifikasi
 
-- **CTA Link:** https://aerolink.lat/
-- **Berlaku:** uncertain (Belum ada tanggal berakhir, namun untuk promo 80$ hanya berlaku sampai tanggal 18 Juni; berlaku selama promo $350+ free credits masih tampil di situs Aerolink)
-
-🔗 **Link Detail:** https://bansos.dev/list/aerolink-free-credits/
-
----
-
-### Gratis 1 Bulan Pro Plan Merlin AI
-
-- **ID:** `merlin-ai-free-pro-1-month`
-- **Provider:** Merlin AI
-- **Kategori:** AI, Promo, Credit Card Required, Gratisan
-- **Status:** expired
-
-**Deskripsi:** Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.
-
-**Benefit:**
-- Akses gratis Pro Plan selama 1 bulan
-- Menikmati fitur premium secara gratisan di bulan pertama
-
-**Cara Klaim:**
-1. Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.
-2. Pilih paket langganan Pro Plan untuk durasi 1 bulan.
-3. Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.
-4. Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis.
-
-- **Kode Promo:** `BCFREE`
-- **CTA Link:** https://www.getmerlin.in/
-- **Sumber:** https://www.getmerlin.in/
-- **Tips:** Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.
+- **CTA Link:** https://freemodel.dev/invite/FRE-83bee3ce
 - **Berlaku:** uncertain
 
-🔗 **Link Detail:** https://bansos.dev/list/merlin-ai-free-pro-1-month/
+🔗 **Link Detail:** https://bansos.dev/list/freemodel-pro-plan-bonus-referral-ikan/
 
 ---
 
@@ -1807,6 +1899,35 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
+### Domain Gratis 1 Tahun di IDwebhost (pakai kupon)
+
+- **ID:** `idwebhost-domain-gratis-1tahun`
+- **Provider:** IDwebhost
+- **Kategori:** Domain, Diskon
+- **Status:** expired
+
+**Deskripsi:** Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.
+
+**Benefit:**
+- Domain gratis 1 tahun untuk yang ambil paket sesuai campaign
+- Mendukung klaim domain .my.id, .web.id, atau .biz.id
+- Kupon `mAts2Mey` jadi jalan masuk utama untuk promo
+- Tidak perlu tambahan paket hosting, SSL, maupun email hosting
+
+**Cara Klaim:**
+1. Punya akun di IDwebhost
+2. Pilih domain gratis yang diinginkan
+3. Masukkan kupon `mAts2Mey`
+4. Saat checkout, jangan centang hosting, SSL, dan email hosting sesuai instruksi
+
+- **CTA Link:** https://idwebhost.com/
+- **Tips:** Masukkan domain yang diinginkan dulu, lalu isi kupon dan pastikan item hosting/SSL/email hosting tidak dipilih.
+- **Berlaku:** fixed — 2026-06-14 (Promo dan validitas kupon bisa berubah sesuai campaign saat ini)
+
+🔗 **Link Detail:** https://bansos.dev/list/idwebhost-domain-gratis-1tahun/
+
+---
+
 ### Domain .WEB.ID GRATIS 1 Tahun | Jagoan Hosting
 
 - **ID:** `jagoanhosting-free-domain-webid`
@@ -1839,37 +1960,6 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
-### FreeModel Pro Plan – Bonus $10 Referral
-
-- **ID:** `freemodel-pro-plan-bonus-referral-ikan`
-- **Provider:** FreeModel
-- **Kategori:** AI Credits, Gratisan, AI
-- **Status:** expired
-
-**Deskripsi:** FreeModel.dev memberi akses Pro selama 1 bulan dengan usage limit $10 per 5 jam dan sekitar $66.67 per minggu. Pengguna baru juga bisa mendapat tambahan bonus $10 jika daftar lewat referral.
-
-**Benefit:**
-- Akses FreeModel Pro selama 1 bulan
-- Usage limit $10 setiap 5 jam
-- Usage limit sekitar $70 per minggu
-- Bonus tambahan $10 jika daftar menggunakan referral.
-- Bisa digunakan untuk API, AI coding, agent, testing model, dan eksperimen AI.
-- Akses Claude 4-8,4-7,4-6 dan GPT 5-5,5-4
-- Bisa dipasang di 9ROUTER
-
-**Cara Klaim:**
-1. Daftar akun FreeModel.dev
-2. Gunakan link referral saat signup agar bonus $10 masuk.
-3. Verify pakai Telegram
-4. Start di Telegram untuk verifikasi
-
-- **CTA Link:** https://freemodel.dev/invite/FRE-83bee3ce
-- **Berlaku:** uncertain
-
-🔗 **Link Detail:** https://bansos.dev/list/freemodel-pro-plan-bonus-referral-ikan/
-
----
-
 ### Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder
 
 - **ID:** `lovable-free-pro-plan`
@@ -1897,6 +1987,65 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** fixed — 2026-07-03 (Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026.)
 
 🔗 **Link Detail:** https://bansos.dev/list/lovable-free-pro-plan/
+
+---
+
+### Gratis 1 Bulan Pro Plan Merlin AI
+
+- **ID:** `merlin-ai-free-pro-1-month`
+- **Provider:** Merlin AI
+- **Kategori:** AI, Promo, Credit Card Required, Gratisan
+- **Status:** expired
+
+**Deskripsi:** Merlin AI menawarkan akses gratis untuk paket Pro Plan selama 1 bulan. Promo ini dipastikan tetap gratisan di bulan pertama, meskipun pengguna diwajibkan untuk memberikan informasi kartu kredit (CC) pada saat pembayaran.
+
+**Benefit:**
+- Akses gratis Pro Plan selama 1 bulan
+- Menikmati fitur premium secara gratisan di bulan pertama
+
+**Cara Klaim:**
+1. Kunjungi situs web resmi Merlin AI melalui tautan yang disediakan.
+2. Pilih paket langganan Pro Plan untuk durasi 1 bulan.
+3. Lengkapi informasi kartu kredit (CC) Anda pada halaman penagihan.
+4. Masukkan redeem code 'BCFREE' saat pembayaran agar tagihan menjadi gratis.
+
+- **Kode Promo:** `BCFREE`
+- **CTA Link:** https://www.getmerlin.in/
+- **Sumber:** https://www.getmerlin.in/
+- **Tips:** Pastikan untuk membatalkan langganan sebelum masa gratis 1 bulan berakhir jika Anda tidak ingin melanjutkan, agar kartu kredit Anda tidak terpotong biaya langganan bulan berikutnya.
+- **Berlaku:** uncertain
+
+🔗 **Link Detail:** https://bansos.dev/list/merlin-ai-free-pro-1-month/
+
+---
+
+### Promo Domain .DEV & .APP Gratis dari Name.com
+
+- **ID:** `namecom-domain-app`
+- **Provider:** Name.com
+- **Kategori:** Domain, No Credit Card
+- **Status:** expired
+- **🔥 FEATURED**
+
+**Deskripsi:** Bansos paling krusial buat kalian yang pengen rilis aplikasi tapi terhalang dana beli domain. Domain .dev dan .app premium langsung gas tanpa biaya, no cap! 🚀
+
+**Benefit:**
+- Domain .dev dan .app gratis tanpa bayar sama sekali
+- Tidak perlu kartu kredit (Anti-CC-ribet-club)
+- Limit 1 domain per akun (Biar semua kebagian, fr fr)
+- Status arsip: promo code DEVWEEK26 sudah tidak bisa digunakan lagi
+
+**Cara Klaim:**
+1. Punya akun Name.com aktif
+2. Pilih domain .dev atau .app yang tersedia
+3. Gunakan promo code pas checkout
+
+- **Kode Promo:** `DEVWEEK26`
+- **CTA Link:** https://www.name.com
+- **Tips:** Promo ini sudah tidak aktif dan promo code tidak bisa dipakai lagi. Tetap disimpan sebagai arsip bansos biar developer lain gak buang waktu nyobain kode yang sudah wafat.
+- **Berlaku:** uncertain (Sudah tidak aktif (promo code tidak bisa digunakan lagi))
+
+🔗 **Link Detail:** https://bansos.dev/list/namecom-domain-app/
 
 ---
 

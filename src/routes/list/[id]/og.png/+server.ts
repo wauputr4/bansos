@@ -63,10 +63,8 @@ export async function GET({ params, fetch }) {
 			</div>
 		`;
 
-	const escapedImage = item.image
-		?.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;') || null;
+	const escapedImage =
+		item.image?.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') || null;
 
 	// Build background style — use entry image if available, with dark overlay
 	const backgroundStyle = escapedImage

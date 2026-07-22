@@ -92,7 +92,7 @@
 		<div class="skills-section">
 			<h2>⚡ Keahlian</h2>
 			<div class="skills-list">
-				{#each contributor.skills as skill (skill)}
+				{#each contributor.skills as skill, index (`${skill}-${index}`)}
 					<span class="skill-tag">{skill}</span>
 				{/each}
 			</div>

@@ -1,9 +1,17 @@
 import { redirect, error } from '@sveltejs/kit';
-import { getContributorBySlug, getBansosById, getAllContributors } from '$lib/data/bansos';
+import {
+	bansosList,
+	getContributorBySlug,
+	getBansosById,
+	getAllContributors
+} from '$lib/data/bansos';
 import type { EntryGenerator } from './$types';
 
 export const entries: EntryGenerator = () => {
-	return getAllContributors().map((c) => ({ slug: c.login }));
+	return [
+		...getAllContributors().map((contributor) => ({ slug: contributor.login })),
+		...bansosList.map((item) => ({ slug: item.id }))
+	];
 };
 
 export function load({ params }: { params: Record<string, string> }) {
@@ -22,8 +30,7 @@ export function load({ params }: { params: Record<string, string> }) {
 		'sitemap.xml',
 		'schema',
 		'index.json',
-		'contributors',
-		'schema'
+		'contributors'
 	];
 	if (reserved.includes(slug)) {
 		throw error(404, 'Halaman tidak ditemukan');

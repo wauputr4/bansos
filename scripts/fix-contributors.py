@@ -85,9 +85,10 @@ for slug, contrib_slug in updates.items():
     idx_path = os.path.join(BANSOS_DIR, slug, 'index.json')
     readme_path = os.path.join(BANSOS_DIR, slug, 'README.md')
     if os.path.exists(idx_path):
-        idx = json.load(open(idx_path))
+        with open(idx_path, 'r', encoding='utf-8') as f:
+            idx = json.load(f)
         idx['contributorSlug'] = contrib_slug
-        with open(idx_path, 'w') as f:
+        with open(idx_path, 'w', encoding='utf-8') as f:
             json.dump(idx, f, indent=4, ensure_ascii=False)
         # Regenerate README
         readme = generate_readme(idx)

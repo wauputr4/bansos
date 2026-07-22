@@ -12,8 +12,8 @@
  */
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative, sep } from 'node:path';
+import { existsSync, writeFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const BANSOS_DIR = 'src/lib/data/bansos';
 const GLOBAL_OUTPUT = join(BANSOS_DIR, 'commit-contributors.json');
@@ -55,7 +55,7 @@ function parseContributor(authorName, authorEmail) {
 		login,
 		name: authorName,
 		avatarUrl: `https://github.com/${login}.png?size=96`,
-		commitUrl: `https://gitlab.com/wauputr4/bansos/commits?author=${login}`,
+		commitUrl: `https://github.com/wauputr4/bansos/commits?author=${login}`,
 		lastCommitAt: '' // will be filled from latest commit
 	};
 }
@@ -128,33 +128,9 @@ function getWorkingTreeAuthor() {
 		login,
 		name,
 		avatarUrl: `https://github.com/${login}.png?size=96`,
-		commitUrl: `https://gitlab.com/wauputr4/bansos/commits?author=${login}`,
+		commitUrl: `https://github.com/wauputr4/bansos/commits?author=${login}`,
 		lastCommitAt: new Date().toISOString()
 	};
-}
-
-/**
- * Merge contributors: new list into existing, dedup by login.
- */
-function mergeContributors(existing, next) {
-	const seen = new Set(existing.map((c) => c.login.toLowerCase()).filter(Boolean));
-	const merged = [...existing];
-	for (const contributor of next) {
-		const key = contributor.login.toLowerCase();
-		if (!seen.has(key)) {
-			merged.push(contributor);
-			seen.add(key);
-		} else {
-			// Update existing with newer info (avatar, lastCommitAt)
-			const idx = merged.findIndex((c) => c.login.toLowerCase() === key);
-			if (idx !== -1) {
-				if (contributor.lastCommitAt > (merged[idx].lastCommitAt || '')) {
-					merged[idx].lastCommitAt = contributor.lastCommitAt;
-				}
-			}
-		}
-	}
-	return merged;
 }
 
 /**

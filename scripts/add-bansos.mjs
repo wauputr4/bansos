@@ -25,7 +25,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const BANSOS_DIR = join(ROOT, 'src/lib/data/bansos');
 const CONTRIBUTORS_DIR = join(BANSOS_DIR, 'contributors');
-const SCHEMA_DIR = join(BANSOS_DIR, 'schema');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 
@@ -42,13 +41,36 @@ function slugify(text) {
 
 function ask(query) {
 	const rl = createInterface({ input: process.stdin, output: process.stdout });
-	return new Promise((resolve) => rl.question(query, (a) => { rl.close(); resolve(a.trim()); }));
+	return new Promise((resolve) =>
+		rl.question(query, (a) => {
+			rl.close();
+			resolve(a.trim());
+		})
+	);
 }
 
 function formatDate(offset = 0) {
 	const d = new Date();
 	d.setDate(d.getDate() + offset);
 	return d.toISOString().split('T')[0];
+}
+
+function split(value, separator) {
+	return String(value || '')
+		.split(separator)
+		.map((item) => item.trim())
+		.filter(Boolean);
+}
+
+function required(args, key) {
+	if (!args[key]) throw new Error(`--${key} wajib diisi`);
+	return args[key];
+}
+
+function validateDate(value, field) {
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
+		throw new Error(`--${field} harus tanggal YYYY-MM-DD yang valid`);
+	}
 }
 
 function generateReadme(item) {
@@ -62,7 +84,7 @@ function generateReadme(item) {
 		item.description,
 		'',
 		`> **Status:** ${item.status === 'active' ? 'Aktif' : item.status === 'expired' ? 'Kadaluwarsa' : 'Segera Hadir'}`,
-		'',
+		''
 	];
 
 	if (item.validity?.type === 'fixed' && item.validity?.date) {
@@ -95,7 +117,12 @@ function getExistingContributors() {
 
 function getExistingBansosSlugs() {
 	return readdirSync(BANSOS_DIR, { withFileTypes: true })
-		.filter((e) => e.isDirectory() && !['contributors', 'schema'].includes(e.name) && existsSync(join(BANSOS_DIR, e.name, 'index.json')))
+		.filter(
+			(e) =>
+				e.isDirectory() &&
+				!['contributors', 'schema'].includes(e.name) &&
+				existsSync(join(BANSOS_DIR, e.name, 'index.json'))
+		)
 		.map((e) => e.name);
 }
 
@@ -105,7 +132,10 @@ async function interactiveInput() {
 	console.log('\n📦 Tambah Bansos Baru\n');
 
 	const title = await ask('Judul bansos: ');
-	if (!title) { console.log('❌ Judul wajib diisi'); process.exit(1); }
+	if (!title) {
+		console.log('❌ Judul wajib diisi');
+		process.exit(1);
+	}
 
 	let slug = await ask(`Slug (enter buat auto: "${slugify(title)}"): `);
 	if (!slug) slug = slugify(title);
@@ -123,13 +153,16 @@ async function interactiveInput() {
 
 	const ctaLink = await ask('Link CTA/daftar: ');
 	const tagsRaw = await ask('Tags (pisah koma, misal: AI Credits, Free Tier): ');
-	const tags = tagsRaw.split(',').map((t) => t.trim()).filter(Boolean);
+	const tags = tagsRaw
+		.split(',')
+		.map((t) => t.trim())
+		.filter(Boolean);
 
 	const status = (await ask('Status (active/expired/upcoming) [active]: ')) || 'active';
 
 	const promoCode = await ask('Promo code (enter skip): ');
 
-	const benefitCount = parseInt(await ask('Jumlah benefit/keuntungan [0]: ') || '0');
+	const benefitCount = parseInt((await ask('Jumlah benefit/keuntungan [0]: ')) || '0');
 	const benefits = [];
 	for (let i = 1; i <= benefitCount; i++) {
 		const b = await ask(`  Benefit #${i}: `);
@@ -157,7 +190,19 @@ async function interactiveInput() {
 	const featuredAns = await ask('Featured? (y/N): ');
 	const featured = featuredAns.toLowerCase() === 'y';
 
-	return { title, slug, provider, description, ctaLink, tags, status, promoCode, benefits, contributorSlug, featured };
+	return {
+		title,
+		slug,
+		provider,
+		description,
+		ctaLink,
+		tags,
+		status,
+		promoCode,
+		benefits,
+		contributorSlug,
+		featured
+	};
 }
 
 // ─── Parse CLI args ──────────────────────────────────────────────────────
@@ -169,7 +214,10 @@ function parseArgs(argv) {
 		if (!arg.startsWith('--')) continue;
 		const key = arg.slice(2);
 		const next = argv[i + 1];
-		if (!next || next.startsWith('--')) { args[key] = true; continue; }
+		if (!next || next.startsWith('--')) {
+			args[key] = true;
+			continue;
+		}
 		args[key] = next;
 		i++;
 	}
@@ -177,25 +225,67 @@ function parseArgs(argv) {
 }
 
 function validateCliInput(args) {
-	if (!args.title) throw new Error('--title wajib diisi');
+	const slug = args.id || args.slug || slugify(required(args, 'title'));
+	if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+		throw new Error('--id/--slug harus berupa slug huruf kecil, angka, dan tanda hubung');
+	}
+
+	const validityType = args['validity-type'] || 'uncertain';
+	if (!['fixed', 'uncertain', 'forever'].includes(validityType)) {
+		throw new Error('--validity-type harus fixed, uncertain, atau forever');
+	}
+	const validity = { type: validityType };
+	if (validityType === 'fixed') {
+		validity.date = required(args, 'validity-date');
+		validateDate(validity.date, 'validity-date');
+	}
+	if (args['validity-desc']) validity.description = args['validity-desc'];
+
+	const publishedAt = args['published-at'] || formatDate();
+	validateDate(publishedAt, 'published-at');
+	const today = formatDate();
+	const status =
+		args.status ||
+		(publishedAt > today
+			? 'upcoming'
+			: validityType === 'fixed' && validity.date < today
+				? 'expired'
+				: 'active');
+	if (!['active', 'expired', 'upcoming'].includes(status)) {
+		throw new Error('--status harus active, expired, atau upcoming');
+	}
+	const ctaLink = args['cta-link'] || args.ctaLink;
+	const parsedCta = new URL(required({ ctaLink }, 'ctaLink'));
+	if (!['http:', 'https:'].includes(parsedCta.protocol)) {
+		throw new Error('--cta-link harus URL HTTP(S)');
+	}
+
+	const contributorName = args['contributor-name'] || args.contributor || '';
 	return {
-		title: args.title,
-		slug: args.slug || slugify(args.title),
-		provider: args.provider || '',
-		description: args.description || '',
-		ctaLink: args.ctaLink || '#',
-		tags: (args.tags || '').split(',').map((t) => t.trim()).filter(Boolean),
-		status: args.status || 'active',
-		promoCode: args.promoCode || '',
-		benefits: (args.benefits || '').split('|').map((b) => b.trim()).filter(Boolean),
-		contributorSlug: args.contributor || '',
-		featured: args.featured === 'true',
+		title: required(args, 'title'),
+		slug,
+		provider: required(args, 'provider'),
+		description: required(args, 'description'),
+		ctaLink,
+		tags: split(required(args, 'tags'), ','),
+		status,
+		promoCode: args['promo-code'] || args.promoCode || '',
+		benefits: split(required(args, 'benefits'), '|'),
+		requirements: split(required(args, 'requirements'), '|'),
+		validity,
+		publishedAt,
+		tips: args.tips || '',
+		source: args.source || '',
+		contributorSlug: slugify(contributorName),
+		contributorName,
+		contributorUrl: args['contributor-url'] || '',
+		featured: args.featured === 'true'
 	};
 }
 
 // ─── Contributor manifest ────────────────────────────────────────────────
 
-function getOrCreateContributor(slug) {
+function getOrCreateContributor(slug, displayName = slug, url = '') {
 	const dir = join(CONTRIBUTORS_DIR, slug);
 	const manifestPath = join(dir, 'manifest.json');
 
@@ -206,14 +296,14 @@ function getOrCreateContributor(slug) {
 	// Create minimal manifest
 	const manifest = {
 		login: slug,
-		displayName: slug.charAt(0).toUpperCase() + slug.slice(1),
+		displayName,
 		bio: '',
 		title: '',
 		skills: [],
-		links: {},
+		links: url ? { [url.includes('github.com') ? 'github' : 'website']: url } : {},
 		contributedBansos: [],
 		hidden: false,
-		joinedAt: formatDate(),
+		joinedAt: formatDate()
 	};
 
 	mkdirSync(dir, { recursive: true });
@@ -229,23 +319,41 @@ async function main() {
 	const isInteractive = !args.title;
 
 	const input = isInteractive ? await interactiveInput() : validateCliInput(args);
-	const { title, slug, provider, description, ctaLink, tags, status, promoCode, benefits, featured } = input;
+	const {
+		title,
+		slug,
+		provider,
+		description,
+		ctaLink,
+		tags,
+		status,
+		promoCode,
+		benefits,
+		featured
+	} = input;
 	let { contributorSlug } = input;
 
 	console.log(`\n🚀 Creating bansos: ${slug}...`);
 
 	// 1. Buat folder
 	const itemDir = join(BANSOS_DIR, slug);
-	if (!existsSync(itemDir)) mkdirSync(itemDir, { recursive: true });
+	if (existsSync(join(itemDir, 'index.json'))) throw new Error(`Bansos sudah ada: ${slug}`);
+	mkdirSync(itemDir, { recursive: true });
 
 	// 2. Handle contributor
 	if (contributorSlug) {
-		const manifest = getOrCreateContributor(contributorSlug);
+		const manifest = getOrCreateContributor(
+			contributorSlug,
+			input.contributorName,
+			input.contributorUrl
+		);
 		if (!manifest.contributedBansos.includes(slug)) {
 			manifest.contributedBansos.push(slug);
 			manifest.contributedBansos.sort();
-			writeFileSync(join(CONTRIBUTORS_DIR, contributorSlug, 'manifest.json'),
-				JSON.stringify(manifest, null, '\t') + '\n');
+			writeFileSync(
+				join(CONTRIBUTORS_DIR, contributorSlug, 'manifest.json'),
+				JSON.stringify(manifest, null, '\t') + '\n'
+			);
 		}
 	}
 
@@ -256,16 +364,18 @@ async function main() {
 		provider,
 		description,
 		benefits: benefits || [],
-		validity: { type: 'uncertain', description: '' },
-		requirements: [],
+		validity: input.validity || { type: 'uncertain', description: '' },
+		requirements: input.requirements || [],
 		ctaLink,
 		tags: tags || [],
 		status,
 		featured: !!featured,
-		publishedAt: formatDate(),
+		publishedAt: input.publishedAt || formatDate()
 	};
 
 	if (promoCode) indexData.promoCode = promoCode;
+	if (input.tips) indexData.tips = input.tips;
+	if (input.source) indexData.source = input.source;
 	if (contributorSlug) indexData.contributorSlug = contributorSlug;
 
 	writeFileSync(join(itemDir, 'index.json'), JSON.stringify(indexData, null, '\t') + '\n');
@@ -288,8 +398,8 @@ async function main() {
 			status,
 			tags,
 			featured: !!featured,
-			publishedAt: formatDate(),
-			contributorSlug: contributorSlug || '',
+			publishedAt: indexData.publishedAt,
+			contributorSlug: contributorSlug || ''
 		});
 		indexData.items.sort((a, b) => a.id.localeCompare(b.id));
 		writeFileSync(indexJsonPath, JSON.stringify(indexData, null, '\t') + '\n');
@@ -307,7 +417,8 @@ async function main() {
 	console.log(`\n✅ Done! Folder: src/lib/data/bansos/${slug}/`);
 	console.log(`   • index.json   — data bansos`);
 	console.log(`   • README.md    — landing page`);
-	if (contributorSlug) console.log(`   • Contributor: contributors/${contributorSlug}/manifest.json`);
+	if (contributorSlug)
+		console.log(`   • Contributor: contributors/${contributorSlug}/manifest.json`);
 	console.log();
 
 	if (isInteractive) {
@@ -318,4 +429,7 @@ async function main() {
 	}
 }
 
-main().catch((e) => { console.error('❌', e.message); process.exit(1); });
+main().catch((e) => {
+	console.error('❌', e.message);
+	process.exit(1);
+});

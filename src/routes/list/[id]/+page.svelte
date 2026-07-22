@@ -423,24 +423,14 @@
 
 					{#if item.image}
 						<div class="detail-image-section">
-							<img
-								src={item.image}
-								alt={item.title}
-								class="detail-main-image"
-								loading="lazy"
-							/>
+							<img src={item.image} alt={item.title} class="detail-main-image" loading="lazy" />
 						</div>
 					{/if}
 
 					{#if item.images && item.images.length > 0}
 						<div class="detail-image-gallery">
 							{#each item.images as img (img)}
-								<img
-									src={img}
-									alt="{item.title} screenshot"
-									class="gallery-image"
-									loading="lazy"
-								/>
+								<img src={img} alt="{item.title} screenshot" class="gallery-image" loading="lazy" />
 							{/each}
 						</div>
 					{/if}
@@ -525,7 +515,7 @@
 
 			<!-- Right Column: Sidebar (Meta & Recommendations) -->
 			<aside class="detail-sidebar-col">
-				{#if source || item.contributor || commitContributors.length > 0}
+				{#if source || item.contributorSlug || item.contributor || commitContributors.length > 0}
 					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
@@ -539,7 +529,7 @@
 								{/if}
 							</div>
 						{/if}
-						{#if item.contributor || commitContributors.length > 0}
+						{#if item.contributorSlug || item.contributor || commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"
 									><i class="fa-solid fa-code-branch"></i> {detailT('projectContributor')}</span

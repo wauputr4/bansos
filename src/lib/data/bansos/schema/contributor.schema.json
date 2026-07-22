@@ -24,7 +24,8 @@
 		},
 		"avatar": {
 			"type": "string",
-			"description": "Path file avatar relatif (cth: avatar.webp)"
+			"format": "uri",
+			"description": "URL absolut gambar avatar kontributor"
 		},
 		"location": {
 			"type": "string",
@@ -46,7 +47,7 @@
 				"twitter": { "type": "string", "format": "uri" },
 				"linkedin": { "type": "string", "format": "uri" },
 				"website": { "type": "string", "format": "uri" },
-				"telegram": { "type": "string" },
+				"telegram": { "type": "string", "format": "uri" },
 				"npm": { "type": "string", "format": "uri" },
 				"youtube": { "type": "string", "format": "uri" }
 			},

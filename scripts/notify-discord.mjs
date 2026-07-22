@@ -1,5 +1,6 @@
 import fs from 'fs';
-import { execSync } from 'child_process';
+import path from 'path';
+import { execFileSync } from 'child_process';
 
 const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 if (!WEBHOOK_URL) {
@@ -7,20 +8,47 @@ if (!WEBHOOK_URL) {
 	process.exit(0);
 }
 
-const currentData = JSON.parse(fs.readFileSync('src/lib/data/bansos.json', 'utf8'));
-
-let prevData = [];
+let addedFiles = [];
 try {
-	const prevFile = execSync('git show HEAD~1:src/lib/data/bansos.json', { encoding: 'utf8' });
-	prevData = JSON.parse(prevFile);
+	addedFiles = execFileSync(
+		'git',
+		[
+			'diff',
+			'--diff-filter=A',
+			'--name-only',
+			'HEAD~1',
+			'HEAD',
+			'--',
+			'src/lib/data/bansos/*/index.json'
+		],
+		{ encoding: 'utf8' }
+	)
+		.trim()
+		.split('\n')
+		.filter(Boolean);
 } catch (err) {
-	console.error('Could not read previous bansos.json:', err.message);
-	console.error('Aborting to prevent webhook spam (fallback triggers all bansos).');
+	console.error('Could not detect newly added bansos folders:', err.message);
 	process.exit(0);
 }
 
-const prevIds = new Set(prevData.map((b) => b.id));
-const newBansos = currentData.filter((b) => !prevIds.has(b.id));
+const newBansos = addedFiles.map((file) => {
+	const bansos = JSON.parse(fs.readFileSync(file, 'utf8'));
+	if (!bansos.contributorSlug) return bansos;
+	const manifestPath = path.join(
+		'src/lib/data/bansos/contributors',
+		bansos.contributorSlug,
+		'manifest.json'
+	);
+	if (!fs.existsSync(manifestPath)) return bansos;
+	const contributor = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+	return {
+		...bansos,
+		contributor: {
+			name: contributor.displayName,
+			url: contributor.links?.github || contributor.links?.website || 'https://bansos.dev'
+		}
+	};
+});
 
 if (newBansos.length === 0) {
 	console.log('No new bansos found.');

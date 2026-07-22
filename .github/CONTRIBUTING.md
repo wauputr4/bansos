@@ -24,7 +24,7 @@ Kalau kamu lebih nyaman kirim via PR:
 
 1. Fork repository ini.
 2. Buat branch: `git checkout -b feat/nama-perubahan`.
-3. Ubah data melalui `src/lib/data/bansos.ts` (atau jalankan tool internal lokal).
+3. Tambah atau ubah data di `src/lib/data/bansos/<slug>/index.json` (atau jalankan `npm run add:bansos`).
 4. Jalankan pengecekan dasar lalu buat PR.
 
 ## Kriteria PR yang baik

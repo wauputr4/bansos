@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-07-14",
-	"total": 69,
+	"generatedAt": "2026-07-22",
+	"total": 72,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -81,6 +81,16 @@
 			"featured": true,
 			"publishedAt": "2026-07-03",
 			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "ai-router-registration-and-daily-checkin-rewards",
+			"title": "AI-ROUTER — Bonus Pendaftaran & Check-in untuk API AI",
+			"provider": "AI-ROUTER",
+			"status": "active",
+			"tags": ["AI Credits", "API", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-07-21",
+			"contributorSlug": "ai-router"
 		},
 		{
 			"id": "aiclass-asean-courses",
@@ -608,6 +618,26 @@
 			"featured": false,
 			"publishedAt": "2026-06-17",
 			"contributorSlug": "devers"
+		},
+		{
+			"id": "tencent-cloud-free-tier",
+			"title": "Tencent Cloud Free Tier (Trial Gratis 30+ Produk)",
+			"provider": "Tencent Cloud",
+			"status": "active",
+			"tags": ["Cloud Services", "Free Tier", "VPS & Server", "Hosting"],
+			"featured": false,
+			"publishedAt": "2026-07-22",
+			"contributorSlug": "superftch"
+		},
+		{
+			"id": "tokengo-inference-api",
+			"title": "TokenGO API Inference Free $10 (5M Token)",
+			"provider": "TokenGO",
+			"status": "active",
+			"tags": ["AI API", "LLM", "Free Tier"],
+			"featured": false,
+			"publishedAt": "2026-07-15",
+			"contributorSlug": "zulhanf"
 		},
 		{
 			"id": "tokenrouter-minimax-m3-free",

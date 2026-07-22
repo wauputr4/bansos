@@ -12,14 +12,14 @@
  * Output: static/llms.txt & static/llms-full.txt
  */
 
-import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, statSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..');
 const STATIC_DIR = join(REPO_ROOT, 'static');
-const DATA_FILE = join(REPO_ROOT, 'src', 'lib', 'data', 'bansos.json');
+const DATA_DIR = join(REPO_ROOT, 'src', 'lib', 'data', 'bansos');
 
 // Ensure static dir exists
 try {
@@ -28,17 +28,19 @@ try {
 	mkdirSync(STATIC_DIR, { recursive: true });
 }
 
-// Load bansos data
-const raw = readFileSync(DATA_FILE, 'utf-8');
-let data;
-try {
-	data = JSON.parse(raw);
-} catch {
-	data = JSON.parse(raw, (key, value) => {
-		// Handle control characters in Unicode
-		return typeof value === 'string' ? value : value;
-	});
-}
+// Load public bansos entries from the canonical folder structure.
+const data = readdirSync(DATA_DIR, { withFileTypes: true })
+	.filter((entry) => entry.isDirectory())
+	.map((entry) => join(DATA_DIR, entry.name, 'index.json'))
+	.filter((path) => {
+		try {
+			return statSync(path).isFile();
+		} catch {
+			return false;
+		}
+	})
+	.map((path) => JSON.parse(readFileSync(path, 'utf-8')))
+	.filter((entry) => !entry.hidden);
 
 // Separate entries by status
 const active = data.filter((e) => e.status !== 'expired');
@@ -66,7 +68,7 @@ const summary = [
 	`- **Total entri:** ${data.length}`,
 	`- **Aktif:** ${active.length}`,
 	`- **Expired:** ${expired.length}`,
-	`- **Kontributor:** ${new Set(data.filter((e) => e.contributor).map((e) => e.contributor.name)).size}`,
+	`- **Kontributor:** ${new Set(data.map((e) => e.contributorSlug).filter(Boolean)).size}`,
 	'',
 	'## Kategori Populer',
 	...Object.entries(tagCounts)
@@ -98,7 +100,7 @@ const summary = [
 	'---',
 	'## Optional',
 	'- [llms-full.txt](https://bansos.dev/llms-full.txt) — Dataset lengkap semua entri',
-	'- [bansos.json](https://bansos.dev/bansos.json) — Raw JSON data'
+	'- [Data source](https://github.com/wauputr4/bansos/tree/main/src/lib/data/bansos) — Data katalog per folder'
 ];
 
 writeFileSync(join(STATIC_DIR, 'llms.txt'), summary.join('\n') + '\n', 'utf-8');

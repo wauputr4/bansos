@@ -32,7 +32,7 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 - Listing domain gratis, cloud gratis, hosting free-tier, API credits, database credits, dan benefit startup.
 - Halaman detail dengan provider, benefit, syarat klaim, masa berlaku, status aktif/expired, dan link resmi.
 - Filter tag dan highlight rekomendasi/terbaru.
-- Data terstruktur di [`src/lib/data/bansos.json`](src/lib/data/bansos.json).
+- Data per listing di [`src/lib/data/bansos/`](src/lib/data/bansos/).
 - SEO metadata untuk halaman publik, termasuk meta description dan social card pattern.
 - Workflow kontribusi publik via email dan Git clone.
 - Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
@@ -60,8 +60,9 @@ npm run lint
 ## Struktur penting
 
 ```text
-src/lib/data/bansos.json       # data utama listing bansos
-src/lib/data/bansos.ts         # helper selector, sorting, dan contributor stats
+src/lib/data/bansos/<slug>/    # index.json + README tiap listing
+src/lib/data/bansos/contributors/ # profil kontributor
+src/lib/data/bansos.ts         # loader, selector, sorting, dan stats
 src/lib/components/            # komponen UI reusable
 src/routes/list/               # halaman list dan detail bansos
 src/routes/contribute/         # panduan kontribusi publik
@@ -149,7 +150,7 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
 
 1. Clone repositori ini ke komputermu:
    ```bash
-   git clone https://gitlab.com/wauputr4/bansos.git
+   git clone https://github.com/wauputr4/bansos.git
    cd bansos
    npm install
    ```
@@ -171,7 +172,7 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
      --tags "Cloud,Gratisan"
    ```
 
-   Script ini akan memvalidasi data dan menyimpannya di file data terstruktur `src/lib/data/bansos.json`.
+   Script ini akan memvalidasi data lalu membuat `src/lib/data/bansos/<slug>/index.json` dan README listing.
 
    Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
    Argumen `--tags` dipisahkan dengan koma.
@@ -207,7 +208,7 @@ Listing yang baik sebaiknya menyertakan:
 
 - Kirim data lewat email ke [submit@bansos.dev](mailto:submit@bansos.dev).
 - Jika lebih nyaman, tambahkan melalui branch dan merge request manual.
-- Baca panduan kontribusi lengkap di [CONTRIBUTING](https://gitlab.com/wauputr4/bansos?tab=contributing-ov-file).
+- Baca panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Kode etik komunitas
 

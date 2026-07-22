@@ -448,16 +448,22 @@ function buildContributorMap(): Map<string, Contributor> {
 		if (!data || !data.login) continue;
 		const login = loginFromPath(path);
 
+		const links = Object.fromEntries(
+			Object.entries(data.links || {})
+				.map(([platform, url]) => [platform, sanitizeUrl(url)] as const)
+				.filter(([, url]) => url !== '#')
+		);
+
 		const contributor: Contributor = {
 			login: data.login as string,
 			displayName: (data.displayName as string) || login,
 			title: (data.title as string) || '',
 			bio: (data.bio as string) || '',
-			avatar: data.avatar as string | undefined,
+			avatar: data.avatar ? sanitizeUrl(data.avatar, '') || undefined : undefined,
 			location: data.location as string | undefined,
 			pronouns: data.pronouns as string | undefined,
 			skills: (data.skills as string[]) || [],
-			links: (data.links as Record<string, string>) || {},
+			links,
 			contributedBansos: (data.contributedBansos as string[]) || [],
 			hidden: (data.hidden as boolean) || false,
 			joinedAt: data.joinedAt as string | undefined
@@ -499,12 +505,12 @@ export function getContributorStats(): ContributorSummary[] {
 	const stats = new Map<string, ContributorSummary>();
 
 	for (const contributor of getAllContributors()) {
-		const count = contributor.contributedBansos.length;
+		const count = contributor.contributedBansos.filter((id) => getBansosById(id)).length;
 		if (count === 0) continue;
 		const login = contributor.login;
 		stats.set(login, {
 			name: contributor.displayName,
-			url: contributor.links?.github || contributor.links?.website || '',
+			url: contributor.links.github || contributor.links.website || `/contributor/${login}`,
 			count
 		});
 	}

@@ -31,7 +31,7 @@
 	const gitlabOwner = {
 		login: 'wauputr4',
 		avatarUrl: 'https://github.com/wauputr4.png?size=96',
-		url: 'https://github.com/wauputr4',
+		url: 'https://github.com/wauputr4'
 	};
 
 	const siteUrl = 'https://bansos.dev/';
