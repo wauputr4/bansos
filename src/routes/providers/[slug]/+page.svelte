@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
@@ -88,13 +87,6 @@
 </svelte:head>
 
 <main class="page-wrapper">
-	<nav class="container top-nav">
-		<a href={resolve('/providers')} class="btn-back">
-			<i class="fa-solid fa-arrow-left"></i>
-			{providerDetailT('backToProviders')}
-		</a>
-	</nav>
-
 	<header class="container provider-header">
 		<div class="provider-identity">
 			<img
@@ -177,11 +169,6 @@
 		color: var(--text-secondary);
 	}
 
-	.top-nav {
-		display: flex;
-	}
-
-	.btn-back,
 	.meta-link {
 		display: inline-flex;
 		align-items: center;

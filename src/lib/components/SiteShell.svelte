@@ -277,7 +277,7 @@
 	}
 
 	.standalone-hidden {
-		display: none;
+		display: none !important;
 	}
 
 	.site-header {

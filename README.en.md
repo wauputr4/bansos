@@ -73,6 +73,7 @@ packages/bansosdev-cli/        # bansosdev CLI (disabled for public submissions)
 Every listing must have a `contributorSlug` linked bidirectionally to its profile manifest. Avatars
 are derived from GitHub when available; profiles without GitHub still appear with two initials. All
 contributor name links on the site point to the internal bansos.dev profile.
+Profile content can be customized through `src/lib/data/bansos/contributors/<slug>/README.md`.
 
 ## How to Add Bansos
 

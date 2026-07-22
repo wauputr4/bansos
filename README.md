@@ -73,6 +73,7 @@ packages/bansosdev-cli/        # CLI bansosdev (disabled untuk submit publik)
 Setiap listing wajib memiliki `contributorSlug` yang terhubung dua arah dengan manifest profil.
 Avatar diambil otomatis dari GitHub bila tersedia; profil tanpa GitHub tetap tampil memakai dua
 inisial. Semua tautan nama kontributor di situs mengarah ke profil internal bansos.dev.
+Konten profil dapat disesuaikan melalui `src/lib/data/bansos/contributors/<slug>/README.md`.
 
 ## Cara Menambah Bansos
 

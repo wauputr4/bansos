@@ -6,14 +6,15 @@
 > Gunakan Email atau Git clone sesuai [README](../README.md). Dokumentasi ini dipertahankan
 > untuk maintainer dan pengujian payload lokal.
 
-## Cara kerja singkat
+## Cara kerja saat diaktifkan
 
+- Mode berikut didokumentasikan untuk referensi maintainer dan tidak menerima submit publik saat ini:
 - Mode default: `issue`.
   CLI menghasilkan URL GitHub Issue dengan payload JSON. Issue yang valid akan dibuatkan Pull Request otomatis oleh GitHub Actions.
 - `--mode direct`: maintainer trigger `workflow_dispatch` ke repo untuk membuat Pull Request otomatis.
 - `--mode json`: cetak payload JSON saja (untuk validasi).
 
-## Contributor (tanpa token)
+## Contoh payload contributor (nonaktif)
 
 ```bash
 npx bansosdev add \
@@ -32,7 +33,7 @@ npx bansosdev add \
   --tags "Cloud,Gratisan"
 ```
 
-## Maintainer (otomatis ke repo)
+## Contoh mode maintainer (nonaktif)
 
 ```bash
 BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add \

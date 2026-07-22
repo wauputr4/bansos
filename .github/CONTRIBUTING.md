@@ -18,7 +18,8 @@ Kalau kamu lebih nyaman kirim via PR:
 4. Pastikan `contributorSlug` menunjuk profil di
    `src/lib/data/bansos/contributors/<slug>/manifest.json`, dan ID listing tercatat pada
    `contributedBansos` profil tersebut.
-5. Jalankan `npm run validate:data`, `npm run check`, dan `npm run lint`, lalu buat PR.
+5. Opsional: tambahkan `README.md` pada folder profil untuk konten halaman contributor.
+6. Jalankan `npm run validate:data`, `npm run check`, dan `npm run lint`, lalu buat PR.
 
 ## Kriteria PR yang baik
 

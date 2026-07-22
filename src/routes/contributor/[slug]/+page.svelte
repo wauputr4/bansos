@@ -177,14 +177,14 @@
 		height: 120px;
 		border-radius: 50%;
 		object-fit: cover;
-		border: 3px solid var(--color-primary, #6366f1);
+		border: 3px solid var(--color-accent);
 	}
 
 	.avatar-placeholder {
 		width: 120px;
 		height: 120px;
 		border-radius: 50%;
-		background: linear-gradient(135deg, var(--color-primary, #6366f1), #a855f7);
+		background: linear-gradient(135deg, var(--color-accent), #a855f7);
 		color: white;
 		display: flex;
 		align-items: center;
@@ -206,26 +206,28 @@
 
 	.title {
 		font-size: 1.1rem;
-		color: var(--color-muted, #6b7280);
+		color: var(--text-secondary);
 		margin: 0;
 	}
 
 	.location {
 		font-size: 0.95rem;
-		color: var(--color-muted, #6b7280);
+		color: var(--text-secondary);
 		margin: 0.25rem 0 0;
 	}
 
 	.pronouns {
 		font-size: 0.85rem;
-		color: var(--color-muted-2, #9ca3af);
+		color: var(--text-muted);
 		margin: 0.15rem 0 0;
 	}
 
 	.bio-section {
 		margin-bottom: 1.5rem;
 		padding: 1rem 1.25rem;
-		background: var(--bg-card, #1f2937);
+		background: var(--bg-secondary);
+		border: 1px solid var(--border-color);
+		color: var(--text-primary);
 		border-radius: 12px;
 	}
 
@@ -251,7 +253,7 @@
 	.bansos-section h2 {
 		font-size: 1.1rem;
 		margin-bottom: 0.75rem;
-		color: var(--color-heading, #f3f4f6);
+		color: var(--text-primary);
 	}
 
 	.links-grid {
@@ -267,18 +269,18 @@
 		gap: 0.4rem;
 		padding: 0.5rem 1rem;
 		border-radius: 8px;
-		background: var(--bg-card, #1f2937);
+		background: var(--bg-secondary);
 		border: 1px solid var(--border-color, #374151);
 		text-decoration: none;
-		color: var(--color-text, #e5e7eb);
+		color: var(--text-primary);
 		font-size: 0.9rem;
 		transition: all 0.2s ease;
 	}
 
 	.link-card:hover {
-		background: var(--color-primary, #6366f1);
+		background: var(--color-accent);
 		color: white;
-		border-color: var(--color-primary, #6366f1);
+		border-color: var(--color-accent);
 	}
 
 	.link-card i {
@@ -295,10 +297,10 @@
 	.skill-tag {
 		padding: 0.3rem 0.75rem;
 		border-radius: 20px;
-		background: var(--bg-card, #1f2937);
+		background: var(--bg-secondary);
 		border: 1px solid var(--border-color, #374151);
 		font-size: 0.85rem;
-		color: var(--color-muted, #9ca3af);
+		color: var(--text-secondary);
 	}
 
 	.bansos-grid {
@@ -308,7 +310,7 @@
 	}
 
 	.empty-text {
-		color: var(--color-muted, #6b7280);
+		color: var(--text-muted);
 		font-style: italic;
 	}
 
