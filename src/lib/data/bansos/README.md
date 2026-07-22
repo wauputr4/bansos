@@ -31,6 +31,8 @@ relasi ini tetap sinkron dua arah, termasuk untuk contributor yang tidak memilik
 
 Contributor dapat menambahkan `README.md` di folder profilnya. Konten Markdown tersebut tampil pada
 halaman profil; identitas, tautan, avatar, dan daftar bansos tetap bersumber dari `manifest.json`.
+Halaman profil memakai URL canonical `https://bansos.dev/<login>/`. Login harus unik terhadap route
+utama dan seluruh slug bansos; `npm run validate:data` memeriksa collision tersebut.
 
 Setiap `index.json` bisa punya field `"hidden": true`:
 - Otomatis di-skip dari render frontend

@@ -546,7 +546,7 @@
 									<div class="original-contributor">
 										<span>{detailT('contributedBy')}</span>
 										<a
-											href={resolve(`/contributor/${item.contributorSlug}`)}
+											href={resolve('/[slug]', { slug: item.contributorSlug })}
 											class="submitted-person"
 										>
 											{#if originalContributor.avatar}
@@ -574,7 +574,9 @@
 										{#each commitContributors as contributor (contributor.login)}
 											{@const profileSlug = getContributorProfileSlugForGitLogin(contributor.login)}
 											<a
-												href={resolve(`/contributor/${profileSlug || contributor.login}`)}
+												href={resolve('/[slug]', {
+													slug: profileSlug || contributor.login
+												})}
 												class="commit-person"
 												title={detailT('commitBy', { login: contributor.login })}
 											>

@@ -19,6 +19,8 @@ Kalau kamu lebih nyaman kirim via PR:
    `src/lib/data/bansos/contributors/<slug>/manifest.json`, dan ID listing tercatat pada
    `contributedBansos` profil tersebut.
 5. Opsional: tambahkan `README.md` pada folder profil untuk konten halaman contributor.
+   Profil akan tersedia di URL canonical `https://bansos.dev/<slug>/`; slug harus unik dan tidak
+   boleh sama dengan route situs atau slug bansos.
 6. Jalankan `npm run validate:data`, `npm run check`, dan `npm run lint`, lalu buat PR.
 
 ## Kriteria PR yang baik

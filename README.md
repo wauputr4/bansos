@@ -74,6 +74,8 @@ Setiap listing wajib memiliki `contributorSlug` yang terhubung dua arah dengan m
 Avatar diambil otomatis dari GitHub bila tersedia; profil tanpa GitHub tetap tampil memakai dua
 inisial. Semua tautan nama kontributor di situs mengarah ke profil internal bansos.dev.
 Konten profil dapat disesuaikan melalui `src/lib/data/bansos/contributors/<slug>/README.md`.
+Profil publik memakai URL canonical `https://bansos.dev/<slug>/`; validator mencegah slug contributor
+bentrok dengan route situs atau shortlink bansos.
 
 ## Cara Menambah Bansos
 

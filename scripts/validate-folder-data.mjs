@@ -37,9 +37,26 @@ if (JSON.stringify(catalogIds) !== JSON.stringify(ids)) {
 
 const contributorsRoot = join(root, 'contributors');
 const itemById = new Map(items.map((item) => [item.id, item]));
+const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const reservedRootSlugs = new Set([
+	...readdirSync('src/routes', { withFileTypes: true })
+		.filter((entry) => entry.isDirectory() && !entry.name.startsWith('['))
+		.map((entry) => entry.name),
+	...readdirSync('static')
+]);
 for (const entry of readdirSync(contributorsRoot, { withFileTypes: true })) {
 	if (!entry.isDirectory()) continue;
 	const manifest = readJson(join(contributorsRoot, entry.name, 'manifest.json'));
+	if (!slugPattern.test(entry.name)) throw new Error(`Invalid contributor slug: ${entry.name}`);
+	if (manifest.login !== entry.name) {
+		throw new Error(`${entry.name}/manifest.json has mismatched login: ${manifest.login}`);
+	}
+	if (ids.includes(entry.name)) {
+		throw new Error(`Contributor slug conflicts with bansos shortlink: ${entry.name}`);
+	}
+	if (reservedRootSlugs.has(entry.name)) {
+		throw new Error(`Contributor slug conflicts with a reserved root URL: ${entry.name}`);
+	}
 	for (const id of manifest.contributedBansos || []) {
 		if (!ids.includes(id)) throw new Error(`${entry.name} references missing bansos: ${id}`);
 		if (itemById.get(id)?.contributorSlug !== entry.name) {
@@ -54,6 +71,11 @@ for (const entry of readdirSync(contributorsRoot, { withFileTypes: true })) {
 			throw new Error(`${entry.name} contains unsafe URL: ${url}`);
 		}
 	}
+}
+
+for (const id of ids) {
+	if (!slugPattern.test(id)) throw new Error(`Invalid bansos slug: ${id}`);
+	if (reservedRootSlugs.has(id)) throw new Error(`Bansos slug conflicts with a root URL: ${id}`);
 }
 
 for (const item of items) {

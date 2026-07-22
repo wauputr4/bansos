@@ -9,7 +9,11 @@
 
 	const { contributor, bansos } = $derived(data);
 
-	const sortedBansos = $derived(sortBansosByNewest(bansos));
+	const sortedBansos = $derived(
+		sortBansosByNewest(bansos).sort(
+			(a, b) => Number(a.status === 'expired') - Number(b.status === 'expired')
+		)
+	);
 
 	const linkEntries = $derived(
 		Object.entries(contributor.links).filter(([, url]) => url && url.trim())
@@ -17,7 +21,7 @@
 	const markdownHtml = $derived(
 		contributor.markdown ? renderProfileMarkdown(contributor.markdown) : ''
 	);
-	const canonicalUrl = $derived(`https://bansos.dev/contributor/${contributor.login}/`);
+	const canonicalUrl = $derived(`https://bansos.dev/${contributor.login}/`);
 	const description = $derived(
 		contributor.bio ||
 			`${contributor.displayName} telah membagikan ${bansos.length} program untuk komunitas developer di bansos.dev.`
@@ -142,7 +146,9 @@
 		{#if sortedBansos.length > 0}
 			<div class="bansos-grid">
 				{#each sortedBansos as item (item.id)}
-					<BansosCard {item} />
+					<div class:expired-card={item.status === 'expired'}>
+						<BansosCard {item} compact={item.status === 'expired'} />
+					</div>
 				{/each}
 			</div>
 		{:else}
@@ -307,6 +313,25 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 		gap: 1rem;
+	}
+
+	.expired-card :global(.bansos-card) {
+		gap: 0.65rem;
+	}
+
+	.expired-card :global(.card-title) {
+		font-size: 1rem;
+	}
+
+	.expired-card :global(.card-desc),
+	.expired-card :global(.contributor-label),
+	.expired-card :global(.card-stats) {
+		display: none;
+	}
+
+	.expired-card :global(.card-actions .btn-primary) {
+		padding-block: 0.6rem;
+		font-size: 0.85rem;
 	}
 
 	.empty-text {

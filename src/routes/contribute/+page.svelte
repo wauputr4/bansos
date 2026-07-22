@@ -480,7 +480,7 @@ Terima kasih,
 						<ul class="commit-contributors-list">
 							{#each contributors as contributor (contributor.login)}
 								<li class="commit-contributor-card">
-									<a href={resolve('/contributor/[slug]', { slug: contributor.login })}>
+									<a href={resolve('/[slug]', { slug: contributor.login })}>
 										{#if contributor.avatar}
 											<img src={contributor.avatar} alt={contributor.name} loading="lazy" />
 										{:else}

@@ -384,7 +384,7 @@
 					<div class="contributors-stack" aria-label={$t('home.ossContribStackAria')}>
 						{#each communityContributors as contributor (contributor.login)}
 							<a
-								href={resolve('/contributor/[slug]', { slug: contributor.login })}
+								href={resolve('/[slug]', { slug: contributor.login })}
 								class="contributor-avatar"
 								aria-label={$t('home.ossContribAria', {
 									values: { name: contributor.name, count: contributor.count }

@@ -108,7 +108,7 @@
 	{#if item.contributorSlug}
 		<p class="contributor-label">
 			{$t('common.contributor')}:
-			<a href={resolve(`/contributor/${item.contributorSlug}`)}>
+			<a href={resolve('/[slug]', { slug: item.contributorSlug })}>
 				{item.contributorSlug}
 			</a>
 		</p>

@@ -36,10 +36,14 @@ export function load({ params }: { params: Record<string, string> }) {
 		throw error(404, 'Halaman tidak ditemukan');
 	}
 
-	// Check if slug matches a contributor → redirect to canonical contributor page
+	// Contributor profiles own their canonical root URL.
 	const contributor = getContributorBySlug(slug);
 	if (contributor) {
-		throw redirect(301, `/contributor/${slug}`);
+		const bansos = contributor.contributedBansos
+			.map((id) => getBansosById(id))
+			.filter((item): item is NonNullable<typeof item> => item !== undefined);
+
+		return { contributor, bansos, slug, standaloneProfile: true };
 	}
 
 	// Check if slug matches a bansos item → redirect to detail page

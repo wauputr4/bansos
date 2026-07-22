@@ -15,7 +15,10 @@
 	let hideNavbar = $state(false);
 	let langExpanded = $state(false);
 	let hoveredLangCode = $state<string | null>(null);
-	const standaloneProfile = $derived($page.url.pathname.startsWith('/contributor/'));
+	const standaloneProfile = $derived(
+		$page.url.pathname.startsWith('/contributor/') ||
+			Boolean(($page.data as { standaloneProfile?: boolean }).standaloneProfile)
+	);
 
 	const languages = ALL_LANGUAGES.filter((lang) =>
 		availableCodes.includes(lang.code as SupportedLocale)

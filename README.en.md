@@ -74,6 +74,8 @@ Every listing must have a `contributorSlug` linked bidirectionally to its profil
 are derived from GitHub when available; profiles without GitHub still appear with two initials. All
 contributor name links on the site point to the internal bansos.dev profile.
 Profile content can be customized through `src/lib/data/bansos/contributors/<slug>/README.md`.
+Public profiles use the canonical URL `https://bansos.dev/<slug>/`; validation prevents contributor
+slugs from colliding with site routes or bansos shortlinks.
 
 ## How to Add Bansos
 

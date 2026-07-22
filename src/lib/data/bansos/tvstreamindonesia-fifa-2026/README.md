@@ -23,7 +23,7 @@ Nonton FIFA World Cup 2026 secara gratis dengan kualitas HD, tanpa iklan menggan
 
 [🔗 Klaim Bansos Ini](https://tvstreamindonesia.my.id)
 
-Kontributor: [Taslim](https://bansos.dev/contributor/bang-joe/)
+Kontributor: [Taslim](https://bansos.dev/bang-joe/)
 
 
 🏷️ Tags: Free Tier
