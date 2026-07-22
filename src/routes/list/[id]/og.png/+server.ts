@@ -63,8 +63,16 @@ export async function GET({ params, fetch }) {
 			</div>
 		`;
 
+	const escapedImage =
+		item.image?.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') || null;
+
+	// Build background style — use entry image if available, with dark overlay
+	const backgroundStyle = escapedImage
+		? `background-image: linear-gradient(rgba(9, 10, 15, 0.75), rgba(9, 10, 15, 0.85)), url(${escapedImage}); background-size: cover; background-position: center;`
+		: 'background-color: #090a0f;';
+
 	const template = html(`
-		<div style="display: flex; flex-direction: column; width: 1200px; height: 630px; background-color: #090a0f; color: #f3f4f6; padding: 70px; justify-content: space-between; box-sizing: border-box; border: 2px solid #1f2937;">
+		<div style="display: flex; flex-direction: column; width: 1200px; height: 630px; ${backgroundStyle} color: #f3f4f6; padding: 70px; justify-content: space-between; box-sizing: border-box; border: 2px solid #1f2937;">
 			<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
 				<span style="font-size: 24px; font-weight: 700; color: #10b981; letter-spacing: 1px; display: flex;">
 					BANSOS DEVELOPER

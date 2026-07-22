@@ -1,0 +1,31 @@
+{
+	"login": "devers",
+	"displayName": "DevERS",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/Renzie2161",
+		"website": "https://renzlab.my.id"
+	},
+	"contributedBansos": [
+		"amd-ai-dev-program",
+		"aws-activate-credits",
+		"digitalocean-hatch",
+		"google-startups-cloud",
+		"kimchi-dev-serverless-ai",
+		"lovable-free-pro-plan",
+		"merlin-ai-free-pro-1-month",
+		"microsoft-founders-hub",
+		"mongodb-startups",
+		"namecheap-hosting-trial",
+		"openmodel-deepseek-v4-flash-free",
+		"qoder-qwen-max-free",
+		"servernusa-free-xiaomi-mimo",
+		"sumopod-domain-rp1",
+		"tokenrouter-minimax-m3-free",
+		"xai-grok-api-credits"
+	],
+	"hidden": false,
+	"joinedAt": "2026-07-14"
+}

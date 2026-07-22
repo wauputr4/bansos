@@ -1,0 +1,30 @@
+{
+	"login": "wauputr4",
+	"displayName": "Wauputra",
+	"title": "Founder bansos.dev | Developer",
+	"bio": "Membangun bansos.dev — open source catalog buat developer Indonesia.",
+	"skills": ["SvelteKit", "TypeScript", "Node.js", "Cloudflare", "Open Source"],
+	"links": {
+		"github": "https://github.com/wauputr4",
+		"website": "https://wau.my.id"
+	},
+	"contributedBansos": [
+		"ai-livscene-free-models",
+		"bynara-ai-router-free-payg",
+		"conduit-trial-credit-500",
+		"deepseek-free-token",
+		"freemodel-invite-referral-10",
+		"gemini-plus-3bulan-sim",
+		"idwebhost-claim-domain-gratis-myid-juli2026",
+		"inceptionlabs-get-started",
+		"jagoanhosting-promo-domain-myid",
+		"jagoanhosting-promo-exclusive",
+		"jagoanhosting-promo-vps-25",
+		"namecheap-vps-hosting",
+		"namecom-domain-app",
+		"zyloo-free-200-credit-post"
+	],
+	"hidden": false,
+	"joinedAt": "2026-07-14",
+	"avatar": "https://github.com/wauputr4.png?size=96"
+}

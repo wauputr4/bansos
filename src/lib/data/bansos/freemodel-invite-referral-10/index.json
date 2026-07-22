@@ -1,0 +1,30 @@
+{
+	"id": "freemodel-invite-referral-10",
+	"title": "FreeModel Invite Referral — $10 Credit per Teman Daftar",
+	"provider": "FreeModel",
+	"description": "Ajak teman daftar FreeModel — kalian berdua dapat $10 API credits setelah teman verifikasi akun. Credit bisa dipakai untuk akses berbagai model AI premium.",
+	"benefits": [
+		"$10 API credit untuk kamu dan $10 untuk teman yang diundang",
+		"Tanpa batas jumlah undangan — invite sebanyak mungkin",
+		"Credit tidak pernah expired selama akun aktif"
+	],
+	"requirements": [
+		"Bagikan link referral ke teman (email domain bebas)",
+		"Teman daftar dan verifikasi akun via phone atau Telegram",
+		"Kamu dan teman masing-masing dapat $10 credit dalam ~1 menit setelah verifikasi"
+	],
+	"validity": {
+		"type": "forever",
+		"description": "Credit tidak pernah expired selama akun aktif"
+	},
+	"ctaLink": "https://freemodel.dev/invite/FRE-e95f134d",
+	"tags": ["AI Credits", "API", "Free Tier"],
+	"status": "active",
+	"featured": true,
+	"tips": "Hasil referral bisa diklaim API key-nya di Discord bansos.dev. Gabung dan tanyakan ke sesama pengguna FreeModel.",
+	"publishedAt": "2026-07-01",
+	"source": "https://freemodel.dev/invite/FRE-e95f134d",
+	"featuredSince": "2026-07-02",
+	"providerWebsiteUrl": "https://freemodel.dev",
+	"contributorSlug": "wauputr4"
+}

@@ -14,26 +14,13 @@
 		bansosList,
 		latestBansos,
 		featuredBansos,
-		getCommitContributorStats,
+		getContributorInitials,
 		getContributorStats,
 		formatNumber
 	} from '$lib/data/bansos';
 
-	type GithubContributor = {
-		login: string;
-		avatar_url: string;
-		html_url: string;
-		contributions: number;
-	};
-
 	const repo = 'wauputr4/bansos';
 	const repoUrl = `https://github.com/${repo}`;
-	const gitlabOwner = {
-		login: 'wauputr4',
-		avatarUrl: 'https://github.com/wauputr4.png?size=96',
-		url: 'https://github.com/wauputr4',
-	};
-
 	const siteUrl = 'https://bansos.dev/';
 	const websiteSchema = JSON.stringify({
 		'@context': 'https://schema.org',
@@ -61,34 +48,9 @@
 	const animatedActive = new Tween(activeBansos, tweenOptions);
 	const animatedUpcoming = new Tween(upcomingBansos, tweenOptions);
 	const animatedExpired = new Tween(expiredBansos, tweenOptions);
-	const commitContributors = getCommitContributorStats().filter(
-		(c) => c.login !== 'github-actions[bot]'
-	);
-	// Gabungin dengan kontributor dari bansos.json (entry contributor field)
-	const entryContributors = getContributorStats();
-	const combinedLogins: Record<string, boolean> = {};
-	for (const c of commitContributors) {
-		combinedLogins[c.login.toLowerCase()] = true;
-	}
-	for (const ec of entryContributors) {
-		const githubMatch = ec.url.match(new RegExp('^https://github.com/([^/?#]+)'));
-		if (githubMatch) {
-			const ghLogin = githubMatch[1].toLowerCase();
-			if (!combinedLogins[ghLogin]) {
-				combinedLogins[ghLogin] = true;
-				commitContributors.push({
-					login: ghLogin,
-					name: ec.name,
-					avatarUrl: `https://github.com/${ghLogin}.png?size=96`,
-					commitUrl: `https://github.com/${ghLogin}`,
-					count: ec.count
-				});
-			}
-		}
-	}
+	const communityContributors = getContributorStats();
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
-	let githubContributors: GithubContributor[] = $state([]);
 	let popularityData: Record<string, number> = $state({});
 	let discussionStats: Record<string, { comments: number; reactions: number }> = $state({});
 
@@ -116,7 +78,6 @@
 				const parsed = JSON.parse(cached);
 				githubStars = parsed.stars ?? githubStars;
 				githubPrs = parsed.prs ?? githubPrs;
-				githubContributors = parsed.contributors ?? githubContributors;
 			} catch {
 				// Ignore stale cache.
 			}
@@ -124,26 +85,19 @@
 
 		Promise.all([
 			fetch(`https://api.github.com/repos/${repo}`).then((res) => (res.ok ? res.json() : null)),
-			fetch(`https://api.github.com/repos/${repo}/contributors?per_page=10`).then((res) =>
-				res.ok ? res.json() : null
-			),
 			fetch(`https://api.github.com/search/issues?q=repo:${repo}+type:pr`).then((res) =>
 				res.ok ? res.json() : null
 			)
 		])
-			.then(([repoData, contributorsData, prData]) => {
+			.then(([repoData, prData]) => {
 				if (repoData) githubStars = repoData.stargazers_count;
-				if (Array.isArray(contributorsData)) {
-					githubContributors = contributorsData.slice(0, 8);
-				}
 				if (prData) githubPrs = prData.total_count;
 
 				localStorage.setItem(
 					CACHE_KEY,
 					JSON.stringify({
 						stars: githubStars,
-						prs: githubPrs,
-						contributors: githubContributors
+						prs: githubPrs
 					})
 				);
 			})
@@ -428,25 +382,21 @@
 				<div class="commit-contributor-panel">
 					<span class="repo-panel-label">{$t('home.ossContribLabel')}</span>
 					<div class="contributors-stack" aria-label={$t('home.ossContribStackAria')}>
-						{#each commitContributors as contributor (contributor.login)}
+						{#each communityContributors as contributor (contributor.login)}
 							<a
-								href={contributor.login === gitlabOwner.login
-									? gitlabOwner.url
-									: `https://github.com/${contributor.login}`}
-								target="_blank"
-								rel="noopener noreferrer"
+								href={resolve('/[slug]', { slug: contributor.login })}
 								class="contributor-avatar"
 								aria-label={$t('home.ossContribAria', {
-									values: { login: contributor.login, count: contributor.count }
+									values: { name: contributor.name, count: contributor.count }
 								})}
 							>
-								<img
-									src={contributor.login === gitlabOwner.login
-										? gitlabOwner.avatarUrl
-										: contributor.avatarUrl}
-									alt={contributor.login}
-									loading="lazy"
-								/>
+								{#if contributor.avatar}
+									<img src={contributor.avatar} alt={contributor.name} loading="lazy" />
+								{:else}
+									<span class="contributor-initial" aria-hidden="true">
+										{getContributorInitials(contributor.name)}
+									</span>
+								{/if}
 							</a>
 						{/each}
 					</div>
@@ -957,6 +907,16 @@
 		height: 100%;
 		object-fit: cover;
 		display: block;
+	}
+
+	.contributor-initial {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		place-items: center;
+		background: var(--color-accent);
+		color: var(--bg-primary);
+		font-weight: 900;
 	}
 
 	.repo-live-stats {

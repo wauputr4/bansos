@@ -1,0 +1,13 @@
+{
+	"login": "ai-router",
+	"displayName": "AI-ROUTER",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"website": "https://ai-router.dev/id"
+	},
+	"contributedBansos": ["ai-router-registration-and-daily-checkin-rewards"],
+	"hidden": false,
+	"joinedAt": "2026-07-21"
+}

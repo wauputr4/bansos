@@ -1,0 +1,27 @@
+{
+	"id": "gemini-plus-3bulan-sim",
+	"title": "Gemini Plus 3 Bulan via Bima+",
+	"provider": "Bima3",
+	"description": "Bisa klaim Gemini Plus 3 bulan di aplikasi Bima 3.",
+	"benefits": [
+		"Kuota Gemini Plus selama 3 bulan",
+		"Aktif untuk pengguna nomor 3",
+		"Bisa klaim langsung dari aplikasi Bima"
+	],
+	"requirements": [
+		"Buka aplikasi Bima+ (Bima 3)",
+		"Cek paket yang memiliki logo Gemini dan pilih Extra Gemini 180 Hari",
+		"Setelah pembayaran berhasil, Anda akan menerima link aktivasi melalui SMS",
+		"Ikuti petunjuk aktivasi pada link tersebut"
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://bima.tri.co.id",
+	"tags": ["AI Credits", "AI Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-17",
+	"source": "https://tri.co.id/google-gemini",
+	"contributorSlug": "wauputr4"
+}

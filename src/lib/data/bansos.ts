@@ -1,5 +1,67 @@
-import bansosData from './bansos.json';
-import commitContributorsData from './commit-contributors.json';
+/**
+ * bansos.ts — Data layer for bansos.dev
+ * Loads bansos data from folder structure (src/lib/data/bansos/<slug>/index.json)
+ * and contributor profiles (src/lib/data/bansos/contributors/<login>/manifest.json)
+ *
+ * Migration guide:
+ * - Old `contributor` inline object → `contributorSlug` string (ref to contributors/<slug>/)
+ * - Hidden items (hidden: true) are excluded from public lists
+ * - commit-contributors.json is replaced by contributor manifests
+ */
+
+// ─── Dynamic imports from folder structure ────────────────────────────────
+
+interface BansosModule {
+	id?: string;
+	title?: string;
+	provider?: string;
+	description?: string;
+	benefits?: string[];
+	validity?: { type: string; date?: string; description?: string };
+	requirements?: string[];
+	ctaLink?: string;
+	tags?: string[];
+	status?: string;
+	featured?: boolean;
+	publishedAt?: string;
+	contributorSlug?: string;
+	hidden?: boolean;
+	customUI?: boolean;
+}
+
+interface ContributorModule {
+	login?: string;
+	displayName?: string;
+	title?: string;
+	bio?: string;
+	avatar?: string;
+	location?: string;
+	pronouns?: string;
+	skills?: string[];
+	links?: Record<string, string>;
+	contributedBansos?: string[];
+	hidden?: boolean;
+	joinedAt?: string;
+}
+
+// Vite glob imports — eager so data is available at module load time
+const bansosGlob = import.meta.glob<BansosModule>('./bansos/*/index.json', {
+	eager: true,
+	import: 'default'
+});
+
+const contributorGlob = import.meta.glob<ContributorModule>(
+	'./bansos/contributors/*/manifest.json',
+	{ eager: true, import: 'default' }
+);
+
+const contributorReadmeGlob = import.meta.glob<string>('./bansos/contributors/*/README.md', {
+	eager: true,
+	query: '?raw',
+	import: 'default'
+});
+
+// ─── Types ────────────────────────────────────────────────────────────────
 
 export interface BansosItem {
 	id: string;
@@ -7,6 +69,10 @@ export interface BansosItem {
 	provider: string;
 	providerLogoUrl?: string;
 	providerWebsiteUrl?: string;
+	/** URL gambar preview/thumbnail utama entry bansos */
+	image?: string;
+	/** URL gambar galeri tambahan (multiple images untuk detail page) */
+	images?: string[];
 	description: string;
 	benefits: string[];
 	promoCode?: string;
@@ -18,6 +84,8 @@ export interface BansosItem {
 	requirements: string[];
 	tips?: string;
 	publishedAt?: string;
+	contributorSlug?: string;
+	/** @deprecated Use contributorSlug instead */
 	contributor?: {
 		name: string;
 		url: string;
@@ -29,12 +97,33 @@ export interface BansosItem {
 	featuredSince?: string;
 	featuredUntil?: string;
 	status: 'active' | 'expired' | 'upcoming';
+	hidden?: boolean;
+	customUI?: boolean;
+}
+
+export interface Contributor {
+	login: string;
+	displayName: string;
+	title?: string;
+	bio?: string;
+	avatar?: string;
+	location?: string;
+	pronouns?: string;
+	skills: string[];
+	links: Record<string, string>;
+	contributedBansos: string[];
+	hidden?: boolean;
+	joinedAt?: string;
+	markdown?: string;
 }
 
 export interface ContributorSummary {
+	login: string;
 	name: string;
-	url: string;
+	avatar?: string;
+	hasGithub: boolean;
 	count: number;
+	editCount: number;
 }
 
 export interface ProviderSummary {
@@ -50,18 +139,13 @@ export interface ProviderSummary {
 	items: BansosItem[];
 }
 
-export interface CommitContributor {
-	login: string;
-	name: string;
-	avatarUrl: string;
-	commitUrl: string;
-}
+// ─── Utility ─────────────────────────────────────────────────────────────
 
 const DEFAULT_UTM = {
 	source: 'bansos.dev',
 	medium: 'referral',
 	campaign: 'bansos'
-};
+} as const;
 
 /**
  * Formats a number to a compact string (e.g. 1100 -> 1.1k)
@@ -69,7 +153,6 @@ const DEFAULT_UTM = {
 export function formatNumber(num: number | string): string {
 	if (typeof num === 'string') num = parseInt(num, 10);
 	if (isNaN(num)) return '0';
-
 	return new Intl.NumberFormat('en-US', {
 		notation: 'compact',
 		maximumFractionDigits: 1
@@ -78,15 +161,11 @@ export function formatNumber(num: number | string): string {
 
 /**
  * Parses and validates a URL string.
- * @param url The URL string to parse.
- * @returns The parsed URL object or null if invalid/not http(s).
  */
 function parseAndValidateUrl(url: string): URL | null {
 	try {
 		const parsed = new URL(url.trim());
-		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-			return null;
-		}
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return null;
 		return parsed;
 	} catch {
 		return null;
@@ -95,9 +174,6 @@ function parseAndValidateUrl(url: string): URL | null {
 
 /**
  * Sanitizes a URL string, returning a fallback if invalid.
- * @param url The URL string to sanitize.
- * @param fallback The fallback string (default: '#').
- * @returns The sanitized URL string.
  */
 export function sanitizeUrl(url: string, fallback = '#') {
 	const parsed = parseAndValidateUrl(url);
@@ -106,13 +182,10 @@ export function sanitizeUrl(url: string, fallback = '#') {
 
 /**
  * Appends default UTM parameters to a URL.
- * @param url The URL string to process.
- * @returns The URL string with UTM parameters appended.
  */
 function appendDefaultUtmParams(url: string) {
 	const safeUrl = sanitizeUrl(url);
 	if (safeUrl === '#') return safeUrl;
-
 	try {
 		const parsed = new URL(safeUrl);
 		if (!parsed.searchParams.has('utm_source')) {
@@ -132,23 +205,17 @@ function appendDefaultUtmParams(url: string) {
 
 /**
  * Extracts the provider (hostname) from a URL.
- * @param url The URL string to process.
- * @returns The extracted provider string or 'Unknown'.
  */
 export function extractProvider(url: string) {
 	try {
 		const parsed = parseAndValidateUrl(url);
 		if (!parsed) return 'Unknown';
 		let hostname = parsed.hostname;
-
-		// Strip common known subdomains first so we don't accidentally treat them as root domains later
 		hostname = hostname.replace(
 			/^(?:www\.|platform\.|console\.|docs\.|dash\.|api\.|app\.|auth\.|login\.)+/i,
 			''
 		);
-
 		const parts = hostname.split('.');
-
 		if (parts.length > 2) {
 			const secondToLast = parts[parts.length - 2];
 			const isTwoPartTld = [
@@ -164,15 +231,14 @@ export function extractProvider(url: string) {
 				'or'
 			].includes(secondToLast);
 			if (isTwoPartTld) {
-				parts.pop(); // Remove the country code (e.g., 'uk')
-				parts.pop(); // Remove the second level TLD (e.g., 'co')
+				parts.pop();
+				parts.pop();
 			} else {
-				parts.pop(); // Remove single TLD (e.g., 'com')
+				parts.pop();
 			}
 		} else if (parts.length > 1) {
-			parts.pop(); // Remove single TLD
+			parts.pop();
 		}
-
 		const rootName = parts.pop() || 'Unknown';
 		return rootName.charAt(0).toUpperCase() + rootName.slice(1);
 	} catch {
@@ -180,33 +246,37 @@ export function extractProvider(url: string) {
 	}
 }
 
+// ─── Data loading ─────────────────────────────────────────────────────────
+
 /**
- * Sanitizes and tracks a bansos item, appending UTM params and using explicit provider if available.
- * @param item The bansos item.
- * @returns The fully sanitized bansos item.
+ * Extracts the slug from a glob key path.
+ * e.g. './bansos/namecom-domain-app/index.json' → 'namecom-domain-app'
  */
-export function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
-	const sanitizedItem = {
+function slugFromPath(path: string): string {
+	return path.replace(/^\.\/bansos\//, '').replace(/\/index\.json$/, '');
+}
+
+/**
+ * Extracts the login from a contributor glob key path.
+ * e.g. './bansos/contributors/wauputra/manifest.json' → 'wauputra'
+ */
+function loginFromPath(path: string): string {
+	return path.replace(/^\.\/bansos\/contributors\//, '').replace(/\/manifest\.json$/, '');
+}
+
+/**
+ * Sanitizes and tracks a bansos item, appending UTM params and resolving provider.
+ */
+function sanitizeAndTrackBansosItem(item: BansosItem): BansosItem {
+	return {
 		...item,
 		provider: item.provider?.trim() ? item.provider.trim() : extractProvider(item.ctaLink),
 		ctaLink: appendDefaultUtmParams(item.ctaLink)
-	};
-
-	if (sanitizedItem.contributor?.url) {
-		sanitizedItem.contributor = {
-			...sanitizedItem.contributor,
-			url: sanitizeUrl(sanitizedItem.contributor.url)
-		};
-	}
-
-	return sanitizedItem as BansosItem;
+	} as BansosItem;
 }
 
 /**
  * Normalizes bansos statuses based on a reference date.
- * @param items The list of bansos items.
- * @param referenceDate The date to use as reference (default: today).
- * @returns The list of bansos items with normalized statuses.
  */
 export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new Date()) {
 	const dateToUse = Number.isNaN(referenceDate.getTime()) ? new Date() : referenceDate;
@@ -219,30 +289,83 @@ export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new
 		if (item.status === 'upcoming' && item.publishedAt && item.publishedAt <= todayStr) {
 			return { ...item, status: 'active' as const };
 		}
-
 		if (
 			item.status !== 'expired' &&
-			item.validity.type === 'fixed' &&
+			item.validity?.type === 'fixed' &&
 			item.validity.date &&
 			item.validity.date < todayStr
 		) {
 			return { ...item, status: 'expired' as const };
 		}
-
 		return item;
 	});
 }
 
+/**
+ * Builds the bansos list from the folder structure, filtering out hidden items.
+ */
+function buildBansosList(): BansosItem[] {
+	const items: BansosItem[] = [];
+
+	for (const [path, data] of Object.entries(bansosGlob)) {
+		if (!data || !data.title) continue;
+		const slug = slugFromPath(path);
+
+		// Skip hidden items (privacy flag)
+		if (data.hidden === true) continue;
+
+		const item: BansosItem = {
+			id: slug,
+			title: data.title as string,
+			provider: (data.provider as string) || extractProvider(data.ctaLink as string),
+			description: data.description as string,
+			benefits: (data.benefits as string[]) || [],
+			validity: (data.validity as BansosItem['validity']) || { type: 'uncertain' },
+			requirements: (data.requirements as string[]) || [],
+			ctaLink: (data.ctaLink as string) || '#',
+			tags: (data.tags as string[]) || [],
+			featured: (data.featured as boolean) || false,
+			status: (data.status as string as BansosItem['status']) || 'active'
+		};
+
+		// Optional fields — read from raw data and assign directly
+		const rawData = data as unknown as Record<string, unknown>;
+		for (const field of [
+			'promoCode',
+			'tips',
+			'publishedAt',
+			'source',
+			'featuredSince',
+			'featuredUntil',
+			'providerLogoUrl',
+			'providerWebsiteUrl',
+			'image',
+			'images',
+			'contributorSlug',
+			'hidden',
+			'customUI'
+		] as const) {
+			const val = rawData[field];
+			if (val !== undefined && val !== null && val !== '') {
+				const mutableItem = item as unknown as Record<string, unknown>;
+				mutableItem[field] = val;
+			}
+		}
+
+		items.push(item);
+	}
+
+	return items;
+}
+
+// Build the list at module load time
+const rawBansosList = buildBansosList();
 export const bansosList: BansosItem[] = normalizeBansosStatuses(
-	(bansosData as BansosItem[]).map((item) => sanitizeAndTrackBansosItem(item))
+	rawBansosList.map((item) => sanitizeAndTrackBansosItem(item))
 );
 
-/**
- * Retrieves the timestamp value for an item's published date.
- * @param item The bansos item.
- * @param fallbackIndex The fallback index if date is missing or invalid.
- * @returns The timestamp value.
- */
+// ─── Sorting & filtering ──────────────────────────────────────────────────
+
 function itemDateValue(item: BansosItem, fallbackIndex: number) {
 	if (!item.publishedAt) return fallbackIndex;
 	const timestamp = Date.parse(`${item.publishedAt}T00:00:00.000Z`);
@@ -251,8 +374,6 @@ function itemDateValue(item: BansosItem, fallbackIndex: number) {
 
 /**
  * Sorts bansos items by newest first.
- * @param items The list of bansos items.
- * @returns The sorted list of bansos items.
  */
 export function sortBansosByNewest(items: BansosItem[] = bansosList) {
 	return items
@@ -281,10 +402,6 @@ export const featuredBansos = (limit = 3, items: BansosItem[] = bansosList) =>
 
 /**
  * Returns recommended bansos items based on a current item's tags.
- * @param currentItem The item to base recommendations on.
- * @param items The list of bansos items.
- * @param limit The maximum number of recommendations.
- * @returns The recommended bansos items.
  */
 export function recommendedBansosFor(
 	currentItem: BansosItem,
@@ -292,7 +409,6 @@ export function recommendedBansosFor(
 	limit = 3
 ) {
 	const currentTags = new Set(currentItem.tags);
-
 	return sortBansosByNewest(items)
 		.filter((entry) => entry.id !== currentItem.id)
 		.filter((entry) => entry.status === 'active')
@@ -310,9 +426,7 @@ export const allBansosTags = Array.from(new Set(bansosList.flatMap((item) => ite
 );
 
 /**
- * Gets a bansos item by its ID.
- * @param id The item ID.
- * @returns The matched bansos item or undefined.
+ * Gets a bansos item by its ID/slug.
  */
 export function getBansosById(id: string) {
 	return bansosList.find((item) => item.id === id);
@@ -320,8 +434,6 @@ export function getBansosById(id: string) {
 
 /**
  * Gets bansos items containing a specific tag.
- * @param tag The tag to filter by.
- * @returns The matched bansos items.
  */
 export function getBansosByTag(tag: string) {
 	return bansosList.filter((item) => item.tags.includes(tag));
@@ -329,54 +441,143 @@ export function getBansosByTag(tag: string) {
 
 /**
  * Gets the source URL or identifier for an item.
- * @param item The bansos item.
- * @returns The source string.
  */
 export function getItemSource(item: BansosItem) {
 	return item.source;
 }
 
+// ─── Contributors ─────────────────────────────────────────────────────────
+
 /**
- * Gets commit contributors for a specific bansos item.
- * @param id The item ID.
- * @returns The list of commit contributors.
+ * Builds a map of contributors from the folder structure.
  */
-export function getCommitContributorsForItem(id: string): CommitContributor[] {
-	return (commitContributorsData as Record<string, CommitContributor[]>)[id] || [];
+function buildContributorMap(): Map<string, Contributor> {
+	const map = new Map<string, Contributor>();
+
+	for (const [path, data] of Object.entries(contributorGlob)) {
+		if (!data || !data.login) continue;
+		const login = loginFromPath(path);
+
+		const links = Object.fromEntries(
+			Object.entries(data.links || {})
+				.map(([platform, url]) => [platform, sanitizeUrl(url)] as const)
+				.filter(([, url]) => url !== '#')
+		);
+		const github = links.github?.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1];
+		const explicitAvatar = data.avatar ? sanitizeUrl(data.avatar, '') || undefined : undefined;
+		const markdown = contributorReadmeGlob[path.replace('/manifest.json', '/README.md')]?.trim();
+
+		const contributor: Contributor = {
+			login: data.login as string,
+			displayName: (data.displayName as string) || login,
+			title: (data.title as string) || '',
+			bio: (data.bio as string) || '',
+			avatar: explicitAvatar || (github ? `https://github.com/${github}.png?size=96` : undefined),
+			location: data.location as string | undefined,
+			pronouns: data.pronouns as string | undefined,
+			skills: (data.skills as string[]) || [],
+			links,
+			contributedBansos: (data.contributedBansos as string[]) || [],
+			hidden: (data.hidden as boolean) || false,
+			joinedAt: data.joinedAt as string | undefined,
+			markdown
+		};
+
+		map.set(login, contributor);
+	}
+
+	return map;
+}
+
+/** Returns a compact two-letter fallback for contributors without an avatar. */
+export function getContributorInitials(name: string): string {
+	const parts = name.trim().split(/\s+/).filter(Boolean);
+	if (parts.length === 0) return '?';
+	if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+	return `${parts[0][0]}${parts.at(-1)?.[0] || ''}`.toUpperCase();
+}
+
+const contributorMap = buildContributorMap();
+
+/**
+ * Gets a contributor profile by their login/slug.
+ * Hidden contributors are excluded unless `includeHidden` is true.
+ */
+export function getContributorBySlug(
+	login: string,
+	includeHidden = false
+): Contributor | undefined {
+	const contributor = contributorMap.get(login);
+	if (!contributor) return undefined;
+	if (contributor.hidden && !includeHidden) return undefined;
+	return contributor;
 }
 
 /**
- * Calculates aggregated commit contributor stats.
- * @returns An array of contributors sorted by contribution count.
+ * Gets all contributors, optionally including hidden ones.
  */
-export function getCommitContributorStats() {
-	const map = new Map<string, CommitContributor & { count: number }>();
+export function getAllContributors(includeHidden = false): Contributor[] {
+	return Array.from(contributorMap.values()).filter((c) => includeHidden || !c.hidden);
+}
 
-	for (const contributors of Object.values(
-		commitContributorsData as Record<string, CommitContributor[]>
-	)) {
-		for (const contributor of contributors) {
-			const current = map.get(contributor.login);
-			if (current) {
-				current.count += 1;
-			} else {
-				map.set(contributor.login, { ...contributor, count: 1 });
-			}
-		}
+function githubLogin(contributor: Contributor): string | undefined {
+	return contributor.links.github?.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1].toLowerCase();
+}
+
+export function getContributorProfileSlugForGitLogin(login: string): string | undefined {
+	const normalized = login.toLowerCase();
+	return getAllContributors().find(
+		(contributor) =>
+			contributor.login.toLowerCase() === normalized || githubLogin(contributor) === normalized
+	)?.login;
+}
+
+/**
+ * Calculates aggregated contributor statistics from the contributor manifests.
+ */
+export function getContributorStats(): ContributorSummary[] {
+	const stats = new Map<string, ContributorSummary>();
+	const commitStats = getCommitContributorStats();
+
+	for (const contributor of getAllContributors()) {
+		const count = contributor.contributedBansos.filter((id) => getBansosById(id)).length;
+		if (count === 0) continue;
+		const login = contributor.login;
+		const github = githubLogin(contributor);
+		const editCount = commitStats.find(
+			(entry) => entry.login.toLowerCase() === (github || login.toLowerCase())
+		)?.count;
+		stats.set(login, {
+			login,
+			name: contributor.displayName,
+			avatar: contributor.avatar,
+			hasGithub: Boolean(github),
+			count,
+			editCount: editCount || 0
+		});
 	}
 
-	return Array.from(map.values()).sort((a, b) => {
+	return Array.from(stats.values()).sort((a, b) => {
+		if (a.hasGithub !== b.hasGithub) return a.hasGithub ? -1 : 1;
 		if (b.count !== a.count) return b.count - a.count;
-		return a.login.localeCompare(b.login);
+		return a.name.localeCompare(b.name);
 	});
 }
 
-export const commitContributorCount = getCommitContributorStats().length;
+/**
+ * Get contributors for a specific bansos item (via contributorSlug).
+ */
+export function getContributorsForBansos(slug: string): Contributor[] {
+	const item = getBansosById(slug);
+	if (!item?.contributorSlug) return [];
+	const contributor = getContributorBySlug(item.contributorSlug);
+	return contributor ? [contributor] : [];
+}
+
+// ─── Providers ────────────────────────────────────────────────────────────
 
 /**
  * Slugifies a provider name for URLs and keys.
- * @param provider The provider name.
- * @returns The slugified provider name.
  */
 export function slugifyProvider(provider: string) {
 	return provider
@@ -387,29 +588,15 @@ export function slugifyProvider(provider: string) {
 		.replace(/^-+|-+$/g, '');
 }
 
-/**
- * Generates a unique key for a provider.
- * @param provider The provider name.
- * @returns The provider key.
- */
 function providerKey(provider: string) {
 	return slugifyProvider(provider);
 }
 
-/**
- * Extracts the provider website URL from an item.
- * @param item The bansos item.
- * @returns The website origin URL or '#'.
- */
 function providerWebsiteFrom(item: BansosItem) {
 	const parsed = parseAndValidateUrl(item.providerWebsiteUrl || item.ctaLink);
 	return parsed ? parsed.origin : '#';
 }
-/**
- * Generates a direct favicon URL for a given URL.
- * @param url The website URL.
- * @returns The favicon image URL.
- */
+
 function faviconUrlFor(url: string) {
 	const parsed = parseAndValidateUrl(url);
 	return parsed
@@ -421,8 +608,6 @@ let cachedProviderStats: ProviderSummary[] | null = null;
 
 /**
  * Calculates aggregated provider statistics.
- * @param items The list of bansos items.
- * @returns The calculated provider summaries.
  */
 export function getProviderStats(items: BansosItem[] = bansosList) {
 	if (items === bansosList && cachedProviderStats) {
@@ -465,9 +650,7 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 			tags: Array.from(new Set(provider.tags)).sort((a, b) => a.localeCompare(b)),
 			items: sortBansosByNewest(provider.items)
 		}))
-		.sort((a, b) => {
-			return a.name.localeCompare(b.name);
-		});
+		.sort((a, b) => a.name.localeCompare(b.name));
 
 	if (items === bansosList) {
 		cachedProviderStats = result;
@@ -478,60 +661,93 @@ export function getProviderStats(items: BansosItem[] = bansosList) {
 
 /**
  * Gets provider statistics by slug.
- * @param slug The provider slug.
- * @returns The matching provider summary or undefined.
  */
 export function getProviderBySlug(slug: string) {
 	return getProviderStats().find((provider) => provider.slug === slug);
 }
 
+// ─── Contributor count (replaces old commit-contributor count) ────────────
+
+export const commitContributorCount = getAllContributors().length;
+
+// ─── Auto-generated commit contributors from git history ────────────────
+// Generated by scripts/generate-commit-contributors.mjs
+// Maps bansos slug → array of { login, name, avatarUrl, commitUrl }
+
+interface CommitContributorsIndex {
+	[slug: string]: CommitContributorEntry[];
+}
+
+interface CommitContributorEntry {
+	login: string;
+	name: string;
+	avatarUrl: string;
+	commitUrl: string;
+}
+
+export interface CommitHistoryEntry {
+	hash: string;
+	date: string;
+	url: string;
+}
+
+const commitContributorsGlob = import.meta.glob<CommitContributorsIndex>(
+	'./bansos/commit-contributors.json',
+	{ eager: true, import: 'default' }
+);
+
+// Extract the data from the glob result
+const commitContributorsData: CommitContributorsIndex =
+	Object.values(commitContributorsGlob)[0] || {};
+
+const commitHistoryGlob = import.meta.glob<Record<string, CommitHistoryEntry>>(
+	'./bansos/commit-history.json',
+	{ eager: true, import: 'default' }
+);
+const commitHistoryData = Object.values(commitHistoryGlob)[0] || {};
+
 /**
- * Generates a unique key for a contributor.
- * @param name The contributor name.
- * @param url The contributor URL.
- * @returns The generated key.
+ * Get commit contributors for a specific bansos item (from git history).
  */
-function contributorKey(name: string, url: string) {
-	return `${name.trim().toLowerCase()}::${normalizeContributorUrl(url)}`;
+export function getCommitContributorsForItem(id: string): CommitContributorEntry[] {
+	return (commitContributorsData[id] || []).filter(
+		(contributor) => !contributor.login.endsWith('[bot]')
+	);
+}
+
+export function getLatestCommitForItem(id: string): CommitHistoryEntry | undefined {
+	return commitHistoryData[id];
 }
 
 /**
- * Normalizes a contributor URL.
- * @param url The URL string.
- * @returns The normalized URL string.
+ * Get aggregated commit contributor stats (from git history).
  */
-function normalizeContributorUrl(url: string) {
-	const parsed = parseAndValidateUrl(url);
-	if (!parsed) return '#';
-	return `${parsed.origin}${parsed.pathname.replace(/\/+$/, '')}${parsed.search}${parsed.hash}`;
-}
+export function getCommitContributorStats(): (CommitContributorEntry & { count: number })[] {
+	const map = new Map<string, CommitContributorEntry & { count: number }>();
 
-/**
- * Calculates aggregated contributor statistics.
- * @returns An array of contributor summaries sorted by count.
- */
-export function getContributorStats() {
-	const map = new Map<string, ContributorSummary>();
-
-	for (const item of bansosList) {
-		const contributor = item.contributor;
-		if (!contributor?.name || !contributor?.url) continue;
-
-		const key = contributorKey(contributor.name, contributor.url);
-		const current = map.get(key);
-		if (current) {
-			current.count += 1;
-		} else {
-			map.set(key, {
-				name: contributor.name.trim().toLowerCase(),
-				url: contributor.url,
-				count: 1
-			});
+	for (const contributors of Object.values(commitContributorsData)) {
+		for (const contributor of contributors) {
+			if (contributor.login.endsWith('[bot]')) continue;
+			const current = map.get(contributor.login);
+			if (current) {
+				current.count += 1;
+			} else {
+				map.set(contributor.login, { ...contributor, count: 1 });
+			}
 		}
 	}
 
 	return Array.from(map.values()).sort((a, b) => {
 		if (b.count !== a.count) return b.count - a.count;
-		return a.name.localeCompare(b.name);
+		return a.login.localeCompare(b.login);
 	});
+}
+
+// ─── Deprecated backward compatibility types ──────────────────────────
+
+export interface CommitContributor {
+	login: string;
+	name: string;
+	avatarUrl: string;
+	commitUrl: string;
 }

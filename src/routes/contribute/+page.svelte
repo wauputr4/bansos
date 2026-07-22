@@ -1,12 +1,13 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
+	import { resolve } from '$app/paths';
 	import { t } from '$lib/i18n';
 	import { get } from 'svelte/store';
 	import { locale } from 'svelte-i18n';
 	import {
 		bansosList,
-		getCommitContributorStats,
+		getContributorInitials,
 		getContributorStats,
 		type ContributorSummary
 	} from '$lib/data/bansos';
@@ -14,18 +15,6 @@
 	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
-	const gitlabOwner = {
-		login: 'wauputr4',
-		avatarUrl: 'https://github.com/wauputr4.png?size=96',
-		url: 'https://github.com/wauputr4'
-	};
-	const commitContributors = getCommitContributorStats()
-		.filter((c) => c.login !== 'github-actions[bot]')
-		.sort((a, b) => {
-			if (a.login === gitlabOwner.login) return -1;
-			if (b.login === gitlabOwner.login) return 1;
-			return 0;
-		});
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
 		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
@@ -60,18 +49,25 @@
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
 		const parts = [
-			'# GitHub',
+			isEnglish ? '# GitHub (recommended)' : '# GitHub (disarankan)',
 			'git clone https://github.com/wauputr4/bansos.git',
-			'# GitLab (mirror)',
-			'git clone https://gitlab.com/wauputr4/bansos.git',
+			isEnglish ? '# Or use the GitLab mirror:' : '# Atau gunakan mirror GitLab:',
+			'# git clone https://gitlab.com/wauputr4/bansos.git',
 			'cd bansos',
 			'npm install',
+			`git checkout -b ${branchName}`,
 			'',
+			isEnglish
+				? '# Name and URL are only required for your first submission'
+				: '# Nama dan URL hanya diperlukan saat submit pertama',
 			'npm run add:bansos -- \\',
 			`  --id ${item.id} \\`,
 			`  --title "${item.title}" \\`,
 			`  --provider "${item.provider}" \\`,
 			`  --description "${item.description}" \\`,
+			'  --contributor-slug username-kamu \\',
+			'  --contributor-name "Nama Kamu" \\',
+			'  --contributor-url "https://github.com/username-kamu" \\',
 			`  --benefits "${item.benefits.join('|')}" \\`,
 			`  --validity-type ${item.validity.type} \\`
 		];
@@ -87,7 +83,6 @@
 		parts.push(`  --cta-link "${item.ctaLink}" \\`);
 		parts.push(`  --tags "${item.tags.join(',')}"`);
 		parts.push('');
-		parts.push(`git checkout -b ${branchName}`);
 		parts.push('git add .');
 		parts.push(`git commit -m "feat: add ${item.title}"`);
 		parts.push(`git push origin ${branchName}`);
@@ -193,8 +188,6 @@ Terima kasih,
 
 	let copiedId = $state('');
 	let copiedNotice = $state('');
-	let activeContributorTab = $state<'project' | 'registered'>('project');
-
 	const copyToClipboard = async (text: string, id: string) => {
 		try {
 			await navigator.clipboard.writeText(text);
@@ -482,96 +475,45 @@ Terima kasih,
 		{/if}
 
 		<div class="contributor-tabs-container">
-			<div class="contributor-tabs-header">
-				<button
-					class="contrib-tab-btn"
-					class:active={activeContributorTab === 'project'}
-					onclick={() => (activeContributorTab = 'project')}
-				>
-					<i class="fa-solid fa-code-commit"></i>
-					<span>{$t('contribute.contribTabProject')} ({commitContributors.length})</span>
-				</button>
-				<button
-					class="contrib-tab-btn"
-					class:active={activeContributorTab === 'registered'}
-					onclick={() => (activeContributorTab = 'registered')}
-				>
-					<i class="fa-solid fa-users"></i>
-					<span>{$t('contribute.contribTabRegistered')} ({contributors.length})</span>
-				</button>
-			</div>
-
 			<div class="contributor-tab-content">
-				{#if activeContributorTab === 'project'}
-					<div class="contrib-tab-panel">
-						<p class="section-note">
-							{$t('contribute.contribProjectDesc')}
-						</p>
+				<div class="contrib-tab-panel">
+					<h2 class="section-title">
+						<i class="fa-solid fa-users"></i>
+						{$t('contribute.communityTitle')} ({contributors.length})
+					</h2>
+					<p class="section-note">{$t('contribute.communityDesc')}</p>
+					{#if contributors.length > 0}
 						<ul class="commit-contributors-list">
-							{#each commitContributors as contributor (contributor.login)}
-								<li
-									class="commit-contributor-card"
-									class:author-highlight={contributor.login === gitlabOwner.login}
-								>
-									<a
-										href={contributor.login === gitlabOwner.login
-											? gitlabOwner.url
-											: `https://github.com/${contributor.login}`}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={contributor.login === gitlabOwner.login
-												? gitlabOwner.avatarUrl
-												: contributor.avatarUrl}
-											alt={contributor.login}
-											loading="lazy"
-										/>
-										<span class="login-name">@{contributor.login}</span>
-										{#if contributor.login === gitlabOwner.login}
-											<span class="author-badge" title={$t('contribute.contribAuthorBadge')}>
-												<i class="fa-solid fa-crown"></i>
-												<span class="author-text">{$t('contribute.contribAuthorBadge')}</span>
+							{#each contributors as contributor (contributor.login)}
+								<li class="commit-contributor-card">
+									<a href={resolve('/[slug]', { slug: contributor.login })}>
+										{#if contributor.avatar}
+											<img src={contributor.avatar} alt={contributor.name} loading="lazy" />
+										{:else}
+											<span class="contributor-initial" aria-hidden="true">
+												{getContributorInitials(contributor.name)}
 											</span>
 										{/if}
+										<span class="login-name">{contributor.name}</span>
+										{#if contributor.hasGithub}
+											<i class="fa-brands fa-github" aria-label="GitHub"></i>
+										{/if}
 									</a>
-									<span class="contributor-count"
-										>{$t('contribute.contribProjectCount', {
-											values: { count: contributor.count }
-										})}</span
-									>
+									<span class="contributor-count">
+										{$t('contribute.communityCount', { values: { count: contributor.count } })}
+										{#if contributor.editCount > 0}
+											· {$t('contribute.communityEditCount', {
+												values: { count: contributor.editCount }
+											})}
+										{/if}
+									</span>
 								</li>
 							{/each}
 						</ul>
-					</div>
-				{:else if activeContributorTab === 'registered'}
-					<div class="contrib-tab-panel">
-						<p class="section-note">
-							{$t('contribute.contribRegisteredDesc')}
-						</p>
-						{#if contributors.length > 0}
-							<ul class="contributors-list">
-								{#each contributors as contributor (`${contributor.name}-${contributor.url}`)}
-									<li class="contributor-card">
-										<div class="contributor-name">
-											<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-											<a href={contributor.url} target="_blank" rel="noopener noreferrer">
-												{contributor.name}
-											</a>
-										</div>
-										<span class="contributor-count"
-											>{$t('contribute.contribRegisteredCount', {
-												values: { count: contributor.count }
-											})}</span
-										>
-									</li>
-								{/each}
-							</ul>
-						{:else}
-							<p class="empty-contributor">{$t('contribute.contribRegisteredEmpty')}</p>
-						{/if}
-					</div>
-				{/if}
+					{:else}
+						<p class="empty-contributor">{$t('contribute.communityEmpty')}</p>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</section>
@@ -1005,6 +947,18 @@ Terima kasih,
 		height: 2rem;
 		border-radius: 999px;
 		display: block;
+		object-fit: cover;
+	}
+
+	.contributor-initial {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 999px;
+		display: grid;
+		place-items: center;
+		background: var(--color-accent);
+		color: var(--bg-primary);
+		font-weight: 900;
 	}
 
 	.author-highlight {
@@ -1038,16 +992,6 @@ Terima kasih,
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-	}
-
-	.contributor-name a {
-		color: var(--color-accent);
-		font-weight: 700;
-		text-decoration: none;
-	}
-
-	.contributor-name a:hover {
-		text-decoration: underline;
 	}
 
 	.contributor-count {

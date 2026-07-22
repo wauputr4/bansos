@@ -1,0 +1,31 @@
+{
+	"id": "lovable-free-pro-plan",
+	"title": "Lovable Pro Plan Gratis 100 Kredit - AI Web App Builder",
+	"provider": "Lovable",
+	"description": "Rasakan pengalaman Pro Plan Lovable tanpa keluar biaya sepeserpun.",
+	"benefits": [
+		"Akses gratis ke tier Pro Plan",
+		"100 kredit per bulan untuk generate dan edit kode",
+		"Bisa cancel subscription kapan saja setelah aktivasi tanpa biaya"
+	],
+	"requirements": [
+		"Daftar atau masuk ke akun Lovable",
+		"Pilih upgrade ke Pro Plan 100 Credit/bulan dan masukkan kode promo SIMONPRO26 saat checkout",
+		"Siapkan Virtual Credit Card (VCC) untuk verifikasi billing"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-07-03",
+		"description": "Kode promo SIMONPRO26 sudah tidak berlaku. Sudah expire per 3 Juli 2026."
+	},
+	"ctaLink": "https://lovable.dev/pricing",
+	"tags": ["AI Tools", "Developer Tools", "Free Tier"],
+	"status": "expired",
+	"featured": false,
+	"promoCode": "SIMONPRO26",
+	"tips": "Jangan lupa cancel subscription setelah aktivasi Pro Plan agar tidak terkena biaya otomatis bulan berikutnya.",
+	"publishedAt": "2026-07-01",
+	"source": "https://x.com/simonsquibb/status/2050180383069581420",
+	"providerWebsiteUrl": "https://lovable.dev",
+	"contributorSlug": "devers"
+}

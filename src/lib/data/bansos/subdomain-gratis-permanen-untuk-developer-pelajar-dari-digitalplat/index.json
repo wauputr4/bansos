@@ -1,0 +1,30 @@
+{
+	"id": "subdomain-gratis-permanen-untuk-developer-pelajar-dari-digitalplat",
+	"title": "Subdomain Gratis Permanen untuk Developer & Pelajar dari DigitalPlat",
+	"provider": "DigitalPlat Foundation",
+	"description": "Layanan subdomain gratis permanen dari DigitalPlat Foundation untuk pelajar dan open-source developer. Mendukung kustomisasi DNS management via Cloudflare atau DNS hosting lainnya. Kebijakan satu akun per orang dengan limit awal 1 subdomain (bisa bertambah dengan memberi Star ke repo GitHub mereka).",
+	"benefits": [
+		"Subdomain gratis permanen (pilihan: qzz.io, dpdns.org, us.kg, xx.kg)",
+		"Bebas dihubungkan ke DNS pihak ketiga (bisa pake Cloudflare, AWS, dll.)",
+		"Full control atas DNS management",
+		"Tanpa biaya tersembunyi (kecuali biaya opsional verifikasi KYC jika terdeteksi sistem anti-abuse)"
+	],
+	"requirements": [
+		"Siapkan akun DNS Hosting (direkomendasikan menggunakan Cloudflare).",
+		"Lakukan registrasi di dashboard DigitalPlat dengan identitas asli (Nama, email, & telepon aktif).",
+		"(Opsional) Berikan Star pada repository GitHub https://github.com/DigitalPlatDev/FreeDomain untuk klaim tambahan slot subdomain.",
+		"Daftarkan subdomain pilihan Anda (pilihan: qzz.io, dpdns.org, us.kg, xx.kg).",
+		"Delegasikan nameserver subdomain ke DNS Hosting pihak ketiga untuk mulai mengelola DNS.",
+		"Patuhi Acceptable Use Policy (dilarang phishing/malware/penipuan) agar domain tidak di-banned."
+	],
+	"validity": {
+		"type": "forever",
+		"description": "Gratis seterusnya selama project DigitalPlat Foundation jalan."
+	},
+	"ctaLink": "https://dash.domain.digitalplat.org",
+	"tags": ["Domain", "API", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": true,
+	"publishedAt": "2026-06-17",
+	"contributorSlug": "faza-iman-imron"
+}

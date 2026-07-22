@@ -32,7 +32,7 @@ This site is built as a static SvelteKit site that is super SEO-friendly, data-d
 - Listings for free domains, free cloud, hosting free-tier, API credits, database credits, and startup benefits.
 - Detail pages with provider, benefits, claim requirements, validity period, active/expired status, and official links.
 - Tag filters and featured/latest highlights.
-- Structured data at [`src/lib/data/bansos.json`](src/lib/data/bansos.json).
+- Per-listing data under [`src/lib/data/bansos/`](src/lib/data/bansos/).
 - SEO metadata for public pages, including meta description and social card pattern.
 - Public contribution workflow via email and Git clone.
 - Public contribution page: [bansos.dev/contribute](https://bansos.dev/contribute).
@@ -60,14 +60,22 @@ npm run lint
 ## Important structure
 
 ```text
-src/lib/data/bansos.json       # main bansos listing data
-src/lib/data/bansos.ts         # helper selectors, sorting, and contributor stats
+src/lib/data/bansos/<slug>/    # index.json + README for each listing
+src/lib/data/bansos/contributors/ # contributor profiles
+src/lib/data/bansos.ts         # loader, selectors, sorting, and stats
 src/lib/components/            # reusable UI components
 src/routes/list/               # list and bansos detail pages
 src/routes/contribute/         # public contribution guide
 scripts/add-bansos.mjs         # local script to add data
 packages/bansosdev-cli/        # bansosdev CLI (disabled for public submissions)
 ```
+
+Every listing must have a `contributorSlug` linked bidirectionally to its profile manifest. Avatars
+are derived from GitHub when available; profiles without GitHub still appear with two initials. All
+contributor name links on the site point to the internal bansos.dev profile.
+Profile content can be customized through `src/lib/data/bansos/contributors/<slug>/README.md`.
+Public profiles use the canonical URL `https://bansos.dev/<slug>/`; validation prevents contributor
+slugs from colliding with site routes or bansos shortlinks.
 
 ## How to Add Bansos
 
@@ -150,7 +158,7 @@ This option is for those who want to test the code locally or modify files direc
 1. Clone this repository to your computer:
 
    ```bash
-   git clone https://gitlab.com/wauputr4/bansos.git
+   git clone https://github.com/wauputr4/bansos.git
    cd bansos
    npm install
    ```
@@ -168,15 +176,18 @@ This option is for those who want to test the code locally or modify files direc
      --validity-date 2026-06-30 \
      --requirements "Create an account|Claim the program" \
      --cta-link "https://example.com" \
+    --contributor-slug your-username \
      --contributor-name "Your Name" \
      --contributor-url "https://example.com" \
      --tags "Cloud,Freebie"
    ```
 
-   This script will validate the data and save it in the structured data file `src/lib/data/bansos.json`.
+   This script validates the data and creates `src/lib/data/bansos/<slug>/index.json` plus its listing README.
 
    The `--benefits` and `--requirements` arguments are separated by `|`.
    The `--tags` argument is separated by commas.
+   `--contributor-slug` is required for every submission. `--contributor-name` is required and
+   `--contributor-url` is optional only when that contributor profile does not exist yet.
 
 3. Create a new branch, add commits, push to your fork, and send a merge request to the main repository.
 
@@ -209,7 +220,7 @@ A good listing should include:
 
 - Send data via email to [submit@bansos.dev](mailto:submit@bansos.dev).
 - If more comfortable, add via branch and manual merge request.
-- Read the full contribution guide in [CONTRIBUTING](https://gitlab.com/wauputr4/bansos?tab=contributing-ov-file).
+- Read the full contribution guide in [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Community Code of Conduct
 

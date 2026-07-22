@@ -1,0 +1,25 @@
+{
+	"id": "google-startups-cloud",
+	"title": "Program Google for Startups Cloud",
+	"provider": "Google Cloud",
+	"description": "Google Cloud memberikan subsidi biaya infrastruktur dan alat AI untuk startup tahap awal maupun yang sudah mendapat pendanaan.",
+	"benefits": [
+		"Kredit hingga $2.000 USD selama setahun untuk startup tahap awal",
+		"Kredit hingga $350.000 selama dua tahun untuk startup AI dengan pendanaan",
+		"Akses ke layanan Firebase dan alat AI/ML"
+	],
+	"requirements": [
+		"Daftar langsung melalui program untuk tier dasar",
+		"Tier lebih tinggi membutuhkan dukungan VC atau rujukan mitra resmi"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Kredit berlaku 1 sampai 2 tahun tergantung pada tier pendanaan"
+	},
+	"ctaLink": "https://startup.google.com/cloud/",
+	"tags": ["Cloud Services", "AI Credits", "Startup"],
+	"status": "active",
+	"featured": true,
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "devers"
+}

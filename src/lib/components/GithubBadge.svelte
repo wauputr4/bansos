@@ -30,9 +30,7 @@
 		}
 
 		Promise.all([
-			fetch(`https://api.github.com/repos/${repo}`).then((r) =>
-				r.ok ? r.json() : null
-			)
+			fetch(`https://api.github.com/repos/${repo}`).then((r) => (r.ok ? r.json() : null))
 		])
 			.then(([repoData]) => {
 				if (repoData) {

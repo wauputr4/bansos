@@ -28,3 +28,7 @@ vite.config.ts.timestamp-*
 # Custom Agent Skills & Config
 .agents/
 skills-lock.json
+
+# Auto-generated commit contributors
+src/lib/data/bansos/commit-contributors.json
+src/lib/data/bansos/**/.contributors.json

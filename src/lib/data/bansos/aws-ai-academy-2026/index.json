@@ -1,0 +1,28 @@
+{
+	"id": "aws-ai-academy-2026",
+	"title": "Program Beasiswa AWS AI Academy 2026",
+	"provider": "AWS x Dicoding",
+	"description": "Pelatihan coding intensif 100% GRATIS untuk mendalami Artificial Intelligence (AI) & Machine Learning (ML) bagi seluruh masyarakat Indonesia tanpa batas usia. Program resmi kolaborasi AWS dan Dicoding berskala nasional.",
+	"benefits": [
+		"Kurikulum Berstandar Industri Global & Sertifikat Kompetensi Resmi",
+		"Pembelajaran Fleksibel secara Online Mandiri dengan Bimbingan Mentor Expert",
+		"Akses Komunitas & Hackathon bersama 40.000 talenta digital se-Indonesia"
+	],
+	"requirements": [
+		"Terbuka untuk semua kalangan masyarakat Indonesia tanpa batasan usia atau latar belakang pendidikan",
+		"Memiliki semangat belajar tinggi untuk menyelesaikan seluruh silabus kelas dasar"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-12-25",
+		"description": "Pendaftaran dibuka 1 April - 25 Desember 2026. Masa belajar 1 April - 31 Desember 2026."
+	},
+	"ctaLink": "https://aws.dicoding.com/login",
+	"tags": ["AI", "Cloud", "Machine Learning", "Training"],
+	"status": "active",
+	"featured": false,
+	"tips": "Disarankan mengikuti Webinar pengenalan program GRATIS di YouTube Dicoding agar makin siap dan paham alur belajarnya.",
+	"publishedAt": "2026-07-06",
+	"source": "https://aws.dicoding.com/login",
+	"contributorSlug": "aditech"
+}

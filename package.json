@@ -8,6 +8,7 @@
 	],
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "node scripts/validate-folder-data.mjs && node scripts/generate-commit-contributors.mjs",
 		"build": "vite build",
 		"postbuild": "node scripts/generate-llmstxt.js",
 		"preview": "vite preview",
@@ -15,7 +16,8 @@
 		"add:bansos": "node scripts/add-bansos.mjs",
 		"generate:llms": "node scripts/generate-llmstxt.js",
 		"generate:commit-contributors": "node scripts/generate-commit-contributors.mjs",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"validate:data": "node scripts/validate-folder-data.mjs",
+		"check": "node scripts/validate-folder-data.mjs && node scripts/generate-commit-contributors.mjs && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."

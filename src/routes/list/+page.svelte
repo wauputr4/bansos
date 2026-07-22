@@ -10,7 +10,7 @@
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
 	let selectedValidities: string[] = $state([]);
-	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('popular');
+	let sortOrder: 'newest' | 'oldest' | 'popular' = $state('newest');
 	let filterExpanded = $state(false);
 	let currentPage = $state(1);
 	let searchQuery = $state('');
@@ -53,6 +53,20 @@
 	const dynamicTags = $derived(
 		Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort((a, b) => a.localeCompare(b))
 	);
+	const isDefaultView = $derived(
+		selectedTags.length === 0 &&
+			selectedStatuses.length === 0 &&
+			selectedValidities.length === 0 &&
+			!searchQuery.trim() &&
+			sortOrder === 'newest'
+	);
+	const featuredBansos = $derived(
+		isDefaultView
+			? bansosList
+					.filter((item) => item.featured && item.status !== 'expired')
+					.sort((a, b) => (b.featuredSince || '').localeCompare(a.featuredSince || ''))
+			: []
+	);
 
 	const filteredBansos = $derived.by(() => {
 		const query = searchQuery.trim().toLowerCase();
@@ -90,6 +104,7 @@
 			})
 			.filter(({ item, score }) => {
 				if (searchQuery.trim() && score === 0) return false;
+				if (isDefaultView && item.featured && item.status !== 'expired') return false;
 				const tagMatch =
 					selectedTags.length === 0 || item.tags.some((tag) => selectedTags.includes(tag));
 				const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(item.status);
@@ -98,25 +113,6 @@
 				return tagMatch && statusMatch && validityMatch;
 			})
 			.sort((a, b) => {
-				// Only force featured first on default view (no filters, no search, default sort)
-				const isDefaultView =
-					selectedTags.length === 0 &&
-					selectedStatuses.length === 0 &&
-					selectedValidities.length === 0 &&
-					!searchQuery.trim() &&
-					sortOrder === 'popular';
-				if (isDefaultView) {
-					const aFeatured = a.item.featured && a.item.status !== 'expired' ? 0 : 1;
-					const bFeatured = b.item.featured && b.item.status !== 'expired' ? 0 : 1;
-					if (aFeatured !== bFeatured) return aFeatured - bFeatured;
-					// Among featured items, sort by featuredSince descending (newest first)
-					if (aFeatured === 0 && bFeatured === 0) {
-						const aSince = a.item.featuredSince || '';
-						const bSince = b.item.featuredSince || '';
-						if (aSince !== bSince) return bSince.localeCompare(aSince);
-					}
-				}
-
 				if (searchQuery.trim() && a.score !== b.score) {
 					return b.score - a.score;
 				}
@@ -451,7 +447,7 @@
 								selectedTags = [];
 								selectedStatuses = [];
 								selectedValidities = [];
-								sortOrder = 'popular';
+								sortOrder = 'newest';
 								searchQuery = '';
 								currentPage = 1;
 							}}
@@ -460,6 +456,22 @@
 						</button>
 					</div>
 				{:else}
+					{#if isDefaultView && featuredBansos.length > 0}
+						<section class="featured-strip" aria-labelledby="featured-heading">
+							<div class="feed-subheading">
+								<h2 id="featured-heading">{$t('list.featuredTitle')}</h2>
+								<span>{$t('list.swipeHint')} <i class="fa-solid fa-arrow-right"></i></span>
+							</div>
+							<div class="featured-slider">
+								{#each featuredBansos as item (item.id)}
+									<div class="featured-slide">
+										<BansosCard {item} compact views={popularityData[item.id] || 0} />
+									</div>
+								{/each}
+							</div>
+						</section>
+						<h2 class="latest-heading">{$t('list.latestTitle')}</h2>
+					{/if}
 					<div class="result-summary">
 						<span
 							>{$t('list.resultSummary', {
@@ -764,6 +776,56 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2rem;
+	}
+
+	.featured-strip {
+		margin-bottom: 1.5rem;
+	}
+
+	.feed-subheading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.feed-subheading h2,
+	.latest-heading {
+		font-size: 1.15rem;
+		color: var(--text-primary);
+	}
+
+	.feed-subheading span {
+		color: var(--text-muted);
+		font-size: 0.75rem;
+	}
+
+	.featured-slider {
+		display: flex;
+		gap: 0.9rem;
+		overflow-x: auto;
+		scroll-snap-type: x proximity;
+		scrollbar-width: thin;
+		padding: 0.15rem 0 0.75rem;
+	}
+
+	.featured-slide {
+		flex: 0 0 min(19rem, calc(100vw - 4rem));
+		scroll-snap-align: start;
+	}
+
+	.featured-slide :global(.bansos-card) {
+		height: 100%;
+		gap: 0.7rem;
+	}
+
+	.featured-slide :global(.card-desc) {
+		display: none;
+	}
+
+	.latest-heading {
+		margin-bottom: 0.5rem;
 	}
 
 	.inline-anxious {

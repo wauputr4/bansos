@@ -1,0 +1,17 @@
+{
+	"id": "adobe-creative-cloud-pro-trial",
+	"title": "Adobe Creative Cloud Pro Rp0 | Free Trial 4 Month",
+	"provider": "Adobe",
+	"description": "Bisa hemat Rp5.000.000 buat 4 bulan. Include Adobe Firefly",
+	"benefits": ["Adobe Creative Cloud Pro"],
+	"requirements": ["Pembayaran Menggunakan DANA/CC"],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://s.ricoaditya.com/adobe-creative-cloud-pro",
+	"tags": ["Cloud Services", "Free Tier", "Gratisan"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-23",
+	"contributorSlug": "ricatix"
+}

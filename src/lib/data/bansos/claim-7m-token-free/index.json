@@ -1,0 +1,29 @@
+{
+	"id": "claim-7m-token-free",
+	"title": "Claim 7M token free",
+	"provider": "Bynara",
+	"description": "Setiap akun mendapatkan kredit gratis hingga sekitar 7 juta per hari dan kuotanya diperbarui secara berkala, jadi cukup menarik untuk eksperimen, coding agent, maupun testing berbagai model.",
+	"benefits": [
+		"claude-sonnet-4.5",
+		"mistral-large",
+		"mistral-medium-3-5",
+		"claude-haiku-4.5",
+		"deepseek-3.2",
+		"glm-5"
+	],
+	"requirements": [
+		"Registrasi akun di Nararouter melalui link tersedia",
+		"Verifikasi email dan login ke dashboard",
+		"Akses AI Models dan mulai gunakan 7M token gratis per hari"
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"ctaLink": "https://router.bynara.id/register?ref=CJWVMGPR",
+	"tags": ["AI", "AI Credits", "API"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-23",
+	"source": "https://router.bynara.id/register?ref=CJWVMGPR",
+	"contributorSlug": "ab-codeworks"
+}

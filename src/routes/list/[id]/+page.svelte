@@ -9,7 +9,11 @@
 	import { t } from '$lib/i18n';
 	import {
 		getCommitContributorsForItem,
+		getContributorBySlug,
+		getContributorInitials,
+		getContributorProfileSlugForGitLogin,
 		getItemSource,
+		getLatestCommitForItem,
 		getProviderBySlug,
 		recommendedBansosFor,
 		slugifyProvider,
@@ -82,6 +86,10 @@
 		}
 	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
+	const latestCommit = $derived(item ? getLatestCommitForItem(item.id) : undefined);
+	const originalContributor = $derived(
+		item?.contributorSlug ? getContributorBySlug(item.contributorSlug) : undefined
+	);
 	const status = $derived(item?.status || 'unknown');
 	const currentLocale = $derived($locale || 'id');
 	const currentDateLocale = $derived(currentLocale === 'en' ? 'en-US' : 'id-ID');
@@ -421,6 +429,20 @@
 						</div>
 					{/if}
 
+					{#if item.image}
+						<div class="detail-image-section">
+							<img src={item.image} alt={item.title} class="detail-main-image" loading="lazy" />
+						</div>
+					{/if}
+
+					{#if item.images && item.images.length > 0}
+						<div class="detail-image-gallery">
+							{#each item.images as img (img)}
+								<img src={img} alt="{item.title} screenshot" class="gallery-image" loading="lazy" />
+							{/each}
+						</div>
+					{/if}
+
 					<section class="section-block">
 						<h2><i class="fa-solid fa-circle-question"></i> {detailT('aboutTitle')}</h2>
 						<p class="description-text text-pretty">{item.description}</p>
@@ -501,7 +523,7 @@
 
 			<!-- Right Column: Sidebar (Meta & Recommendations) -->
 			<aside class="detail-sidebar-col">
-				{#if source || item.contributor || commitContributors.length > 0}
+				{#if source || item.contributorSlug || item.contributor || commitContributors.length > 0}
 					<div class="detail-sidebar-meta">
 						{#if source}
 							<div class="meta-card">
@@ -515,34 +537,46 @@
 								{/if}
 							</div>
 						{/if}
-						{#if item.contributor || commitContributors.length > 0}
+						{#if item.contributorSlug || item.contributor || commitContributors.length > 0}
 							<div class="meta-card">
 								<span class="meta-label"
 									><i class="fa-solid fa-code-branch"></i> {detailT('projectContributor')}</span
 								>
-								{#if item.contributor}
-									<div
-										class="original-contributor"
-										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
-									>
-										{detailT('contributedBy')}
+								{#if item.contributorSlug && originalContributor}
+									<div class="original-contributor">
+										<span>{detailT('contributedBy')}</span>
 										<a
-											href={item.contributor.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											style="color: var(--color-accent); font-weight: 700;"
+											href={resolve('/[slug]', { slug: item.contributorSlug })}
+											class="submitted-person"
 										>
-											{item.contributor.name}
+											{#if originalContributor.avatar}
+												<img
+													src={originalContributor.avatar}
+													alt={originalContributor.displayName}
+													loading="lazy"
+												/>
+											{:else}
+												<span class="submitted-initial" aria-hidden="true">
+													{getContributorInitials(originalContributor.displayName)}
+												</span>
+											{/if}
+											<strong>{originalContributor.displayName}</strong>
 										</a>
 									</div>
 								{/if}
 								{#if commitContributors.length > 0}
+									<div
+										style="margin-bottom: 0.35rem; font-size: 0.85rem; color: var(--text-secondary);"
+									>
+										{detailT('editedBy')}
+									</div>
 									<div class="commit-list">
 										{#each commitContributors as contributor (contributor.login)}
+											{@const profileSlug = getContributorProfileSlugForGitLogin(contributor.login)}
 											<a
-												href={contributor.commitUrl}
-												target="_blank"
-												rel="noopener noreferrer"
+												href={resolve('/[slug]', {
+													slug: profileSlug || contributor.login
+												})}
 												class="commit-person"
 												title={detailT('commitBy', { login: contributor.login })}
 											>
@@ -550,6 +584,20 @@
 												<span>@{contributor.login}</span>
 											</a>
 										{/each}
+									</div>
+								{/if}
+								{#if latestCommit}
+									<div class="latest-commit">
+										<span>{detailT('latestCommit')}</span>
+										<a href={latestCommit.url} target="_blank" rel="noopener noreferrer">
+											<i class="fa-solid fa-code-commit" aria-hidden="true"></i>
+											{latestCommit.hash.slice(0, 7)}
+										</a>
+										<time datetime={latestCommit.date}>
+											{new Intl.DateTimeFormat(currentDateLocale, {
+												dateStyle: 'medium'
+											}).format(new Date(latestCommit.date))}
+										</time>
 									</div>
 								{/if}
 							</div>
@@ -811,6 +859,53 @@
 		gap: 0.55rem;
 	}
 
+	.original-contributor {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.4rem;
+		margin-bottom: 0.75rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+	}
+
+	.submitted-person {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: var(--bg-secondary);
+		padding: 0.25rem 0.6rem 0.25rem 0.25rem;
+	}
+
+	.submitted-person img,
+	.submitted-initial {
+		width: 1.65rem;
+		height: 1.65rem;
+		border-radius: 999px;
+	}
+
+	.submitted-person img {
+		display: block;
+		object-fit: cover;
+	}
+
+	.submitted-initial {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, var(--color-primary, #6366f1), #a855f7);
+		color: white;
+		font-size: 0.62rem;
+		font-weight: 800;
+	}
+
+	.submitted-person strong {
+		color: var(--color-accent);
+		font-size: 0.82rem;
+	}
+
 	.commit-person {
 		display: inline-flex;
 		align-items: center;
@@ -831,6 +926,26 @@
 	.commit-person span {
 		display: inline-block;
 		transform: translateY(-1.5px);
+	}
+
+	.latest-commit {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-top: 0.75rem;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--border-color);
+		font-size: 0.75rem;
+		color: var(--text-muted);
+	}
+
+	.latest-commit a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--color-accent);
+		font-family: monospace;
 	}
 
 	.section-block {
@@ -1212,5 +1327,46 @@
 		padding: 0.5rem 1rem;
 		font-size: 0.82rem;
 		border-radius: 0.5rem;
+	}
+
+	/* ─── Image Section Styles ────────────────────────────────────────── */
+	.detail-image-section {
+		margin: 0;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border: 1px solid var(--border-color);
+		background: var(--bg-secondary);
+	}
+
+	.detail-main-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 28rem;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	.detail-image-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.75rem;
+	}
+
+	@media (max-width: 40rem) {
+		.detail-image-gallery {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.gallery-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 20rem;
+		object-fit: cover;
+		border-radius: 0.6rem;
+		border: 1px solid var(--border-color);
+		background: var(--bg-secondary);
 	}
 </style>

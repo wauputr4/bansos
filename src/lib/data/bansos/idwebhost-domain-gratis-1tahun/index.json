@@ -1,0 +1,30 @@
+{
+	"id": "idwebhost-domain-gratis-1tahun",
+	"title": "Domain Gratis 1 Tahun di IDwebhost (pakai kupon)",
+	"provider": "IDwebhost",
+	"description": "Klaim domain gratis 1 tahun buat bikin web cepat, cukup pakai kupon saat checkout dan pilih ekstensi yang didukung.",
+	"benefits": [
+		"Domain gratis 1 tahun untuk yang ambil paket sesuai campaign",
+		"Mendukung klaim domain .my.id, .web.id, atau .biz.id",
+		"Kupon `mAts2Mey` jadi jalan masuk utama untuk promo",
+		"Tidak perlu tambahan paket hosting, SSL, maupun email hosting"
+	],
+	"requirements": [
+		"Punya akun di IDwebhost",
+		"Pilih domain gratis yang diinginkan",
+		"Masukkan kupon `mAts2Mey`",
+		"Saat checkout, jangan centang hosting, SSL, dan email hosting sesuai instruksi"
+	],
+	"validity": {
+		"type": "fixed",
+		"description": "Promo dan validitas kupon bisa berubah sesuai campaign saat ini",
+		"date": "2026-06-14"
+	},
+	"ctaLink": "https://idwebhost.com/",
+	"tags": ["Domain", "Diskon"],
+	"status": "expired",
+	"featured": false,
+	"tips": "Masukkan domain yang diinginkan dulu, lalu isi kupon dan pastikan item hosting/SSL/email hosting tidak dipilih.",
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "aziz-budi-satrio"
+}

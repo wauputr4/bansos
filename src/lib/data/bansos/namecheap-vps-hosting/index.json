@@ -1,0 +1,27 @@
+{
+	"id": "namecheap-vps-hosting",
+	"title": "Namecheap VPS Hosting dengan Harga Mulai 3.88$/Bulan",
+	"provider": "Namecheap",
+	"description": "Paket VPS dari Namecheap dengan harga murah, plan sesuai kebutuhan, dan opsi free trial. Cocok buat yang butuh kontrol server sendiri tanpa ribet.",
+	"benefits": [
+		"Plan VPS mulai dari Spark sampai Hypernova",
+		"Mulai dari 1 CPU, RAM 1GB, SSD 20GB, bandwidth 1000GB",
+		"Pilihan manajemen server serta root access dan kontrol panel",
+		"Tersedia free trial sebelum upgrade ke berlangganan"
+	],
+	"requirements": [
+		"Buat/masuk akun Namecheap",
+		"Pilih plan VPS sesuai kebutuhan dan sumber daya yang kamu butuhkan",
+		"Lanjutkan checkout dan pilih durasi billing"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Promo dan harga ditampilkan sesuai periode di halaman resmi"
+	},
+	"ctaLink": "https://www.namecheap.com/hosting/vps/",
+	"tags": ["VPS & Server", "Hosting", "Free Tier"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "wauputr4"
+}

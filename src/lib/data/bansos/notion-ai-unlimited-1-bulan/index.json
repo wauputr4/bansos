@@ -1,0 +1,28 @@
+{
+	"id": "notion-ai-unlimited-1-bulan",
+	"title": "Notion AI Unlimited 1 Bulan",
+	"provider": "Notion",
+	"description": "Postingan Threads ini membagikan akses Notion AI unlimited selama 1 bulan, dengan model yang disebut Opus 4.8, ChatGPT 5.5, Gemini, dan Grok.",
+	"benefits": [
+		"Akses unlimited selama 1 bulan",
+		"Model yang disebut: Opus 4.8, ChatGPT 5.5, Gemini, dan Grok",
+		"Login langsung ke Notion"
+	],
+	"requirements": [
+		"Masuk ke akun Notion",
+		"Ikuti instruksi pada postingan Threads",
+		"Cek apakah campaign masih aktif"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Durasi promo mengikuti postingan Threads dan bisa berubah sewaktu-waktu"
+	},
+	"ctaLink": "https://www.notion.so/",
+	"tags": ["AI Tools"],
+	"status": "active",
+	"featured": false,
+	"tips": "Nama model (Opus 4.8, ChatGPT 5.5) berasal dari klaim postingan Threads sumber, bukan daftar resmi Notion. Klaim ini belum diverifikasi independen.",
+	"publishedAt": "2026-06-15",
+	"source": "https://www.threads.com/@rizkysiregar23/post/DZl98mYk3j3",
+	"contributorSlug": "rizkysiregar23"
+}

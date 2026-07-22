@@ -1,0 +1,25 @@
+{
+	"id": "aws-activate-credits",
+	"title": "Kredit AWS Activate hingga $200.000",
+	"provider": "Amazon Web Services",
+	"description": "AWS memberikan kredit promosi untuk startup berdasarkan tahap pendanaan. Founder yang melakukan bootstrap bisa mendapatkan $1.000 hingga $5.000, sementara startup yang didukung VC bisa mengakses hingga $200.000.",
+	"benefits": [
+		"Kredit Activate hingga $5.000 USD untuk startup tanpa pendanaan (bootstrap)",
+		"Kredit Activate hingga $200.000 USD untuk startup dengan pendanaan VC"
+	],
+	"requirements": [
+		"Buat AWS Builder ID dan lengkapi profil",
+		"Tautkan akun AWS",
+		"Berikan detail startup untuk konfirmasi kelayakan"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Kredit hangus setelah digunakan atau melewati batas waktu tier yang disetujui"
+	},
+	"ctaLink": "https://aws.amazon.com/startups/credits/",
+	"tags": ["Cloud Services", "Startup"],
+	"status": "active",
+	"featured": true,
+	"publishedAt": "2026-06-13",
+	"contributorSlug": "devers"
+}

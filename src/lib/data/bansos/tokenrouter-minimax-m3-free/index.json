@@ -1,0 +1,25 @@
+{
+	"id": "tokenrouter-minimax-m3-free",
+	"title": "Akses API Model MiniMax-M3 Gratis di TokenRouter",
+	"provider": "TokenRouter",
+	"description": "TokenRouter menyediakan penawaran terbatas berupa akses gratis ke model AI MiniMax-M3.",
+	"benefits": [
+		"Akses model MiniMax-M3 gratis untuk waktu terbatas",
+		"Biaya input dan output $0.0000 per token"
+	],
+	"requirements": [
+		"Lakukan pendaftaran atau login pada platform TokenRouter",
+		"Integrasikan dan panggil model MiniMax-M3 pada permintaan API"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-06-17",
+		"description": "Promosi model MiniMax-M3 gratis berakhir pada 17 Juni 2026"
+	},
+	"ctaLink": "https://www.tokenrouter.com/",
+	"tags": ["AI Credits"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-06-14",
+	"contributorSlug": "devers"
+}
