@@ -15,6 +15,7 @@
 	let hideNavbar = $state(false);
 	let langExpanded = $state(false);
 	let hoveredLangCode = $state<string | null>(null);
+	const standaloneProfile = $derived($page.url.pathname.startsWith('/contributor/'));
 
 	const languages = ALL_LANGUAGES.filter((lang) =>
 		availableCodes.includes(lang.code as SupportedLocale)
@@ -73,8 +74,12 @@
 </svelte:head>
 
 <svelte:window bind:scrollY onkeydown={handleKeydown} />
-<div class="site-shell">
-	<header class="site-header" class:nav-hidden={hideNavbar}>
+<div class="site-shell" class:standalone-profile={standaloneProfile}>
+	<header
+		class="site-header"
+		class:nav-hidden={hideNavbar}
+		class:standalone-hidden={standaloneProfile}
+	>
 		<nav class="container nav-shell" aria-label={$t('nav.mainAria')}>
 			<a href={resolve('/')} class="brand-mark" aria-label={$t('nav.brandAria')}>
 				<div class="logo-container">
@@ -244,7 +249,11 @@
 		</div>
 	</footer>
 
-	<nav class="mobile-bottom-nav" aria-label={$t('nav.mobileAria')}>
+	<nav
+		class="mobile-bottom-nav"
+		class:standalone-hidden={standaloneProfile}
+		aria-label={$t('nav.mobileAria')}
+	>
 		{#each navItems as item (item.href)}
 			<a
 				href={resolve(item.href)}
@@ -261,6 +270,14 @@
 	.site-shell {
 		min-height: 100vh;
 		padding-bottom: 5rem;
+	}
+
+	.site-shell.standalone-profile {
+		padding-bottom: 0;
+	}
+
+	.standalone-hidden {
+		display: none;
 	}
 
 	.site-header {

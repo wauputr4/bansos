@@ -326,6 +326,7 @@
 		"contributedBy": "Disubmit oleh:",
 		"editedBy": "Diedit oleh:",
 		"commitBy": "Diedit oleh {login}",
+		"latestCommit": "Commit terbaru",
 		"recommendations": "Rekomendasi Lainnya",
 		"emptyRecommendations": "Belum ada rekomendasi saat ini.",
 		"bottomTitle": "Tentang bansos.dev",

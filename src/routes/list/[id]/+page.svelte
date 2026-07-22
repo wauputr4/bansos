@@ -13,6 +13,7 @@
 		getContributorInitials,
 		getContributorProfileSlugForGitLogin,
 		getItemSource,
+		getLatestCommitForItem,
 		getProviderBySlug,
 		recommendedBansosFor,
 		slugifyProvider,
@@ -85,6 +86,7 @@
 		}
 	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
+	const latestCommit = $derived(item ? getLatestCommitForItem(item.id) : undefined);
 	const originalContributor = $derived(
 		item?.contributorSlug ? getContributorBySlug(item.contributorSlug) : undefined
 	);
@@ -582,6 +584,20 @@
 										{/each}
 									</div>
 								{/if}
+								{#if latestCommit}
+									<div class="latest-commit">
+										<span>{detailT('latestCommit')}</span>
+										<a href={latestCommit.url} target="_blank" rel="noopener noreferrer">
+											<i class="fa-solid fa-code-commit" aria-hidden="true"></i>
+											{latestCommit.hash.slice(0, 7)}
+										</a>
+										<time datetime={latestCommit.date}>
+											{new Intl.DateTimeFormat(currentDateLocale, {
+												dateStyle: 'medium'
+											}).format(new Date(latestCommit.date))}
+										</time>
+									</div>
+								{/if}
 							</div>
 						{/if}
 					</div>
@@ -908,6 +924,26 @@
 	.commit-person span {
 		display: inline-block;
 		transform: translateY(-1.5px);
+	}
+
+	.latest-commit {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-top: 0.75rem;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--border-color);
+		font-size: 0.75rem;
+		color: var(--text-muted);
+	}
+
+	.latest-commit a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--color-accent);
+		font-family: monospace;
 	}
 
 	.section-block {

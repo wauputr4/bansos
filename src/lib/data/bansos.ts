@@ -55,6 +55,12 @@ const contributorGlob = import.meta.glob<ContributorModule>(
 	{ eager: true, import: 'default' }
 );
 
+const contributorReadmeGlob = import.meta.glob<string>('./bansos/contributors/*/README.md', {
+	eager: true,
+	query: '?raw',
+	import: 'default'
+});
+
 // ─── Types ────────────────────────────────────────────────────────────────
 
 export interface BansosItem {
@@ -108,6 +114,7 @@ export interface Contributor {
 	contributedBansos: string[];
 	hidden?: boolean;
 	joinedAt?: string;
+	markdown?: string;
 }
 
 export interface ContributorSummary {
@@ -458,6 +465,7 @@ function buildContributorMap(): Map<string, Contributor> {
 		);
 		const github = links.github?.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1];
 		const explicitAvatar = data.avatar ? sanitizeUrl(data.avatar, '') || undefined : undefined;
+		const markdown = contributorReadmeGlob[path.replace('/manifest.json', '/README.md')]?.trim();
 
 		const contributor: Contributor = {
 			login: data.login as string,
@@ -471,7 +479,8 @@ function buildContributorMap(): Map<string, Contributor> {
 			links,
 			contributedBansos: (data.contributedBansos as string[]) || [],
 			hidden: (data.hidden as boolean) || false,
-			joinedAt: data.joinedAt as string | undefined
+			joinedAt: data.joinedAt as string | undefined,
+			markdown
 		};
 
 		map.set(login, contributor);
@@ -676,6 +685,12 @@ interface CommitContributorEntry {
 	commitUrl: string;
 }
 
+export interface CommitHistoryEntry {
+	hash: string;
+	date: string;
+	url: string;
+}
+
 const commitContributorsGlob = import.meta.glob<CommitContributorsIndex>(
 	'./bansos/commit-contributors.json',
 	{ eager: true, import: 'default' }
@@ -685,6 +700,12 @@ const commitContributorsGlob = import.meta.glob<CommitContributorsIndex>(
 const commitContributorsData: CommitContributorsIndex =
 	Object.values(commitContributorsGlob)[0] || {};
 
+const commitHistoryGlob = import.meta.glob<Record<string, CommitHistoryEntry>>(
+	'./bansos/commit-history.json',
+	{ eager: true, import: 'default' }
+);
+const commitHistoryData = Object.values(commitHistoryGlob)[0] || {};
+
 /**
  * Get commit contributors for a specific bansos item (from git history).
  */
@@ -692,6 +713,10 @@ export function getCommitContributorsForItem(id: string): CommitContributorEntry
 	return (commitContributorsData[id] || []).filter(
 		(contributor) => !contributor.login.endsWith('[bot]')
 	);
+}
+
+export function getLatestCommitForItem(id: string): CommitHistoryEntry | undefined {
+	return commitHistoryData[id];
 }
 
 /**

@@ -17,6 +17,7 @@ import { join } from 'node:path';
 
 const BANSOS_DIR = 'src/lib/data/bansos';
 const GLOBAL_OUTPUT = join(BANSOS_DIR, 'commit-contributors.json');
+const HISTORY_OUTPUT = join(BANSOS_DIR, 'commit-history.json');
 const CONTRIBUTOR_FILE = '.contributors.json';
 const LEGACY_DATA = 'src/lib/data/bansos.json';
 const LEGACY_CONTRIBUTORS = 'src/lib/data/commit-contributors.json';
@@ -130,6 +131,28 @@ function getGitLog(filePath) {
 	}
 }
 
+function getLatestFolderCommit(slug) {
+	try {
+		const output = git([
+			'log',
+			'-1',
+			'--format=%H|%aI',
+			'--',
+			join(BANSOS_DIR, slug, 'index.json'),
+			join(BANSOS_DIR, slug, 'README.md')
+		]);
+		if (!output) return null;
+		const [hash, date] = output.split('|');
+		return {
+			hash,
+			date,
+			url: `https://github.com/wauputr4/bansos/commit/${hash}`
+		};
+	} catch {
+		return null;
+	}
+}
+
 function existedBefore(commit, filePath) {
 	try {
 		git(['cat-file', '-e', `${commit}^:${filePath}`]);
@@ -179,7 +202,7 @@ function generateForFolder(slug) {
 	const indexPath = join(BANSOS_DIR, slug, 'index.json');
 	const outputPath = join(BANSOS_DIR, slug, CONTRIBUTOR_FILE);
 
-	if (!existsSync(indexPath)) return [];
+	if (!existsSync(indexPath)) return { contributors: [], latestCommit: null };
 
 	const gitLog = getGitLog(indexPath);
 	const contributorMap = new Map();
@@ -236,7 +259,7 @@ function generateForFolder(slug) {
 		writeFileSync(outputPath, '[]\n');
 	}
 
-	return contributors;
+	return { contributors, latestCommit: getLatestFolderCommit(slug) };
 }
 
 /**
@@ -248,10 +271,11 @@ function main() {
 	console.log(`   Found ${slugs.length} tracked bansos folders`);
 
 	const globalMap = new Map();
+	const historyMap = new Map();
 	let totalContributors = 0;
 
 	for (const slug of slugs) {
-		const contributors = generateForFolder(slug);
+		const { contributors, latestCommit } = generateForFolder(slug);
 		if (contributors.length > 0) {
 			globalMap.set(
 				slug,
@@ -264,6 +288,7 @@ function main() {
 			);
 			totalContributors += contributors.length;
 		}
+		if (latestCommit) historyMap.set(slug, latestCommit);
 		process.stdout.write(`   ${slug}: ${contributors.length} contributors\n`);
 	}
 
@@ -273,11 +298,13 @@ function main() {
 	);
 
 	writeFileSync(GLOBAL_OUTPUT, JSON.stringify(globalOutput, null, '\t') + '\n');
+	writeFileSync(HISTORY_OUTPUT, JSON.stringify(Object.fromEntries(historyMap), null, '\t') + '\n');
 	console.log(`\n✅ Done!`);
 	console.log(`   • ${slugs.length} folders processed`);
 	console.log(`   • ${totalContributors} total contributor entries`);
 	console.log(`   • Per-folder: ${BANSOS_DIR}/<slug>/${CONTRIBUTOR_FILE}`);
 	console.log(`   • Global:     ${GLOBAL_OUTPUT}`);
+	console.log(`   • History:    ${HISTORY_OUTPUT}`);
 }
 
 main();

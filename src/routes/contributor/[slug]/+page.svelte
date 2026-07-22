@@ -3,6 +3,7 @@
 	import BansosCard from '$lib/components/BansosCard.svelte';
 	import { getContributorInitials, sortBansosByNewest } from '$lib/data/bansos';
 	import type { BansosItem, Contributor } from '$lib/data/bansos';
+	import { renderProfileMarkdown } from '$lib/utils/profileMarkdown.js';
 
 	let { data }: { data: { contributor: Contributor; bansos: BansosItem[] } } = $props();
 
@@ -13,29 +14,61 @@
 	const linkEntries = $derived(
 		Object.entries(contributor.links).filter(([, url]) => url && url.trim())
 	);
+	const markdownHtml = $derived(
+		contributor.markdown ? renderProfileMarkdown(contributor.markdown) : ''
+	);
+	const canonicalUrl = $derived(`https://bansos.dev/contributor/${contributor.login}/`);
+	const description = $derived(
+		contributor.bio ||
+			`${contributor.displayName} telah membagikan ${bansos.length} program untuk komunitas developer di bansos.dev.`
+	);
+	const personSchema = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'Person',
+			name: contributor.displayName,
+			url: canonicalUrl,
+			...(contributor.avatar ? { image: contributor.avatar } : {}),
+			description,
+			sameAs: Object.values(contributor.links),
+			knowsAbout: contributor.skills
+		})
+	);
 
 	const socialIcon: Record<string, string> = {
-		github: '🐙',
-		twitter: '🐦',
-		linkedin: '💼',
-		website: '🌐',
-		telegram: '✈️',
-		npm: '📦',
-		youtube: '▶️'
+		github: 'fa-brands fa-github',
+		twitter: 'fa-brands fa-x-twitter',
+		linkedin: 'fa-brands fa-linkedin',
+		website: 'fa-solid fa-globe',
+		telegram: 'fa-brands fa-telegram',
+		npm: 'fa-brands fa-npm',
+		youtube: 'fa-brands fa-youtube'
 	};
+
+	function linkLabel(platform: string, url: string) {
+		if (platform !== 'github') return platform;
+		return `@${url.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1] || contributor.login}`;
+	}
 </script>
 
 <svelte:head>
-	<title>{contributor.displayName} — Kontributor bansos.dev</title>
-	<meta
-		name="description"
-		content="Profil kontributor {contributor.displayName} di bansos.dev — Katalog bansos developer Indonesia"
-	/>
+	<title>{contributor.displayName} — Profil & Bansos Developer</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href={canonicalUrl} />
+	<meta property="og:type" content="profile" />
 	<meta property="og:title" content="{contributor.displayName} — bansos.dev" />
-	<meta property="og:description" content="Profil kontributor bansos.dev" />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:site_name" content="bansos.dev" />
+	<meta name="twitter:card" content={contributor.avatar ? 'summary_large_image' : 'summary'} />
+	<meta name="twitter:title" content="{contributor.displayName} — bansos.dev" />
+	<meta name="twitter:description" content={description} />
 	{#if contributor.avatar}
 		<meta property="og:image" content={contributor.avatar} />
+		<meta name="twitter:image" content={contributor.avatar} />
 	{/if}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html '<script type="application/ld+json">' + personSchema + '</' + 'script>'}
 </svelte:head>
 
 <div class="contributor-page">
@@ -66,21 +99,25 @@
 	</div>
 
 	<!-- Bio -->
-	{#if contributor.bio}
-		<div class="bio-section">
-			<p class="bio">{contributor.bio}</p>
+	{#if markdownHtml}
+		<div class="bio-section markdown-content">
+			<!-- Repository Markdown is escaped by renderProfileMarkdown before rendering. -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html markdownHtml}
 		</div>
+	{:else if contributor.bio}
+		<div class="bio-section"><p class="bio">{contributor.bio}</p></div>
 	{/if}
 
 	<!-- Social Links -->
 	{#if linkEntries.length > 0}
 		<div class="links-section">
-			<h2>🔗 Tautan</h2>
+			<h2><i class="fa-solid fa-link" aria-hidden="true"></i> Tautan</h2>
 			<div class="links-grid">
 				{#each linkEntries as [platform, url] (platform)}
-					<a href={url} target="_blank" rel="noopener noreferrer" class="link-card">
-						<span class="link-icon">{socialIcon[platform] || '🔗'}</span>
-						<span class="link-label">{platform}</span>
+					<a href={url} target="_blank" rel="me noopener noreferrer" class="link-card">
+						<i class={socialIcon[platform] || 'fa-solid fa-link'} aria-hidden="true"></i>
+						<span class="link-label">{linkLabel(platform, url)}</span>
 					</a>
 				{/each}
 			</div>
@@ -114,15 +151,6 @@
 	</div>
 </div>
 
-<!-- Powered by -->
-<div class="powered-by">
-	<p>
-		<a href="https://bansos.dev" target="_blank" rel="noopener noreferrer">
-			⚡ Powered by bansos.dev — Open Source Catalog
-		</a>
-	</p>
-</div>
-
 <style>
 	.contributor-page {
 		max-width: 800px;
@@ -132,9 +160,12 @@
 
 	.profile-header {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 1.5rem;
+		justify-content: center;
+		gap: 1rem;
 		margin-bottom: 1.5rem;
+		text-align: center;
 	}
 
 	.avatar-container {
@@ -163,7 +194,7 @@
 	}
 
 	.profile-info {
-		flex: 1;
+		width: 100%;
 	}
 
 	.display-name {
@@ -210,6 +241,11 @@
 		margin-bottom: 2rem;
 	}
 
+	.links-section,
+	.skills-section {
+		text-align: center;
+	}
+
 	.links-section h2,
 	.skills-section h2,
 	.bansos-section h2 {
@@ -221,6 +257,7 @@
 	.links-grid {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.5rem;
 	}
 
@@ -244,13 +281,14 @@
 		border-color: var(--color-primary, #6366f1);
 	}
 
-	.link-icon {
-		font-size: 1.1rem;
+	.link-card i {
+		font-size: 1rem;
 	}
 
 	.skills-list {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.5rem;
 	}
 
@@ -274,21 +312,22 @@
 		font-style: italic;
 	}
 
-	.powered-by {
-		text-align: center;
-		margin-top: 3rem;
-		padding-top: 1.5rem;
-		border-top: 1px solid var(--border-color, #374151);
+	.markdown-content :global(h2) {
+		font-size: 1.1rem;
+		margin: 0 0 0.75rem;
 	}
 
-	.powered-by a {
-		color: var(--color-muted, #6b7280);
-		text-decoration: none;
-		font-size: 0.85rem;
-		transition: color 0.2s;
+	.markdown-content :global(p),
+	.markdown-content :global(ul) {
+		margin: 0.5rem 0;
+		line-height: 1.65;
 	}
 
-	.powered-by a:hover {
-		color: var(--color-primary, #6366f1);
+	.markdown-content :global(a) {
+		color: var(--color-accent);
+	}
+
+	.markdown-content :global(ul) {
+		padding-left: 1.25rem;
 	}
 </style>

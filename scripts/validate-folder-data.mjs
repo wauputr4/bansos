@@ -1,5 +1,13 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { renderProfileMarkdown } from '../src/lib/utils/profileMarkdown.js';
+
+const markdownCheck = renderProfileMarkdown(
+	'## Profil\n\n[GitHub](https://github.com/example)\n\n<script>alert(1)</script>'
+);
+if (!markdownCheck.includes('<h2>Profil</h2>') || markdownCheck.includes('<script>')) {
+	throw new Error('Contributor Markdown renderer failed its safety check');
+}
 
 const root = 'src/lib/data/bansos';
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));

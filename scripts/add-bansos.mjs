@@ -308,6 +308,11 @@ function getOrCreateContributor(slug, displayName = slug, url = '') {
 
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(manifestPath, JSON.stringify(manifest, null, '\t') + '\n');
+	writeFileSync(
+		join(dir, 'README.md'),
+		`# ${displayName}\n\nKontributor komunitas [bansos.dev](https://bansos.dev).\n`,
+		'utf8'
+	);
 	console.log(`  👤 Created contributors/${slug}/manifest.json`);
 	return manifest;
 }

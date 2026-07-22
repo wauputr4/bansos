@@ -10,6 +10,7 @@ bansos/
 ├── contributors/
 │   └── <login>/
 │       ├── manifest.json  # Profil contributor
+│       └── README.md      # Konten bebas profil (Markdown, opsional)
 │       └── avatar.*       # Avatar (opsional)
 ├── schema/
 │   ├── bansos.schema.json
@@ -27,6 +28,9 @@ bansos/
 Setiap listing wajib memiliki `contributorSlug`. Slug tersebut harus memiliki manifest contributor,
 dan ID listing harus tercatat di `contributedBansos` pada manifest yang sama. Validasi CI menjaga
 relasi ini tetap sinkron dua arah, termasuk untuk contributor yang tidak memiliki tautan eksternal.
+
+Contributor dapat menambahkan `README.md` di folder profilnya. Konten Markdown tersebut tampil pada
+halaman profil; identitas, tautan, avatar, dan daftar bansos tetap bersumber dari `manifest.json`.
 
 Setiap `index.json` bisa punya field `"hidden": true`:
 - Otomatis di-skip dari render frontend

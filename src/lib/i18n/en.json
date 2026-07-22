@@ -326,6 +326,7 @@
 		"contributedBy": "Submitted by:",
 		"editedBy": "Edited by:",
 		"commitBy": "Edited by {login}",
+		"latestCommit": "Latest commit",
 		"recommendations": "More Recommendations",
 		"emptyRecommendations": "No recommendations yet.",
 		"bottomTitle": "About bansos.dev",
