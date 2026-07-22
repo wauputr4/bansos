@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-07-22 | Total: 72 entri (61 aktif, 11 expired)
+> Diperbarui: 2026-07-22 | Total: 73 entri (62 aktif, 11 expired)
 
 ---
 
@@ -404,6 +404,33 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** uncertain
 
 🔗 **Link Detail:** https://bansos.dev/list/claim-7m-token-free/
+
+---
+
+### Cleanesia — API Korpus Teks Bahasa Indonesia Gratis
+
+- **ID:** `cleanesia-api-gratis`
+- **Provider:** Deflated
+- **Kategori:** AI, Dataset, NLP
+- **Status:** active
+
+**Deskripsi:** API publik gratis untuk mengakses korpus teks Bahasa Indonesia terkurasi dari berbagai domain, cocok untuk riset NLP, fine-tuning model, dan eksperimen data.
+
+**Benefit:**
+- Akses gratis ke 70.587+ dokumen teks Bahasa Indonesia terkurasi
+- Korpus multi-domain: encyclopedia, legal, dan news
+- Dataset tersedia terbuka di Hugging Face (ripkiiiii/cleanesia)
+- Endpoint publik dapat diakses tanpa API key atau signup
+
+**Cara Klaim:**
+1. Buka landing page Cleanesia dan pilih endpoint yang dibutuhkan
+
+- **CTA Link:** https://deflated.xyz/cleanesia
+- **Sumber:** https://deflated.xyz/cleanesia
+- **Tips:** Coba endpoint contoh: https://api.deflated.xyz/api/sample?domain=encyclopedia&n=5
+- **Berlaku:** forever (Layanan gratis tanpa periode promo terbatas)
+
+🔗 **Link Detail:** https://bansos.dev/list/cleanesia-api-gratis/
 
 ---
 

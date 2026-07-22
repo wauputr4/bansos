@@ -32,11 +32,26 @@ for (const [index, folder] of folders.entries()) {
 	}
 }
 
-const catalogIds = readJson(join(root, 'index.json'))
-	.items.map((item) => item.id)
-	.sort();
+const catalog = readJson(join(root, 'index.json'));
+const catalogIds = catalog.items.map((item) => item.id).sort();
 if (JSON.stringify(catalogIds) !== JSON.stringify(ids)) {
 	throw new Error('bansos/index.json is out of sync with listing folders');
+}
+const catalogById = new Map(catalog.items.map((item) => [item.id, item]));
+for (const item of items) {
+	const expected = {
+		id: item.id,
+		title: item.title,
+		provider: item.provider,
+		status: item.status,
+		tags: item.tags,
+		featured: item.featured,
+		publishedAt: item.publishedAt,
+		contributorSlug: item.contributorSlug || ''
+	};
+	if (JSON.stringify(catalogById.get(item.id)) !== JSON.stringify(expected)) {
+		throw new Error(`bansos/index.json has stale summary data for ${item.id}`);
+	}
 }
 
 const contributorsRoot = join(root, 'contributors');

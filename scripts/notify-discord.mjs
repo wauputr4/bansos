@@ -3,32 +3,36 @@ import path from 'path';
 import { execFileSync } from 'child_process';
 
 const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
-if (!WEBHOOK_URL) {
+const DRY_RUN = process.argv.includes('--dry-run');
+const requestedFiles = process.argv.slice(2).filter((arg) => arg !== '--dry-run');
+if (!WEBHOOK_URL && !DRY_RUN) {
 	console.log('No DISCORD_WEBHOOK_URL provided. Skipping.');
 	process.exit(0);
 }
 
-let addedFiles = [];
-try {
-	addedFiles = execFileSync(
-		'git',
-		[
-			'diff',
-			'--diff-filter=A',
-			'--name-only',
-			'HEAD~1',
-			'HEAD',
-			'--',
-			'src/lib/data/bansos/*/index.json'
-		],
-		{ encoding: 'utf8' }
-	)
-		.trim()
-		.split('\n')
-		.filter(Boolean);
-} catch (err) {
-	console.error('Could not detect newly added bansos folders:', err.message);
-	process.exit(0);
+let addedFiles = requestedFiles;
+if (addedFiles.length === 0) {
+	try {
+		addedFiles = execFileSync(
+			'git',
+			[
+				'diff',
+				'--diff-filter=A',
+				'--name-only',
+				'HEAD~1',
+				'HEAD',
+				'--',
+				'src/lib/data/bansos/*/index.json'
+			],
+			{ encoding: 'utf8' }
+		)
+			.trim()
+			.split('\n')
+			.filter(Boolean);
+	} catch (err) {
+		console.error('Could not detect newly added bansos folders:', err.message);
+		process.exit(0);
+	}
 }
 
 const newBansos = addedFiles.map((file) => {
@@ -71,71 +75,83 @@ const getTimestamp = (dateStr) => {
 	}
 };
 
-for (const bansos of newBansos) {
+async function deliver(payload, label) {
+	if (DRY_RUN) {
+		console.log(JSON.stringify(payload, null, 2));
+		return;
+	}
+
+	try {
+		const response = await fetch(WEBHOOK_URL, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload),
+			signal: AbortSignal.timeout(20_000)
+		});
+		if (!response.ok) {
+			console.error(
+				`Failed to send webhook for ${label}: ${response.status} ${response.statusText}`
+			);
+			process.exitCode = 1;
+		} else {
+			console.log(`Webhook sent for: ${label}`);
+		}
+	} catch (err) {
+		console.error(`Error sending webhook for ${label}:`, err);
+		process.exitCode = 1;
+	}
+}
+
+if (newBansos.length > 5) {
+	await deliver(
+		{
+			content: `<@&1518499313947512832> Ada ${newBansos.length} bansos developer baru 🚀`,
+			allowed_mentions: { roles: ['1518499313947512832'] },
+			embeds: [
+				{
+					title: `${newBansos.length} bansos baru tersedia`,
+					url: 'https://bansos.dev/list',
+					description: '**[Lihat daftar terbaru & cara klaim →](https://bansos.dev/list)**',
+					color: 1096065,
+					footer: { text: 'Bansos Info • bansos.dev' },
+					timestamp: new Date().toISOString()
+				}
+			]
+		},
+		`${newBansos.length} bansos baru`
+	);
+}
+
+const individualBansos = newBansos.length > 5 ? [] : newBansos;
+for (const [index, bansos] of individualBansos.entries()) {
 	let validity = bansos.validity?.description || bansos.validity?.date;
 	if (!validity && bansos.validity?.type === 'forever') validity = 'Selamanya';
 
-	const benefitsList = bansos.benefits?.map((b) => `• ${b}`).join('\n') || '-';
-	const requirementsList = bansos.requirements?.map((r) => `• ${r}`).join('\n') || '-';
-	const tagsList = bansos.tags?.map((t) => `\`${t}\``).join(', ') || '-';
-
-	const ctaText = `\n\n**🔗 [Klaim Bansos di Sini](https://bansos.dev/list/${bansos.id})**`;
-	const maxDescLen = 4096 - ctaText.length;
+	const detailUrl = `https://bansos.dev/list/${bansos.id}`;
+	const ctaText = `\n\n**[Lihat detail & cara klaim →](${detailUrl})**`;
 
 	const payload = {
-		content:
-			'Panggilan untuk <@&1518499313947512832>! 🚨 Ada info bansos baru nih, langsung sikat! 🚀',
+		content: '<@&1518499313947512832> Ada bansos developer baru 🚀',
 		allowed_mentions: { roles: ['1518499313947512832'] },
 		embeds: [
 			{
 				title: truncate(bansos.title, 256),
-				url: `https://bansos.dev/list/${bansos.id}`,
-				description: `${truncate(bansos.description, maxDescLen)}${ctaText}`,
+				url: detailUrl,
+				description: `${truncate(bansos.description, 500)}${ctaText}`,
 				color: 1096065,
 				author: {
-					name: truncate(`🙌 Kontributor: ${bansos.contributor?.name || 'Anonim'}`, 256),
-					url: bansos.contributor?.url || 'https://bansos.dev'
+					name: truncate(`🙌 ${bansos.contributor?.name || 'Kontributor komunitas'}`, 256)
 				},
 				fields: [
 					{
 						name: '🏢 Provider',
 						value: truncate(bansos.provider || '-', 1024),
-						inline: false
-					},
-					{
-						name: '🎁 Keuntungan',
-						value: truncate(benefitsList, 1024),
-						inline: false
-					},
-					{
-						name: '📝 Syarat & Ketentuan',
-						value: truncate(requirementsList, 1024),
-						inline: false
-					},
-					{
-						name: '🎟️ Kode Promo',
-						value: bansos.promoCode ? truncate(`\`${bansos.promoCode}\``, 1024) : '-',
 						inline: true
 					},
 					{
 						name: '⏳ Masa Berlaku',
 						value: truncate(validity || '-', 1024),
 						inline: true
-					},
-					{
-						name: '📌 Status',
-						value: `**${bansos.status || 'active'}**`,
-						inline: true
-					},
-					{
-						name: '💡 Catatan / Tips',
-						value: truncate(bansos.tips || '-', 1024),
-						inline: false
-					},
-					{
-						name: '🏷️ Tags',
-						value: truncate(tagsList, 1024),
-						inline: false
 					}
 				],
 				footer: { text: 'Bansos Info • bansos.dev' },
@@ -144,23 +160,8 @@ for (const bansos of newBansos) {
 		]
 	};
 
-	try {
-		const response = await fetch(WEBHOOK_URL, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(payload)
-		});
-		if (!response.ok) {
-			console.error(
-				`Failed to send webhook for ${bansos.title}: ${response.status} ${response.statusText}`
-			);
-		} else {
-			console.log(`Webhook sent for: ${bansos.title}`);
-		}
-	} catch (err) {
-		console.error(`Error sending webhook for ${bansos.title}:`, err);
-	}
+	await deliver(payload, bansos.title);
 
-	// Sleep 2 seconds between webhooks to respect Discord rate limits
-	await new Promise((r) => setTimeout(r, 2000));
+	if (index < individualBansos.length - 1)
+		await new Promise((resolve) => setTimeout(resolve, 2000));
 }

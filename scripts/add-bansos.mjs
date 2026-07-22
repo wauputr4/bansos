@@ -20,11 +20,13 @@ import { createInterface } from 'node:readline';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
+import { format, resolveConfig } from 'prettier';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const BANSOS_DIR = join(ROOT, 'src/lib/data/bansos');
 const CONTRIBUTORS_DIR = join(BANSOS_DIR, 'contributors');
+const PRETTIER_OPTIONS = (await resolveConfig(join(ROOT, 'scripts/add-bansos.mjs'))) || {};
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 
@@ -71,6 +73,13 @@ function validateDate(value, field) {
 	if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
 		throw new Error(`--${field} harus tanggal YYYY-MM-DD yang valid`);
 	}
+}
+
+async function writeJson(filePath, data) {
+	writeFileSync(
+		filePath,
+		await format(JSON.stringify(data, null, '\t'), { ...PRETTIER_OPTIONS, parser: 'json' })
+	);
 }
 
 function generateReadme(item) {
@@ -303,7 +312,7 @@ function validateCliInput(args) {
 
 // ─── Contributor manifest ────────────────────────────────────────────────
 
-function getOrCreateContributor(slug, displayName = slug, url = '') {
+async function getOrCreateContributor(slug, displayName = slug, url = '') {
 	const dir = join(CONTRIBUTORS_DIR, slug);
 	const manifestPath = join(dir, 'manifest.json');
 
@@ -325,7 +334,7 @@ function getOrCreateContributor(slug, displayName = slug, url = '') {
 	};
 
 	mkdirSync(dir, { recursive: true });
-	writeFileSync(manifestPath, JSON.stringify(manifest, null, '\t') + '\n');
+	await writeJson(manifestPath, manifest);
 	writeFileSync(
 		join(dir, 'README.md'),
 		`# ${displayName}\n\nKontributor komunitas [bansos.dev](https://bansos.dev).\n`,
@@ -365,7 +374,7 @@ async function main() {
 
 	// 2. Handle contributor
 	if (contributorSlug) {
-		const manifest = getOrCreateContributor(
+		const manifest = await getOrCreateContributor(
 			contributorSlug,
 			input.contributorName,
 			input.contributorUrl
@@ -373,10 +382,7 @@ async function main() {
 		if (!manifest.contributedBansos.includes(slug)) {
 			manifest.contributedBansos.push(slug);
 			manifest.contributedBansos.sort();
-			writeFileSync(
-				join(CONTRIBUTORS_DIR, contributorSlug, 'manifest.json'),
-				JSON.stringify(manifest, null, '\t') + '\n'
-			);
+			await writeJson(join(CONTRIBUTORS_DIR, contributorSlug, 'manifest.json'), manifest);
 		}
 	}
 
@@ -401,7 +407,7 @@ async function main() {
 	if (input.source) indexData.source = input.source;
 	if (contributorSlug) indexData.contributorSlug = contributorSlug;
 
-	writeFileSync(join(itemDir, 'index.json'), JSON.stringify(indexData, null, '\t') + '\n');
+	await writeJson(join(itemDir, 'index.json'), indexData);
 	console.log(`  ✅ ${slug}/index.json`);
 
 	// 4. Generate README.md
@@ -412,20 +418,20 @@ async function main() {
 	// 5. Update lightweight index.json
 	const indexJsonPath = join(BANSOS_DIR, 'index.json');
 	if (existsSync(indexJsonPath)) {
-		const indexData = JSON.parse(readFileSync(indexJsonPath, 'utf-8'));
-		indexData.total += 1;
-		indexData.items.push({
+		const catalogIndex = JSON.parse(readFileSync(indexJsonPath, 'utf-8'));
+		catalogIndex.total += 1;
+		catalogIndex.items.push({
 			id: slug,
 			title,
 			provider,
 			status,
 			tags,
 			featured: !!featured,
-			publishedAt: indexData.publishedAt,
+			publishedAt: input.publishedAt,
 			contributorSlug: contributorSlug || ''
 		});
-		indexData.items.sort((a, b) => a.id.localeCompare(b.id));
-		writeFileSync(indexJsonPath, JSON.stringify(indexData, null, '\t') + '\n');
+		catalogIndex.items.sort((a, b) => a.id.localeCompare(b.id));
+		await writeJson(indexJsonPath, catalogIndex);
 		console.log(`  📋 index.json updated`);
 	}
 

@@ -1,0 +1,25 @@
+{
+	"id": "cleanesia-api-gratis",
+	"title": "Cleanesia — API Korpus Teks Bahasa Indonesia Gratis",
+	"provider": "Deflated",
+	"description": "API publik gratis untuk mengakses korpus teks Bahasa Indonesia terkurasi dari berbagai domain, cocok untuk riset NLP, fine-tuning model, dan eksperimen data.",
+	"benefits": [
+		"Akses gratis ke 70.587+ dokumen teks Bahasa Indonesia terkurasi",
+		"Korpus multi-domain: encyclopedia, legal, dan news",
+		"Dataset tersedia terbuka di Hugging Face (ripkiiiii/cleanesia)",
+		"Endpoint publik dapat diakses tanpa API key atau signup"
+	],
+	"validity": {
+		"type": "forever",
+		"description": "Layanan gratis tanpa periode promo terbatas"
+	},
+	"requirements": ["Buka landing page Cleanesia dan pilih endpoint yang dibutuhkan"],
+	"ctaLink": "https://deflated.xyz/cleanesia",
+	"tags": ["AI", "Dataset", "NLP"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-07-08",
+	"tips": "Coba endpoint contoh: https://api.deflated.xyz/api/sample?domain=encyclopedia&n=5",
+	"source": "https://deflated.xyz/cleanesia",
+	"contributorSlug": "muhammad-rifky-firmansyah-sujana"
+}

@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-22",
-	"total": 72,
+	"total": 73,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -161,6 +161,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-23",
 			"contributorSlug": "ab-codeworks"
+		},
+		{
+			"id": "cleanesia-api-gratis",
+			"title": "Cleanesia — API Korpus Teks Bahasa Indonesia Gratis",
+			"provider": "Deflated",
+			"status": "active",
+			"tags": ["AI", "Dataset", "NLP"],
+			"featured": false,
+			"publishedAt": "2026-07-08",
+			"contributorSlug": "muhammad-rifky-firmansyah-sujana"
 		},
 		{
 			"id": "codecrafters-free-token",

@@ -5,7 +5,7 @@
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
 
-	import { bansosList } from '$lib/data/bansos';
+	import { bansosList, sortBansosByNewest } from '$lib/data/bansos';
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);
@@ -52,6 +52,9 @@
 
 	const dynamicTags = $derived(
 		Array.from(new Set(bansosList.flatMap((item) => item.tags))).sort((a, b) => a.localeCompare(b))
+	);
+	const newestRank = $derived(
+		new Map(sortBansosByNewest(bansosList).map((item, index) => [item.id, index]))
 	);
 	const isDefaultView = $derived(
 		selectedTags.length === 0 &&
@@ -127,7 +130,9 @@
 						(discussionStats[b.item.id]?.reactions || 0);
 					if (scoreA !== scoreB) return scoreB - scoreA;
 				}
-				return sortOrder === 'oldest' ? a.index - b.index : b.index - a.index;
+				const rankA = newestRank.get(a.item.id) ?? a.index;
+				const rankB = newestRank.get(b.item.id) ?? b.index;
+				return sortOrder === 'oldest' ? rankB - rankA : rankA - rankB;
 			})
 			.map(({ item }) => item);
 	});

@@ -36,7 +36,10 @@
 			'query-input': 'required name=search_term_string'
 		}
 	});
-	const latestBansosList = latestBansos(10);
+	const latestBansosList = latestBansos(
+		10,
+		bansosList.filter((item) => !item.featured || item.status === 'expired')
+	);
 	const featuredBansosList = featuredBansos(10);
 	const totalBansos = bansosList.length;
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
