@@ -2512,7 +2512,9 @@
     "ctaLink": "https://www.tencentcloud.com/act/pro/FreeTier",
     "tags": [
       "Cloud Services",
-      "Free Tier"
+      "Free Tier",
+      "VPS & Server",
+      "Hosting"
     ],
     "featured": false,
     "status": "active"
