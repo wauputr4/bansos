@@ -90,8 +90,11 @@
 				{#each navItems as item (item.href)}
 					<a
 						href={resolve(item.href)}
-						class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}>{item.label}</a
+						class={isActivePath($page.url.pathname, item.href) ? 'active' : ''}
 					>
+						<i class={item.icon} aria-hidden="true"></i>
+						<span>{item.label}</span>
+					</a>
 				{/each}
 			</div>
 			<div class="nav-actions">
@@ -338,6 +341,9 @@
 	}
 
 	.desktop-nav a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 		color: var(--text-secondary);
 		font-size: 0.9rem;
 		font-weight: 700;

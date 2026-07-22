@@ -456,13 +456,15 @@ function buildContributorMap(): Map<string, Contributor> {
 				.map(([platform, url]) => [platform, sanitizeUrl(url)] as const)
 				.filter(([, url]) => url !== '#')
 		);
+		const github = links.github?.match(/^https:\/\/github\.com\/([^/?#]+)/i)?.[1];
+		const explicitAvatar = data.avatar ? sanitizeUrl(data.avatar, '') || undefined : undefined;
 
 		const contributor: Contributor = {
 			login: data.login as string,
 			displayName: (data.displayName as string) || login,
 			title: (data.title as string) || '',
 			bio: (data.bio as string) || '',
-			avatar: data.avatar ? sanitizeUrl(data.avatar, '') || undefined : undefined,
+			avatar: explicitAvatar || (github ? `https://github.com/${github}.png?size=96` : undefined),
 			location: data.location as string | undefined,
 			pronouns: data.pronouns as string | undefined,
 			skills: (data.skills as string[]) || [],
@@ -476,6 +478,14 @@ function buildContributorMap(): Map<string, Contributor> {
 	}
 
 	return map;
+}
+
+/** Returns a compact two-letter fallback for contributors without an avatar. */
+export function getContributorInitials(name: string): string {
+	const parts = name.trim().split(/\s+/).filter(Boolean);
+	if (parts.length === 0) return '?';
+	if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+	return `${parts[0][0]}${parts.at(-1)?.[0] || ''}`.toUpperCase();
 }
 
 const contributorMap = buildContributorMap();
@@ -531,8 +541,7 @@ export function getContributorStats(): ContributorSummary[] {
 		stats.set(login, {
 			login,
 			name: contributor.displayName,
-			avatar:
-				contributor.avatar || (github ? `https://github.com/${github}.png?size=96` : undefined),
+			avatar: contributor.avatar,
 			hasGithub: Boolean(github),
 			count,
 			editCount: editCount || 0

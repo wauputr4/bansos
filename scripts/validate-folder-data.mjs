@@ -28,17 +28,31 @@ if (JSON.stringify(catalogIds) !== JSON.stringify(ids)) {
 }
 
 const contributorsRoot = join(root, 'contributors');
+const itemById = new Map(items.map((item) => [item.id, item]));
 for (const entry of readdirSync(contributorsRoot, { withFileTypes: true })) {
 	if (!entry.isDirectory()) continue;
 	const manifest = readJson(join(contributorsRoot, entry.name, 'manifest.json'));
 	for (const id of manifest.contributedBansos || []) {
 		if (!ids.includes(id)) throw new Error(`${entry.name} references missing bansos: ${id}`);
+		if (itemById.get(id)?.contributorSlug !== entry.name) {
+			throw new Error(
+				`${entry.name} claims ${id}, but listing credits ${itemById.get(id)?.contributorSlug || 'nobody'}`
+			);
+		}
 	}
 	for (const url of [manifest.avatar, ...Object.values(manifest.links || {})].filter(Boolean)) {
 		const parsed = new URL(url);
 		if (!['http:', 'https:'].includes(parsed.protocol)) {
 			throw new Error(`${entry.name} contains unsafe URL: ${url}`);
 		}
+	}
+}
+
+for (const item of items) {
+	if (!item.contributorSlug) throw new Error(`${item.id} has no contributorSlug`);
+	const manifest = readJson(join(contributorsRoot, item.contributorSlug, 'manifest.json'));
+	if (!(manifest.contributedBansos || []).includes(item.id)) {
+		throw new Error(`${item.id} is missing from ${item.contributorSlug}/manifest.json`);
 	}
 }
 

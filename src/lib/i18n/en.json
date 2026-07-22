@@ -180,7 +180,7 @@
 		"gitCommandHead": "git clone + npm run add:bansos",
 		"gitCopied": "Copied",
 		"gitCopy": "Copy",
-		"gitNote": "After data is added to bansos.json, push your branch and open a PR to main. CI will auto-validate the data.",
+		"gitNote": "After the listing folder is created in src/lib/data/bansos/<slug>/, push your branch and open a PR to main. CI will automatically validate the data and contributor attribution.",
 		"aiTitle": "Submit via AI Agent (Disabled)",
 		"aiDisabled": "Due to many spam submissions with misleading and confusing bansos information, we have disabled AI Agent submissions.",
 		"aiWarning": "⚠️ DO NOT submit fake, misleading, abusive, illegal, or ToS-violating bansos information. Violation = permanent ban.",

@@ -9,6 +9,8 @@
 	import { t } from '$lib/i18n';
 	import {
 		getCommitContributorsForItem,
+		getContributorBySlug,
+		getContributorInitials,
 		getContributorProfileSlugForGitLogin,
 		getItemSource,
 		getProviderBySlug,
@@ -83,6 +85,9 @@
 		}
 	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
+	const originalContributor = $derived(
+		item?.contributorSlug ? getContributorBySlug(item.contributorSlug) : undefined
+	);
 	const status = $derived(item?.status || 'unknown');
 	const currentLocale = $derived($locale || 'id');
 	const currentDateLocale = $derived(currentLocale === 'en' ? 'en-US' : 'id-ID');
@@ -535,17 +540,25 @@
 								<span class="meta-label"
 									><i class="fa-solid fa-code-branch"></i> {detailT('projectContributor')}</span
 								>
-								{#if item.contributorSlug}
-									<div
-										class="original-contributor"
-										style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);"
-									>
-										{detailT('contributedBy')}
+								{#if item.contributorSlug && originalContributor}
+									<div class="original-contributor">
+										<span>{detailT('contributedBy')}</span>
 										<a
 											href={resolve(`/contributor/${item.contributorSlug}`)}
-											style="color: var(--color-accent); font-weight: 700;"
+											class="submitted-person"
 										>
-											{item.contributorSlug}
+											{#if originalContributor.avatar}
+												<img
+													src={originalContributor.avatar}
+													alt={originalContributor.displayName}
+													loading="lazy"
+												/>
+											{:else}
+												<span class="submitted-initial" aria-hidden="true">
+													{getContributorInitials(originalContributor.displayName)}
+												</span>
+											{/if}
+											<strong>{originalContributor.displayName}</strong>
 										</a>
 									</div>
 								{/if}
@@ -826,6 +839,53 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.55rem;
+	}
+
+	.original-contributor {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.4rem;
+		margin-bottom: 0.75rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+	}
+
+	.submitted-person {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		background: var(--bg-secondary);
+		padding: 0.25rem 0.6rem 0.25rem 0.25rem;
+	}
+
+	.submitted-person img,
+	.submitted-initial {
+		width: 1.65rem;
+		height: 1.65rem;
+		border-radius: 999px;
+	}
+
+	.submitted-person img {
+		display: block;
+		object-fit: cover;
+	}
+
+	.submitted-initial {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, var(--color-primary, #6366f1), #a855f7);
+		color: white;
+		font-size: 0.62rem;
+		font-weight: 800;
+	}
+
+	.submitted-person strong {
+		color: var(--color-accent);
+		font-size: 0.82rem;
 	}
 
 	.commit-person {

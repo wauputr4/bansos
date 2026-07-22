@@ -2,6 +2,10 @@
 
 `bansosdev` adalah CLI untuk submit bansos ke situs [bansos.dev](https://bansos.dev).
 
+> **Status:** submit publik melalui CLI dan mode direct sedang dinonaktifkan karena spam.
+> Gunakan Email atau Git clone sesuai [README](../README.md). Dokumentasi ini dipertahankan
+> untuk maintainer dan pengujian payload lokal.
+
 ## Cara kerja singkat
 
 - Mode default: `issue`.

@@ -5,7 +5,12 @@
 	import { t } from '$lib/i18n';
 	import { get } from 'svelte/store';
 	import { locale } from 'svelte-i18n';
-	import { bansosList, getContributorStats, type ContributorSummary } from '$lib/data/bansos';
+	import {
+		bansosList,
+		getContributorInitials,
+		getContributorStats,
+		type ContributorSummary
+	} from '$lib/data/bansos';
 
 	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
 
@@ -480,7 +485,7 @@ Terima kasih,
 											<img src={contributor.avatar} alt={contributor.name} loading="lazy" />
 										{:else}
 											<span class="contributor-initial" aria-hidden="true">
-												{contributor.name.charAt(0).toUpperCase()}
+												{getContributorInitials(contributor.name)}
 											</span>
 										{/if}
 										<span class="login-name">{contributor.name}</span>

@@ -14,6 +14,7 @@
 		bansosList,
 		latestBansos,
 		featuredBansos,
+		getContributorInitials,
 		getContributorStats,
 		formatNumber
 	} from '$lib/data/bansos';
@@ -393,7 +394,7 @@
 									<img src={contributor.avatar} alt={contributor.name} loading="lazy" />
 								{:else}
 									<span class="contributor-initial" aria-hidden="true">
-										{contributor.name.charAt(0).toUpperCase()}
+										{getContributorInitials(contributor.name)}
 									</span>
 								{/if}
 							</a>

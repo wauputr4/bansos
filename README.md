@@ -70,6 +70,10 @@ scripts/add-bansos.mjs         # script lokal tambah data
 packages/bansosdev-cli/        # CLI bansosdev (disabled untuk submit publik)
 ```
 
+Setiap listing wajib memiliki `contributorSlug` yang terhubung dua arah dengan manifest profil.
+Avatar diambil otomatis dari GitHub bila tersedia; profil tanpa GitHub tetap tampil memakai dua
+inisial. Semua tautan nama kontributor di situs mengarah ke profil internal bansos.dev.
+
 ## Cara Menambah Bansos
 
 Untuk saat ini, submit publik yang aktif adalah via email dan Git clone. Jalur form, npx CLI, dan bot dinonaktifkan sementara karena spam.

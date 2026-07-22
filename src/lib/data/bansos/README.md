@@ -24,6 +24,10 @@ bansos/
 
 ## Privacy
 
+Setiap listing wajib memiliki `contributorSlug`. Slug tersebut harus memiliki manifest contributor,
+dan ID listing harus tercatat di `contributedBansos` pada manifest yang sama. Validasi CI menjaga
+relasi ini tetap sinkron dua arah, termasuk untuk contributor yang tidak memiliki tautan eksternal.
+
 Setiap `index.json` bisa punya field `"hidden": true`:
 - Otomatis di-skip dari render frontend
 - User bisa add ke `.gitignore` kalo mau bener2 hilang dari repo

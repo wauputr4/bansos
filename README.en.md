@@ -70,6 +70,10 @@ scripts/add-bansos.mjs         # local script to add data
 packages/bansosdev-cli/        # bansosdev CLI (disabled for public submissions)
 ```
 
+Every listing must have a `contributorSlug` linked bidirectionally to its profile manifest. Avatars
+are derived from GitHub when available; profiles without GitHub still appear with two initials. All
+contributor name links on the site point to the internal bansos.dev profile.
+
 ## How to Add Bansos
 
 Currently, active public submissions are via email and Git clone. The form, npx CLI, and bot channels are temporarily disabled due to spam.

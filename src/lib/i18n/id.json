@@ -180,7 +180,7 @@
 		"gitCommandHead": "git clone + npm run add:bansos",
 		"gitCopied": "Tersalin",
 		"gitCopy": "Copy",
-		"gitNote": "Setelah data masuk bansos.json, push branch kamu dan buka PR ke main. CI akan validasi data otomatis.",
+		"gitNote": "Setelah folder listing dibuat di src/lib/data/bansos/<slug>/, push branch kamu dan buka PR ke main. CI akan memvalidasi data dan atribusi kontributor secara otomatis.",
 		"aiTitle": "Submit via AI Agent (Dinonaktifkan)",
 		"aiDisabled": "Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan mengelirukan, kami menonaktifkan submit via AI Agent.",
 		"aiWarning": "⚠️ JANGAN submit informasi bansos yang palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS pihak lain. Pelanggaran = banned permanen.",

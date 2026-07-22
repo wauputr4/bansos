@@ -1,7 +1,7 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import BansosCard from '$lib/components/BansosCard.svelte';
-	import { sortBansosByNewest } from '$lib/data/bansos';
+	import { getContributorInitials, sortBansosByNewest } from '$lib/data/bansos';
 	import type { BansosItem, Contributor } from '$lib/data/bansos';
 
 	let { data }: { data: { contributor: Contributor; bansos: BansosItem[] } } = $props();
@@ -46,7 +46,7 @@
 				<img src={contributor.avatar} alt={contributor.displayName} class="avatar" loading="lazy" />
 			{:else}
 				<div class="avatar-placeholder">
-					{contributor.displayName.charAt(0).toUpperCase()}
+					{getContributorInitials(contributor.displayName)}
 				</div>
 			{/if}
 		</div>
