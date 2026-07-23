@@ -332,6 +332,7 @@
 		"editedBy": "Edited by:",
 		"commitBy": "Edited by {login}",
 		"latestCommit": "Latest commit",
+		"viewMarkdownSource": "View Markdown source",
 		"recommendations": "More Recommendations",
 		"emptyRecommendations": "No recommendations yet.",
 		"bottomTitle": "About bansos.dev",

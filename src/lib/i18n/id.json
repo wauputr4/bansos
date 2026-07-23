@@ -332,6 +332,7 @@
 		"editedBy": "Diedit oleh:",
 		"commitBy": "Diedit oleh {login}",
 		"latestCommit": "Commit terbaru",
+		"viewMarkdownSource": "Lihat sumber Markdown",
 		"recommendations": "Rekomendasi Lainnya",
 		"emptyRecommendations": "Belum ada rekomendasi saat ini.",
 		"bottomTitle": "Tentang bansos.dev",
