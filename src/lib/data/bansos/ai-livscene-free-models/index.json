@@ -20,12 +20,11 @@
 	},
 	"ctaLink": "https://ai.livscene.com/sign-up?aff=m3Vt",
 	"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
-	"status": "active",
-	"featured": true,
+	"status": "expired",
+	"featured": false,
 	"tips": "Hasil referral dibagikan gratis di Discord bansos.dev — gabung dan cek #berbagi-api. Quota 5.1 cukup lega buat eksplorasi berbagai model!",
 	"publishedAt": "2026-07-03",
 	"source": "https://ai.livscene.com",
-	"featuredSince": "2026-07-03",
 	"providerWebsiteUrl": "https://ai.livscene.com",
 	"contributorSlug": "wauputr4"
 }

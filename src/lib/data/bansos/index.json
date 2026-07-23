@@ -76,9 +76,9 @@
 			"id": "ai-livscene-free-models",
 			"title": "AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1",
 			"provider": "AI Livscene",
-			"status": "active",
+			"status": "expired",
 			"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
-			"featured": true,
+			"featured": false,
 			"publishedAt": "2026-07-03",
 			"contributorSlug": "wauputr4"
 		},
