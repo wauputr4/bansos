@@ -20,7 +20,7 @@ API inference self-operated dengan 10+ model AI seperti DeepSeek, GLM, Qwen, Kim
 
 - Daftar akun baru
 - Login untuk mendapatkan kredit testing gratis $5
-- Buat API key dan gunakan base URL OpenAI-compatible di aplikasi
+- Buat API key dan gunakan base URL OpenAI-compatible `https://api.thorbase.com/v1` di aplikasi
 
 ## Tips
 

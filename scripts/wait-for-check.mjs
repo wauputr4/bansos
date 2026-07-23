@@ -1,9 +1,21 @@
 const token = process.env.GITHUB_TOKEN;
 const repository = process.env.GITHUB_REPOSITORY;
 const sha = process.env.GITHUB_SHA;
+
+function readPositiveMs(name, fallback) {
+	const raw = process.env[name];
+	if (raw === undefined) return fallback;
+
+	const value = Number(raw);
+	if (!Number.isFinite(value) || value <= 0) {
+		throw new Error(`${name} must be a positive number.`);
+	}
+	return value;
+}
+
 const checkName = process.env.DEPLOY_CHECK_NAME || 'Cloudflare Pages';
-const maxWaitMs = Number(process.env.DEPLOY_MAX_WAIT_MS || 12 * 60 * 1000);
-const pollMs = Number(process.env.DEPLOY_POLL_MS || 10_000);
+const maxWaitMs = readPositiveMs('DEPLOY_MAX_WAIT_MS', 12 * 60 * 1000);
+const pollMs = readPositiveMs('DEPLOY_POLL_MS', 10_000);
 
 if (!token || !repository || !sha) {
 	throw new Error('GITHUB_TOKEN, GITHUB_REPOSITORY, and GITHUB_SHA are required.');
@@ -30,7 +42,10 @@ while (Date.now() < deadline) {
 	const { check_runs: checkRuns } = await response.json();
 	const deployment = checkRuns.find(
 		(check) =>
-			check.name === checkName && check.app?.slug === 'cloudflare-workers-and-pages'
+			check.name === checkName &&
+			check.app?.slug === 'cloudflare-workers-and-pages' &&
+			typeof check.output?.summary === 'string' &&
+			!check.output.summary.includes('Branch Preview URL')
 	);
 
 	if (deployment?.status === 'completed') {

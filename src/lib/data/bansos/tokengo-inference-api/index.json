@@ -17,7 +17,7 @@
 	"requirements": [
 		"Daftar akun baru",
 		"Login untuk mendapatkan kredit testing gratis $5",
-		"Buat API key dan gunakan base URL OpenAI-compatible di aplikasi"
+		"Buat API key dan gunakan base URL OpenAI-compatible https://api.thorbase.com/v1 di aplikasi"
 	],
 	"publishedAt": "2026-07-15",
 	"ctaLink": "https://dashboard.tokengo.com/sign-up?aff=7ZOW&utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
