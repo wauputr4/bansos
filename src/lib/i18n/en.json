@@ -174,7 +174,7 @@
 		"npxDisabled": "Due to many spam submissions with misleading and confusing bansos information, we have disabled npx submissions.",
 		"npxWarning": "⚠️ DO NOT submit fake, misleading, abusive, illegal, or ToS-violating bansos information. Violation = permanent ban.",
 		"gitTitle": "Clone repo & npm run add:bansos",
-		"gitDesc": "Fork and clone the GitHub repository, create a branch, then run the local script. Use contributor-slug for every submission; profile name and URL are only required on the first submission.",
+		"gitDesc": "Fork and clone the GitHub repository, create a branch, then run the local script. Use contributor-slug for every submission; the name is required only on the first submission and the profile URL remains optional.",
 		"gitIntegrity": "Attention: Only submit bansos that are genuinely valid and claimable. Misleading information, abuse steps, or illegal content are strictly prohibited and will be removed without notice. Rogue contributors will be permanently banned.",
 		"gitExamplesLabel": "Select example:",
 		"gitCommandHead": "git clone + npm run add:bansos",

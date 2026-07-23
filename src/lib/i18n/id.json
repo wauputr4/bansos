@@ -174,7 +174,7 @@
 		"npxDisabled": "Dikarenakan banyak yang spam dengan informasi bansos yang menyesatkan dan mengelirukan, kami menonaktifkan submit via npx.",
 		"npxWarning": "⚠️ JANGAN submit informasi bansos yang palsu, menyesatkan, bersifat abuse, ilegal, atau melanggar ToS pihak lain. Pelanggaran = banned permanen.",
 		"gitTitle": "Clone repo & npm run add:bansos",
-		"gitDesc": "Fork dan clone repo GitHub, buat branch, lalu jalankan script lokal. Gunakan contributor-slug pada setiap submit; nama dan URL profil hanya diperlukan saat submit pertama.",
+		"gitDesc": "Fork dan clone repo GitHub, buat branch, lalu jalankan script lokal. Gunakan contributor-slug pada setiap submit; nama hanya wajib saat submit pertama dan URL profil tetap opsional.",
 		"gitIntegrity": "Perhatian: Hanya submit bansos yang benar-benar valid dan bisa diklaim. Informasi menyesatkan, langkah abuse, atau konten ilegal dilarang keras dan akan dihapus tanpa pemberitahuan. Kontributor nakal akan dibanned permanen.",
 		"gitExamplesLabel": "Pilih contoh:",
 		"gitCommandHead": "git clone + npm run add:bansos",
