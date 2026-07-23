@@ -641,7 +641,7 @@
 		},
 		{
 			"id": "tokengo-inference-api",
-			"title": "TokenGO API Inference Free $10 (5M Token)",
+			"title": "TokenGO API Inference Free $5 Credits",
 			"provider": "TokenGO",
 			"status": "active",
 			"tags": ["AI API", "LLM", "Free Tier"],
