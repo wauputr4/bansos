@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-22",
-	"total": 73,
+	"total": 74,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -469,6 +469,16 @@
 			"featured": false,
 			"publishedAt": "2026-07-06",
 			"contributorSlug": "mugi-wiguna"
+		},
+		{
+			"id": "modelset-free-credit",
+			"title": "ModelSet Free $1 AI API Credit",
+			"provider": "ModelSet",
+			"status": "active",
+			"tags": ["AI API", "Claude", "LLM", "Free Tier"],
+			"featured": false,
+			"publishedAt": "2026-07-15",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "mongodb-startups",
