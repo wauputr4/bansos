@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-07-22",
-	"total": 74,
+	"generatedAt": "2026-07-23",
+	"total": 75,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -648,6 +648,16 @@
 			"featured": false,
 			"publishedAt": "2026-07-22",
 			"contributorSlug": "superftch"
+		},
+		{
+			"id": "tokenfaucet-daily-free-tokens",
+			"title": "TokenFaucet Daily Free LLM API Tokens",
+			"provider": "TokenFaucet",
+			"status": "active",
+			"tags": ["AI API", "LLM", "Free Tier"],
+			"featured": false,
+			"publishedAt": "2026-07-16",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "tokengo-inference-api",

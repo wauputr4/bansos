@@ -134,7 +134,8 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
      --validity-date 2026-06-30 \
      --requirements "Buat akun|Klaim program" \
      --cta-link "https://example.com" \
-    --contributor-slug username-kamu \
+     --source "https://example.com/program" \
+     --contributor-slug username-kamu \
      --contributor-name "Nama Kamu" \
      --contributor-url "https://example.com" \
      --tags "Cloud,Gratisan"
@@ -144,8 +145,8 @@ Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file s
 
    Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
    Argumen `--tags` dipisahkan dengan koma.
-   `--contributor-slug` wajib pada setiap submit. `--contributor-name` wajib dan
-   `--contributor-url` opsional hanya jika profil contributor tersebut belum ada.
+   `--contributor-slug` wajib pada setiap submit. Untuk profil contributor baru,
+   `--contributor-name` wajib sedangkan `--contributor-url` tetap opsional.
 
 3. Buat branch baru, tambahkan commit, push ke fork, dan kirim pull request ke repositori utama.
 

@@ -46,6 +46,10 @@
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
 
+	function shellQuote(value: string): string {
+		return `'${value.replaceAll("'", "'\"'\"'")}'`;
+	}
+
 	function generateGitCommand(item: (typeof bansosList)[number], activeLocale = 'id'): string {
 		const isEnglish = activeLocale === 'en';
 		const branchName = `add/${item.id}`;
@@ -57,17 +61,20 @@
 			`git checkout -b ${branchName}`,
 			'',
 			isEnglish
-				? '# Name and URL are only required for your first submission'
-				: '# Nama dan URL hanya diperlukan saat submit pertama',
+				? '# Existing listing used as a reference. Replace the ID and content before running.'
+				: '# Listing existing dipakai sebagai referensi. Ganti ID dan isinya sebelum dijalankan.',
+			isEnglish
+				? '# Name is required only for the first submission; profile URL remains optional'
+				: '# Nama hanya wajib saat submit pertama; URL profil tetap opsional',
 			'npm run add:bansos -- \\',
 			`  --id ${item.id} \\`,
-			`  --title "${item.title}" \\`,
-			`  --provider "${item.provider}" \\`,
-			`  --description "${item.description}" \\`,
+			`  --title ${shellQuote(item.title)} \\`,
+			`  --provider ${shellQuote(item.provider)} \\`,
+			`  --description ${shellQuote(item.description)} \\`,
 			'  --contributor-slug username-kamu \\',
-			'  --contributor-name "Nama Kamu" \\',
-			'  --contributor-url "https://github.com/username-kamu" \\',
-			`  --benefits "${item.benefits.join('|')}" \\`,
+			`  --contributor-name ${shellQuote('Nama Kamu')} \\`,
+			`  --contributor-url ${shellQuote('https://github.com/username-kamu')} \\`,
+			`  --benefits ${shellQuote(item.benefits.join('|'))} \\`,
 			`  --validity-type ${item.validity.type} \\`
 		];
 
@@ -75,19 +82,25 @@
 			parts.push(`  --validity-date ${item.validity.date} \\`);
 		}
 		if (item.validity.description) {
-			parts.push(`  --validity-desc "${item.validity.description}" \\`);
+			parts.push(`  --validity-desc ${shellQuote(item.validity.description)} \\`);
 		}
 
-		parts.push(`  --requirements "${item.requirements.join('|')}" \\`);
-		parts.push(`  --cta-link "${item.ctaLink}" \\`);
-		parts.push(`  --tags "${item.tags.join(',')}"`);
+		parts.push(`  --published-at ${item.publishedAt} \\`);
+		parts.push(`  --requirements ${shellQuote(item.requirements.join('|'))} \\`);
+		parts.push(`  --cta-link ${shellQuote(item.ctaLink)} \\`);
+		if (item.source) {
+			parts.push(`  --source ${shellQuote(item.source)} \\`);
+		}
+		parts.push(`  --tags ${shellQuote(item.tags.join(','))} \\`);
+		parts.push(`  --featured ${item.featured} \\`);
+		parts.push(`  --status ${item.status}`);
 		parts.push('');
 		parts.push('git add .');
-		parts.push(`git commit -m "feat: add ${item.title}"`);
+		parts.push(`git commit -m ${shellQuote(`feat: add ${item.title}`)}`);
 		parts.push(`git push origin ${branchName}`);
 		parts.push('');
 		parts.push(
-			`gh pr create --title "feat: add ${item.title}" --body "${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}" --base main`
+			`gh pr create --title ${shellQuote(`feat: add ${item.title}`)} --body ${shellQuote(`${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}`)} --base main`
 		);
 
 		return parts.join('\n');

@@ -2,16 +2,18 @@
 
 CLI untuk menambahkan entri bansos ke repo [bansos.dev](https://bansos.dev).
 
+> [!WARNING]
+> Submit publik melalui CLI sedang dinonaktifkan. Gunakan AI Agent, email, atau
+> Git clone sesuai panduan kontribusi di README utama. CLI ini tetap tersedia
+> untuk validasi payload lokal dengan `--mode json`.
+
 Lihat bantuan CLI:
 
 ```bash
 npx bansosdev --help
 ```
 
-## Mode contributor
-
-Default mode adalah `issue`.
-Issue yang valid akan diproses GitHub Actions menjadi Pull Request otomatis.
+## Validasi payload
 
 ```bash
 npx bansosdev add \
@@ -28,7 +30,8 @@ npx bansosdev add \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan"
+  --tags "Cloud,Gratisan" \
+  --mode json
 ```
 
 ### Parameter Masa Berlaku (Validity)
@@ -43,31 +46,14 @@ Data validity menggunakan format terstruktur untuk mempermudah filter dan tampil
 Contoh input `forever` (tanpa date):
 
 ```bash
-npx bansosdev add ... --validity-type forever --validity-desc "Berlaku selamanya"
+npx bansosdev add ... --validity-type forever --validity-desc "Berlaku selamanya" --mode json
 ```
-
-Mode ini akan mencetak URL issue GitHub dengan payload JSON. Setelah issue dibuat,
-workflow repo akan mencoba membuat Pull Request otomatis dari payload tersebut.
-
-## Maintainer mode
-
-```bash
-BANSOSDEV_GITHUB_TOKEN=ghp_xxx npx bansosdev add ... --mode direct
-```
-
-Mode direct membuat Pull Request otomatis dan memerlukan token dengan permission minimal:
-
-- `contents: write`
-- `pull-requests: write`
-- `workflows: write`
-
-## Optional
-
-Perlu cek payload dulu sebelum submit:
 
 ```bash
 npx bansosdev add ... --mode json
 ```
+
+Mode `issue` dan `direct` belum aktif sampai workflow kontribusi publik diaktifkan kembali.
 
 ## Catatan status
 
