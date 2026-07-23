@@ -595,7 +595,7 @@
 			"provider": "SITEQU Digital Indonesia",
 			"status": "active",
 			"tags": ["Domain", "Diskon"],
-			"featured": true,
+			"featured": false,
 			"publishedAt": "2026-07-23",
 			"contributorSlug": "sitequ-digital-indonesia"
 		},
