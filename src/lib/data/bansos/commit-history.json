@@ -35,9 +35,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/e0acc1dbc165abe6d50a32492796e8b4968717a6"
 	},
 	"ai-livscene-free-models": {
-		"hash": "bfdc06ff5b677b15ff6850c572676bc98084aec9",
-		"date": "2026-07-06T07:57:38Z",
-		"url": "https://github.com/wauputr4/bansos/commit/bfdc06ff5b677b15ff6850c572676bc98084aec9"
+		"hash": "28e2becfb9c7332d34482360de8a691f5d10c549",
+		"date": "2026-07-23T14:09:22+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/28e2becfb9c7332d34482360de8a691f5d10c549"
 	},
 	"ai-router-registration-and-daily-checkin-rewards": {
 		"hash": "05049a19727943deb9a89962f19c34a2716ed75c",
@@ -80,9 +80,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/e76ec2c5e5e6a1b9ae344d22de1ec7377ae2b96a"
 	},
 	"cleanesia-api-gratis": {
-		"hash": "4babdfc37bb5ef72577fdec35239fd35254dcddf",
-		"date": "2026-07-22T18:07:30+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/4babdfc37bb5ef72577fdec35239fd35254dcddf"
+		"hash": "051c963a3918ec3355f1bcff08f15d470c18810c",
+		"date": "2026-07-22T19:01:42+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/051c963a3918ec3355f1bcff08f15d470c18810c"
 	},
 	"codecrafters-free-token": {
 		"hash": "480ba53cbf0f320e5880d7a9bfc13c5276415e6e",
@@ -229,6 +229,11 @@
 		"date": "2026-07-11T07:30:53Z",
 		"url": "https://github.com/wauputr4/bansos/commit/899123e3e22d72b8bc5ec1b31565573a8b7c3363"
 	},
+	"modelset-free-credit": {
+		"hash": "e26515e29ce357404f453a6a219bfc74cf15b66a",
+		"date": "2026-07-23T13:24:11+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/e26515e29ce357404f453a6a219bfc74cf15b66a"
+	},
 	"mongodb-startups": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",
 		"date": "2026-06-21T15:46:56+07:00",
@@ -310,9 +315,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/194a0cc681b65d20ddd9c5bb70f1485bd9506af4"
 	},
 	"tokengo-inference-api": {
-		"hash": "8a2f06ae1096c8162277cb133067e1a588854ffb",
-		"date": "2026-07-20T07:33:09Z",
-		"url": "https://github.com/wauputr4/bansos/commit/8a2f06ae1096c8162277cb133067e1a588854ffb"
+		"hash": "fe95a44de5f7359295b70e4e69c202d0e730e885",
+		"date": "2026-07-23T12:50:49+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/fe95a44de5f7359295b70e4e69c202d0e730e885"
 	},
 	"tokenrouter-minimax-m3-free": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",

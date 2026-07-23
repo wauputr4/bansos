@@ -87,6 +87,11 @@
 	});
 	const commitContributors = $derived(item ? getCommitContributorsForItem(item.id) : []);
 	const latestCommit = $derived(item ? getLatestCommitForItem(item.id) : undefined);
+	const markdownSourceUrl = $derived(
+		item
+			? `https://github.com/wauputr4/bansos/blob/${latestCommit?.hash || 'main'}/src/lib/data/bansos/${item.id}/README.md`
+			: ''
+	);
 	const originalContributor = $derived(
 		item?.contributorSlug ? getContributorBySlug(item.contributorSlug) : undefined
 	);
@@ -600,6 +605,15 @@
 										</time>
 									</div>
 								{/if}
+								<a
+									href={markdownSourceUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="markdown-source-link"
+								>
+									<i class="fa-solid fa-file-code" aria-hidden="true"></i>
+									{detailT('viewMarkdownSource')}
+								</a>
 							</div>
 						{/if}
 					</div>
@@ -946,6 +960,28 @@
 		gap: 0.25rem;
 		color: var(--color-accent);
 		font-family: monospace;
+	}
+
+	.meta-card .markdown-source-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.45rem;
+		margin-top: 0.35rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.65rem;
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		min-height: 2.75rem;
+		padding: 0.6rem 0.75rem;
+		font-family: inherit;
+		font-size: 0.78rem;
+		font-weight: 750;
+	}
+
+	.meta-card .markdown-source-link:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
 	}
 
 	.section-block {

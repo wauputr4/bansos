@@ -5,7 +5,12 @@
 	"title": "",
 	"skills": [],
 	"links": {},
-	"contributedBansos": ["aerolink-starter-free-trial", "ai-hub-free-plan", "futureppo-free-credit"],
+	"contributedBansos": [
+		"aerolink-starter-free-trial",
+		"ai-hub-free-plan",
+		"futureppo-free-credit",
+		"modelset-free-credit"
+	],
 	"hidden": false,
 	"joinedAt": "2026-07-14"
 }

@@ -43,13 +43,11 @@
 	const featuredBansosList = featuredBansos(10);
 	const totalBansos = bansosList.length;
 	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
-	const upcomingBansos = bansosList.filter((item) => item.status === 'upcoming').length;
 	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
 
 	const tweenOptions = { duration: 2000, easing: cubicOut };
 	const animatedTotal = new Tween(totalBansos, tweenOptions);
 	const animatedActive = new Tween(activeBansos, tweenOptions);
-	const animatedUpcoming = new Tween(upcomingBansos, tweenOptions);
 	const animatedExpired = new Tween(expiredBansos, tweenOptions);
 	const communityContributors = getContributorStats();
 	let githubStars: number | string = $state('-');
@@ -61,13 +59,11 @@
 		if (!hasAnimated) {
 			animatedTotal.set(0, { duration: 0 });
 			animatedActive.set(0, { duration: 0 });
-			animatedUpcoming.set(0, { duration: 0 });
 			animatedExpired.set(0, { duration: 0 });
 
 			setTimeout(() => {
 				animatedTotal.target = totalBansos;
 				animatedActive.target = activeBansos;
-				animatedUpcoming.target = upcomingBansos;
 				animatedExpired.target = expiredBansos;
 				hasAnimated = true;
 			}, 0);
@@ -289,10 +285,6 @@
 			<div class="stat-item">
 				<span class="stat-value">{Math.floor(animatedActive.current)}</span>
 				<span class="stat-label">{$t('home.statActive')}</span>
-			</div>
-			<div class="stat-item">
-				<span class="stat-value">{Math.floor(animatedUpcoming.current)}</span>
-				<span class="stat-label">{$t('home.statUpcoming')}</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-value">{Math.floor(animatedExpired.current)}</span>
@@ -686,7 +678,7 @@
 	.stats-strip {
 		width: min(100%, 42rem);
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 0.75rem;
 		margin-top: 0.25rem;
 	}
@@ -696,9 +688,10 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 0.15rem;
-		border: 1px solid var(--border-color);
+		border: 1px solid var(--glass-border);
 		border-radius: 0.75rem;
-		background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+		background: var(--bg-secondary);
+		box-shadow: 0 0.5rem 1.5rem var(--glass-shadow);
 		padding: 0.8rem 0.75rem;
 	}
 
@@ -804,12 +797,6 @@
 
 	.logo-hero-icon .heart-path {
 		fill: var(--color-accent);
-	}
-
-	@media (min-width: 48rem) {
-		.stats-strip {
-			grid-template-columns: repeat(4, 1fr);
-		}
 	}
 
 	.github-card {

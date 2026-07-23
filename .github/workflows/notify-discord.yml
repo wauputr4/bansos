@@ -8,12 +8,13 @@ on:
       - 'src/lib/data/bansos/*/index.json'
 
 permissions:
+  checks: read
   contents: read
 
 jobs:
   notify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
@@ -23,6 +24,11 @@ jobs:
       - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version: 22
+
+      - name: Wait for successful Cloudflare deployment
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/wait-for-check.mjs
 
       - name: Send Discord Webhook
         env:

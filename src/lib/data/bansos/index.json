@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-22",
-	"total": 73,
+	"total": 74,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -76,9 +76,9 @@
 			"id": "ai-livscene-free-models",
 			"title": "AI Livscene — 14 Model AI Premium Gratis dengan Quota 5.1",
 			"provider": "AI Livscene",
-			"status": "active",
+			"status": "expired",
 			"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "No Credit Card"],
-			"featured": true,
+			"featured": false,
 			"publishedAt": "2026-07-03",
 			"contributorSlug": "wauputr4"
 		},
@@ -471,6 +471,16 @@
 			"contributorSlug": "mugi-wiguna"
 		},
 		{
+			"id": "modelset-free-credit",
+			"title": "ModelSet Free $1 AI API Credit",
+			"provider": "ModelSet",
+			"status": "active",
+			"tags": ["AI API", "Claude", "LLM", "Free Tier"],
+			"featured": false,
+			"publishedAt": "2026-07-23",
+			"contributorSlug": "syafii-fahreza"
+		},
+		{
 			"id": "mongodb-startups",
 			"title": "Kredit MongoDB Atlas untuk Startup",
 			"provider": "MongoDB",
@@ -641,7 +651,7 @@
 		},
 		{
 			"id": "tokengo-inference-api",
-			"title": "TokenGO API Inference Free $10 (5M Token)",
+			"title": "TokenGO API Inference Free $5 Credits",
 			"provider": "TokenGO",
 			"status": "active",
 			"tags": ["AI API", "LLM", "Free Tier"],

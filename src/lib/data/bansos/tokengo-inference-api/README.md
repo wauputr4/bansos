@@ -1,25 +1,30 @@
-# ✅ TokenGO API Inference Free $10 (5M Token)
+# ✅ TokenGO API Inference Free $5 Credits
 
 **Provider:** TokenGO
 
-API inference self-operated buat open-weight LLM (DeepSeek V4, GLM 5.2, Qwen3.5) dan model video. OpenAI-compatible, tinggal ganti base URL. Daftar langsung dapat kredit gratis $10 setara 5M token — cukup buat nyoba semua model tanpa kartu kredit.
+API inference self-operated dengan 10+ model AI seperti DeepSeek, GLM, Qwen, Kimi, dan MiniMax. OpenAI-compatible, tinggal ganti base URL. Pengguna baru mendapat kredit testing gratis $5 tanpa kartu kredit.
 
 > **Status:** Aktif
 
-⏰ **Info Waktu:** Kredit gratis $10 berlaku sesuai ketentuan TokenGO; harga dan model mengikuti halaman pricing resmi
+⏰ **Info Waktu:** Kredit testing gratis $5 berlaku selama program tersedia; harga dan model mengikuti halaman resmi TokenGO
 
 ## Keuntungan
 
-- Gratis $10 kredit setara 5M token langsung setelah daftar dengan link refferal
-- OpenAI-compatible
-- Model open-weight: DeepSeek V4, GLM 5.2, Qwen3.5, konteks sampai 203K
-- Pay-as-you-go mulai $0.10/Juta token input
+- Kredit testing gratis $5 saat mendaftar tanpa kartu kredit
+- Satu API key untuk 10+ model AI
+- API kompatibel dengan format OpenAI
+- Konteks hingga 1 juta token pada model tertentu
+- DeepSeek V4 Flash mulai $0.10 per 1 juta token input
 
 ## Persyaratan
 
 - Daftar akun baru
-- Login dan dapatkan bonus 10$
-- Buat API Key per key, pakai base URL OpenAI-compatible di app kamu
+- Login untuk mendapatkan kredit testing gratis $5
+- Buat API key dan gunakan base URL OpenAI-compatible `https://api.thorbase.com/v1` di aplikasi
+
+## Tips
+
+Gunakan DeepSeek V4 Flash untuk testing berbiaya rendah. Harga dan ketersediaan model dapat berubah.
 
 ---
 
