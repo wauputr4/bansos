@@ -30,7 +30,8 @@ npx bansosdev add \
   --cta-link "https://example.com" \
   --contributor-name "Nama Kamu" \
   --contributor-url "https://example.com" \
-  --tags "Cloud,Gratisan"
+  --tags "Cloud,Gratisan" \
+  --mode json
 ```
 
 ### Parameter Masa Berlaku (Validity)
@@ -45,7 +46,7 @@ Data validity menggunakan format terstruktur untuk mempermudah filter dan tampil
 Contoh input `forever` (tanpa date):
 
 ```bash
-npx bansosdev add ... --validity-type forever --validity-desc "Berlaku selamanya"
+npx bansosdev add ... --validity-type forever --validity-desc "Berlaku selamanya" --mode json
 ```
 
 ```bash
