@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-23",
-	"total": 76,
+	"total": 77,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -588,6 +588,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-23",
 			"contributorSlug": "syafrie-yunizar"
+		},
+		{
+			"id": "promo-domain-sitequ",
+			"title": "Promo Domain .MY.ID, .BIZ.ID, dan .WEB.ID Rp3.500",
+			"provider": "SITEQU Digital Indonesia",
+			"status": "active",
+			"tags": ["Domain", "Diskon"],
+			"featured": true,
+			"publishedAt": "2026-07-23",
+			"contributorSlug": "sitequ-digital-indonesia"
 		},
 		{
 			"id": "qoder-qwen-max-free",
