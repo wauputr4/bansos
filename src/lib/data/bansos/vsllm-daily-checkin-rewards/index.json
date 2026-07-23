@@ -1,0 +1,28 @@
+{
+	"id": "vsllm-daily-checkin-rewards",
+	"title": "VSLLM Daily Check-in Rewards",
+	"provider": "VSLLM",
+	"description": "AI API gateway kompatibel OpenAI yang menyediakan reward melalui daily check-in. Jenis dan nilai reward dapat berubah sesuai program di dashboard VSLLM.",
+	"benefits": [
+		"Daily check-in untuk memperoleh reward akun",
+		"API gateway kompatibel OpenAI",
+		"Akses berbagai model AI melalui satu endpoint"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Selama fitur daily check-in masih diaktifkan oleh VSLLM"
+	},
+	"requirements": [
+		"Daftar atau login ke VSLLM",
+		"Buka dashboard dan lakukan daily check-in",
+		"Gunakan reward sesuai ketentuan provider"
+	],
+	"ctaLink": "https://vsllm.com/register?aff=5xdk",
+	"tags": ["AI", "AI API", "LLM", "Daily Reward"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-07-23",
+	"tips": "Periksa jenis dan masa berlaku reward di dashboard sebelum menggunakannya; subscription gratis dan lucky card belum dapat diverifikasi dari halaman publik.",
+	"source": "https://vsllm.com/",
+	"contributorSlug": "syafii-fahreza"
+}

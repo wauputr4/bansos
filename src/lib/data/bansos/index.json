@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-23",
-	"total": 75,
+	"total": 76,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -708,6 +708,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-27",
 			"contributorSlug": "juan"
+		},
+		{
+			"id": "vsllm-daily-checkin-rewards",
+			"title": "VSLLM Daily Check-in Rewards",
+			"provider": "VSLLM",
+			"status": "active",
+			"tags": ["AI", "AI API", "LLM", "Daily Reward"],
+			"featured": false,
+			"publishedAt": "2026-07-23",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "xai-grok-api-credits",
