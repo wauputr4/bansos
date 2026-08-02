@@ -1,4 +1,5 @@
-# ✅ Promo Domain .MY.ID, .BIZ.ID, dan .WEB.ID Rp3.500
+# PROMO MENYAMBUT KEMERDEKAAN
+# ✅ Promo Domain .MY.ID, .BIZ.ID, dan .WEB.ID Rp2.000
 
 **Provider:** SITEQU Digital Indonesia
 
@@ -6,13 +7,13 @@ Promo pendaftaran domain Indonesia .MY.ID, .BIZ.ID, dan .WEB.ID seharga Rp3.500 
 
 > **Status:** Aktif
 
-⏰ **Berlaku sampai:** 2026-07-31
+⏰ **Berlaku sampai:** 2026-08-31
 
 ## Keuntungan
 
-- Pendaftaran domain .MY.ID seharga Rp3.500
-- Pendaftaran domain .BIZ.ID seharga Rp3.500
-- Pendaftaran domain .WEB.ID seharga Rp3.500
+- Pendaftaran domain .MY.ID seharga Rp2.000
+- Pendaftaran domain .BIZ.ID seharga Rp2.000
+- Pendaftaran domain .WEB.ID seharga Rp2.000
 - Harga promo diterapkan otomatis tanpa kode voucher
 
 ## Persyaratan
