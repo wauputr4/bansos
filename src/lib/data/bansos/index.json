@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-02",
-	"total": 80,
+	"total": 81,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -757,6 +757,16 @@
 			"tags": ["AI", "AI API", "LLM", "Daily Reward"],
 			"featured": false,
 			"publishedAt": "2026-07-23",
+			"contributorSlug": "syafii-fahreza"
+		},
+		{
+			"id": "vyce-ai-free-40-credit",
+			"title": "Vyce AI Free $40 Credit + $10 Bonus Referral",
+			"provider": "Vyce AI",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-02",
 			"contributorSlug": "syafii-fahreza"
 		},
 		{
