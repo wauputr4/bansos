@@ -1,18 +1,17 @@
 {
 	"id": "promo-domain-sitequ",
-	"title": "Promo Domain .MY.ID, .BIZ.ID, dan .WEB.ID Rp3.500",
+	"title": "PROMO MENYAMBUT KEMERDEKAAN: Domain .MY.ID, .BIZ.ID, dan .WEB.ID Rp2.000",
 	"provider": "SITEQU Digital Indonesia",
-	"description": "Promo pendaftaran domain Indonesia .MY.ID, .BIZ.ID, dan .WEB.ID seharga Rp3.500 selama periode Gajian Sale SITEQU Digital Indonesia.",
+	"description": "Promo pendaftaran domain Indonesia .MY.ID, .BIZ.ID, dan .WEB.ID seharga Rp2.000 selama periode promo SITEQU Digital Indonesia.",
 	"benefits": [
-		"Pendaftaran domain .MY.ID seharga Rp3.500",
-		"Pendaftaran domain .BIZ.ID seharga Rp3.500",
-		"Pendaftaran domain .WEB.ID seharga Rp3.500",
+		"Pendaftaran domain .MY.ID seharga Rp2.000",
+		"Pendaftaran domain .BIZ.ID seharga Rp2.000",
+		"Pendaftaran domain .WEB.ID seharga Rp2.000",
 		"Harga promo diterapkan otomatis tanpa kode voucher"
 	],
 	"validity": {
-		"type": "fixed",
-		"date": "2026-07-31",
-		"description": "Berlaku sampai 31 Juli 2026 atau selama kuota promo tersedia"
+		"type": "uncertain",
+		"description": "Provider saat ini menampilkan promo ini; batas akhir promo tidak tercantum di halaman sumber."
 	},
 	"requirements": [
 		"Pilih domain .MY.ID, .BIZ.ID, atau .WEB.ID yang masih tersedia",
@@ -23,7 +22,7 @@
 	"tags": ["Domain", "Diskon"],
 	"status": "active",
 	"featured": false,
-	"publishedAt": "2026-07-23",
+	"publishedAt": "2026-08-02",
 	"tips": "Promo berlaku untuk pendaftaran baru. Harga perpanjangan dan transfer tetap mengikuti tarif normal yang tampil saat checkout.",
 	"source": "https://domain.sitequ.id/",
 	"contributorSlug": "sitequ-digital-indonesia"
