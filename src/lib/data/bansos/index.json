@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-07-23",
-	"total": 78,
+	"total": 79,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -638,6 +638,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-18",
 			"contributorSlug": "rey"
+		},
+		{
+			"id": "seekai-free-200-ai-credit",
+			"title": "SeekAi Free $200 AI Credit",
+			"provider": "SeekAi",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-02",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "servernusa-free-xiaomi-mimo",
