@@ -1,0 +1,26 @@
+{
+	"id": "aisure-free-platform",
+	"title": "AISure — Free AI Workspace",
+	"provider": "AISure",
+	"description": "Workspace AI gratis (Early Access): chat multi-model (GPT-5, Gemini 3 Pro, Claude), image/video, code, voice, research & automation dalam satu akun. Tanpa kartu kredit, UK-based, GDPR-aligned.",
+	"benefits": [
+		"Chat multi-model (GPT-5, Gemini 3 Pro, Claude)",
+		"Generasi image & video",
+		"Code generator & IDE (12+ bahasa)",
+		"Voice cloning & narration",
+		"Deep web research dengan sitasi",
+		"Workflow automation visual"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Free forever selama Early Access; core tools dijamin tetap gratis"
+	},
+	"requirements": ["Buat akun gratis (tanpa kartu kredit)", "Login via landing page AISure"],
+	"ctaLink": "https://aisure.uk/?ref=bahrulilmi&utm_source=referral&utm_medium=share&utm_campaign=dash_invite",
+	"tags": ["AI", "Chat", "Free Tier", "Image", "Code", "UK"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-07",
+	"source": "https://aisure.uk/",
+	"contributorSlug": "bahrulilmi"
+}

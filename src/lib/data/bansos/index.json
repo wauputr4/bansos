@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-02",
-	"total": 83,
+	"total": 84,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -101,6 +101,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-13",
 			"contributorSlug": "wildan"
+		},
+		{
+			"id": "aisure-free-platform",
+			"title": "AISure — Free AI Workspace",
+			"provider": "AISure",
+			"status": "active",
+			"tags": ["AI", "Chat", "Free Tier", "Image", "Code", "UK"],
+			"featured": false,
+			"publishedAt": "2026-08-07",
+			"contributorSlug": "bahrulilmi"
 		},
 		{
 			"id": "amd-ai-dev-program",
