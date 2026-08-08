@@ -1,0 +1,31 @@
+{
+	"id": "xiaomi-mimo-api-key-gratis",
+	"title": "Xiaomi MiMo API Key Gratis — $2 Kredit + Diskon 10%",
+	"provider": "Xiaomi MiMo",
+	"description": "Xiaomi MiMo memberi pengguna baru $2 kredit API setelah referral berhasil terikat, serta diskon 10% untuk pembelian pertama Token Plan dalam 30 hari. Kredit berlaku 40 hari dan hanya dapat dipakai untuk biaya panggilan API.",
+	"benefits": [
+		"Bonus kredit $2 setelah referral berhasil terikat",
+		"Diskon 10% untuk pembelian pertama Token Plan dalam 30 hari sejak referral terikat",
+		"Akses model MiMo V2.5 dan MiMo V2.5 Pro melalui API",
+		"Kredit dapat dipakai untuk biaya panggilan API"
+	],
+	"requirements": [
+		"Buka link referral dan login dengan akun Xiaomi MiMo baru yang didaftarkan dalam 3 hari",
+		"Pastikan referral terikat otomatis; jika tidak, masukkan kode FCB52P secara manual di console",
+		"Untuk mendapatkan diskon, lakukan pembelian pertama Token Plan dalam 30 hari sejak referral terikat",
+		"Gunakan kredit dalam 40 hari sejak diterima; kredit tidak dapat dipakai untuk membeli Token Plan"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Program referral dibuka jangka panjang; kredit berlaku 40 hari sejak diterima, sedangkan diskon pembelian pertama berlaku 30 hari sejak referral terikat"
+	},
+	"ctaLink": "https://platform.xiaomimimo.com/?ref=FCB52P",
+	"tags": ["AI Credits", "API"],
+	"status": "active",
+	"featured": true,
+	"promoCode": "FCB52P",
+	"publishedAt": "2026-08-08",
+	"source": "https://mimo.mi.com/docs/en-US/quick-start/faq/promotions",
+	"providerWebsiteUrl": "https://platform.xiaomimimo.com/",
+	"contributorSlug": "renyx"
+}

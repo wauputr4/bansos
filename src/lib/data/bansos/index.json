@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-08-02",
-	"total": 84,
+	"generatedAt": "2026-08-08",
+	"total": 85,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -810,10 +810,20 @@
 			"contributorSlug": "devers"
 		},
 		{
+			"id": "xiaomi-mimo-api-key-gratis",
+			"title": "Xiaomi MiMo API Key Gratis — $2 Kredit + Diskon 10%",
+			"provider": "Xiaomi MiMo",
+			"status": "active",
+			"tags": ["AI Credits", "API"],
+			"featured": true,
+			"publishedAt": "2026-08-08",
+			"contributorSlug": "renyx"
+		},
+		{
 			"id": "xiaomi-mimo-gratis-2",
 			"title": "Xiaomi Mimo Gratis $2",
 			"provider": "Xiaomi Mimo",
-			"status": "active",
+			"status": "expired",
 			"tags": ["AI Credits"],
 			"featured": false,
 			"publishedAt": "2026-06-17",

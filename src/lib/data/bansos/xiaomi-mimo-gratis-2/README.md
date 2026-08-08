@@ -1,10 +1,10 @@
-# ✅ Xiaomi Mimo Gratis $2
+# ❌ Xiaomi Mimo Gratis $2
 
 **Provider:** Xiaomi Mimo
 
 Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan menggunakan kode referal.
 
-> **Status:** Aktif
+> **Status:** Kadaluwarsa
 
 🏷️ **Promo Code:** `NK2BLA`
 
@@ -23,13 +23,10 @@ Dapatkan credits gratis senilai $2 untuk mencoba platform Xiaomi Mimo dengan men
 
 [🔗 Klaim Bansos Ini](https://platform.xiaomimimo.com/?ref=NK2BLA)
 
-
 🏷️ Tags: AI Credits
-
 
 ✏️ Dikontribusikan oleh `akbar`
 
-
 ---
 
-*[bansos.dev](https://bansos.dev) — Open Source Catalog*
+_[bansos.dev](https://bansos.dev) — Open Source Catalog_
