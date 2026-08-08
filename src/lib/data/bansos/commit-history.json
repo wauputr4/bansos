@@ -49,6 +49,11 @@
 		"date": "2026-07-03T16:16:35Z",
 		"url": "https://github.com/wauputr4/bansos/commit/89b3bc4860a78d9cc861198c7320c70b60ebab3e"
 	},
+	"aisure-free-platform": {
+		"hash": "a1e78a6a924f3a9525b284e0b233e9ee19a1c801",
+		"date": "2026-08-07T03:19:59Z",
+		"url": "https://github.com/wauputr4/bansos/commit/a1e78a6a924f3a9525b284e0b233e9ee19a1c801"
+	},
 	"amd-ai-dev-program": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",
 		"date": "2026-06-21T15:46:56+07:00",
@@ -203,6 +208,11 @@
 		"hash": "90a36ce7dc5df0d8ba8e36e11fbe8f9699cb70bf",
 		"date": "2026-07-11T08:20:24Z",
 		"url": "https://github.com/wauputr4/bansos/commit/90a36ce7dc5df0d8ba8e36e11fbe8f9699cb70bf"
+	},
+	"jetbrains-student-pack": {
+		"hash": "982c132c338f0d410293560ebebd82c13e73f640",
+		"date": "2026-08-06T00:19:53+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/982c132c338f0d410293560ebebd82c13e73f640"
 	},
 	"kie-ai-api-discount-credit": {
 		"hash": "3750e3969354d6594529e80d4e2f5db9ea98dd63",
@@ -408,10 +418,5 @@
 		"hash": "8c6b153d0dd2a13560eda4855b59c371c99d0d51",
 		"date": "2026-07-01T08:27:06Z",
 		"url": "https://github.com/wauputr4/bansos/commit/8c6b153d0dd2a13560eda4855b59c371c99d0d51"
-	},
-	"aisure-free-platform": {
-		"hash": "a1e78a6a924f3a9525b284e0b233e9ee19a1c801",
-		"date": "2026-08-07T03:19:59+00:00",
-		"url": "https://github.com/wauputr4/bansos/commit/a1e78a6a924f3a9525b284e0b233e9ee19a1c801"
 	}
 }
