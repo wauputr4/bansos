@@ -1,0 +1,32 @@
+{
+	"id": "xkiro-pro-7-hari",
+	"title": "xKiro Pro Gratis 7 Hari — API AI Multi-Model",
+	"provider": "xKiro",
+	"description": "xKiro menyediakan satu API yang kompatibel dengan OpenAI dan Anthropic untuk mengakses berbagai model AI. Program referral ini menawarkan akses Pro gratis selama 7 hari sejak klaim menurut informasi kontributor.",
+	"benefits": [
+		"Akses Pro gratis selama 7 hari sejak berhasil diklaim",
+		"API kompatibel dengan OpenAI dan Anthropic",
+		"Akses berbagai model AI melalui satu API",
+		"20+ model gratis tersedia di platform xKiro"
+	],
+	"requirements": [
+		"Buka link referral xKiro",
+		"Daftar menggunakan akun baru dengan email dan password",
+		"Verifikasi email",
+		"Tautkan akun Telegram ke akun xKiro",
+		"Klaim Pro Plan melalui dashboard xKiro"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Akses Pro berlaku 7 hari sejak berhasil diklaim; ketersediaan dan ketentuan referral mengikuti kebijakan xKiro"
+	},
+	"ctaLink": "https://xkiro.com/ref/JHEFXQM",
+	"tags": ["AI", "API", "Free Trial"],
+	"status": "active",
+	"featured": true,
+	"publishedAt": "2026-08-08",
+	"source": "https://xkiro.com/",
+	"providerWebsiteUrl": "https://xkiro.com/",
+	"tips": "Akses Pro 7 hari berasal dari informasi referral kontributor; cek dashboard setelah klaim untuk memastikan benefit aktif.",
+	"contributorSlug": "renyx"
+}
