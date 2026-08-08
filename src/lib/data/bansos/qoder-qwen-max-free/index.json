@@ -15,12 +15,13 @@
 		"Klaim hanya berlaku bagi akun pertama yang berhasil login pada satu perangkat/komputer selama kampanye berjalan"
 	],
 	"validity": {
-		"type": "uncertain",
-		"description": "tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut"
+		"type": "fixed",
+		"date": "2026-06-22",
+		"description": "Kampanye berakhir 22 Juni 2026, 23:59:59 waktu Singapura"
 	},
 	"ctaLink": "https://qoder.com/",
 	"tags": ["AI Credits"],
-	"status": "active",
+	"status": "expired",
 	"featured": false,
 	"publishedAt": "2026-06-15",
 	"source": "https://docs.qoder.com/events/qwen-max-daily-free",

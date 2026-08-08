@@ -1,12 +1,12 @@
-# ✅ 200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder
+# ❌ 200 Panggilan Model Qwen3.7-Max Gratis per Hari di Qoder
 
 **Provider:** Qoder
 
 Qoder memberikan promo waktu terbatas berupa 200 pemanggilan model Qwen3.7-Max gratis per hari untuk semua pengguna. Model ini dioptimalkan untuk skenario AI Agent dan pemahaman kode.
 
-> **Status:** Aktif
+> **Status:** Kadaluwarsa
 
-⏰ **Info Waktu:** tanggal akhir program belum ditentukan dan akan diumumkan lebih lanjut
+⏰ **Berlaku sampai:** 2026-06-22
 
 ## Keuntungan
 
