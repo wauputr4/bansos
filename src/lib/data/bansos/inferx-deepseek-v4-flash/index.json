@@ -1,0 +1,29 @@
+{
+	"id": "inferx-deepseek-v4-flash",
+	"title": "DeepSeek V4 Flash Gratis di InferX",
+	"provider": "InferX",
+	"description": "InferX saat ini menyediakan akses gratis ke model DeepSeek V4 Flash Preview melalui endpoint yang kompatibel dengan OpenAI API.",
+	"benefits": [
+		"Akses gratis ke model DeepSeek V4 Flash Preview",
+		"Endpoint kompatibel dengan OpenAI API",
+		"Dapat digunakan dari aplikasi yang mendukung OpenAI-compatible API"
+	],
+	"requirements": [
+		"Buka katalog endpoint InferX",
+		"Daftar atau login ke akun InferX",
+		"Pilih endpoint DeepSeek V4 Flash",
+		"Login untuk mendapatkan URL endpoint khusus tenant dan API key"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Situs resmi menampilkan akses gratis, tetapi periode berakhir belum dapat diverifikasi; email pengusul menyebut 12 Agustus 2026"
+	},
+	"ctaLink": "https://model.inferx.net/catalog/endpoints",
+	"tags": ["AI", "API", "Free Tier"],
+	"status": "active",
+	"featured": true,
+	"publishedAt": "2026-08-08",
+	"source": "https://inferx.net/",
+	"providerWebsiteUrl": "https://inferx.net/",
+	"contributorSlug": "renyx"
+}
