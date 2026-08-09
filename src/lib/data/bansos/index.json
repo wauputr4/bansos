@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-02",
-	"total": 84,
+	"total": 85,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -698,6 +698,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-17",
 			"contributorSlug": "devers"
+		},
+		{
+			"id": "tabiai-free-120-api-credit",
+			"title": "TaBiAI Free $120 API Credit",
+			"provider": "TaBiAI",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-09",
+			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "tencent-cloud-free-tier",

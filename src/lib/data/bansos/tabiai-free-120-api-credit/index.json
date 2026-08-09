@@ -1,0 +1,28 @@
+{
+	"id": "tabiai-free-120-api-credit",
+	"title": "TaBiAI Free $120 API Credit",
+	"provider": "TaBiAI",
+	"description": "TaBiAI adalah gateway API yang memberi saldo kredit awal untuk pengguna baru yang mendaftar via GitHub OAuth. Katalog modelnya fokus pada Claude Opus 4.8 dan Claude Opus 5, keduanya tersedia dalam varian standar dan thinking, serta bisa diakses lewat endpoint Anthropic maupun format OpenAI.",
+	"benefits": [
+		"Kredit API awal untuk pengguna baru",
+		"Akses Claude Opus 4.8 dan Claude Opus 5, termasuk varian thinking",
+		"Mendukung endpoint Anthropic dan format OpenAI, cocok untuk Claude Code dan Cursor",
+		"Check-in harian aktif untuk menambah saldo gratis"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Ketersediaan dan besaran kredit mengikuti kebijakan TaBiAI"
+	},
+	"requirements": [
+		"Daftar akun baru menggunakan GitHub OAuth",
+		"Kredit gratis tersedia di dashboard, siap dipakai lewat API key"
+	],
+	"ctaLink": "https://tabitoken.com/sign-up?aff=tRlT",
+	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-09",
+	"tips": "Registrasi hanya tersedia lewat GitHub OAuth; pendaftaran via password dinonaktifkan. Aktifkan check-in harian di dashboard untuk menambah saldo. Gunakan satu akun per orang agar tidak melanggar ketentuan provider.",
+	"source": "https://tabitoken.com/",
+	"contributorSlug": "rafly0078"
+}
