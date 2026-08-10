@@ -15,7 +15,7 @@
 	},
 	"requirements": [
 		"Daftar akun baru menggunakan email",
-		"Kredit gratis langsung tersedia di dashboard, siap dipakai lewat API key"
+		"Periksa saldo kredit di dashboard setelah pendaftaran; ketersediaan kredit dan jumlahnya mengikuti kebijakan hcnsec"
 	],
 	"ctaLink": "https://api.hcnsec.cn/sign-up?aff=w6I4",
 	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],

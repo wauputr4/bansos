@@ -18,7 +18,7 @@ hcnsec adalah gateway API LLM kompatibel format OpenAI yang memberi saldo kredit
 ## Persyaratan
 
 - Daftar akun baru menggunakan email
-- Kredit gratis langsung tersedia di dashboard, siap dipakai lewat API key
+- Periksa saldo kredit di dashboard setelah pendaftaran; ketersediaan kredit dan jumlahnya mengikuti kebijakan hcnsec
 
 ## Tips
 
