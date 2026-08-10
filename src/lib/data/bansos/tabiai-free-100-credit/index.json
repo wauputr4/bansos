@@ -1,0 +1,32 @@
+{
+	"id": "tabiai-free-100-credit",
+	"title": "TaBiAI Free $100 Credit + $20 Bonus Referral",
+	"provider": "TaBiAI",
+	"description": "TaBiAI adalah gateway API berbasis New API yang khusus menyalurkan model Claude Opus lewat endpoint kompatibel Anthropic dan OpenAI. Setiap akun baru menerima kredit $100 secara otomatis, ditambah $20 lagi bila mendaftar memakai kode undangan, sehingga totalnya $120. Tersedia juga check-in harian yang memberi tambahan kredit dengan nominal acak. Katalog modelnya sengaja sempit: hanya Claude Opus 4.8 dan Claude Opus 5 beserta varian thinking, dan keempatnya sudah bisa dipakai oleh grup default tanpa perlu naik tingkat.",
+	"benefits": [
+		"Kredit $100 otomatis untuk setiap akun baru, tanpa kartu kredit",
+		"Tambahan kredit $20 khusus pendaftar yang memakai kode undangan, sehingga totalnya menjadi $120",
+		"Check-in harian yang menambah kredit dengan nominal acak; satu contoh nyata bernilai $9,73 dalam sekali klaim",
+		"Akses Claude Opus 5 dan Claude Opus 4.8 beserta varian thinking, dengan tarif $3 per satu juta token masukan dan keluaran untuk Opus 5, serta $1 masukan dan $5 keluaran untuk Opus 4.8",
+		"Endpoint ganda: Anthropic-native /v1/messages yang bisa langsung dipakai Claude Code, dan kompatibel OpenAI /v1/chat/completions untuk Codex, Cline, dan tool sejenis"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Layanan sangat baru dan belum memiliki ketentuan layanan tertulis; besaran bonus maupun ketersediaannya bisa berubah atau berhenti sewaktu-waktu"
+	},
+	"requirements": [
+		"Daftar lewat tautan undangan agar tambahan kredit $20 ikut masuk ke akun",
+		"Gunakan akun GitHub karena pendaftaran dengan kata sandi dimatikan di sisi server",
+		"Selesaikan verifikasi Cloudflare Turnstile saat membuat akun",
+		"Buat API key di menu Console sebelum mulai memanggil model",
+		"Lakukan check-in harian di dashboard untuk mengambil kredit tambahan"
+	],
+	"ctaLink": "https://tabitoken.com/sign-up?aff=fryg",
+	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-10",
+	"tips": "Prompt caching tidak berfungsi di gateway ini. Satu sesi Claude Code yang diuji mencatat 5,67 juta token masukan dengan cache_creation dan cache_read tetap nol, sehingga konteks yang sama dibayar penuh pada setiap giliran dan sesi itu saja menghabiskan sekitar $17 atau 14 persen dari kredit $120. Untuk pekerjaan berkonteks besar, kredit di sini terbakar jauh lebih cepat daripada di gateway yang mendukung cache. Layanan juga masih sangat baru: domainnya baru didaftarkan 4 Agustus 2026, belum ada ketentuan layanan maupun kebijakan privasi, tidak ada pengumuman resmi, dan monitor uptime bawaan situsnya masih kosong. Hindari memakainya untuk beban kerja produksi, dan sebaiknya jangan mengisi saldo sebelum layanan terbukti bertahan.",
+	"source": "https://tabitoken.com/pricing",
+	"contributorSlug": "syafii-fahreza"
+}
