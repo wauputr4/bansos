@@ -1,6 +1,6 @@
 {
 	"id": "tabiai-free-120-api-credit",
-	"title": "TaBiAI Free $120 API Credit",
+	"title": "TaBiAI Free API Credit",
 	"provider": "TaBiAI",
 	"description": "TaBiAI adalah gateway API yang memberi saldo kredit awal untuk pengguna baru yang mendaftar via GitHub OAuth. Katalog modelnya fokus pada Claude Opus 4.8 dan Claude Opus 5, keduanya tersedia dalam varian standar dan thinking, serta bisa diakses lewat endpoint Anthropic maupun format OpenAI.",
 	"benefits": [

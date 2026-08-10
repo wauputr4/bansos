@@ -1,4 +1,4 @@
-# ✅ TaBiAI Free $120 API Credit
+# ✅ TaBiAI Free API Credit
 
 **Provider:** TaBiAI
 

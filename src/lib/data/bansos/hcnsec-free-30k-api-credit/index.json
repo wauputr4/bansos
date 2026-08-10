@@ -1,0 +1,28 @@
+{
+	"id": "hcnsec-free-30k-api-credit",
+	"title": "hcnsec Free ¥30K API Credit",
+	"provider": "hcnsec",
+	"description": "hcnsec adalah gateway API LLM kompatibel format OpenAI yang memberi saldo kredit awal untuk pengguna baru yang mendaftar via email. Kredit dipakai untuk mengakses model open weight dan open source seperti DeepSeek V4-Flash, GLM-5.2, dan Qwen 3.6. Saldo tambahan bisa didapat lewat check-in harian.",
+	"benefits": [
+		"Kredit API awal senilai ¥30K (satuan saldo platform, bukan mata uang)",
+		"Akses ke banyak model open weight dan open source",
+		"Kompatibel format OpenAI, bisa dipakai dari Claude Code, Cursor, dan tool sejenis",
+		"Saldo tambahan gratis via check-in harian dan program invite"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Ketersediaan dan besaran kredit mengikuti kebijakan hcnsec; provider mengumumkan penyesuaian harga dan kuota berkala"
+	},
+	"requirements": [
+		"Daftar akun baru menggunakan email",
+		"Periksa saldo kredit di dashboard setelah pendaftaran; ketersediaan kredit dan jumlahnya mengikuti kebijakan hcnsec"
+	],
+	"ctaLink": "https://api.hcnsec.cn/sign-up?aff=w6I4",
+	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-09",
+	"tips": "Model gratis adalah model parameter kecil dan diprioritaskan untuk pengujian. Provider menyarankan menjalankan task berat pada malam atau dini hari karena antrean siang hari padat dan tidak stabil. Cukup satu akun per orang: provider aktif menindak abuse.",
+	"source": "https://api.hcnsec.cn/",
+	"contributorSlug": "rafly0078"
+}

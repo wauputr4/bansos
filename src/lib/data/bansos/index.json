@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-08-02",
-	"total": 85,
+	"generatedAt": "2026-08-10",
+	"total": 86,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -361,6 +361,16 @@
 			"contributorSlug": "brian"
 		},
 		{
+			"id": "hcnsec-free-30k-api-credit",
+			"title": "hcnsec Free ¥30K API Credit",
+			"provider": "hcnsec",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-09",
+			"contributorSlug": "rafly0078"
+		},
+		{
 			"id": "idwebhost-claim-domain-gratis-myid-juli2026",
 			"title": "Klaim Domain Gratis .MY.ID / .WEB.ID / .BIZ.ID — 1 Tahun!",
 			"provider": "IDwebhost",
@@ -701,7 +711,7 @@
 		},
 		{
 			"id": "tabiai-free-120-api-credit",
-			"title": "TaBiAI Free $120 API Credit",
+			"title": "TaBiAI Free API Credit",
 			"provider": "TaBiAI",
 			"status": "active",
 			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],

@@ -290,6 +290,10 @@
 				<span class="stat-value">{Math.floor(animatedExpired.current)}</span>
 				<span class="stat-label">{$t('home.statExpired')}</span>
 			</div>
+			<div class="stat-item">
+				<span class="stat-value">{communityContributors.length}</span>
+				<span class="stat-label">{$t('home.statContributors')}</span>
+			</div>
 		</div>
 
 		<!-- Bansos Sections -->
@@ -678,7 +682,7 @@
 	.stats-strip {
 		width: min(100%, 42rem);
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		gap: 0.75rem;
 		margin-top: 0.25rem;
 	}
