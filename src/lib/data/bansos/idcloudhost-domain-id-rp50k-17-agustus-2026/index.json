@@ -1,0 +1,33 @@
+{
+	"id": "idcloudhost-domain-id-rp50k-17-agustus-2026",
+	"title": "Promo Domain .ID Rp50.000 IDCloudHost — 17 Agustus 2026",
+	"provider": "IDCloudHost",
+	"providerWebsiteUrl": "https://idcloudhost.com",
+	"description": "IDCloudHost menawarkan promo registrasi domain .ID tahun pertama seharga Rp50.000 pada 17 Agustus 2026 mulai pukul 07.00 WIB.",
+	"benefits": [
+		"Registrasi domain .ID tahun pertama seharga Rp50.000",
+		"Kode promo idmerdeka17",
+		"Periode 17 Agustus 2026 pukul 07.00 hingga 18 Agustus 2026 pukul 07.00 WIB"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-08-17",
+		"description": "Promo berlaku 17 Agustus 2026 pukul 07.00 hingga 18 Agustus 2026 pukul 07.00 WIB."
+	},
+	"requirements": [
+		"Daftarkan domain .ID baru",
+		"Gunakan kode promo idmerdeka17",
+		"Nama domain minimal 5 karakter",
+		"Tidak berlaku untuk transfer, renewal, domain premium, atau domain terbatas",
+		"Akun harus valid dan terverifikasi"
+	],
+	"ctaLink": "https://idcloudhost.com/domain/",
+	"tags": ["Domain", "domain17", "Diskon"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-17",
+	"promoCode": "idmerdeka17",
+	"tips": "Promo memiliki stok terbatas dan tidak dapat digabungkan dengan promo lain. Harga promo hanya untuk tahun pertama; cek syarat transfer dan renewal di halaman resmi sebelum membayar.",
+	"source": "https://idcloudhost.com/promo/promo-diskon-domain-id/",
+	"contributorSlug": "wauputr4"
+}

@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-17",
-	"total": 97,
+	"total": 100,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -389,6 +389,36 @@
 			"featured": false,
 			"publishedAt": "2026-08-09",
 			"contributorSlug": "rafly0078"
+		},
+		{
+			"id": "helipod-domain-id-rp45k-hosting-merdeka-2026",
+			"title": "Promo Domain .ID Rp45.000 & Hosting Helipod — 17 Agustus 2026",
+			"provider": "Helipod",
+			"status": "active",
+			"tags": ["Domain", "domain17", "Hosting", "Cloud"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026",
+			"title": "Bonus Saldo Cloud VPS Rp100.000 IDCloudHost untuk AI Agent",
+			"provider": "IDCloudHost",
+			"status": "active",
+			"tags": ["Cloud Services", "Cloud VPS", "Credits", "AI"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "idcloudhost-domain-id-rp50k-17-agustus-2026",
+			"title": "Promo Domain .ID Rp50.000 IDCloudHost — 17 Agustus 2026",
+			"provider": "IDCloudHost",
+			"status": "active",
+			"tags": ["Domain", "domain17", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
 		},
 		{
 			"id": "idwebhost-claim-domain-gratis-myid-juli2026",

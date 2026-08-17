@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-08-17 | Total: 97 entri (82 aktif, 15 expired)
+> Diperbarui: 2026-08-17 | Total: 100 entri (85 aktif, 15 expired)
 
 ---
 
@@ -903,6 +903,100 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** uncertain (Ketersediaan dan besaran kredit mengikuti kebijakan hcnsec; provider mengumumkan penyesuaian harga dan kuota berkala)
 
 🔗 **Link Detail:** https://bansos.dev/list/hcnsec-free-30k-api-credit/
+
+---
+
+### Promo Domain .ID Rp45.000 & Hosting Helipod — 17 Agustus 2026
+
+- **ID:** `helipod-domain-id-rp45k-hosting-merdeka-2026`
+- **Provider:** Helipod
+- **Website Provider:** https://helipod.io
+- **Kategori:** Domain, domain17, Hosting, Cloud
+- **Status:** active
+
+**Deskripsi:** Helipod menghadirkan promo satu hari pada 17 Agustus 2026 untuk domain .ID, domain .MY.ID/.BIZ.ID/.WEB.ID, serta paket resource bulanan.
+
+**Benefit:**
+- Domain .ID seharga Rp45.000
+- Domain .MY.ID, .BIZ.ID, dan .WEB.ID seharga Rp81
+- Paket resource bulanan Nano, Micro, dan Starter diskon 50%
+- Periode promo 17 Agustus 2026 pukul 07.00–23.59 WIB
+
+**Cara Klaim:**
+1. Klaim selama periode promo berlangsung
+2. Harga domain belum termasuk PPN 11%
+3. Perhatikan ketersediaan kuota dan harga final sebelum pembayaran
+
+- **CTA Link:** https://helipod.io/
+- **Sumber:** https://helipod.io/
+- **Tips:** Detail harga promo bersumber dari materi promo Helipod yang diterima kontributor. Promo hanya berlaku 17 Agustus 2026, harga domain belum termasuk PPN 11%, dan kuota terbatas; cek halaman resmi atau checkout untuk ketentuan final.
+- **Berlaku:** fixed — 2026-08-17 (Promo berlaku satu hari pada 17 Agustus 2026 pukul 07.00–23.59 WIB.)
+
+🔗 **Link Detail:** https://bansos.dev/list/helipod-domain-id-rp45k-hosting-merdeka-2026/
+
+---
+
+### Bonus Saldo Cloud VPS Rp100.000 IDCloudHost untuk AI Agent
+
+- **ID:** `idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026`
+- **Provider:** IDCloudHost
+- **Website Provider:** https://idcloudhost.com
+- **Kategori:** Cloud Services, Cloud VPS, Credits, AI
+- **Status:** active
+
+**Deskripsi:** IDCloudHost memberi bonus saldo Cloud VPS Rp100.000 setelah pengguna baru melakukan top up pertama minimal Rp55.000, sehingga total saldo menjadi Rp155.000.
+
+**Benefit:**
+- Bonus saldo Cloud VPS Rp100.000
+- Top up pertama minimal Rp55.000 menjadi total saldo Rp155.000
+- Cocok untuk menjalankan AI agent seperti OpenClaw atau n8n
+
+**Cara Klaim:**
+1. Buat akun IDCloudHost yang valid
+2. Masukkan kode referral idcloudhost-ai saat pendaftaran
+3. Top up pertama minimal Rp55.000
+4. Gunakan saldo bonus hanya untuk Cloud VPS
+5. Perhatikan bahwa saldo top up tidak dapat direfund dan layanan VPS bersifat unmanaged
+
+- **Kode Promo:** `idcloudhost-ai`
+- **CTA Link:** https://console.idcloudhost.com/
+- **Sumber:** https://idcloudhost.com/promo/cloud-vps/
+- **Tips:** Bonus bukan saldo tunai: harus top up minimal Rp55.000, hanya untuk Cloud VPS, stok terbatas, dan server bersifat unmanaged.
+- **Berlaku:** fixed — 2026-08-31 (Promo berlaku sampai 31 Agustus 2026. Bonus diberikan setelah top up pertama minimal Rp55.000 dan hanya dapat digunakan untuk Cloud VPS.)
+
+🔗 **Link Detail:** https://bansos.dev/list/idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026/
+
+---
+
+### Promo Domain .ID Rp50.000 IDCloudHost — 17 Agustus 2026
+
+- **ID:** `idcloudhost-domain-id-rp50k-17-agustus-2026`
+- **Provider:** IDCloudHost
+- **Website Provider:** https://idcloudhost.com
+- **Kategori:** Domain, domain17, Diskon
+- **Status:** active
+
+**Deskripsi:** IDCloudHost menawarkan promo registrasi domain .ID tahun pertama seharga Rp50.000 pada 17 Agustus 2026 mulai pukul 07.00 WIB.
+
+**Benefit:**
+- Registrasi domain .ID tahun pertama seharga Rp50.000
+- Kode promo idmerdeka17
+- Periode 17 Agustus 2026 pukul 07.00 hingga 18 Agustus 2026 pukul 07.00 WIB
+
+**Cara Klaim:**
+1. Daftarkan domain .ID baru
+2. Gunakan kode promo idmerdeka17
+3. Nama domain minimal 5 karakter
+4. Tidak berlaku untuk transfer, renewal, domain premium, atau domain terbatas
+5. Akun harus valid dan terverifikasi
+
+- **Kode Promo:** `idmerdeka17`
+- **CTA Link:** https://idcloudhost.com/domain/
+- **Sumber:** https://idcloudhost.com/promo/promo-diskon-domain-id/
+- **Tips:** Promo memiliki stok terbatas dan tidak dapat digabungkan dengan promo lain. Harga promo hanya untuk tahun pertama; cek syarat transfer dan renewal di halaman resmi sebelum membayar.
+- **Berlaku:** fixed — 2026-08-17 (Promo berlaku 17 Agustus 2026 pukul 07.00 hingga 18 Agustus 2026 pukul 07.00 WIB.)
+
+🔗 **Link Detail:** https://bansos.dev/list/idcloudhost-domain-id-rp50k-17-agustus-2026/
 
 ---
 

@@ -1,0 +1,33 @@
+{
+	"id": "idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026",
+	"title": "Bonus Saldo Cloud VPS Rp100.000 IDCloudHost untuk AI Agent",
+	"provider": "IDCloudHost",
+	"providerWebsiteUrl": "https://idcloudhost.com",
+	"description": "IDCloudHost memberi bonus saldo Cloud VPS Rp100.000 setelah pengguna baru melakukan top up pertama minimal Rp55.000, sehingga total saldo menjadi Rp155.000.",
+	"benefits": [
+		"Bonus saldo Cloud VPS Rp100.000",
+		"Top up pertama minimal Rp55.000 menjadi total saldo Rp155.000",
+		"Cocok untuk menjalankan AI agent seperti OpenClaw atau n8n"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-08-31",
+		"description": "Promo berlaku sampai 31 Agustus 2026. Bonus diberikan setelah top up pertama minimal Rp55.000 dan hanya dapat digunakan untuk Cloud VPS."
+	},
+	"requirements": [
+		"Buat akun IDCloudHost yang valid",
+		"Masukkan kode referral idcloudhost-ai saat pendaftaran",
+		"Top up pertama minimal Rp55.000",
+		"Gunakan saldo bonus hanya untuk Cloud VPS",
+		"Perhatikan bahwa saldo top up tidak dapat direfund dan layanan VPS bersifat unmanaged"
+	],
+	"ctaLink": "https://console.idcloudhost.com/",
+	"tags": ["Cloud Services", "Cloud VPS", "Credits", "AI"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-17",
+	"promoCode": "idcloudhost-ai",
+	"tips": "Bonus bukan saldo tunai: harus top up minimal Rp55.000, hanya untuk Cloud VPS, stok terbatas, dan server bersifat unmanaged.",
+	"source": "https://idcloudhost.com/promo/cloud-vps/",
+	"contributorSlug": "wauputr4"
+}
