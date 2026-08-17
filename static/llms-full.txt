@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-08-17 | Total: 94 entri (79 aktif, 15 expired)
+> Diperbarui: 2026-08-17 | Total: 97 entri (82 aktif, 15 expired)
 
 ---
 
@@ -340,6 +340,37 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 
 ---
 
+### Domain .ID Rp8.100 Biznet GIO — Festival Domain Merdeka 2026
+
+- **ID:** `biznetgio-domain-id-rp8100-17-agustus-2026`
+- **Provider:** Biznet GIO
+- **Website Provider:** https://www.biznetgio.com
+- **Kategori:** Domain, domain17, Diskon
+- **Status:** active
+
+**Deskripsi:** Biznet GIO menawarkan promo registrasi domain .ID seharga Rp8.100 per tahun untuk 170 pembeli tercepat pada 17 Agustus 2026, dengan opsi alternatif domain .ID Rp50.000 plus cashback Rp5.000.
+
+**Benefit:**
+- Registrasi domain .ID seharga Rp8.100 per tahun untuk 170 pembeli tercepat
+- Kode promo IDMURAH8100
+- Alternatif domain .ID Rp50.000 plus cashback Rp5.000 dengan kode MERDEKAID45 dan kuota 810 pembeli
+
+**Cara Klaim:**
+1. Daftarkan domain .ID baru melalui portal Biznet GIO
+2. Gunakan kode IDMURAH8100 saat checkout untuk promo Rp8.100
+3. Jika promo utama habis, gunakan kode MERDEKAID45 untuk promo Rp50.000 plus cashback Rp5.000
+4. Isi formulir klaim cashback setelah transaksi jika memakai promo alternatif
+
+- **Kode Promo:** `IDMURAH8100`
+- **CTA Link:** https://portal.biznetgio.com/
+- **Sumber:** https://www.biznetgio.com/promo
+- **Tips:** Detail promo berasal dari email resmi Biznet GIO: promo utama dibatasi 170 pembeli tercepat, sedangkan promo alternatif memiliki kuota 810 pembeli dan cashback harus diklaim melalui formulir setelah transaksi. Tautan klaim memakai portal resmi Biznet GIO, bukan URL tracking email; verifikasi kuota, kode, dan syarat cashback sebelum membayar.
+- **Berlaku:** fixed — 2026-08-17 (Promo utama dan alternatif berlaku pada 17 Agustus 2026 selama kuota masing-masing masih tersedia.)
+
+🔗 **Link Detail:** https://bansos.dev/list/biznetgio-domain-id-rp8100-17-agustus-2026/
+
+---
+
 ### AI Router by Nara — Model AI Premium Gratis & Pay as You Go
 
 - **ID:** `bynara-ai-router-free-payg`
@@ -565,6 +596,37 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** forever
 
 🔗 **Link Detail:** https://bansos.dev/list/diskon-free-hosting/
+
+---
+
+### Promo Domain .ID Rp50.000 DomaiNesia — 17 Agustus 2026
+
+- **ID:** `domainesia-domain-id-rp50k-17-agustus-2026`
+- **Provider:** DomaiNesia
+- **Website Provider:** https://www.domainesia.com
+- **Kategori:** Domain, domain17, Diskon
+- **Status:** active
+
+**Deskripsi:** DomaiNesia menawarkan promo registrasi domain .ID seharga Rp50.000 untuk satu tahun pada 17 Agustus 2026 mulai pukul 08.00 WIB.
+
+**Benefit:**
+- Registrasi domain .ID satu tahun seharga Rp50.000
+- Kode promo MERDEKAID50
+- Tanpa batasan kuota
+
+**Cara Klaim:**
+1. Daftarkan domain .ID baru dengan siklus satu tahun
+2. Gunakan kode promo MERDEKAID50
+3. Promo tidak berlaku untuk renewal, domain terbatas, atau domain premium
+4. Selesaikan pembayaran dan konfirmasi pada 17 Agustus 2026
+
+- **Kode Promo:** `MERDEKAID50`
+- **CTA Link:** https://www.domainesia.com/domain-id/
+- **Sumber:** https://www.domainesia.com/promo/
+- **Tips:** Detail harga, kode, jam mulai, batas pembayaran, dan syarat mengikuti halaman promo resmi DomaiNesia. Promo dinyatakan tanpa kuota; harga renewal kembali normal.
+- **Berlaku:** fixed — 2026-08-17 (Promo berlaku 17 Agustus 2026 mulai pukul 08.00 WIB; pembayaran dan konfirmasi harus dilakukan pada hari yang sama.)
+
+🔗 **Link Detail:** https://bansos.dev/list/domainesia-domain-id-rp50k-17-agustus-2026/
 
 ---
 
@@ -961,6 +1023,36 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** uncertain (Situs resmi menampilkan akses gratis, tetapi periode berakhir belum dapat diverifikasi; email pengusul menyebut 12 Agustus 2026)
 
 🔗 **Link Detail:** https://bansos.dev/list/inferx-deepseek-v4-flash/
+
+---
+
+### Promo Domain .ID Rp50.000 + Gratis .MY.ID dari Jagoan Hosting — 17 Agustus 2026
+
+- **ID:** `jagoanhosting-domain-id-rp50k-merdeka-2026`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** Domain, domain17, Diskon
+- **Status:** active
+
+**Deskripsi:** Jagoan Hosting menawarkan domain .ID seharga Rp100.000 pada 12–16 Agustus dan Rp50.000 pada 17 Agustus 2026, masing-masing dengan bonus domain .MY.ID gratis.
+
+**Benefit:**
+- Domain .ID Rp100.000 + gratis .MY.ID pada 12–16 Agustus 2026
+- Domain .ID Rp50.000 + gratis .MY.ID pada 17 Agustus 2026
+- Tanpa batasan kuota
+
+**Cara Klaim:**
+1. Daftarkan domain .ID baru melalui Jagoan Hosting
+2. Gunakan referral Jagoan Hosting yang tersedia di listing ini
+3. Klaim domain .MY.ID gratis setelah klaim promo .ID melalui chat WhatsApp support
+4. Verifikasi harga dan prosedur klaim bonus sebelum membayar
+
+- **CTA Link:** https://member.jagoanhosting.com/aff.php?aff=8078
+- **Sumber:** https://www.jagoanhosting.com/domain-id/
+- **Tips:** Detail promo dan jadwal berasal dari materi promo Jagoan Hosting yang kamu kirim. Bonus .MY.ID tidak otomatis: klaim dilakukan setelah promo .ID melalui WhatsApp support. CTA memakai referral Jagoan Hosting yang sudah ada di katalog (aff=8078).
+- **Berlaku:** fixed — 2026-08-17 (Promo berlangsung 12–17 Agustus 2026 mulai pukul 07.00 WIB; harga Rp100.000 berlaku 12–16 Agustus dan Rp50.000 berlaku 17 Agustus.)
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-domain-id-rp50k-merdeka-2026/
 
 ---
 

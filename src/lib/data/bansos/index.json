@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-08-16",
-	"total": 94,
+	"generatedAt": "2026-08-17",
+	"total": 97,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -153,6 +153,16 @@
 			"contributorSlug": "aditech"
 		},
 		{
+			"id": "biznetgio-domain-id-rp8100-17-agustus-2026",
+			"title": "Domain .ID Rp8.100 Biznet GIO — Festival Domain Merdeka 2026",
+			"provider": "Biznet GIO",
+			"status": "active",
+			"tags": ["Domain", "domain17", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
+		},
+		{
 			"id": "bynara-ai-router-free-payg",
 			"title": "AI Router by Nara — Model AI Premium Gratis & Pay as You Go",
 			"provider": "byNara",
@@ -241,6 +251,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-23",
 			"contributorSlug": "risal"
+		},
+		{
+			"id": "domainesia-domain-id-rp50k-17-agustus-2026",
+			"title": "Promo Domain .ID Rp50.000 DomaiNesia — 17 Agustus 2026",
+			"provider": "DomaiNesia",
+			"status": "active",
+			"tags": ["Domain", "domain17", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
 		},
 		{
 			"id": "free-5-credit-for-new-opencode-go-users",
@@ -419,6 +439,16 @@
 			"featured": false,
 			"publishedAt": "2026-08-08",
 			"contributorSlug": "renyx"
+		},
+		{
+			"id": "jagoanhosting-domain-id-rp50k-merdeka-2026",
+			"title": "Promo Domain .ID Rp50.000 + Gratis .MY.ID dari Jagoan Hosting — 17 Agustus 2026",
+			"provider": "Jagoan Hosting",
+			"status": "active",
+			"tags": ["Domain", "domain17", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-08-17",
+			"contributorSlug": "wauputr4"
 		},
 		{
 			"id": "jagoanhosting-free-domain-webid",

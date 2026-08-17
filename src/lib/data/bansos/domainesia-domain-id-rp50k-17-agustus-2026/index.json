@@ -1,0 +1,32 @@
+{
+	"id": "domainesia-domain-id-rp50k-17-agustus-2026",
+	"title": "Promo Domain .ID Rp50.000 DomaiNesia — 17 Agustus 2026",
+	"provider": "DomaiNesia",
+	"providerWebsiteUrl": "https://www.domainesia.com",
+	"description": "DomaiNesia menawarkan promo registrasi domain .ID seharga Rp50.000 untuk satu tahun pada 17 Agustus 2026 mulai pukul 08.00 WIB.",
+	"benefits": [
+		"Registrasi domain .ID satu tahun seharga Rp50.000",
+		"Kode promo MERDEKAID50",
+		"Tanpa batasan kuota"
+	],
+	"validity": {
+		"type": "fixed",
+		"date": "2026-08-17",
+		"description": "Promo berlaku 17 Agustus 2026 mulai pukul 08.00 WIB; pembayaran dan konfirmasi harus dilakukan pada hari yang sama."
+	},
+	"requirements": [
+		"Daftarkan domain .ID baru dengan siklus satu tahun",
+		"Gunakan kode promo MERDEKAID50",
+		"Promo tidak berlaku untuk renewal, domain terbatas, atau domain premium",
+		"Selesaikan pembayaran dan konfirmasi pada 17 Agustus 2026"
+	],
+	"ctaLink": "https://www.domainesia.com/domain-id/",
+	"tags": ["Domain", "domain17", "Diskon"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-17",
+	"promoCode": "MERDEKAID50",
+	"tips": "Detail harga, kode, jam mulai, batas pembayaran, dan syarat mengikuti halaman promo resmi DomaiNesia. Promo dinyatakan tanpa kuota; harga renewal kembali normal.",
+	"source": "https://www.domainesia.com/promo/",
+	"contributorSlug": "wauputr4"
+}
