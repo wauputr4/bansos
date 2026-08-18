@@ -12,16 +12,17 @@
 	],
 	"validity": {
 		"type": "uncertain",
-		"description": "Layanan masih sangat baru dan promo bisa berubah sewaktu-waktu; nilai bonus tidak diumumkan di situs dan hanya tercatat di log dashboard setelah pendaftaran"
+		"description": "Pendaftaran saat ini ditutup berdasarkan https://godrouter.cyou/api/status; listing diarsipkan sampai provider membuka kembali jalur pendaftaran."
 	},
 	"requirements": [
+		"Program saat ini tidak dapat diklaim karena pendaftaran God Router ditutup",
 		"Daftar lewat tautan undangan agar bonus $30 ikut masuk karena tanpa kode undangan saldo hanya $50",
 		"Verifikasi alamat email memakai kode OTP saat pendaftaran",
 		"Buat API key di dashboard lalu arahkan klien ke https://godrouter.cyou/v1"
 	],
 	"ctaLink": "https://godrouter.cyou/sign-up?aff=k1fy",
 	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
-	"status": "active",
+	"status": "expired",
 	"featured": false,
 	"publishedAt": "2026-08-18",
 	"tips": "Bonus $30 hanya masuk kalau kamu mendaftar memakai kode undangan; tanpa kode undangan saldo awal cuma $50. Kredit ini cepat susut karena diskon prompt caching tidak diterapkan: pada pengujian 18 Agustus 2026 satu permintaan berisi 21.291 token masukan ditagih penuh $0,32 dengan tarif Claude Opus 5 $15 per 1 juta token masukan dan $15 per 1 juta token keluaran, sehingga satu sesi agen pengoding yang panjang bisa menghabiskan saldo dalam hitungan jam. Tidak ada check-in harian, jadi saldo tidak bertambah setelah bonus awal. Domain baru terdaftar 3 Agustus 2026 dan instance-nya masih menampilkan versi v1.0.0 dengan monitor uptime kosong, jadi jangan pakai untuk beban kerja produksi dan jangan kirim data sensitif; permintaan dirakit ulang di sisi server gateway dan pada pengujian yang sama ada blok instruksi tambahan yang ikut tersisip ke dalam percakapan.",
