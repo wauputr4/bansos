@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-17",
-	"total": 101,
+	"total": 102,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -539,6 +539,16 @@
 			"featured": false,
 			"publishedAt": "2026-08-05",
 			"contributorSlug": "wenn-id"
+		},
+		{
+			"id": "justdowork-free-50-ai-credit-bonus-check-in-harian",
+			"title": "JustDoWork Free $50 AI Credit + Bonus Check-in Harian",
+			"provider": "JustDoWork",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-19",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "kie-ai-api-discount-credit",
