@@ -1,0 +1,27 @@
+{
+	"id": "justwoker-free-90-credit",
+	"title": "JustWoker Free $90 AI API Credit",
+	"provider": "JustWoker",
+	"description": "JustWoker memberikan bonus AI API Credit sebesar $90 untuk pengguna baru yang mendaftar melalui referral link. Credit dapat digunakan untuk mengakses berbagai model AI melalui API, termasuk sejumlah model Anthropic Claude yang tersedia pada platform.",
+	"benefits": [
+		"$90 AI API Credit untuk pengguna baru",
+		"Akses berbagai model AI melalui satu API",
+		"Tersedia model Claude Opus dan Thinking"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Berlaku selama program referral dan bonus registrasi masih tersedia"
+	},
+	"requirements": [
+		"Membuat akun baru JustWoker",
+		"Mendaftar melalui referral link yang tersedia",
+		"Bonus mengikuti ketentuan program referral yang sedang berlaku"
+	],
+	"ctaLink": "https://api.justwoker.icu/sign-up?aff=GrQG&utm_source=bansos.dev&utm_medium=referral&utm_campaign=bansos",
+	"tags": ["AI", "AI Credits", "API", "Developer Tools", "Claude"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-22",
+	"source": "https://api.justwoker.icu/sign-up?aff=GrQG",
+	"contributorSlug": "milzamsz"
+}
