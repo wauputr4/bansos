@@ -11,7 +11,7 @@ JustDoWork memberikan kredit API senilai $50 untuk pengguna baru yang mendaftar 
 ## Keuntungan
 
 - Kredit API senilai $50 untuk pengguna baru
-- Bonus check-in harian $10–$20 setiap kali login
+- Bonus check-in harian $10–$20, sekali sehari saat check-in di dashboard
 - Tambahan $20 bagi pendaftar yang memakai tautan undangan, jadi saldo awal menjadi $70
 - Pemberi undangan menerima $40 per pendaftar
 - Akses Claude Opus 5 dan Claude Opus 4.8, varian thinking maupun non-thinking
@@ -34,7 +34,7 @@ Kredit bisa ditambah tiap hari lewat check-in di dashboard, jadi login harian le
 [🔗 Klaim Bansos Ini](https://api.justwoker.icu/sign-up?aff=cC1X)
 
 
-🏷️ Tags: AI Credits · API · AI Tools · Free Tier · Developer Tools
+🏷️ Tags: AI Credits · API · AI Tools · Free Tier · Developer Tools · Referral
 
 ✏️ Dikontribusikan oleh `syafii-fahreza`
 

@@ -5,7 +5,7 @@
 	"description": "JustDoWork memberikan kredit API senilai $50 untuk pengguna baru yang mendaftar dengan akun GitHub, ditambah bonus check-in harian $10–$20 dan bonus referral $40 untuk pengundang serta $20 untuk pendaftar yang memakai tautan undangan. Kredit dapat dipakai untuk Claude Opus 5 dan Claude Opus 4.8, tersedia varian thinking maupun non-thinking, melalui endpoint Anthropic maupun OpenAI dengan tarif sekitar $0,25 per satu juta token.",
 	"benefits": [
 		"Kredit API senilai $50 untuk pengguna baru",
-		"Bonus check-in harian $10–$20 setiap kali login",
+		"Bonus check-in harian $10–$20, sekali sehari saat check-in di dashboard",
 		"Tambahan $20 bagi pendaftar yang memakai tautan undangan, jadi saldo awal menjadi $70",
 		"Pemberi undangan menerima $40 per pendaftar",
 		"Akses Claude Opus 5 dan Claude Opus 4.8, varian thinking maupun non-thinking",
@@ -23,7 +23,7 @@
 		"Membuat API key di dashboard lalu arahkan klien ke https://api.justwoker.icu/v1"
 	],
 	"ctaLink": "https://api.justwoker.icu/sign-up?aff=cC1X",
-	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "Referral"],
 	"status": "active",
 	"featured": false,
 	"publishedAt": "2026-08-19",
