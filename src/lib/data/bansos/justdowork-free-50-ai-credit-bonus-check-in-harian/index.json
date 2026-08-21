@@ -1,17 +1,19 @@
 {
 	"id": "justdowork-free-50-ai-credit-bonus-check-in-harian",
-	"title": "JustDoWork Free $50 AI Credit + Bonus Check-in Harian",
+	"title": "JustDoWork Free $50 AI Credit + $20 Bonus Referral + Check-in Harian",
 	"provider": "JustDoWork",
-	"description": "JustDoWork memberikan kredit API senilai $50 untuk pengguna baru yang mendaftar dengan akun GitHub, ditambah bonus check-in harian yang besarannya bervariasi (contoh: $23,66 pada 19 Agustus 2026). Kredit dapat dipakai untuk Claude Opus 5 dan Claude Opus 4.8 melalui endpoint Anthropic maupun OpenAI, dengan tarif sekitar $0,25 per satu juta token.",
+	"description": "JustDoWork memberikan kredit API senilai $50 untuk pengguna baru yang mendaftar dengan akun GitHub, ditambah bonus check-in harian $10–$20 dan bonus referral $40 untuk pengundang serta $20 untuk pendaftar yang memakai tautan undangan. Kredit dapat dipakai untuk Claude Opus 5 dan Claude Opus 4.8, tersedia varian thinking maupun non-thinking, melalui endpoint Anthropic maupun OpenAI dengan tarif sekitar $0,25 per satu juta token.",
 	"benefits": [
 		"Kredit API senilai $50 untuk pengguna baru",
-		"Bonus check-in harian, besaran bervariasi",
-		"Akses Claude Opus 5 dan Claude Opus 4.8",
+		"Bonus check-in harian $10–$20 setiap kali login",
+		"Tambahan $20 bagi pendaftar yang memakai tautan undangan, jadi saldo awal menjadi $70",
+		"Pemberi undangan menerima $40 per pendaftar",
+		"Akses Claude Opus 5 dan Claude Opus 4.8, varian thinking maupun non-thinking",
 		"Mendukung endpoint Anthropic dan OpenAI"
 	],
 	"validity": {
 		"type": "uncertain",
-		"description": "Ketersediaan dan besaran kredit mengikuti kebijakan JustDoWork"
+		"description": "Platform gratis dan non-profit; ketersediaan serta besaran kredit mengikuti kebijakan JustDoWork"
 	},
 	"requirements": [
 		"Mendaftar dengan akun GitHub (pendaftaran lewat email tidak tersedia)",
@@ -25,7 +27,7 @@
 	"status": "active",
 	"featured": false,
 	"publishedAt": "2026-08-19",
-	"tips": "Model yang tersedia hanya varian thinking dari Claude Opus 5 dan Opus 4.8, jadi tidak ada model ringan untuk tugas sederhana. Prompt caching tidak aktif sehingga konteks panjang dihitung penuh setiap permintaan, pakai percakapan pendek agar kredit lebih awet. Nama model harus ditulis lengkap dengan akhiran -thinking.",
-	"source": "https://api.justwoker.icu/sign-up?aff=cC1X",
+	"tips": "Kredit bisa ditambah tiap hari lewat check-in di dashboard, jadi login harian lebih menguntungkan daripada menghabiskan saldo awal sekaligus. Nama model harus ditulis lengkap dan hanya ada empat: claude-opus-5, claude-opus-5-thinking, claude-opus-4-8, dan claude-opus-4-8-thinking. Prompt caching tidak aktif sehingga konteks panjang dihitung penuh setiap permintaan, pakai percakapan pendek agar kredit lebih awet.",
+	"source": "https://discord.gg/jDXjGMUDS",
 	"contributorSlug": "syafii-fahreza"
 }
