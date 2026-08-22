@@ -7,19 +7,13 @@
 		"Kredit $50 untuk setiap akun baru, tanpa kartu kredit",
 		"Tambahan $30 khusus pendaftar yang memakai kode undangan, jadi saldo awal lewat tautan referral menjadi $80",
 		"Akses 26 model lewat satu endpoint kompatibel OpenAI, termasuk Claude Opus 5, Claude Fable 5, Claude Sonnet 5, GPT-5.6, Gemini 3 Pro, Grok 4.5, DeepSeek V4, GLM 5.2, dan MiniMax M3",
-		"Semua model berada di grup default sehingga akun baru langsung bisa memakainya tanpa naik tingkat",
-		"Registrasi terbuka dengan email dan kata sandi, tanpa wajib akun GitHub"
+		"Semua model berada di grup default sehingga akun baru langsung bisa memakainya tanpa naik tingkat"
 	],
 	"validity": {
 		"type": "uncertain",
 		"description": "Pendaftaran saat ini ditutup berdasarkan https://godrouter.cyou/api/status; listing diarsipkan sampai provider membuka kembali jalur pendaftaran."
 	},
-	"requirements": [
-		"Program saat ini tidak dapat diklaim karena pendaftaran God Router ditutup",
-		"Daftar lewat tautan undangan agar bonus $30 ikut masuk karena tanpa kode undangan saldo hanya $50",
-		"Verifikasi alamat email memakai kode OTP saat pendaftaran",
-		"Buat API key di dashboard lalu arahkan klien ke https://godrouter.cyou/v1"
-	],
+	"requirements": ["Program saat ini tidak dapat diklaim karena pendaftaran God Router ditutup"],
 	"ctaLink": "https://godrouter.cyou/sign-up?aff=k1fy",
 	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
 	"status": "expired",

@@ -14,14 +14,10 @@ God Router adalah gateway AI kompatibel OpenAI yang menyatukan 26 model frontier
 - Tambahan $30 khusus pendaftar yang memakai kode undangan, jadi saldo awal lewat tautan referral menjadi $80
 - Akses 26 model lewat satu endpoint kompatibel OpenAI, termasuk Claude Opus 5, Claude Fable 5, Claude Sonnet 5, GPT-5.6, Gemini 3 Pro, Grok 4.5, DeepSeek V4, GLM 5.2, dan MiniMax M3
 - Semua model berada di grup default sehingga akun baru langsung bisa memakainya tanpa naik tingkat
-- Registrasi terbuka dengan email dan kata sandi, tanpa wajib akun GitHub
 
 ## Persyaratan
 
 - Program saat ini tidak dapat diklaim karena pendaftaran God Router ditutup
-- Daftar lewat tautan undangan agar bonus $30 ikut masuk karena tanpa kode undangan saldo hanya $50
-- Verifikasi alamat email memakai kode OTP saat pendaftaran
-- Buat API key di dashboard lalu arahkan klien ke https://godrouter.cyou/v1
 
 ## Tips
 
