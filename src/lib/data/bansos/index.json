@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-17",
-	"total": 102,
+	"total": 103,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -344,7 +344,7 @@
 			"id": "godrouter-free-50-credit",
 			"title": "God Router Free $50 AI Credit + $30 Bonus Referral",
 			"provider": "God Router",
-			"status": "active",
+			"status": "expired",
 			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
 			"featured": false,
 			"publishedAt": "2026-08-18",
@@ -409,6 +409,16 @@
 			"featured": false,
 			"publishedAt": "2026-08-17",
 			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "huige-relay-free-100-api-calls",
+			"title": "Huige Relay Free 100 API Calls + 50 Bonus Referral",
+			"provider": "Huige Relay (辉哥中转公益站)",
+			"status": "active",
+			"tags": ["AI Credits", "API", "Free Tier", "AI Tools", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-08-19",
+			"contributorSlug": "syafii-fahreza"
 		},
 		{
 			"id": "idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026",
@@ -542,7 +552,7 @@
 		},
 		{
 			"id": "justdowork-free-50-ai-credit-bonus-check-in-harian",
-			"title": "JustDoWork Free $50 AI Credit + $20 Bonus Referral + Check-in Harian",
+			"title": "JustDoWork Free $50 AI Credit + Check-in Harian",
 			"provider": "JustDoWork",
 			"status": "active",
 			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "Referral"],

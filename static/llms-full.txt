@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-08-17 | Total: 100 entri (85 aktif, 15 expired)
+> Diperbarui: 2026-08-22 | Total: 103 entri (87 aktif, 16 expired)
 
 ---
 
@@ -936,6 +936,38 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 
 ---
 
+### Huige Relay Free 100 API Calls + 50 Bonus Referral
+
+- **ID:** `huige-relay-free-100-api-calls`
+- **Provider:** Huige Relay (辉哥中转公益站)
+- **Kategori:** AI Credits, API, Free Tier, AI Tools, Developer Tools
+- **Status:** active
+
+**Deskripsi:** Huige Relay adalah relay AI gratis kompatibel OpenAI yang menyatukan 19 model aktif di satu endpoint. Kuotanya dihitung per panggilan, bukan per token: setiap akun baru langsung menerima 100 panggilan beserta API key otomatis, pendaftar yang memakai kode undangan mendapat 50 panggilan tambahan, dan check-in harian mengundi 50 sampai 100 panggilan lagi. Tarif standar satu kuota per permintaan sehingga sebagian besar model bisa dipakai puluhan kali. Sebaliknya claude-opus-5 dipatok 500 kuota per permintaan dan deskripsi resminya menyebut model itu sementara tidak dapat dipakai, jadi kredit gratis di sini praktis tidak cukup untuk Claude; nilai sebenarnya ada di DeepSeek V4, Kimi K3, GLM 5.2, Gemini 2.5 Flash, Qwen 3.7, dan MiniMax.
+
+**Benefit:**
+- 100 panggilan API otomatis untuk setiap akun baru, tanpa kartu kredit
+- Tambahan 50 panggilan khusus pendaftar yang memakai kode undangan, dicairkan setelah panggilan sukses pertama, sementara pengundang menerima 100
+- Check-in harian mengundi 50 sampai 100 panggilan tambahan setiap hari
+- 19 model aktif lewat satu endpoint kompatibel OpenAI, termasuk DeepSeek V4 Pro dan Flash, Kimi K3, GLM 5.2, Gemini 2.5 Flash, Qwen 3.7 Max, MiniMax M3, Step 3.7 Flash, MiMo V2.5 Pro, dan gpt-oss 120b
+- Penagihan per panggilan dan bukan per token, sehingga panggilan yang gagal tidak memotong kuota
+- Saldo hasil check-in bisa ditukar menjadi paket langganan di dompet akun, misalnya paket tiga hari berisi 100 panggilan yang direset setiap enam jam
+
+**Cara Klaim:**
+1. Daftar dengan username, kata sandi, dan email yang diverifikasi lewat kode OTP serta captcha
+2. Isi kolom kode undangan opsional saat mendaftar supaya bonus 50 panggilan ikut masuk
+3. Buat API key berawalan sk-gw- di dashboard lalu arahkan klien ke https://lzhiyu.ccwu.cc/ memakai format OpenAI v1/chat/completions
+4. Lakukan check-in harian di dashboard kalau ingin kuota terus bertambah
+
+- **CTA Link:** https://lzhiyu.ccwu.cc/register?ref=REF-5E3E585BC4
+- **Sumber:** https://lzhiyu.ccwu.cc/
+- **Tips:** Kredit gratis di sini tidak cukup untuk Claude: claude-opus-5 dipatok 500 kuota per permintaan dan ditandai sementara tidak dapat dipakai, sementara saldo awal lewat kode undangan hanya 150, sedangkan model lain berkisar 1 kuota untuk model tanpa harga khusus sampai 5 kuota untuk Kimi K3. Karena penagihannya per panggilan, agen pengoding berbasis CLI menghabiskan kuota sangat cepat dan situsnya sendiri masih menandai endpoint format Anthropic serta klien PC dan CLI sebagai uji coba. Tidak ada syarat layanan maupun kebijakan privasi dan dukungan hanya lewat QQ, jadi jangan kirim data sensitif.
+- **Berlaku:** uncertain (Situs menyatakan dirinya proyek gratis permanen dan tidak menarik biaya apa pun, tetapi tidak menyediakan syarat layanan maupun kebijakan privasi, dan tarif tiap model bisa diubah admin sewaktu-waktu seperti yang terjadi pada 11 Agustus 2026)
+
+🔗 **Link Detail:** https://bansos.dev/list/huige-relay-free-100-api-calls/
+
+---
+
 ### Bonus Saldo Cloud VPS Rp100.000 IDCloudHost untuk AI Agent
 
 - **ID:** `idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026`
@@ -1267,6 +1299,37 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** uncertain (Lisensi berlaku 1 tahun dan dapat diperpanjang selama masih berstatus pelajar)
 
 🔗 **Link Detail:** https://bansos.dev/list/jetbrains-student-pack/
+
+---
+
+### JustDoWork Free $50 AI Credit + Check-in Harian
+
+- **ID:** `justdowork-free-50-ai-credit-bonus-check-in-harian`
+- **Provider:** JustDoWork
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools, Referral
+- **Status:** active
+
+**Deskripsi:** JustDoWork memberikan kredit API senilai $50 untuk pengguna baru yang mendaftar dengan akun GitHub, ditambah bonus check-in harian yang nominalnya mengikuti dashboard. Pada sampel pertama akun kontributor, check-in tercatat sebesar $23,66. Pengujian kontributor menemukan dua model aktif—claude-opus-5-thinking dan claude-opus-4-8-thinking—yang dapat diakses melalui endpoint Anthropic maupun OpenAI dengan tarif efektif sekitar $0,25 per satu juta token.
+
+**Benefit:**
+- Kredit API senilai $50 untuk pengguna baru
+- Bonus check-in harian; pada sampel pertama akun kontributor tercatat $23,66 dan nominal mengikuti dashboard
+- Akses claude-opus-5-thinking dan claude-opus-4-8-thinking
+- Mendukung endpoint Anthropic dan OpenAI
+
+**Cara Klaim:**
+1. Mendaftar dengan akun GitHub (pendaftaran lewat email tidak tersedia)
+2. Umur akun GitHub minimal 1 tahun
+3. Menyelesaikan verifikasi Cloudflare Turnstile saat mendaftar
+4. Gunakan tautan pendaftaran yang tersedia; bonus referral tidak dicantumkan karena belum terukur
+5. Membuat API key di dashboard lalu arahkan klien ke https://api.justwoker.icu/v1
+
+- **CTA Link:** https://api.justwoker.icu/sign-up?aff=cC1X
+- **Sumber:** https://discord.gg/jDXjGMUDS
+- **Tips:** Nominal check-in mengikuti dashboard; pada sampel pertama akun kontributor tercatat $23,66. Model yang terverifikasi dalam pengujian adalah claude-opus-5-thinking dan claude-opus-4-8-thinking. Prompt caching tidak aktif sehingga konteks panjang dihitung penuh setiap permintaan, pakai percakapan pendek agar kredit lebih awet.
+- **Berlaku:** uncertain (Platform gratis dan non-profit; ketersediaan serta besaran kredit mengikuti kebijakan JustDoWork)
+
+🔗 **Link Detail:** https://bansos.dev/list/justdowork-free-50-ai-credit-bonus-check-in-harian/
 
 ---
 
@@ -2632,6 +2695,33 @@ Berlaku sampai tanggal 28 Juni 2026
 - **Berlaku:** uncertain (disarankan punya TELEGRAM)
 
 🔗 **Link Detail:** https://bansos.dev/list/freemodeldev-pro-plan-10-5-jam-70minggu-bonus-referral-10/
+
+---
+
+### God Router Free $50 AI Credit + $30 Bonus Referral
+
+- **ID:** `godrouter-free-50-credit`
+- **Provider:** God Router
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools
+- **Status:** expired
+
+**Deskripsi:** God Router adalah gateway AI kompatibel OpenAI yang menyatukan 26 model frontier di satu endpoint. Setiap akun baru menerima kredit $50, dan pendaftar yang memakai kode undangan mendapat tambahan $30 sehingga saldo awalnya menjadi $80. Kredit bisa dipakai untuk Claude Opus 5, Claude Fable 5, GPT-5.6, Gemini 3 Pro, Grok 4.5, DeepSeek V4, dan lainnya tanpa langganan bulanan. Nilai bonus ini tidak diumumkan di halaman mana pun; angkanya hanya muncul di log dashboard setelah akun dibuat.
+
+**Benefit:**
+- Kredit $50 untuk setiap akun baru, tanpa kartu kredit
+- Tambahan $30 khusus pendaftar yang memakai kode undangan, jadi saldo awal lewat tautan referral menjadi $80
+- Akses 26 model lewat satu endpoint kompatibel OpenAI, termasuk Claude Opus 5, Claude Fable 5, Claude Sonnet 5, GPT-5.6, Gemini 3 Pro, Grok 4.5, DeepSeek V4, GLM 5.2, dan MiniMax M3
+- Semua model berada di grup default sehingga akun baru langsung bisa memakainya tanpa naik tingkat
+
+**Cara Klaim:**
+1. Program saat ini tidak dapat diklaim karena pendaftaran God Router ditutup
+
+- **CTA Link:** https://godrouter.cyou/sign-up?aff=k1fy
+- **Sumber:** https://godrouter.cyou/pricing
+- **Tips:** Bonus $30 hanya masuk kalau kamu mendaftar memakai kode undangan; tanpa kode undangan saldo awal cuma $50. Kredit ini cepat susut karena diskon prompt caching tidak diterapkan: pada pengujian 18 Agustus 2026 satu permintaan berisi 21.291 token masukan ditagih penuh $0,32 dengan tarif Claude Opus 5 $15 per 1 juta token masukan dan $15 per 1 juta token keluaran, sehingga satu sesi agen pengoding yang panjang bisa menghabiskan saldo dalam hitungan jam. Tidak ada check-in harian, jadi saldo tidak bertambah setelah bonus awal. Domain baru terdaftar 3 Agustus 2026 dan instance-nya masih menampilkan versi v1.0.0 dengan monitor uptime kosong, jadi jangan pakai untuk beban kerja produksi dan jangan kirim data sensitif; permintaan dirakit ulang di sisi server gateway dan pada pengujian yang sama ada blok instruksi tambahan yang ikut tersisip ke dalam percakapan.
+- **Berlaku:** uncertain (Pendaftaran saat ini ditutup berdasarkan https://godrouter.cyou/api/status; listing diarsipkan sampai provider membuka kembali jalur pendaftaran.)
+
+🔗 **Link Detail:** https://bansos.dev/list/godrouter-free-50-credit/
 
 ---
 
