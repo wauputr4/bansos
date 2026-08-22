@@ -1,0 +1,13 @@
+{
+	"login": "rifaldo-dev",
+	"displayName": "Rifaldo",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/rifaldo-dev"
+	},
+	"contributedBansos": ["wasmer-pro"],
+	"hidden": false,
+	"joinedAt": "2026-08-22"
+}

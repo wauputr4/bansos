@@ -1,0 +1,19 @@
+{
+	"id": "wasmer-pro",
+	"title": "Wasmer Pro 3 Bulan Tanpa Kartu Kredit",
+	"provider": "Wasmer",
+	"description": "Gratis 3 Bulan Wasmer Pro tanpa kartu kredit. Masukkan kode WORDCAMP2026-PHX saat pendaftaran.",
+	"benefits": [
+		"10 apps,1 Juta request/bulan,1 TB bandwidth,Backup harian + log 30 hari,Support WordPress Node.js Python Rust"
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"requirements": ["Gunakan kode promo: WORDCAMP2026-PHX"],
+	"ctaLink": "https://wasmer.io/",
+	"tags": ["Cloud Services", "Hosting", "Gratisan"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-22",
+	"contributorSlug": "rifaldo-dev"
+}

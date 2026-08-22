@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-17",
-	"total": 104,
+	"total": 105,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -968,6 +968,16 @@
 			"featured": false,
 			"publishedAt": "2026-08-02",
 			"contributorSlug": "syafii-fahreza"
+		},
+		{
+			"id": "wasmer-pro",
+			"title": "Wasmer Pro 3 Bulan Tanpa Kartu Kredit",
+			"provider": "Wasmer",
+			"status": "active",
+			"tags": ["Cloud Services", "Hosting", "Gratisan"],
+			"featured": false,
+			"publishedAt": "2026-08-22",
+			"contributorSlug": "rifaldo-dev"
 		},
 		{
 			"id": "xai-grok-api-credits",
