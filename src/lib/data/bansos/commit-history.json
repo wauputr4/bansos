@@ -15,19 +15,24 @@
 		"url": "https://github.com/wauputr4/bansos/commit/887b5d3200f0055c7109d01eaeedc0c3a7ed64c0"
 	},
 	"agentrouter-free-150-credit": {
-		"hash": "0eaf75c662279087ae9955caf4a11dab1edad25d",
-		"date": "2026-07-13T07:21:11Z",
-		"url": "https://github.com/wauputr4/bansos/commit/0eaf75c662279087ae9955caf4a11dab1edad25d"
+		"hash": "1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707",
+		"date": "2026-08-21T21:27:05+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707"
 	},
 	"agentrouter-free-250-ai-credit": {
 		"hash": "0eaf75c662279087ae9955caf4a11dab1edad25d",
 		"date": "2026-07-13T07:21:11Z",
 		"url": "https://github.com/wauputr4/bansos/commit/0eaf75c662279087ae9955caf4a11dab1edad25d"
 	},
+	"agentrouter-free-50-credit-daily-checkin": {
+		"hash": "1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707",
+		"date": "2026-08-21T21:27:05+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707"
+	},
 	"agentrouter-free-credits": {
-		"hash": "480ba53cbf0f320e5880d7a9bfc13c5276415e6e",
-		"date": "2026-07-01T10:41:36Z",
-		"url": "https://github.com/wauputr4/bansos/commit/480ba53cbf0f320e5880d7a9bfc13c5276415e6e"
+		"hash": "1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707",
+		"date": "2026-08-21T21:27:05+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707"
 	},
 	"ai-hub-free-plan": {
 		"hash": "e0acc1dbc165abe6d50a32492796e8b4968717a6",
@@ -165,9 +170,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/50cf8959b23628c12cb1b9ffcc55ba3aea77def9"
 	},
 	"godrouter-free-50-credit": {
-		"hash": "f65841e25286a01b31577a4b2ec6547ec2969c31",
-		"date": "2026-08-18T14:50:21+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/f65841e25286a01b31577a4b2ec6547ec2969c31"
+		"hash": "ff2e1cfa83d189ff9b520a470db437c062d5a019",
+		"date": "2026-08-22T16:27:38+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/ff2e1cfa83d189ff9b520a470db437c062d5a019"
 	},
 	"google-ai-pro-4-bulan": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",
@@ -198,6 +203,11 @@
 		"hash": "cbf29a87e5b54c7adefe6714d1b6947480d0376b",
 		"date": "2026-08-17T11:06:40+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/cbf29a87e5b54c7adefe6714d1b6947480d0376b"
+	},
+	"huige-relay-free-100-api-calls": {
+		"hash": "e5fda5e1f5aec308445893aefec490b45ef0ed84",
+		"date": "2026-08-19T08:29:41+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/e5fda5e1f5aec308445893aefec490b45ef0ed84"
 	},
 	"idcloudhost-cloud-vps-bonus-rp100k-ai-agent-2026": {
 		"hash": "cbf29a87e5b54c7adefe6714d1b6947480d0376b",
@@ -263,6 +273,11 @@
 		"hash": "982c132c338f0d410293560ebebd82c13e73f640",
 		"date": "2026-08-06T00:19:53+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/982c132c338f0d410293560ebebd82c13e73f640"
+	},
+	"justdowork-free-50-ai-credit-bonus-check-in-harian": {
+		"hash": "3806b3ab4f8d793dd35ea6902ab560410dc250f6",
+		"date": "2026-08-22T16:52:29+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/3806b3ab4f8d793dd35ea6902ab560410dc250f6"
 	},
 	"kie-ai-api-discount-credit": {
 		"hash": "3750e3969354d6594529e80d4e2f5db9ea98dd63",

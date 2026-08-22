@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-08-17",
-	"total": 104,
+	"total": 105,
 	"items": [
 		{
 			"id": "adobe-creative-cloud-pro-trial",
@@ -369,6 +369,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-16",
 			"contributorSlug": "akbar"
+		},
+		{
+			"id": "google-gemini-student",
+			"title": "Google Gemini Paket Mahasiswa 1 Tahun Tanpa Biaya",
+			"provider": "Google",
+			"status": "active",
+			"tags": ["AI", "Cloud Services", "Gratisan", "Mahasiswa"],
+			"featured": false,
+			"publishedAt": "2026-08-22",
+			"contributorSlug": "rifaldo-dev"
 		},
 		{
 			"id": "google-startups-cloud",

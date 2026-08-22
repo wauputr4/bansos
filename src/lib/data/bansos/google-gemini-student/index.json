@@ -1,0 +1,19 @@
+{
+	"id": "google-gemini-student",
+	"title": "Google Gemini Paket Mahasiswa 1 Tahun Tanpa Biaya",
+	"provider": "Google",
+	"description": "Akses Gemini Paket Mahasiswa selama 1 Tahun Tanpa Biaya. Termasuk fitur belajar lengkap, Gemini Live, dan Cloud Storage 400GB.",
+	"benefits": [
+		"Fitur Belajar Lengkap,Gemini Live,Limit Pemakaian Lebih Tinggi,Cloud Storage 400 GB,Pembuatan Video"
+	],
+	"validity": {
+		"type": "uncertain"
+	},
+	"requirements": ["Pembayaran Menggunakan Akun Kampus / Email Universitas"],
+	"ctaLink": "https://gemini.google/students/",
+	"tags": ["AI", "Cloud Services", "Gratisan", "Mahasiswa"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-08-22",
+	"contributorSlug": "rifaldo-dev"
+}

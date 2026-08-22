@@ -1,0 +1,13 @@
+{
+	"login": "rifaldo-dev",
+	"displayName": "Rifaldo",
+	"bio": "",
+	"title": "",
+	"skills": [],
+	"links": {
+		"github": "https://github.com/rifaldo-dev"
+	},
+	"contributedBansos": ["google-gemini-student"],
+	"hidden": false,
+	"joinedAt": "2026-08-22"
+}
