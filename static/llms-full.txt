@@ -1239,6 +1239,7 @@
 
 - **ID:** `jagoanhosting-domain-id-rp100k-15-19-september-2026`
 - **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
 - **Kategori:** Domain, Diskon
 - **Status:** active
 
@@ -1267,6 +1268,7 @@
 
 - **ID:** `jagoanhosting-domain-id-rp50k-20-september-2026`
 - **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
 - **Kategori:** Domain, Diskon
 - **Status:** upcoming
 
