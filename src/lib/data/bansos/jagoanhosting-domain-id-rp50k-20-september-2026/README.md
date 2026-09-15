@@ -21,6 +21,10 @@ Jagoan Hosting menawarkan flash sale registrasi domain .ID seharga Rp50.000 untu
 - Lakukan pemesanan selama periode promo yang berlaku
 - Cek harga promo di checkout sebelum menyelesaikan pembayaran
 
+## Tips
+
+Status katalog mengikuti tanggal kalender, bukan jam. Materi promo mencantumkan jendela 20 September pukul 07.00 sampai 21 September pukul 07.00 WIB; listing berstatus AKAN DATANG sebelum tanggal 20 September dan status berubah berdasarkan tanggal, bukan pukul 07.00 WIB. Cek harga serta ketersediaan saat checkout.
+
 ---
 
 [🔗 Klaim Bansos Ini](https://s.id/hut50ribu)

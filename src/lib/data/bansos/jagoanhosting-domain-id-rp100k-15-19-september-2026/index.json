@@ -26,6 +26,7 @@
 	"status": "active",
 	"featured": false,
 	"publishedAt": "2026-09-15",
+	"tips": "Status katalog mengikuti tanggal kalender, bukan jam. Materi promo mencantumkan jendela 15 September pukul 07.00 sampai 20 September pukul 07.00 WIB; label AKTIF tidak menandai jam 07.00 secara otomatis, jadi cek harga dan ketersediaan saat checkout.",
 	"source": "https://www.jagoanhosting.com/promo-domain-hosting/",
 	"contributorSlug": "wauputr4"
 }

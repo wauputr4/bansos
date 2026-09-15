@@ -21,6 +21,10 @@ Jagoan Hosting menawarkan registrasi domain .ID seharga Rp100.000 untuk 1 tahun 
 - Lakukan pemesanan selama periode promo yang berlaku
 - Cek harga promo di checkout sebelum menyelesaikan pembayaran
 
+## Tips
+
+Status katalog mengikuti tanggal kalender, bukan jam. Materi promo mencantumkan jendela 15 September pukul 07.00 sampai 20 September pukul 07.00 WIB; label AKTIF tidak menandai jam 07.00 secara otomatis, jadi cek harga dan ketersediaan saat checkout.
+
 ---
 
 [🔗 Klaim Bansos Ini](https://s.id/hut50ribu)
