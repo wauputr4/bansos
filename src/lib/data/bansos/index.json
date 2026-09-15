@@ -1,6 +1,6 @@
 {
-	"generatedAt": "2026-08-17",
-	"total": 113,
+	"generatedAt": "2026-09-15",
+	"total": 115,
 	"items": [
 		{
 			"id": "1412-api-github-registration",
@@ -539,6 +539,26 @@
 			"featured": false,
 			"publishedAt": "2026-08-08",
 			"contributorSlug": "renyx"
+		},
+		{
+			"id": "jagoanhosting-domain-id-rp100k-15-19-september-2026",
+			"title": "Promo Domain .ID Rp100.000 Jagoan Hosting — HUT PANDI 2026",
+			"provider": "Jagoan Hosting",
+			"status": "active",
+			"tags": ["Domain", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-09-15",
+			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "jagoanhosting-domain-id-rp50k-20-september-2026",
+			"title": "Flash Sale Domain .ID Rp50.000 Jagoan Hosting — HUT PANDI 2026",
+			"provider": "Jagoan Hosting",
+			"status": "upcoming",
+			"tags": ["Domain", "Diskon"],
+			"featured": false,
+			"publishedAt": "2026-09-20",
+			"contributorSlug": "wauputr4"
 		},
 		{
 			"id": "jagoanhosting-domain-id-rp50k-merdeka-2026",

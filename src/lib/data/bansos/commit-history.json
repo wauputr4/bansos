@@ -1,8 +1,8 @@
 {
 	"1412-api-github-registration": {
-		"hash": "bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2",
-		"date": "2026-09-10T18:23:12+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2"
+		"hash": "79480a40a570715df3942d4af1ce6f8c57a09f68",
+		"date": "2026-09-13T16:07:17+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/79480a40a570715df3942d4af1ce6f8c57a09f68"
 	},
 	"adobe-creative-cloud-pro-trial": {
 		"hash": "744709fa4006e3e76e63ffa82fb2aa6c9ced8579",
@@ -40,9 +40,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/1a79fd3ce23c3d1d318f09dd3dd23a3b32a9b707"
 	},
 	"ai-family-api-registration-checkin-referral": {
-		"hash": "bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2",
-		"date": "2026-09-10T18:23:12+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2"
+		"hash": "79480a40a570715df3942d4af1ce6f8c57a09f68",
+		"date": "2026-09-13T16:07:17+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/79480a40a570715df3942d4af1ce6f8c57a09f68"
 	},
 	"ai-hub-free-plan": {
 		"hash": "e0acc1dbc165abe6d50a32492796e8b4968717a6",
@@ -123,6 +123,11 @@
 		"hash": "480ba53cbf0f320e5880d7a9bfc13c5276415e6e",
 		"date": "2026-07-01T10:41:36Z",
 		"url": "https://github.com/wauputr4/bansos/commit/480ba53cbf0f320e5880d7a9bfc13c5276415e6e"
+	},
+	"dcloud-xplore-free-trial": {
+		"hash": "dc726cbeb28f649fea64a7541a57df14ad88fb21",
+		"date": "2026-09-13T15:14:56+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/dc726cbeb28f649fea64a7541a57df14ad88fb21"
 	},
 	"deepseek-free-token": {
 		"hash": "3750e3969354d6594529e80d4e2f5db9ea98dd63",
@@ -305,14 +310,14 @@
 		"url": "https://github.com/wauputr4/bansos/commit/50cf8959b23628c12cb1b9ffcc55ba3aea77def9"
 	},
 	"kira-ai-free-50000-tokens-referral": {
-		"hash": "bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2",
-		"date": "2026-09-10T18:23:12+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/bcd94fd943c7bcf4c9dea46b5d91de2bcd1d90f2"
+		"hash": "79480a40a570715df3942d4af1ce6f8c57a09f68",
+		"date": "2026-09-13T16:07:17+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/79480a40a570715df3942d4af1ce6f8c57a09f68"
 	},
 	"kktoken-free-75-credit-bonus-referral": {
-		"hash": "89aeb6fddf19460fc299569e9a379b567953e7b3",
-		"date": "2026-08-28T17:40:25+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/89aeb6fddf19460fc299569e9a379b567953e7b3"
+		"hash": "05bdd578acafe8f7238987900e1b19c96aa9b393",
+		"date": "2026-09-01T18:45:17+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/05bdd578acafe8f7238987900e1b19c96aa9b393"
 	},
 	"liminality-free-checkin": {
 		"hash": "549bd9203dda3d565ccbe61ace4d53416f5252f3",

@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-09-13 | Total: 113 entri (95 aktif, 18 expired)
+> Diperbarui: 2026-09-15 | Total: 115 entri (97 aktif, 18 expired)
 
 ---
 
@@ -1232,6 +1232,62 @@
 - **Berlaku:** uncertain (Situs resmi menampilkan akses gratis, tetapi periode berakhir belum dapat diverifikasi; email pengusul menyebut 12 Agustus 2026)
 
 🔗 **Link Detail:** https://bansos.dev/list/inferx-deepseek-v4-flash/
+
+---
+
+### Promo Domain .ID Rp100.000 Jagoan Hosting — HUT PANDI 2026
+
+- **ID:** `jagoanhosting-domain-id-rp100k-15-19-september-2026`
+- **Provider:** Jagoan Hosting
+- **Kategori:** Domain, Diskon
+- **Status:** active
+
+**Deskripsi:** Jagoan Hosting menawarkan registrasi domain .ID seharga Rp100.000 untuk 1 tahun pada periode promo pertama HUT PANDI ke-20.
+
+**Benefit:**
+- Registrasi domain .ID baru seharga Rp100.000 untuk 1 tahun
+- Periode promo 15 September 2026 pukul 07.00 hingga 20 September 2026 pukul 07.00 WIB
+- Khusus ekstensi domain .ID
+
+**Cara Klaim:**
+1. Buka link klaim promo Jagoan Hosting
+2. Pilih dan registrasikan domain baru dengan ekstensi .ID
+3. Lakukan pemesanan selama periode promo yang berlaku
+4. Cek harga promo di checkout sebelum menyelesaikan pembayaran
+
+- **CTA Link:** https://s.id/hut50ribu
+- **Sumber:** https://www.jagoanhosting.com/promo-domain-hosting/
+- **Berlaku:** fixed — 2026-09-20 (Periode promo 15 September 2026 pukul 07.00 sampai 20 September 2026 pukul 07.00 WIB.)
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-domain-id-rp100k-15-19-september-2026/
+
+---
+
+### Flash Sale Domain .ID Rp50.000 Jagoan Hosting — HUT PANDI 2026
+
+- **ID:** `jagoanhosting-domain-id-rp50k-20-september-2026`
+- **Provider:** Jagoan Hosting
+- **Kategori:** Domain, Diskon
+- **Status:** upcoming
+
+**Deskripsi:** Jagoan Hosting menawarkan flash sale registrasi domain .ID seharga Rp50.000 untuk 1 tahun pada periode Super Day HUT PANDI ke-20.
+
+**Benefit:**
+- Registrasi domain .ID baru seharga Rp50.000 untuk 1 tahun
+- Periode promo 20 September 2026 pukul 07.00 hingga 21 September 2026 pukul 07.00 WIB
+- Khusus ekstensi domain .ID
+
+**Cara Klaim:**
+1. Buka link klaim promo Jagoan Hosting
+2. Pilih dan registrasikan domain baru dengan ekstensi .ID
+3. Lakukan pemesanan selama periode promo yang berlaku
+4. Cek harga promo di checkout sebelum menyelesaikan pembayaran
+
+- **CTA Link:** https://s.id/hut50ribu
+- **Sumber:** https://www.jagoanhosting.com/promo-domain-hosting/
+- **Berlaku:** fixed — 2026-09-21 (Periode promo 20 September 2026 pukul 07.00 sampai 21 September 2026 pukul 07.00 WIB.)
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-domain-id-rp50k-20-september-2026/
 
 ---
 
