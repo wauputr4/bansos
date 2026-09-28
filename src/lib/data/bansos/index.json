@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-09-27",
-	"total": 120,
+	"total": 122,
 	"items": [
 		{
 			"id": "1412-api-github-registration",
@@ -153,6 +153,16 @@
 			"contributorSlug": "devers"
 		},
 		{
+			"id": "artbloom-free-100-api-credit",
+			"title": "Artbloom Free $100 AI API Credit",
+			"provider": "Artbloom",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "No Credit Card"],
+			"featured": false,
+			"publishedAt": "2026-09-28",
+			"contributorSlug": "rafly0078"
+		},
+		{
 			"id": "atomesus-free-1-year-subscription",
 			"title": "FREE 1 Year subscription ATOMESUS",
 			"provider": "ATOMESUS",
@@ -303,6 +313,16 @@
 			"contributorSlug": "wauputr4"
 		},
 		{
+			"id": "flushapi-referral-22-5-credit",
+			"title": "FlushAPI — Kredit API $22.5 via Referral",
+			"provider": "FlushAPI",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "Referral"],
+			"featured": false,
+			"publishedAt": "2026-09-23",
+			"contributorSlug": "rafly0078"
+		},
+		{
 			"id": "free-5-credit-for-new-opencode-go-users",
 			"title": "Free $5 Credit for New OpenCode Go Users",
 			"provider": "Opencode",
@@ -431,16 +451,6 @@
 			"contributorSlug": "rafly0078"
 		},
 		{
-			"id": "gurouter-free-credit-model-gratis",
-			"title": "GuRouter Free $0.2 Credit + Model Gratis $0",
-			"provider": "GuRouter",
-			"status": "active",
-			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
-			"featured": false,
-			"publishedAt": "2026-09-19",
-			"contributorSlug": "rafly0078"
-		},
-		{
 			"id": "gumloop-free-credits",
 			"title": "Gratis 6,6 Ribu Kredit Agen AI di Gumloop (Tersedia Model Populer)",
 			"provider": "Gumloop",
@@ -449,6 +459,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-20",
 			"contributorSlug": "brian"
+		},
+		{
+			"id": "gurouter-free-credit-model-gratis",
+			"title": "GuRouter Free $0.2 Credit + Model Gratis $0",
+			"provider": "GuRouter",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-09-19",
+			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "hcnsec-free-30k-api-credit",
@@ -719,6 +739,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-21",
 			"contributorSlug": "devers"
+		},
+		{
+			"id": "miarouter-free-20-ai-credit",
+			"title": "MiaRouter Free $20 AI Credit",
+			"provider": "MiaRouter",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-09-27",
+			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "microsoft-founders-hub",
@@ -998,16 +1028,6 @@
 			"featured": false,
 			"publishedAt": "2026-07-22",
 			"contributorSlug": "superftch"
-		},
-		{
-			"id": "flushapi-referral-22-5-credit",
-			"title": "FlushAPI — Kredit API $22.5 via Referral",
-			"provider": "FlushAPI",
-			"status": "active",
-			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "Referral"],
-			"featured": false,
-			"publishedAt": "2026-09-23",
-			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "tokenfaucet-daily-free-tokens",

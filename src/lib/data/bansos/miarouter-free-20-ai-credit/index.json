@@ -1,0 +1,28 @@
+{
+	"id": "miarouter-free-20-ai-credit",
+	"title": "MiaRouter Free $20 AI Credit",
+	"provider": "MiaRouter",
+	"description": "MiaRouter memberikan kredit API senilai $20 untuk pengguna baru yang login lalu memverifikasi akun melalui Telegram. Kredit dapat dipakai untuk mengakses model seperti Claude Opus 5.5, Claude Fable 5.1, dan GPT-6 Astra.",
+	"benefits": [
+		"Kredit API senilai $20 untuk pengguna baru",
+		"Akses model Claude Opus 5.5, Claude Fable 5.1, dan GPT-6 Astra",
+		"Satu API untuk banyak model AI populer"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Ketersediaan dan besaran kredit mengikuti kebijakan MiaRouter"
+	},
+	"requirements": [
+		"Daftar dan login akun MiaRouter",
+		"Verifikasi akun melalui Telegram",
+		"Daftar melalui link referral yang tersedia",
+		"Cek saldo kredit di dashboard MiaRouter"
+	],
+	"ctaLink": "https://www.miarouter.online/sign-up?aff=txSS",
+	"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-09-27",
+	"source": "https://www.miarouter.online/sign-up?aff=txSS",
+	"contributorSlug": "rafly0078"
+}
