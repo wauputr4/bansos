@@ -1,0 +1,30 @@
+{
+	"id": "artbloom-free-100-credit-referral",
+	"title": "Artbloom Free $100 Credit — Gateway LLM OpenAI-Compatible (Referral)",
+	"provider": "Artbloom",
+	"description": "Artbloom adalah gateway LLM self-hosted kompatibel OpenAI. Akun baru langsung menerima $100 kredit gratis tanpa kartu, dan pendaftar lewat link undangan mengaktifkan bonus tersebut. Klaim bonus referral pengundang tidak tercantum nominalnya di halaman publik.",
+	"benefits": [
+		"$100 kredit gratis untuk akun baru, langsung masuk ke saldo",
+		"Tanpa kartu kredit",
+		"Endpoint OpenAI-compatible; model Anthropic diterjemahkan otomatis termasuk streaming",
+		"Bisa bawa API key sendiri (BYOK), key disimpan terenkripsi AES-256-GCM",
+		"Metering penggunaan token & biaya real-time per request"
+	],
+	"validity": {
+		"type": "uncertain",
+		"description": "Tidak ada tanggal akhir resmi; kuota welcome credit bisa diubah sepihak"
+	},
+	"requirements": [
+		"Daftar akun baru via OAuth GitHub (bukan Discord)",
+		"Gunakan link referral untuk mengaktifkan bonus $100",
+		"Klaim API key di dashboard lalu arahkan klien ke https://api.artbloom.tech/v1"
+	],
+	"ctaLink": "https://api.artbloom.tech/signup?ref=Q37W4W52UQ",
+	"tags": ["AI Credits", "API", "Free Tier", "Developer Tools", "Referral"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-09-29",
+	"tips": "Verifikasi akun memakai GitHub OAuth, bukan Discord. Nominal reward pengundang ($10) tidak tercetak di halaman publik. Pakai percakapan pendek agar kredit $100 tidak cepat habis karena konteks panjang dihitung penuh.",
+	"source": "https://api.artbloom.tech/signup",
+	"contributorSlug": "syafii-fahreza"
+}

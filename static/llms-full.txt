@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-09-27 | Total: 120 entri (102 aktif, 18 expired)
+> Diperbarui: 2026-09-29 | Total: 121 entri (103 aktif, 18 expired)
 
 ---
 
@@ -286,6 +286,36 @@
 - **Berlaku:** uncertain (Akses DeepLearning.AI Pro berlaku 1 bulan; durasi penggunaan kredit cloud menyesuaikan ketentuan platform)
 
 🔗 **Link Detail:** https://bansos.dev/list/amd-ai-dev-program/
+
+---
+
+### Artbloom Free $100 Credit — Gateway LLM OpenAI-Compatible (Referral)
+
+- **ID:** `artbloom-free-100-credit-referral`
+- **Provider:** Artbloom
+- **Kategori:** AI Credits, API, Free Tier, Developer Tools, Referral
+- **Status:** active
+
+**Deskripsi:** Artbloom adalah gateway LLM self-hosted kompatibel OpenAI. Akun baru langsung menerima $100 kredit gratis tanpa kartu, dan pendaftar lewat link undangan mengaktifkan bonus tersebut. Klaim bonus referral pengundang tidak tercantum nominalnya di halaman publik.
+
+**Benefit:**
+- $100 kredit gratis untuk akun baru, langsung masuk ke saldo
+- Tanpa kartu kredit
+- Endpoint OpenAI-compatible; model Anthropic diterjemahkan otomatis termasuk streaming
+- Bisa bawa API key sendiri (BYOK), key disimpan terenkripsi AES-256-GCM
+- Metering penggunaan token & biaya real-time per request
+
+**Cara Klaim:**
+1. Daftar akun baru via OAuth GitHub (bukan Discord)
+2. Gunakan link referral untuk mengaktifkan bonus $100
+3. Klaim API key di dashboard lalu arahkan klien ke https://api.artbloom.tech/v1
+
+- **CTA Link:** https://api.artbloom.tech/signup?ref=Q37W4W52UQ
+- **Sumber:** https://api.artbloom.tech/signup
+- **Tips:** Verifikasi akun memakai GitHub OAuth, bukan Discord. Nominal reward pengundang ($10) tidak tercetak di halaman publik. Pakai percakapan pendek agar kredit $100 tidak cepat habis karena konteks panjang dihitung penuh.
+- **Berlaku:** uncertain (Tidak ada tanggal akhir resmi; kuota welcome credit bisa diubah sepihak)
+
+🔗 **Link Detail:** https://bansos.dev/list/artbloom-free-100-credit-referral/
 
 ---
 
