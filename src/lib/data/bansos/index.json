@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-10-12",
-	"total": 125,
+	"total": 127,
 	"items": [
 		{
 			"id": "1412-api-github-registration",
@@ -243,6 +243,16 @@
 			"contributorSlug": "rupadana"
 		},
 		{
+			"id": "codex-relay",
+			"title": "Relay — $10 Kredit API Gratis via Verifikasi Telegram",
+			"provider": "Relay",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-10-12",
+			"contributorSlug": "rafly0078"
+		},
+		{
 			"id": "conduit-trial-credit-500",
 			"title": "Conduit AI — $500 Trial Credit & Free Model Access",
 			"provider": "Conduit",
@@ -341,6 +351,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-25",
 			"contributorSlug": "mikaelaldy"
+		},
+		{
+			"id": "freemodel-in-1m-token-gratis",
+			"title": "FreeModel.in — Gratis 1M Token API per Bulan, Semua 31 Model",
+			"provider": "FreeModel.in",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-10-12",
+			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "freemodel-invite-referral-10",
