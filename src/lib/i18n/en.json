@@ -153,7 +153,7 @@
 	"contribute": {
 		"eyebrow": "Contribute",
 		"h1": "Got bansos info? Don't enjoy it alone.",
-		"intro": "Choose the contribution method that works best for you. AI Agent, Git Clone, and Email are available; other methods are temporarily disabled due to spam.",
+		"intro": "To submit a new listing, sign in with GitHub and complete the form. Admin reviews every submission before publication; AI Agent, Git Clone, and Email submissions are currently disabled.",
 		"warningTitle": "⛔ Strict Prohibition: STRICTLY FORBIDDEN",
 		"warningText": "DO NOT submit misleading, fake, or unclaimable bansos information. STRICTLY FORBIDDEN from including steps that are abusive, illegal, or violate third-party Terms of Service (ToS). Violators will be permanently removed from bansos.dev without notice.",
 		"referralTitle": "Referral Link Policy (Gentleman's Agreement)",

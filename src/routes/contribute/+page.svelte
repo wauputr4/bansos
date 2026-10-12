@@ -1,6 +1,7 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import GithubBadge from '$lib/components/GithubBadge.svelte';
+	import SubmissionFields from '$lib/components/SubmissionFields.svelte';
 	import { resolve } from '$app/paths';
 	import { t } from '$lib/i18n';
 	import { get } from 'svelte/store';
@@ -11,19 +12,28 @@
 		getContributorStats,
 		type ContributorSummary
 	} from '$lib/data/bansos';
+	let { data, form } = $props();
+	const loginHref = $derived(
+		data.demoMode ? '/auth/demo?as=user&next=contribute' : '/auth/github?next=contribute'
+	);
 
 	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
-		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot' },
-		{ id: 'git', label: $t('contribute.tabs.git'), icon: 'fa-solid fa-code-branch' },
-		{ id: 'email', label: $t('contribute.tabs.email'), icon: 'fa-solid fa-envelope' },
+		{ id: 'form', label: $t('contribute.tabs.form'), icon: 'fa-solid fa-pen-to-square' },
+		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot', inactive: true },
 		{
-			id: 'form',
-			label: $t('contribute.tabs.form'),
-			icon: 'fa-solid fa-pen-to-square',
+			id: 'git',
+			label: $t('contribute.tabs.git'),
+			icon: 'fa-solid fa-code-branch',
+			inactive: true
+		},
+		{
+			id: 'email',
+			label: $t('contribute.tabs.email'),
+			icon: 'fa-solid fa-envelope',
 			inactive: true
 		},
 		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal', inactive: true },
@@ -41,7 +51,7 @@
 		}
 	]);
 
-	let activeTab = $state<TabId>('ai');
+	let activeTab = $state<TabId>('form');
 	const aiInstallCommand = "npx skills add wauputr4/skill-bansos --skill '*' --agent '*'";
 
 	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
@@ -244,63 +254,127 @@ Terima kasih,
 			{$t('contribute.intro')}
 		</p>
 
-		<div class="integrity-warning-banner glass-card">
-			<i class="fa-solid fa-shield-halved warning-icon"></i>
-			<div class="banner-content">
-				<h4>{$t('contribute.warningTitle')}</h4>
-				<p>
-					{$t('contribute.warningText')}
-				</p>
+		{#if activeTab !== 'form'}
+			<div class="integrity-warning-banner glass-card">
+				<i class="fa-solid fa-shield-halved warning-icon"></i>
+				<div class="banner-content">
+					<h4>{$t('contribute.warningTitle')}</h4>
+					<p>
+						{$t('contribute.warningText')}
+					</p>
+				</div>
 			</div>
-		</div>
 
-		<div class="referral-policy-banner glass-card">
-			<i class="fa-solid fa-circle-exclamation info-icon"></i>
-			<div class="banner-content">
-				<h4>{$t('contribute.referralTitle')}</h4>
-				<p>
-					{$t('contribute.referralText')}
-				</p>
+			<div class="referral-policy-banner glass-card">
+				<i class="fa-solid fa-circle-exclamation info-icon"></i>
+				<div class="banner-content">
+					<h4>{$t('contribute.referralTitle')}</h4>
+					<p>
+						{$t('contribute.referralText')}
+					</p>
+				</div>
 			</div>
-		</div>
 
-		<div class="repo-status-card">
-			<p class="eyebrow">{$t('contribute.repoEyebrow')}</p>
-			<GithubBadge />
-		</div>
+			<div class="repo-status-card">
+				<p class="eyebrow">{$t('contribute.repoEyebrow')}</p>
+				<GithubBadge />
+			</div>
+		{/if}
 
-		<div class="tabs-container">
+		<div class="tabs-container" id="form">
 			<div class="tabs-header">
 				{#each tabs as tab (tab.id)}
 					<button
+						type="button"
 						class="tab-btn"
 						class:active={activeTab === tab.id}
 						class:muted-tab={tab.inactive}
-						onclick={() => (activeTab = tab.id)}
+						disabled={tab.inactive}
+						title={tab.inactive ? 'Pengajuan sekarang hanya lewat form setelah login' : undefined}
+						onclick={() => {
+							if (!tab.inactive) activeTab = tab.id;
+						}}
 					>
 						<i class={tab.icon}></i>
 						<span>{tab.label}</span>
+						{#if tab.inactive}<i class="fa-solid fa-lock disabled-lock" aria-hidden="true"></i>{/if}
 					</button>
 				{/each}
 			</div>
 
 			<div class="tab-content">
 				{#if activeTab === 'form'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>{$t('contribute.formTitle')}</h2>
-							<div class="disabled-notice">
-								<i class="fa-solid fa-triangle-exclamation"></i>
-								<div>
-									<p>
-										{$t('contribute.formDisabled')}
-									</p>
-									<p class="warning-extra">
-										{$t('contribute.formWarning')}
-									</p>
-								</div>
+					<div class="form-layout">
+						<div class="editor-card">
+							<div class="editor-intro">
+								<span class="editor-eyebrow"
+									><i class="fa-solid fa-pen-to-square"></i> USULAN BARU</span
+								>
+								<h2>Bagikan bansos untuk developer</h2>
+								<p>
+									Isi informasi program secara lengkap. Admin akan meninjau usulanmu sebelum tampil
+									di katalog.
+								</p>
 							</div>
+							{#if !data.viewer}
+								<div class="login-gate">
+									<div class="gate-icon"><i class="fa-brands fa-github"></i></div>
+									<h3>Masuk untuk mengirim usulan</h3>
+									<p>
+										Login GitHub menghubungkan kontribusi dengan akunmu. Form akan terbuka setelah
+										kamu masuk.
+									</p>
+									<a class="primary-action" href={loginHref}
+										><i class="fa-brands fa-github"></i>
+										{data.demoMode
+											? 'Masuk sebagai demo kontributor'
+											: 'Lanjutkan dengan GitHub'}</a
+									>
+								</div>
+							{:else if data.viewer.banned_at}
+								<p class="form-notice" role="alert">
+									Akun ini tidak dapat mengirim usulan. Hubungi admin bila menurutmu ada kesalahan.
+								</p>
+							{:else}
+								{#if form?.message}<p class="form-notice" role="alert">{form.message}</p>{/if}
+								<form method="POST" action="?/create" class="submission-form">
+									<SubmissionFields draft={form?.values} idPrefix="contribute-new" />
+									<div class="form-footer">
+										<p>
+											<i class="fa-solid fa-shield-halved"></i> Semua usulan masuk antrean review. Status
+											Featured hanya ditentukan admin.
+										</p>
+										<button type="submit" class="primary-action"
+											>Kirim untuk review <i class="fa-solid fa-arrow-right"></i></button
+										>
+									</div>
+								</form>
+							{/if}
 						</div>
+						<aside class="form-sidebar" aria-label="Panduan kontribusi">
+							<div class="side-card">
+								<span class="side-label"
+									><i class="fa-solid fa-list-check"></i> ALUR KONTRIBUSI</span
+								>
+								<ol>
+									<li>Masuk dengan akun GitHub.</li>
+									<li>Lengkapi detail program dan sumber resmi.</li>
+									<li>Admin meninjau sebelum menerbitkan.</li>
+								</ol>
+							</div>
+							<div class="side-card">
+								<span class="side-label"
+									><i class="fa-solid fa-shield-halved"></i> SEBELUM MENGIRIM</span
+								>
+								<p>
+									Pastikan promonya sah, masih berlaku, dan bukan hasil bug atau pelanggaran syarat
+									layanan. Sampaikan syarat, batas, dan biaya dengan jelas.
+								</p>
+							</div>
+							{#if data.viewer}<a class="side-link" href="/dashboard/"
+									>Lihat usulan saya <i class="fa-solid fa-arrow-right"></i></a
+								>{/if}
+						</aside>
 					</div>
 				{:else if activeTab === 'npx'}
 					<div class="tab-panel">
@@ -556,7 +630,7 @@ Terima kasih,
 	}
 
 	.content-shell {
-		max-width: 52rem;
+		max-width: 80rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -638,6 +712,17 @@ Terima kasih,
 	}
 
 	.muted-tab:hover {
+		opacity: 0.55;
+	}
+	.tab-btn:disabled {
+		cursor: not-allowed;
+	}
+	.tab-btn:disabled:hover {
+		color: var(--text-secondary);
+		background: transparent;
+	}
+	.disabled-lock {
+		font-size: 0.65rem;
 		opacity: 0.85;
 	}
 
@@ -649,6 +734,168 @@ Terima kasih,
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
+		max-width: 52rem;
+	}
+
+	.form-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(15rem, 18rem);
+		gap: 1.5rem;
+		align-items: start;
+	}
+	.editor-card {
+		min-width: 0;
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		background: var(--bg-secondary);
+		padding: clamp(1.25rem, 3vw, 2.5rem);
+	}
+	.editor-intro {
+		padding-bottom: 1.5rem;
+		margin-bottom: 1.75rem;
+		border-bottom: 1px solid var(--border-color);
+	}
+	.editor-eyebrow,
+	.side-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--color-accent);
+		font-size: 0.73rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+	}
+	.editor-intro h2 {
+		font-size: clamp(1.65rem, 3vw, 2.35rem);
+		margin: 0.75rem 0 0.5rem;
+		color: var(--color-accent);
+		line-height: 1.2;
+	}
+	.editor-intro p {
+		line-height: 1.6;
+	}
+	.form-sidebar {
+		display: grid;
+		gap: 1rem;
+	}
+	.side-card {
+		border: 1px solid var(--border-color);
+		border-radius: 0.85rem;
+		padding: 1.2rem;
+		background: var(--bg-secondary);
+	}
+	.side-card p,
+	.side-card li {
+		margin-top: 0.7rem;
+		font-size: 0.84rem;
+		line-height: 1.55;
+	}
+	.side-card ol {
+		margin: 0.5rem 0 0;
+		padding-left: 1.2rem;
+	}
+	.side-link {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+	.login-gate {
+		display: grid;
+		justify-items: start;
+		gap: 0.75rem;
+		max-width: 32rem;
+		padding: 1rem 0 0.5rem;
+	}
+	.gate-icon {
+		display: grid;
+		place-items: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 0.85rem;
+		color: var(--color-accent);
+		background: var(--color-accent-glow);
+		font-size: 1.5rem;
+	}
+	.login-gate h3 {
+		color: var(--text-primary);
+		font-size: 1.4rem;
+		margin: 0.25rem 0 0;
+	}
+	.login-gate p {
+		line-height: 1.6;
+	}
+	.primary-action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+		border: 0;
+		border-radius: 0.7rem;
+		background: var(--color-accent);
+		color: #06130f;
+		font: inherit;
+		font-weight: 800;
+		padding: 0.85rem 1.15rem;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.primary-action:hover {
+		filter: brightness(1.08);
+		color: #06130f;
+	}
+	.form-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+		border-top: 1px solid var(--border-color);
+		margin-top: 1.75rem;
+		padding-top: 1.5rem;
+	}
+	.form-footer p {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		max-width: 24rem;
+		font-size: 0.8rem;
+		line-height: 1.5;
+	}
+	.form-footer i {
+		color: var(--color-accent);
+	}
+	.form-notice {
+		padding: 0.9rem 1rem;
+		border: 1px solid #f59e0b;
+		border-radius: 0.65rem;
+		margin-bottom: 1.25rem;
+	}
+	@media (max-width: 52rem) {
+		.form-layout {
+			grid-template-columns: 1fr;
+		}
+		.form-sidebar {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.side-link {
+			grid-column: 1 / -1;
+		}
+	}
+	@media (max-width: 38rem) {
+		.tab-content {
+			padding: 0.75rem;
+		}
+		.form-sidebar {
+			grid-template-columns: 1fr;
+		}
+		.editor-card {
+			padding: 1.25rem;
+		}
 	}
 
 	.tab-description {
@@ -1055,6 +1302,9 @@ Terima kasih,
 		}
 		.tab-btn span {
 			display: none;
+		}
+		.tab-btn.active span {
+			display: inline;
 		}
 		.tab-btn {
 			padding: 0.85rem;

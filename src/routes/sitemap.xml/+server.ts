@@ -1,8 +1,10 @@
-export const prerender = true;
+export const prerender = false;
 
-import { bansosList, getAllContributors, getProviderStats } from '$lib/data/bansos';
+import { getAllContributors, getProviderStats } from '$lib/data/bansos';
+import { catalogItems } from '$lib/server/dynamic-catalog';
 
-export async function GET() {
+export async function GET({ platform }: { platform?: App.Platform }) {
+	const bansosList = await catalogItems(platform?.env.DB);
 	const today = new Date().toISOString().split('T')[0];
 
 	let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -48,7 +50,7 @@ export async function GET() {
   </url>`;
 	});
 
-	getProviderStats().forEach((provider) => {
+	getProviderStats(bansosList).forEach((provider) => {
 		sitemap += `
   <url>
     <loc>https://bansos.dev/providers/${provider.slug}/</loc>

@@ -11,13 +11,14 @@
 	import { Tween } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 	import {
-		bansosList,
 		latestBansos,
 		featuredBansos,
 		getContributorInitials,
 		getContributorStats,
 		formatNumber
 	} from '$lib/data/bansos';
+	let { data } = $props();
+	const bansosList = $derived(data.items);
 
 	const repo = 'wauputr4/bansos';
 	const repoUrl = `https://github.com/${repo}`;
@@ -36,19 +37,29 @@
 			'query-input': 'required name=search_term_string'
 		}
 	});
-	const latestBansosList = latestBansos(
-		10,
-		bansosList.filter((item) => !item.featured || item.status === 'expired')
+	const latestBansosList = $derived(
+		latestBansos(
+			10,
+			bansosList.filter((item) => !item.featured || item.status === 'expired')
+		)
 	);
-	const featuredBansosList = featuredBansos(10);
-	const totalBansos = bansosList.length;
-	const activeBansos = bansosList.filter((item) => item.status === 'active').length;
-	const expiredBansos = bansosList.filter((item) => item.status === 'expired').length;
+	const featuredBansosList = $derived(featuredBansos(10, bansosList));
+	const totalBansos = $derived(bansosList.length);
+	const activeBansos = $derived(bansosList.filter((item) => item.status === 'active').length);
+	const expiredBansos = $derived(bansosList.filter((item) => item.status === 'expired').length);
 
 	const tweenOptions = { duration: 2000, easing: cubicOut };
-	const animatedTotal = new Tween(totalBansos, tweenOptions);
-	const animatedActive = new Tween(activeBansos, tweenOptions);
-	const animatedExpired = new Tween(expiredBansos, tweenOptions);
+	const animatedTotal = new Tween(0, tweenOptions);
+	const animatedActive = new Tween(0, tweenOptions);
+	const animatedExpired = new Tween(0, tweenOptions);
+	let showAnimatedStats = $state(false);
+	$effect(() => {
+		if (hasAnimated) {
+			animatedTotal.target = totalBansos;
+			animatedActive.target = activeBansos;
+			animatedExpired.target = expiredBansos;
+		}
+	});
 	const communityContributors = getContributorStats();
 	let githubStars: number | string = $state('-');
 	let githubPrs: number | string = $state('-');
@@ -60,6 +71,7 @@
 			animatedTotal.set(0, { duration: 0 });
 			animatedActive.set(0, { duration: 0 });
 			animatedExpired.set(0, { duration: 0 });
+			showAnimatedStats = true;
 
 			setTimeout(() => {
 				animatedTotal.target = totalBansos;
@@ -67,6 +79,11 @@
 				animatedExpired.target = expiredBansos;
 				hasAnimated = true;
 			}, 0);
+		} else {
+			animatedTotal.set(totalBansos, { duration: 0 });
+			animatedActive.set(activeBansos, { duration: 0 });
+			animatedExpired.set(expiredBansos, { duration: 0 });
+			showAnimatedStats = true;
 		}
 
 		const CACHE_KEY = `bansos_home_repo_v1_${repo}`;
@@ -279,15 +296,21 @@
 
 		<div class="stats-strip" aria-label={$t('home.statsAria')}>
 			<div class="stat-item">
-				<span class="stat-value">{Math.floor(animatedTotal.current)}</span>
+				<span class="stat-value"
+					>{showAnimatedStats ? Math.floor(animatedTotal.current) : totalBansos}</span
+				>
 				<span class="stat-label">{$t('home.statTotal')}</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-value">{Math.floor(animatedActive.current)}</span>
+				<span class="stat-value"
+					>{showAnimatedStats ? Math.floor(animatedActive.current) : activeBansos}</span
+				>
 				<span class="stat-label">{$t('home.statActive')}</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-value">{Math.floor(animatedExpired.current)}</span>
+				<span class="stat-value"
+					>{showAnimatedStats ? Math.floor(animatedExpired.current) : expiredBansos}</span
+				>
 				<span class="stat-label">{$t('home.statExpired')}</span>
 			</div>
 			<div class="stat-item">
