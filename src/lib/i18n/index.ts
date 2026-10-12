@@ -31,8 +31,8 @@ export { t } from 'svelte-i18n';
 export const currentLocale = writable<SupportedLocale>('id');
 
 availableCodes.forEach((code) => {
-	const mod = i18nFiles[`./${code}.json`] as { default?: Record<string, unknown> };
-	addMessages(code, (mod.default || mod) as Record<string, unknown>);
+	const mod = i18nFiles[`./${code}.json`] as { default?: Parameters<typeof addMessages>[1] };
+	addMessages(code, (mod.default || mod) as Parameters<typeof addMessages>[1]);
 });
 
 export function isValidLocale(loc: string | null | undefined): loc is SupportedLocale {
