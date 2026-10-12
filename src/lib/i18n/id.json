@@ -153,7 +153,7 @@
 	"contribute": {
 		"eyebrow": "Kontribusi",
 		"h1": "Punya info bansos? Jangan dinikmati sendirian.",
-		"intro": "Untuk mengirim bansos baru, masuk dengan GitHub lalu isi form. Setiap usulan akan ditinjau admin sebelum terbit; jalur AI Agent, Git Clone, dan Email sedang dinonaktifkan.",
+		"intro": "Untuk mengirim bansos baru, masuk dengan GitHub lalu isi form. Setiap usulan akan ditinjau admin sebelum terbit.",
 		"warningTitle": "⛔ Larangan Keras: DILARANG KERAS",
 		"warningText": "JANGAN submit informasi bansos yang menyesatkan, palsu, atau tidak bisa diklaim. DILARANG KERAS menyertakan langkah-langkah yang bersifat abuse, ilegal, atau melanggar ketentuan layanan (ToS) pihak lain. Setiap pelanggaran akan ditindak tegas, kontributor akan dikeluarkan secara permanen dari bansos.dev tanpa pemberitahuan.",
 		"referralTitle": "Kebijakan Link Referral (Gentleman's Agreement)",

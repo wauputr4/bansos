@@ -1,7 +1,7 @@
 import { error, fail, redirect } from '@sveltejs/kit';
 import { slugTaken } from '$lib/server/dynamic-catalog';
 import { requireDb } from '$lib/server/dynamic-db';
-import { parseSubmission } from '$lib/server/submission';
+import { parseSubmission, readSubmissionForm } from '$lib/server/submission';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -9,11 +9,10 @@ export const actions: Actions = {
 		if (!locals.user) redirect(303, '/auth/github?next=contribute');
 		if (locals.user.banned_at) error(403, 'Akun ini tidak dapat mengirim usulan.');
 		const db = requireDb(platform);
-		const input = await request.formData();
-		const values = Object.fromEntries(
-			[...input.entries()].map(([key, value]) => [key, String(value)])
-		);
+		let values: Record<string, string> = {};
 		try {
+			const input = await readSubmissionForm(request);
+			values = Object.fromEntries([...input.entries()].map(([key, value]) => [key, String(value)]));
 			const payload = parseSubmission(input);
 			if (await slugTaken(db, payload.id))
 				return fail(400, { message: 'Slug sudah dipakai listing lain.', values });

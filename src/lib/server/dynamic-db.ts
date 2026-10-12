@@ -2,12 +2,16 @@ export interface DbStatement {
 	bind(...values: (string | number | null)[]): DbStatement;
 	first<T>(): Promise<T | null>;
 	all<T>(): Promise<{ results: T[] }>;
-	run(): Promise<unknown>;
+	run(): Promise<DbResult>;
+}
+
+export interface DbResult {
+	meta?: { changes?: number };
 }
 
 export interface DynamicDb {
 	prepare(query: string): DbStatement;
-	batch(statements: DbStatement[]): Promise<unknown[]>;
+	batch(statements: DbStatement[]): Promise<DbResult[]>;
 }
 
 export function requireDb(platform: App.Platform | undefined): DynamicDb {

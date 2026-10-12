@@ -1,7 +1,11 @@
 import { error, fail, redirect } from '@sveltejs/kit';
 import { catalogItem, catalogItems, slugTaken } from '$lib/server/dynamic-catalog';
 import { requireDb, type DynamicDb } from '$lib/server/dynamic-db';
-import { parseSubmission, type SubmissionPayload } from '$lib/server/submission';
+import {
+	parseSubmission,
+	readSubmissionForm,
+	type SubmissionPayload
+} from '$lib/server/submission';
 import type { BansosItem } from '$lib/data/bansos';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -70,7 +74,12 @@ export const actions: Actions = {
 	editSubmission: async ({ locals, platform, request }) => {
 		const actor = admin(locals);
 		const db = requireDb(platform);
-		const form = await request.formData();
+		let form: FormData;
+		try {
+			form = await readSubmissionForm(request);
+		} catch (cause) {
+			return fail(400, { message: cause instanceof Error ? cause.message : 'Form tidak valid.' });
+		}
 		const id = idFrom(form, 'submissionId');
 		const row = await db
 			.prepare(
@@ -83,12 +92,14 @@ export const actions: Actions = {
 			const payload = parseSubmission(form);
 			if (payload.id !== (JSON.parse(row.payload) as SubmissionPayload).id)
 				return fail(400, { message: 'Slug tidak dapat diganti saat review.' });
-			await db
+			const result = await db
 				.prepare(
-					"UPDATE submissions SET payload = ?, state = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ?"
+					"UPDATE submissions SET payload = ?, state = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state IN ('pending', 'needs_changes') AND payload = ?"
 				)
-				.bind(JSON.stringify(payload), id)
+				.bind(JSON.stringify(payload), id, row.payload)
 				.run();
+			if (result.meta?.changes !== 1)
+				return fail(409, { message: 'Usulan berubah saat diedit. Muat ulang halaman.' });
 			await audit(db, actor.github_id, 'edit_submission', `submission:${id}`);
 		} catch (cause) {
 			return fail(400, { message: cause instanceof Error ? cause.message : 'Data tidak valid.' });
@@ -115,21 +126,21 @@ export const actions: Actions = {
 			publishedAt: new Date().toISOString().slice(0, 10),
 			contributor: { name: row.display_name, url: `https://github.com/${row.login}` }
 		};
-		await db.batch([
+		const results = await db.batch([
 			db
 				.prepare(
-					"INSERT INTO catalog_items (id, payload, state, submission_id) VALUES (?, ?, 'published', ?)"
+					"INSERT INTO catalog_items (id, payload, state, submission_id) SELECT ?, ?, 'published', id FROM submissions WHERE id = ? AND state = 'pending' AND payload = ?"
 				)
-				.bind(payload.id, JSON.stringify(item), id),
+				.bind(payload.id, JSON.stringify(item), id, row.payload),
 			db
 				.prepare(
-					"UPDATE submissions SET state = 'published', updated_at = CURRENT_TIMESTAMP WHERE id = ?"
+					"UPDATE submissions SET state = 'published', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state = 'pending' AND payload = ?"
 				)
-				.bind(id),
-			db
-				.prepare('INSERT INTO audit_log (actor_id, action, target) VALUES (?, ?, ?)')
-				.bind(actor.github_id, 'approve', payload.id)
+				.bind(id, row.payload)
 		]);
+		if (results[0]?.meta?.changes !== 1 || results[1]?.meta?.changes !== 1)
+			return fail(409, { message: 'Usulan berubah saat disetujui. Muat ulang halaman.' });
+		await audit(db, actor.github_id, 'approve', payload.id);
 		redirect(303, '/admin/');
 	},
 	moderate: async ({ locals, platform, request }) => {
@@ -143,12 +154,14 @@ export const actions: Actions = {
 			.slice(0, 1000);
 		if (!['needs_changes', 'rejected'].includes(state) || !note)
 			return fail(400, { message: 'Pilih keputusan dan isi catatan.' });
-		await db
+		const result = await db
 			.prepare(
 				"UPDATE submissions SET state = ?, admin_note = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state = 'pending'"
 			)
 			.bind(state, note, id)
 			.run();
+		if (result.meta?.changes !== 1)
+			return fail(409, { message: 'Usulan sudah berubah. Muat ulang halaman.' });
 		await audit(db, actor.github_id, state, `submission:${id}`, note);
 		redirect(303, '/admin/');
 	},
@@ -160,19 +173,26 @@ export const actions: Actions = {
 		if (id === actor.github_id) return fail(400, { message: 'Tidak bisa memblokir akun sendiri.' });
 		const action = String(form.get('action'));
 		if (!['ban', 'unban'].includes(action)) error(400, 'Aksi tidak valid.');
-		await db
+		const result = await db
 			.prepare(
 				`UPDATE users SET banned_at = ${action === 'ban' ? 'CURRENT_TIMESTAMP' : 'NULL'}, updated_at = CURRENT_TIMESTAMP WHERE github_id = ? AND role != 'admin'`
 			)
 			.bind(id)
 			.run();
+		if (result.meta?.changes !== 1)
+			return fail(404, { message: 'Akun tidak ditemukan atau tidak dapat diubah.' });
 		await audit(db, actor.github_id, action, `user:${id}`);
 		redirect(303, '/admin/');
 	},
 	edit: async ({ locals, platform, request }) => {
 		const actor = admin(locals);
 		const db = requireDb(platform);
-		const form = await request.formData();
+		let form: FormData;
+		try {
+			form = await readSubmissionForm(request);
+		} catch (cause) {
+			return fail(400, { message: cause instanceof Error ? cause.message : 'Form tidak valid.' });
+		}
 		try {
 			const payload = parseSubmission(form, true);
 			if (payload.id !== form.get('originalId')) {

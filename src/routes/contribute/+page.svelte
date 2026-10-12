@@ -7,7 +7,6 @@
 	import { get } from 'svelte/store';
 	import { locale } from 'svelte-i18n';
 	import {
-		bansosList,
 		getContributorInitials,
 		getContributorStats,
 		type ContributorSummary
@@ -17,7 +16,7 @@
 		data.demoMode ? '/auth/demo?as=user&next=contribute' : '/auth/github?next=contribute'
 	);
 
-	type TabId = 'form' | 'npx' | 'git' | 'ai' | 'email' | 'discord' | 'telegram';
+	type TabId = 'form' | 'ai' | 'email' | 'discord' | 'telegram';
 
 	const contributors: ContributorSummary[] = getContributorStats();
 
@@ -25,18 +24,11 @@
 		{ id: 'form', label: $t('contribute.tabs.form'), icon: 'fa-solid fa-pen-to-square' },
 		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot', inactive: true },
 		{
-			id: 'git',
-			label: $t('contribute.tabs.git'),
-			icon: 'fa-solid fa-code-branch',
-			inactive: true
-		},
-		{
 			id: 'email',
 			label: $t('contribute.tabs.email'),
 			icon: 'fa-solid fa-envelope',
 			inactive: true
 		},
-		{ id: 'npx', label: $t('contribute.tabs.npx'), icon: 'fa-solid fa-terminal', inactive: true },
 		{
 			id: 'discord',
 			label: $t('contribute.tabs.discord'),
@@ -54,71 +46,6 @@
 	let activeTab = $state<TabId>('form');
 	const aiInstallCommand = "npx skills add wauputr4/skill-bansos --skill '*' --agent '*'";
 
-	const examples = bansosList.filter((i) => i.status === 'active').slice(0, 3);
-
-	function shellQuote(value: string): string {
-		return `'${value.replaceAll("'", "'\"'\"'")}'`;
-	}
-
-	function generateGitCommand(item: (typeof bansosList)[number], activeLocale = 'id'): string {
-		const isEnglish = activeLocale === 'en';
-		const branchName = `add/${item.id}`;
-		const parts = [
-			isEnglish ? '# Fork and clone your GitHub repository' : '# Fork dan clone repo GitHub kamu',
-			'gh repo fork wauputr4/bansos --clone',
-			'cd bansos',
-			'npm install',
-			`git checkout -b ${branchName}`,
-			'',
-			isEnglish
-				? '# Existing listing used as a reference. Replace the ID and content before running.'
-				: '# Listing existing dipakai sebagai referensi. Ganti ID dan isinya sebelum dijalankan.',
-			isEnglish
-				? '# Name is required only for the first submission; profile URL remains optional'
-				: '# Nama hanya wajib saat submit pertama; URL profil tetap opsional',
-			'npm run add:bansos -- \\',
-			`  --id ${item.id} \\`,
-			`  --title ${shellQuote(item.title)} \\`,
-			`  --provider ${shellQuote(item.provider)} \\`,
-			`  --description ${shellQuote(item.description)} \\`,
-			'  --contributor-slug username-kamu \\',
-			`  --contributor-name ${shellQuote('Nama Kamu')} \\`,
-			`  --contributor-url ${shellQuote('https://github.com/username-kamu')} \\`,
-			`  --benefits ${shellQuote(item.benefits.join('|'))} \\`,
-			`  --validity-type ${item.validity.type} \\`
-		];
-
-		if (item.validity.date) {
-			parts.push(`  --validity-date ${item.validity.date} \\`);
-		}
-		if (item.validity.description) {
-			parts.push(`  --validity-desc ${shellQuote(item.validity.description)} \\`);
-		}
-
-		parts.push(`  --published-at ${item.publishedAt} \\`);
-		parts.push(`  --requirements ${shellQuote(item.requirements.join('|'))} \\`);
-		parts.push(`  --cta-link ${shellQuote(item.ctaLink)} \\`);
-		if (item.source) {
-			parts.push(`  --source ${shellQuote(item.source)} \\`);
-		}
-		parts.push(`  --tags ${shellQuote(item.tags.join(','))} \\`);
-		parts.push(`  --featured ${item.featured} \\`);
-		parts.push(`  --status ${item.status}`);
-		parts.push('');
-		parts.push('git add .');
-		parts.push(`git commit -m ${shellQuote(`feat: add ${item.title}`)}`);
-		parts.push(`git push origin ${branchName}`);
-		parts.push('');
-		parts.push(
-			`gh pr create --title ${shellQuote(`feat: add ${item.title}`)} --body ${shellQuote(`${isEnglish ? 'Added' : 'Menambahkan'} ${item.title} ${isEnglish ? 'to bansos list' : 'ke daftar bansos'}`)} --base main`
-		);
-
-		return parts.join('\n');
-	}
-
-	const gitExamples = $derived(
-		examples.map((example) => generateGitCommand(example, $locale || 'id'))
-	);
 	const emailTemplate = $derived(
 		($locale || 'id') === 'en'
 			? `Hello bansos.dev team,
@@ -375,77 +302,6 @@ Terima kasih,
 									>Lihat usulan saya <i class="fa-solid fa-arrow-right"></i></a
 								>{/if}
 						</aside>
-					</div>
-				{:else if activeTab === 'npx'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>{$t('contribute.npxTitle')}</h2>
-							<div class="disabled-notice">
-								<i class="fa-solid fa-triangle-exclamation"></i>
-								<div>
-									<p>
-										{$t('contribute.npxDisabled')}
-									</p>
-									<p class="warning-extra">
-										{$t('contribute.npxWarning')}
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				{:else if activeTab === 'git'}
-					<div class="tab-panel">
-						<div class="tab-description">
-							<h2>{$t('contribute.gitTitle')}</h2>
-							<p>
-								{$t('contribute.gitDesc')}
-							</p>
-						</div>
-						<div class="integrity-note">
-							<i class="fa-solid fa-shield-halved"></i>
-							<p>
-								{$t('contribute.gitIntegrity')}
-							</p>
-						</div>
-						<div class="examples-section">
-							<span class="examples-label"
-								><i class="fa-solid fa-lightbulb"></i> {$t('contribute.gitExamplesLabel')}</span
-							>
-							<div class="examples-buttons">
-								{#each examples as example, i (example.id)}
-									<button
-										type="button"
-										class="example-btn"
-										onclick={() => copyToClipboard(gitExamples[i], `git-${i}`)}
-										title={example.title}
-									>
-										<i class="fa-solid fa-arrow-right"></i>
-										{example.provider}
-									</button>
-								{/each}
-							</div>
-						</div>
-						<div class="command-block-wrapper">
-							<div class="command-head">
-								<span>{$t('contribute.gitCommandHead')}</span>
-								<button
-									type="button"
-									class="copy-btn"
-									class:copied={copiedId === 'git-0'}
-									onclick={() => copyToClipboard(gitExamples[0], 'git-0')}
-								>
-									<i class="fa-solid fa-{copiedId === 'git-0' ? 'check' : 'clipboard'}"></i>
-									{copiedId === 'git-0' ? $t('contribute.gitCopied') : $t('contribute.gitCopy')}
-								</button>
-							</div>
-							<pre class="command-block"><code>{gitExamples[0]}</code></pre>
-						</div>
-						<div class="tab-note">
-							<p>
-								<i class="fa-solid fa-circle-info"></i>
-								{$t('contribute.gitNote')}
-							</p>
-						</div>
 					</div>
 				{:else if activeTab === 'ai'}
 					<div class="tab-panel">
@@ -915,68 +771,6 @@ Terima kasih,
 		margin: 0;
 	}
 
-	.form-wrapper {
-		border: 1px solid var(--border-color);
-		border-radius: 0.75rem;
-		padding: 1.25rem;
-		background: color-mix(in srgb, var(--text-primary) 3%, transparent);
-	}
-
-	.examples-section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		padding: 0.75rem 1rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--border-color));
-		border-radius: 0.6rem;
-		background: color-mix(in srgb, var(--color-accent) 5%, transparent);
-	}
-
-	.examples-label {
-		color: var(--text-secondary);
-		font-size: 0.8rem;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		gap: 0.35rem;
-	}
-
-	.examples-label i {
-		color: var(--color-accent);
-	}
-
-	.examples-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
-	}
-
-	.example-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.3rem;
-		background: transparent;
-		border: 1px solid var(--border-color);
-		border-radius: 0.4rem;
-		color: var(--text-secondary);
-		font-family: inherit;
-		font-size: 0.75rem;
-		font-weight: 650;
-		padding: 0.3rem 0.6rem;
-		cursor: pointer;
-		transition: all 0.2s;
-	}
-
-	.example-btn:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-		background: color-mix(in srgb, var(--color-accent) 8%, transparent);
-	}
-
-	.example-btn i {
-		font-size: 0.6rem;
-	}
-
 	.command-block-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -1296,10 +1090,6 @@ Terima kasih,
 		.tab-panel {
 			gap: 0.85rem;
 		}
-		.form-wrapper {
-			padding: 0.85rem;
-			border-radius: 0.6rem;
-		}
 		.tab-btn span {
 			display: none;
 		}
@@ -1590,39 +1380,6 @@ Terima kasih,
 		line-height: 1.5;
 	}
 
-	.warning-extra {
-		font-size: 0.85rem !important;
-		color: #ef4444 !important;
-		margin-top: 0.35rem !important;
-		line-height: 1.45;
-	}
-
-	.disabled-notice {
-		display: flex;
-		align-items: flex-start;
-		gap: 1rem;
-		padding: 1.25rem;
-		border: 2px dashed rgba(239, 68, 68, 0.35);
-		border-radius: 0.75rem;
-		background: rgba(239, 68, 68, 0.04);
-		margin-top: 0.5rem;
-	}
-	.disabled-notice i {
-		font-size: 1.5rem;
-		color: #ef4444;
-		flex-shrink: 0;
-	}
-	.disabled-notice > div {
-		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
-	}
-	.disabled-notice p {
-		font-size: 0.9rem;
-		color: var(--text-secondary);
-		line-height: 1.45;
-		margin: 0;
-	}
 	.email-submit-card {
 		margin-top: 1rem;
 		display: flex;

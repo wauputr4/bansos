@@ -1,6 +1,10 @@
 import { error, fail, redirect } from '@sveltejs/kit';
 import { requireDb } from '$lib/server/dynamic-db';
-import { parseSubmission, type SubmissionPayload } from '$lib/server/submission';
+import {
+	parseSubmission,
+	readSubmissionForm,
+	type SubmissionPayload
+} from '$lib/server/submission';
 import { slugTaken } from '$lib/server/dynamic-catalog';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -44,7 +48,7 @@ export const actions: Actions = {
 		const user = currentUser(locals);
 		const db = requireDb(platform);
 		try {
-			const payload = parseSubmission(await request.formData());
+			const payload = parseSubmission(await readSubmissionForm(request));
 			if (await slugTaken(db, payload.id)) return fail(400, { message: 'Slug sudah digunakan.' });
 			const matching = await db
 				.prepare(
@@ -73,7 +77,12 @@ export const actions: Actions = {
 	revise: async ({ locals, platform, request }) => {
 		const user = currentUser(locals);
 		const db = requireDb(platform);
-		const form = await request.formData();
+		let form: FormData;
+		try {
+			form = await readSubmissionForm(request);
+		} catch (cause) {
+			return fail(400, { message: cause instanceof Error ? cause.message : 'Form tidak valid.' });
+		}
 		const submissionId = Number(form.get('submissionId'));
 		if (!Number.isSafeInteger(submissionId))
 			return fail(400, { message: 'ID usulan tidak valid.' });
@@ -87,12 +96,14 @@ export const actions: Actions = {
 			const payload = parseSubmission(form);
 			if (payload.id !== (JSON.parse(row.payload) as SubmissionPayload).id)
 				return fail(400, { message: 'Slug tidak dapat diganti saat revisi.' });
-			await db
+			const result = await db
 				.prepare(
-					"UPDATE submissions SET payload = ?, state = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ?"
+					"UPDATE submissions SET payload = ?, state = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND github_id = ? AND state IN ('pending', 'needs_changes') AND payload = ?"
 				)
-				.bind(JSON.stringify(payload), submissionId)
+				.bind(JSON.stringify(payload), submissionId, user.github_id, row.payload)
 				.run();
+			if (result.meta?.changes !== 1)
+				return fail(409, { message: 'Usulan berubah saat diedit. Muat ulang halaman.' });
 		} catch (cause) {
 			return fail(400, { message: cause instanceof Error ? cause.message : 'Revisi tidak valid.' });
 		}

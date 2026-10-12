@@ -16,6 +16,21 @@ export type SubmissionPayload = Pick<
 	| 'status'
 >;
 
+const maxSubmissionBytes = 32 * 1024;
+
+export async function readSubmissionForm(request: Request): Promise<FormData> {
+	const length = Number(request.headers.get('content-length'));
+	if (length > maxSubmissionBytes) throw new Error('Form terlalu besar (maksimal 32 KB).');
+	const form = await request.formData();
+	let size = 0;
+	for (const [key, value] of form) {
+		if (typeof value !== 'string') throw new Error('Lampiran file tidak didukung.');
+		size += key.length + value.length;
+		if (size > maxSubmissionBytes) throw new Error('Form terlalu besar (maksimal 32 KB).');
+	}
+	return form;
+}
+
 function required(form: FormData, key: string, max: number): string {
 	const value = String(form.get(key) || '').trim();
 	if (!value || value.length > max)

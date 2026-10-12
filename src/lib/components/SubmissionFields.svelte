@@ -16,6 +16,11 @@
 	function field(name: string, fallback = '') {
 		return draft?.[name] ?? fallback;
 	}
+
+	function revealInvalid(event: Event) {
+		const section = (event.currentTarget as HTMLElement).closest('details.editor-section');
+		if (section instanceof HTMLDetailsElement) section.open = true;
+	}
 </script>
 
 <div class="editor-sections">
@@ -83,15 +88,16 @@
 		</div>
 	</section>
 
-	<section class="editor-section" aria-labelledby={`${idPrefix}-content-heading`}>
-		<div class="section-heading">
+	<details class="editor-section" open={Boolean(value || draft)}>
+		<summary class="section-heading">
 			<span class="section-icon"><i class="fa-solid fa-gift" aria-hidden="true"></i></span>
 			<div>
 				<p class="section-kicker">02 / ISI LISTING</p>
 				<h3 id={`${idPrefix}-content-heading`}>Apa yang didapat dan cara klaimnya?</h3>
 				<p>Tulis fakta dari sumber resmi. Admin akan memeriksa sebelum listing terbit.</p>
 			</div>
-		</div>
+			<i class="fa-solid fa-chevron-down section-chevron" aria-hidden="true"></i>
+		</summary>
 		<div class="field-grid">
 			<div class="field field-wide">
 				<label for={`${idPrefix}-description`}
@@ -101,6 +107,7 @@
 					id={`${idPrefix}-description`}
 					name="description"
 					required
+					oninvalid={revealInvalid}
 					maxlength="1000"
 					rows="4"
 					placeholder="Jelaskan program, siapa yang bisa mengklaim, dan manfaat utamanya."
@@ -113,38 +120,48 @@
 					id={`${idPrefix}-benefits`}
 					name="benefits"
 					required
+					oninvalid={revealInvalid}
 					rows="5"
 					placeholder="Kredit gratis untuk akun baru; akses API selama masa promo"
 					>{field('benefits', value?.benefits.join('\n'))}</textarea
 				>
 				<small>Satu benefit per baris; tulis nominal atau batas pemakaian bila ada.</small>
 			</div>
-			<div class="field field-wide">
-				<label for={`${idPrefix}-requirements`}>Syarat dan langkah klaim</label>
-				<textarea
-					id={`${idPrefix}-requirements`}
-					name="requirements"
-					rows="5"
-					placeholder="Daftar dengan akun baru; verifikasi email; masukkan kode promo"
-					>{field('requirements', value?.requirements.join('\n'))}</textarea
-				>
-				<small
-					>Satu langkah atau syarat per baris. Jangan tulis “tanpa syarat” bila registrasi tetap
-					wajib.</small
-				>
-			</div>
+			<details
+				class="optional-fields field-wide"
+				open={Boolean(field('requirements', value?.requirements.join('\n')))}
+			>
+				<summary>Syarat dan langkah klaim <span>opsional</span></summary>
+				<div class="field-grid">
+					<div class="field field-wide">
+						<label for={`${idPrefix}-requirements`}>Syarat dan langkah klaim</label>
+						<textarea
+							id={`${idPrefix}-requirements`}
+							name="requirements"
+							rows="5"
+							placeholder="Daftar dengan akun baru; verifikasi email; masukkan kode promo"
+							>{field('requirements', value?.requirements.join('\n'))}</textarea
+						>
+						<small
+							>Satu langkah atau syarat per baris. Jangan tulis “tanpa syarat” bila registrasi tetap
+							wajib.</small
+						>
+					</div>
+				</div>
+			</details>
 		</div>
-	</section>
+	</details>
 
-	<section class="editor-section" aria-labelledby={`${idPrefix}-source-heading`}>
-		<div class="section-heading">
+	<details class="editor-section" open={Boolean(value || draft)}>
+		<summary class="section-heading">
 			<span class="section-icon"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
 			<div>
 				<p class="section-kicker">03 / KLAIM & VALIDITAS</p>
 				<h3 id={`${idPrefix}-source-heading`}>Beri jalur klaim yang bisa diverifikasi</h3>
 				<p>Link sumber dan tanggal berlaku membantu kami meninjau usulan lebih cepat.</p>
 			</div>
-		</div>
+			<i class="fa-solid fa-chevron-down section-chevron" aria-hidden="true"></i>
+		</summary>
 		<div class="field-grid">
 			<div class="field field-wide">
 				<label for={`${idPrefix}-ctaLink`}>Link klaim <span class="required">*</span></label>
@@ -153,6 +170,7 @@
 					name="ctaLink"
 					type="url"
 					required
+					oninvalid={revealInvalid}
 					placeholder="https://provider.com/promo"
 					value={field('ctaLink', value?.ctaLink)}
 				/>
@@ -164,83 +182,101 @@
 					name="source"
 					type="url"
 					required
+					oninvalid={revealInvalid}
 					placeholder="https://provider.com/announcement"
 					value={field('source', value?.source)}
 				/>
 				<small>Utamakan halaman promo atau pengumuman resmi, bukan halaman depan umum.</small>
 			</div>
-			<div class="field">
-				<label for={`${idPrefix}-promoCode`}
-					>Kode promo <span class="optional">opsional</span></label
-				>
-				<input
-					id={`${idPrefix}-promoCode`}
-					name="promoCode"
-					placeholder="Contoh: PROMO2026"
-					value={field('promoCode', value?.promoCode)}
-				/>
-			</div>
-			<div class="field">
-				<label for={`${idPrefix}-validityType`}>Jenis masa berlaku</label>
-				<select id={`${idPrefix}-validityType`} name="validityType">
-					<option
-						value="uncertain"
-						selected={field('validityType', value?.validity.type || 'uncertain') === 'uncertain'}
-						>Belum pasti</option
-					>
-					<option
-						value="fixed"
-						selected={field('validityType', value?.validity.type || 'uncertain') === 'fixed'}
-						>Tanggal tertentu</option
-					>
-					<option
-						value="forever"
-						selected={field('validityType', value?.validity.type || 'uncertain') === 'forever'}
-						>Berlaku terus</option
-					>
-				</select>
-			</div>
-			<div class="field">
-				<label for={`${idPrefix}-validityDate`}
-					>Tanggal terakhir klaim <span class="optional">jika ada</span></label
-				>
-				<input
-					id={`${idPrefix}-validityDate`}
-					name="validityDate"
-					type="date"
-					value={field('validityDate', value?.validity.date)}
-				/>
-			</div>
-			<div class="field">
-				<label for={`${idPrefix}-status`}>Status program</label>
-				<select id={`${idPrefix}-status`} name="status">
-					<option value="active" selected={field('status', value?.status || 'active') === 'active'}
-						>Sedang aktif</option
-					>
-					<option
-						value="upcoming"
-						selected={field('status', value?.status || 'active') === 'upcoming'}>Akan datang</option
-					>
-					{#if allowExpired}<option
-							value="expired"
-							selected={field('status', value?.status || 'active') === 'expired'}
-							>Sudah berakhir</option
-						>{/if}
-				</select>
-			</div>
-			<div class="field field-wide">
-				<label for={`${idPrefix}-validityDescription`}
-					>Catatan masa berlaku <span class="optional">opsional</span></label
-				>
-				<input
-					id={`${idPrefix}-validityDescription`}
-					name="validityDescription"
-					placeholder="Contoh: Selama kuota tersedia"
-					value={field('validityDescription', value?.validity.description)}
-				/>
-			</div>
+			<details
+				class="optional-fields field-wide"
+				open={Boolean(
+					field('promoCode', value?.promoCode) ||
+					field('validityDate', value?.validity.date) ||
+					field('validityDescription', value?.validity.description) ||
+					field('validityType', value?.validity.type || 'uncertain') !== 'uncertain' ||
+					field('status', value?.status || 'active') !== 'active'
+				)}
+			>
+				<summary>Kode promo, masa berlaku & status <span>opsional</span></summary>
+				<div class="field-grid">
+					<div class="field">
+						<label for={`${idPrefix}-promoCode`}
+							>Kode promo <span class="optional">opsional</span></label
+						>
+						<input
+							id={`${idPrefix}-promoCode`}
+							name="promoCode"
+							placeholder="Contoh: PROMO2026"
+							value={field('promoCode', value?.promoCode)}
+						/>
+					</div>
+					<div class="field">
+						<label for={`${idPrefix}-validityType`}>Jenis masa berlaku</label>
+						<select id={`${idPrefix}-validityType`} name="validityType">
+							<option
+								value="uncertain"
+								selected={field('validityType', value?.validity.type || 'uncertain') ===
+									'uncertain'}>Belum pasti</option
+							>
+							<option
+								value="fixed"
+								selected={field('validityType', value?.validity.type || 'uncertain') === 'fixed'}
+								>Tanggal tertentu</option
+							>
+							<option
+								value="forever"
+								selected={field('validityType', value?.validity.type || 'uncertain') === 'forever'}
+								>Berlaku terus</option
+							>
+						</select>
+					</div>
+					<div class="field">
+						<label for={`${idPrefix}-validityDate`}
+							>Tanggal terakhir klaim <span class="optional">jika ada</span></label
+						>
+						<input
+							id={`${idPrefix}-validityDate`}
+							name="validityDate"
+							type="date"
+							value={field('validityDate', value?.validity.date)}
+						/>
+					</div>
+					<div class="field">
+						<label for={`${idPrefix}-status`}>Status program</label>
+						<select id={`${idPrefix}-status`} name="status">
+							<option
+								value="active"
+								selected={field('status', value?.status || 'active') === 'active'}
+								>Sedang aktif</option
+							>
+							<option
+								value="upcoming"
+								selected={field('status', value?.status || 'active') === 'upcoming'}
+								>Akan datang</option
+							>
+							{#if allowExpired}<option
+									value="expired"
+									selected={field('status', value?.status || 'active') === 'expired'}
+									>Sudah berakhir</option
+								>{/if}
+						</select>
+					</div>
+					<div class="field field-wide">
+						<label for={`${idPrefix}-validityDescription`}
+							>Catatan masa berlaku <span class="optional">opsional</span></label
+						>
+						<input
+							id={`${idPrefix}-validityDescription`}
+							name="validityDescription"
+							placeholder="Contoh: Selama kuota tersedia"
+							value={field('validityDescription', value?.validity.description)}
+						/>
+					</div>
+				</div>
+			</details>
 		</div>
-	</section>
+	</details>
 </div>
 
 <style>
@@ -257,6 +293,52 @@
 		align-items: flex-start;
 		gap: 0.85rem;
 		margin-bottom: 1.3rem;
+	}
+	summary.section-heading {
+		list-style: none;
+		cursor: pointer;
+		margin-bottom: 0;
+	}
+	summary.section-heading::-webkit-details-marker,
+	.optional-fields > summary::-webkit-details-marker {
+		display: none;
+	}
+	details.editor-section[open] > .section-heading {
+		margin-bottom: 1.3rem;
+	}
+	.section-chevron {
+		margin-left: auto;
+		color: var(--text-muted);
+		transition: transform 0.2s ease;
+	}
+	details.editor-section[open] .section-chevron {
+		transform: rotate(180deg);
+	}
+	.section-heading:focus-visible,
+	.optional-fields > summary:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 4px;
+	}
+	.optional-fields {
+		border: 1px solid var(--border-color);
+		border-radius: 0.65rem;
+		padding: 0.85rem 1rem;
+		background: color-mix(in srgb, var(--bg-primary) 45%, transparent);
+	}
+	.optional-fields > summary {
+		list-style: none;
+		cursor: pointer;
+		color: var(--text-primary);
+		font-size: 0.84rem;
+		font-weight: 700;
+	}
+	.optional-fields > summary span {
+		color: var(--text-muted);
+		font-size: 0.72rem;
+		font-weight: 500;
+	}
+	.optional-fields[open] > summary {
+		margin-bottom: 1rem;
 	}
 	.section-icon {
 		display: grid;

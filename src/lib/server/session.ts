@@ -18,11 +18,12 @@ async function hash(token: string) {
 
 export async function userFromSession(
 	db: DynamicDb,
-	cookies: Cookies
+	cookies: Cookies,
+	ownerId?: string
 ): Promise<SessionUser | null> {
 	const token = cookies.get(cookieName);
 	if (!token || !/^[a-f0-9]{64}$/.test(token)) return null;
-	return db
+	const user = await db
 		.prepare(
 			`SELECT u.github_id, u.login, u.display_name, u.avatar_url, u.role, u.banned_at
 			 FROM sessions s JOIN users u ON u.github_id = s.github_id
@@ -30,6 +31,9 @@ export async function userFromSession(
 		)
 		.bind(await hash(token))
 		.first<SessionUser>();
+	if (!user) return null;
+	// A changed OWNER_GITHUB_ID must revoke old admin sessions immediately.
+	return { ...user, role: String(user.github_id) === ownerId ? 'admin' : 'user' };
 }
 
 export async function startSession(
@@ -77,7 +81,7 @@ export async function upsertUser(
 			 ON CONFLICT(github_id) DO UPDATE SET
 			 login = excluded.login, display_name = excluded.display_name,
 			 avatar_url = excluded.avatar_url,
-			 role = CASE WHEN excluded.role = 'admin' THEN 'admin' ELSE users.role END,
+			 role = excluded.role,
 			 updated_at = CURRENT_TIMESTAMP`
 		)
 		.bind(

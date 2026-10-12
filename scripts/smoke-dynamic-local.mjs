@@ -33,13 +33,14 @@ assert.equal(guestContribute.status, 200, 'contribute page public');
 const guestHtml = await guestContribute.text();
 assert.match(guestHtml, /Masuk untuk mengirim usulan/);
 assert.doesNotMatch(guestHtml, /name="title"/, 'guest cannot see submission fields');
-for (const channel of ['AI Agent', 'Git Clone', 'Email']) {
+for (const channel of ['AI Agent', 'Email']) {
 	const button = [...guestHtml.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].find((match) =>
 		match[2].includes(channel)
 	);
 	assert.ok(button, `${channel} channel visible`);
 	assert.match(button[1], /\bdisabled\b/, `${channel} channel disabled`);
 }
+assert.doesNotMatch(guestHtml, /Git Clone|npx CLI/, 'removed channels are absent');
 const guestSubmit = await post('/contribute/?/create', '', { title: 'Ditolak' });
 assert.equal(guestSubmit.status, 303, 'guest cannot submit');
 assert.match(guestSubmit.headers.get('location') || '', /\/auth\/github\?next=contribute/);
@@ -64,9 +65,16 @@ const payload = {
 	validityDescription: 'Simulasi',
 	status: 'active'
 };
+const oversized = await post('/contribute/?/create', userCookie, {
+	...payload,
+	description: 'x'.repeat(33 * 1024)
+});
+assert.equal(oversized.status, 400, 'oversized form rejected');
 const created = await post('/contribute/?/create', userCookie, payload);
 assert.equal(created.status, 303, `submit: ${await created.text()}`);
 assert.match(created.headers.get('location') || '', /\/dashboard\/\?submitted=1/);
+const duplicate = await post('/contribute/?/create', userCookie, payload);
+assert.equal(duplicate.status, 400, 'duplicate pending slug rejected');
 const pendingDashboard = await request('/dashboard/', { headers: { Cookie: userCookie } });
 assert.match(await pendingDashboard.text(), /Simulasi Bansos Lokal/);
 
@@ -107,6 +115,17 @@ assert.match(await reviewAfterEdit.text(), /Simulasi Bansos Lokal — Disunting 
 
 const approved = await post('/admin/?/approve', adminCookie, { id: submissionId[1] });
 assert.equal(approved.status, 303, `approve: ${await approved.text()}`);
+const staleRevision = await post('/dashboard/?/revise', userCookie, {
+	...payload,
+	submissionId: submissionId[1]
+});
+assert.equal(staleRevision.status, 403, 'published submission cannot be revised');
+const staleModeration = await post('/admin/?/moderate', adminCookie, {
+	id: submissionId[1],
+	state: 'rejected',
+	note: 'Late moderation'
+});
+assert.equal(staleModeration.status, 409, 'published submission cannot be moderated');
 
 const detail = await request(`/list/${slug}/`);
 assert.equal(detail.status, 200, 'new detail published without rebuild');
@@ -150,5 +169,5 @@ const signedOutDashboard = await request('/dashboard/', { headers: { Cookie: use
 assert.equal(signedOutDashboard.status, 303, 'signed-out dashboard requires login');
 
 console.log(
-	'PASS: guest gate, disabled channels, demo login, submit, request/revise, admin edit/approve, catalog/provider/sitemap, published edit, ban/unban, archive, logout.'
+	'PASS: guest gate, disabled channels, demo login, form limit, duplicate slug, submit, request/revise, admin edit/approve, stale actions, catalog/provider/sitemap, published edit, ban/unban, archive, logout.'
 );
