@@ -16,8 +16,7 @@
 		getLatestCommitForItem,
 		getProviderBySlug,
 		recommendedBansosFor,
-		slugifyProvider,
-		bansosList
+		slugifyProvider
 	} from '$lib/data/bansos';
 	import {
 		getCachedFavicon,
@@ -33,9 +32,10 @@
 	let giscusContainer: HTMLDivElement | null = $state(null);
 
 	let { data } = $props();
+	const bansosList = $derived(data.items);
 
 	let popularityData: Record<string, number> = $state({});
-	const item = $derived(bansosList.find((i) => i.id === data.id) || data.item);
+	const item = $derived(data.item);
 	const views = $derived(item ? popularityData[item.id] || 0 : 0);
 
 	let commentCount = $state(0);
@@ -144,6 +144,7 @@
 	);
 	const seoDesc = $derived(item ? detailT('seoDesc', { title: item.title }) : '');
 	const pageUrl = $derived(item ? `https://bansos.dev/list/${item.id}/` : '');
+	const ogImage = $derived(data.isLegacy ? `${pageUrl}og.png` : 'https://bansos.dev/og.png');
 
 	// ===== GEO: JSON-LD structured data — auto-generated from entry data =====
 	// Maps each entry to the most appropriate Schema.org type for AI crawling.
@@ -292,13 +293,13 @@
 		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={seoTitle} />
 		<meta property="og:description" content={seoDesc} />
-		<meta property="og:image" content="{pageUrl}og.png" />
+		<meta property="og:image" content={ogImage} />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={pageUrl} />
 		<meta name="twitter:title" content={seoTitle} />
 		<meta name="twitter:description" content={seoDesc} />
-		<meta name="twitter:image" content="{pageUrl}og.png" />
+		<meta name="twitter:image" content={ogImage} />
 
 		{#if schemaJson}
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -568,6 +569,16 @@
 											<strong>{originalContributor.displayName}</strong>
 										</a>
 									</div>
+								{:else if item.contributor}
+									<div class="original-contributor">
+										<span>{detailT('contributedBy')}</span>
+										<a
+											href={item.contributor.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="submitted-person"><strong>{item.contributor.name}</strong></a
+										>
+									</div>
 								{/if}
 								{#if commitContributors.length > 0}
 									<div
@@ -608,15 +619,15 @@
 										</time>
 									</div>
 								{/if}
-								<a
-									href={markdownSourceUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="markdown-source-link"
-								>
-									<i class="fa-solid fa-file-code" aria-hidden="true"></i>
-									{detailT('viewMarkdownSource')}
-								</a>
+								{#if data.isLegacy}<a
+										href={markdownSourceUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="markdown-source-link"
+									>
+										<i class="fa-solid fa-file-code" aria-hidden="true"></i>
+										{detailT('viewMarkdownSource')}
+									</a>{/if}
 							</div>
 						{/if}
 					</div>

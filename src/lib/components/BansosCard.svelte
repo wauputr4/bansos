@@ -112,6 +112,14 @@
 				{item.contributorSlug}
 			</a>
 		</p>
+	{:else if item.contributor}
+		<p class="contributor-label">
+			{$t('common.contributor')}:
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+			<a href={item.contributor.url} target="_blank" rel="noopener noreferrer"
+				>{item.contributor.name}</a
+			>
+		</p>
 	{/if}
 
 	<p class="card-desc text-pretty">

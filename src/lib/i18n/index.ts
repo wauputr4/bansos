@@ -1,4 +1,4 @@
-import { register, init, locale } from 'svelte-i18n';
+import { addMessages, init, locale } from 'svelte-i18n';
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
@@ -31,10 +31,8 @@ export { t } from 'svelte-i18n';
 export const currentLocale = writable<SupportedLocale>('id');
 
 availableCodes.forEach((code) => {
-	register(code, () => {
-		const mod = i18nFiles[`./${code}.json`] as { default?: unknown };
-		return Promise.resolve(mod.default || mod);
-	});
+	const mod = i18nFiles[`./${code}.json`] as { default?: Parameters<typeof addMessages>[1] };
+	addMessages(code, (mod.default || mod) as Parameters<typeof addMessages>[1]);
 });
 
 export function isValidLocale(loc: string | null | undefined): loc is SupportedLocale {

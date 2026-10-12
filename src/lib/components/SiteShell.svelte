@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve -- Auth endpoints are server routes, not client navigation pages. */
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -14,6 +15,9 @@
 	let lastY = 0;
 	let hideNavbar = $state(false);
 	let langExpanded = $state(false);
+	let accountExpanded = $state(false);
+	const viewer = $derived($page.data.viewer);
+	const loginHref = $derived($page.data.demoMode ? '/auth/demo?as=user' : '/auth/github');
 	let hoveredLangCode = $state<string | null>(null);
 	const standaloneProfile = $derived(
 		$page.url.pathname.startsWith('/contributor/') ||
@@ -25,8 +29,9 @@
 	) as { code: SupportedLocale; name: string; hoverName?: string }[];
 
 	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === 'Escape' && langExpanded) {
+		if (event.key === 'Escape') {
 			langExpanded = false;
+			accountExpanded = false;
 		}
 	}
 
@@ -106,6 +111,54 @@
 				{/each}
 			</div>
 			<div class="nav-actions">
+				<div class="account-wrapper">
+					{#if viewer}
+						<button
+							type="button"
+							class="account-trigger"
+							aria-label={`Menu akun ${viewer.login}`}
+							aria-expanded={accountExpanded}
+							onclick={() => (accountExpanded = !accountExpanded)}
+						>
+							{#if viewer.avatar_url}<img
+									src={viewer.avatar_url}
+									alt=""
+									referrerpolicy="no-referrer"
+								/>{:else}<span class="avatar-fallback"
+									>{viewer.login.slice(0, 1).toUpperCase()}</span
+								>{/if}
+							<span class="account-name">{viewer.login}</span><i
+								class="fa-solid fa-chevron-down"
+								aria-hidden="true"
+							></i>
+						</button>
+						{#if accountExpanded}
+							<!-- svelte-ignore a11y_click_events_have_key_events -->
+							<!-- svelte-ignore a11y_no_static_element_interactions -->
+							<div class="dropdown-backdrop" onclick={() => (accountExpanded = false)}></div>
+							<div class="account-dropdown">
+								<div class="account-identity">
+									<strong>{viewer.display_name}</strong><span>@{viewer.login}</span>
+								</div>
+								<a href="/dashboard/" onclick={() => (accountExpanded = false)}
+									><i class="fa-solid fa-table-columns"></i> Dashboard</a
+								>
+								{#if viewer.role === 'admin'}<a
+										href="/admin/"
+										onclick={() => (accountExpanded = false)}
+										><i class="fa-solid fa-shield-halved"></i> Moderasi</a
+									>{/if}
+								<form method="POST" action="/auth/logout">
+									<button type="submit"
+										><i class="fa-solid fa-right-from-bracket"></i> Keluar</button
+									>
+								</form>
+							</div>
+						{/if}
+					{:else}<a class="login-trigger" href={loginHref}
+							><i class="fa-brands fa-github" aria-hidden="true"></i><span>Masuk</span></a
+						>{/if}
+				</div>
 				<a
 					href="https://github.com/wauputr4/bansos"
 					target="_blank"
@@ -386,6 +439,111 @@
 		align-items: center;
 		gap: 0.5rem;
 	}
+	.account-wrapper {
+		position: relative;
+	}
+	.account-trigger,
+	.login-trigger {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.55rem;
+		min-height: 2.25rem;
+		padding: 0.3rem 0.7rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--border-color));
+		border-radius: 0.55rem;
+		background: var(--color-accent-glow);
+		color: var(--color-accent);
+		font: inherit;
+		font-size: 0.82rem;
+		font-weight: 750;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.account-trigger img,
+	.avatar-fallback {
+		width: 1.45rem;
+		height: 1.45rem;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+	.avatar-fallback {
+		display: grid;
+		place-items: center;
+		background: var(--color-accent);
+		color: #06130f;
+		font-size: 0.75rem;
+	}
+	.account-trigger > i {
+		font-size: 0.6rem;
+		opacity: 0.7;
+	}
+	.account-name {
+		max-width: 7rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.account-dropdown {
+		position: absolute;
+		right: 0;
+		top: calc(100% + 0.5rem);
+		z-index: 50;
+		width: 13.5rem;
+		padding: 0.45rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: var(--bg-secondary);
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+	}
+	.account-identity {
+		display: grid;
+		padding: 0.6rem 0.7rem;
+		border-bottom: 1px solid var(--border-color);
+		margin-bottom: 0.35rem;
+		font-size: 0.8rem;
+	}
+	.account-identity strong {
+		color: var(--text-primary);
+		overflow-wrap: anywhere;
+	}
+	.account-identity span {
+		color: var(--text-muted);
+	}
+	.account-dropdown a,
+	.account-dropdown button {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		width: 100%;
+		padding: 0.65rem 0.7rem;
+		border: 0;
+		border-radius: 0.45rem;
+		background: transparent;
+		color: var(--text-secondary);
+		font: inherit;
+		font-size: 0.82rem;
+		text-align: left;
+		cursor: pointer;
+	}
+	.account-dropdown a:hover,
+	.account-dropdown button:hover {
+		background: var(--color-accent-glow);
+		color: var(--color-accent);
+	}
+	@media (max-width: 70rem) {
+		.account-name {
+			display: none;
+		}
+	}
+	@media (max-width: 26rem) {
+		.nav-actions {
+			gap: 0.25rem;
+		}
+		.login-trigger span {
+			display: none;
+		}
+	}
 
 	.icon-btn {
 		display: inline-flex;
@@ -644,16 +802,16 @@
 		color: var(--color-accent);
 	}
 
-	@media (min-width: 48rem) {
+	@media (min-width: 62rem) {
 		.site-shell {
 			padding-bottom: 0;
 		}
 
 		.desktop-nav {
 			display: flex;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
+			justify-content: center;
+			flex: 1;
+			min-width: 0;
 		}
 
 		.mobile-bottom-nav {

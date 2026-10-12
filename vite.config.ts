@@ -14,7 +14,7 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 			adapter: adapter({
-				routes: { include: ['/api/*'], exclude: [] }
+				routes: { include: ['/*'], exclude: ['/_app/*', '/images/*', '/favicon.ico'] }
 			})
 		})
 	],

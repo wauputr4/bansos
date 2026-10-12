@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { t } from '$lib/i18n';
-	import { getProviderStats, formatNumber } from '$lib/data/bansos';
+	import { formatNumber } from '$lib/data/bansos';
 	import {
 		getCachedFavicon,
 		setCachedFavicon,
@@ -12,7 +12,8 @@
 	import Pagination from '$lib/components/Pagination.svelte';
 	import { onMount } from 'svelte';
 
-	const providers = getProviderStats();
+	let { data } = $props();
+	const providers = $derived(data.providers);
 	let searchQuery = $state('');
 
 	const filteredProviders = $derived.by(() => {

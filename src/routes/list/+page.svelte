@@ -5,7 +5,9 @@
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
 
-	import { bansosList, sortBansosByNewest } from '$lib/data/bansos';
+	import { sortBansosByNewest } from '$lib/data/bansos';
+	let { data } = $props();
+	const bansosList = $derived(data.items);
 
 	let selectedTags: string[] = $state([]);
 	let selectedStatuses: string[] = $state([]);

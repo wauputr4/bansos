@@ -1,0 +1,14 @@
+{
+	"name": "bansos-local",
+	"compatibility_date": "2026-09-27",
+	"vars": { "BANSOS_LOCAL_DEMO": "1" },
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "bansos-local",
+			"database_id": "00000000-0000-0000-0000-000000000001",
+			"preview_database_id": "DB",
+			"migrations_dir": "migrations"
+		}
+	]
+}
