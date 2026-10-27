@@ -19,7 +19,7 @@
 
 **bansos.dev** is an open-source catalog of giveaways, freebies, and the most legit coding tool discounts specifically for Indonesian broke developers. Made so our portfolios stay lit even when our wallets are dying. Looking for free domains, hosting free-tier, cloud credits, API credits, free databases, or startup credits? This is the gathering place! 100% Free, No Clickbait, No Hassle. fr fr 🚀
 
-This site is built as a static SvelteKit site that is super SEO-friendly, data-driven, safe in light/dark mode, and easy to contribute to via email or pull request.
+This site uses SvelteKit on Cloudflare Pages with a runtime D1 catalog, GitHub login, and admin approval. Repository data remains the base/fallback catalog; D1 publication does not require a rebuild. The dynamic implementation is under staging validation and is not yet released to production.
 
 ## Quick Keywords
 
@@ -33,13 +33,18 @@ This site is built as a static SvelteKit site that is super SEO-friendly, data-d
 - Tag filters and featured/latest highlights.
 - Per-listing data under [`src/lib/data/bansos/`](src/lib/data/bansos/).
 - SEO metadata for public pages, including meta description and social card pattern.
-- Public contribution workflow via email and Git clone.
+- GitHub-authenticated submission form, owner dashboard, and admin moderation.
+- Session-backed D1 comments, attributed Discussions imports, and recoverable deletion.
+- Private admin Discord submission alerts and public approved-listing announcements, with durable queues and manual retry. Staging never sends real messages.
+- Admin review-queue indicator refreshed every 60 seconds while the page is active.
 - Public contribution page: [bansos.dev/contribute](https://bansos.dev/contribute).
 - Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
 
 ## Deploy and Hosting
 
-This site is deployed and hosted using **Cloudflare Pages** with the `@sveltejs/adapter-cloudflare` adapter. Every time there is a pull request or push to the `main` branch, Cloudflare automatically triggers a build and distributes the super-fast static site along with all pre-rendered dynamic OG images.
+Hosted on **Cloudflare Pages** using `@sveltejs/adapter-cloudflare`. Code changes still require build/deploy; publishing and moderating D1 content does not. GitHub previews do not automatically configure D1/OAuth. Use separate staging/production databases, OAuth Apps, and secrets; never expose production resources to untrusted PR code.
+
+See [architecture/local setup](docs/dynamic-catalog.md), [staging](docs/staging-dynamic-catalog.md), [E2E evidence](docs/staging-e2e-2026-10-27.md), and [production preparation](docs/production-readiness.md). Full static snapshot export is not implemented; without a DB binding the repository catalog remains the fallback.
 
 ## Running the project
 
@@ -78,78 +83,14 @@ slugs from colliding with site routes or bansos shortlinks.
 
 ## How to Add Bansos
 
-Currently, active public submissions are via AI Agent, email, and Git clone. The form, public CLI, and bot channels are temporarily disabled due to spam.
+1. Open [Contribute](https://bansos.dev/contribute/) and sign in with GitHub.
+2. Provide the program details, official source, requirements, and validity, then submit for review.
+3. Track, revise, or withdraw submissions in Dashboard. Only admin approval publishes a listing.
+4. Edits to owned listings require review; archiving hides them immediately. Featured remains admin-only.
 
-> [!TIP]
-> **Soon: Submission via Discord & Telegram Bot!**
-> We are building bot integrations so you can submit new bansos automatically right from our Discord server or Telegram channel.
-> While waiting, join our communities:
->
-> - **[Discord Server](https://discord.gg/m4WFaQpNGs)** for chatting, discussions, and chat submissions (coming soon).
-> - **[Telegram Channel](https://t.me/bansos_dev)** for instant updates on the latest developer promos directly to your phone.
+AI Agent, Email, Git Clone, and npx CLI are not public submission tabs in this MVP. Repository data tools remain available for maintainer upkeep of the base catalog, not as a replacement for user moderation.
 
-### 1. Option 1: Via AI Agent
-
-Install the [official bansos.dev skills](https://www.skills.sh/wauputr4/skill-bansos) so your agent understands the latest listing structure, contributor profiles, validation, and PR workflow:
-
-```bash
-npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
-```
-
-After installation, provide the source link and ask the agent to use `$bansos-add-entry`. Review the data and diff before opening a pull request.
-
----
-
-### 2. Option 2: Via Email
-
-This option is perfect for those who want to share information quickly without touching the terminal.
-
-1. Open the contribution page in your browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
-2. Select the **Email** tab.
-3. Send your proposal to **[submit@bansos.dev](mailto:submit@bansos.dev)** using the provided template.
-4. Ensure all important fields are filled: title, provider, benefits, claim requirements, official link, status, source, and contributor.
-
----
-
-### 3. Option 3: Via Git Clone (Manual Pull Request)
-
-This option is for those who want to test the code locally or modify files directly.
-
-1. Fork and clone this repository using GitHub CLI:
-
-   ```bash
-   gh repo fork wauputr4/bansos --clone
-   cd bansos
-   npm install
-   ```
-
-2. Add data locally using the helper script:
-
-   ```bash
-   npm run add:bansos -- \
-     --id example-bansos \
-     --title "Example Developer Bansos" \
-     --provider "Example Provider" \
-     --description "Short description of the bansos." \
-     --benefits "Benefit one|Benefit two" \
-     --validity-type fixed \
-     --validity-date 2026-06-30 \
-     --requirements "Create an account|Claim the program" \
-     --cta-link "https://example.com" \
-    --contributor-slug your-username \
-     --contributor-name "Your Name" \
-     --contributor-url "https://example.com" \
-     --tags "Cloud,Freebie"
-   ```
-
-   This script validates the data and creates `src/lib/data/bansos/<slug>/index.json` plus its listing README.
-
-   The `--benefits` and `--requirements` arguments are separated by `|`.
-   The `--tags` argument is separated by commas.
-   `--contributor-slug` is required for every submission. `--contributor-name` is required and
-   `--contributor-url` is optional only when that contributor profile does not exist yet.
-
-3. Create a new branch, add commits, push to your fork, and send a pull request to the main repository.
+New comments live in D1. `scripts/import-discussions.mjs` supports one-way historical imports preserving numeric authors, dates, reply relationships, and source links. Imports do not create login users, mutate GitHub, or restore locally deleted comments. Never commit private snapshots.
 
 ## Listing Quality Guidelines
 
@@ -164,8 +105,8 @@ A good listing should include:
 
 ## Contribution
 
-- Send data via email to [submit@bansos.dev](mailto:submit@bansos.dev).
-- If more comfortable, add via branch and manual pull request.
+- Submit listings through the GitHub-authenticated form for admin review.
+- Code changes still use branches/PRs and maintainer review.
 - Read the full contribution guide in [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Community Code of Conduct

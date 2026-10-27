@@ -43,12 +43,14 @@ export async function startSession(
 	secure: boolean
 ) {
 	const token = hex(crypto.getRandomValues(new Uint8Array(32)));
-	await db
-		.prepare(
-			"INSERT INTO sessions (token_hash, github_id, expires_at) VALUES (?, ?, datetime('now', '+14 days'))"
-		)
-		.bind(await hash(token), githubId)
-		.run();
+	await db.batch([
+		db.prepare('DELETE FROM sessions WHERE expires_at <= CURRENT_TIMESTAMP'),
+		db
+			.prepare(
+				"INSERT INTO sessions (token_hash, github_id, expires_at) VALUES (?, ?, datetime('now', '+14 days'))"
+			)
+			.bind(await hash(token), githubId)
+	]);
 	cookies.set(cookieName, token, {
 		path: '/',
 		httpOnly: true,

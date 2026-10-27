@@ -1,9 +1,15 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { commentStats } from '$lib/server/comments';
 
 export const prerender = false;
 
 export const GET: RequestHandler = async ({ platform }) => {
+	if (platform?.env.DB) {
+		return json(await commentStats(platform.env.DB), {
+			headers: { 'Cache-Control': 'private, no-store' }
+		});
+	}
 	const GITHUB_DISCUSS_TOKEN =
 		platform?.env?.GITHUB_DISCUSS_TOKEN || process.env.GITHUB_DISCUSS_TOKEN;
 	const GISCUS_REPO =

@@ -28,6 +28,31 @@
 		<a class="back-link" href={resolve('/dashboard/')}>← Dashboard kontributor</a>
 	</header>
 	{#if form?.message}<p class="notice" role="alert">{form.message}</p>{/if}
+	<section id="notifications" class="review-section">
+		<h2>Notifikasi Discord</h2>
+		<p>
+			Pengumuman approved: {data.discordEnabled ? 'aktif' : 'dimatikan'}. Notifikasi admin privat: {data.reviewDiscordEnabled
+				? 'aktif'
+				: 'dimatikan'}. Retry mengikuti jeda percobaan.
+		</p>
+		{#each data.notifications as notification (`${notification.kind}:${notification.event_key}`)}
+			<form method="POST" action="?/retryNotification" class="user-row">
+				<span
+					>{notification.kind === 'review' ? 'Usulan privat' : 'Listing approved'} · {notification.listing_id}
+					· {notification.state} · {notification.attempts} percobaan {notification.last_error ||
+						''}</span
+				>
+				<input type="hidden" name="key" value={notification.event_key} />
+				<input type="hidden" name="kind" value={notification.kind} />
+				<button
+					type="submit"
+					disabled={!(notification.kind === 'review'
+						? data.reviewDiscordEnabled
+						: data.discordEnabled)}>Coba kirim ulang</button
+				>
+			</form>
+		{/each}
+	</section>
 	<div class="summary-grid">
 		<div>
 			<span class="metric-icon"><i class="fa-regular fa-clock"></i></span><strong
@@ -61,7 +86,7 @@
 				</div>{/if}
 			<div class="review-list">
 				{#each data.pending as entry (entry.id)}
-					<details class="review-card">
+					<details class="review-card" id={`submission-${entry.id}`}>
 						<summary
 							><span class="review-icon"><i class="fa-solid fa-gift"></i></span><span
 								class="review-title"
@@ -192,6 +217,16 @@
 					>
 				</div>
 				<form method="POST" action="?/edit">
+					<input type="hidden" name="version" value={data.selectedVersion} />
+					<label for="owner-id">Pemilik listing (ID GitHub yang sudah login)</label>
+					<select id="owner-id" name="ownerId"
+						><option value="">Belum ditautkan</option
+						>{#each data.users as user (user.github_id)}<option
+								value={user.github_id}
+								selected={data.selectedOwner === user.github_id}
+								>@{user.login} ({user.github_id})</option
+							>{/each}</select
+					>
 					<input type="hidden" name="originalId" value={data.selected.id} /><SubmissionFields
 						value={data.selected}
 						allowExpired
@@ -201,12 +236,55 @@
 						Featured</label
 					><button class="primary-action">Simpan perubahan</button>
 				</form>
+				<form method="POST" action="?/delete" class="archive-form">
+					<input type="hidden" name="id" value={data.selected.id} /><button
+						class="danger-action"
+						onclick={(event) => {
+							if (!confirm('Hapus listing dari publik? Data tetap tersimpan dan dapat dipulihkan.'))
+								event.preventDefault();
+						}}>Hapus listing (dapat dipulihkan)</button
+					>
+				</form>
 				<form method="POST" action="?/archive" class="archive-form">
 					<input type="hidden" name="id" value={data.selected.id} /><button class="danger-action"
 						>Arsipkan dari katalog</button
 					>
 				</form>
 			</div>{/if}
+	</section>
+	<section class="catalog-section">
+		<h2>Arsip &amp; listing dihapus</h2>
+		{#each data.hidden as item (item.id)}<div class="user-row">
+				<span>{item.title} — {item.deleted ? 'Dihapus' : 'Arsip'}</span>
+				<form method="POST" action="?/restore">
+					<input type="hidden" name="id" value={item.id} /><button class="secondary-action"
+						>Pulihkan listing</button
+					>
+				</form>
+			</div>{:else}<p>Belum ada arsip.</p>{/each}
+	</section>
+	<section class="catalog-section" id="comments">
+		<h2>Moderasi komentar (100 terbaru)</h2>
+		{#each data.comments as comment (`${comment.source}:${comment.id}`)}<article
+				class="review-card"
+			>
+				<p>@{comment.login} · {comment.listing_id}</p>
+				{#if comment.source_url}<a
+						href={comment.source_url}
+						target="_blank"
+						rel="noopener noreferrer">Sumber GitHub Discussions</a
+					>{/if}
+				<p style="white-space: pre-wrap; overflow-wrap: anywhere">{comment.body}</p>
+				<form method="POST" action={comment.deleted_at ? '?/restoreComment' : '?/deleteComment'}>
+					<input type="hidden" name="id" value={comment.id} /><input
+						type="hidden"
+						name="source"
+						value={comment.source}
+					/><button class="danger-action"
+						>{comment.deleted_at ? 'Pulihkan komentar' : 'Hapus komentar'}</button
+					>
+				</form>
+			</article>{:else}<p>Belum ada komentar.</p>{/each}
 	</section>
 </main>
 

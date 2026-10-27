@@ -5,6 +5,14 @@
 
 	const GA_ID = (import.meta.env.VITE_GA_ID ?? '').trim();
 	const HAS_VALID_GA_ID = /^G-[A-Z0-9]+$/.test(GA_ID);
+	// Keep analytics off for the account-backed MVP until consent is implemented.
+	const enabled = $derived(
+		!dev &&
+			HAS_VALID_GA_ID &&
+			!$page.data.accountMode &&
+			!$page.data.staging &&
+			!/^\/(auth|admin|dashboard|contribute)(\/|$)/.test($page.url.pathname)
+	);
 
 	// Construct inline script with validation and safe serialization
 	const scriptTag =
@@ -17,9 +25,9 @@
 
 	// Track page views on route change (runs only in browser)
 	$effect(() => {
-		if (!dev && HAS_VALID_GA_ID && $page.url.pathname) {
+		if (enabled && $page.url.pathname) {
 			const currentPath = $page.url.pathname;
-			const currentHref = $page.url.href;
+			const currentHref = `${$page.url.origin}${currentPath}`;
 
 			// Wait for SvelteKit and <svelte:head> to fully update the document title
 			tick().then(() => {
@@ -34,7 +42,7 @@
 </script>
 
 <svelte:head>
-	{#if HAS_VALID_GA_ID && !dev}
+	{#if enabled}
 		<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html scriptTag}

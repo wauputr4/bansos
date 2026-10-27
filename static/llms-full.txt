@@ -1,5 +1,5 @@
 # bansos.dev — Dataset Lengkap
-> Diperbarui: 2026-09-27 | Total: 120 entri (102 aktif, 18 expired)
+> Diperbarui: 2026-10-27 | Total: 129 entri (110 aktif, 19 expired)
 
 ---
 
@@ -289,6 +289,35 @@
 
 ---
 
+### Artbloom Free $100 AI API Credit
+
+- **ID:** `artbloom-free-100-api-credit`
+- **Provider:** Artbloom
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools, No Credit Card
+- **Status:** active
+
+**Deskripsi:** Artbloom adalah gateway API OpenAI-compatible di api.artbloom.tech yang langsung menaruh kredit $100 ke saldo setiap akun baru, tanpa kartu kredit. Pendaftaran dan login hanya lewat akun GitHub, lalu kredit bisa dipakai untuk model teks claude-opus-5, claude-opus-5-5, DeepSeek-V4-Flash, dan kimi-k3, plus model gambar gpt-image-2.5 lewat endpoint /v1/chat/completions dan /v1/images/generations.
+
+**Benefit:**
+- Kredit $100 masuk ke saldo seketika saat akun dibuat, tanpa kartu kredit
+- OpenAI-compatible: arahkan SDK OpenAI ke https://api.artbloom.tech/v1, streaming jalan dan model Anthropic diterjemahkan otomatis
+- Harga model teks transparan: claude-opus-5 & claude-opus-5-5 $2 input / $10 output per 1M token, DeepSeek-V4-Flash & kimi-k3 $1 input / $3 output per 1M token
+- Model gambar gpt-image-2.5, gpt-image-2.5-flare, dan gpt-image-2.5-sunburst ditagih per gambar: Low $0.02, Medium $0.10, High $0.50
+- Tiap request dicatat lengkap dengan jumlah token dan biayanya, dipotong dari saldo prabayar secara real time
+
+**Cara Klaim:**
+1. Punya akun GitHub — pendaftaran dan login cuma lewat tombol Continue with GitHub
+2. Daftar lewat link referral supaya bonus undangan ikut aktif
+
+- **CTA Link:** https://api.artbloom.tech/signup?ref=CIS4BH4UN4
+- **Sumber:** https://api.artbloom.tech/models
+- **Tips:** Kredit gambar punya saldo terpisah dari kredit token teks, jadi cek dua-duanya di dashboard. Operator tidak memublikasikan halaman syarat & ketentuan maupun masa berlaku kredit, jadi anggap ini layanan tanpa SLA dan jangan dipakai untuk produksi.
+- **Berlaku:** uncertain (Tidak ada tanggal berakhir yang diumumkan; besaran kredit gratis mengikuti kebijakan operator Artbloom)
+
+🔗 **Link Detail:** https://bansos.dev/list/artbloom-free-100-api-credit/
+
+---
+
 ### FREE 1 Year subscription ATOMESUS
 
 - **ID:** `atomesus-free-1-year-subscription`
@@ -518,6 +547,38 @@
 
 ---
 
+### Relay — $5 Kredit API Gratis via Verifikasi Telegram
+
+- **ID:** `codex-relay`
+- **Provider:** Relay
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools
+- **Status:** active
+
+**Deskripsi:** Relay (codex-relay.codes) adalah gateway API OpenAI-compatible yang menyatukan model GPT, Gemini, Grok, dan GLM dalam satu API key — cocok untuk Codex CLI dan library OpenAI. Bonus gratisnya: $5 kredit ke bonus balance setelah verifikasi akun via bot Telegram mereka sesuai ketentuan verifikasi operator, plus bonus referral $5 untuk teman yang memenuhi syarat program operator. Bonus balance dipakai duluan dan ditagih per request di harga resmi model — tanpa langganan. Katalog 21+ model (gpt-6.1-sol, gpt-6-astra, gemini-3.1-pro, grok-4.7, glm-5.3, dll) dengan harga di bawah harga resmi developer; top-up via crypto (USDT/BTC/TON, 300+ koin) tanpa VPN. Statistik uptime tiap model dipublikasikan live di halaman Status.
+
+**Benefit:**
+- Kredit $5 setelah verifikasi akun sesuai petunjuk operator di dashboard
+- Bonus referral $5 per teman yang memenuhi syarat program operator
+- Bonus balance dipakai duluan, ditagih per request di harga resmi model (tanpa langganan)
+- 21+ model OpenAI/Gemini/Grok/GLM via satu API key, kompatibel Codex CLI + library OpenAI (endpoint openai, anthropic, gemini)
+- Top-up crypto (USDT, BTC, TON, 300+ koin) — kerja tanpa VPN
+- Kontrol per API key: spending limit, expiry date, whitelist model & IP
+
+**Cara Klaim:**
+1. Verifikasi akun via bot Telegram wajib supaya bonus $5 masuk (tanpa verifikasi = tidak ada bonus)
+2. Email wajib diverifikasi saat daftar (kode dikirim ke email)
+3. Captcha Turnstile aktif di form pendaftaran
+4. Anti-fraud: bonus ditahan bila cek otomatis mencurigai browser/VPN; 1 bonus per orang — device & akun Telegram ganda ditolak
+5. Bonus hanya bisa dipakai untuk API request — tidak bisa ditarik tunai
+
+- **CTA Link:** https://codex-relay.codes/register?aff=3GIf
+- **Sumber:** https://codex-relay.codes/
+- **Berlaku:** uncertain (Tidak ada tanggal kedaluwarsa diumumkan; program bonus aktif saat dicek (Oktober 2026), mengikuti kebijakan operator)
+
+🔗 **Link Detail:** https://bansos.dev/list/codex-relay/
+
+---
+
 ### Conduit AI — $500 Trial Credit & Free Model Access
 
 - **ID:** `conduit-trial-credit-500`
@@ -544,6 +605,34 @@
 - **Berlaku:** uncertain (Bonus mengikuti ketentuan dan ketersediaan dari pihak Conduit.)
 
 🔗 **Link Detail:** https://bansos.dev/list/conduit-trial-credit-500/
+
+---
+
+### CurlShot — API Screenshot Website Gratis 100 per Bulan
+
+- **ID:** `curlshot-free-100-screenshots`
+- **Provider:** CurlShot
+- **Kategori:** API, Free Tier, Developer Tools
+- **Status:** active
+
+**Deskripsi:** API screenshot website: ubah URL apa pun jadi gambar PNG, JPEG, WebP, atau PDF lewat satu request GET. Paket gratis 100 screenshot per bulan tanpa kartu kredit, cocok untuk thumbnail link, gambar Open Graph, arsip halaman, dan agent AI.
+
+**Benefit:**
+- 100 screenshot gratis setiap bulan, tanpa kartu kredit
+- Output PNG, JPEG, WebP, atau PDF; screenshot satu halaman penuh, preset perangkat mobile/tablet, mode gelap, dan elemen tertentu via CSS selector
+- Pemblokiran iklan dan banner cookie dapat diaktifkan di API; aktif secara default melalui MCP
+- Server MCP hosted untuk Claude Code, Cursor, dan agent AI lain, plus node komunitas n8n
+
+**Cara Klaim:**
+1. Daftar akun di curlshot.com dengan nama, email, dan password
+2. Buat API key di dashboard
+
+- **CTA Link:** https://curlshot.com/pricing
+- **Sumber:** https://curlshot.com/pricing
+- **Tips:** Coba dulu tanpa akun di https://curlshot.com/tools/full-page-screenshot. Dokumentasi API: https://curlshot.com/docs
+- **Berlaku:** forever (Paket gratis permanen, kuota direset setiap bulan)
+
+🔗 **Link Detail:** https://bansos.dev/list/curlshot-free-100-screenshots/
 
 ---
 
@@ -762,6 +851,38 @@
 - **Berlaku:** forever
 
 🔗 **Link Detail:** https://bansos.dev/list/freebuff-ai-builder/
+
+---
+
+### FreeModel.in — Gratis 1M Token API per Bulan, Semua 31 Model
+
+- **ID:** `freemodel-in-1m-token-gratis`
+- **Provider:** FreeModel.in
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools
+- **Status:** active
+
+**Deskripsi:** FreeModel (freemodel.in) adalah gateway API OpenAI-compatible dengan 31 model — Claude Opus 5, Claude Fable 5, GPT-6.1, Gemini 3.1 Pro, Grok 4.6, GLM 5.3, DeepSeek V4, dan lainnya — semuanya bisa diakses dari free tier. Gratis 1 juta token per bulan tanpa kartu kredit, allowance reset bulanan, dengan streaming, tool calling, vision, reasoning, JSON mode, dan embeddings aktif di semua plan. Cukup ganti base URL ke https://freemodel.in/v1 dan semua tool OpenAI-compatible (Cursor, Cline, Claude Code, opencode, Kilo Code) langsung jalan. Kelebihan allowance ditagih ke balance per harga model — kalau balance kosong, request ditolak dengan HTTP 402 yang jelas, tidak pernah surprise invoice. Catatan: ini situs berbeda dari FreeModel.dev yang sudah pernah dilisting sebelumnya.
+
+**Benefit:**
+- Free tier 1 juta token per bulan — tanpa kartu kredit, reset tiap bulan (disebut Free Forever oleh situs)
+- Semua 31 model terbuka di semua plan termasuk Free: Claude Opus 5, Claude Fable 5, GPT-6.1, Gemini 3.1 Pro, Grok 4.6, GLM 5.3, DeepSeek V4
+- Streaming, tool calling, vision, reasoning, JSON mode + embeddings (text-embedding-3-small/large) aktif di semua plan
+- OpenAI-compatible — ganti base URL ke https://freemodel.in/v1, langsung jalan di Cursor, Cline, Claude Code, opencode, Kilo Code
+- Rate limit free tier 60 request/menit dan 100k token/menit
+- Setelah allowance habis request ditagih ke balance per harga model; balance kosong = HTTP 402 jelas, bukan tagihan mengejutkan
+
+**Cara Klaim:**
+1. Daftar dengan email atau akun Google (password min. 8 karakter), tanpa kartu kredit
+2. Buat API key di dashboard (format fm_... — key hanya ditampilkan sekali, langsung disalin)
+3. Allowance bulanan dipakai duluan; token dihitung gabungan prompt + completion
+4. Kelebihan pakai ditagih ke balance. Bila melakukan top-up, ikuti metode, jaringan, dan alamat pembayaran persis seperti yang ditampilkan di dashboard; saldo kosong menghasilkan HTTP 402
+5. Rate limit 60 req/menit di-enforce per akun di free tier
+
+- **CTA Link:** https://freemodel.in/register?ref=FM-BF3BDF
+- **Sumber:** https://freemodel.in/pricing
+- **Berlaku:** uncertain (Halaman pricing menyebut free tier Free Forever, tapi tidak ada tanggal resmi; mengikuti kebijakan operator (dicek Oktober 2026))
+
+🔗 **Link Detail:** https://bansos.dev/list/freemodel-in-1m-token-gratis/
 
 ---
 
@@ -1387,6 +1508,37 @@
 
 ---
 
+### Promo Domain .WEB.ID Gratis dari Jagoan Hosting
+
+- **ID:** `jagoanhosting-domain-webid-gratis-freewebid1k`
+- **Provider:** Jagoan Hosting
+- **Website Provider:** https://www.jagoanhosting.com
+- **Kategori:** Domain, Gratisan
+- **Status:** active
+
+**Deskripsi:** Domain .WEB.ID gratis untuk 1 tahun memakai kode FREEWEBID1K saat registrasi baru di Jagoan Hosting; cocok untuk website pribadi, portofolio, atau blog selama promo masih tersedia.
+
+**Benefit:**
+- Registrasi domain .WEB.ID gratis untuk tahun pertama
+- Cocok untuk website pribadi, portofolio, atau blog
+- Klaim melalui checkout domain Jagoan Hosting
+
+**Cara Klaim:**
+1. Buka halaman pemesanan domain .WEB.ID
+2. Pilih nama domain .WEB.ID yang tersedia untuk registrasi baru
+3. Masukkan kode FREEWEBID1K saat checkout
+4. Pastikan total pembayaran Rp0 sebelum menyelesaikan pesanan
+
+- **Kode Promo:** `FREEWEBID1K`
+- **CTA Link:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.web.id
+- **Sumber:** https://beli.jagoanhosting.com/order/domain?domain=register&tld=.web.id
+- **Tips:** Kode dari pengajuan komunitas berhasil diuji pada checkout Jagoan Hosting (12 Oktober 2026): potongan Rp45.000 dan total Rp0 untuk registrasi domain .WEB.ID contoh selama 1 tahun. Ketersediaan kode dapat berubah; periksa kembali total tagihan dan harga perpanjangan sebelum memesan.
+- **Berlaku:** uncertain (Tanggal akhir dan kuota promo belum diumumkan; cek penerimaan kode serta total tagihan saat checkout.)
+
+🔗 **Link Detail:** https://bansos.dev/list/jagoanhosting-domain-webid-gratis-freewebid1k/
+
+---
+
 ### Promo Domain .MY.ID Gratis dari Jagoan Hosting
 
 - **ID:** `jagoanhosting-promo-domain-myid`
@@ -1706,6 +1858,34 @@
 
 ---
 
+### MiaRouter Free $20 AI Credit
+
+- **ID:** `miarouter-free-20-ai-credit`
+- **Provider:** MiaRouter
+- **Kategori:** AI Credits, API, AI Tools, Free Tier, Developer Tools
+- **Status:** active
+
+**Deskripsi:** MiaRouter memberikan kredit API senilai $20 untuk pengguna baru yang login lalu memverifikasi akun melalui Telegram. Kredit dapat dipakai untuk mengakses model seperti Claude Opus 5.5, Claude Fable 5.1, dan GPT-6 Astra.
+
+**Benefit:**
+- Kredit API senilai $20 untuk pengguna baru
+- Akses model Claude Opus 5.5, Claude Fable 5.1, dan GPT-6 Astra
+- Satu API untuk banyak model AI populer
+
+**Cara Klaim:**
+1. Daftar dan login akun MiaRouter
+2. Verifikasi akun melalui Telegram
+3. Daftar melalui link referral yang tersedia
+4. Cek saldo kredit di dashboard MiaRouter
+
+- **CTA Link:** https://www.miarouter.online/sign-up?aff=txSS
+- **Sumber:** https://www.miarouter.online/sign-up?aff=txSS
+- **Berlaku:** uncertain (Ketersediaan dan besaran kredit mengikuti kebijakan MiaRouter)
+
+🔗 **Link Detail:** https://bansos.dev/list/miarouter-free-20-ai-credit/
+
+---
+
 ### Microsoft for Startups Founders Hub (Kredit Azure hingga $150.000)
 
 - **ID:** `microsoft-founders-hub`
@@ -1849,6 +2029,35 @@
 - **Berlaku:** uncertain (Kode promo harus diaktifkan dalam 12 bulan, dan kredit valid selama 12 bulan setelah aktivasi dilakukan)
 
 🔗 **Link Detail:** https://bansos.dev/list/mongodb-startups/
+
+---
+
+### Moyuu Relay API Multi-Model Murah
+
+- **ID:** `moyuu-api-relay`
+- **Provider:** Moyuu
+- **Kategori:** AI Credits, API, AI Tools, Developer Tools
+- **Status:** active
+
+**Deskripsi:** Moyuu adalah relay API OpenAI-compatible yang mengagregasi 60+ model dari berbagai vendor (OpenAI, Claude, DeepSeek, Gemini, Grok, dan lainnya) dengan beberapa grup harga. Biaya pemakaian bergantung pada model dan grup yang dipilih; cek tarif terkini di halaman pricing sebelum top-up. Pendaftaran terbuka via email (verifikasi wajib), GitHub, Google, atau LinuxDO, dilindungi Cloudflare Turnstile. Tidak ada bonus saldo otomatis saat daftar (program itu dihentikan Juni 2026 karena penyalahgunaan), tetapi pemilik akun bisa mendapat komisi referral 3% dari setiap deposit pengguna yang diundang. Katalog model, harga per grup, dan status kanal bisa dicek publik di halaman pricing tanpa login.
+
+**Benefit:**
+- Akses 60+ model AI (GPT, Claude, DeepSeek, Gemini, Grok) lewat satu API OpenAI-compatible
+- Pilihan grup harga untuk berbagai model; multiplier dan tarif terkini tersedia di halaman pricing
+- Katalog model + harga transparan dan bisa dicek publik tanpa login
+- Komisi referral 3% dari deposit pengguna yang diundang
+- Registrasi via email, GitHub, Google, atau LinuxDO
+
+**Cara Klaim:**
+1. Akun email terverifikasi atau akun GitHub/Google/LinuxDO
+2. Lolos verifikasi Cloudflare Turnstile saat registrasi
+3. Isi saldo melalui top-up sebelum memakai model berbayar; periksa mata uang pembayaran dan konversi kredit di dashboard sebelum membayar
+
+- **CTA Link:** https://moyuu.cc/sign-up?aff=x7Rr
+- **Sumber:** https://moyuu.cc/pricing
+- **Berlaku:** uncertain (Tidak ada tanggal berakhir yang diumumkan; harga dan grup bisa berubah sewaktu-waktu sesuai pengumuman di situs dan Discord)
+
+🔗 **Link Detail:** https://bansos.dev/list/moyuu-api-relay/
 
 ---
 
@@ -2718,6 +2927,34 @@ Berlaku sampai tanggal 28 Juni 2026
 
 ---
 
+### Wave AI Paket Starter Promo Oktober 2026
+
+- **ID:** `wave-starter-promo-oktober`
+- **Provider:** defyma.com
+- **Kategori:** AI, WhatsApp, Automation, Customer Support, Diskon
+- **Status:** active
+
+**Deskripsi:** Diskon spesial paket Starter Wave AI asisten WhatsApp cerdas 24/7 dari Rp199.000 menjadi Rp50.000/bulan selama Oktober 2026.
+
+**Benefit:**
+- 1 Sesi nomor WhatsApp aktif
+- 1.000 kuota pesan per bulan
+- Aktif 24/7 di cloud tanpa perlu server lokal
+- Akses dashboard analitik dan playground prompt
+
+**Cara Klaim:**
+1. Daftar akun di wave.ai.id
+2. Buka menu Billing di dashboard
+3. Checkout Paket Starter Promo Rp50.000
+
+- **CTA Link:** https://wave.ai.id/login
+- **Sumber:** https://wave.ai.id/blog/promo-spesial-oktober-2026-nikmati-paket-starter-wave-hanya-rp50-000
+- **Berlaku:** fixed — 2026-10-31 (Berlaku khusus checkout selama bulan Oktober 2026)
+
+🔗 **Link Detail:** https://bansos.dev/list/wave-starter-promo-oktober/
+
+---
+
 ### Kredit Gratis Uji Coba xAI Grok API
 
 - **ID:** `xai-grok-api-credits`
@@ -3441,6 +3678,35 @@ Tersedia 10 model LLM yang bisa digunakan melalui API key.
 - **Berlaku:** uncertain
 
 🔗 **Link Detail:** https://bansos.dev/list/tvstreamindonesia-fifa-2026/
+
+---
+
+### Vyce Cloud Free VPS
+
+- **ID:** `vyce-free-vps`
+- **Provider:** vyce.cloud
+- **Kategori:** Cloud, Free Tier, Developer Tools, VPS
+- **Status:** expired
+
+**Deskripsi:** Vyce.cloud memberikan Linux VPS gratis (Vps-Mini) dengan 2 GB RAM, 1 vCore, 6 GB NVMe, dedicated IPv6, dan root access via SSH. Tak perlu kartu kredit — cukup login dengan GitHub dan perpanangkan sekali sehari dari dashboard. Didanai oleh iklan dan komunitas; server gratis terbatas. Teman yang kamu ajakkan yang login via GitHub dan menghostingkan server gratis akan memberimu $0.50 kredit untuk Plus/Pro.
+
+**Benefit:**
+- 2 GB RAM gratis
+- VPS Linux dengan root access via SSH
+- Dedicated IPv6 + 20 port terbuka
+- Tidak perlu kartu kredit
+- Didanai iklan & komunitas
+
+**Cara Klaim:**
+1. Login via GitHub
+2. Perpanangkan sekali sehari untuk Vps-Mini
+
+- **CTA Link:** https://vyce.cloud/?ref=8BFJ9ETY
+- **Sumber:** https://vyce.cloud/
+- **Tips:** Listing dinonaktifkan pada 27 Oktober 2026 setelah laporan komunitas tentang antrean VPS yang tidak bergerak dan iklan bermasalah. Ketersediaan klaim perlu diverifikasi ulang. Diskusi: https://github.com/wauputr4/bansos/discussions/243
+- **Berlaku:** uncertain (Tidak ada tanggal akhir resmi yang diumumkan; server gratis berhenti otomatis setelah 14 hari tidak disentuh)
+
+🔗 **Link Detail:** https://bansos.dev/list/vyce-free-vps/
 
 ---
 

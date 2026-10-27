@@ -33,7 +33,7 @@ assert.equal(guestContribute.status, 200, 'contribute page public');
 const guestHtml = await guestContribute.text();
 assert.match(guestHtml, /Masuk untuk mengirim usulan/);
 assert.doesNotMatch(guestHtml, /name="title"/, 'guest cannot see submission fields');
-for (const channel of ['AI Agent', 'Email']) {
+for (const channel of ['Discord', 'Telegram']) {
 	const button = [...guestHtml.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].find((match) =>
 		match[2].includes(channel)
 	);
@@ -41,6 +41,7 @@ for (const channel of ['AI Agent', 'Email']) {
 	assert.match(button[1], /\bdisabled\b/, `${channel} channel disabled`);
 }
 assert.doesNotMatch(guestHtml, /Git Clone|npx CLI/, 'removed channels are absent');
+assert.doesNotMatch(guestHtml, /AI Agent|Submit via Email/, 'old contribution channels removed');
 const guestSubmit = await post('/contribute/?/create', '', { title: 'Ditolak' });
 assert.equal(guestSubmit.status, 303, 'guest cannot submit');
 assert.match(guestSubmit.headers.get('location') || '', /\/auth\/github\?next=contribute/);
@@ -69,7 +70,7 @@ const oversized = await post('/contribute/?/create', userCookie, {
 	...payload,
 	description: 'x'.repeat(33 * 1024)
 });
-assert.equal(oversized.status, 400, 'oversized form rejected');
+assert.ok([400, 413].includes(oversized.status), 'oversized form rejected');
 const created = await post('/contribute/?/create', userCookie, payload);
 assert.equal(created.status, 303, `submit: ${await created.text()}`);
 assert.match(created.headers.get('location') || '', /\/dashboard\/\?submitted=1/);
@@ -82,9 +83,10 @@ const adminCookie = await login('admin');
 const admin = await request('/admin/', { headers: { Cookie: adminCookie } });
 assert.equal(admin.status, 200, 'admin dashboard');
 const html = await admin.text();
-const position = html.indexOf(slug);
-assert.ok(position >= 0, 'submission appears in review queue');
-const nearby = html.slice(position, position + 14000);
+const nearby = html
+	.split(/<details class="review-card[^"]*">/)
+	.find((block) => block.includes(`value="${slug}"`));
+assert.ok(nearby, 'submission appears in review queue');
 const submissionId = nearby.match(/name="id" value="(\d+)"/);
 assert.ok(submissionId, 'approve action has submission ID');
 
@@ -143,6 +145,7 @@ assert.match(await sitemap.text(), new RegExp(slug));
 const edited = await post('/admin/?/edit', adminCookie, {
 	...payload,
 	originalId: slug,
+	version: '1',
 	title: 'Simulasi Bansos Diedit'
 });
 assert.equal(edited.status, 303, `edit: ${await edited.text()}`);

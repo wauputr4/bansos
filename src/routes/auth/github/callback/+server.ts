@@ -19,6 +19,7 @@ export const GET: RequestHandler = async ({ url, cookies, platform }) => {
 		error(503, 'Login GitHub belum dikonfigurasi.');
 	}
 	const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+		signal: AbortSignal.timeout(10000),
 		method: 'POST',
 		headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 		body: JSON.stringify({
@@ -33,6 +34,7 @@ export const GET: RequestHandler = async ({ url, cookies, platform }) => {
 	const token = (await tokenResponse.json()) as { access_token?: string };
 	if (!token.access_token) error(401, 'Token GitHub tidak tersedia.');
 	const profileResponse = await fetch('https://api.github.com/user', {
+		signal: AbortSignal.timeout(10000),
 		headers: {
 			Authorization: `Bearer ${token.access_token}`,
 			Accept: 'application/vnd.github+json',

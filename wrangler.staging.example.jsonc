@@ -1,0 +1,41 @@
+{
+	"name": "bansos-dynamic-staging",
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+	"compatibility_date": "2026-10-27",
+	"vars": {
+		"BANSOS_LOCAL_DEMO": "0",
+		"BANSOS_ENV": "staging",
+		"DISCORD_NOTIFICATIONS_ENABLED": "0",
+		"DISCORD_ADMIN_NOTIFICATIONS_ENABLED": "0",
+		"GITHUB_CALLBACK_URL": "https://bansos-dynamic-staging.pages.dev/auth/github/callback/",
+		"OWNER_GITHUB_ID": "103489788"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "bansos-dynamic-staging",
+			"database_id": "REPLACE_WITH_NEW_STAGING_D1_ID",
+			"migrations_dir": "migrations"
+		}
+	],
+	"env": {
+		"preview": {
+			"vars": {
+				"BANSOS_LOCAL_DEMO": "0",
+				"BANSOS_ENV": "staging",
+				"DISCORD_NOTIFICATIONS_ENABLED": "0",
+				"DISCORD_ADMIN_NOTIFICATIONS_ENABLED": "0",
+				"GITHUB_CALLBACK_URL": "https://bansos-dynamic-staging.pages.dev/auth/github/callback/",
+				"OWNER_GITHUB_ID": "103489788"
+			},
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "bansos-dynamic-staging",
+					"database_id": "REPLACE_WITH_NEW_STAGING_D1_ID",
+					"migrations_dir": "migrations"
+				}
+			]
+		}
+	}
+}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import { locale } from 'svelte-i18n';
 	import { resolve } from '$app/paths';
 </script>
 
@@ -71,6 +72,17 @@
 			<p>{$t('terms.section7Desc')}</p>
 		</section>
 
+		<section class="terms-section">
+			<h2>{$t('accountTerms.title')}</h2>
+			{#if !['id', 'en'].includes($locale || 'id')}<p role="note">
+					{$t('legal.fallbackNotice')}
+				</p>{/if}
+			{#each [1, 2, 3, 4] as paragraph (paragraph)}<p>{$t(`accountTerms.p${paragraph}`)}</p>{/each}
+			<p>
+				<a href="mailto:submit@bansos.dev">submit@bansos.dev</a> ·
+				<a href={resolve('/privacy/')}>{$t('accountTerms.privacyLink')}</a>
+			</p>
+		</section>
 		<div class="actions">
 			<a href={resolve('/list')} class="btn-primary">{$t('terms.ctaList')}</a>
 			<a href={resolve('/contribute')} class="terms-link">{$t('terms.ctaContribute')}</a>

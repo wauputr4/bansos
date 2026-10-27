@@ -19,7 +19,7 @@
 
 **bansos.dev** adalah open-source katalog info bagi-bagi berkah, promo gratisan, dan diskonan tools coding paling legit khusus untuk developer jelata di Indonesia. Dibuat biar portofolio kita-kita tetep menyala walau dompet lagi sekarat. Nyari domain gratis, hosting free-tier, cloud credits, API credits, database gratisan, atau startup credits? Di sini tempat ngumpulnya! 100% Gratisan, No Clickbait, No Ribet. fr fr 🚀
 
-Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-driven, aman di mode terang/gelap, dan gampang banget buat dikontribusikan lewat email atau pull request.
+Situs ini memakai SvelteKit di Cloudflare Pages dengan katalog runtime D1, login GitHub, dan persetujuan admin. Data repo tetap menjadi katalog dasar/fallback; listing baru dan perubahan terbit dari D1 tanpa rebuild. Implementasi dinamis sedang diuji di staging dan belum dirilis ke produksi.
 
 ## Keyword cepat
 
@@ -33,13 +33,18 @@ Situs ini dibangun sebagai static SvelteKit site yang super SEO-friendly, data-d
 - Filter tag dan highlight rekomendasi/terbaru.
 - Data per listing di [`src/lib/data/bansos/`](src/lib/data/bansos/).
 - SEO metadata untuk halaman publik, termasuk meta description dan social card pattern.
-- Workflow kontribusi publik via email dan Git clone.
+- Form kontribusi setelah login GitHub, dashboard pemilik, dan review admin.
+- Komentar berbasis sesi GitHub/D1, arsip Discussions dengan atribusi asli, serta soft-delete/pemulihan.
+- Notifikasi permohonan ke Discord privat admin dan pengumuman listing approved ke kanal publik, dengan antrean durable dan retry manual. Staging tidak mengirim pesan nyata.
+- Indikator antrean review admin, diperbarui setiap 60 detik saat halaman aktif.
 - Halaman kontribusi publik: [bansos.dev/contribute](https://bansos.dev/contribute).
 - Terms and conditions: [bansos.dev/terms](https://bansos.dev/terms).
 
 ## Deploy dan Hosting
 
-Situs ini di-deploy dan di-hosting menggunakan **Cloudflare Pages** dengan adapter `@sveltejs/adapter-cloudflare`. Setiap kali ada pull request atau push ke branch `main`, Cloudflare secara otomatis memicu build dan mendistribusikan situs statis super cepat beserta seluruh dynamic OG image yang sudah di-prerender.
+Situs di-host pada **Cloudflare Pages** memakai `@sveltejs/adapter-cloudflare`. Build/deploy tetap diperlukan untuk perubahan kode. Publikasi dan moderasi konten D1 tidak membutuhkan build baru. Preview GitHub tidak otomatis memiliki D1/OAuth; staging dan produksi harus memakai database, OAuth App, serta secret terpisah. Jangan memberi kredensial atau binding produksi kepada kode PR yang belum dipercaya.
+
+Lihat [arsitektur/lokal](docs/dynamic-catalog.md), [staging](docs/staging-dynamic-catalog.md), [hasil E2E](docs/staging-e2e-2026-10-27.md), dan [persiapan produksi](docs/production-readiness.md). Ekspor snapshot statis lengkap belum tersedia; mode tanpa binding DB membaca katalog repo.
 
 ## Menjalankan proyek
 
@@ -78,77 +83,14 @@ bentrok dengan route situs atau shortlink bansos.
 
 ## Cara Menambah Bansos
 
-Untuk saat ini, submit publik yang aktif adalah via AI Agent, email, dan Git clone. Jalur form, CLI publik, dan bot dinonaktifkan sementara karena spam.
+1. Buka [Kontribusi](https://bansos.dev/contribute/) dan login GitHub.
+2. Isi informasi program, sumber resmi, syarat, dan validitas; kirim untuk review.
+3. Pantau status, revisi, atau batalkan usulan di Dashboard. Listing hanya terbit setelah admin menyetujui.
+4. Edit listing milik sendiri kembali melalui review; arsip langsung menyembunyikannya. Featured hanya ditentukan admin.
 
-> [!TIP]
-> **Soon: Submisi via Discord & Telegram Bot!**
-> Kami sedang membangun integrasi bot agar kamu bisa mengirimkan bansos baru secara otomatis langsung dari server Discord atau channel Telegram.
-> Sembari menunggu, yuk gabung ke komunitas kami:
->
-> - **[Discord Server](https://discord.gg/m4WFaQpNGs)** untuk ngobrol, diskusi, dan submit via chat (coming soon).
-> - **[Telegram Channel](https://t.me/bansos_dev)** untuk dapetin update instan promo developer terbaru langsung di HP-mu.
+AI Agent, Email, Git Clone, dan npx CLI tidak ditampilkan sebagai jalur submit publik pada MVP ini. Alat data repo masih tersedia untuk pemeliharaan katalog dasar oleh maintainer; tidak menggantikan alur moderasi user.
 
-### 1. Opsi 1: Lewat AI Agent
-
-Install [skill resmi bansos.dev](https://www.skills.sh/wauputr4/skill-bansos) agar agent memahami struktur listing, profil contributor, validasi, dan alur PR terbaru:
-
-```bash
-npx skills add wauputr4/skill-bansos --skill '*' --agent '*'
-```
-
-Setelah terpasang, berikan link sumber dan minta agent memakai `$bansos-add-entry`. Review data dan diff sebelum membuka pull request.
-
----
-
-### 2. Opsi 2: Lewat Email
-
-Opsi ini sangat cocok buat kamu yang ingin berbagi info dengan cepat tanpa perlu menyentuh terminal.
-
-1. Buka halaman kontribusi di browser: **[bansos.dev/contribute](https://bansos.dev/contribute)**.
-2. Pilih tab **Email**.
-3. Kirim usulan ke **[submit@bansos.dev](mailto:submit@bansos.dev)** memakai template yang tersedia.
-4. Pastikan semua field penting terisi: judul, provider, benefit, syarat klaim, link resmi, status, sumber, dan kontributor.
-
----
-
-### 3. Opsi 3: Lewat Git Clone (Manual Pull Request)
-
-Opsi ini bagi kamu yang ingin menguji kode secara lokal atau memodifikasi file secara langsung.
-
-1. Fork dan clone repositori ini ke komputermu memakai GitHub CLI:
-   ```bash
-   gh repo fork wauputr4/bansos --clone
-   cd bansos
-   npm install
-   ```
-2. Tambahkan data secara lokal menggunakan helper script:
-
-   ```bash
-   npm run add:bansos -- \
-     --id contoh-bansos \
-     --title "Contoh Bansos Developer" \
-     --provider "Example Provider" \
-     --description "Deskripsi singkat bansos." \
-     --benefits "Benefit satu|Benefit dua" \
-     --validity-type fixed \
-     --validity-date 2026-06-30 \
-     --requirements "Buat akun|Klaim program" \
-     --cta-link "https://example.com" \
-     --source "https://example.com/program" \
-     --contributor-slug username-kamu \
-     --contributor-name "Nama Kamu" \
-     --contributor-url "https://example.com" \
-     --tags "Cloud,Gratisan"
-   ```
-
-   Script ini akan memvalidasi data lalu membuat `src/lib/data/bansos/<slug>/index.json` dan README listing.
-
-   Argumen `--benefits` dan `--requirements` dipisahkan dengan `|`.
-   Argumen `--tags` dipisahkan dengan koma.
-   `--contributor-slug` wajib pada setiap submit. Untuk profil contributor baru,
-   `--contributor-name` wajib sedangkan `--contributor-url` tetap opsional.
-
-3. Buat branch baru, tambahkan commit, push ke fork, dan kirim pull request ke repositori utama.
+Komentar baru disimpan di D1. Komentar Discussions dapat diimpor satu arah melalui `scripts/import-discussions.mjs`: pertahankan penulis numerik, tanggal, hubungan balasan, dan tautan sumber. Import tidak membuat akun login, mengubah GitHub, atau memulihkan komentar yang sudah dihapus lokal. Snapshot privat tidak boleh di-commit.
 
 ## Panduan kualitas listing
 
@@ -163,8 +105,8 @@ Listing yang baik sebaiknya menyertakan:
 
 ## Kontribusi
 
-- Kirim data lewat email ke [submit@bansos.dev](mailto:submit@bansos.dev).
-- Jika lebih nyaman, tambahkan melalui branch dan pull request manual.
+- Ajukan listing melalui form setelah login GitHub; admin meninjau sebelum publikasi.
+- Perubahan kode tetap melalui branch/PR dan review maintainer.
 - Baca panduan kontribusi lengkap di [CONTRIBUTING](https://github.com/wauputr4/bansos/blob/main/.github/CONTRIBUTING.md).
 
 ## Kode etik komunitas

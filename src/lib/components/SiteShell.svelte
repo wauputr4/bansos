@@ -17,6 +17,29 @@
 	let langExpanded = $state(false);
 	let accountExpanded = $state(false);
 	const viewer = $derived($page.data.viewer);
+	let pendingReviews = $state(0);
+	$effect(() => {
+		if (viewer?.role !== 'admin' || viewer.banned_at) return;
+		let active = true;
+		async function refreshReviews() {
+			if (document.visibilityState === 'hidden') return;
+			try {
+				const response = await fetch('/api/admin-notifications', {
+					cache: 'no-store',
+					signal: AbortSignal.timeout(10000)
+				});
+				if (response.ok && active) pendingReviews = (await response.json()).pending;
+			} catch {
+				/* Keep the previous count; the moderation page remains authoritative. */
+			}
+		}
+		void refreshReviews();
+		const timer = setInterval(refreshReviews, 60000);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	});
 	const loginHref = $derived($page.data.demoMode ? '/auth/demo?as=user' : '/auth/github');
 	let hoveredLangCode = $state<string | null>(null);
 	const standaloneProfile = $derived(
@@ -83,6 +106,11 @@
 
 <svelte:window bind:scrollY onkeydown={handleKeydown} />
 <div class="site-shell" class:standalone-profile={standaloneProfile}>
+	{#if $page.data.staging}
+		<div class="staging-banner" role="status">
+			STAGING · Data uji, bukan katalog produksi. Discord nyata dimatikan.
+		</div>
+	{/if}
 	<header
 		class="site-header"
 		class:nav-hidden={hideNavbar}
@@ -111,6 +139,16 @@
 				{/each}
 			</div>
 			<div class="nav-actions">
+				{#if viewer?.role === 'admin' && !viewer.banned_at}
+					<a
+						class="review-notification"
+						href="/admin/"
+						aria-label={`${pendingReviews} usulan menunggu review`}
+						title="Usulan menunggu review"
+					>
+						<i class="fa-solid fa-bell" aria-hidden="true"></i><span>{pendingReviews}</span>
+					</a>
+				{/if}
 				<div class="account-wrapper">
 					{#if viewer}
 						<button
@@ -250,6 +288,8 @@
 				<span class="dot">·</span>
 				<a href={resolve('/terms')}>{$t('footer.terms')}</a>
 				<span class="dot">·</span>
+				<a href={resolve('/privacy/')}>{$t('footer.privacy')}</a>
+				<span class="dot">·</span>
 				<a href="https://gitlab.com/wauputr4/bansos" target="_blank" rel="noopener noreferrer"
 					>{$t('footer.openSource')}</a
 				>
@@ -323,6 +363,25 @@
 </div>
 
 <style>
+	.review-notification {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.6rem;
+		color: var(--color-accent);
+		text-decoration: none;
+	}
+	.review-notification span {
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+	.staging-banner {
+		padding: 0.55rem 1rem;
+		text-align: center;
+		background: #573d09;
+		color: #fff3cb;
+		font-size: 0.85rem;
+	}
 	.site-shell {
 		min-height: 100vh;
 		padding-bottom: 5rem;

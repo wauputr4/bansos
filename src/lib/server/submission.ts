@@ -1,4 +1,5 @@
 import type { BansosItem } from '$lib/data/bansos';
+import { error } from '@sveltejs/kit';
 
 export type SubmissionPayload = Pick<
 	BansosItem,
@@ -20,13 +21,46 @@ const maxSubmissionBytes = 32 * 1024;
 
 export async function readSubmissionForm(request: Request): Promise<FormData> {
 	const length = Number(request.headers.get('content-length'));
-	if (length > maxSubmissionBytes) throw new Error('Form terlalu besar (maksimal 32 KB).');
-	const form = await request.formData();
+	if (length > maxSubmissionBytes) error(400, 'Form terlalu besar (maksimal 32 KB).');
+	// Bound the actual stream too: Content-Length may be absent or inaccurate.
+	const reader = request.body?.getReader();
+	const chunks: Uint8Array[] = [];
+	let bytes = 0;
+	if (reader) {
+		try {
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) break;
+				bytes += value.byteLength;
+				if (bytes > maxSubmissionBytes) {
+					await reader.cancel();
+					error(400, 'Form terlalu besar (maksimal 32 KB).');
+				}
+				chunks.push(value);
+			}
+		} finally {
+			reader.releaseLock();
+		}
+	}
+	const body = new Uint8Array(bytes);
+	let offset = 0;
+	for (const chunk of chunks) {
+		body.set(chunk, offset);
+		offset += chunk.byteLength;
+	}
+	let form: FormData;
+	try {
+		form = await new Response(body, {
+			headers: { 'Content-Type': request.headers.get('content-type') || '' }
+		}).formData();
+	} catch {
+		error(400, 'Content-Type atau format form tidak valid.');
+	}
 	let size = 0;
 	for (const [key, value] of form) {
-		if (typeof value !== 'string') throw new Error('Lampiran file tidak didukung.');
+		if (typeof value !== 'string') error(400, 'Lampiran file tidak didukung.');
 		size += key.length + value.length;
-		if (size > maxSubmissionBytes) throw new Error('Form terlalu besar (maksimal 32 KB).');
+		if (size > maxSubmissionBytes) error(400, 'Form terlalu besar (maksimal 32 KB).');
 	}
 	return form;
 }
@@ -48,7 +82,12 @@ function lines(value: FormDataEntryValue | null, maxItems: number): string[] {
 
 function validUrl(value: string): string {
 	const url = new URL(value);
-	if (!['http:', 'https:'].includes(url.protocol) || !url.hostname.includes('.')) {
+	if (
+		!['http:', 'https:'].includes(url.protocol) ||
+		!url.hostname.includes('.') ||
+		url.username ||
+		url.password
+	) {
 		throw new Error('URL harus HTTP(S) dan punya hostname valid.');
 	}
 	return url.toString();
@@ -81,7 +120,8 @@ export function parseSubmission(form: FormData, allowExpired = false): Submissio
 	if (
 		validityType === 'fixed' &&
 		(!/^\d{4}-\d{2}-\d{2}$/.test(validityDate) ||
-			Number.isNaN(Date.parse(`${validityDate}T00:00:00Z`)))
+			Number.isNaN(Date.parse(`${validityDate}T00:00:00Z`)) ||
+			new Date(`${validityDate}T00:00:00Z`).toISOString().slice(0, 10) !== validityDate)
 	) {
 		throw new Error('Tanggal validitas wajib diisi dengan format YYYY-MM-DD.');
 	}

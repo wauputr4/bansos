@@ -9,9 +9,17 @@ MVP ini menambahkan login GitHub, pengajuan listing oleh user, persetujuan admin
 3. Jalankan `npm run build`, lalu `npm run dev:dynamic`.
 4. Buka `http://127.0.0.1:5197/auth/demo/?as=user` untuk simulasi user dan `http://127.0.0.1:5197/auth/demo/?as=admin` untuk simulasi pemilik. Demo hanya hidup di hostname lokal apabila `BANSOS_LOCAL_DEMO=1`.
 
-Alurnya: pengunjung membuka `/contribute/`, lalu masuk lewat tombol akun di navbar agar form terbuka. Di UI, jalur AI Agent, Email, Discord, dan Telegram dinonaktifkan; opsi Git Clone dan npx CLI tidak ditampilkan. Usulan baru dikirim lewat Form setelah login. Bagian isi listing dan klaim dapat dibuka-tutup; field opsional tersembunyi secara default pada usulan baru. User memantau status atau mengirim revisi di `/dashboard/`. Admin meninjau di `/admin/`, menyetujui, mengedit, atau mengarsipkan. Listing disetujui langsung muncul pada `/list/`, halaman detail, provider, dan sitemap tanpa build konten baru. Fitur Featured tidak bisa diajukan oleh user; hanya admin yang dapat mengaktifkannya.
+Untuk iterasi UI dengan hot reload, setelah migrasi jalankan `BANSOS_LOCAL_DEMO=1 npm run dev -- --host 127.0.0.1 --port 5197 --strictPort` sebagai alternatif langkah build dan `dev:dynamic`. Konfigurasi Vite memasang proxy platform Wrangler hanya pada mode dev, memakai binding D1 lokal dari `wrangler.jsonc`. Jangan menjalankan kedua server di port yang sama. Uji build/worker tetap diperlukan sebelum rilis; mode dev bukan bukti deploy siap produksi.
+
+Jalankan build dan dev secara bergantian: hentikan dev sebelum build penuh dan hidupkan lagi sesudahnya agar HMR tidak menulis ulang manifest yang sedang dibangun.
+
+Untuk OAuth GitHub asli lokal, simpan client ID/secret aplikasi lokal pada `.env.local` (ignored), callback `http://127.0.0.1:5197/auth/github/callback/`, `OWNER_GITHUB_ID` numerik, dan `BANSOS_LOCAL_DEMO=0`. Jangan kirim secret ke chat atau memakai kredensial ini di staging/produksi. Saat menguji kontributor dengan akun pemilik yang sama, kosongkan owner ID hanya pada konfigurasi lokal, lalu login ulang setelah mengaktifkannya kembali. Ini bukan pengganti tes dua akun GitHub terpisah.
+
+Alurnya: pengunjung membuka `/contribute/`, lalu masuk lewat tombol akun di navbar agar form terbuka. AI Agent, Email, Git Clone, dan npx CLI tidak ditampilkan; Discord dan Telegram tetap dinonaktifkan. Usulan baru dikirim lewat Form setelah login. Bagian isi listing dan klaim dapat dibuka-tutup; field opsional tersembunyi secara default pada usulan baru. User dapat merevisi/membatalkan usulan, mengajukan edit listing miliknya untuk review, serta mengarsipkan listingnya. Admin dapat menyetujui, mengedit, menautkan pemilik numerik, mengarsipkan, soft-delete, dan memulihkan listing. Listing disetujui langsung muncul pada katalog tanpa build konten baru. Featured hanya ditentukan admin. Komentar baru memakai sesi GitHub dan D1; penulis/admin bisa menghapus dan admin bisa memulihkan. Lihat [panduan staging dan acceptance](./staging-dynamic-catalog.md).
 
 Untuk uji otomatis lokal, jalankan `node scripts/smoke-dynamic-local.mjs` saat server hidup. Skrip memakai slug uji unik, lalu mengarsipkan listingnya; datanya tetap berada di D1 lokal untuk audit. Migrasi `0002` mencegah slug aktif ganda; form usulan dibatasi 32 KB. Uji ini memakai akun demo, bukan OAuth GitHub asli.
+
+Jalankan `node scripts/test-submission-validation.mjs` untuk regresi validator tanpa database. Batas 32 KB diperiksa pada stream request sebelum parsing, termasuk saat `Content-Length` tidak tersedia. Tanggal kalender yang tidak nyata dan URL dengan kredensial ditolak. Pengujian ini tidak menggantikan rate limit di edge maupun uji OAuth staging.
 
 ## Staging lewat GitHub PR Preview
 
@@ -21,8 +29,10 @@ Untuk uji OAuth, gunakan URL staging yang stabil (alias branch atau domain stagi
 
 ## Sebelum produksi
 
+Lihat [checklist produksi terkini](./production-readiness.md). Terapkan seluruh migrasi `0001`–`0006`: `0005` menambahkan arsip Discussions dan `0006` antrean notifikasi privat permohonan. Empat migrasi awal saja tidak cukup untuk snapshot kode terbaru. README Indonesia/Inggris sudah mengikuti alur login dan moderasi MVP, bukan lagi panduan submit publik lewat email/AI Agent/Git Clone.
+
 - Buat database D1 sungguhan, ikat sebagai `DB` pada proyek Cloudflare Pages, dan terapkan migrasi ke database tersebut. Konfigurasi contoh dan `BANSOS_LOCAL_DEMO` tidak boleh dipakai di produksi.
 - Buat GitHub OAuth App dengan callback produksi `https://bansos.dev/auth/github/callback/`. Simpan `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GITHUB_CALLBACK_URL`, dan `OWNER_GITHUB_ID` sebagai environment/secrets sesuai kebijakan Cloudflare. Nilai `OWNER_GITHUB_ID` harus ID numerik akun pemilik.
 - Uji OAuth asli, moderasi, pembatasan spam, backup/restore D1, dan seluruh halaman dinamis pada lingkungan staging. Build dan preview lokal saja belum membuktikan kesiapan produksi.
-- Tambahkan rate limit/WAF untuk endpoint kontribusi dan autentikasi, batas request di edge, serta observabilitas kuota dan error D1. Batas tiga usulan pending dan batas form 32 KB bukan pengganti rate limit.
+- Tambahkan WAF/rate limit pra-login, batas request di edge, serta observabilitas kuota dan error D1. Rate limit per akun di aplikasi dan batas stream 32 KB sudah ada; keduanya bukan pengganti perlindungan trafik di edge.
 - Mode ekspor snapshot statis, OG image khusus listing dinamis, dan profil kontributor internal untuk user baru belum tersedia.

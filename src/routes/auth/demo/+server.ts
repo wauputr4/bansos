@@ -12,7 +12,9 @@ export const GET: RequestHandler = async ({ url, platform, cookies }) => {
 	const admin = url.searchParams.get('as') === 'admin';
 	const profile = admin
 		? { id: 1, login: 'demo-owner', name: 'Demo Admin' }
-		: { id: 2, login: 'demo-contributor', name: 'Demo Contributor' };
+		: url.searchParams.get('as') === 'other'
+			? { id: 3, login: 'demo-other', name: 'Demo Other' }
+			: { id: 2, login: 'demo-contributor', name: 'Demo Contributor' };
 	const db = requireDb(platform);
 	await upsertUser(db, profile, '1');
 	await startSession(db, cookies, profile.id, false);

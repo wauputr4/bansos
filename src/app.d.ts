@@ -30,6 +30,13 @@ declare global {
 				GITHUB_CALLBACK_URL?: string;
 				OWNER_GITHUB_ID?: string;
 				BANSOS_LOCAL_DEMO?: string;
+				BANSOS_ENV?: string;
+				DISCORD_NOTIFICATIONS_ENABLED?: string;
+				DISCORD_WEBHOOK_URL?: string;
+				DISCORD_APPROVED_CHANNEL_ID?: string;
+				DISCORD_ADMIN_NOTIFICATIONS_ENABLED?: string;
+				DISCORD_ADMIN_WEBHOOK_URL?: string;
+				DISCORD_ADMIN_CHANNEL_ID?: string;
 				CF_API_TOKEN?: string;
 				CF_ZONE_ID?: string;
 				GITHUB_DISCUSS_TOKEN?: string;

@@ -1,4 +1,38 @@
 {
+	"privacy": {
+		"title": "Kebijakan Privasi",
+		"description": "Data akun GitHub, sesi, kontribusi, komentar, moderasi, dan kontak privasi bansos.dev.",
+		"intro": "Diperbarui 27 Oktober 2026. Berlaku untuk fitur akun dan kontribusi bansos.dev. Staging memakai database dan aplikasi OAuth terpisah untuk pengujian; jangan masukkan data sensitif.",
+		"contact": "Kontak privasi",
+		"termsLink": "Syarat Penggunaan →",
+		"s1Title": "Pengelola dan kontak",
+		"s1p1": "bansos.dev dikelola maintainer wauputr4. Pertanyaan, koreksi, keberatan moderasi, atau permintaan penghapusan akun/data dapat dikirim ke submit@bansos.dev. Verifikasi kepemilikan akun dapat diperlukan. Jangan kirim password atau token.",
+		"s2Title": "Data yang diproses",
+		"s2p1": "Login GitHub menyimpan ID numerik, username, nama tampilan, dan URL avatar, beserta status akun dan waktu pembaruan. Aplikasi meminta scope read:user, bukan repository atau user:email. Token OAuth dipakai sementara di server untuk mengambil profil dan tidak disimpan dalam database aplikasi. Kami tidak menerima password GitHub.",
+		"s2p2": "D1 menyimpan hash sesi, usulan/revisi, listing yang diterbitkan atau diarsipkan, komentar, status moderasi, jejak tindakan admin, penghitung rate limit, serta antrean notifikasi. Jangan menaruh API key, password, nomor identitas, atau data pribadi pihak lain pada konten.",
+		"s3Title": "Tujuan dan visibilitas",
+		"s3p1": "Data akun diperlukan untuk autentikasi, atribusi, kepemilikan konten, moderasi, dan pencegahan penyalahgunaan. Admin dapat meninjau usulan sebelum terbit. Listing yang disetujui, komentar yang belum dihapus, serta identitas profil kontributor dapat terlihat publik.",
+		"s3p2": "Di produksi, judul, provider, username pengaju, dan tautan moderasi usulan dapat dikirim ke kanal Discord privat moderator. Ringkasan listing yang disetujui dan nama kontributor dapat dikirim ke kanal komunitas publik. Pengiriman nyata dimatikan di staging. Penghapusan di situs tidak otomatis menghapus notifikasi, cache, arsip Git, atau salinan milik pihak ketiga.",
+		"s4Title": "Cookie dan layanan pihak ketiga",
+		"s4p1": "Cookie sesi httpOnly berlaku maksimal 14 hari; cookie state/PKCE login berlaku 10 menit. Cookie ini diperlukan untuk login, bukan iklan. Preferensi tema/bahasa dapat disimpan di browser. GitHub menangani otorisasi dan avatar; Cloudflare menyediakan hosting, D1, dan log operasional sesuai kebijakannya.",
+		"s4p2": "Google Analytics hanya dimuat jika ID analitik dikonfigurasi pada mode statis; pada staging dan seluruh mode akun/D1 analitik dimatikan. Pada halaman publik statis yang mengaktifkannya, data kunjungan diproses Google sesuai kebijakannya. Mode statis dapat memakai komentar GitHub Discussions/Giscus; komentarnya tersimpan di GitHub. Tautan provider memiliki kebijakan masing-masing.",
+		"s5Title": "Penyimpanan dan penghapusan",
+		"s5p1": "Sesi berakhir setelah masa berlakunya dan sesi kedaluwarsa dibersihkan saat login. Konten yang dihapus dari tampilan memakai soft delete agar dapat dimoderasi atau dipulihkan; itu bukan penghapusan permanen database. Akun, audit, dan arsip tidak memiliki penghapusan otomatis terjadwal pada MVP ini. Permintaan privasi ditangani manual dengan mempertimbangkan keamanan, kewajiban yang berlaku, backup, dan hak pihak lain; kami tidak menjanjikan penghapusan instan semua salinan.",
+		"s5p2": "Kamu dapat logout untuk mengakhiri sesi saat ini, membatalkan usulan, mengarsipkan listing sendiri, dan menghapus komentar sendiri. Izin OAuth dapat dicabut di pengaturan GitHub; pencabutan tersebut tidak otomatis menghapus data atau mengakhiri sesi bansos.dev yang sudah dibuat. Hubungi pengelola bila memerlukan penanganan lebih lanjut.",
+		"s6Title": "Keamanan dan perubahan",
+		"s6p1": "Kontrol akses, hash sesi, validasi input, dan audit membantu melindungi data, tetapi tidak ada sistem yang bebas risiko. Kebijakan ini akan diperbarui bila pemrosesan berubah; tanggal di atas menunjukkan versi terakhir."
+	},
+	"accountTerms": {
+		"title": "Akun, kontribusi, dan moderasi",
+		"privacyLink": "Baca Kebijakan Privasi",
+		"p1": "Masuk dengan GitHub diperlukan untuk mengirim usulan atau komentar. Jangan mengirim rahasia, data pribadi orang lain, informasi palsu, spam, atau konten yang melanggar hak pihak lain. Kamu bertanggung jawab atas isi kontribusimu.",
+		"p2": "Usulan dan revisi listing menunggu persetujuan admin; login tidak menjamin publikasi. Kamu dapat membatalkan usulan, mengusulkan edit, mengarsipkan listing milikmu, dan menghapus komentarmu. Admin dapat menyunting, memulihkan, menghapus konten, atau memblokir akun untuk menjaga keamanan.",
+		"p3": "Kamu memberikan izin non-eksklusif untuk menampilkan, menyunting, dan membagikan kontribusi publik melalui katalog dan notifikasi komunitas, termasuk Discord. Jangan mengirim materi yang tidak berhak kamu publikasikan. Donasi hanya memengaruhi Featured, bukan keputusan kelayakan.",
+		"p4": "Penghapusan dari tampilan memakai soft delete dan tidak otomatis menghapus arsip audit, backup, atau salinan pihak ketiga. Untuk permintaan privasi atau keberatan moderasi, hubungi submit@bansos.dev. Lihat Kebijakan Privasi untuk rincian pemrosesan data. Ketentuan akun diperbarui 27 Oktober 2026."
+	},
+	"legal": {
+		"fallbackNotice": "Kebijakan akun tersedia dalam Bahasa Indonesia dan Inggris. Versi Inggris ditampilkan untuk bahasa lainnya."
+	},
 	"nav": {
 		"home": "Beranda",
 		"bansos": "Bansos",
@@ -19,7 +53,8 @@
 		"about": "Tentang",
 		"providers": "Provider",
 		"contribute": "Kontribusi",
-		"terms": "Terms",
+		"terms": "Ketentuan",
+		"privacy": "Privasi",
 		"openSource": "Open Source",
 		"language": "Bahasa"
 	},

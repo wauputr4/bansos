@@ -3,7 +3,9 @@
 	import SubmissionFields from '$lib/components/SubmissionFields.svelte';
 	let { data, form } = $props();
 	const pendingCount = $derived(
-		data.submissions.filter((entry) => entry.state === 'pending').length
+		data.submissions.filter(
+			(entry) => !entry.withdrawn_at && ['pending', 'needs_changes'].includes(entry.state)
+		).length
 	);
 	const publishedCount = $derived(
 		data.submissions.filter((entry) => entry.state === 'published').length
@@ -62,13 +64,15 @@
 						class="status"
 						class:published={entry.state === 'published'}
 						class:needs-changes={entry.state === 'needs_changes'}
-						>{entry.state === 'pending'
-							? 'Menunggu'
-							: entry.state === 'published'
-								? 'Terbit'
-								: entry.state === 'needs_changes'
-									? 'Perlu revisi'
-									: 'Ditolak'}</span
+						>{entry.withdrawn_at
+							? 'Dibatalkan'
+							: entry.state === 'pending'
+								? 'Menunggu'
+								: entry.state === 'published'
+									? 'Terbit'
+									: entry.state === 'needs_changes'
+										? 'Perlu revisi'
+										: 'Ditolak'}</span
 					><i class="fa-solid fa-chevron-down caret"></i></summary
 				>
 				<div class="submission-body">
@@ -81,7 +85,7 @@
 							href={resolve('/list/[id]', { id: entry.payload.id })}
 							>Lihat listing <i class="fa-solid fa-arrow-right"></i></a
 						>{/if}
-					{#if entry.state === 'pending' || entry.state === 'needs_changes'}
+					{#if !entry.withdrawn_at && (entry.state === 'pending' || entry.state === 'needs_changes')}
 						<details class="edit-panel">
 							<summary><i class="fa-solid fa-pen"></i> Edit dan kirim revisi</summary>
 							<form method="POST" action="?/revise">
@@ -91,11 +95,67 @@
 								/><button class="primary-action">Kirim revisi</button>
 							</form>
 						</details>
+						<form method="POST" action="?/withdraw">
+							<input type="hidden" name="id" value={entry.id} /><button
+								class="primary-action"
+								onclick={(event) => {
+									if (!confirm('Batalkan usulan ini?')) event.preventDefault();
+								}}>Batalkan usulan</button
+							>
+						</form>
 					{/if}
 				</div>
 			</details>
 		{/each}
 	</div>
+	<section class="submission-list" aria-label="Listing milik saya">
+		<h2>Listing milik saya</h2>
+		<p>
+			Edit listing terbit perlu persetujuan admin. Arsip langsung menyembunyikan listing. Listing
+			lama dari repo harus ditautkan admin ke ID GitHub kamu terlebih dahulu.
+		</p>
+		{#each data.owned as listing (listing.id)}
+			<details class="submission-card">
+				<summary
+					><strong>{listing.payload.title}</strong><span class="status"
+						>{listing.deleted_at
+							? 'Dihapus admin'
+							: listing.state === 'archived'
+								? 'Diarsipkan'
+								: 'Terbit'}</span
+					></summary
+				>
+				<div class="submission-body">
+					{#if listing.state === 'published' && !listing.deleted_at}
+						<a class="text-link" href={resolve('/list/[id]', { id: listing.id })}>Lihat listing</a>
+						<details class="edit-panel">
+							<summary>Edit listing (review admin)</summary>
+							<form method="POST" action="?/editPublished">
+								<input type="hidden" name="version" value={listing.version} /><SubmissionFields
+									value={listing.payload}
+									allowExpired
+									idPrefix={`owned-${listing.id}`}
+								/><button class="primary-action">Ajukan perubahan</button>
+							</form>
+						</details>
+						<form method="POST" action="?/archive">
+							<input type="hidden" name="id" value={listing.id} /><button
+								class="primary-action"
+								onclick={(event) => {
+									if (
+										!confirm(
+											'Arsipkan listing milikmu dan batalkan revisi yang masih menunggu? Admin dapat memulihkannya.'
+										)
+									)
+										event.preventDefault();
+								}}>Arsipkan listing saya</button
+							>
+						</form>
+					{:else}<p>Hubungi admin untuk pemulihan listing.</p>{/if}
+				</div>
+			</details>
+		{:else}<p>Belum ada listing yang ditautkan ke akunmu.</p>{/each}
+	</section>
 </main>
 
 <style>

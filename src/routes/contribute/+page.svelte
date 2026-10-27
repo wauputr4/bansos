@@ -22,13 +22,6 @@
 
 	let tabs = $derived<{ id: TabId; label: string; icon: string; inactive?: boolean }[]>([
 		{ id: 'form', label: $t('contribute.tabs.form'), icon: 'fa-solid fa-pen-to-square' },
-		{ id: 'ai', label: $t('contribute.tabs.ai'), icon: 'fa-solid fa-robot', inactive: true },
-		{
-			id: 'email',
-			label: $t('contribute.tabs.email'),
-			icon: 'fa-solid fa-envelope',
-			inactive: true
-		},
 		{
 			id: 'discord',
 			label: $t('contribute.tabs.discord'),
@@ -243,6 +236,14 @@ Terima kasih,
 									di katalog.
 								</p>
 							</div>
+							<p>
+								Login memakai profil GitHub, tanpa meminta akses repository atau scope email. Dengan
+								mengirim kontribusi, kamu menyetujui <a href={resolve('/terms/')}
+									>Syarat Penggunaan</a
+								>
+								dan memahami <a href={resolve('/privacy/')}>Kebijakan Privasi</a>. Jangan sertakan
+								rahasia atau data sensitif.
+							</p>
 							{#if !data.viewer}
 								<div class="login-gate">
 									<div class="gate-icon"><i class="fa-brands fa-github"></i></div>

@@ -1,4 +1,38 @@
 {
+	"privacy": {
+		"title": "Privacy Policy",
+		"description": "GitHub account data, sessions, contributions, comments, moderation, and privacy contact for bansos.dev.",
+		"intro": "Updated October 27, 2026. Applies to account and contribution features on bansos.dev. Staging uses a separate database and OAuth app for testing; do not enter sensitive information.",
+		"contact": "Privacy contact",
+		"termsLink": "Terms of Use →",
+		"s1Title": "Operator and contact",
+		"s1p1": "bansos.dev is maintained by wauputr4. Questions, corrections, moderation appeals, or requests to delete your account or data can be sent to submit@bansos.dev. Proof of account ownership may be required. Do not send passwords or tokens.",
+		"s2Title": "Data we process",
+		"s2p1": "GitHub sign-in stores your numeric ID, username, display name, and avatar URL, together with account status and update timestamps. The app requests read:user, not repository access or user:email. The OAuth token is used temporarily on the server to retrieve your profile and is not stored in the application database. We do not receive your GitHub password.",
+		"s2p2": "D1 stores session hashes, submissions and revisions, published or archived listings, comments, moderation status, admin audit records, rate-limit counters, and notification events. Do not include API keys, passwords, identity numbers, or other people's personal information in your content.",
+		"s3Title": "Purpose and visibility",
+		"s3p1": "Account data is used for authentication, attribution, content ownership, moderation, and abuse prevention. Admins can review submissions before publication. Approved listings, comments that have not been deleted, and contributor profile identities may be publicly visible.",
+		"s3p2": "In production, submission titles, providers, submitter usernames, and moderation links may be sent to a private moderator Discord channel. Summaries of approved listings and contributor names may be sent to the public community channel. Real delivery is disabled in staging. Deleting content from the site does not automatically remove notifications, caches, Git archives, or third-party copies.",
+		"s4Title": "Cookies and third-party services",
+		"s4p1": "The httpOnly session cookie lasts up to 14 days; OAuth state and PKCE cookies last 10 minutes. These cookies are necessary for sign-in, not advertising. Theme and language preferences may be stored in your browser. GitHub handles authorization and avatars; Cloudflare provides hosting, D1, and operational logs under its own policies.",
+		"s4p2": "Google Analytics is loaded only when an analytics ID is configured in static mode; it is disabled throughout account/D1 mode and staging. On public static pages where it is enabled, Google processes visit data under its own policies. Static mode may use GitHub Discussions/Giscus comments, which are stored on GitHub. Providers linked from the site have their own policies.",
+		"s5Title": "Retention and deletion",
+		"s5p1": "Sessions expire at the end of their lifetime, and expired sessions are cleaned up at sign-in. Content removed from public display is soft-deleted so it can be moderated or restored; this is not permanent database deletion. This MVP has no scheduled automatic deletion for accounts, audit records, or archives. Privacy requests are handled manually, taking account of security, applicable obligations, backups, and third-party rights; we do not promise instant deletion of every copy.",
+		"s5p2": "You can sign out to end your current session, withdraw submissions, archive your own listings, and delete your own comments. OAuth permission can be revoked in GitHub settings; revocation does not automatically erase data or end an existing bansos.dev session. Contact the operator if further action is needed.",
+		"s6Title": "Security and changes",
+		"s6p1": "Access controls, session hashing, input validation, and auditing help protect data, but no system is risk-free. This policy will be updated if processing changes; the date above indicates the latest version."
+	},
+	"accountTerms": {
+		"title": "Accounts, contributions, and moderation",
+		"privacyLink": "Read the Privacy Policy",
+		"p1": "GitHub sign-in is required to submit listings or comments. Do not submit secrets, other people's personal information, false information, spam, or content that infringes third-party rights. You are responsible for your contributions.",
+		"p2": "Listing submissions and revisions require admin approval; sign-in does not guarantee publication. You can withdraw submissions, propose edits, archive your own listings, and delete your comments. Admins can edit, restore, remove content, or ban accounts to protect the service.",
+		"p3": "You grant non-exclusive permission to display, edit, and share public contributions through the catalog and community notifications, including Discord. Do not submit material you are not entitled to publish. Donations affect Featured placement only, not eligibility decisions.",
+		"p4": "Removal from public display uses soft deletion and does not automatically erase audit archives, backups, or third-party copies. For privacy requests or moderation appeals, contact submit@bansos.dev. See the Privacy Policy for details of data processing. Account terms updated October 27, 2026."
+	},
+	"legal": {
+		"fallbackNotice": "Account policies are currently available in Indonesian and English. English is shown for other selected languages."
+	},
 	"nav": {
 		"home": "Home",
 		"bansos": "Bansos",
@@ -20,6 +54,7 @@
 		"providers": "Providers",
 		"contribute": "Contribute",
 		"terms": "Terms",
+		"privacy": "Privacy",
 		"openSource": "Open Source",
 		"language": "Language"
 	},

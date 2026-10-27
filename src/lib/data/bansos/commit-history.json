@@ -74,6 +74,11 @@
 		"date": "2026-06-21T15:46:56+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/50cf8959b23628c12cb1b9ffcc55ba3aea77def9"
 	},
+	"artbloom-free-100-api-credit": {
+		"hash": "ae9141b0f40adbd075d9e097d71db72a03a1b155",
+		"date": "2026-09-28T17:43:07+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/ae9141b0f40adbd075d9e097d71db72a03a1b155"
+	},
 	"atomesus-free-1-year-subscription": {
 		"hash": "480ba53cbf0f320e5880d7a9bfc13c5276415e6e",
 		"date": "2026-07-01T10:41:36Z",
@@ -115,14 +120,19 @@
 		"url": "https://github.com/wauputr4/bansos/commit/480ba53cbf0f320e5880d7a9bfc13c5276415e6e"
 	},
 	"codex-relay": {
-		"hash": "41487dece8325afbf60bd6153246506a7ff85ac1",
-		"date": "2026-10-27T15:03:57+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/41487dece8325afbf60bd6153246506a7ff85ac1"
+		"hash": "132e23958942050895fb2a872e36d3567ea9900e",
+		"date": "2026-10-27T15:11:58+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/132e23958942050895fb2a872e36d3567ea9900e"
 	},
 	"conduit-trial-credit-500": {
 		"hash": "ed4ca5a7a6f2e7e282ba05d7023687d5b9312e47",
 		"date": "2026-07-13T06:49:08Z",
 		"url": "https://github.com/wauputr4/bansos/commit/ed4ca5a7a6f2e7e282ba05d7023687d5b9312e47"
+	},
+	"curlshot-free-100-screenshots": {
+		"hash": "443a490d7e65cb0bc43ca22759d691993af4f6da",
+		"date": "2026-10-27T12:25:02+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/443a490d7e65cb0bc43ca22759d691993af4f6da"
 	},
 	"dahono-labs-ai-api": {
 		"hash": "480ba53cbf0f320e5880d7a9bfc13c5276415e6e",
@@ -170,9 +180,9 @@
 		"url": "https://github.com/wauputr4/bansos/commit/82ac7b27164b75a5e61be298d14856f13e73296b"
 	},
 	"freemodel-in-1m-token-gratis": {
-		"hash": "41487dece8325afbf60bd6153246506a7ff85ac1",
-		"date": "2026-10-27T15:03:57+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/41487dece8325afbf60bd6153246506a7ff85ac1"
+		"hash": "132e23958942050895fb2a872e36d3567ea9900e",
+		"date": "2026-10-27T15:11:58+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/132e23958942050895fb2a872e36d3567ea9900e"
 	},
 	"freemodel-invite-referral-10": {
 		"hash": "58a1f80f94238e42ddc003644eb7be5d43d5ea35",
@@ -299,6 +309,11 @@
 		"date": "2026-08-17T10:36:03+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/9f681f96e2cdd87d5fa38b09c74c4cd2ea4bf7e3"
 	},
+	"jagoanhosting-domain-webid-gratis-freewebid1k": {
+		"hash": "1e8ce7de32b89a7e88727f9f2fcd4a06384ea1d9",
+		"date": "2026-10-12T14:25:58+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/1e8ce7de32b89a7e88727f9f2fcd4a06384ea1d9"
+	},
 	"jagoanhosting-free-domain-webid": {
 		"hash": "007aa025444496859f448400ca3a521bba54078e",
 		"date": "2026-06-26T16:43:50+07:00",
@@ -368,6 +383,11 @@
 		"hash": "0ca2b156a3f1222687071ea265155f8df1c01d64",
 		"date": "2026-06-22T16:08:07+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/0ca2b156a3f1222687071ea265155f8df1c01d64"
+	},
+	"miarouter-free-20-ai-credit": {
+		"hash": "ae9141b0f40adbd075d9e097d71db72a03a1b155",
+		"date": "2026-09-28T17:43:07+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/ae9141b0f40adbd075d9e097d71db72a03a1b155"
 	},
 	"microsoft-founders-hub": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",
@@ -564,15 +584,20 @@
 		"date": "2026-08-03T18:33:10+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/1d98737faaebcf662fb15762b3c4c348aa10369c"
 	},
+	"vyce-free-vps": {
+		"hash": "6cce8670411055f8f21a4b26dda91fa6eddaf20a",
+		"date": "2026-10-27T12:10:45+07:00",
+		"url": "https://github.com/wauputr4/bansos/commit/6cce8670411055f8f21a4b26dda91fa6eddaf20a"
+	},
 	"wasmer-pro": {
 		"hash": "2cf72b19a3dff6ab58e87242b6874a459dabb673",
 		"date": "2026-08-22T19:54:34+07:00",
 		"url": "https://github.com/wauputr4/bansos/commit/2cf72b19a3dff6ab58e87242b6874a459dabb673"
 	},
 	"wave-starter-promo-oktober": {
-		"hash": "75bf89e32650d390cdbafecc793218c0e24ddf49",
+		"hash": "6fe7aade5c4b92e9822b9512dbfb58fb67facf1b",
 		"date": "2026-10-11T10:52:30+07:00",
-		"url": "https://github.com/wauputr4/bansos/commit/75bf89e32650d390cdbafecc793218c0e24ddf49"
+		"url": "https://github.com/wauputr4/bansos/commit/6fe7aade5c4b92e9822b9512dbfb58fb67facf1b"
 	},
 	"xai-grok-api-credits": {
 		"hash": "50cf8959b23628c12cb1b9ffcc55ba3aea77def9",

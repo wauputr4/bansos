@@ -6,6 +6,7 @@
 	import { locale } from 'svelte-i18n';
 	import FloatingEmoji from '$lib/components/FloatingEmoji.svelte';
 	import BansosCard from '$lib/components/BansosCard.svelte';
+	import ListingComments from '$lib/components/ListingComments.svelte';
 	import { t } from '$lib/i18n';
 	import {
 		getCommitContributorsForItem,
@@ -31,14 +32,15 @@
 
 	let giscusContainer: HTMLDivElement | null = $state(null);
 
-	let { data } = $props();
+	let { data, form } = $props();
 	const bansosList = $derived(data.items);
 
 	let popularityData: Record<string, number> = $state({});
 	const item = $derived(data.item);
 	const views = $derived(item ? popularityData[item.id] || 0 : 0);
 
-	let commentCount = $state(0);
+	let giscusCommentCount = $state(0);
+	const commentCount = $derived(data.commentsEnabled ? data.commentCount : giscusCommentCount);
 
 	onMount(async () => {
 		try {
@@ -61,7 +63,7 @@
 
 			const giscusData = event.data.giscus;
 			if (giscusData.discussion && giscusData.discussion.totalCommentCount !== undefined) {
-				commentCount = giscusData.discussion.totalCommentCount;
+				giscusCommentCount = giscusData.discussion.totalCommentCount;
 			}
 		};
 
@@ -254,7 +256,15 @@
 	});
 
 	$effect(() => {
-		if (browser && item && giscusContainer && GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID) {
+		if (
+			!data.commentsEnabled &&
+			browser &&
+			item &&
+			giscusContainer &&
+			GISCUS_REPO &&
+			GISCUS_REPO_ID &&
+			GISCUS_CATEGORY_ID
+		) {
 			// eslint-disable-next-line svelte/no-dom-manipulating
 			giscusContainer.innerHTML = '';
 			const script = document.createElement('script');
@@ -514,7 +524,16 @@
 				</article>
 
 				<!-- Giscus Comments Section -->
-				{#if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
+				{#if data.commentsEnabled}
+					<ListingComments comments={data.comments} viewer={data.viewer} message={form?.message} />
+					{#if data.isLegacy}<p>
+							Komentar lama tetap tersimpan di <a
+								href="https://github.com/wauputr4/bansos/discussions"
+								target="_blank"
+								rel="noopener noreferrer">GitHub Discussions</a
+							>.
+						</p>{/if}
+				{:else if GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY_ID}
 					<div class="glass-card comments-card">
 						<h2
 							style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"
