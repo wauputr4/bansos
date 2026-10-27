@@ -35,7 +35,12 @@ function graphql(query, variables = {}) {
 	assert.ok(!result.errors, 'GitHub export returned GraphQL errors');
 	return result.data;
 }
-const fields = 'id url body createdAt updatedAt author { login ... on User { databaseId } }';
+const fields =
+	'id url body createdAt updatedAt isMinimized minimizedReason author { login ... on User { databaseId } }';
+export function visibleComments(comments) {
+	const hidden = new Set(comments.filter((c) => c.isMinimized).map((c) => c.id));
+	return comments.filter((c) => !hidden.has(c.id) && !hidden.has(c.parentId));
+}
 function discussionList() {
 	const rows = [];
 	let cursor = null;
@@ -96,10 +101,11 @@ export function snapshotSql(snapshot) {
 		assert.ok(/^https:\/\/github\.com\/wauputr4\/bansos\/discussions\/\d+$/.test(discussion.url));
 		statements.push(`INSERT INTO legacy_discussions(source_id,listing_id,source_url,title,body,created_at,source_updated_at)
  VALUES (${[discussion.id, discussion.listingId, discussion.url, discussion.title, discussion.body, discussion.createdAt, discussion.updatedAt].map(literal).join(',')}) ON CONFLICT(source_id) DO NOTHING;`);
-		for (const comment of discussion.comments) {
+		const visible = visibleComments(discussion.comments);
+		for (const comment of visible) {
 			assert.ok(comment.url.startsWith(discussion.url + '#discussioncomment-'));
 			assert.ok(!comment.authorId || Number.isSafeInteger(comment.authorId));
-			assert.ok(!comment.parentId || discussion.comments.some((c) => c.id === comment.parentId));
+			assert.ok(!comment.parentId || visible.some((c) => c.id === comment.parentId));
 			statements.push(`INSERT INTO legacy_comments(source_id,listing_id,discussion_url,source_url,parent_source_id,author_github_id,author_login,body,created_at,source_updated_at)
  VALUES (${[comment.id, discussion.listingId, discussion.url, comment.url, comment.parentId, comment.authorId, comment.login, comment.body, comment.createdAt, comment.updatedAt].map(literal).join(',')}) ON CONFLICT(source_id) DO NOTHING;`);
 		}
@@ -126,6 +132,7 @@ if (args.includes('--export')) {
 		for (const parent of connection(row.id)) {
 			const add = (c, parentId = null) =>
 				comments.push({
+					isMinimized: c.isMinimized,
 					id: c.id,
 					url: c.url,
 					body: c.body,
@@ -138,7 +145,7 @@ if (args.includes('--export')) {
 			add(parent);
 			for (const reply of connection(parent.id, true)) add(reply, parent.id);
 		}
-		discussions.push({ ...row, listingId: match[1], comments });
+		discussions.push({ ...row, listingId: match[1], comments: visibleComments(comments) });
 	}
 	const snapshot = { repository, exportedAt: new Date().toISOString(), discussions, skipped };
 	const json = JSON.stringify(snapshot, null, 2) + '\n';

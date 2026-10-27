@@ -2,7 +2,18 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, readdirSync } from 'node:fs';
 import ts from 'typescript';
-import { snapshotSql } from './import-discussions.mjs';
+import { snapshotSql, visibleComments } from './import-discussions.mjs';
+
+assert.deepEqual(
+	visibleComments([
+		{ id: 'hidden-parent', isMinimized: true },
+		{ id: 'hidden-parent-reply', parentId: 'hidden-parent' },
+		{ id: 'visible-parent' },
+		{ id: 'hidden-reply', parentId: 'visible-parent', isMinimized: true },
+		{ id: 'visible-reply', parentId: 'visible-parent' }
+	]).map((c) => c.id),
+	['visible-parent', 'visible-reply']
+);
 
 const sql = new DatabaseSync(':memory:');
 sql.exec('PRAGMA foreign_keys=ON');

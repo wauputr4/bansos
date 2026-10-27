@@ -69,6 +69,15 @@ async function request(path, fields, guest = false) {
 	return fetch(base + path, options);
 }
 async function post(path, fields, expected = 303) {
+	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
+		const id = Number(fields.id || fields.submissionId);
+		fields = {
+			...fields,
+			reviewVersion: String(
+				sql(`SELECT review_version FROM submissions WHERE id=${id}`)[0]?.review_version || 1
+			)
+		};
+	}
 	const r = await request(path, fields);
 	assert.equal(r.status, expected, `${path} expected ${expected}, received ${r.status}`);
 	console.log('PASS', r.status, path);

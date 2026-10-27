@@ -113,6 +113,7 @@
 							<details class="edit-panel">
 								<summary><i class="fa-solid fa-pen"></i> Edit isi sebelum menyetujui</summary>
 								<form method="POST" action="?/editSubmission">
+									<input type="hidden" name="reviewVersion" value={entry.review_version} />
 									<input type="hidden" name="submissionId" value={entry.id} /><SubmissionFields
 										value={entry.payload}
 										idPrefix={`review-${entry.id}`}
@@ -121,12 +122,14 @@
 							</details>
 							{#if entry.state === 'pending'}<div class="decision-row">
 									<form method="POST" action="?/approve">
+										<input type="hidden" name="reviewVersion" value={entry.review_version} />
 										<input type="hidden" name="id" value={entry.id} /><button class="primary-action"
 											><i class="fa-solid fa-check"></i> Setujui & terbitkan</button
 										>
 									</form>
 								</div>
 								<form method="POST" action="?/moderate" class="moderate-form">
+									<input type="hidden" name="reviewVersion" value={entry.review_version} />
 									<input type="hidden" name="id" value={entry.id} /><label
 										for={`review-note-${entry.id}`}>Catatan untuk kontributor</label
 									><textarea

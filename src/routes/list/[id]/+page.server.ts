@@ -9,7 +9,7 @@ import {
 } from '$lib/server/comments';
 import { signedIn, positiveId, mutate, takeRateLimit } from '$lib/server/moderation';
 import { readSubmissionForm } from '$lib/server/submission';
-import { bansosList } from '$lib/data/bansos';
+import { bansosList, recommendedBansosFor } from '$lib/data/bansos';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, platform }) => {
@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ params, platform }) => {
 		comments: platform?.env.DB ? await listingComments(platform.env.DB, params.id) : [],
 		commentCount: platform?.env.DB ? await listingCommentCount(platform.env.DB, params.id) : 0,
 		item,
-		items,
+		recommended: recommendedBansosFor(item, items, 3),
 		id: params.id,
 		isLegacy: bansosList.some((entry) => entry.id === params.id)
 	};

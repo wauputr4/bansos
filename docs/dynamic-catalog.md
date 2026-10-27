@@ -21,6 +21,8 @@ Untuk uji otomatis lokal, jalankan `node scripts/smoke-dynamic-local.mjs` saat s
 
 Jalankan `node scripts/test-submission-validation.mjs` untuk regresi validator tanpa database. Batas 32 KB diperiksa pada stream request sebelum parsing, termasuk saat `Content-Length` tidak tersedia. Tanggal kalender yang tidak nyata dan URL dengan kredensial ditolak. Pengujian ini tidak menggantikan rate limit di edge maupun uji OAuth staging.
 
+Approval, edit usulan, dan keputusan moderasi membawa `reviewVersion` dari halaman yang ditinjau admin. Jika pengaju mengubah isi sesudah halaman dibuka, keputusan lama ditolak 409 dan admin harus memuat ulang. Profil kontributor memakai katalog D1 yang sama agar arsip/hapus/edit konsisten. Pada listing D1, tanggal publikasi bukan tanggal mulai promo: status upcoming tetap upcoming sampai admin/owner mengajukan perubahan status yang disetujui (atau validitas fixed berakhir). Perilaku tanggal listing repo lama dipertahankan. `node scripts/test-dynamic-catalog.mjs` menguji regresi visibilitas, status, dan isolasi baris rusak.
+
 ## Staging lewat GitHub PR Preview
 
 Cloudflare Pages dapat membuat Preview untuk PR GitHub, tetapi Preview baru siap menguji MVP dinamis bila binding `DB`, migrasi D1, dan variabel OAuth khusus Preview telah dikonfigurasi. PR Preview tidak otomatis memiliki D1 terpisah per PR; konfigurasi `preview` berlaku bersama bagi seluruh Preview pada proyek Pages. Jangan mengikat Preview ke D1 produksi. Jangan memberikan secret OAuth atau akses D1 staging kepada kode PR dari kontributor yang belum dipercaya.

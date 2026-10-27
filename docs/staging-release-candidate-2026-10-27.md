@@ -1,6 +1,6 @@
 # Kandidat rilis staging dan persiapan produksi — 27 Oktober 2026
 
-Ini bukti pekerjaan lokal/manual staging, bukan hasil CI head PR #239. PR masih draft pada `26b1dfe10780df74d8097108a5cc75bdb0c0bf3d`; perubahan berikut belum di-push atau di-merge.
+Ini rekaman **snapshot staging awal** sebelum persiapan deploy yang diizinkan pemilik, bukan bukti head PR terbaru. Saat snapshot ini diuji, PR masih draft pada `26b1dfe10780df74d8097108a5cc75bdb0c0bf3d`. PR kemudian dipush dan dibuka untuk review; jangan memakai hasil snapshot lama sebagai acceptance perbaikan baru.
 
 Snapshot akhir: https://d324f827.bansos-dynamic-staging.pages.dev, URL stabil https://bansos-dynamic-staging.pages.dev. Worker SHA-256 `832c7b57cdbe4d7e2aca7cc12e8159d0706b09480100a697ed9681fa60d778ff`. Build akhir 8m38s, deploy worker sukses, rerun tes dua akun pada snapshot ini lulus. Svelte check sebelumnya 0 error/0 warning; ESLint, Prettier, validator 129 listing, tes input, mock Discord, dan tes lima migrasi/impor/IDOR lulus.
 
@@ -19,6 +19,9 @@ Smoke snapshot akhir: root/katalog/Contribute/Terms/Privacy HTTP 200, guest admi
 
 - D1 produksi baru `bansos-production` dibuat terpisah dari staging. Binding Production `DB` disimpan melalui Brave setelah izin spesifik pemilik; tidak memicu deploy saat disimpan.
 - Lima migrasi diterapkan, termasuk `0005_legacy_comments.sql`. Akun/sesi/fixture staging tidak disalin.
+
+Pembaruan setelah snapshot awal: `0006_admin_notifications.sql` juga sudah diterapkan pada staging dan produksi sesudah backup. Ini wajib untuk kode outbox privat terbaru; lima migrasi awal saja tidak cukup. Webhook/flag approved publik dan permohonan privat telah disiapkan pemilik, tetapi pengiriman produksi belum diuji. Status dan gate terkini ada di `production-readiness.md`.
+
 - Ekspor GitHub: 24 diskusi listing, 53 komentar termasuk 16 balasan. Diskusi sambutan umum dikecualikan. Dua diskusi yang menunjuk slug sama digabung pada listing tanpa menggandakan node komentar.
 - Snapshot SHA-256: `42c944f5ebbb3e8f59e729a00299007f123fba27b4a924c235eaae8380294716`.
 - Verifikasi staging dan produksi membandingkan seluruh teks, ID penulis, waktu, relasi balasan, dan URL: sama persis dengan snapshot. Panjang komentar maksimum 3.162 karakter; tidak ada parent hilang.

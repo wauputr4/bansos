@@ -16,7 +16,6 @@
 		getItemSource,
 		getLatestCommitForItem,
 		getProviderBySlug,
-		recommendedBansosFor,
 		slugifyProvider
 	} from '$lib/data/bansos';
 	import {
@@ -33,7 +32,6 @@
 	let giscusContainer: HTMLDivElement | null = $state(null);
 
 	let { data, form } = $props();
-	const bansosList = $derived(data.items);
 
 	let popularityData: Record<string, number> = $state({});
 	const item = $derived(data.item);
@@ -250,10 +248,7 @@
 		schemaData ? JSON.stringify(schemaData).replace(/</g, '\\u003c') : ''
 	);
 
-	const recommendedBansos = $derived.by(() => {
-		if (!item) return [];
-		return recommendedBansosFor(item, bansosList, 3);
-	});
+	const recommendedBansos = $derived(data.recommended);
 
 	$effect(() => {
 		if (

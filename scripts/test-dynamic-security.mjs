@@ -10,6 +10,17 @@ async function login(role) {
 	return r.headers.get('set-cookie').split(';')[0];
 }
 async function post(path, cookie, fields, origin = base) {
+	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
+		const page = await (await req('/admin/', { headers: { Cookie: cookie } })).text();
+		const id = fields.id || fields.submissionId;
+		const card = page
+			.split(/<details class="review-card[^"]*">/)
+			.find((b) => b.includes(`name="submissionId" value="${id}"`));
+		fields = {
+			...fields,
+			reviewVersion: card?.match(/name="reviewVersion" value="(\d+)"/)?.[1] || '1'
+		};
+	}
 	return req(path, {
 		method: 'POST',
 		headers: {
@@ -43,7 +54,7 @@ const payload = {
 	ctaLink: 'https://example.com',
 	source: 'https://example.com/source',
 	validityType: 'uncertain',
-	status: 'active'
+	status: 'upcoming'
 };
 const html = async (path, cookie) => (await req(path, { headers: { Cookie: cookie } })).text();
 async function pendingId() {
@@ -75,12 +86,28 @@ assert.ok(
 	!(await html('/admin/', admin)).includes(`name="key" value="${slug}:1"`),
 	'unapproved listing has no notification event'
 );
+const viewed = (await html('/admin/', admin))
+	.split(/<details class="review-card[^"]*">/)
+	.find((b) => b.includes(`name="submissionId" value="${pending}"`))
+	.match(/name="reviewVersion" value="(\d+)"/)[1];
+await expectPost(303, '/dashboard/?/revise', user, {
+	...payload,
+	submissionId: pending,
+	description: 'Changed after the admin opened review'
+});
+await expectPost(409, '/admin/?/approve', admin, { id: pending, reviewVersion: viewed });
+assert.equal((await req(`/list/${slug}/`)).status, 404, 'stale reviewed version cannot publish');
 await expectPost(303, '/admin/?/approve', admin, { id: pending });
 assert.ok(
 	(await html('/admin/', admin)).includes(`name="key" value="${slug}:1"`),
 	'approval creates durable notification event'
 );
 assert.equal((await req(`/list/${slug}/`)).status, 200);
+assert.match(
+	await html(`/list/${slug}/`, ''),
+	/class="status-badge status-upcoming"/,
+	'publication is not a promotion start date'
+);
 assert.match(
 	(await req(`/list/${slug}/`)).headers.get('cache-control'),
 	/no-store/,

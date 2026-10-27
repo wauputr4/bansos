@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { randomBytes, createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 setDefaultAutoSelectFamilyAttemptTimeout(3000);
 import { fileURLToPath } from 'node:url';
@@ -59,6 +59,7 @@ assert.equal(
 const sessions = new Map();
 const suffix = Date.now();
 const ledger = root + `.local-private/session-ledger-${suffix}.json`;
+mkdirSync(root + '.local-private', { recursive: true, mode: 0o700 });
 const fixtures = [
 	{ id: `uji-dua-akun-admin-${suffix}`, actor: admin },
 	{ id: `uji-dua-akun-user-${suffix}`, actor: contributor }
@@ -85,6 +86,19 @@ async function request(actor, path, fields) {
 	return fetch(base + path, options);
 }
 async function expect(actor, path, fields, status = 303) {
+	if (
+		actor === admin &&
+		/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) &&
+		!fields.reviewVersion
+	) {
+		const id = Number(fields.id || fields.submissionId);
+		fields = {
+			...fields,
+			reviewVersion: String(
+				sql(`SELECT review_version FROM submissions WHERE id=${id}`)[0]?.review_version || 1
+			)
+		};
+	}
 	const r = await request(actor, path, fields);
 	if (r.status !== status) {
 		const body = await r.text();
@@ -157,6 +171,8 @@ try {
 			`SELECT id,github_id FROM submissions WHERE json_extract(payload,'$.id')='${f.id}'`
 		)[0];
 		assert.equal(sub.github_id, f.actor);
+		const reviewedVersion = sql(`SELECT review_version FROM submissions WHERE id=${sub.id}`)[0]
+			.review_version;
 		const reviewEvent = sql(
 			`SELECT state,attempts,payload FROM admin_notification_outbox WHERE event_key='review:${sub.id}:1'`
 		)[0];
@@ -173,11 +189,26 @@ try {
 			(await (await request(admin, '/api/admin-notifications')).json()).pending,
 			baseline + 1
 		);
+		await expect(f.actor, '/dashboard/?/revise', {
+			...fields(f.id, '[UJI DUA AKUN] ' + f.id),
+			submissionId: String(sub.id),
+			description: 'Fixture changed after admin viewed it. Not a real promo.'
+		});
+		await expect(
+			admin,
+			'/admin/?/approve',
+			{ id: String(sub.id), reviewVersion: String(reviewedVersion) },
+			409
+		);
 		await expect(admin, '/admin/?/approve', { id: String(sub.id) });
 		assert.equal(item(f.id).owner_github_id, f.actor);
 		await expect(null, `/list/${f.id}/`, null, 200);
 	}
 	const [a, b] = fixtures;
+	assert.ok(
+		(await (await request(null, '/wauputr4/')).text()).includes(a.id),
+		'profile includes newly approved contribution'
+	);
 	await expect(contributor, '/dashboard/?/archive', { id: a.id }, 404);
 	await expect(
 		contributor,
@@ -246,6 +277,11 @@ try {
 				await expect(f.actor, '/dashboard/?/withdraw', { id: String(p.id) });
 			const row = item(f.id);
 			if (row && !row.deleted_at) await expect(admin, '/admin/?/delete', { id: f.id });
+			if (f.actor === admin)
+				assert.ok(
+					!(await (await request(null, '/wauputr4/')).text()).includes(f.id),
+					'deleted listing is absent from contributor profile'
+				);
 			for (const c of sql(
 				`SELECT id FROM comments WHERE listing_id='${f.id}' AND deleted_at IS NULL`
 			))
@@ -256,7 +292,7 @@ try {
 			sql(`DELETE FROM sessions WHERE token_hash='${hash}'`);
 			assert.equal(sql(`SELECT count(*) n FROM sessions WHERE token_hash='${hash}'`)[0].n, 0);
 		}
-		if (sessions.size) unlinkSync(ledger);
+		if (sessions.size) rmSync(ledger, { force: true });
 		console.log(
 			'PASS temporary sessions removed; fixtures recoverably hidden; no browser cookies read.'
 		);

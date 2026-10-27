@@ -26,6 +26,7 @@ import type { Actions, PageServerLoad } from './$types';
 
 interface PendingRow {
 	id: number;
+	review_version: number;
 	github_id: number;
 	login: string;
 	display_name: string;
@@ -160,11 +161,12 @@ export const actions: Actions = {
 			return fail(400, { message: 'Periksa isian dan ukuran form.' });
 		}
 		const id = positiveId(form, 'submissionId');
+		const reviewVersion = positiveId(form, 'reviewVersion');
 		const row = await db
 			.prepare(
-				"SELECT payload FROM submissions WHERE id = ? AND state IN ('pending','needs_changes') AND withdrawn_at IS NULL"
+				"SELECT payload FROM submissions WHERE id = ? AND review_version = ? AND state IN ('pending','needs_changes') AND withdrawn_at IS NULL"
 			)
-			.bind(id)
+			.bind(id, reviewVersion)
 			.first<{ payload: string }>();
 		if (!row) return fail(409, { message: 'Usulan tidak lagi bisa diedit.' });
 		if (payload.id !== JSON.parse(row.payload).id)
@@ -173,9 +175,9 @@ export const actions: Actions = {
 			db,
 			db
 				.prepare(
-					"UPDATE submissions SET payload = ?, state = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND payload = ? AND state IN ('pending','needs_changes') AND withdrawn_at IS NULL"
+					"UPDATE submissions SET payload = ?, state = 'pending', review_version = review_version + 1, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND payload = ? AND review_version = ? AND state IN ('pending','needs_changes') AND withdrawn_at IS NULL"
 				)
-				.bind(JSON.stringify(payload), id, row.payload),
+				.bind(JSON.stringify(payload), id, row.payload, reviewVersion),
 			actor.github_id,
 			'edit_submission',
 			`submission:${id}`
@@ -186,12 +188,14 @@ export const actions: Actions = {
 	approve: async ({ locals, platform, request }) => {
 		const actor = signedIn(locals, true);
 		const db = requireDb(platform);
-		const id = positiveId(await readSubmissionForm(request));
+		const form = await readSubmissionForm(request);
+		const id = positiveId(form);
+		const reviewVersion = positiveId(form, 'reviewVersion');
 		const row = await db
 			.prepare(
-				"SELECT s.*, u.login, u.display_name FROM submissions s JOIN users u ON u.github_id = s.github_id WHERE s.id = ? AND s.state = 'pending' AND s.withdrawn_at IS NULL AND u.banned_at IS NULL"
+				"SELECT s.*, u.login, u.display_name FROM submissions s JOIN users u ON u.github_id = s.github_id WHERE s.id = ? AND s.review_version = ? AND s.state = 'pending' AND s.withdrawn_at IS NULL AND u.banned_at IS NULL"
 			)
-			.bind(id)
+			.bind(id, reviewVersion)
 			.first<PendingRow>();
 		if (!row) return fail(409, { message: 'Usulan sudah berubah atau akun diblokir.' });
 		const payload = JSON.parse(row.payload) as SubmissionPayload;
@@ -230,25 +234,33 @@ export const actions: Actions = {
 				? 'https://bansos-dynamic-staging.pages.dev'
 				: 'https://bansos.dev';
 		const eligible =
-			"SELECT 1 FROM submissions s JOIN users u ON u.github_id = s.github_id WHERE s.id = ? AND s.state = 'pending' AND s.withdrawn_at IS NULL AND s.payload = ? AND u.banned_at IS NULL";
+			"SELECT 1 FROM submissions s JOIN users u ON u.github_id = s.github_id WHERE s.id = ? AND s.state = 'pending' AND s.withdrawn_at IS NULL AND s.payload = ? AND s.review_version = ? AND u.banned_at IS NULL";
 		const write = previous
 			? db
 					.prepare(
 						`UPDATE catalog_items SET payload = ?, version = version + 1, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND version = ? AND state = 'published' AND deleted_at IS NULL AND owner_github_id = ? AND EXISTS (${eligible})`
 					)
-					.bind(serialized, payload.id, previous.version, row.github_id, id, row.payload)
+					.bind(
+						serialized,
+						payload.id,
+						previous.version,
+						row.github_id,
+						id,
+						row.payload,
+						reviewVersion
+					)
 			: db
 					.prepare(
 						`INSERT INTO catalog_items (id, payload, state, submission_id, owner_github_id) SELECT ?, ?, 'published', ?, ? WHERE EXISTS (${eligible}) ON CONFLICT(id) DO NOTHING`
 					)
-					.bind(payload.id, serialized, id, row.github_id, id, row.payload);
+					.bind(payload.id, serialized, id, row.github_id, id, row.payload, reviewVersion);
 		const result = await db.batch([
 			write,
 			db
 				.prepare(
-					"UPDATE submissions SET state = 'published', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state = 'pending' AND withdrawn_at IS NULL AND payload = ? AND changes() = 1"
+					"UPDATE submissions SET state = 'published', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state = 'pending' AND withdrawn_at IS NULL AND payload = ? AND review_version = ? AND changes() = 1"
 				)
-				.bind(id, row.payload),
+				.bind(id, row.payload, reviewVersion),
 			auditStatement(db, actor.github_id, row.revision_of ? 'approve_edit' : 'approve', payload.id),
 			db
 				.prepare(
@@ -269,6 +281,7 @@ export const actions: Actions = {
 		const form = await readSubmissionForm(request);
 		const id = positiveId(form);
 		const state = String(form.get('state'));
+		const reviewVersion = positiveId(form, 'reviewVersion');
 		const note = String(form.get('note') || '').trim();
 		if (!['needs_changes', 'rejected'].includes(state) || !note || note.length > 1000)
 			return fail(400, { message: 'Keputusan dan catatan (maks. 1000 karakter) diperlukan.' });
@@ -276,9 +289,9 @@ export const actions: Actions = {
 			db,
 			db
 				.prepare(
-					"UPDATE submissions SET state = ?, admin_note = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND state = 'pending' AND withdrawn_at IS NULL"
+					"UPDATE submissions SET state = ?, admin_note = ?, review_version = review_version + 1, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND review_version = ? AND state = 'pending' AND withdrawn_at IS NULL"
 				)
-				.bind(state, note, id),
+				.bind(state, note, id, reviewVersion),
 			actor.github_id,
 			state,
 			`submission:${id}`

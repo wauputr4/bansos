@@ -97,6 +97,8 @@ export interface BansosItem {
 	featuredSince?: string;
 	featuredUntil?: string;
 	status: 'active' | 'expired' | 'upcoming';
+	/** D1 publication dates are not promotion start dates. Legacy repo entries keep their behavior. */
+	activateOnPublishedAt?: boolean;
 	hidden?: boolean;
 	customUI?: boolean;
 }
@@ -286,7 +288,12 @@ export function normalizeBansosStatuses(items: BansosItem[], referenceDate = new
 	const todayStr = `${yyyy}-${mm}-${dd}`;
 
 	return items.map((item) => {
-		if (item.status === 'upcoming' && item.publishedAt && item.publishedAt <= todayStr) {
+		if (
+			item.status === 'upcoming' &&
+			item.activateOnPublishedAt !== false &&
+			item.publishedAt &&
+			item.publishedAt <= todayStr
+		) {
 			return { ...item, status: 'active' as const };
 		}
 		if (

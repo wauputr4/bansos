@@ -6,7 +6,10 @@ import type { RequestHandler } from './$types';
 
 // Local preview only. Both localhost AND an explicit local binding are required.
 export const GET: RequestHandler = async ({ url, platform, cookies }) => {
-	if (!['localhost', '127.0.0.1'].includes(url.hostname) || env.BANSOS_LOCAL_DEMO !== '1') {
+	if (
+		!['localhost', '127.0.0.1'].includes(url.hostname) ||
+		(env.BANSOS_LOCAL_DEMO ?? platform?.env.BANSOS_LOCAL_DEMO) !== '1'
+	) {
 		error(404, 'Tidak tersedia.');
 	}
 	const admin = url.searchParams.get('as') === 'admin';

@@ -16,6 +16,17 @@ async function login(role) {
 }
 
 async function post(path, cookie, fields) {
+	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
+		const page = await (await request('/admin/', { headers: { Cookie: cookie } })).text();
+		const id = fields.id || fields.submissionId;
+		const card = page
+			.split(/<details class="review-card[^"]*">/)
+			.find((b) => b.includes(`name="submissionId" value="${id}"`));
+		fields = {
+			...fields,
+			reviewVersion: card?.match(/name="reviewVersion" value="(\d+)"/)?.[1] || '1'
+		};
+	}
 	return request(path, {
 		method: 'POST',
 		headers: {

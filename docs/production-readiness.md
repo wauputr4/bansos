@@ -6,7 +6,7 @@ Dokumen ini adalah checklist rilis, bukan bukti keberhasilan deploy. Pemilik tel
 
 - Project Pages produksi tetap `bansos`, domain `bansos.dev`.
 - D1 baru `bansos-production`, terpisah dari `bansos-dynamic-staging`; binding Production `DB` telah disimpan atas persetujuan pemilik. Berlaku pada deploy berikutnya, bukan deploy otomatis saat menyimpan binding.
-- Lima migrasi `0001`–`0005` telah diterapkan pada produksi. Snapshot rilis terbaru juga memerlukan `0006_admin_notifications.sql` untuk antrean notifikasi privat; terapkan sesudah backup, sebelum deploy kode. Staging telah menerima keenam migrasi. Migrasi kelima diperlukan untuk salinan komentar Discussions.
+- Keenam migrasi `0001`–`0006` telah diterapkan pada produksi dan staging. Migrasi keenam untuk antrean notifikasi privat diterapkan sesudah backup produksi diverifikasi (57.159 byte, SHA-256 `90d04881e0be1a8a3508e6fb554ea36f18edff8fe7a4f2100db59b223e72d545`). Migrasi kelima diperlukan untuk salinan komentar Discussions. Jangan deploy kode terbaru ke database yang belum menerima `0006`, walaupun pengiriman Discord dimatikan.
 - Produksi tidak menerima akun, sesi, usulan, atau fixture dari staging. Data repo tetap katalog dasar; tidak perlu memasukkan semua listing repo ke D1.
 - OAuth App produksi `bansos.dev` telah disiapkan di Brave dan didaftarkan oleh pemilik. Homepage `https://bansos.dev`, callback `https://bansos.dev/auth/github/callback/`, wildcard/device flow mati.
 - Snapshot satu arah memuat 24 diskusi listing dan 53 komentar (16 balasan). Diskusi sambutan umum tidak termasuk. Snapshot diverifikasi terhadap staging sebelum diimpor ke produksi.
