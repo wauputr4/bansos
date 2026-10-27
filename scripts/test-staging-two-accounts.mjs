@@ -91,7 +91,7 @@ async function expect(actor, path, fields, status = 303) {
 		/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) &&
 		!fields.reviewVersion
 	) {
-		const id = Number(fields.id || fields.submissionId);
+		const id = Number(fields.submissionId || fields.id);
 		fields = {
 			...fields,
 			reviewVersion: String(

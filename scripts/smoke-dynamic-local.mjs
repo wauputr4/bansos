@@ -18,9 +18,9 @@ async function login(role) {
 async function post(path, cookie, fields) {
 	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
 		const page = await (await request('/admin/', { headers: { Cookie: cookie } })).text();
-		const id = fields.id || fields.submissionId;
+		const id = fields.submissionId || fields.id;
 		const card = page
-			.split(/<details class="review-card[^"]*">/)
+			.split(/<details\b(?=[^>]*\bclass="review-card\b)[^>]*>/)
 			.find((b) => b.includes(`name="submissionId" value="${id}"`));
 		fields = {
 			...fields,
@@ -95,7 +95,7 @@ const admin = await request('/admin/', { headers: { Cookie: adminCookie } });
 assert.equal(admin.status, 200, 'admin dashboard');
 const html = await admin.text();
 const nearby = html
-	.split(/<details class="review-card[^"]*">/)
+	.split(/<details\b(?=[^>]*\bclass="review-card\b)[^>]*>/)
 	.find((block) => block.includes(`value="${slug}"`));
 assert.ok(nearby, 'submission appears in review queue');
 const submissionId = nearby.match(/name="id" value="(\d+)"/);

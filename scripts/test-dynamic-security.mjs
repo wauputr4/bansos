@@ -12,9 +12,9 @@ async function login(role) {
 async function post(path, cookie, fields, origin = base) {
 	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
 		const page = await (await req('/admin/', { headers: { Cookie: cookie } })).text();
-		const id = fields.id || fields.submissionId;
+		const id = fields.submissionId || fields.id;
 		const card = page
-			.split(/<details class="review-card[^"]*">/)
+			.split(/<details\b(?=[^>]*\bclass="review-card\b)[^>]*>/)
 			.find((b) => b.includes(`name="submissionId" value="${id}"`));
 		fields = {
 			...fields,
@@ -59,7 +59,7 @@ const payload = {
 const html = async (path, cookie) => (await req(path, { headers: { Cookie: cookie } })).text();
 async function pendingId() {
 	const page = await html('/admin/', admin);
-	const blocks = page.split(/<details class="review-card[^"]*">/);
+	const blocks = page.split(/<details\b(?=[^>]*\bclass="review-card\b)[^>]*>/);
 	const block = blocks.find((b) => b.includes(`value="${slug}"`));
 	assert.ok(block, 'review card exists');
 	const id = block.match(/name="submissionId" value="(\d+)"/);
@@ -87,7 +87,7 @@ assert.ok(
 	'unapproved listing has no notification event'
 );
 const viewed = (await html('/admin/', admin))
-	.split(/<details class="review-card[^"]*">/)
+	.split(/<details\b(?=[^>]*\bclass="review-card\b)[^>]*>/)
 	.find((b) => b.includes(`name="submissionId" value="${pending}"`))
 	.match(/name="reviewVersion" value="(\d+)"/)[1];
 await expectPost(303, '/dashboard/?/revise', user, {
@@ -103,9 +103,8 @@ assert.ok(
 	'approval creates durable notification event'
 );
 assert.equal((await req(`/list/${slug}/`)).status, 200);
-assert.match(
-	await html(`/list/${slug}/`, ''),
-	/class="status-badge status-upcoming"/,
+assert.ok(
+	/class="status-badge status-upcoming(?:\s|")/.test(await html(`/list/${slug}/`, '')),
 	'publication is not a promotion start date'
 );
 assert.match(

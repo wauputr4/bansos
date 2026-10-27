@@ -70,7 +70,7 @@ async function request(path, fields, guest = false) {
 }
 async function post(path, fields, expected = 303) {
 	if (/^\/admin\/\?\/(approve|moderate|editSubmission)$/.test(path) && !fields.reviewVersion) {
-		const id = Number(fields.id || fields.submissionId);
+		const id = Number(fields.submissionId || fields.id);
 		fields = {
 			...fields,
 			reviewVersion: String(
