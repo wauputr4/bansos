@@ -1,0 +1,28 @@
+{
+	"id": "curlshot-free-100-screenshots",
+	"title": "CurlShot — API Screenshot Website Gratis 100 per Bulan",
+	"provider": "CurlShot",
+	"description": "API screenshot website: ubah URL apa pun jadi gambar PNG, JPEG, WebP, atau PDF lewat satu request GET. Paket gratis 100 screenshot per bulan tanpa kartu kredit, cocok untuk thumbnail link, gambar Open Graph, arsip halaman, dan agent AI.",
+	"benefits": [
+		"100 screenshot gratis setiap bulan, tanpa kartu kredit",
+		"Output PNG, JPEG, WebP, atau PDF; screenshot satu halaman penuh, preset perangkat mobile/tablet, mode gelap, dan elemen tertentu via CSS selector",
+		"Pemblokiran iklan dan banner cookie dapat diaktifkan di API; aktif secara default melalui MCP",
+		"Server MCP hosted untuk Claude Code, Cursor, dan agent AI lain, plus node komunitas n8n"
+	],
+	"validity": {
+		"type": "forever",
+		"description": "Paket gratis permanen, kuota direset setiap bulan"
+	},
+	"requirements": [
+		"Daftar akun di curlshot.com dengan nama, email, dan password",
+		"Buat API key di dashboard"
+	],
+	"ctaLink": "https://curlshot.com/pricing",
+	"tags": ["API", "Free Tier", "Developer Tools"],
+	"status": "active",
+	"featured": false,
+	"publishedAt": "2026-10-16",
+	"tips": "Coba dulu tanpa akun di https://curlshot.com/tools/full-page-screenshot. Dokumentasi API: https://curlshot.com/docs",
+	"source": "https://curlshot.com/pricing",
+	"contributorSlug": "sergiupogor"
+}

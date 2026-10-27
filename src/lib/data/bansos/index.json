@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-10-27",
-	"total": 128,
+	"total": 129,
 	"items": [
 		{
 			"id": "1412-api-github-registration",
@@ -261,6 +261,16 @@
 			"featured": false,
 			"publishedAt": "2026-07-03",
 			"contributorSlug": "wauputr4"
+		},
+		{
+			"id": "curlshot-free-100-screenshots",
+			"title": "CurlShot — API Screenshot Website Gratis 100 per Bulan",
+			"provider": "CurlShot",
+			"status": "active",
+			"tags": ["API", "Free Tier", "Developer Tools"],
+			"featured": false,
+			"publishedAt": "2026-10-16",
+			"contributorSlug": "sergiupogor"
 		},
 		{
 			"id": "dahono-labs-ai-api",
