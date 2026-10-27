@@ -22,8 +22,8 @@ FreeModel (freemodel.in) adalah gateway API OpenAI-compatible dengan 31 model â€
 - Daftar dengan email atau akun Google (password min. 8 karakter), tanpa kartu kredit
 - Buat API key di dashboard (format fm_... â€” key hanya ditampilkan sekali, langsung disalin)
 - Allowance bulanan dipakai duluan; token dihitung gabungan prompt + completion
-- Kelebihan pakai ditagih ke balance; halaman pricing menyebut USDT melalui BEP-20 / BNB Smart Chain. Ikuti instruksi top-up di dashboard; saldo kosong menghasilkan HTTP 402
-- Rate limit 60 req/menit di-enforce per key di free tier
+- Kelebihan pakai ditagih ke balance. Bila melakukan top-up, ikuti metode, jaringan, dan alamat pembayaran persis seperti yang ditampilkan di dashboard; saldo kosong menghasilkan HTTP 402
+- Rate limit 60 req/menit di-enforce per akun di free tier
 
 ---
 
