@@ -17,9 +17,10 @@
 	"requirements": ["Login via GitHub", "Perpanangkan sekali sehari untuk Vps-Mini"],
 	"ctaLink": "https://vyce.cloud/?ref=8BFJ9ETY",
 	"tags": ["Cloud", "Free Tier", "Developer Tools", "VPS"],
-	"status": "active",
+	"status": "expired",
 	"featured": false,
 	"publishedAt": "2026-10-06",
+	"tips": "Listing dinonaktifkan pada 27 Oktober 2026 setelah laporan komunitas tentang antrean VPS yang tidak bergerak dan iklan bermasalah. Ketersediaan klaim perlu diverifikasi ulang. Diskusi: https://github.com/wauputr4/bansos/discussions/243",
 	"source": "https://vyce.cloud/",
 	"contributorSlug": "rafly0078"
 }
