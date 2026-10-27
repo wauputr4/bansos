@@ -6,7 +6,7 @@
 	"benefits": [
 		"100 screenshot gratis setiap bulan, tanpa kartu kredit",
 		"Output PNG, JPEG, WebP, atau PDF; screenshot satu halaman penuh, preset perangkat mobile/tablet, mode gelap, dan elemen tertentu via CSS selector",
-		"Iklan dan banner cookie diblokir otomatis",
+		"Pemblokiran iklan dan banner cookie dapat diaktifkan di API; aktif secara default melalui MCP",
 		"Server MCP hosted untuk Claude Code, Cursor, dan agent AI lain, plus node komunitas n8n"
 	],
 	"validity": {
