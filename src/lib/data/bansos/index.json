@@ -1163,7 +1163,7 @@
 			"id": "vyce-free-vps",
 			"title": "Vyce Cloud Free VPS",
 			"provider": "vyce.cloud",
-			"status": "active",
+			"status": "expired",
 			"tags": ["Cloud", "Free Tier", "Developer Tools", "VPS"],
 			"featured": false,
 			"publishedAt": "2026-10-06",
