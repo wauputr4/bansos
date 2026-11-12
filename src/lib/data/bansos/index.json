@@ -1,6 +1,6 @@
 {
 	"generatedAt": "2026-10-27",
-	"total": 129,
+	"total": 130,
 	"items": [
 		{
 			"id": "1412-api-github-registration",
@@ -361,6 +361,16 @@
 			"featured": false,
 			"publishedAt": "2026-06-25",
 			"contributorSlug": "mikaelaldy"
+		},
+		{
+			"id": "freegg-free-100-credit",
+			"title": "FreeGG Free $100 API Credit",
+			"provider": "FreeGG",
+			"status": "active",
+			"tags": ["AI Credits", "API", "AI Tools", "Free Tier", "Developer Tools", "No Credit Card"],
+			"featured": false,
+			"publishedAt": "2026-11-13",
+			"contributorSlug": "rafly0078"
 		},
 		{
 			"id": "freemodel-in-1m-token-gratis",
